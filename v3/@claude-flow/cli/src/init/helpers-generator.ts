@@ -11,12 +11,12 @@ import { generateStatuslineScript, generateStatuslineHook } from './statusline-g
  */
 export function generatePreCommitHook(): string {
   return `#!/bin/bash
-# Ruflo Pre-Commit Hook
+# FidgetFlo Pre-Commit Hook
 # Validates code quality before commit
 
 set -e
 
-echo "🔍 Running Ruflo pre-commit checks..."
+echo "🔍 Running FidgetFlo pre-commit checks..."
 
 # Get staged files
 STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM)
@@ -44,7 +44,7 @@ echo "✅ Pre-commit checks complete"
  */
 export function generatePostCommitHook(): string {
   return `#!/bin/bash
-# Ruflo Post-Commit Hook
+# FidgetFlo Post-Commit Hook
 # Records commit metrics and trains patterns
 
 COMMIT_HASH=$(git rev-parse HEAD)
@@ -52,7 +52,7 @@ COMMIT_MSG=$(git log -1 --pretty=%B)
 
 echo "📊 Recording commit metrics..."
 
-# Notify ruflo of commit
+# Notify FidgetFlo of commit
 npx fidgetflo hooks notify \\
   --message "Commit: $COMMIT_MSG" \\
   --level info \\
@@ -68,7 +68,7 @@ echo "✅ Commit recorded"
 export function generateSessionManager(): string {
   return `#!/usr/bin/env node
 /**
- * Ruflo Session Manager
+ * FidgetFlo Session Manager
  * Handles session lifecycle: start, restore, end
  */
 
@@ -202,7 +202,7 @@ module.exports = commands;
 export function generateAgentRouter(): string {
   return `#!/usr/bin/env node
 /**
- * Ruflo Agent Router
+ * FidgetFlo Agent Router
  * Routes tasks to optimal agents based on learned patterns
  */
 
@@ -275,7 +275,7 @@ module.exports = { routeTask, AGENT_CAPABILITIES, TASK_PATTERNS };
 export function generateMemoryHelper(): string {
   return `#!/usr/bin/env node
 /**
- * Ruflo Memory Helper
+ * FidgetFlo Memory Helper
  * Simple key-value memory for cross-session context
  */
 
@@ -369,7 +369,7 @@ export function generateHookHandler(): string {
   const lines = [
     '#!/usr/bin/env node',
     '/**',
-    ' * Ruflo Hook Handler (Cross-Platform)',
+    ' * FidgetFlo Hook Handler (Cross-Platform)',
     ' * Dispatches hook events to the appropriate helper modules.',
     ' */',
     '',
@@ -934,7 +934,7 @@ process.exit(0);
  * Generate Windows PowerShell daemon manager
  */
 export function generateWindowsDaemonManager(): string {
-  return `# RuFlo V3 Daemon Manager for Windows
+  return `# FidgetFlo Daemon Manager for Windows
 # PowerShell script for managing background processes
 
 param(
@@ -1000,7 +1000,7 @@ function Stop-SwarmMonitor {
 
 function Show-Status {
     Write-Host ""
-    Write-Host "RuFlo V3 Daemon Status" -ForegroundColor Cyan
+    Write-Host "FidgetFlo Daemon Status" -ForegroundColor Cyan
     Write-Host "=============================" -ForegroundColor Cyan
 
     $swarmPid = Join-Path $PidDir 'swarm-monitor.pid'
@@ -1041,7 +1041,7 @@ switch ($Action) {
  */
 export function generateWindowsBatchWrapper(): string {
   return `@echo off
-REM RuFlo V3 - Windows Batch Wrapper
+REM FidgetFlo - Windows Batch Wrapper
 REM Routes to PowerShell daemon manager
 
 PowerShell -ExecutionPolicy Bypass -File "%~dp0daemon-manager.ps1" %*
@@ -1054,7 +1054,7 @@ PowerShell -ExecutionPolicy Bypass -File "%~dp0daemon-manager.ps1" %*
 export function generateCrossPlatformSessionManager(): string {
   return `#!/usr/bin/env node
 /**
- * Ruflo Cross-Platform Session Manager
+ * FidgetFlo Cross-Platform Session Manager
  * Works on Windows, macOS, and Linux
  */
 

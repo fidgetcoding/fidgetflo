@@ -21,7 +21,7 @@ export interface BuildOptions {
   profile: 'cloud' | 'hybrid' | 'offline';
   arch: string;
   output: string;
-  rufloVersion?: string;
+  fidgetfloVersion?: string;
   models?: string[];
   apiKeys?: string;
   verbose?: boolean;
@@ -109,7 +109,7 @@ export class RvfaBuilder {
       arch: options.arch || 'x86_64',
       profile: options.profile,
       output: resolve(options.output),
-      rufloVersion: options.rufloVersion || detectFidgetFloVersion(),
+      fidgetfloVersion: options.fidgetfloVersion || detectFidgetFloVersion(),
       models: options.models ?? defaultModelsForProfile(options.profile),
       apiKeys: options.apiKeys ?? '',
       verbose: options.verbose ?? false,
@@ -204,8 +204,8 @@ export class RvfaBuilder {
     } catch { /* manifest-only fallback */ }
 
     return jsonBuf({
-      type: 'fidgetflo', version: this.opts.rufloVersion,
-      package: packageMeta ?? { name: 'fidgetflo', version: this.opts.rufloVersion },
+      type: 'fidgetflo', version: this.opts.fidgetfloVersion,
+      package: packageMeta ?? { name: 'fidgetflo', version: this.opts.fidgetfloVersion },
       commands: FIDGETFLO_COMMANDS, commandCount: FIDGETFLO_COMMANDS.length,
       agents: AGENT_TYPES, agentCount: AGENT_TYPES.length,
       hooks: { count: HOOK_TYPES.length, types: HOOK_TYPES },
@@ -331,7 +331,7 @@ export class RvfaBuilder {
     };
 
     return {
-      magic: 'RVFA', version: 1, name: 'fidgetflo-appliance', appVersion: this.opts.rufloVersion,
+      magic: 'RVFA', version: 1, name: 'fidgetflo-appliance', appVersion: this.opts.fidgetfloVersion,
       arch: this.opts.arch, platform: 'linux', profile: this.opts.profile,
       created: new Date().toISOString(), boot, models, capabilities: caps,
     };

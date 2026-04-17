@@ -206,7 +206,7 @@ async function checkMcpServers(): Promise<HealthCheck> {
         const content = JSON.parse(readFileSync(configPath, 'utf8'));
         const servers = content.mcpServers || content.servers || {};
         const count = Object.keys(servers).length;
-        const hasClaudeFlow = 'fidgetflo' in servers || 'claude-flow_alpha' in servers || 'fidgetflo' in servers || 'ruflo_alpha' in servers;
+        const hasClaudeFlow = 'fidgetflo' in servers || 'claude-flow_alpha' in servers || 'fidgetflo_alpha' in servers || 'ruflo_alpha' in servers;
         if (hasClaudeFlow) {
           return { name: 'MCP Servers', status: 'pass', message: `${count} servers (fidgetflo configured)` };
         } else {

@@ -360,7 +360,7 @@ function discoverSkills(): string[] {
 
 const guidanceCapabilities: MCPTool = {
   name: 'guidance_capabilities',
-  description: 'List all capability areas with their tools, commands, agents, and skills. Use this to discover what Ruflo can do.',
+  description: 'List all capability areas with their tools, commands, agents, and skills. Use this to discover what FidgetFlo can do.',
   inputSchema: {
     type: 'object',
     properties: {

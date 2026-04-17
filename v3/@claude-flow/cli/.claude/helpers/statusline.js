@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * RuFlo V3.5 Statusline Generator
+ * FidgetFlo Statusline Generator
  * Displays real-time V3 implementation progress and system status
  *
  * Usage: node statusline.js [--json] [--compact]
@@ -242,7 +242,7 @@ function generateStatusline() {
   const lines = [];
 
   // Header Line
-  let header = `${c.bold}${c.brightPurple}▊ RuFlo V3.5 ${c.reset}`;
+  let header = `${c.bold}${c.brightPurple}▊ FidgetFlo ${c.reset}`;
   header += `${swarm.coordinationActive ? c.brightCyan : c.dim}● ${c.brightCyan}${user.name}${c.reset}`;
   if (user.gitBranch) {
     header += `  ${c.dim}│${c.reset}  ${c.brightBlue}⎇ ${user.gitBranch}${c.reset}`;
