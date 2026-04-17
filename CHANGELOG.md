@@ -1,19 +1,53 @@
 # Changelog
 
-All notable changes to the FidgetFlo project (formerly FidgetFlo) are documented here.
+All notable changes to the FidgetFlo project are documented here.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+> **About this changelog:** Entries before `[0.1.0]` are inherited from upstream [ruvnet/ruflo](https://github.com/ruvnet/ruflo) (preserved for lineage continuity — see [CREDITS.md](./CREDITS.md)). FidgetFlo-specific work by Nathan Davidovich / Lorecraft LLC begins at `[0.1.0]`.
+
+## [0.1.0] - 2026-04-16
+
+### FidgetFlo 0.1.0 — Initial rebrand release
+
+Shallow fork of `ruvnet/ruflo@v3.5.80`, rebranded as FidgetFlo under the FIDGETCODING family. See [CREDITS.md](./CREDITS.md) for the full attribution story. The engine is ruv's; the brand layer and the f* skill family are additions by Nathan.
+
+### Added
+- `LICENSE` with dual MIT copyright (ruv's original + Lorecraft LLC modifications)
+- `CREDITS.md` and `ATTRIBUTION.md` — upstream attribution
+- `skills/` with the 11-skill f* family (`/fswarm`, `/fswarm1-3`, `/fswarmmax`, `/fmini`, `/fmini1-3`, `/fminimax`, `/fhive`) binding Ruflo's swarm/mini modes to Claude Code's extended-thinking tiers
+- `scripts/install-skills.sh` — installs the f* family into `~/.claude/skills/`
+
+### Changed
+- Root `package.json`: name `claude-flow` → `fidgetflo`, version reset to `0.1.0`
+- `ruflo/package.json`: name `ruflo` → `fidgetflo-classic` (legacy, deprecated)
+- MCP server namespace `mcp__claude-flow__*` / `mcp__ruflo__*` → `mcp__fidgetflo__*`
+- CLI: `fidgetflo` command added alongside existing aliases
+- ~488 markdown files rebranded (preserving upstream URLs and `@claude-flow/*` scoped package names)
+- Configs rebranded: `.claude/`, `.claude-plugin/`, `.github/`, `.agents/`
+
+### Preserved (intentional)
+- `@claude-flow/*` internal scoped packages
+- All `ruvnet/ruflo` and `ruvnet/claude-flow` attribution URLs
+- `ruvnet`, `ruv`, `ruv.io`, `ruv.net`, `ruv-swarm` references
+- Ruv's original copyright line in `LICENSE`
+
+---
+
+## Inherited history from ruvnet/ruflo
+
+Everything below this line documents the upstream project (`ruvnet/ruflo` and its predecessor `ruvnet/claude-flow`) prior to the FidgetFlo fork at `v3.5.80`. This history is preserved as-is for lineage continuity; all authorship belongs to ruvnet and the upstream contributors.
+
 ## [3.5.0] - 2026-02-27
 
-### FidgetFlo v3.5 — First Major Stable Release
+### Ruflo v3.5 — First Major Stable Release (upstream)
 
-This release marks the official rebranding from **FidgetFlo** to **FidgetFlo** and represents the first major stable release after 5,800+ commits, 55 alpha iterations, and 10 months of development.
+This release marks the upstream rebranding from **Claude-Flow** to **Ruflo** and represents the first major stable release after 5,800+ commits, 55 alpha iterations, and 10 months of development.
 
 ### Highlights
 
-- **Rebranding**: FidgetFlo → FidgetFlo across all packages (`@claude-flow/cli`, `fidgetflo`, `fidgetflo`)
+- **Rebranding**: Claude-Flow → Ruflo across all packages (`@claude-flow/cli`, `claude-flow`, `ruflo`)
 - **agentic-flow v3.0.0-alpha.1 Integration**: Full deep integration with 10 subpath exports (ReasoningBank, Router, Orchestration, Agent Booster, SDK, Security, QUIC transport)
 - **AgentDB v3.0.0-alpha.9**: 8 new controllers (HierarchicalMemory, MemoryConsolidation, SemanticRouter, GNNService, RVFOptimizer, MutationGuard, AttestationLog, GuardedVectorBackend) + 6 MCP tools
 - **215 MCP Tools**: Full Model Context Protocol server with vector memory, neural training, swarm coordination

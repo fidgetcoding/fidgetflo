@@ -106,10 +106,10 @@ export const initCommand: Command = {
     },
   ],
   examples: [
-    { command: 'claude-flow ruvector init -d mydb', description: 'Initialize with database name' },
-    { command: 'claude-flow ruvector init -d mydb -h db.example.com --ssl', description: 'Remote with SSL' },
-    { command: 'claude-flow ruvector init -d mydb --force', description: 'Force re-initialization' },
-    { command: 'claude-flow ruvector init -d mydb --dimensions 768', description: 'Custom vector dimensions' },
+    { command: 'fidgetflo ruvector init -d mydb', description: 'Initialize with database name' },
+    { command: 'fidgetflo ruvector init -d mydb -h db.example.com --ssl', description: 'Remote with SSL' },
+    { command: 'fidgetflo ruvector init -d mydb --force', description: 'Force re-initialization' },
+    { command: 'fidgetflo ruvector init -d mydb --dimensions 768', description: 'Custom vector dimensions' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     let config = getConnectionConfig(ctx);
@@ -490,9 +490,9 @@ export const initCommand: Command = {
         '  - GNN edge indexes',
         '',
         'Next steps:',
-        '  1. Run migrations: claude-flow ruvector migrate --up',
-        '  2. Check status: claude-flow ruvector status --verbose',
-        '  3. Run benchmark: claude-flow ruvector benchmark',
+        '  1. Run migrations: fidgetflo ruvector migrate --up',
+        '  2. Check status: fidgetflo ruvector status --verbose',
+        '  3. Run benchmark: fidgetflo ruvector benchmark',
       ].join('\n'), 'Initialization Complete');
 
       return {

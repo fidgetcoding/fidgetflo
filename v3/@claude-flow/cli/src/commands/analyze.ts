@@ -83,10 +83,10 @@ const diffCommand: Command = {
     },
   ],
   examples: [
-    { command: 'claude-flow analyze diff --risk', description: 'Analyze current diff with risk assessment' },
-    { command: 'claude-flow analyze diff HEAD~1 --classify', description: 'Classify changes from last commit' },
-    { command: 'claude-flow analyze diff main..feature --format json', description: 'Compare branches with JSON output' },
-    { command: 'claude-flow analyze diff --reviewers', description: 'Get recommended reviewers for changes' },
+    { command: 'fidgetflo analyze diff --risk', description: 'Analyze current diff with risk assessment' },
+    { command: 'fidgetflo analyze diff HEAD~1 --classify', description: 'Classify changes from last commit' },
+    { command: 'fidgetflo analyze diff main..feature --format json', description: 'Compare branches with JSON output' },
+    { command: 'fidgetflo analyze diff --reviewers', description: 'Get recommended reviewers for changes' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const ref = ctx.args[0] || 'HEAD';
@@ -311,8 +311,8 @@ const codeCommand: Command = {
     { name: 'format', short: 'f', type: 'string', description: 'Output format: text, json', default: 'text' },
   ],
   examples: [
-    { command: 'claude-flow analyze code -p ./src', description: 'Analyze source directory' },
-    { command: 'claude-flow analyze code --type complexity', description: 'Run complexity analysis' },
+    { command: 'fidgetflo analyze code -p ./src', description: 'Analyze source directory' },
+    { command: 'fidgetflo analyze code --type complexity', description: 'Run complexity analysis' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const targetPath = resolve(ctx.flags.path as string || '.');
@@ -556,10 +556,10 @@ const astCommand: Command = {
     },
   ],
   examples: [
-    { command: 'claude-flow analyze ast src/', description: 'Analyze all files in src/' },
-    { command: 'claude-flow analyze ast src/index.ts --complexity', description: 'Analyze with complexity' },
-    { command: 'claude-flow analyze ast . --format json', description: 'JSON output' },
-    { command: 'claude-flow analyze ast src/ --symbols', description: 'Extract symbols' },
+    { command: 'fidgetflo analyze ast src/', description: 'Analyze all files in src/' },
+    { command: 'fidgetflo analyze ast src/index.ts --complexity', description: 'Analyze with complexity' },
+    { command: 'fidgetflo analyze ast . --format json', description: 'JSON output' },
+    { command: 'fidgetflo analyze ast src/ --symbols', description: 'Extract symbols' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const targetPath = ctx.args[0] || ctx.cwd;
@@ -810,8 +810,8 @@ const complexityAstCommand: Command = {
     },
   ],
   examples: [
-    { command: 'claude-flow analyze complexity src/', description: 'Analyze complexity' },
-    { command: 'claude-flow analyze complexity src/ --threshold 15', description: 'Flag high complexity' },
+    { command: 'fidgetflo analyze complexity src/', description: 'Analyze complexity' },
+    { command: 'fidgetflo analyze complexity src/ --threshold 15', description: 'Flag high complexity' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const targetPath = ctx.args[0] || ctx.cwd;
@@ -990,9 +990,9 @@ const symbolsCommand: Command = {
     },
   ],
   examples: [
-    { command: 'claude-flow analyze symbols src/', description: 'Extract all symbols' },
-    { command: 'claude-flow analyze symbols src/ --type function', description: 'Only functions' },
-    { command: 'claude-flow analyze symbols src/ --format json', description: 'JSON output' },
+    { command: 'fidgetflo analyze symbols src/', description: 'Extract all symbols' },
+    { command: 'fidgetflo analyze symbols src/ --type function', description: 'Only functions' },
+    { command: 'fidgetflo analyze symbols src/ --format json', description: 'JSON output' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const targetPath = ctx.args[0] || ctx.cwd;
@@ -1154,8 +1154,8 @@ const importsCommand: Command = {
     },
   ],
   examples: [
-    { command: 'claude-flow analyze imports src/', description: 'Analyze all imports' },
-    { command: 'claude-flow analyze imports src/ --external', description: 'Only npm packages' },
+    { command: 'fidgetflo analyze imports src/', description: 'Analyze all imports' },
+    { command: 'fidgetflo analyze imports src/ --external', description: 'Only npm packages' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const targetPath = ctx.args[0] || ctx.cwd;
@@ -1414,8 +1414,8 @@ const depsCommand: Command = {
     { name: 'format', short: 'f', type: 'string', description: 'Output format: text, json', default: 'text' },
   ],
   examples: [
-    { command: 'claude-flow analyze deps --outdated', description: 'Show outdated dependencies' },
-    { command: 'claude-flow analyze deps --security', description: 'Check for vulnerabilities' },
+    { command: 'fidgetflo analyze deps --outdated', description: 'Show outdated dependencies' },
+    { command: 'fidgetflo analyze deps --security', description: 'Check for vulnerabilities' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const showOutdated = ctx.flags.outdated as boolean;
@@ -1584,9 +1584,9 @@ const boundariesCommand: Command = {
     },
   ],
   examples: [
-    { command: 'claude-flow analyze boundaries src/', description: 'Find code boundaries in src/' },
-    { command: 'claude-flow analyze boundaries -p 3 src/', description: 'Find 3 partitions' },
-    { command: 'claude-flow analyze boundaries -f dot -o graph.dot src/', description: 'Export to DOT format' },
+    { command: 'fidgetflo analyze boundaries src/', description: 'Find code boundaries in src/' },
+    { command: 'fidgetflo analyze boundaries -p 3 src/', description: 'Find 3 partitions' },
+    { command: 'fidgetflo analyze boundaries -f dot -o graph.dot src/', description: 'Export to DOT format' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const targetDir = ctx.args[0] || ctx.cwd;
@@ -1759,9 +1759,9 @@ const modulesCommand: Command = {
     },
   ],
   examples: [
-    { command: 'claude-flow analyze modules src/', description: 'Detect module communities' },
-    { command: 'claude-flow analyze modules -f dot -o modules.dot src/', description: 'Export colored DOT graph' },
-    { command: 'claude-flow analyze modules -m 3 src/', description: 'Only show communities with 3+ files' },
+    { command: 'fidgetflo analyze modules src/', description: 'Detect module communities' },
+    { command: 'fidgetflo analyze modules -f dot -o modules.dot src/', description: 'Export colored DOT graph' },
+    { command: 'fidgetflo analyze modules -m 3 src/', description: 'Only show communities with 3+ files' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const targetDir = ctx.args[0] || ctx.cwd;
@@ -1928,9 +1928,9 @@ const dependenciesCommand: Command = {
     },
   ],
   examples: [
-    { command: 'claude-flow analyze dependencies src/', description: 'Build dependency graph' },
-    { command: 'claude-flow analyze dependencies -f dot -o deps.dot src/', description: 'Export to DOT' },
-    { command: 'claude-flow analyze dependencies -i .ts,.tsx src/', description: 'Only TypeScript files' },
+    { command: 'fidgetflo analyze dependencies src/', description: 'Build dependency graph' },
+    { command: 'fidgetflo analyze dependencies -f dot -o deps.dot src/', description: 'Export to DOT' },
+    { command: 'fidgetflo analyze dependencies -i .ts,.tsx src/', description: 'Only TypeScript files' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const targetDir = ctx.args[0] || ctx.cwd;
@@ -2114,8 +2114,8 @@ const circularCommand: Command = {
     },
   ],
   examples: [
-    { command: 'claude-flow analyze circular src/', description: 'Find circular dependencies' },
-    { command: 'claude-flow analyze circular -s high src/', description: 'Only high severity cycles' },
+    { command: 'fidgetflo analyze circular src/', description: 'Find circular dependencies' },
+    { command: 'fidgetflo analyze circular -s high src/', description: 'Only high severity cycles' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const targetDir = ctx.args[0] || ctx.cwd;
@@ -2279,16 +2279,16 @@ export const analyzeCommand: Command = {
     },
   ],
   examples: [
-    { command: 'claude-flow analyze ast src/', description: 'Analyze code with AST parsing' },
-    { command: 'claude-flow analyze complexity src/ --threshold 15', description: 'Find high-complexity files' },
-    { command: 'claude-flow analyze symbols src/ --type function', description: 'Extract all functions' },
-    { command: 'claude-flow analyze imports src/ --external', description: 'List npm dependencies' },
-    { command: 'claude-flow analyze diff --risk', description: 'Analyze diff with risk assessment' },
-    { command: 'claude-flow analyze boundaries src/', description: 'Find code boundaries using MinCut' },
-    { command: 'claude-flow analyze modules src/', description: 'Detect module communities with Louvain' },
-    { command: 'claude-flow analyze dependencies src/ --format dot', description: 'Export dependency graph as DOT' },
-    { command: 'claude-flow analyze circular src/', description: 'Find circular dependencies' },
-    { command: 'claude-flow analyze deps --security', description: 'Check dependency vulnerabilities' },
+    { command: 'fidgetflo analyze ast src/', description: 'Analyze code with AST parsing' },
+    { command: 'fidgetflo analyze complexity src/ --threshold 15', description: 'Find high-complexity files' },
+    { command: 'fidgetflo analyze symbols src/ --type function', description: 'Extract all functions' },
+    { command: 'fidgetflo analyze imports src/ --external', description: 'List npm dependencies' },
+    { command: 'fidgetflo analyze diff --risk', description: 'Analyze diff with risk assessment' },
+    { command: 'fidgetflo analyze boundaries src/', description: 'Find code boundaries using MinCut' },
+    { command: 'fidgetflo analyze modules src/', description: 'Detect module communities with Louvain' },
+    { command: 'fidgetflo analyze dependencies src/ --format dot', description: 'Export dependency graph as DOT' },
+    { command: 'fidgetflo analyze circular src/', description: 'Find circular dependencies' },
+    { command: 'fidgetflo analyze deps --security', description: 'Check dependency vulnerabilities' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     // If no subcommand, show help
@@ -2314,26 +2314,26 @@ export const analyzeCommand: Command = {
 
     output.writeln(output.bold('AST Analysis Examples:'));
     output.writeln();
-    output.writeln(`  ${output.dim('claude-flow analyze ast src/')}                  # Full AST analysis`);
-    output.writeln(`  ${output.dim('claude-flow analyze ast src/index.ts -c')}       # Include complexity`);
-    output.writeln(`  ${output.dim('claude-flow analyze complexity src/ -t 15')}     # Flag high complexity`);
-    output.writeln(`  ${output.dim('claude-flow analyze symbols src/ --type fn')}    # Extract functions`);
-    output.writeln(`  ${output.dim('claude-flow analyze imports src/ --external')}   # Only npm imports`);
+    output.writeln(`  ${output.dim('fidgetflo analyze ast src/')}                  # Full AST analysis`);
+    output.writeln(`  ${output.dim('fidgetflo analyze ast src/index.ts -c')}       # Include complexity`);
+    output.writeln(`  ${output.dim('fidgetflo analyze complexity src/ -t 15')}     # Flag high complexity`);
+    output.writeln(`  ${output.dim('fidgetflo analyze symbols src/ --type fn')}    # Extract functions`);
+    output.writeln(`  ${output.dim('fidgetflo analyze imports src/ --external')}   # Only npm imports`);
     output.writeln();
 
     output.writeln(output.bold('Graph Analysis Examples:'));
     output.writeln();
-    output.writeln(`  ${output.dim('claude-flow analyze boundaries src/')}            # Find natural code boundaries`);
-    output.writeln(`  ${output.dim('claude-flow analyze modules src/')}               # Detect module communities`);
-    output.writeln(`  ${output.dim('claude-flow analyze dependencies -f dot src/')}   # Export to DOT format`);
-    output.writeln(`  ${output.dim('claude-flow analyze circular src/')}              # Find circular deps`);
+    output.writeln(`  ${output.dim('fidgetflo analyze boundaries src/')}            # Find natural code boundaries`);
+    output.writeln(`  ${output.dim('fidgetflo analyze modules src/')}               # Detect module communities`);
+    output.writeln(`  ${output.dim('fidgetflo analyze dependencies -f dot src/')}   # Export to DOT format`);
+    output.writeln(`  ${output.dim('fidgetflo analyze circular src/')}              # Find circular deps`);
     output.writeln();
 
     output.writeln(output.bold('Diff Analysis Examples:'));
     output.writeln();
-    output.writeln(`  ${output.dim('claude-flow analyze diff --risk')}              # Risk assessment`);
-    output.writeln(`  ${output.dim('claude-flow analyze diff HEAD~1 --classify')}   # Classify changes`);
-    output.writeln(`  ${output.dim('claude-flow analyze diff main..feature')}       # Compare branches`);
+    output.writeln(`  ${output.dim('fidgetflo analyze diff --risk')}              # Risk assessment`);
+    output.writeln(`  ${output.dim('fidgetflo analyze diff HEAD~1 --classify')}   # Classify changes`);
+    output.writeln(`  ${output.dim('fidgetflo analyze diff main..feature')}       # Compare branches`);
     output.writeln();
 
     return { success: true };

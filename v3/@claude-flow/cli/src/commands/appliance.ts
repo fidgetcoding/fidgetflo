@@ -79,10 +79,10 @@ async function runSteps(steps: string[], delay = 300): Promise<void> {
 // BUILD
 const buildCommand: Command = {
   name: 'build',
-  description: 'Build a self-contained ruflo.rvf appliance',
+  description: 'Build a self-contained fidgetflo.rvf appliance',
   options: [
     { name: 'profile', short: 'p', type: 'string', description: 'Build profile: cloud, hybrid, offline', default: 'cloud' },
-    { name: 'output', short: 'o', type: 'string', description: 'Output file path', default: 'ruflo.rvf' },
+    { name: 'output', short: 'o', type: 'string', description: 'Output file path', default: 'fidgetflo.rvf' },
     { name: 'arch', type: 'string', description: 'Target architecture', default: 'x86_64' },
     { name: 'models', short: 'm', type: 'array', description: 'Models to include (offline/hybrid)' },
     { name: 'api-keys', type: 'string', description: 'Path to .env file for API key vault' },
@@ -90,7 +90,7 @@ const buildCommand: Command = {
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const profile = ctx.flags.profile as string || 'cloud';
-    const outputPath = ctx.flags.output as string || 'ruflo.rvf';
+    const outputPath = ctx.flags.output as string || 'fidgetflo.rvf';
     const arch = ctx.flags.arch as string || 'x86_64';
     const models = ctx.flags.models as string[] || [];
     const apiKeysPath = ctx.flags['api-keys'] as string | undefined;
@@ -110,7 +110,7 @@ const buildCommand: Command = {
 
     const steps = [
       'Collecting kernel artifacts', 'Bundling runtime environment',
-      'Packaging ruflo CLI + MCP tools', 'Compressing sections',
+      'Packaging fidgetflo CLI + MCP tools', 'Compressing sections',
       'Computing SHA-256 checksums', 'Writing RVFA container',
     ];
     if (profile !== 'cloud' && models.length > 0) steps.splice(3, 0, 'Embedding model weights');
@@ -170,7 +170,7 @@ const inspectCommand: Command = {
 
       header('RVFA Appliance');
       for (const [label, value] of [
-        ['Name', hdr.name || 'ruflo'], ['Version', hdr.version || 'unknown'],
+        ['Name', hdr.name || 'fidgetflo'], ['Version', hdr.version || 'unknown'],
         ['Architecture', hdr.arch || 'x86_64'], ['Profile', hdr.profile || 'cloud'],
         ['Created', hdr.created || 'unknown'],
       ]) {
@@ -339,7 +339,7 @@ const extractCommand: Command = {
       output.writeln();
       output.printSuccess(`Extraction complete: ${dest}`);
       output.writeln(output.dim('  Directory structure:'));
-      for (const d of ['kernel', 'runtime', 'ruflo', 'models', 'data', 'verify']) {
+      for (const d of ['kernel', 'runtime', 'fidgetflo', 'models', 'data', 'verify']) {
         const exists = fs.existsSync(path.join(dest, d));
         output.writeln(`  ${exists ? output.success('+') : output.dim('-')} ${d}/`);
       }
@@ -405,23 +405,23 @@ export const applianceCommand: Command = {
   aliases: ['rvfa'],
   subcommands: [buildCommand, inspectCommand, verifyCommand, extractCommand, runCommand, signCommand, publishCommand, updateAppCommand],
   examples: [
-    { command: 'ruflo appliance build -p cloud', description: 'Build a cloud appliance' },
-    { command: 'ruflo appliance inspect -f ruflo.rvf', description: 'Inspect appliance contents' },
-    { command: 'ruflo appliance verify -f ruflo.rvf', description: 'Verify integrity' },
-    { command: 'ruflo appliance extract -f ruflo.rvf', description: 'Extract sections' },
-    { command: 'ruflo appliance run -f ruflo.rvf', description: 'Boot and run appliance' },
-    { command: 'ruflo appliance sign -f ruflo.rvf --generate-keys', description: 'Generate keys and sign' },
-    { command: 'ruflo appliance publish -f ruflo.rvf', description: 'Publish to IPFS via Pinata' },
-    { command: 'ruflo appliance update -f ruflo.rvf -s ruflo -d ./new-ruflo.bin', description: 'Hot-patch a section' },
+    { command: 'fidgetflo appliance build -p cloud', description: 'Build a cloud appliance' },
+    { command: 'fidgetflo appliance inspect -f fidgetflo.rvf', description: 'Inspect appliance contents' },
+    { command: 'fidgetflo appliance verify -f fidgetflo.rvf', description: 'Verify integrity' },
+    { command: 'fidgetflo appliance extract -f fidgetflo.rvf', description: 'Extract sections' },
+    { command: 'fidgetflo appliance run -f fidgetflo.rvf', description: 'Boot and run appliance' },
+    { command: 'fidgetflo appliance sign -f fidgetflo.rvf --generate-keys', description: 'Generate keys and sign' },
+    { command: 'fidgetflo appliance publish -f fidgetflo.rvf', description: 'Publish to IPFS via Pinata' },
+    { command: 'fidgetflo appliance update -f fidgetflo.rvf -s fidgetflo -d ./new-fidgetflo.bin', description: 'Hot-patch a section' },
   ],
   action: async (): Promise<CommandResult> => {
     output.writeln();
-    output.writeln(output.bold('Ruflo Appliance (RVFA)'));
-    output.writeln(output.dim('Self-contained deployment format for the full Ruflo platform.'));
+    output.writeln(output.bold('FidgetFlo Appliance (RVFA)'));
+    output.writeln(output.dim('Self-contained deployment format for the full FidgetFlo platform.'));
     output.writeln();
     output.writeln('Subcommands:');
     output.printList([
-      'build     - Build a self-contained ruflo.rvf appliance',
+      'build     - Build a self-contained fidgetflo.rvf appliance',
       'inspect   - Show appliance header and section manifest',
       'verify    - Verify appliance integrity and run capability tests',
       'extract   - Extract all sections from an appliance',
@@ -438,7 +438,7 @@ export const applianceCommand: Command = {
       `${output.bold('offline')}  - Fully air-gapped with bundled models (~4 GB)`,
     ]);
     output.writeln();
-    output.writeln(output.dim('Use "ruflo appliance <subcommand> --help" for details.'));
+    output.writeln(output.dim('Use "fidgetflo appliance <subcommand> --help" for details.'));
     return { success: true };
   },
 };

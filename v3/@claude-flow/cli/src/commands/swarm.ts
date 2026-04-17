@@ -438,8 +438,8 @@ const startCommand: Command = {
     }
   ],
   examples: [
-    { command: 'claude-flow swarm start -o "Build REST API" -s development', description: 'Start development swarm' },
-    { command: 'claude-flow swarm start -o "Analyze codebase" --parallel', description: 'Parallel analysis' }
+    { command: 'fidgetflo swarm start -o "Build REST API" -s development', description: 'Start development swarm' },
+    { command: 'fidgetflo swarm start -o "Analyze codebase" --parallel', description: 'Parallel analysis' }
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const objective = ctx.args[0] || ctx.flags.objective as string;
@@ -511,7 +511,7 @@ const startCommand: Command = {
     } catch (err) {
       spinner.fail('MCP swarm_init failed — swarm metadata saved locally only');
       output.writeln(output.dim(`  Error: ${err instanceof Error ? err.message : String(err)}`));
-      output.writeln(output.dim('  The MCP server may not be running. Start it with: claude mcp add claude-flow npx claude-flow@v3alpha mcp start'));
+      output.writeln(output.dim('  The MCP server may not be running. Start it with: claude mcp add fidgetflo npx fidgetflo@v3alpha mcp start'));
     }
 
     // Persist swarm state to disk so `swarm status` can read it
@@ -540,7 +540,7 @@ const startCommand: Command = {
     output.writeln(output.dim('  - Claude Code Agent tool (interactive)'));
     output.writeln(output.dim('  - claude -p (headless background)'));
     output.writeln(output.dim('  - hive-mind spawn --claude (autonomous)'));
-    output.writeln(output.dim(`  Monitor: claude-flow swarm status ${swarmId}`));
+    output.writeln(output.dim(`  Monitor: fidgetflo swarm status ${swarmId}`));
 
     return { success: true, data: executionState };
   }
@@ -857,15 +857,15 @@ export const swarmCommand: Command = {
   subcommands: [initCommand, startCommand, statusCommand, stopCommand, scaleCommand, coordinateCommand],
   options: [],
   examples: [
-    { command: 'claude-flow swarm init --v3-mode', description: 'Initialize V3 swarm' },
-    { command: 'claude-flow swarm start -o "Build API" -s development', description: 'Start development swarm' },
-    { command: 'claude-flow swarm coordinate --agents 15', description: 'V3 coordination' }
+    { command: 'fidgetflo swarm init --v3-mode', description: 'Initialize V3 swarm' },
+    { command: 'fidgetflo swarm start -o "Build API" -s development', description: 'Start development swarm' },
+    { command: 'fidgetflo swarm coordinate --agents 15', description: 'V3 coordination' }
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     output.writeln();
     output.writeln(output.bold('Swarm Coordination Commands'));
     output.writeln();
-    output.writeln('Usage: claude-flow swarm <subcommand> [options]');
+    output.writeln('Usage: fidgetflo swarm <subcommand> [options]');
     output.writeln();
     output.writeln('Subcommands:');
     output.printList([

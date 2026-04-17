@@ -1,6 +1,6 @@
 /**
  * V3 CLI Task Command
- * Task management for Claude Flow
+ * Task management for FidgetFlo
  */
 
 import type { Command, CommandContext, CommandResult } from '../types.js';
@@ -758,20 +758,20 @@ export const taskCommand: Command = {
   subcommands: [createCommand, listCommand, statusCommand, cancelCommand, assignCommand, retryCommand],
   options: [],
   examples: [
-    { command: 'claude-flow task create -t implementation -d "Add user auth"', description: 'Create a task' },
-    { command: 'claude-flow task list', description: 'List pending/running tasks' },
-    { command: 'claude-flow task list --all', description: 'List all tasks' },
-    { command: 'claude-flow task status task-123', description: 'Get task details' },
-    { command: 'claude-flow task cancel task-123', description: 'Cancel a task' },
-    { command: 'claude-flow task assign task-123 --agent coder-1', description: 'Assign task to agent' },
-    { command: 'claude-flow task retry task-123', description: 'Retry a failed task' }
+    { command: 'fidgetflo task create -t implementation -d "Add user auth"', description: 'Create a task' },
+    { command: 'fidgetflo task list', description: 'List pending/running tasks' },
+    { command: 'fidgetflo task list --all', description: 'List all tasks' },
+    { command: 'fidgetflo task status task-123', description: 'Get task details' },
+    { command: 'fidgetflo task cancel task-123', description: 'Cancel a task' },
+    { command: 'fidgetflo task assign task-123 --agent coder-1', description: 'Assign task to agent' },
+    { command: 'fidgetflo task retry task-123', description: 'Retry a failed task' }
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     // Show help if no subcommand
     output.writeln();
     output.writeln(output.bold('Task Management Commands'));
     output.writeln();
-    output.writeln('Usage: claude-flow task <subcommand> [options]');
+    output.writeln('Usage: fidgetflo task <subcommand> [options]');
     output.writeln();
     output.writeln('Subcommands:');
     output.printList([
@@ -783,7 +783,7 @@ export const taskCommand: Command = {
       `${output.highlight('retry')}   - Retry a failed task`
     ]);
     output.writeln();
-    output.writeln('Run "claude-flow task <subcommand> --help" for subcommand help');
+    output.writeln('Run "fidgetflo task <subcommand> --help" for subcommand help');
 
     return { success: true };
   }

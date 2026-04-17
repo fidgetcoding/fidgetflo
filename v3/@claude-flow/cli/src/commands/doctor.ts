@@ -72,9 +72,9 @@ async function checkNpmVersion(): Promise<HealthCheck> {
 async function checkConfigFile(): Promise<HealthCheck> {
   // JSON configs (parse-validated)
   const jsonPaths = [
-    '.claude-flow/config.json',
-    'claude-flow.config.json',
-    '.claude-flow.json'
+    '.fidgetflo/config.json',
+    'fidgetflo.config.json',
+    '.fidgetflo.json'
   ];
 
   for (const configPath of jsonPaths) {
@@ -91,9 +91,9 @@ async function checkConfigFile(): Promise<HealthCheck> {
 
   // YAML configs (existence-checked only — no heavy yaml parser dependency)
   const yamlPaths = [
-    '.claude-flow/config.yaml',
-    '.claude-flow/config.yml',
-    'claude-flow.config.yaml'
+    '.fidgetflo/config.yaml',
+    '.fidgetflo/config.yml',
+    'fidgetflo.config.yaml'
   ];
 
   for (const configPath of yamlPaths) {
@@ -102,32 +102,32 @@ async function checkConfigFile(): Promise<HealthCheck> {
     }
   }
 
-  return { name: 'Config File', status: 'warn', message: 'No config file (using defaults)', fix: 'claude-flow config init' };
+  return { name: 'Config File', status: 'warn', message: 'No config file (using defaults)', fix: 'fidgetflo config init' };
 }
 
 // Check daemon status
 async function checkDaemonStatus(): Promise<HealthCheck> {
   try {
-    const pidFile = '.claude-flow/daemon.pid';
+    const pidFile = '.fidgetflo/daemon.pid';
     if (existsSync(pidFile)) {
       const pid = readFileSync(pidFile, 'utf8').trim();
       try {
         process.kill(parseInt(pid, 10), 0); // Check if process exists
         return { name: 'Daemon Status', status: 'pass', message: `Running (PID: ${pid})` };
       } catch {
-        return { name: 'Daemon Status', status: 'warn', message: 'Stale PID file', fix: 'rm .claude-flow/daemon.pid && claude-flow daemon start' };
+        return { name: 'Daemon Status', status: 'warn', message: 'Stale PID file', fix: 'rm .fidgetflo/daemon.pid && fidgetflo daemon start' };
       }
     }
-    return { name: 'Daemon Status', status: 'warn', message: 'Not running', fix: 'claude-flow daemon start' };
+    return { name: 'Daemon Status', status: 'warn', message: 'Not running', fix: 'fidgetflo daemon start' };
   } catch {
-    return { name: 'Daemon Status', status: 'warn', message: 'Unable to check', fix: 'claude-flow daemon status' };
+    return { name: 'Daemon Status', status: 'warn', message: 'Unable to check', fix: 'fidgetflo daemon status' };
   }
 }
 
 // Check memory database
 async function checkMemoryDatabase(): Promise<HealthCheck> {
   const dbPaths = [
-    '.claude-flow/memory.db',
+    '.fidgetflo/memory.db',
     '.swarm/memory.db',
     'data/memory.db'
   ];
@@ -144,7 +144,7 @@ async function checkMemoryDatabase(): Promise<HealthCheck> {
     }
   }
 
-  return { name: 'Memory Database', status: 'warn', message: 'Not initialized', fix: 'claude-flow memory configure --backend hybrid' };
+  return { name: 'Memory Database', status: 'warn', message: 'Not initialized', fix: 'fidgetflo memory configure --backend hybrid' };
 }
 
 // Check API keys
@@ -206,11 +206,11 @@ async function checkMcpServers(): Promise<HealthCheck> {
         const content = JSON.parse(readFileSync(configPath, 'utf8'));
         const servers = content.mcpServers || content.servers || {};
         const count = Object.keys(servers).length;
-        const hasClaudeFlow = 'claude-flow' in servers || 'claude-flow_alpha' in servers || 'ruflo' in servers || 'ruflo_alpha' in servers;
+        const hasClaudeFlow = 'fidgetflo' in servers || 'claude-flow_alpha' in servers || 'fidgetflo' in servers || 'ruflo_alpha' in servers;
         if (hasClaudeFlow) {
-          return { name: 'MCP Servers', status: 'pass', message: `${count} servers (ruflo configured)` };
+          return { name: 'MCP Servers', status: 'pass', message: `${count} servers (fidgetflo configured)` };
         } else {
-          return { name: 'MCP Servers', status: 'warn', message: `${count} servers (ruflo not found)`, fix: 'claude mcp add ruflo -- npx -y ruflo@latest mcp start' };
+          return { name: 'MCP Servers', status: 'warn', message: `${count} servers (fidgetflo not found)`, fix: 'claude mcp add fidgetflo -- npx -y fidgetflo@latest mcp start' };
         }
       } catch {
         // continue to next path
@@ -218,7 +218,7 @@ async function checkMcpServers(): Promise<HealthCheck> {
     }
   }
 
-  return { name: 'MCP Servers', status: 'warn', message: 'No MCP config found', fix: 'claude mcp add claude-flow npx @claude-flow/cli@v3alpha mcp start' };
+  return { name: 'MCP Servers', status: 'warn', message: 'No MCP config found', fix: 'claude mcp add fidgetflo npx @claude-flow/cli@v3alpha mcp start' };
 }
 
 // Check disk space (async with proper env inheritance)
@@ -273,7 +273,7 @@ async function checkVersionFreshness(): Promise<HealthCheck> {
       let dir = dirname(thisFile);
 
       // Walk up from the current file's directory until we find the
-      // package.json that belongs to @claude-flow/cli (or claude-flow/cli).
+      // package.json that belongs to @claude-flow/cli (or fidgetflo/cli).
       // Walk until dirname(dir) === dir (filesystem root on any platform).
       for (;;) {
         const candidate = join(dir, 'package.json');
@@ -283,7 +283,7 @@ async function checkVersionFreshness(): Promise<HealthCheck> {
             if (
               pkg.version &&
               typeof pkg.name === 'string' &&
-              (pkg.name === '@claude-flow/cli' || pkg.name === 'claude-flow' || pkg.name === 'ruflo')
+              (pkg.name === '@claude-flow/cli' || pkg.name === 'fidgetflo' || pkg.name === 'fidgetflo')
             ) {
               currentVersion = pkg.version;
               break;
@@ -488,11 +488,11 @@ export const doctorCommand: Command = {
     }
   ],
   examples: [
-    { command: 'claude-flow doctor', description: 'Run full health check' },
-    { command: 'claude-flow doctor --fix', description: 'Show fixes for issues' },
-    { command: 'claude-flow doctor --install', description: 'Auto-install missing dependencies' },
-    { command: 'claude-flow doctor -c version', description: 'Check for stale npx cache' },
-    { command: 'claude-flow doctor -c claude', description: 'Check Claude Code CLI only' }
+    { command: 'fidgetflo doctor', description: 'Run full health check' },
+    { command: 'fidgetflo doctor --fix', description: 'Show fixes for issues' },
+    { command: 'fidgetflo doctor --install', description: 'Auto-install missing dependencies' },
+    { command: 'fidgetflo doctor -c version', description: 'Check for stale npx cache' },
+    { command: 'fidgetflo doctor -c claude', description: 'Check Claude Code CLI only' }
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const showFix = ctx.flags.fix as boolean;
@@ -501,7 +501,7 @@ export const doctorCommand: Command = {
     const verbose = ctx.flags.verbose as boolean;
 
     output.writeln();
-    output.writeln(output.bold('RuFlo Doctor'));
+    output.writeln(output.bold('FidgetFlo Doctor'));
     output.writeln(output.dim('System diagnostics and health check'));
     output.writeln(output.dim('─'.repeat(50)));
     output.writeln();

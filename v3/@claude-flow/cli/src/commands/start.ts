@@ -1,6 +1,6 @@
 /**
  * V3 CLI Start Command
- * System startup for Claude Flow orchestration
+ * System startup for FidgetFlo orchestration
  */
 
 import type { Command, CommandContext, CommandResult } from '../types.js';
@@ -17,7 +17,7 @@ const DEFAULT_MAX_AGENTS = 15;
 
 // Check if project is initialized
 function isInitialized(cwd: string): boolean {
-  const configPath = path.join(cwd, '.claude-flow', 'config.yaml');
+  const configPath = path.join(cwd, '.fidgetflo', 'config.yaml');
   return fs.existsSync(configPath);
 }
 
@@ -75,7 +75,7 @@ function parseSimpleYaml(content: string): Record<string, unknown> {
 
 // Load configuration
 function loadConfig(cwd: string): Record<string, unknown> | null {
-  const configPath = path.join(cwd, '.claude-flow', 'config.yaml');
+  const configPath = path.join(cwd, '.fidgetflo', 'config.yaml');
   if (!fs.existsSync(configPath)) return null;
 
   try {
@@ -96,8 +96,8 @@ const startAction = async (ctx: CommandContext): Promise<CommandResult> => {
 
   // Check initialization
   if (!isInitialized(cwd)) {
-    output.printError('RuFlo is not initialized in this directory');
-    output.printInfo('Run "ruflo init" first to initialize');
+    output.printError('FidgetFlo is not initialized in this directory');
+    output.printInfo('Run "fidgetflo init" first to initialize');
     return { success: false, exitCode: 1 };
   }
 
@@ -112,7 +112,7 @@ const startAction = async (ctx: CommandContext): Promise<CommandResult> => {
   const mcpPort = port || (mcpConfig.serverPort as number) || DEFAULT_PORT;
 
   output.writeln();
-  output.writeln(output.bold('Starting RuFlo V3'));
+  output.writeln(output.bold('Starting FidgetFlo V3'));
   output.writeln();
 
   const spinner = output.createSpinner({ text: 'Initializing system...' });
@@ -185,7 +185,7 @@ const startAction = async (ctx: CommandContext): Promise<CommandResult> => {
 
     // Success output
     output.writeln();
-    output.printSuccess('RuFlo V3 is running!');
+    output.printSuccess('FidgetFlo V3 is running!');
     output.writeln();
 
     // Status display
@@ -204,19 +204,19 @@ const startAction = async (ctx: CommandContext): Promise<CommandResult> => {
     output.writeln();
     output.writeln(output.bold('Quick Commands:'));
     output.printList([
-      `${output.highlight('claude-flow status')} - View system status`,
-      `${output.highlight('claude-flow agent spawn -t coder')} - Spawn an agent`,
-      `${output.highlight('claude-flow swarm status')} - View swarm details`,
-      `${output.highlight('claude-flow stop')} - Stop the system`
+      `${output.highlight('fidgetflo status')} - View system status`,
+      `${output.highlight('fidgetflo agent spawn -t coder')} - Spawn an agent`,
+      `${output.highlight('fidgetflo swarm status')} - View swarm details`,
+      `${output.highlight('fidgetflo stop')} - Stop the system`
     ]);
 
     // Daemon mode
     if (daemon) {
       output.writeln();
-      output.printInfo('Running in daemon mode. Use "claude-flow stop" to stop.');
+      output.printInfo('Running in daemon mode. Use "fidgetflo stop" to stop.');
 
       // Store PID for daemon management
-      const daemonPidPath = path.join(cwd, '.claude-flow', 'daemon.pid');
+      const daemonPidPath = path.join(cwd, '.fidgetflo', 'daemon.pid');
       fs.writeFileSync(daemonPidPath, String(process.pid));
 
       // Detach from parent process for true daemon behavior
@@ -274,7 +274,7 @@ const startAction = async (ctx: CommandContext): Promise<CommandResult> => {
 // Stop subcommand
 const stopCommand: Command = {
   name: 'stop',
-  description: 'Stop the RuFlo system',
+  description: 'Stop the FidgetFlo system',
   options: [
     {
       name: 'force',
@@ -295,12 +295,12 @@ const stopCommand: Command = {
     const timeout = ctx.flags.timeout as number;
 
     output.writeln();
-    output.writeln(output.bold('Stopping RuFlo'));
+    output.writeln(output.bold('Stopping FidgetFlo'));
     output.writeln();
 
     if (!force && ctx.interactive) {
       const confirmed = await confirm({
-        message: 'Are you sure you want to stop RuFlo?',
+        message: 'Are you sure you want to stop FidgetFlo?',
         default: false
       });
 
@@ -338,13 +338,13 @@ const stopCommand: Command = {
       }
 
       // Clean up daemon PID
-      const daemonPidPath = path.join(ctx.cwd, '.claude-flow', 'daemon.pid');
+      const daemonPidPath = path.join(ctx.cwd, '.fidgetflo', 'daemon.pid');
       if (fs.existsSync(daemonPidPath)) {
         fs.unlinkSync(daemonPidPath);
       }
 
       output.writeln();
-      output.printSuccess('RuFlo stopped successfully');
+      output.printSuccess('FidgetFlo stopped successfully');
 
       return {
         success: true,
@@ -361,7 +361,7 @@ const stopCommand: Command = {
 // Restart subcommand
 const restartCommand: Command = {
   name: 'restart',
-  description: 'Restart the RuFlo system',
+  description: 'Restart the FidgetFlo system',
   options: [
     {
       name: 'force',
@@ -373,7 +373,7 @@ const restartCommand: Command = {
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     output.writeln();
-    output.writeln(output.bold('Restarting RuFlo'));
+    output.writeln(output.bold('Restarting FidgetFlo'));
     output.writeln();
 
     // Stop first
@@ -432,7 +432,7 @@ const quickCommand: Command = {
 // Main start command
 export const startCommand: Command = {
   name: 'start',
-  description: 'Start the RuFlo orchestration system',
+  description: 'Start the FidgetFlo orchestration system',
   subcommands: [stopCommand, restartCommand, quickCommand],
   options: [
     {
@@ -464,13 +464,13 @@ export const startCommand: Command = {
     }
   ],
   examples: [
-    { command: 'claude-flow start', description: 'Start with configuration defaults' },
-    { command: 'claude-flow start --daemon', description: 'Start as background daemon' },
-    { command: 'claude-flow start --port 3001', description: 'Start MCP on custom port' },
-    { command: 'claude-flow start --topology mesh', description: 'Start with mesh topology' },
-    { command: 'claude-flow start --skip-mcp', description: 'Start without MCP server' },
-    { command: 'claude-flow start quick', description: 'Quick start with defaults' },
-    { command: 'claude-flow start stop', description: 'Stop the running system' }
+    { command: 'fidgetflo start', description: 'Start with configuration defaults' },
+    { command: 'fidgetflo start --daemon', description: 'Start as background daemon' },
+    { command: 'fidgetflo start --port 3001', description: 'Start MCP on custom port' },
+    { command: 'fidgetflo start --topology mesh', description: 'Start with mesh topology' },
+    { command: 'fidgetflo start --skip-mcp', description: 'Start without MCP server' },
+    { command: 'fidgetflo start quick', description: 'Quick start with defaults' },
+    { command: 'fidgetflo start stop', description: 'Stop the running system' }
   ],
   action: startAction
 };

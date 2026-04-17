@@ -1,5 +1,5 @@
 /**
- * RVFA Runner -- Boot and run self-contained Ruflo appliances.
+ * RVFA Runner -- Boot and run self-contained FidgetFlo appliances.
  *
  * Supports three run modes (cli, mcp, verify) and two isolation
  * strategies (native Node.js, container via Docker).
@@ -113,7 +113,7 @@ export class RvfaRunner {
   }
 
   /**
-   * Run natively via Node.js: extract RUFLO section to a temp dir,
+   * Run natively via Node.js: extract FIDGETFLO section to a temp dir,
    * configure env vars, optionally decrypt API-key vault, and spawn.
    */
   async runNative(options: RunOptions): Promise<RunResult> {
@@ -121,11 +121,11 @@ export class RvfaRunner {
     try {
       await mkdir(workDir, { recursive: true });
 
-      const ruflo = tryExtract(this.reader, 'ruflo');
-      if (!ruflo) return fail('RVFA appliance does not contain a "ruflo" section');
+      const fidgetflo = tryExtract(this.reader, 'fidgetflo');
+      if (!fidgetflo) return fail('RVFA appliance does not contain a "fidgetflo" section');
 
-      const entryFile = join(workDir, 'ruflo-bundle.js');
-      await writeFile(entryFile, ruflo);
+      const entryFile = join(workDir, 'fidgetflo-bundle.js');
+      await writeFile(entryFile, fidgetflo);
 
       const env: Record<string, string> = {
         ...this.header.boot.env,
@@ -168,9 +168,9 @@ export class RvfaRunner {
     try {
       await mkdir(workDir, { recursive: true });
 
-      const ruflo = tryExtract(this.reader, 'ruflo');
-      if (!ruflo) return fail('RVFA appliance does not contain a "ruflo" section');
-      await writeFile(join(workDir, 'ruflo-bundle.js'), ruflo);
+      const fidgetflo = tryExtract(this.reader, 'fidgetflo');
+      if (!fidgetflo) return fail('RVFA appliance does not contain a "fidgetflo" section');
+      await writeFile(join(workDir, 'fidgetflo-bundle.js'), fidgetflo);
 
       const data = tryExtract(this.reader, 'data');
       if (data) await writeFile(join(workDir, 'data.bin'), data);
@@ -182,8 +182,8 @@ export class RvfaRunner {
       const baseImage = this.header.platform === 'alpine' ? 'node:20-alpine' : 'node:20-slim';
       const cmdArgs = this.header.boot.args.map((a) => `, "${a}"`).join('');
       const dockerfile = [
-        `FROM ${baseImage}`, 'WORKDIR /app', 'COPY ruflo-bundle.js .',
-        data ? 'COPY data.bin .' : '', `CMD ["node", "ruflo-bundle.js"${cmdArgs}]`,
+        `FROM ${baseImage}`, 'WORKDIR /app', 'COPY fidgetflo-bundle.js .',
+        data ? 'COPY data.bin .' : '', `CMD ["node", "fidgetflo-bundle.js"${cmdArgs}]`,
       ].filter(Boolean).join('\n');
       await writeFile(join(workDir, 'Dockerfile'), dockerfile);
 

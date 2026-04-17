@@ -66,9 +66,9 @@ const storeCommand: Command = {
     }
   ],
   examples: [
-    { command: 'claude-flow memory store -k "api/auth" -v "JWT implementation"', description: 'Store text' },
-    { command: 'claude-flow memory store -k "pattern/singleton" --vector', description: 'Store vector' },
-    { command: 'claude-flow memory store -k "pattern" -v "updated" --upsert', description: 'Update existing' }
+    { command: 'fidgetflo memory store -k "api/auth" -v "JWT implementation"', description: 'Store text' },
+    { command: 'fidgetflo memory store -k "pattern/singleton" --vector', description: 'Store vector' },
+    { command: 'fidgetflo memory store -k "pattern" -v "updated" --upsert', description: 'Update existing' }
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const key = ctx.flags.key as string;
@@ -282,9 +282,9 @@ const searchCommand: Command = {
     }
   ],
   examples: [
-    { command: 'claude-flow memory search -q "authentication patterns"', description: 'Semantic search' },
-    { command: 'claude-flow memory search -q "JWT" -t keyword', description: 'Keyword search' },
-    { command: 'claude-flow memory search -q "test" --build-hnsw', description: 'Build HNSW index and search' }
+    { command: 'fidgetflo memory search -q "authentication patterns"', description: 'Semantic search' },
+    { command: 'fidgetflo memory search -q "JWT" -t keyword', description: 'Keyword search' },
+    { command: 'fidgetflo memory search -q "test" --build-hnsw', description: 'Build HNSW index and search' }
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const query = ctx.flags.query as string || ctx.args[0];
@@ -362,7 +362,7 @@ const searchCommand: Command = {
 
       if (results.length === 0) {
         output.printWarning('No results found');
-        output.writeln(output.dim('Try: claude-flow memory store -k "key" --value "data"'));
+        output.writeln(output.dim('Try: fidgetflo memory store -k "key" --value "data"'));
         return { success: true, data: [] };
       }
 
@@ -448,7 +448,7 @@ const listCommand: Command = {
 
       if (entries.length === 0) {
         output.printWarning('No entries found');
-        output.printInfo('Store data: claude-flow memory store -k "key" --value "data"');
+        output.printInfo('Store data: fidgetflo memory store -k "key" --value "data"');
         return { success: true, data: [] };
       }
 
@@ -520,9 +520,9 @@ const deleteCommand: Command = {
     }
   ],
   examples: [
-    { command: 'claude-flow memory delete -k "mykey"', description: 'Delete entry with default namespace' },
-    { command: 'claude-flow memory delete -k "lesson" -n "lessons"', description: 'Delete entry from specific namespace' },
-    { command: 'claude-flow memory delete mykey -f', description: 'Delete without confirmation' }
+    { command: 'fidgetflo memory delete -k "mykey"', description: 'Delete entry with default namespace' },
+    { command: 'fidgetflo memory delete -k "lesson" -n "lessons"', description: 'Delete entry from specific namespace' },
+    { command: 'fidgetflo memory delete mykey -f', description: 'Delete without confirmation' }
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     // Support both --key flag and positional argument
@@ -781,9 +781,9 @@ const cleanupCommand: Command = {
     }
   ],
   examples: [
-    { command: 'claude-flow memory cleanup --dry-run', description: 'Preview cleanup' },
-    { command: 'claude-flow memory cleanup --older-than 30d', description: 'Delete entries older than 30 days' },
-    { command: 'claude-flow memory cleanup --expired-only', description: 'Clean expired entries' }
+    { command: 'fidgetflo memory cleanup --dry-run', description: 'Preview cleanup' },
+    { command: 'fidgetflo memory cleanup --older-than 30d', description: 'Delete entries older than 30 days' },
+    { command: 'fidgetflo memory cleanup --expired-only', description: 'Clean expired entries' }
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const dryRun = ctx.flags.dryRun as boolean;
@@ -920,9 +920,9 @@ const compressCommand: Command = {
     }
   ],
   examples: [
-    { command: 'claude-flow memory compress', description: 'Balanced compression' },
-    { command: 'claude-flow memory compress --quantize --bits 4', description: '4-bit quantization (32x reduction)' },
-    { command: 'claude-flow memory compress -l max -t vectors', description: 'Max compression on vectors' }
+    { command: 'fidgetflo memory compress', description: 'Balanced compression' },
+    { command: 'fidgetflo memory compress --quantize --bits 4', description: '4-bit quantization (32x reduction)' },
+    { command: 'fidgetflo memory compress -l max -t vectors', description: 'Max compression on vectors' }
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const level = ctx.flags.level as string || 'balanced';
@@ -1069,8 +1069,8 @@ const exportCommand: Command = {
     }
   ],
   examples: [
-    { command: 'claude-flow memory export -o ./backup.json', description: 'Export all to JSON' },
-    { command: 'claude-flow memory export -o ./data.csv -f csv', description: 'Export to CSV' }
+    { command: 'fidgetflo memory export -o ./backup.json', description: 'Export all to JSON' },
+    { command: 'fidgetflo memory export -o ./data.csv -f csv', description: 'Export to CSV' }
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const outputPath = ctx.flags.output as string;
@@ -1147,8 +1147,8 @@ const importCommand: Command = {
     }
   ],
   examples: [
-    { command: 'claude-flow memory import -i ./backup.json', description: 'Import from file' },
-    { command: 'claude-flow memory import -i ./data.json -n archive', description: 'Import to namespace' }
+    { command: 'fidgetflo memory import -i ./backup.json', description: 'Import from file' },
+    { command: 'fidgetflo memory import -i ./data.json -n archive', description: 'Import to namespace' }
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const inputPath = ctx.flags.input as string || ctx.args[0];
@@ -1242,10 +1242,10 @@ const initMemoryCommand: Command = {
     }
   ],
   examples: [
-    { command: 'claude-flow memory init', description: 'Initialize hybrid backend with all features' },
-    { command: 'claude-flow memory init -b agentdb', description: 'Initialize AgentDB backend' },
-    { command: 'claude-flow memory init -p ./data/memory.db --force', description: 'Reinitialize at custom path' },
-    { command: 'claude-flow memory init --verbose --verify', description: 'Initialize with full verification' }
+    { command: 'fidgetflo memory init', description: 'Initialize hybrid backend with all features' },
+    { command: 'fidgetflo memory init -b agentdb', description: 'Initialize AgentDB backend' },
+    { command: 'fidgetflo memory init -p ./data/memory.db --force', description: 'Reinitialize at custom path' },
+    { command: 'fidgetflo memory init --verbose --verify', description: 'Initialize with full verification' }
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const backend = (ctx.flags.backend as string) || 'hybrid';
@@ -1424,10 +1424,10 @@ const initMemoryCommand: Command = {
       // Show next steps
       output.writeln(output.bold('Next Steps:'));
       output.printList([
-        `Store data: ${output.highlight('claude-flow memory store -k "key" --value "data"')}`,
-        `Search: ${output.highlight('claude-flow memory search -q "query"')}`,
-        `Train patterns: ${output.highlight('claude-flow neural train -p coordination')}`,
-        `View stats: ${output.highlight('claude-flow memory stats')}`
+        `Store data: ${output.highlight('fidgetflo memory store -k "key" --value "data"')}`,
+        `Search: ${output.highlight('fidgetflo memory search -q "query"')}`,
+        `Train patterns: ${output.highlight('fidgetflo neural train -p coordination')}`,
+        `View stats: ${output.highlight('fidgetflo memory stats')}`
       ]);
 
       // Also sync to .claude directory
@@ -1473,15 +1473,15 @@ export const memoryCommand: Command = {
   subcommands: [initMemoryCommand, storeCommand, retrieveCommand, searchCommand, listCommand, deleteCommand, statsCommand, configureCommand, cleanupCommand, compressCommand, exportCommand, importCommand],
   options: [],
   examples: [
-    { command: 'claude-flow memory store -k "key" -v "value"', description: 'Store data' },
-    { command: 'claude-flow memory search -q "auth patterns"', description: 'Search memory' },
-    { command: 'claude-flow memory stats', description: 'Show statistics' }
+    { command: 'fidgetflo memory store -k "key" -v "value"', description: 'Store data' },
+    { command: 'fidgetflo memory search -q "auth patterns"', description: 'Search memory' },
+    { command: 'fidgetflo memory stats', description: 'Show statistics' }
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     output.writeln();
     output.writeln(output.bold('Memory Management Commands'));
     output.writeln();
-    output.writeln('Usage: claude-flow memory <subcommand> [options]');
+    output.writeln('Usage: fidgetflo memory <subcommand> [options]');
     output.writeln();
     output.writeln('Subcommands:');
     output.printList([

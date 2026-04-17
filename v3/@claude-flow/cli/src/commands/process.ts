@@ -65,13 +65,13 @@ const daemonCommand: Command = {
       name: 'pid-file',
       type: 'string',
       description: 'PID file location',
-      default: '.claude-flow/daemon.pid',
+      default: '.fidgetflo/daemon.pid',
     },
     {
       name: 'log-file',
       type: 'string',
       description: 'Log file location',
-      default: '.claude-flow/daemon.log',
+      default: '.fidgetflo/daemon.log',
     },
     {
       name: 'detach',
@@ -81,16 +81,16 @@ const daemonCommand: Command = {
     },
   ],
   examples: [
-    { command: 'claude-flow process daemon --action start', description: 'Start the daemon' },
-    { command: 'claude-flow process daemon --action stop', description: 'Stop the daemon' },
-    { command: 'claude-flow process daemon --action restart --port 3850', description: 'Restart on different port' },
-    { command: 'claude-flow process daemon --action status', description: 'Check daemon status' },
+    { command: 'fidgetflo process daemon --action start', description: 'Start the daemon' },
+    { command: 'fidgetflo process daemon --action stop', description: 'Stop the daemon' },
+    { command: 'fidgetflo process daemon --action restart --port 3850', description: 'Restart on different port' },
+    { command: 'fidgetflo process daemon --action status', description: 'Check daemon status' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const action = (ctx.flags?.action as string) || 'status';
     const port = (ctx.flags?.port as number) || 3847;
-    const pidFile = (ctx.flags?.['pid-file'] as string) || '.claude-flow/daemon.pid';
-    const logFile = (ctx.flags?.['log-file'] as string) || '.claude-flow/daemon.log';
+    const pidFile = (ctx.flags?.['pid-file'] as string) || '.fidgetflo/daemon.pid';
+    const logFile = (ctx.flags?.['log-file'] as string) || '.fidgetflo/daemon.log';
     const detach = ctx.flags?.detach !== false;
 
     // Check existing daemon state from PID file
@@ -113,7 +113,7 @@ const daemonCommand: Command = {
           break;
         }
 
-        console.log('\n🚀 Starting claude-flow daemon...\n');
+        console.log('\n🚀 Starting fidgetflo daemon...\n');
         const newPid = process.pid; // Use actual process PID
         daemonState.status = 'running';
         daemonState.pid = newPid;
@@ -142,7 +142,7 @@ const daemonCommand: Command = {
           console.log('\n⚠️  No daemon running\n');
           break;
         }
-        console.log('\n🛑 Stopping claude-flow daemon...\n');
+        console.log('\n🛑 Stopping fidgetflo daemon...\n');
         console.log(`  📍 Stopping PID ${existingDaemon.pid}...`);
 
         // Remove PID file
@@ -156,7 +156,7 @@ const daemonCommand: Command = {
         break;
 
       case 'restart':
-        console.log('\n🔄 Restarting claude-flow daemon...\n');
+        console.log('\n🔄 Restarting fidgetflo daemon...\n');
         if (existingDaemon) {
           console.log(`  🛑 Stopping PID ${existingDaemon.pid}...`);
           removePidFile(pidFile);
@@ -175,7 +175,7 @@ const daemonCommand: Command = {
       case 'status':
         console.log('\n📊 Daemon Status\n');
         console.log('  ┌─────────────────────────────────────────┐');
-        console.log('  │ claude-flow daemon                      │');
+        console.log('  │ fidgetflo daemon                      │');
         console.log('  ├─────────────────────────────────────────┤');
         if (existingDaemon) {
           const uptime = Math.floor((Date.now() - new Date(existingDaemon.startedAt).getTime()) / 1000);
@@ -192,7 +192,7 @@ const daemonCommand: Command = {
         }
         console.log('  └─────────────────────────────────────────┘');
         if (!existingDaemon) {
-          console.log('\n  To start: claude-flow process daemon --action start');
+          console.log('\n  To start: fidgetflo process daemon --action start');
         }
         break;
     }
@@ -241,10 +241,10 @@ const monitorCommand: Command = {
     },
   ],
   examples: [
-    { command: 'claude-flow process monitor', description: 'Show process dashboard' },
-    { command: 'claude-flow process monitor --watch --interval 5', description: 'Watch mode' },
-    { command: 'claude-flow process monitor --components agents,memory,tasks', description: 'Monitor specific components' },
-    { command: 'claude-flow process monitor --format json', description: 'JSON output' },
+    { command: 'fidgetflo process monitor', description: 'Show process dashboard' },
+    { command: 'fidgetflo process monitor --watch --interval 5', description: 'Watch mode' },
+    { command: 'fidgetflo process monitor --components agents,memory,tasks', description: 'Monitor specific components' },
+    { command: 'fidgetflo process monitor --format json', description: 'JSON output' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const interval = (ctx.flags?.interval as number) || 2;
@@ -265,7 +265,7 @@ const monitorCommand: Command = {
     let agentCount = 0;
     let taskCounts = { running: 0, queued: 0, completed: 0, failed: 0 };
     try {
-      const agentStorePath = resolve('.claude-flow/agents/store.json');
+      const agentStorePath = resolve('.fidgetflo/agents/store.json');
       if (existsSync(agentStorePath)) {
         const agentStore = JSON.parse(readFileSync(agentStorePath, 'utf-8'));
         const agents = Array.isArray(agentStore) ? agentStore : Object.values(agentStore.agents || agentStore || {});
@@ -273,7 +273,7 @@ const monitorCommand: Command = {
       }
     } catch { /* no agent store */ }
     try {
-      const taskStorePath = resolve('.claude-flow/tasks/store.json');
+      const taskStorePath = resolve('.fidgetflo/tasks/store.json');
       if (existsSync(taskStorePath)) {
         const taskStore = JSON.parse(readFileSync(taskStorePath, 'utf-8'));
         const tasks = Array.isArray(taskStore) ? taskStore : Object.values(taskStore.tasks || taskStore || {});
@@ -300,12 +300,12 @@ const monitorCommand: Command = {
       },
       agents: {
         total: agentCount,
-        _note: agentCount === 0 ? 'No agent store found at .claude-flow/agents/store.json' : null,
+        _note: agentCount === 0 ? 'No agent store found at .fidgetflo/agents/store.json' : null,
       },
       tasks: {
         ...taskCounts,
         _note: (taskCounts.running + taskCounts.queued + taskCounts.completed + taskCounts.failed) === 0
-          ? 'No task store found at .claude-flow/tasks/store.json' : null,
+          ? 'No task store found at .fidgetflo/tasks/store.json' : null,
       },
       memory: {
         vectorCount: null as number | null,
@@ -337,7 +337,7 @@ const monitorCommand: Command = {
 
     // Dashboard format
     console.log('\n╔══════════════════════════════════════════════════════════════╗');
-    console.log('║            🖥️  CLAUDE-FLOW PROCESS MONITOR                    ║');
+    console.log('║            🖥️  FIDGETFLO PROCESS MONITOR                    ║');
     console.log('╠══════════════════════════════════════════════════════════════╣');
 
     // System metrics
@@ -433,10 +433,10 @@ const workersCommand: Command = {
     },
   ],
   examples: [
-    { command: 'claude-flow process workers --action list', description: 'List all workers' },
-    { command: 'claude-flow process workers --action spawn --type task --count 3', description: 'Spawn task workers' },
-    { command: 'claude-flow process workers --action kill --id worker-123', description: 'Kill specific worker' },
-    { command: 'claude-flow process workers --action scale --type memory --count 5', description: 'Scale memory workers' },
+    { command: 'fidgetflo process workers --action list', description: 'List all workers' },
+    { command: 'fidgetflo process workers --action spawn --type task --count 3', description: 'Spawn task workers' },
+    { command: 'fidgetflo process workers --action kill --id worker-123', description: 'Kill specific worker' },
+    { command: 'fidgetflo process workers --action scale --type memory --count 5', description: 'Scale memory workers' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const action = (ctx.flags?.action as string) || 'list';
@@ -539,9 +539,9 @@ const signalsCommand: Command = {
     },
   ],
   examples: [
-    { command: 'claude-flow process signals --target daemon --signal graceful-shutdown', description: 'Graceful shutdown' },
-    { command: 'claude-flow process signals --target workers --signal pause', description: 'Pause workers' },
-    { command: 'claude-flow process signals --target all --signal reload-config', description: 'Reload all configs' },
+    { command: 'fidgetflo process signals --target daemon --signal graceful-shutdown', description: 'Graceful shutdown' },
+    { command: 'fidgetflo process signals --target workers --signal pause', description: 'Pause workers' },
+    { command: 'fidgetflo process signals --target all --signal reload-config', description: 'Reload all configs' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const target = ctx.flags?.target as string;
@@ -618,10 +618,10 @@ const logsCommand: Command = {
     },
   ],
   examples: [
-    { command: 'claude-flow process logs', description: 'Show recent logs' },
-    { command: 'claude-flow process logs --source daemon --tail 100', description: 'Daemon logs' },
-    { command: 'claude-flow process logs --follow --level error', description: 'Follow error logs' },
-    { command: 'claude-flow process logs --since 1h --grep "error"', description: 'Search logs' },
+    { command: 'fidgetflo process logs', description: 'Show recent logs' },
+    { command: 'fidgetflo process logs --source daemon --tail 100', description: 'Daemon logs' },
+    { command: 'fidgetflo process logs --follow --level error', description: 'Follow error logs' },
+    { command: 'fidgetflo process logs --since 1h --grep "error"', description: 'Search logs' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const source = (ctx.flags?.source as string) || 'all';
@@ -635,8 +635,8 @@ const logsCommand: Command = {
     console.log(`  Level: ${level}+ | Lines: ${tail}${since ? ` | Since: ${since}` : ''}${grep ? ` | Filter: ${grep}` : ''}`);
     console.log('─'.repeat(70));
 
-    // Read actual log files from .claude-flow/logs/ if they exist
-    const logsDir = resolve('.claude-flow/logs');
+    // Read actual log files from .fidgetflo/logs/ if they exist
+    const logsDir = resolve('.fidgetflo/logs');
     let logEntries: string[] = [];
 
     const levelIcons: Record<string, string> = {
@@ -713,10 +713,10 @@ export const processCommand: Command = {
     },
   ],
   examples: [
-    { command: 'claude-flow process daemon --action start', description: 'Start daemon' },
-    { command: 'claude-flow process monitor --watch', description: 'Watch processes' },
-    { command: 'claude-flow process workers --action list', description: 'List workers' },
-    { command: 'claude-flow process logs --follow', description: 'Follow logs' },
+    { command: 'fidgetflo process daemon --action start', description: 'Start daemon' },
+    { command: 'fidgetflo process monitor --watch', description: 'Watch processes' },
+    { command: 'fidgetflo process workers --action list', description: 'List workers' },
+    { command: 'fidgetflo process logs --follow', description: 'Follow logs' },
   ],
   action: async (_ctx: CommandContext): Promise<CommandResult> => {
     // Show help if no subcommand
@@ -729,10 +729,10 @@ export const processCommand: Command = {
     console.log('  signals    - Send signals to processes');
     console.log('  logs       - View and manage process logs');
     console.log('\nExamples:');
-    console.log('  claude-flow process daemon --action start');
-    console.log('  claude-flow process monitor --watch');
-    console.log('  claude-flow process workers --action spawn --type task --count 3');
-    console.log('  claude-flow process logs --follow --level error');
+    console.log('  fidgetflo process daemon --action start');
+    console.log('  fidgetflo process monitor --watch');
+    console.log('  fidgetflo process workers --action spawn --type task --count 3');
+    console.log('  fidgetflo process logs --follow --level error');
 
     return { success: true, data: { help: true } };
   },

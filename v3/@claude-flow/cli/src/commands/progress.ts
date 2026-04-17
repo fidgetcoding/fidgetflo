@@ -121,7 +121,7 @@ const syncCommand: Command = {
 
       output.writeln();
       output.printSuccess(`Progress synced: ${result.progress}%`);
-      output.writeln(output.dim(`  Persisted to .claude-flow/metrics/v3-progress.json`));
+      output.writeln(output.dim(`  Persisted to .fidgetflo/metrics/v3-progress.json`));
       output.writeln(output.dim(`  Last updated: ${result.lastUpdated}`));
 
       return { success: true, data: result };
@@ -259,23 +259,23 @@ export const progressCommand: Command = {
   ],
   examples: [
     {
-      command: 'claude-flow progress',
+      command: 'fidgetflo progress',
       description: 'Check current progress',
     },
     {
-      command: 'claude-flow progress --detailed',
+      command: 'fidgetflo progress --detailed',
       description: 'Show detailed breakdown',
     },
     {
-      command: 'claude-flow progress sync',
+      command: 'fidgetflo progress sync',
       description: 'Sync and persist progress',
     },
     {
-      command: 'claude-flow progress watch',
+      command: 'fidgetflo progress watch',
       description: 'Watch for changes',
     },
     {
-      command: 'claude-flow progress --json',
+      command: 'fidgetflo progress --json',
       description: 'Output as JSON',
     },
   ],

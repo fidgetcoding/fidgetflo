@@ -25,9 +25,9 @@ const pretrainCommand: Command = {
     { name: 'verbose', short: 'v', type: 'boolean', description: 'Verbose output', default: 'false' },
   ],
   examples: [
-    { command: 'claude-flow benchmark pretrain', description: 'Run pre-training benchmarks' },
-    { command: 'claude-flow benchmark pretrain -i 500 --save results.json', description: 'Extended benchmark with results saved' },
-    { command: 'claude-flow benchmark pretrain -o json', description: 'Output results as JSON' },
+    { command: 'fidgetflo benchmark pretrain', description: 'Run pre-training benchmarks' },
+    { command: 'fidgetflo benchmark pretrain -i 500 --save results.json', description: 'Extended benchmark with results saved' },
+    { command: 'fidgetflo benchmark pretrain -o json', description: 'Output results as JSON' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const iterations = parseInt(ctx.flags.iterations as string || '100', 10);
@@ -53,7 +53,7 @@ const pretrainCommand: Command = {
 
       // Save to file if requested
       if (saveFile) {
-        const resultsDir = join(process.cwd(), '.claude-flow', 'benchmarks');
+        const resultsDir = join(process.cwd(), '.fidgetflo', 'benchmarks');
         if (!existsSync(resultsDir)) {
           mkdirSync(resultsDir, { recursive: true });
         }
@@ -94,8 +94,8 @@ const neuralCommand: Command = {
     { name: 'output', short: 'o', type: 'string', description: 'Output format: text, json', default: 'text' },
   ],
   examples: [
-    { command: 'claude-flow benchmark neural', description: 'Run neural benchmarks' },
-    { command: 'claude-flow benchmark neural -d 768 -n 5000', description: 'Higher dimension, more vectors' },
+    { command: 'fidgetflo benchmark neural', description: 'Run neural benchmarks' },
+    { command: 'fidgetflo benchmark neural -d 768 -n 5000', description: 'Higher dimension, more vectors' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const iterations = parseInt(ctx.flags.iterations as string || '100', 10);
@@ -278,7 +278,7 @@ const memoryCommand: Command = {
     { name: 'output', short: 'o', type: 'string', description: 'Output format: text, json', default: 'text' },
   ],
   examples: [
-    { command: 'claude-flow benchmark memory', description: 'Run memory benchmarks' },
+    { command: 'fidgetflo benchmark memory', description: 'Run memory benchmarks' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const iterations = parseInt(ctx.flags.iterations as string || '100', 10);
@@ -408,13 +408,13 @@ const allCommand: Command = {
     { name: 'save', short: 's', type: 'string', description: 'Save results to file' },
   ],
   examples: [
-    { command: 'claude-flow benchmark all', description: 'Run all benchmarks' },
-    { command: 'claude-flow benchmark all --save full-results.json', description: 'Run all and save results' },
+    { command: 'fidgetflo benchmark all', description: 'Run all benchmarks' },
+    { command: 'fidgetflo benchmark all --save full-results.json', description: 'Run all and save results' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     output.writeln();
     output.writeln(output.bold(output.highlight('═'.repeat(65))));
-    output.writeln(output.bold('  RuFlo V3 - Full Benchmark Suite'));
+    output.writeln(output.bold('  FidgetFlo V3 - Full Benchmark Suite'));
     output.writeln(output.bold(output.highlight('═'.repeat(65))));
 
     const startTime = Date.now();
@@ -454,7 +454,7 @@ const allCommand: Command = {
     // Save if requested
     const saveFile = ctx.flags.save as string | undefined;
     if (saveFile) {
-      const resultsDir = join(process.cwd(), '.claude-flow', 'benchmarks');
+      const resultsDir = join(process.cwd(), '.fidgetflo', 'benchmarks');
       if (!existsSync(resultsDir)) {
         mkdirSync(resultsDir, { recursive: true });
       }
@@ -485,14 +485,14 @@ export const benchmarkCommand: Command = {
     allCommand,
   ],
   examples: [
-    { command: 'claude-flow benchmark pretrain', description: 'Benchmark pre-training system' },
-    { command: 'claude-flow benchmark neural', description: 'Benchmark neural operations' },
-    { command: 'claude-flow benchmark memory', description: 'Benchmark memory operations' },
-    { command: 'claude-flow benchmark all', description: 'Run all benchmarks' },
+    { command: 'fidgetflo benchmark pretrain', description: 'Benchmark pre-training system' },
+    { command: 'fidgetflo benchmark neural', description: 'Benchmark neural operations' },
+    { command: 'fidgetflo benchmark memory', description: 'Benchmark memory operations' },
+    { command: 'fidgetflo benchmark all', description: 'Run all benchmarks' },
   ],
   action: async (_ctx: CommandContext): Promise<CommandResult> => {
     output.writeln();
-    output.writeln(output.bold('RuFlo V3 Benchmark Suite'));
+    output.writeln(output.bold('FidgetFlo V3 Benchmark Suite'));
     output.writeln(output.dim('─'.repeat(50)));
     output.writeln();
     output.writeln('Available subcommands:');
@@ -502,8 +502,8 @@ export const benchmarkCommand: Command = {
     output.writeln(`  ${output.highlight('all')}       - Run all benchmark suites`);
     output.writeln();
     output.writeln('Examples:');
-    output.writeln('  claude-flow benchmark pretrain -i 200');
-    output.writeln('  claude-flow benchmark all --save results.json');
+    output.writeln('  fidgetflo benchmark pretrain -i 200');
+    output.writeln('  fidgetflo benchmark all --save results.json');
     output.writeln();
 
     return { success: true, message: 'Use a subcommand to run benchmarks' };

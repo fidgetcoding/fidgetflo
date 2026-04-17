@@ -1,6 +1,6 @@
 /**
  * V3 CLI Cleanup Command
- * Removes project artifacts created by claude-flow/ruflo
+ * Removes project artifacts created by fidgetflo/fidgetflo
  *
  * Created with ruv.io
  */
@@ -11,20 +11,20 @@ import { existsSync, statSync, rmSync, readdirSync, readFileSync, writeFileSync 
 import { join } from 'path';
 
 /**
- * Ruflo-owned subdirectories within .claude/ that are safe to delete.
+ * FidgetFlo-owned subdirectories within .claude/ that are safe to delete.
  * Everything else in .claude/ (agents, skills, commands, settings.local.json,
  * memory.db, worktrees, launch.json) belongs to Claude Code and must be preserved.
  * See: https://github.com/ruvnet/ruflo/issues/1557
  */
 const CLAUDE_OWNED_SUBDIRS = [
-  { path: join('.claude', 'helpers'), description: 'Ruflo hook scripts' },
+  { path: join('.claude', 'helpers'), description: 'FidgetFlo hook scripts' },
 ];
 
 /**
- * Artifact directories and files that claude-flow/ruflo may create
+ * Artifact directories and files that fidgetflo/fidgetflo may create
  */
 const ARTIFACT_DIRS = [
-  { path: '.claude-flow', description: 'Capabilities and configuration' },
+  { path: '.fidgetflo', description: 'Capabilities and configuration' },
   { path: 'data', description: 'Memory databases' },
   { path: '.swarm', description: 'Swarm state' },
   { path: '.hive-mind', description: 'Consensus state' },
@@ -33,14 +33,14 @@ const ARTIFACT_DIRS = [
 ];
 
 const ARTIFACT_FILES = [
-  { path: 'claude-flow.config.json', description: 'Claude Flow configuration' },
+  { path: 'fidgetflo.config.json', description: 'FidgetFlo configuration' },
 ];
 
 /**
  * Paths to preserve when --keep-config is set
  */
 const KEEP_CONFIG_PATHS = [
-  'claude-flow.config.json',
+  'fidgetflo.config.json',
   join('.claude', 'settings.json'),
 ];
 
@@ -83,7 +83,7 @@ function formatSize(bytes: number): string {
  */
 export const cleanupCommand: Command = {
   name: 'cleanup',
-  description: 'Remove project artifacts created by claude-flow/ruflo',
+  description: 'Remove project artifacts created by fidgetflo/fidgetflo',
   aliases: ['clean'],
   options: [
     {
@@ -103,7 +103,7 @@ export const cleanupCommand: Command = {
     {
       name: 'keep-config',
       short: 'k',
-      description: 'Preserve claude-flow.config.json and .claude/settings.json',
+      description: 'Preserve fidgetflo.config.json and .claude/settings.json',
       type: 'boolean',
       default: false,
     },
@@ -115,7 +115,7 @@ export const cleanupCommand: Command = {
     },
     {
       command: 'cleanup --force',
-      description: 'Remove all claude-flow artifacts',
+      description: 'Remove all fidgetflo artifacts',
     },
     {
       command: 'cleanup --force --keep-config',
@@ -131,14 +131,14 @@ export const cleanupCommand: Command = {
 
     output.writeln();
     output.writeln(output.bold(dryRun
-      ? 'Claude Flow Cleanup (dry run)'
-      : 'Claude Flow Cleanup'));
+      ? 'FidgetFlo Cleanup (dry run)'
+      : 'FidgetFlo Cleanup'));
     output.writeln();
 
     const found: { path: string; description: string; size: number; type: 'dir' | 'file'; skipped?: boolean }[] = [];
     let totalSize = 0;
 
-    // Scan ruflo-owned subdirs within .claude/ (surgical — preserves Claude Code files)
+    // Scan fidgetflo-owned subdirs within .claude/ (surgical — preserves Claude Code files)
     for (const artifact of CLAUDE_OWNED_SUBDIRS) {
       const fullPath = join(cwd, artifact.path);
       if (existsSync(fullPath)) {
@@ -148,10 +148,10 @@ export const cleanupCommand: Command = {
       }
     }
 
-    // Check if .claude/settings.json has ruflo hooks/claudeFlow blocks to clean
+    // Check if .claude/settings.json has fidgetflo hooks/claudeFlow blocks to clean
     const settingsPath = join(cwd, '.claude', 'settings.json');
     if (existsSync(settingsPath)) {
-      found.push({ path: join('.claude', 'settings.json'), description: 'Remove ruflo hooks/claudeFlow blocks (preserves rest)', size: 0, type: 'file' });
+      found.push({ path: join('.claude', 'settings.json'), description: 'Remove fidgetflo hooks/claudeFlow blocks (preserves rest)', size: 0, type: 'file' });
     }
 
     // Scan standalone artifact directories
@@ -175,7 +175,7 @@ export const cleanupCommand: Command = {
     }
 
     if (found.length === 0) {
-      output.writeln(output.info('No claude-flow artifacts found in the current directory.'));
+      output.writeln(output.info('No fidgetflo artifacts found in the current directory.'));
       return { success: true, message: 'Nothing to clean' };
     }
 

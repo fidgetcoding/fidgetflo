@@ -207,7 +207,7 @@ export class MCPServerManager extends EventEmitter {
       // No PID file found. Detect if we are running in stdio mode
       // (e.g., launched by Claude Code via `claude mcp add`).
       const isStdio = !process.stdin.isTTY;
-      const envTransport = process.env.CLAUDE_FLOW_MCP_TRANSPORT;
+      const envTransport = process.env.FIDGETFLO_MCP_TRANSPORT;
       if (isStdio || envTransport === 'stdio' || this.options.transport === 'stdio') {
         return {
           running: true,
@@ -581,7 +581,7 @@ export class MCPServerManager extends EventEmitter {
 
     const mcpServer = createMCPServer(
       {
-        name: 'Claude-Flow MCP Server V3',
+        name: 'FidgetFlo MCP Server V3',
         version: '3.0.0',
         transport: this.options.transport as 'http' | 'websocket',
         host: this.options.host,
@@ -689,7 +689,7 @@ export class MCPServerManager extends EventEmitter {
     }
     // Also clean up legacy PID file location from older versions
     try {
-      const legacyPath = path.join(process.env.CLAUDE_FLOW_CWD || process.cwd(), '.claude-flow', 'mcp-server.pid');
+      const legacyPath = path.join(process.env.FIDGETFLO_CWD || process.cwd(), '.fidgetflo', 'mcp-server.pid');
       if (legacyPath !== this.options.pidFile) {
         await fs.promises.unlink(legacyPath);
       }
@@ -699,7 +699,7 @@ export class MCPServerManager extends EventEmitter {
   }
 
   /**
-   * Check if process is running AND is a node/claude-flow process.
+   * Check if process is running AND is a node/fidgetflo process.
    * Plain `kill -0` returns true for any process with the same owner,
    * which causes false positives when the OS recycles the PID.
    */
@@ -731,7 +731,7 @@ export class MCPServerManager extends EventEmitter {
       }
       if (!cmdline) return true; // Can't inspect, fall back to kill check
       // Must be a node process to be our MCP server
-      return cmdline.includes('node') || cmdline.includes('claude-flow') || cmdline.includes('npx');
+      return cmdline.includes('node') || cmdline.includes('fidgetflo') || cmdline.includes('npx');
     } catch {
       // If we can't inspect the process (macOS, Windows, permissions), fall back to kill check
       return true;

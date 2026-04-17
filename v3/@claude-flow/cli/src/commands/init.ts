@@ -1,6 +1,6 @@
 /**
  * V3 CLI Init Command
- * Comprehensive initialization for Claude Flow with Claude Code integration
+ * Comprehensive initialization for FidgetFlo with Claude Code integration
  */
 
 import type { Command, CommandContext, CommandResult } from '../types.js';
@@ -26,7 +26,7 @@ async function initCodexAction(
   const { force, minimal, full, dualMode } = options;
 
   output.writeln();
-  output.writeln(output.bold('Initializing RuFlo V3 for OpenAI Codex'));
+  output.writeln(output.bold('Initializing FidgetFlo V3 for OpenAI Codex'));
   output.writeln();
 
   // Determine template
@@ -54,7 +54,7 @@ async function initCodexAction(
       async () => (await import(codexModuleId)).CodexInitializer,
       // Strategy 2: Project node_modules (works if installed in user's project)
       async () => {
-        const projectPath = path.join(ctx.cwd, 'node_modules', '@claude-flow', 'codex', 'dist', 'index.js');
+        const projectPath = path.join(ctx.cwd, 'node_modules', '@fidgetflo', 'codex', 'dist', 'index.js');
         if (fs.existsSync(projectPath)) {
           const mod = await import(`file://${projectPath}`);
           return mod.CodexInitializer;
@@ -65,7 +65,7 @@ async function initCodexAction(
       async () => {
         const { execSync } = await import('child_process');
         const globalPath = execSync('npm root -g', { encoding: 'utf-8' }).trim();
-        const codexPath = path.join(globalPath, '@claude-flow', 'codex', 'dist', 'index.js');
+        const codexPath = path.join(globalPath, '@fidgetflo', 'codex', 'dist', 'index.js');
         if (fs.existsSync(codexPath)) {
           const mod = await import(`file://${codexPath}`);
           return mod.CodexInitializer;
@@ -173,7 +173,7 @@ async function initCodexAction(
 // Check if project is already initialized
 function isInitialized(cwd: string): { claude: boolean; claudeFlow: boolean } {
   const claudePath = path.join(cwd, '.claude', 'settings.json');
-  const claudeFlowPath = path.join(cwd, '.claude-flow', 'config.yaml');
+  const claudeFlowPath = path.join(cwd, '.fidgetflo', 'config.yaml');
   return {
     claude: fs.existsSync(claudePath),
     claudeFlow: fs.existsSync(claudeFlowPath),
@@ -201,9 +201,9 @@ const initAction = async (ctx: CommandContext): Promise<CommandResult> => {
   const hasExisting = initialized.claude || initialized.claudeFlow;
 
   if (hasExisting && !force) {
-    output.printWarning('RuFlo appears to be already initialized');
+    output.printWarning('FidgetFlo appears to be already initialized');
     if (initialized.claude) output.printInfo('  Found: .claude/settings.json');
-    if (initialized.claudeFlow) output.printInfo('  Found: .claude-flow/config.yaml');
+    if (initialized.claudeFlow) output.printInfo('  Found: .fidgetflo/config.yaml');
     output.printInfo('Use --force to reinitialize');
 
     if (ctx.interactive) {
@@ -221,7 +221,7 @@ const initAction = async (ctx: CommandContext): Promise<CommandResult> => {
   }
 
   output.writeln();
-  output.writeln(output.bold('Initializing RuFlo V3'));
+  output.writeln(output.bold('Initializing FidgetFlo V3'));
   output.writeln();
 
   // Build init options based on flags
@@ -267,7 +267,7 @@ const initAction = async (ctx: CommandContext): Promise<CommandResult> => {
       return { success: false, exitCode: 1 };
     }
 
-    spinner.succeed('RuFlo V3 initialized successfully!');
+    spinner.succeed('FidgetFlo V3 initialized successfully!');
     output.writeln();
 
     // Display summary
@@ -308,10 +308,10 @@ const initAction = async (ctx: CommandContext): Promise<CommandResult> => {
     if (options.components.runtime) {
       output.printBox(
         [
-          `Config:      .claude-flow/config.yaml`,
-          `Data:        .claude-flow/data/`,
-          `Logs:        .claude-flow/logs/`,
-          `Sessions:    .claude-flow/sessions/`,
+          `Config:      .fidgetflo/config.yaml`,
+          `Data:        .fidgetflo/data/`,
+          `Logs:        .fidgetflo/logs/`,
+          `Sessions:    .fidgetflo/sessions/`,
         ].join('\n'),
         'V3 Runtime'
       );
@@ -421,10 +421,10 @@ const initAction = async (ctx: CommandContext): Promise<CommandResult> => {
       // Next steps (only if not auto-starting)
       output.writeln(output.bold('Next steps:'));
       output.printList([
-        `Run ${output.highlight('claude-flow daemon start')} to start background workers`,
-        `Run ${output.highlight('claude-flow memory init')} to initialize memory database`,
-        `Run ${output.highlight('claude-flow swarm init')} to initialize a swarm`,
-        `Or use ${output.highlight('claude-flow init --start-all')} to do all of the above`,
+        `Run ${output.highlight('fidgetflo daemon start')} to start background workers`,
+        `Run ${output.highlight('fidgetflo memory init')} to initialize memory database`,
+        `Run ${output.highlight('fidgetflo swarm init')} to initialize a swarm`,
+        `Or use ${output.highlight('fidgetflo init --start-all')} to do all of the above`,
         options.components.settings ? `Review ${output.highlight('.claude/settings.json')} for hook configurations` : '',
       ].filter(Boolean));
     }
@@ -447,7 +447,7 @@ const wizardCommand: Command = {
   description: 'Interactive setup wizard for comprehensive configuration',
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     output.writeln();
-    output.writeln(output.bold('RuFlo V3 Setup Wizard'));
+    output.writeln(output.bold('FidgetFlo V3 Setup Wizard'));
     output.writeln(output.dim('Answer questions to configure your project'));
     output.writeln();
 
@@ -485,7 +485,7 @@ const wizardCommand: Command = {
             { value: 'helpers', label: 'Helpers', hint: 'Utility scripts in .claude/helpers/', selected: true },
             { value: 'statusline', label: 'Statusline', hint: 'Shell statusline integration', selected: false },
             { value: 'mcp', label: 'MCP', hint: '.mcp.json for MCP server configuration', selected: true },
-            { value: 'runtime', label: 'Runtime', hint: '.claude-flow/ directory for V3 runtime', selected: true },
+            { value: 'runtime', label: 'Runtime', hint: '.fidgetflo/ directory for V3 runtime', selected: true },
           ],
         });
 
@@ -530,7 +530,7 @@ const wizardCommand: Command = {
               { value: 'sessionStart', label: 'SessionStart', hint: 'Session initialization', selected: true },
               { value: 'stop', label: 'Stop', hint: 'Task completion evaluation', selected: true },
               { value: 'notification', label: 'Notification', hint: 'Swarm notifications', selected: true },
-              { value: 'permissionRequest', label: 'PermissionRequest', hint: 'Auto-allow claude-flow tools', selected: true },
+              { value: 'permissionRequest', label: 'PermissionRequest', hint: 'Auto-allow fidgetflo tools', selected: true },
             ],
           });
 
@@ -710,7 +710,7 @@ const wizardCommand: Command = {
 // Check subcommand
 const checkCommand: Command = {
   name: 'check',
-  description: 'Check if RuFlo is initialized',
+  description: 'Check if FidgetFlo is initialized',
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const initialized = isInitialized(ctx.cwd);
 
@@ -720,7 +720,7 @@ const checkCommand: Command = {
       claudeFlow: initialized.claudeFlow,
       paths: {
         claudeSettings: initialized.claude ? path.join(ctx.cwd, '.claude', 'settings.json') : null,
-        claudeFlowConfig: initialized.claudeFlow ? path.join(ctx.cwd, '.claude-flow', 'config.yaml') : null,
+        claudeFlowConfig: initialized.claudeFlow ? path.join(ctx.cwd, '.fidgetflo', 'config.yaml') : null,
       },
     };
 
@@ -730,16 +730,16 @@ const checkCommand: Command = {
     }
 
     if (result.initialized) {
-      output.printSuccess('RuFlo is initialized');
+      output.printSuccess('FidgetFlo is initialized');
       if (initialized.claude) {
         output.printInfo(`  Claude Code: .claude/settings.json`);
       }
       if (initialized.claudeFlow) {
-        output.printInfo(`  V3 Runtime: .claude-flow/config.yaml`);
+        output.printInfo(`  V3 Runtime: .fidgetflo/config.yaml`);
       }
     } else {
-      output.printWarning('RuFlo is not initialized in this directory');
-      output.printInfo('Run "ruflo init" to initialize');
+      output.printWarning('FidgetFlo is not initialized in this directory');
+      output.printInfo('Run "fidgetflo init" to initialize');
     }
 
     return { success: true, data: result };
@@ -896,7 +896,7 @@ const upgradeCommand: Command = {
     const upgradeSettings = (ctx.flags.settings) as boolean;
 
     output.writeln();
-    output.writeln(output.bold('Upgrading RuFlo'));
+    output.writeln(output.bold('Upgrading FidgetFlo'));
     if (addMissing && upgradeSettings) {
       output.writeln(output.dim('Updates helpers, settings, and adds any missing skills/agents/commands'));
     } else if (addMissing) {
@@ -1028,7 +1028,7 @@ const upgradeCommand: Command = {
 // Main init command
 export const initCommand: Command = {
   name: 'init',
-  description: 'Initialize RuFlo in the current directory',
+  description: 'Initialize FidgetFlo in the current directory',
   subcommands: [wizardCommand, checkCommand, skillsCommand, hooksCommand, upgradeCommand],
   options: [
     {
@@ -1102,25 +1102,25 @@ export const initCommand: Command = {
     },
   ],
   examples: [
-    { command: 'claude-flow init', description: 'Initialize with default configuration' },
-    { command: 'claude-flow init --start-all', description: 'Initialize and start daemon, memory, swarm' },
-    { command: 'claude-flow init --start-daemon', description: 'Initialize and start daemon only' },
-    { command: 'claude-flow init --minimal', description: 'Initialize with minimal configuration' },
-    { command: 'claude-flow init --full', description: 'Initialize with all components' },
-    { command: 'claude-flow init --force', description: 'Reinitialize and overwrite existing config' },
-    { command: 'claude-flow init --only-claude', description: 'Only create Claude Code integration' },
-    { command: 'claude-flow init --skip-claude', description: 'Only create V3 runtime' },
-    { command: 'claude-flow init wizard', description: 'Interactive setup wizard' },
-    { command: 'claude-flow init --with-embeddings', description: 'Initialize with ONNX embeddings' },
-    { command: 'claude-flow init --with-embeddings --embedding-model Xenova/all-mpnet-base-v2', description: 'Use larger embedding model' },
-    { command: 'claude-flow init skills --all', description: 'Install all available skills' },
-    { command: 'claude-flow init hooks --minimal', description: 'Create minimal hooks configuration' },
-    { command: 'claude-flow init upgrade', description: 'Update helpers while preserving data' },
-    { command: 'claude-flow init upgrade --settings', description: 'Update helpers and merge new settings (Agent Teams)' },
-    { command: 'claude-flow init upgrade --verbose', description: 'Show detailed upgrade info' },
-    { command: 'claude-flow init --codex', description: 'Initialize for OpenAI Codex (AGENTS.md)' },
-    { command: 'claude-flow init --codex --full', description: 'Codex init with all 137+ skills' },
-    { command: 'claude-flow init --dual', description: 'Initialize for both Claude Code and Codex' },
+    { command: 'fidgetflo init', description: 'Initialize with default configuration' },
+    { command: 'fidgetflo init --start-all', description: 'Initialize and start daemon, memory, swarm' },
+    { command: 'fidgetflo init --start-daemon', description: 'Initialize and start daemon only' },
+    { command: 'fidgetflo init --minimal', description: 'Initialize with minimal configuration' },
+    { command: 'fidgetflo init --full', description: 'Initialize with all components' },
+    { command: 'fidgetflo init --force', description: 'Reinitialize and overwrite existing config' },
+    { command: 'fidgetflo init --only-claude', description: 'Only create Claude Code integration' },
+    { command: 'fidgetflo init --skip-claude', description: 'Only create V3 runtime' },
+    { command: 'fidgetflo init wizard', description: 'Interactive setup wizard' },
+    { command: 'fidgetflo init --with-embeddings', description: 'Initialize with ONNX embeddings' },
+    { command: 'fidgetflo init --with-embeddings --embedding-model Xenova/all-mpnet-base-v2', description: 'Use larger embedding model' },
+    { command: 'fidgetflo init skills --all', description: 'Install all available skills' },
+    { command: 'fidgetflo init hooks --minimal', description: 'Create minimal hooks configuration' },
+    { command: 'fidgetflo init upgrade', description: 'Update helpers while preserving data' },
+    { command: 'fidgetflo init upgrade --settings', description: 'Update helpers and merge new settings (Agent Teams)' },
+    { command: 'fidgetflo init upgrade --verbose', description: 'Show detailed upgrade info' },
+    { command: 'fidgetflo init --codex', description: 'Initialize for OpenAI Codex (AGENTS.md)' },
+    { command: 'fidgetflo init --codex --full', description: 'Codex init with all 137+ skills' },
+    { command: 'fidgetflo init --dual', description: 'Initialize for both Claude Code and Codex' },
   ],
   action: initAction,
 };

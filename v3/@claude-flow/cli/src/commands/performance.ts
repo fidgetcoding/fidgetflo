@@ -19,8 +19,8 @@ const benchmarkCommand: Command = {
     { name: 'output', short: 'o', type: 'string', description: 'Output format: text, json, csv', default: 'text' },
   ],
   examples: [
-    { command: 'claude-flow performance benchmark -s neural', description: 'Benchmark neural operations' },
-    { command: 'claude-flow performance benchmark -i 1000', description: 'Run with 1000 iterations' },
+    { command: 'fidgetflo performance benchmark -s neural', description: 'Benchmark neural operations' },
+    { command: 'fidgetflo performance benchmark -i 1000', description: 'Run with 1000 iterations' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const suite = ctx.flags.suite as string || 'all';
@@ -256,8 +256,8 @@ const profileCommand: Command = {
     { name: 'output', short: 'o', type: 'string', description: 'Output file for profile data' },
   ],
   examples: [
-    { command: 'claude-flow performance profile -t cpu', description: 'Profile CPU usage' },
-    { command: 'claude-flow performance profile -d 60', description: 'Profile for 60 seconds' },
+    { command: 'fidgetflo performance profile -t cpu', description: 'Profile CPU usage' },
+    { command: 'fidgetflo performance profile -d 60', description: 'Profile for 60 seconds' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const type = ctx.flags.type as string || 'all';
@@ -338,8 +338,8 @@ const metricsCommand: Command = {
     { name: 'component', short: 'c', type: 'string', description: 'Component to filter' },
   ],
   examples: [
-    { command: 'claude-flow performance metrics -t 7d', description: 'Show 7-day metrics' },
-    { command: 'claude-flow performance metrics -f prometheus', description: 'Export as Prometheus format' },
+    { command: 'fidgetflo performance metrics -t 7d', description: 'Show 7-day metrics' },
+    { command: 'fidgetflo performance metrics -f prometheus', description: 'Export as Prometheus format' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const timeframe = ctx.flags.timeframe as string || '24h';
@@ -531,8 +531,8 @@ const optimizeCommand: Command = {
     { name: 'dry-run', short: 'd', type: 'boolean', description: 'Show changes without applying' },
   ],
   examples: [
-    { command: 'claude-flow performance optimize -t memory', description: 'Optimize memory usage' },
-    { command: 'claude-flow performance optimize --apply', description: 'Apply all optimizations' },
+    { command: 'fidgetflo performance optimize -t memory', description: 'Optimize memory usage' },
+    { command: 'fidgetflo performance optimize --apply', description: 'Apply all optimizations' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const target = ctx.flags.target as string || 'all';
@@ -579,8 +579,8 @@ const bottleneckCommand: Command = {
     { name: 'depth', short: 'd', type: 'string', description: 'Analysis depth: quick, full', default: 'quick' },
   ],
   examples: [
-    { command: 'claude-flow performance bottleneck', description: 'Find bottlenecks' },
-    { command: 'claude-flow performance bottleneck -d full', description: 'Full analysis' },
+    { command: 'fidgetflo performance bottleneck', description: 'Find bottlenecks' },
+    { command: 'fidgetflo performance bottleneck -d full', description: 'Full analysis' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     output.writeln();
@@ -618,13 +618,13 @@ export const performanceCommand: Command = {
   aliases: ['perf'],
   subcommands: [benchmarkCommand, profileCommand, metricsCommand, optimizeCommand, bottleneckCommand],
   examples: [
-    { command: 'claude-flow performance benchmark', description: 'Run benchmarks' },
-    { command: 'claude-flow performance profile', description: 'Profile application' },
-    { command: 'claude-flow perf metrics', description: 'View metrics (alias)' },
+    { command: 'fidgetflo performance benchmark', description: 'Run benchmarks' },
+    { command: 'fidgetflo performance profile', description: 'Profile application' },
+    { command: 'fidgetflo perf metrics', description: 'View metrics (alias)' },
   ],
   action: async (): Promise<CommandResult> => {
     output.writeln();
-    output.writeln(output.bold('RuFlo Performance Suite'));
+    output.writeln(output.bold('FidgetFlo Performance Suite'));
     output.writeln(output.dim('Advanced performance profiling and optimization'));
     output.writeln();
     output.writeln('Subcommands:');

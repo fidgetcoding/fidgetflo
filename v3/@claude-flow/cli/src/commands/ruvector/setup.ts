@@ -3,9 +3,9 @@
  * Outputs Docker files and SQL for easy RuVector PostgreSQL setup
  *
  * Usage:
- *   npx claude-flow ruvector setup              # Output to ./ruvector-postgres/
- *   npx claude-flow ruvector setup --output /path/to/dir
- *   npx claude-flow ruvector setup --print      # Print to stdout only
+ *   npx fidgetflo ruvector setup              # Output to ./ruvector-postgres/
+ *   npx fidgetflo ruvector setup --output /path/to/dir
+ *   npx fidgetflo ruvector setup --print      # Print to stdout only
  *
  * Created with care by ruv.io
  */
@@ -36,7 +36,7 @@ services:
     container_name: ruvector-postgres
     environment:
       POSTGRES_USER: claude
-      POSTGRES_PASSWORD: claude-flow-test
+      POSTGRES_PASSWORD: fidgetflo-test
       POSTGRES_DB: claude_flow
     ports:
       - "5432:5432"
@@ -58,7 +58,7 @@ services:
     image: dpage/pgadmin4:latest
     container_name: ruvector-pgadmin
     environment:
-      PGADMIN_DEFAULT_EMAIL: admin@claude-flow.local
+      PGADMIN_DEFAULT_EMAIL: admin@fidgetflo.local
       PGADMIN_DEFAULT_PASSWORD: admin
       PGADMIN_CONFIG_SERVER_MODE: 'False'
     ports:
@@ -81,7 +81,7 @@ const INIT_SQL_TEMPLATE = `-- ============================================
 -- ============================================
 --
 -- This script initializes RuVector PostgreSQL extension
--- from ruvnet/ruvector-postgres with Claude-Flow V3 integration.
+-- from ruvnet/ruvector-postgres with FidgetFlo V3 integration.
 --
 -- RuVector provides 77+ SQL functions including:
 -- - Vector similarity search (HNSW with SIMD)
@@ -166,7 +166,7 @@ CREATE TABLE IF NOT EXISTS claude_flow.trajectories (
     ended_at TIMESTAMPTZ
 );
 
--- Memory entries table (main storage for Claude-Flow memory)
+-- Memory entries table (main storage for FidgetFlo memory)
 CREATE TABLE IF NOT EXISTS claude_flow.memory_entries (
     id UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     key VARCHAR(255) NOT NULL,
@@ -559,7 +559,7 @@ END $$;
  */
 const README_TEMPLATE = `# RuVector PostgreSQL Setup
 
-This directory contains the Docker configuration for RuVector PostgreSQL with Claude-Flow V3.
+This directory contains the Docker configuration for RuVector PostgreSQL with FidgetFlo V3.
 
 ## Quick Start
 
@@ -582,7 +582,7 @@ docker exec ruvector-postgres psql -U claude -d claude_flow -c "SELECT ruvector_
 | Port | 5432 |
 | Database | claude_flow |
 | Username | claude |
-| Password | claude-flow-test |
+| Password | fidgetflo-test |
 | Schema | claude_flow |
 
 ## RuVector Syntax
@@ -620,11 +620,11 @@ WITH (m = 16, ef_construction = 100);
 ## Import from sql.js/JSON
 
 \`\`\`bash
-# Export current Claude-Flow memory
-npx claude-flow memory list --format json > memory-export.json
+# Export current FidgetFlo memory
+npx fidgetflo memory list --format json > memory-export.json
 
 # Import to RuVector PostgreSQL
-npx claude-flow ruvector import --input memory-export.json
+npx fidgetflo ruvector import --input memory-export.json
 \`\`\`
 
 ## pgAdmin (Optional)
@@ -634,7 +634,7 @@ docker-compose --profile gui up -d
 \`\`\`
 
 Access at: http://localhost:5050
-- Email: admin@claude-flow.local
+- Email: admin@fidgetflo.local
 - Password: admin
 
 ## Troubleshooting
@@ -651,7 +651,7 @@ docker-compose up -d
 
 ## Learn More
 - [RuVector Docker Hub](https://hub.docker.com/r/ruvnet/ruvector-postgres)
-- [Claude-Flow Documentation](https://github.com/ruvnet/claude-flow)
+- [FidgetFlo Documentation](https://github.com/ruvnet/claude-flow)
 `;
 
 /**
@@ -685,10 +685,10 @@ export const setupCommand: Command = {
     },
   ],
   examples: [
-    { command: 'claude-flow ruvector setup', description: 'Output files to ./ruvector-postgres/' },
-    { command: 'claude-flow ruvector setup --output /path/to/dir', description: 'Output to custom directory' },
-    { command: 'claude-flow ruvector setup --print', description: 'Print files to stdout' },
-    { command: 'claude-flow ruvector setup --force', description: 'Overwrite existing files' },
+    { command: 'fidgetflo ruvector setup', description: 'Output files to ./ruvector-postgres/' },
+    { command: 'fidgetflo ruvector setup --output /path/to/dir', description: 'Output to custom directory' },
+    { command: 'fidgetflo ruvector setup --print', description: 'Print files to stdout' },
+    { command: 'fidgetflo ruvector setup --force', description: 'Overwrite existing files' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const outputDir = (ctx.flags.output as string) || './ruvector-postgres';

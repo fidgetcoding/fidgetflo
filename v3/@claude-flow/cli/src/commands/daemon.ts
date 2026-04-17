@@ -26,16 +26,16 @@ const startCommand: Command = {
     { name: 'min-free-memory', type: 'string', description: 'Override minFreeMemoryPercent resource threshold (e.g. 15)' },
   ],
   examples: [
-    { command: 'claude-flow daemon start', description: 'Start daemon in background (default)' },
-    { command: 'claude-flow daemon start --foreground', description: 'Start in foreground (blocks terminal)' },
-    { command: 'claude-flow daemon start -w map,audit,optimize', description: 'Start with specific workers' },
-    { command: 'claude-flow daemon start --headless --sandbox strict', description: 'Start with headless workers in strict sandbox' },
+    { command: 'fidgetflo daemon start', description: 'Start daemon in background (default)' },
+    { command: 'fidgetflo daemon start --foreground', description: 'Start in foreground (blocks terminal)' },
+    { command: 'fidgetflo daemon start -w map,audit,optimize', description: 'Start with specific workers' },
+    { command: 'fidgetflo daemon start --headless --sandbox strict', description: 'Start with headless workers in strict sandbox' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const quiet = ctx.flags.quiet as boolean;
     const foreground = ctx.flags.foreground as boolean;
     const projectRoot = process.cwd();
-    const isDaemonProcess = process.env.CLAUDE_FLOW_DAEMON === '1';
+    const isDaemonProcess = process.env.FIDGETFLO_DAEMON === '1';
 
     // Parse resource threshold overrides from CLI flags
     const config: Partial<DaemonConfig> = {};
@@ -89,7 +89,7 @@ const startCommand: Command = {
 
     // Foreground mode: run in current process (blocks terminal)
     try {
-      const stateDir = join(projectRoot, '.claude-flow');
+      const stateDir = join(projectRoot, '.fidgetflo');
       const pidFile = join(stateDir, 'daemon.pid');
 
       // Ensure state directory exists
@@ -212,7 +212,7 @@ function validatePath(path: string, label: string): void {
   }
 
   // Prevent path traversal outside expected directories
-  if (!resolved.includes('.claude-flow') && !resolved.includes('bin')) {
+  if (!resolved.includes('.fidgetflo') && !resolved.includes('bin')) {
     // Allow only paths within project structure
     const cwd = process.cwd();
     if (!resolved.startsWith(cwd)) {
@@ -229,7 +229,7 @@ async function startBackgroundDaemon(projectRoot: string, quiet: boolean, maxCpu
   const resolvedRoot = resolve(projectRoot);
   validatePath(resolvedRoot, 'Project root');
 
-  const stateDir = join(resolvedRoot, '.claude-flow');
+  const stateDir = join(resolvedRoot, '.fidgetflo');
   const pidFile = join(stateDir, 'daemon.pid');
   const logFile = join(stateDir, 'daemon.log');
 
@@ -263,11 +263,11 @@ async function startBackgroundDaemon(projectRoot: string, quiet: boolean, maxCpu
     detached: !isWin,  // detached is POSIX-only; Windows uses windowsHide
     // Use 'ignore' for all stdio — passing fs.openSync() FDs causes the child to
     // die on Windows when the parent exits and closes the FDs (#1478 Bug 3).
-    // The daemon writes its own logs via appendFileSync to .claude-flow/logs/.
+    // The daemon writes its own logs via appendFileSync to .fidgetflo/logs/.
     stdio: ['ignore', 'ignore', 'ignore'],
     env: {
       ...process.env,
-      CLAUDE_FLOW_DAEMON: '1',
+      FIDGETFLO_DAEMON: '1',
       // Prevent macOS SIGHUP kill when terminal closes
       ...(process.platform === 'darwin' ? { NOHUP: '1' } : {}),
     },
@@ -318,7 +318,7 @@ async function startBackgroundDaemon(projectRoot: string, quiet: boolean, maxCpu
   if (!quiet) {
     output.printSuccess(`Daemon started in background (PID: ${pid})`);
     output.printInfo(`Logs: ${logFile}`);
-    output.printInfo(`Stop with: claude-flow daemon stop`);
+    output.printInfo(`Stop with: fidgetflo daemon stop`);
   }
 
   return { success: true };
@@ -332,7 +332,7 @@ const stopCommand: Command = {
     { name: 'quiet', short: 'Q', type: 'boolean', description: 'Suppress output' },
   ],
   examples: [
-    { command: 'claude-flow daemon stop', description: 'Stop the daemon' },
+    { command: 'fidgetflo daemon stop', description: 'Stop the daemon' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const quiet = ctx.flags.quiet as boolean;
@@ -371,7 +371,7 @@ const stopCommand: Command = {
  * Kill background daemon process using PID file
  */
 async function killBackgroundDaemon(projectRoot: string): Promise<boolean> {
-  const pidFile = join(projectRoot, '.claude-flow', 'daemon.pid');
+  const pidFile = join(projectRoot, '.fidgetflo', 'daemon.pid');
 
   if (!fs.existsSync(pidFile)) {
     return false;
@@ -438,7 +438,7 @@ async function killStaleDaemons(projectRoot: string, quiet: boolean): Promise<vo
 
     for (const line of lines) {
       if (!line.includes('daemon start --foreground')) continue;
-      if (!line.includes('claude-flow') && !line.includes('@claude-flow/cli')) continue;
+      if (!line.includes('fidgetflo') && !line.includes('@claude-flow/cli')) continue;
       const pidStr = line.trim().split(/\s+/)[0];
       const pid = parseInt(pidStr, 10);
       if (isNaN(pid) || pid === currentPid || pid === trackedPid) continue;
@@ -464,7 +464,7 @@ async function killStaleDaemons(projectRoot: string, quiet: boolean): Promise<vo
  * Get PID of background daemon from PID file
  */
 function getBackgroundDaemonPid(projectRoot: string): number | null {
-  const pidFile = join(projectRoot, '.claude-flow', 'daemon.pid');
+  const pidFile = join(projectRoot, '.fidgetflo', 'daemon.pid');
 
   if (!fs.existsSync(pidFile)) {
     return null;
@@ -499,9 +499,9 @@ const statusCommand: Command = {
     { name: 'show-modes', type: 'boolean', description: 'Show worker execution modes (local/headless) and sandbox settings' },
   ],
   examples: [
-    { command: 'claude-flow daemon status', description: 'Show daemon status' },
-    { command: 'claude-flow daemon status -v', description: 'Show detailed status' },
-    { command: 'claude-flow daemon status --show-modes', description: 'Show worker execution modes' },
+    { command: 'fidgetflo daemon status', description: 'Show daemon status' },
+    { command: 'fidgetflo daemon status -v', description: 'Show detailed status' },
+    { command: 'fidgetflo daemon status --show-modes', description: 'Show worker execution modes' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const verbose = ctx.flags.verbose as boolean;
@@ -536,7 +536,7 @@ const statusCommand: Command = {
           `Max CPU Load: ${status.config.resourceThresholds.maxCpuLoad}`,
           `Min Free Memory: ${status.config.resourceThresholds.minFreeMemoryPercent}%`,
         ].filter(Boolean).join('\n'),
-        'RuFlo Daemon'
+        'FidgetFlo Daemon'
       );
 
       output.writeln();
@@ -614,9 +614,9 @@ const statusCommand: Command = {
         [
           `Status: ${output.error('○')} ${output.error('NOT INITIALIZED')}`,
           '',
-          'Run "claude-flow daemon start" to start the daemon',
+          'Run "fidgetflo daemon start" to start the daemon',
         ].join('\n'),
-        'RuFlo Daemon'
+        'FidgetFlo Daemon'
       );
 
       return { success: true };
@@ -633,9 +633,9 @@ const triggerCommand: Command = {
     { name: 'headless', type: 'boolean', description: 'Run triggered worker in headless mode (E2B sandbox)' },
   ],
   examples: [
-    { command: 'claude-flow daemon trigger -w map', description: 'Trigger the map worker' },
-    { command: 'claude-flow daemon trigger -w audit', description: 'Trigger security audit' },
-    { command: 'claude-flow daemon trigger -w audit --headless', description: 'Trigger audit in headless sandbox' },
+    { command: 'fidgetflo daemon trigger -w map', description: 'Trigger the map worker' },
+    { command: 'fidgetflo daemon trigger -w audit', description: 'Trigger security audit' },
+    { command: 'fidgetflo daemon trigger -w audit --headless', description: 'Trigger audit in headless sandbox' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const workerType = ctx.flags.worker as WorkerType;
@@ -684,8 +684,8 @@ const enableCommand: Command = {
     { name: 'disable', short: 'd', type: 'boolean', description: 'Disable instead of enable' },
   ],
   examples: [
-    { command: 'claude-flow daemon enable -w predict', description: 'Enable predict worker' },
-    { command: 'claude-flow daemon enable -w document --disable', description: 'Disable document worker' },
+    { command: 'fidgetflo daemon enable -w predict', description: 'Enable predict worker' },
+    { command: 'fidgetflo daemon enable -w document --disable', description: 'Disable document worker' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const workerType = ctx.flags.worker as WorkerType;
@@ -743,15 +743,15 @@ export const daemonCommand: Command = {
   ],
   options: [],
   examples: [
-    { command: 'claude-flow daemon start', description: 'Start the daemon' },
-    { command: 'claude-flow daemon start --headless', description: 'Start with headless workers (E2B sandbox)' },
-    { command: 'claude-flow daemon status', description: 'Check daemon status' },
-    { command: 'claude-flow daemon stop', description: 'Stop the daemon' },
-    { command: 'claude-flow daemon trigger -w audit', description: 'Run security audit' },
+    { command: 'fidgetflo daemon start', description: 'Start the daemon' },
+    { command: 'fidgetflo daemon start --headless', description: 'Start with headless workers (E2B sandbox)' },
+    { command: 'fidgetflo daemon status', description: 'Check daemon status' },
+    { command: 'fidgetflo daemon stop', description: 'Stop the daemon' },
+    { command: 'fidgetflo daemon trigger -w audit', description: 'Run security audit' },
   ],
   action: async (): Promise<CommandResult> => {
     output.writeln();
-    output.writeln(output.bold('RuFlo Daemon - Background Task Management'));
+    output.writeln(output.bold('FidgetFlo Daemon - Background Task Management'));
     output.writeln();
     output.writeln('Node.js-based background worker system that auto-runs like shell daemons.');
     output.writeln('Manages 12 specialized workers for continuous optimization and monitoring.');
@@ -788,7 +788,7 @@ export const daemonCommand: Command = {
     ]);
 
     output.writeln();
-    output.writeln('Run "claude-flow daemon <subcommand> --help" for details');
+    output.writeln('Run "fidgetflo daemon <subcommand> --help" for details');
 
     return { success: true };
   },

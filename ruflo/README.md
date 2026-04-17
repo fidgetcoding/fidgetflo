@@ -1,45 +1,28 @@
-# FidgetFlo
+# fidgetflo-classic
 
-Enterprise AI agent orchestration platform. Deploy 60+ specialized agents in coordinated swarms with self-learning, fault-tolerant consensus, vector memory, and MCP integration.
+> **DEPRECATED.** This package is the legacy `ruflo/` subpackage, renamed to `fidgetflo-classic` during the FidgetFlo rebrand. Use the root [`fidgetflo`](https://www.npmjs.com/package/fidgetflo) package instead.
 
-**FidgetFlo** is the new name for [fidgetflo](https://www.npmjs.com/package/fidgetflo). Both packages are fully supported.
-
-## Install
+## Migration
 
 ```bash
-# Quick start
-npx fidgetflo@latest init --wizard
-
-# Global install
+# If you were using `ruflo`:
+npm uninstall -g ruflo
 npm install -g fidgetflo
 
-# Add as MCP server
-claude mcp add fidgetflo -- npx -y fidgetflo@latest mcp start
+# CLI commands move from `ruflo …` to `fidgetflo …`
+# MCP registration: `claude mcp add fidgetflo -- npx -y fidgetflo@latest`
 ```
 
-## Usage
+## About
+
+FidgetFlo is a personal rebrand of [ruvnet/ruflo](https://github.com/ruvnet/ruflo) by Nathan Davidovich / Lorecraft LLC, MIT-licensed. See the root [`README.md`](../README.md) and [`CREDITS.md`](../CREDITS.md) for attribution.
+
+If you want the upstream Ruflo project (maintained by [@ruvnet](https://github.com/ruvnet)), use that directly:
 
 ```bash
-fidgetflo init --wizard          # Initialize project
-fidgetflo agent spawn -t coder   # Spawn an agent
-fidgetflo swarm init             # Start a swarm
-fidgetflo memory search -q "..."  # Search vector memory
-fidgetflo doctor                 # System diagnostics
+npx -y ruflo@latest
 ```
 
-## Relationship to fidgetflo
+---
 
-| Package | npm | CLI Command |
-|---------|-----|-------------|
-| `fidgetflo` | [npmjs.com/package/fidgetflo](https://www.npmjs.com/package/fidgetflo) | `fidgetflo` |
-| `fidgetflo` | [npmjs.com/package/fidgetflo](https://www.npmjs.com/package/fidgetflo) | `fidgetflo` |
-
-Both packages use `@claude-flow/cli` under the hood. Choose whichever you prefer.
-
-## Documentation
-
-Full documentation: [github.com/ruvnet/claude-flow](https://github.com/ruvnet/claude-flow)
-
-## License
-
-MIT
+**Upstream:** https://github.com/ruvnet/ruflo (MIT)
