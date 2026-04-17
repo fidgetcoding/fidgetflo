@@ -4,9 +4,6 @@
 
 ![FidgetFlo](./fidgetflo.png)
 
-[![GitHub Stars](https://img.shields.io/github/stars/lorecraft-io/fidgetflo?style=flat-square&label=STARS&color=22c55e&labelColor=111111&logo=github&logoColor=white)](https://github.com/lorecraft-io/fidgetflo/stargazers)
-[![npm monthly](https://img.shields.io/npm/dm/fidgetflo?style=flat-square&label=MONTHLY+DOWNLOADS&color=22c55e&labelColor=111111)](https://www.npmjs.com/package/fidgetflo)
-[![npm total](https://img.shields.io/npm/dt/fidgetflo?style=flat-square&label=TOTAL+DOWNLOADS&color=22c55e&labelColor=111111)](https://www.npmjs.com/package/fidgetflo)
 
 [![FIDGETCODING](https://img.shields.io/badge/FIDGETCODING-111111?style=flat-square)](https://github.com/lorecraft-io)
 [![AI Platform](https://img.shields.io/badge/AI-PLATFORM-22c55e?style=flat-square&labelColor=111111)](https://github.com/lorecraft-io/fidgetflo)
