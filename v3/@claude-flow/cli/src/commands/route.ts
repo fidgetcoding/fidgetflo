@@ -111,9 +111,9 @@ const routeTaskCommand: Command = {
     },
   ],
   examples: [
-    { command: 'claude-flow route task "implement authentication"', description: 'Route task to best agent' },
-    { command: 'claude-flow route task "write unit tests" --q-learning', description: 'Use Q-Learning routing' },
-    { command: 'claude-flow route task "review code" --agent reviewer', description: 'Force specific agent' },
+    { command: 'fidgetflo route task "implement authentication"', description: 'Route task to best agent' },
+    { command: 'fidgetflo route task "write unit tests" --q-learning', description: 'Use Q-Learning routing' },
+    { command: 'fidgetflo route task "review code" --agent reviewer', description: 'Force specific agent' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const taskDescription = ctx.args[0];
@@ -123,7 +123,7 @@ const routeTaskCommand: Command = {
 
     if (!taskDescription) {
       output.printError('Task description is required');
-      output.writeln(output.dim('Usage: claude-flow route task "task description"'));
+      output.writeln(output.dim('Usage: fidgetflo route task "task description"'));
       return { success: false, exitCode: 1 };
     }
 
@@ -259,8 +259,8 @@ const listAgentsCommand: Command = {
     },
   ],
   examples: [
-    { command: 'claude-flow route list-agents', description: 'List all agents' },
-    { command: 'claude-flow route agents --json', description: 'List agents as JSON' },
+    { command: 'fidgetflo route list-agents', description: 'List all agents' },
+    { command: 'fidgetflo route agents --json', description: 'List agents as JSON' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const jsonOutput = ctx.flags.json as boolean;
@@ -318,7 +318,7 @@ const statsCommand: Command = {
     },
   ],
   examples: [
-    { command: 'claude-flow route stats', description: 'Show routing statistics' },
+    { command: 'fidgetflo route stats', description: 'Show routing statistics' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const jsonOutput = ctx.flags.json as boolean;
@@ -410,8 +410,8 @@ const feedbackCommand: Command = {
     },
   ],
   examples: [
-    { command: 'claude-flow route feedback -t "implement auth" -a coder -r 0.9', description: 'Positive feedback' },
-    { command: 'claude-flow route feedback -t "write tests" -a tester -r -0.5', description: 'Negative feedback' },
+    { command: 'fidgetflo route feedback -t "implement auth" -a coder -r 0.9', description: 'Positive feedback' },
+    { command: 'fidgetflo route feedback -t "write tests" -a tester -r -0.5', description: 'Negative feedback' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const taskDescription = ctx.flags.task as string;
@@ -473,8 +473,8 @@ const resetCommand: Command = {
     },
   ],
   examples: [
-    { command: 'claude-flow route reset', description: 'Reset router state' },
-    { command: 'claude-flow route reset --force', description: 'Force reset' },
+    { command: 'fidgetflo route reset', description: 'Reset router state' },
+    { command: 'fidgetflo route reset --force', description: 'Force reset' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const force = ctx.flags.force as boolean;
@@ -513,8 +513,8 @@ const exportCommand: Command = {
     },
   ],
   examples: [
-    { command: 'claude-flow route export', description: 'Export Q-table to stdout' },
-    { command: 'claude-flow route export -f qtable.json', description: 'Export to file' },
+    { command: 'fidgetflo route export', description: 'Export Q-table to stdout' },
+    { command: 'fidgetflo route export -f qtable.json', description: 'Export to file' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const filePath = ctx.flags.file as string | undefined;
@@ -552,7 +552,7 @@ const importCommand: Command = {
     },
   ],
   examples: [
-    { command: 'claude-flow route import -f qtable.json', description: 'Import Q-table from file' },
+    { command: 'fidgetflo route import -f qtable.json', description: 'Import Q-table from file' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const filePath = ctx.flags.file as string;
@@ -626,10 +626,10 @@ const coverageRouteCommand: Command = {
     },
   ],
   examples: [
-    { command: 'claude-flow route coverage', description: 'Analyze coverage and suggest routing' },
-    { command: 'claude-flow route coverage --suggest', description: 'Get improvement suggestions' },
-    { command: 'claude-flow route coverage --gaps', description: 'List coverage gaps by agent' },
-    { command: 'claude-flow route coverage -p src/auth -t 90', description: 'Analyze specific path with threshold' },
+    { command: 'fidgetflo route coverage', description: 'Analyze coverage and suggest routing' },
+    { command: 'fidgetflo route coverage --suggest', description: 'Get improvement suggestions' },
+    { command: 'fidgetflo route coverage --gaps', description: 'List coverage gaps by agent' },
+    { command: 'fidgetflo route coverage -p src/auth -t 90', description: 'Analyze specific path with threshold' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const path = (ctx.flags.path as string) || '';
@@ -841,11 +841,11 @@ export const routeCommand: Command = {
     },
   ],
   examples: [
-    { command: 'claude-flow route "implement feature"', description: 'Route task to best agent' },
-    { command: 'claude-flow route "write tests" --q-learning', description: 'Use Q-Learning routing' },
-    { command: 'claude-flow route --agent coder "fix bug"', description: 'Force specific agent' },
-    { command: 'claude-flow route list-agents', description: 'List available agents' },
-    { command: 'claude-flow route stats', description: 'Show routing statistics' },
+    { command: 'fidgetflo route "implement feature"', description: 'Route task to best agent' },
+    { command: 'fidgetflo route "write tests" --q-learning', description: 'Use Q-Learning routing' },
+    { command: 'fidgetflo route --agent coder "fix bug"', description: 'Force specific agent' },
+    { command: 'fidgetflo route list-agents', description: 'List available agents' },
+    { command: 'fidgetflo route stats', description: 'Show routing statistics' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     // If task description provided directly, route it
@@ -861,8 +861,8 @@ export const routeCommand: Command = {
     output.writeln(output.dim('Intelligent task-to-agent routing using reinforcement learning'));
     output.writeln();
 
-    output.writeln('Usage: claude-flow route <task> [options]');
-    output.writeln('       claude-flow route <subcommand>');
+    output.writeln('Usage: fidgetflo route <task> [options]');
+    output.writeln('       fidgetflo route <subcommand>');
     output.writeln();
 
     output.writeln(output.bold('Subcommands:'));
@@ -896,7 +896,7 @@ export const routeCommand: Command = {
     ]);
     output.writeln();
 
-    output.writeln(output.dim('Run "claude-flow route <subcommand> --help" for more info'));
+    output.writeln(output.dim('Run "fidgetflo route <subcommand> --help" for more info'));
 
     return { success: true };
   },

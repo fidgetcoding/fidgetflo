@@ -1,6 +1,6 @@
 /**
  * RVFA (RuVector Format Appliance) — Binary format reader/writer
- * for self-contained Ruflo appliances.
+ * for self-contained FidgetFlo appliances.
  *
  * Binary layout:
  *   [4B magic "RVFA"] [4B version u32LE] [4B header_len u32LE]
@@ -129,7 +129,7 @@ export function createDefaultHeader(
     created: new Date().toISOString(),
     sections: [],
     boot: {
-      entrypoint: '/opt/ruflo/bin/ruflo',
+      entrypoint: '/opt/fidgetflo/bin/fidgetflo',
       args: ['--appliance'],
       env: {},
       isolation: profile === 'cloud' ? 'container' : 'native',
@@ -193,7 +193,7 @@ export class RvfaWriter {
   /**
    * Add a section to the appliance image.
    *
-   * @param id      Section identifier (e.g. 'kernel', 'runtime', 'ruflo').
+   * @param id      Section identifier (e.g. 'kernel', 'runtime', 'fidgetflo').
    * @param data    Raw (uncompressed) section payload.
    * @param options Optional compression and MIME type overrides.
    */

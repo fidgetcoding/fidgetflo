@@ -1,7 +1,7 @@
 /**
- * Claude Flow V3 - Modular AI Agent Coordination System
+ * FidgetFlo V3 - Modular AI Agent Coordination System
  *
- * This is the main entry point that re-exports all @claude-flow modules.
+ * This is the main entry point that re-exports all @fidgetflo modules.
  * Each module can also be imported directly for tree-shaking.
  *
  * @example
@@ -37,7 +37,7 @@
  */
 
 // =============================================================================
-// @claude-flow Module Exports (New Modular Architecture)
+// @fidgetflo Module Exports (New Modular Architecture)
 // =============================================================================
 
 /**
@@ -534,9 +534,9 @@ export const V3_VERSION = {
 };
 
 export const V3_INFO = {
-  name: 'claude-flow',
+  name: 'fidgetflo',
   version: V3_VERSION.full,
-  description: 'Complete reimagining of Claude-Flow with 15-agent hierarchical mesh swarm',
+  description: 'Complete reimagining of FidgetFlo with 15-agent hierarchical mesh swarm',
   repository: 'https://github.com/ruvnet/claude-flow',
   license: 'MIT',
   engines: {

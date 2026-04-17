@@ -79,14 +79,14 @@ export const ruvectorCommand: Command = {
     },
   ],
   examples: [
-    { command: 'claude-flow ruvector setup', description: 'Output Docker files and SQL for setup' },
-    { command: 'claude-flow ruvector import --input memory.json', description: 'Import from sql.js/JSON export' },
-    { command: 'claude-flow ruvector init --database mydb', description: 'Initialize RuVector in PostgreSQL' },
-    { command: 'claude-flow ruvector status --verbose', description: 'Check connection and schema status' },
-    { command: 'claude-flow ruvector migrate --up', description: 'Run pending migrations' },
-    { command: 'claude-flow ruvector benchmark --vectors 10000', description: 'Run performance benchmark' },
-    { command: 'claude-flow ruvector optimize --analyze', description: 'Analyze and suggest optimizations' },
-    { command: 'claude-flow ruvector backup --output backup.sql', description: 'Backup RuVector data' },
+    { command: 'fidgetflo ruvector setup', description: 'Output Docker files and SQL for setup' },
+    { command: 'fidgetflo ruvector import --input memory.json', description: 'Import from sql.js/JSON export' },
+    { command: 'fidgetflo ruvector init --database mydb', description: 'Initialize RuVector in PostgreSQL' },
+    { command: 'fidgetflo ruvector status --verbose', description: 'Check connection and schema status' },
+    { command: 'fidgetflo ruvector migrate --up', description: 'Run pending migrations' },
+    { command: 'fidgetflo ruvector benchmark --vectors 10000', description: 'Run performance benchmark' },
+    { command: 'fidgetflo ruvector optimize --analyze', description: 'Analyze and suggest optimizations' },
+    { command: 'fidgetflo ruvector backup --output backup.sql', description: 'Backup RuVector data' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     // Default action: show help/status overview
@@ -96,7 +96,7 @@ export const ruvectorCommand: Command = {
     output.writeln();
 
     output.printBox([
-      'RuVector provides PostgreSQL integration for Claude Flow with:',
+      'RuVector provides PostgreSQL integration for FidgetFlo with:',
       '',
       '  - ruvector/pgvector extension for vector operations',
       '  - Attention mechanism embeddings',
@@ -117,7 +117,7 @@ export const ruvectorCommand: Command = {
     ].join('\n'), 'RuVector PostgreSQL Bridge');
 
     output.writeln();
-    output.printInfo('Run `claude-flow ruvector <command> --help` for details');
+    output.printInfo('Run `fidgetflo ruvector <command> --help` for details');
     output.writeln();
 
     return { success: true };

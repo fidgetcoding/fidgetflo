@@ -72,9 +72,9 @@ const runCommand: Command = {
     }
   ],
   examples: [
-    { command: 'claude-flow workflow run -t development --task "Build auth system"', description: 'Run development workflow' },
-    { command: 'claude-flow workflow run -f ./workflow.yaml', description: 'Run from file' },
-    { command: 'claude-flow workflow run -t sparc --dry-run', description: 'Validate SPARC workflow' }
+    { command: 'fidgetflo workflow run -t development --task "Build auth system"', description: 'Run development workflow' },
+    { command: 'fidgetflo workflow run -f ./workflow.yaml', description: 'Run from file' },
+    { command: 'fidgetflo workflow run -t sparc --dry-run', description: 'Validate SPARC workflow' }
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     let template = ctx.flags.template as string;
@@ -176,7 +176,7 @@ const runCommand: Command = {
 
       if (!dryRun) {
         output.writeln();
-        output.printInfo(`Track progress: claude-flow workflow status ${result.workflowId}`);
+        output.printInfo(`Track progress: fidgetflo workflow status ${result.workflowId}`);
       }
 
       return { success: true, data: result };
@@ -213,8 +213,8 @@ const validateCommand: Command = {
     }
   ],
   examples: [
-    { command: 'claude-flow workflow validate -f ./workflow.yaml', description: 'Validate workflow file' },
-    { command: 'claude-flow workflow validate -f ./workflow.json --strict', description: 'Strict validation' }
+    { command: 'fidgetflo workflow validate -f ./workflow.yaml', description: 'Validate workflow file' },
+    { command: 'fidgetflo workflow validate -f ./workflow.json --strict', description: 'Strict validation' }
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const file = ctx.flags.file as string || ctx.args[0];
@@ -621,7 +621,7 @@ const templateCommand: Command = {
         }
 
         output.printSuccess(`Template "${name}" created`);
-        output.writeln(output.dim('  Use with: claude-flow workflow run -t ' + name));
+        output.writeln(output.dim('  Use with: fidgetflo workflow run -t ' + name));
 
         return { success: true, data: { name, created: true } };
       }
@@ -631,7 +631,7 @@ const templateCommand: Command = {
     output.writeln();
     output.writeln(output.bold('Template Management'));
     output.writeln();
-    output.writeln('Usage: claude-flow workflow template <subcommand>');
+    output.writeln('Usage: fidgetflo workflow template <subcommand>');
     output.writeln();
     output.writeln('Subcommands:');
     output.printList([
@@ -651,15 +651,15 @@ export const workflowCommand: Command = {
   subcommands: [runCommand, validateCommand, listCommand, statusCommand, stopCommand, templateCommand],
   options: [],
   examples: [
-    { command: 'claude-flow workflow run -t development --task "Build feature"', description: 'Run workflow' },
-    { command: 'claude-flow workflow validate -f ./workflow.yaml', description: 'Validate workflow' },
-    { command: 'claude-flow workflow list', description: 'List workflows' }
+    { command: 'fidgetflo workflow run -t development --task "Build feature"', description: 'Run workflow' },
+    { command: 'fidgetflo workflow validate -f ./workflow.yaml', description: 'Validate workflow' },
+    { command: 'fidgetflo workflow list', description: 'List workflows' }
   ],
   action: async (): Promise<CommandResult> => {
     output.writeln();
     output.writeln(output.bold('Workflow Commands'));
     output.writeln();
-    output.writeln('Usage: claude-flow workflow <subcommand> [options]');
+    output.writeln('Usage: fidgetflo workflow <subcommand> [options]');
     output.writeln();
     output.writeln('Subcommands:');
     output.printList([
@@ -671,7 +671,7 @@ export const workflowCommand: Command = {
       `${output.highlight('template')}  - Manage templates`
     ]);
     output.writeln();
-    output.writeln('Run "claude-flow workflow <subcommand> --help" for more info');
+    output.writeln('Run "fidgetflo workflow <subcommand> --help" for more info');
 
     return { success: true };
   }

@@ -1,7 +1,7 @@
 /**
  * RVFA Appliance Builder -- Constructs self-contained .rvf appliance files.
  *
- * Creates a single binary containing kernel, runtime, Ruflo CLI, models/keys,
+ * Creates a single binary containing kernel, runtime, FidgetFlo CLI, models/keys,
  * AgentDB data, and the verification suite. See ADR-058.
  */
 
@@ -46,7 +46,7 @@ const AES_ALG = 'aes-256-gcm' as const;
 
 // ── Catalog ──────────────────────────────────────────────────
 
-const RUFLO_COMMANDS = 'init agent swarm memory mcp task session config status start workflow hooks hive-mind daemon neural security performance providers plugins deployment embeddings claims migrate process doctor completions'.split(' ');
+const FIDGETFLO_COMMANDS = 'init agent swarm memory mcp task session config status start workflow hooks hive-mind daemon neural security performance providers plugins deployment embeddings claims migrate process doctor completions'.split(' ');
 
 const AGENT_TYPES = 'coder reviewer tester planner researcher security-architect security-auditor memory-specialist performance-engineer hierarchical-coordinator mesh-coordinator adaptive-coordinator collective-intelligence-coordinator swarm-memory-manager byzantine-coordinator raft-manager gossip-coordinator consensus-builder crdt-synchronizer quorum-manager security-manager perf-analyzer performance-benchmarker task-orchestrator memory-coordinator smart-agent github-modes pr-manager code-review-swarm issue-tracker release-manager workflow-automation project-board-sync repo-architect multi-repo-swarm sparc-coord sparc-coder specification pseudocode architecture refinement backend-dev mobile-dev ml-developer cicd-engineer api-docs system-architect code-analyzer base-template-generator tdd-london-swarm production-validator'.split(' ');
 
@@ -99,7 +99,7 @@ export function decryptApiKeys(buf: Buffer, passphrase: string): Record<string, 
 
 // ── Builder ──────────────────────────────────────────────────
 
-type SectionId = 'kernel' | 'runtime' | 'ruflo' | 'models' | 'data' | 'verify';
+type SectionId = 'kernel' | 'runtime' | 'fidgetflo' | 'models' | 'data' | 'verify';
 
 export class RvfaBuilder {
   private opts: Required<BuildOptions>;
@@ -109,7 +109,7 @@ export class RvfaBuilder {
       arch: options.arch || 'x86_64',
       profile: options.profile,
       output: resolve(options.output),
-      rufloVersion: options.rufloVersion || detectRufloVersion(),
+      rufloVersion: options.rufloVersion || detectFidgetFloVersion(),
       models: options.models ?? defaultModelsForProfile(options.profile),
       apiKeys: options.apiKeys ?? '',
       verbose: options.verbose ?? false,
@@ -126,7 +126,7 @@ export class RvfaBuilder {
     const stages: { id: SectionId; raw: Buffer; label: string }[] = [
       { id: 'kernel',  raw: this.buildKernelSection(),  label: 'Kernel (Alpine rootfs)' },
       { id: 'runtime', raw: this.buildRuntimeSection(), label: 'Runtime (Node.js + Claude Code)' },
-      { id: 'ruflo',   raw: this.buildRufloSection(),   label: 'Ruflo CLI' },
+      { id: 'fidgetflo',   raw: this.buildFidgetFloSection(),   label: 'FidgetFlo CLI' },
       { id: 'models',  raw: this.buildModelsSection(),  label: `Models (${this.opts.profile})` },
       { id: 'data',    raw: this.buildDataSection(),    label: 'Data (AgentDB)' },
       { id: 'verify',  raw: this.buildVerifySection(),  label: 'Verify (test suite)' },
@@ -176,7 +176,7 @@ export class RvfaBuilder {
     return jsonBuf({
       type: 'kernel', distribution: 'alpine', version: '3.23', arch: this.opts.arch,
       packages: ['busybox', 'dumb-init', 'musl'],
-      init: '/sbin/init -> ruflo-init (PID 1)',
+      init: '/sbin/init -> fidgetflo-init (PID 1)',
       features: ['minimal rootfs', 'read-only root filesystem', 'tmpfs for /tmp and /run', 'seccomp profile applied'],
       sizeTarget: '~5MB compressed',
       note: 'Manifest-only: actual rootfs fetched during full build pipeline',
@@ -195,18 +195,18 @@ export class RvfaBuilder {
     });
   }
 
-  private buildRufloSection(): Buffer {
+  private buildFidgetFloSection(): Buffer {
     let packageMeta: Record<string, unknown> | null = null;
     try {
-      const raw = execSync('npm pack ruflo@latest --dry-run --json 2>/dev/null', { encoding: 'utf-8', timeout: 15_000 });
+      const raw = execSync('npm pack fidgetflo@latest --dry-run --json 2>/dev/null', { encoding: 'utf-8', timeout: 15_000 });
       const parsed = JSON.parse(raw);
       if (Array.isArray(parsed) && parsed.length > 0) packageMeta = parsed[0];
     } catch { /* manifest-only fallback */ }
 
     return jsonBuf({
-      type: 'ruflo', version: this.opts.rufloVersion,
-      package: packageMeta ?? { name: 'ruflo', version: this.opts.rufloVersion },
-      commands: RUFLO_COMMANDS, commandCount: RUFLO_COMMANDS.length,
+      type: 'fidgetflo', version: this.opts.rufloVersion,
+      package: packageMeta ?? { name: 'fidgetflo', version: this.opts.rufloVersion },
+      commands: FIDGETFLO_COMMANDS, commandCount: FIDGETFLO_COMMANDS.length,
       agents: AGENT_TYPES, agentCount: AGENT_TYPES.length,
       hooks: { count: HOOK_TYPES.length, types: HOOK_TYPES },
       workers: { count: WORKER_TYPES.length, types: WORKER_TYPES },
@@ -289,10 +289,10 @@ export class RvfaBuilder {
       this.log(`    Bundled verify-appliance.sh (${fmtBytes(script.length)})`);
     } else {
       script = Buffer.from([
-        '#!/bin/sh', 'set -e', 'RUFLO_CMD="${RUFLO_CMD:-ruflo}"',
+        '#!/bin/sh', 'set -e', 'FIDGETFLO_CMD="${FIDGETFLO_CMD:-fidgetflo}"',
         'echo "Running basic verification..."',
-        '$RUFLO_CMD --version && echo "  OK: CLI" || echo "  FAIL: CLI"',
-        '$RUFLO_CMD doctor && echo "  OK: Doctor" || echo "  FAIL: Doctor"',
+        '$FIDGETFLO_CMD --version && echo "  OK: CLI" || echo "  FAIL: CLI"',
+        '$FIDGETFLO_CMD doctor && echo "  OK: Doctor" || echo "  FAIL: Doctor"',
         'echo "Verification complete."',
       ].join('\n'), 'utf-8');
       this.log('    Using stub verify script (verify-appliance.sh not found)');
@@ -317,9 +317,9 @@ export class RvfaBuilder {
     if (this.opts.profile !== 'offline') caps.push('cloud-api-vault');
 
     const boot: RvfaBootConfig = {
-      entrypoint: '/opt/ruflo/bin/cli.js',
+      entrypoint: '/opt/fidgetflo/bin/cli.js',
       args: ['--profile', this.opts.profile],
-      env: { NODE_ENV: 'production', CLAUDE_FLOW_MEMORY_BACKEND: 'hybrid', CLAUDE_FLOW_LOG_LEVEL: 'info' },
+      env: { NODE_ENV: 'production', FIDGETFLO_MEMORY_BACKEND: 'hybrid', FIDGETFLO_LOG_LEVEL: 'info' },
       isolation: this.opts.profile === 'cloud' ? 'container' : 'native',
     };
 
@@ -331,7 +331,7 @@ export class RvfaBuilder {
     };
 
     return {
-      magic: 'RVFA', version: 1, name: 'ruflo-appliance', appVersion: this.opts.rufloVersion,
+      magic: 'RVFA', version: 1, name: 'fidgetflo-appliance', appVersion: this.opts.rufloVersion,
       arch: this.opts.arch, platform: 'linux', profile: this.opts.profile,
       created: new Date().toISOString(), boot, models, capabilities: caps,
     };
@@ -363,7 +363,7 @@ function parseEnvFile(content: string): Record<string, string> {
   return result;
 }
 
-function detectRufloVersion(): string {
+function detectFidgetFloVersion(): string {
   try {
     const p = resolve(dirname(new URL(import.meta.url).pathname), '../../package.json');
     if (existsSync(p)) return JSON.parse(readFileSync(p, 'utf-8')).version ?? '3.5.0';

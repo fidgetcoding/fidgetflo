@@ -33,13 +33,13 @@ const listCommand: Command = {
     { name: 'type', short: 't', type: 'string', description: 'Filter by plugin type' },
     { name: 'official', short: 'o', type: 'boolean', description: 'Show only official plugins' },
     { name: 'featured', short: 'f', type: 'boolean', description: 'Show featured plugins' },
-    { name: 'registry', short: 'r', type: 'string', description: 'Registry to use (default: claude-flow-official)' },
+    { name: 'registry', short: 'r', type: 'string', description: 'Registry to use (default: fidgetflo-official)' },
   ],
   examples: [
-    { command: 'claude-flow plugins list', description: 'List all plugins from registry' },
-    { command: 'claude-flow plugins list --installed', description: 'List installed only' },
-    { command: 'claude-flow plugins list --official', description: 'List official plugins' },
-    { command: 'claude-flow plugins list --category security', description: 'List security plugins' },
+    { command: 'fidgetflo plugins list', description: 'List all plugins from registry' },
+    { command: 'fidgetflo plugins list --installed', description: 'List installed only' },
+    { command: 'fidgetflo plugins list --official', description: 'List official plugins' },
+    { command: 'fidgetflo plugins list --category security', description: 'List security plugins' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const installedOnly = ctx.flags.installed as boolean;
@@ -63,8 +63,8 @@ const listCommand: Command = {
         if (installed.length === 0) {
           output.writeln(output.dim('No plugins installed.'));
           output.writeln();
-          output.writeln(output.dim('Run "claude-flow plugins list" to see available plugins'));
-          output.writeln(output.dim('Run "claude-flow plugins install -n <plugin>" to install'));
+          output.writeln(output.dim('Run "fidgetflo plugins list" to see available plugins'));
+          output.writeln(output.dim('Run "fidgetflo plugins install -n <plugin>" to install'));
           return { success: true };
         }
 
@@ -218,8 +218,8 @@ const installCommand: Command = {
     { name: 'registry', short: 'r', type: 'string', description: 'Registry to use' },
   ],
   examples: [
-    { command: 'claude-flow plugins install -n community-analytics', description: 'Install plugin from IPFS' },
-    { command: 'claude-flow plugins install -n ./my-plugin --dev', description: 'Install local plugin' },
+    { command: 'fidgetflo plugins install -n community-analytics', description: 'Install plugin from IPFS' },
+    { command: 'fidgetflo plugins install -n ./my-plugin --dev', description: 'Install local plugin' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const name = ctx.flags.name as string;
@@ -254,7 +254,7 @@ const installCommand: Command = {
       if (existingPlugin) {
         spinner.fail(`Plugin ${name} is already installed (v${existingPlugin.version})`);
         output.writeln();
-        output.writeln(output.dim('Use "claude-flow plugins upgrade -n ' + name + '" to update'));
+        output.writeln(output.dim('Use "fidgetflo plugins upgrade -n ' + name + '" to update'));
         return { success: false, exitCode: 1 };
       }
 
@@ -329,7 +329,7 @@ const uninstallCommand: Command = {
     { name: 'force', short: 'f', type: 'boolean', description: 'Force uninstall without confirmation' },
   ],
   examples: [
-    { command: 'claude-flow plugins uninstall -n community-analytics', description: 'Uninstall plugin' },
+    { command: 'fidgetflo plugins uninstall -n community-analytics', description: 'Uninstall plugin' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const name = ctx.flags.name as string;
@@ -385,8 +385,8 @@ const toggleCommand: Command = {
     { name: 'disable', short: 'd', type: 'boolean', description: 'Disable the plugin' },
   ],
   examples: [
-    { command: 'claude-flow plugins toggle -n analytics --enable', description: 'Enable plugin' },
-    { command: 'claude-flow plugins toggle -n analytics --disable', description: 'Disable plugin' },
+    { command: 'fidgetflo plugins toggle -n analytics --enable', description: 'Enable plugin' },
+    { command: 'fidgetflo plugins toggle -n analytics --disable', description: 'Disable plugin' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const name = ctx.flags.name as string;
@@ -454,7 +454,7 @@ const infoCommand: Command = {
     { name: 'registry', short: 'r', type: 'string', description: 'Registry to use' },
   ],
   examples: [
-    { command: 'claude-flow plugins info -n @claude-flow/neural', description: 'Show plugin info' },
+    { command: 'fidgetflo plugins info -n @claude-flow/neural', description: 'Show plugin info' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const name = ctx.flags.name as string;
@@ -623,8 +623,8 @@ const createCommand: Command = {
     { name: 'path', short: 'p', type: 'string', description: 'Output path', default: '.' },
   ],
   examples: [
-    { command: 'claude-flow plugins create -n my-plugin', description: 'Create basic plugin' },
-    { command: 'claude-flow plugins create -n my-plugin -t hooks', description: 'Create hooks plugin' },
+    { command: 'fidgetflo plugins create -n my-plugin', description: 'Create basic plugin' },
+    { command: 'fidgetflo plugins create -n my-plugin -t hooks', description: 'Create hooks plugin' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const name = ctx.flags.name as string;
@@ -682,8 +682,8 @@ const upgradeCommand: Command = {
     { name: 'version', short: 'v', type: 'string', description: 'Target version (default: latest)' },
   ],
   examples: [
-    { command: 'claude-flow plugins upgrade -n @claude-flow/neural', description: 'Upgrade to latest' },
-    { command: 'claude-flow plugins upgrade -n @claude-flow/neural -v 3.1.0', description: 'Upgrade to specific version' },
+    { command: 'fidgetflo plugins upgrade -n @claude-flow/neural', description: 'Upgrade to latest' },
+    { command: 'fidgetflo plugins upgrade -n @claude-flow/neural -v 3.1.0', description: 'Upgrade to specific version' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const name = ctx.flags.name as string;
@@ -744,8 +744,8 @@ const searchCommand: Command = {
     { name: 'registry', short: 'r', type: 'string', description: 'Registry to use' },
   ],
   examples: [
-    { command: 'claude-flow plugins search -q neural', description: 'Search for neural plugins' },
-    { command: 'claude-flow plugins search -q security --verified', description: 'Search verified security plugins' },
+    { command: 'fidgetflo plugins search -q neural', description: 'Search for neural plugins' },
+    { command: 'fidgetflo plugins search -q security --verified', description: 'Search verified security plugins' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const query = ctx.flags.query as string;
@@ -844,8 +844,8 @@ const rateCommand: Command = {
     { name: 'rating', short: 'r', type: 'number', description: 'Rating (1-5)', required: true },
   ],
   examples: [
-    { command: 'claude-flow plugins rate -n @claude-flow/embeddings -r 5', description: 'Rate 5 stars' },
-    { command: 'claude-flow plugins rate -n my-plugin -r 4', description: 'Rate 4 stars' },
+    { command: 'fidgetflo plugins rate -n @claude-flow/embeddings -r 5', description: 'Rate 5 stars' },
+    { command: 'fidgetflo plugins rate -n my-plugin -r 4', description: 'Rate 4 stars' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const { rateItem } = await import('../services/registry-api.js');
@@ -892,14 +892,14 @@ export const pluginsCommand: Command = {
   description: 'Plugin management with IPFS-based decentralized registry',
   subcommands: [listCommand, searchCommand, installCommand, uninstallCommand, upgradeCommand, toggleCommand, infoCommand, createCommand, rateCommand],
   examples: [
-    { command: 'claude-flow plugins list', description: 'List plugins from IPFS registry' },
-    { command: 'claude-flow plugins search -q neural', description: 'Search for plugins' },
-    { command: 'claude-flow plugins install -n community-analytics', description: 'Install from IPFS' },
-    { command: 'claude-flow plugins create -n my-plugin', description: 'Create new plugin' },
+    { command: 'fidgetflo plugins list', description: 'List plugins from IPFS registry' },
+    { command: 'fidgetflo plugins search -q neural', description: 'Search for plugins' },
+    { command: 'fidgetflo plugins install -n community-analytics', description: 'Install from IPFS' },
+    { command: 'fidgetflo plugins create -n my-plugin', description: 'Create new plugin' },
   ],
   action: async (): Promise<CommandResult> => {
     output.writeln();
-    output.writeln(output.bold('RuFlo Plugin System'));
+    output.writeln(output.bold('FidgetFlo Plugin System'));
     output.writeln(output.dim('Decentralized plugin marketplace via IPFS'));
     output.writeln();
     output.writeln('Subcommands:');
@@ -933,7 +933,7 @@ export const pluginsCommand: Command = {
       '@claude-flow/plugin-gastown-bridge - Gas Town orchestrator integration (WASM-accelerated)',
     ]);
     output.writeln();
-    output.writeln(output.dim('Run "claude-flow plugins list --official" to see all official plugins'));
+    output.writeln(output.dim('Run "fidgetflo plugins list --official" to see all official plugins'));
     output.writeln(output.dim('Created with ❤️ by ruv.io'));
     return { success: true };
   },

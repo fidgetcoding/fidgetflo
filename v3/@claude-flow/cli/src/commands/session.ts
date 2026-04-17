@@ -1,6 +1,6 @@
 /**
  * V3 CLI Session Command
- * Session management for Claude Flow
+ * Session management for FidgetFlo
  */
 
 import type { Command, CommandContext, CommandResult } from '../types.js';
@@ -107,7 +107,7 @@ const listCommand: Command = {
 
       if (result.sessions.length === 0) {
         output.printInfo('No sessions found');
-        output.printInfo('Run "claude-flow session save" to create a session');
+        output.printInfo('Run "fidgetflo session save" to create a session');
         return { success: true, data: result };
       }
 
@@ -252,7 +252,7 @@ const saveCommand: Command = {
 
       output.writeln();
       output.printSuccess(`Session saved: ${result.sessionId}`);
-      output.printInfo(`Restore with: claude-flow session restore ${result.sessionId}`);
+      output.printInfo(`Restore with: fidgetflo session restore ${result.sessionId}`);
 
       if (ctx.flags.format === 'json') {
         output.printJson(result);
@@ -708,7 +708,7 @@ const importCommand: Command = {
       output.printSuccess(`Session imported: ${result.sessionId}`);
 
       if (!result.activated) {
-        output.printInfo(`Restore with: claude-flow session restore ${result.sessionId}`);
+        output.printInfo(`Restore with: fidgetflo session restore ${result.sessionId}`);
       }
 
       if (ctx.flags.format === 'json') {
@@ -779,7 +779,7 @@ const currentCommand: Command = {
     } catch (error) {
       if (error instanceof MCPClientError) {
         output.printWarning('No active session');
-        output.printInfo('Start a session with "claude-flow start"');
+        output.printInfo('Start a session with "fidgetflo start"');
         return { success: true, data: { active: false } };
       }
       output.printError(`Unexpected error: ${String(error)}`);
@@ -856,20 +856,20 @@ export const sessionCommand: Command = {
   ],
   options: [],
   examples: [
-    { command: 'claude-flow session list', description: 'List all sessions' },
-    { command: 'claude-flow session save -n "checkpoint-1"', description: 'Save current session' },
-    { command: 'claude-flow session restore session-123', description: 'Restore a session' },
-    { command: 'claude-flow session delete session-123', description: 'Delete a session' },
-    { command: 'claude-flow session export -o backup.json', description: 'Export session to file' },
-    { command: 'claude-flow session import backup.json', description: 'Import session from file' },
-    { command: 'claude-flow session current', description: 'Show current session' }
+    { command: 'fidgetflo session list', description: 'List all sessions' },
+    { command: 'fidgetflo session save -n "checkpoint-1"', description: 'Save current session' },
+    { command: 'fidgetflo session restore session-123', description: 'Restore a session' },
+    { command: 'fidgetflo session delete session-123', description: 'Delete a session' },
+    { command: 'fidgetflo session export -o backup.json', description: 'Export session to file' },
+    { command: 'fidgetflo session import backup.json', description: 'Import session from file' },
+    { command: 'fidgetflo session current', description: 'Show current session' }
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     // Show help if no subcommand
     output.writeln();
     output.writeln(output.bold('Session Management Commands'));
     output.writeln();
-    output.writeln('Usage: claude-flow session <subcommand> [options]');
+    output.writeln('Usage: fidgetflo session <subcommand> [options]');
     output.writeln();
     output.writeln('Subcommands:');
     output.printList([
@@ -882,7 +882,7 @@ export const sessionCommand: Command = {
       `${output.highlight('current')} - Show current active session`
     ]);
     output.writeln();
-    output.writeln('Run "claude-flow session <subcommand> --help" for subcommand help');
+    output.writeln('Run "fidgetflo session <subcommand> --help" for subcommand help');
 
     return { success: true };
   }

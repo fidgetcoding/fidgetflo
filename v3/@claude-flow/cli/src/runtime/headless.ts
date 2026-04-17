@@ -9,7 +9,7 @@
  *   npx @claude-flow/cli headless --benchmark
  *
  * Environment:
- *   CLAUDE_FLOW_HEADLESS=true
+ *   FIDGETFLO_HEADLESS=true
  *   CLAUDE_CODE_HEADLESS=true
  *
  * @module v3/cli/runtime/headless
@@ -98,7 +98,7 @@ function parseArgs(): HeadlessConfig {
  */
 function showHelp(): void {
   console.log(`
-Headless Runtime for RuFlo V3
+Headless Runtime for FidgetFlo V3
 
 Usage:
   headless --worker <type>    Run a specific worker
@@ -118,7 +118,7 @@ Options:
   -h, --help            Show help
 
 Environment:
-  CLAUDE_FLOW_HEADLESS=true   Enable headless mode
+  FIDGETFLO_HEADLESS=true   Enable headless mode
   CLAUDE_CODE_HEADLESS=true   Enable Claude Code headless
 
 Examples:
@@ -194,7 +194,7 @@ async function runDaemon(): Promise<void> {
  * Run benchmarks
  */
 async function runBenchmarks(): Promise<BenchmarkResults> {
-  console.log('=== RuFlo V3 Performance Benchmarks ===\n');
+  console.log('=== FidgetFlo V3 Performance Benchmarks ===\n');
 
   // Initialize intelligence
   await initializeIntelligence();
@@ -274,7 +274,7 @@ async function runBenchmarks(): Promise<BenchmarkResults> {
  * Show system status
  */
 async function showStatus(): Promise<void> {
-  console.log('=== RuFlo V3 System Status ===\n');
+  console.log('=== FidgetFlo V3 System Status ===\n');
 
   // Check daemon
   const daemon = getDaemon();
@@ -302,7 +302,7 @@ async function showStatus(): Promise<void> {
   console.log(`  Entries: ${hnsw.entryCount}`);
 
   console.log('\nEnvironment:');
-  console.log(`  CLAUDE_FLOW_HEADLESS: ${process.env.CLAUDE_FLOW_HEADLESS || 'not set'}`);
+  console.log(`  FIDGETFLO_HEADLESS: ${process.env.FIDGETFLO_HEADLESS || 'not set'}`);
   console.log(`  CLAUDE_CODE_HEADLESS: ${process.env.CLAUDE_CODE_HEADLESS || 'not set'}`);
   console.log(`  NODE_ENV: ${process.env.NODE_ENV || 'development'}`);
 }
@@ -312,7 +312,7 @@ async function showStatus(): Promise<void> {
  */
 async function main(): Promise<void> {
   // Set headless environment
-  process.env.CLAUDE_FLOW_HEADLESS = 'true';
+  process.env.FIDGETFLO_HEADLESS = 'true';
 
   const config = parseArgs();
 

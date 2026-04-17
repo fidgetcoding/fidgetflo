@@ -376,10 +376,10 @@ export const autopilotCommand: Command = {
   aliases: ['ap'],
   subcommands: [statusCommand, enableCommand, disableCommand, configCommand, resetCommand, logCommand, learnCommand, historyCommand, predictCommand, checkCommand],
   examples: [
-    { command: 'claude-flow autopilot status', description: 'Show current state and progress' },
-    { command: 'claude-flow autopilot enable', description: 'Enable persistent completion' },
-    { command: 'claude-flow autopilot config --max-iterations 100 --timeout 180', description: 'Configure limits' },
-    { command: 'claude-flow autopilot predict', description: 'Get recommended next action' },
+    { command: 'fidgetflo autopilot status', description: 'Show current state and progress' },
+    { command: 'fidgetflo autopilot enable', description: 'Enable persistent completion' },
+    { command: 'fidgetflo autopilot config --max-iterations 100 --timeout 180', description: 'Configure limits' },
+    { command: 'fidgetflo autopilot predict', description: 'Get recommended next action' },
   ],
   action: async (): Promise<CommandResult> => {
     output.writeln(output.bold('Autopilot — Persistent Swarm Completion'));

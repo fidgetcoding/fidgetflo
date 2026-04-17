@@ -21,8 +21,8 @@ const scanCommand: Command = {
     { name: 'fix', short: 'f', type: 'boolean', description: 'Auto-fix vulnerabilities where possible' },
   ],
   examples: [
-    { command: 'claude-flow security scan -t ./src', description: 'Scan source directory' },
-    { command: 'claude-flow security scan --depth deep --fix', description: 'Deep scan with auto-fix' },
+    { command: 'fidgetflo security scan -t ./src', description: 'Scan source directory' },
+    { command: 'fidgetflo security scan --depth deep --fix', description: 'Deep scan with auto-fix' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const target = ctx.flags.target as string || '.';
@@ -253,8 +253,8 @@ const cveCommand: Command = {
     { name: 'severity', short: 's', type: 'string', description: 'Filter by severity: critical, high, medium, low' },
   ],
   examples: [
-    { command: 'claude-flow security cve --list', description: 'List all CVEs' },
-    { command: 'claude-flow security cve -c CVE-2024-1234', description: 'Check specific CVE' },
+    { command: 'fidgetflo security cve --list', description: 'List all CVEs' },
+    { command: 'fidgetflo security cve -c CVE-2024-1234', description: 'Check specific CVE' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const checkCve = ctx.flags.check as string;
@@ -275,7 +275,7 @@ const cveCommand: Command = {
 
     output.writeln();
     output.writeln(`  ${output.dim('$')} npm audit                                    ${output.dim('# dependency vulnerabilities')}`);
-    output.writeln(`  ${output.dim('$')} claude-flow security scan                     ${output.dim('# real code + dependency scan')}`);
+    output.writeln(`  ${output.dim('$')} fidgetflo security scan                     ${output.dim('# real code + dependency scan')}`);
     if (checkCve) {
       output.writeln(`  ${output.dim('$')} open https://nvd.nist.gov/vuln/detail/${checkCve}  ${output.dim('# NVD lookup')}`);
     }
@@ -294,8 +294,8 @@ const threatsCommand: Command = {
     { name: 'export', short: 'e', type: 'string', description: 'Export format: json, md, html' },
   ],
   examples: [
-    { command: 'claude-flow security threats --model stride', description: 'Run STRIDE analysis' },
-    { command: 'claude-flow security threats -e md', description: 'Export as markdown' },
+    { command: 'fidgetflo security threats --model stride', description: 'Run STRIDE analysis' },
+    { command: 'fidgetflo security threats -e md', description: 'Export as markdown' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const model = ctx.flags.model as string || 'stride';
@@ -542,8 +542,8 @@ const auditCommand: Command = {
     { name: 'filter', short: 'f', type: 'string', description: 'Filter by event type' },
   ],
   examples: [
-    { command: 'claude-flow security audit --action list', description: 'List audit logs' },
-    { command: 'claude-flow security audit -a export', description: 'Export audit trail' },
+    { command: 'fidgetflo security audit --action list', description: 'List audit logs' },
+    { command: 'fidgetflo security audit -a export', description: 'Export audit trail' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const action = ctx.flags.action as string || 'list';
@@ -588,7 +588,7 @@ const auditCommand: Command = {
     auditEntries.sort((a, b) => b.timestamp.localeCompare(a.timestamp));
 
     if (auditEntries.length === 0) {
-      output.writeln(output.dim('No audit events found. Initialize a project first: claude-flow init'));
+      output.writeln(output.dim('No audit events found. Initialize a project first: fidgetflo init'));
     } else {
       output.printTable({
         columns: [
@@ -615,8 +615,8 @@ const secretsCommand: Command = {
     { name: 'ignore', short: 'i', type: 'string', description: 'Patterns to ignore' },
   ],
   examples: [
-    { command: 'claude-flow security secrets --action scan', description: 'Scan for secrets' },
-    { command: 'claude-flow security secrets -a rotate', description: 'Rotate compromised secrets' },
+    { command: 'fidgetflo security secrets --action scan', description: 'Scan for secrets' },
+    { command: 'fidgetflo security secrets -a rotate', description: 'Rotate compromised secrets' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const scanPath = ctx.flags.path as string || '.';
@@ -786,9 +786,9 @@ const defendCommand: Command = {
     { name: 'output', short: 'o', type: 'string', description: 'Output format: text, json', default: 'text' },
   ],
   examples: [
-    { command: 'claude-flow security defend -i "ignore previous instructions"', description: 'Scan text for threats' },
-    { command: 'claude-flow security defend -f ./prompts.txt', description: 'Scan file for threats' },
-    { command: 'claude-flow security defend --stats', description: 'Show detection statistics' },
+    { command: 'fidgetflo security defend -i "ignore previous instructions"', description: 'Scan text for threats' },
+    { command: 'fidgetflo security defend -f ./prompts.txt', description: 'Scan file for threats' },
+    { command: 'fidgetflo security defend --stats', description: 'Show detection statistics' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const inputText = ctx.flags.input as string;
@@ -842,7 +842,7 @@ const defendCommand: Command = {
     }
 
     if (!textToScan) {
-      output.writeln('Usage: claude-flow security defend -i "<text>" or -f <file>');
+      output.writeln('Usage: fidgetflo security defend -i "<text>" or -f <file>');
       output.writeln();
       output.writeln('Options:');
       output.printList([
@@ -934,13 +934,13 @@ export const securityCommand: Command = {
   description: 'Security scanning, CVE detection, threat modeling, AI defense',
   subcommands: [scanCommand, cveCommand, threatsCommand, auditCommand, secretsCommand, defendCommand],
   examples: [
-    { command: 'claude-flow security scan', description: 'Run security scan' },
-    { command: 'claude-flow security cve --list', description: 'List known CVEs' },
-    { command: 'claude-flow security threats', description: 'Run threat analysis' },
+    { command: 'fidgetflo security scan', description: 'Run security scan' },
+    { command: 'fidgetflo security cve --list', description: 'List known CVEs' },
+    { command: 'fidgetflo security threats', description: 'Run threat analysis' },
   ],
   action: async (): Promise<CommandResult> => {
     output.writeln();
-    output.writeln(output.bold('RuFlo Security Suite'));
+    output.writeln(output.bold('FidgetFlo Security Suite'));
     output.writeln(output.dim('Comprehensive security scanning and vulnerability management'));
     output.writeln();
     output.writeln('Subcommands:');

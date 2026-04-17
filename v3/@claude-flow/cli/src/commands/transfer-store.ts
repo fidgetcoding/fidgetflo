@@ -20,7 +20,7 @@ export const storeListCommand: Command = {
   aliases: ['ls'],
   description: 'List patterns from decentralized registry',
   options: [
-    { name: 'registry', short: 'r', type: 'string', description: 'Registry name (default: claude-flow-official)' },
+    { name: 'registry', short: 'r', type: 'string', description: 'Registry name (default: fidgetflo-official)' },
     { name: 'category', short: 'c', type: 'string', description: 'Filter by category' },
     { name: 'featured', short: 'f', type: 'boolean', description: 'Show featured patterns' },
     { name: 'trending', short: 't', type: 'boolean', description: 'Show trending patterns' },
@@ -28,9 +28,9 @@ export const storeListCommand: Command = {
     { name: 'limit', short: 'l', type: 'number', description: 'Maximum results', default: 20 },
   ],
   examples: [
-    { command: 'claude-flow hooks transfer store list', description: 'List all patterns' },
-    { command: 'claude-flow hooks transfer store list --category routing', description: 'List routing patterns' },
-    { command: 'claude-flow hooks transfer store list --featured', description: 'List featured patterns' },
+    { command: 'fidgetflo hooks transfer store list', description: 'List all patterns' },
+    { command: 'fidgetflo hooks transfer store list --category routing', description: 'List routing patterns' },
+    { command: 'fidgetflo hooks transfer store list --featured', description: 'List featured patterns' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const registryName = ctx.flags.registry as string;
@@ -135,8 +135,8 @@ export const storeSearchCommand: Command = {
     { name: 'limit', type: 'number', description: 'Maximum results', default: 20 },
   ],
   examples: [
-    { command: 'claude-flow hooks transfer store search -q "routing"', description: 'Search for routing patterns' },
-    { command: 'claude-flow hooks transfer store search -q "react" --language typescript', description: 'Search with filters' },
+    { command: 'fidgetflo hooks transfer store search -q "routing"', description: 'Search for routing patterns' },
+    { command: 'fidgetflo hooks transfer store search -q "react" --language typescript', description: 'Search with filters' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const query = (ctx.args[0] || ctx.flags.query) as string;
@@ -213,8 +213,8 @@ export const storeDownloadCommand: Command = {
     { name: 'import', short: 'i', type: 'boolean', description: 'Import after download' },
   ],
   examples: [
-    { command: 'claude-flow hooks transfer store download -n seraphine-genesis', description: 'Download pattern' },
-    { command: 'claude-flow hooks transfer store download -n seraphine-genesis --import', description: 'Download and import' },
+    { command: 'fidgetflo hooks transfer store download -n seraphine-genesis', description: 'Download pattern' },
+    { command: 'fidgetflo hooks transfer store download -n seraphine-genesis --import', description: 'Download and import' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const patternName = (ctx.args[0] || ctx.flags.name) as string;
@@ -300,7 +300,7 @@ export const storePublishCommand: Command = {
     { name: 'framework', type: 'string', description: 'Primary framework' },
   ],
   examples: [
-    { command: 'claude-flow hooks transfer store publish -i patterns.cfp -n my-patterns -d "My patterns" -c routing -t custom', description: 'Publish pattern' },
+    { command: 'fidgetflo hooks transfer store publish -i patterns.cfp -n my-patterns -d "My patterns" -c routing -t custom', description: 'Publish pattern' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const inputPath = ctx.flags.input as string;
@@ -376,7 +376,7 @@ export const storeInfoCommand: Command = {
     { name: 'name', short: 'n', type: 'string', description: 'Pattern name or ID', required: true },
   ],
   examples: [
-    { command: 'claude-flow hooks transfer store info -n seraphine-genesis', description: 'Show pattern info' },
+    { command: 'fidgetflo hooks transfer store info -n seraphine-genesis', description: 'Show pattern info' },
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const patternName = (ctx.args[0] || ctx.flags.name) as string;
@@ -462,14 +462,14 @@ export const storeCommand: Command = {
     storeInfoCommand,
   ],
   examples: [
-    { command: 'claude-flow hooks transfer store list', description: 'List patterns' },
-    { command: 'claude-flow hooks transfer store search -q "routing"', description: 'Search patterns' },
-    { command: 'claude-flow hooks transfer store download -n seraphine-genesis', description: 'Download pattern' },
-    { command: 'claude-flow hooks transfer store publish -i patterns.cfp ...', description: 'Publish pattern' },
+    { command: 'fidgetflo hooks transfer store list', description: 'List patterns' },
+    { command: 'fidgetflo hooks transfer store search -q "routing"', description: 'Search patterns' },
+    { command: 'fidgetflo hooks transfer store download -n seraphine-genesis', description: 'Download pattern' },
+    { command: 'fidgetflo hooks transfer store publish -i patterns.cfp ...', description: 'Publish pattern' },
   ],
   action: async (): Promise<CommandResult> => {
     output.writeln();
-    output.writeln(output.bold('RuFlo Pattern Store'));
+    output.writeln(output.bold('FidgetFlo Pattern Store'));
     output.writeln(output.dim('Decentralized pattern marketplace via IPFS'));
     output.writeln();
     output.writeln('Subcommands:');
@@ -482,9 +482,9 @@ export const storeCommand: Command = {
     ]);
     output.writeln();
     output.writeln('Example:');
-    output.writeln(output.dim('  claude-flow hooks transfer store list --featured'));
-    output.writeln(output.dim('  claude-flow hooks transfer store search -q "routing"'));
-    output.writeln(output.dim('  claude-flow hooks transfer store download -n seraphine-genesis'));
+    output.writeln(output.dim('  fidgetflo hooks transfer store list --featured'));
+    output.writeln(output.dim('  fidgetflo hooks transfer store search -q "routing"'));
+    output.writeln(output.dim('  fidgetflo hooks transfer store download -n seraphine-genesis'));
 
     return { success: true };
   },

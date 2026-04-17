@@ -34,9 +34,9 @@ const statusCommand: Command = {
 
     const components: ComponentStatus[] = [];
 
-    // Check v2 config: claude-flow.config.json with version "2" or missing version
-    const v2ConfigPath = path.join(cwd, 'claude-flow.config.json');
-    const v3ConfigDir = path.join(cwd, '.claude-flow');
+    // Check v2 config: fidgetflo.config.json with version "2" or missing version
+    const v2ConfigPath = path.join(cwd, 'fidgetflo.config.json');
+    const v3ConfigDir = path.join(cwd, '.fidgetflo');
     let hasV2Config = false;
     let hasV3Config = false;
 
@@ -101,7 +101,7 @@ const statusCommand: Command = {
     }
 
     // Check migration state
-    const migrationStatePath = path.join(cwd, '.claude-flow', 'migration-state.json');
+    const migrationStatePath = path.join(cwd, '.fidgetflo', 'migration-state.json');
     let migrationState: string | null = null;
     try {
       if (fs.existsSync(migrationStatePath)) {
@@ -142,7 +142,7 @@ const statusCommand: Command = {
     const needsMigration = components.some(c => c.migrationNeeded === 'yes');
     output.writeln();
     if (needsMigration) {
-      output.printInfo('V2 artifacts detected. Run "claude-flow migrate run" to migrate.');
+      output.printInfo('V2 artifacts detected. Run "fidgetflo migrate run" to migrate.');
     } else {
       output.printSuccess('No migration needed.');
     }
@@ -188,7 +188,7 @@ const runCommand: Command = {
     const dryRun = ctx.flags['dry-run'] === true;
     const skipBackup = ctx.flags.backup === false;
     const timestamp = new Date().toISOString().replace(/[:.]/g, '-');
-    const v3Dir = path.join(cwd, '.claude-flow');
+    const v3Dir = path.join(cwd, '.fidgetflo');
     const backupDir = path.join(v3Dir, 'backup', `v2-${timestamp}`);
     const migrationStatePath = path.join(v3Dir, 'migration-state.json');
 
@@ -202,7 +202,7 @@ const runCommand: Command = {
     }
     output.writeln();
 
-    // Ensure .claude-flow directory exists
+    // Ensure .fidgetflo directory exists
     if (!dryRun) {
       fs.mkdirSync(v3Dir, { recursive: true });
     }
@@ -214,7 +214,7 @@ const runCommand: Command = {
     }
 
     // --- Config migration ---
-    const v2ConfigPath = path.join(cwd, 'claude-flow.config.json');
+    const v2ConfigPath = path.join(cwd, 'fidgetflo.config.json');
     try {
       if (fs.existsSync(v2ConfigPath)) {
         const raw = fs.readFileSync(v2ConfigPath, 'utf-8');
@@ -225,7 +225,7 @@ const runCommand: Command = {
           } else {
             // Backup
             if (!skipBackup) {
-              fs.copyFileSync(v2ConfigPath, path.join(backupDir, 'claude-flow.config.json'));
+              fs.copyFileSync(v2ConfigPath, path.join(backupDir, 'fidgetflo.config.json'));
             }
             // Transform to v3 format
             const v3Config: Record<string, unknown> = { ...parsed, version: '3' };
@@ -287,7 +287,7 @@ const runCommand: Command = {
               }
             }
             output.printSuccess(`Memory files backed up (${jsonFiles.length} JSON, ${hasDb ? '1 DB' : '0 DB'}).`);
-            output.printInfo('Run "claude-flow memory init --force" to import v2 memory into v3 AgentDB.');
+            output.printInfo('Run "fidgetflo memory init --force" to import v2 memory into v3 AgentDB.');
           }
           migrated.push('memory');
         } else {
@@ -370,7 +370,7 @@ const runCommand: Command = {
       output.printInfo(`Dry run complete. ${migrated.length} component(s) would be migrated.`);
     } else if (migrated.length > 0) {
       output.printSuccess(`Migration complete. ${migrated.length} component(s) migrated: ${migrated.join(', ')}`);
-      output.printInfo('Run "claude-flow migrate verify" to validate the migration.');
+      output.printInfo('Run "fidgetflo migrate verify" to validate the migration.');
     } else {
       output.printInfo('Nothing to migrate.');
     }
@@ -393,7 +393,7 @@ const verifyCommand: Command = {
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const cwd = ctx.cwd || process.cwd();
-    const v3Dir = path.join(cwd, '.claude-flow');
+    const v3Dir = path.join(cwd, '.fidgetflo');
     const migrationStatePath = path.join(v3Dir, 'migration-state.json');
 
     interface CheckResult {
@@ -510,7 +510,7 @@ const verifyCommand: Command = {
       output.printSuccess('All verification checks passed.');
     } else {
       output.printError('Some verification checks failed.');
-      output.printInfo('Run "claude-flow migrate run" to re-run the migration, or "migrate rollback" to restore from backup.');
+      output.printInfo('Run "fidgetflo migrate run" to re-run the migration, or "migrate rollback" to restore from backup.');
     }
 
     return { success: allPassed, data: { checks, allPassed }, exitCode: allPassed ? 0 : 1 };
@@ -537,7 +537,7 @@ const rollbackCommand: Command = {
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     const cwd = ctx.cwd || process.cwd();
-    const v3Dir = path.join(cwd, '.claude-flow');
+    const v3Dir = path.join(cwd, '.fidgetflo');
     const migrationStatePath = path.join(v3Dir, 'migration-state.json');
 
     output.writeln();
@@ -573,9 +573,9 @@ const rollbackCommand: Command = {
 
     try {
       // Restore config
-      const backupConfig = path.join(backupPath, 'claude-flow.config.json');
+      const backupConfig = path.join(backupPath, 'fidgetflo.config.json');
       if (fs.existsSync(backupConfig)) {
-        const destConfig = path.join(cwd, 'claude-flow.config.json');
+        const destConfig = path.join(cwd, 'fidgetflo.config.json');
         fs.copyFileSync(backupConfig, destConfig);
         // Remove v3 config
         const v3Config = path.join(v3Dir, 'config.json');
@@ -643,7 +643,7 @@ const breakingCommand: Command = {
       {
         category: 'Configuration',
         changes: [
-          { change: 'Config file renamed', from: 'claude-flow.json', to: 'claude-flow.config.json' },
+          { change: 'Config file renamed', from: 'fidgetflo.json', to: 'fidgetflo.config.json' },
           { change: 'Swarm config restructured', from: 'swarm.mode', to: 'swarm.topology' },
           { change: 'Provider config format', from: 'provider: "anthropic"', to: 'providers: [...]' }
         ]
@@ -653,7 +653,7 @@ const breakingCommand: Command = {
         changes: [
           { change: 'Backend option changed', from: 'memory: { type }', to: 'memory: { backend }' },
           { change: 'HNSW enabled by default', from: 'Manual opt-in', to: 'Auto-enabled' },
-          { change: 'Storage path changed', from: '.claude-flow/memory', to: 'data/memory' }
+          { change: 'Storage path changed', from: '.fidgetflo/memory', to: 'data/memory' }
         ]
       },
       {
@@ -706,7 +706,7 @@ const breakingCommand: Command = {
       output.writeln();
     }
 
-    output.printInfo('Run "claude-flow migrate run" to automatically handle these changes');
+    output.printInfo('Run "fidgetflo migrate run" to automatically handle these changes');
 
     return { success: true, data: changes };
   }
@@ -719,15 +719,15 @@ export const migrateCommand: Command = {
   subcommands: [statusCommand, runCommand, verifyCommand, rollbackCommand, breakingCommand],
   options: [],
   examples: [
-    { command: 'claude-flow migrate status', description: 'Check migration status' },
-    { command: 'claude-flow migrate run --dry-run', description: 'Preview migration' },
-    { command: 'claude-flow migrate run -t all', description: 'Run full migration' }
+    { command: 'fidgetflo migrate status', description: 'Check migration status' },
+    { command: 'fidgetflo migrate run --dry-run', description: 'Preview migration' },
+    { command: 'fidgetflo migrate run -t all', description: 'Run full migration' }
   ],
   action: async (ctx: CommandContext): Promise<CommandResult> => {
     output.writeln();
     output.writeln(output.bold('V2 to V3 Migration Tools'));
     output.writeln();
-    output.writeln('Usage: claude-flow migrate <subcommand> [options]');
+    output.writeln('Usage: fidgetflo migrate <subcommand> [options]');
     output.writeln();
     output.writeln('Subcommands:');
     output.printList([
@@ -767,12 +767,12 @@ function formatMigrationStatus(status: string): string {
 
 function getMigrationSteps(target: string): Array<{ name: string; description: string; source: string; dest: string }> {
   const allSteps = [
-    { name: 'Configuration Files', description: 'Migrate config schema to V3 format', source: './claude-flow.json', dest: './claude-flow.config.json' },
-    { name: 'Memory Backend', description: 'Upgrade to hybrid backend with AgentDB', source: './.claude-flow/memory', dest: './data/memory' },
-    { name: 'Agent Definitions', description: 'Convert agent configs to V3 format', source: './.claude-flow/agents', dest: './v3/agents' },
+    { name: 'Configuration Files', description: 'Migrate config schema to V3 format', source: './fidgetflo.json', dest: './fidgetflo.config.json' },
+    { name: 'Memory Backend', description: 'Upgrade to hybrid backend with AgentDB', source: './.fidgetflo/memory', dest: './data/memory' },
+    { name: 'Agent Definitions', description: 'Convert agent configs to V3 format', source: './.fidgetflo/agents', dest: './v3/agents' },
     { name: 'Hook Registry', description: 'Migrate hooks to V3 hook system', source: './src/hooks', dest: './v3/hooks' },
-    { name: 'Workflow Definitions', description: 'Convert workflows to event-sourced format', source: './.claude-flow/workflows', dest: './data/workflows' },
-    { name: 'Embeddings System', description: 'Migrate to ONNX with hyperbolic (Poincaré ball)', source: 'OpenAI/TF.js embeddings', dest: '.claude-flow/embeddings.json' }
+    { name: 'Workflow Definitions', description: 'Convert workflows to event-sourced format', source: './.fidgetflo/workflows', dest: './data/workflows' },
+    { name: 'Embeddings System', description: 'Migrate to ONNX with hyperbolic (Poincaré ball)', source: 'OpenAI/TF.js embeddings', dest: '.fidgetflo/embeddings.json' }
   ];
 
   if (target === 'all') return allSteps;
