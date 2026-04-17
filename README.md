@@ -12,7 +12,7 @@ If you want the real thing, use Ruflo: **https://github.com/ruvnet/ruflo**. If y
 
 All of the actual engineering that makes this useful is Ruflo. Specifically:
 
-- **MCP server** (`mcp__ruflo__*`, 200+ tools) — agent lifecycle, swarm coordination, memory, hooks, neural patterns, AgentDB, performance benchmarks, GitHub automation, WASM agents.
+- **MCP server** (`mcp__fidgetflo__*`, 200+ tools) — agent lifecycle, swarm coordination, memory, hooks, neural patterns, AgentDB, performance benchmarks, GitHub automation, WASM agents.
 - **Swarm engine** — hierarchical, mesh, adaptive coordinators. 15-agent full swarm, 5-agent mini swarm, specialized strategy, raft consensus.
 - **Hive-mind** — queen-led autonomous execution with Byzantine fault-tolerant consensus (`/fhive` here, `/rhive` upstream).
 - **Memory subsystem** — AgentDB with HNSW indexing (150x–12,500x search improvement), ReasoningBank adaptive learning, session persistence, hybrid store.
@@ -90,13 +90,13 @@ Everything under `npx fidgetflo …` is the same CLI surface as `npx ruflo …`.
 
 Ten slash commands. Two columns (compact vs. full swarm), five thinking tiers.
 
-| Tier | Mini (5 agents) | Swarm (15 agents) | Thinking trigger appended | Approx. budget |
+| Tier | Mini (5 agents) | Swarm (15 agents) | Thinking trigger appended | Budget |
 |---|---|---|---|---|
-| 0 | `/fmini` | `/fswarm` | *(none)* | 0 |
-| 1 | `/fmini1` | `/fswarm1` | `Think.` | ~4k tokens |
-| 2 | `/fmini2` | `/fswarm2` | `Think hard.` | ~10k tokens |
-| 3 | `/fmini3` | `/fswarm3` | `Think harder.` | ~31k tokens |
-| max | `/fminimax` | `/fswarmmax` | `Ultrathink.` | ~32k (max) |
+| 0 | `/fmini` | `/fswarm` | *(none)* | none |
+| 1 | `/fmini1` | `/fswarm1` | `Think.` | light |
+| 2 | `/fmini2` | `/fswarm2` | `Think hard.` | medium |
+| 3 | `/fmini3` | `/fswarm3` | `Think harder.` | deep |
+| max | `/fminimax` | `/fswarmmax` | `Ultrathink.` | max |
 
 Plus one more inherited from Ruflo:
 
