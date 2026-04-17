@@ -276,6 +276,21 @@ jobs:
           ls -la *.tgz 2>/dev/null || echo "No tgz files created"
         continue-on-error: true
 
+      - name: Upload build artifacts
+        # Always upload (even if tgz missing) so the downstream
+        # performance-verification download-artifact step finds *something* and
+        # doesn't 404 the whole pipeline. Use if-no-files-found: ignore so an
+        # empty tgz directory doesn't fail this step.
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: build-artifacts-${{ needs.setup-verification.outputs.verification-id }}
+          path: |
+            *.tgz
+            v3/@claude-flow/cli/bin/cli.js
+          if-no-files-found: ignore
+          retention-days: 7
+
   # Documentation verification - simplified checks
   docs-verification:
     name: 📚 Documentation Verification

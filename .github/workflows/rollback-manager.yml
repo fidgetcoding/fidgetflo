@@ -32,6 +32,10 @@ on:
           - infrastructure
           - full
 
+permissions:
+  contents: write
+  actions: read
+
 env:
   NODE_VERSION: '20'
   ROLLBACK_RETENTION_DAYS: 90
