@@ -352,7 +352,7 @@ npm run test:performance -- hnsw-benchmark
 
 ### Pre-Task Hook
 ```bash
-npx claude-flow@alpha hooks pre-task \
+npx fidgetflo@alpha hooks pre-task \
   --description "Agent 1: Implementing AgentDB v1.3.9 core integration"
 ```
 ✅ **Status**: Executed successfully
@@ -360,7 +360,7 @@ npx claude-flow@alpha hooks pre-task \
 
 ### Post-Task Hook
 ```bash
-npx claude-flow@alpha hooks post-task \
+npx fidgetflo@alpha hooks post-task \
   --task-id "task-1761196356300-ic918qh9k"
 ```
 ✅ **Status**: Executed successfully
@@ -368,7 +368,7 @@ npx claude-flow@alpha hooks post-task \
 
 ### Notification Hook
 ```bash
-npx claude-flow@alpha hooks notify \
+npx fidgetflo@alpha hooks notify \
   --message "Agent 1: AgentDB v1.3.9 integration complete - 100% backward compatible"
 ```
 ✅ **Status**: Notification sent to swarm

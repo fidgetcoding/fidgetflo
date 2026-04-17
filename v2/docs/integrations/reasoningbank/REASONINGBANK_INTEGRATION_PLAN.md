@@ -1,4 +1,4 @@
-# ReasoningBank Integration Plan for claude-flow v2.7.0
+# ReasoningBank Integration Plan for fidgetflo v2.7.0
 
 **Status**: 🟡 Proposal
 **Priority**: High
@@ -9,7 +9,7 @@
 
 ## Executive Summary
 
-This plan outlines comprehensive integration of agentic-flow's ReasoningBank learning memory system into claude-flow as first-class CLI parameters and SDK features. Current integration is limited to agent execution; this extends it to include intelligent memory-based learning.
+This plan outlines comprehensive integration of agentic-flow's ReasoningBank learning memory system into fidgetflo as first-class CLI parameters and SDK features. Current integration is limited to agent execution; this extends it to include intelligent memory-based learning.
 
 **Key Benefits:**
 - 🧠 **Agents learn from experience** (23% → 98% success rate)
@@ -26,7 +26,7 @@ This plan outlines comprehensive integration of agentic-flow's ReasoningBank lea
 
 **Agent Execution:**
 ```bash
-claude-flow agent run coder "Create REST API"
+fidgetflo agent run coder "Create REST API"
   --provider openrouter
   --model "meta-llama/llama-3.1-8b-instruct"
   --temperature 0.7
@@ -508,18 +508,18 @@ function showAgentHelp() {
 
   console.log('\nExamples:');
   console.log('\n  # Basic execution with learning');
-  console.log('  claude-flow agent run coder "Build REST API" --enable-memory');
+  console.log('  fidgetflo agent run coder "Build REST API" --enable-memory');
 
   console.log('\n  # With domain filtering');
-  console.log('  claude-flow agent run coder "Add auth" --enable-memory --memory-domain web');
+  console.log('  fidgetflo agent run coder "Add auth" --enable-memory --memory-domain web');
 
   console.log('\n  # Memory management');
-  console.log('  claude-flow agent memory init');
-  console.log('  claude-flow agent memory status');
-  console.log('  claude-flow agent memory list --sort confidence --limit 10');
+  console.log('  fidgetflo agent memory init');
+  console.log('  fidgetflo agent memory status');
+  console.log('  fidgetflo agent memory list --sort confidence --limit 10');
 
   console.log('\n  # Retrieve without learning (read-only)');
-  console.log('  claude-flow agent run researcher "Research topic" --enable-memory --no-learning');
+  console.log('  fidgetflo agent run researcher "Research topic" --enable-memory --no-learning');
 }
 ```
 
@@ -725,7 +725,7 @@ async configureReasoningBank(settings: Partial<any>): Promise<void> {
 
 ```json
 {
-  "claude-flow": {
+  "fidgetflo": {
     "execution": {
       "defaultProvider": "anthropic",
       "providers": {
@@ -769,10 +769,10 @@ async configureReasoningBank(settings: Partial<any>): Promise<void> {
 
 ```bash
 # First time: Initialize database
-claude-flow agent memory init
+fidgetflo agent memory init
 
 # Run task with learning enabled
-claude-flow agent run coder "Build login form with CSRF protection" \
+fidgetflo agent run coder "Build login form with CSRF protection" \
   --enable-memory \
   --memory-domain web \
   --provider openrouter
@@ -789,12 +789,12 @@ claude-flow agent run coder "Build login form with CSRF protection" \
 
 ```bash
 # Task 1: Learn authentication
-claude-flow agent run coder "Add JWT authentication" \
+fidgetflo agent run coder "Add JWT authentication" \
   --enable-memory \
   --memory-domain api
 
 # Task 2: Similar task benefits from Memory 1
-claude-flow agent run coder "Add OAuth2 authentication" \
+fidgetflo agent run coder "Add OAuth2 authentication" \
   --enable-memory \
   --memory-domain api
 
@@ -810,7 +810,7 @@ claude-flow agent run coder "Add OAuth2 authentication" \
 
 ```bash
 # View statistics
-claude-flow agent memory status
+fidgetflo agent memory status
 # Output:
 # 📊 ReasoningBank Status
 #    • Total memories: 47
@@ -819,7 +819,7 @@ claude-flow agent memory status
 #    • Total trajectories: 152
 
 # List top memories
-claude-flow agent memory list --sort confidence --limit 5
+fidgetflo agent memory list --sort confidence --limit 5
 # Output:
 # 📚 Memory Bank Contents
 # 1. CSRF token extraction (confidence: 0.92, used: 15 times)
@@ -827,7 +827,7 @@ claude-flow agent memory list --sort confidence --limit 5
 # 3. Database connection pooling (confidence: 0.85, used: 10 times)
 
 # Run consolidation
-claude-flow agent memory consolidate
+fidgetflo agent memory consolidate
 # Output:
 # 🔄 Memory Consolidation Complete
 #    • Duplicates removed: 3
@@ -840,7 +840,7 @@ claude-flow agent memory consolidate
 
 ```bash
 # Research with memory context, but don't learn
-claude-flow agent run researcher "Research React 19 features" \
+fidgetflo agent run researcher "Research React 19 features" \
   --enable-memory \
   --no-learning \
   --memory-domain web
@@ -850,12 +850,12 @@ claude-flow agent run researcher "Research React 19 features" \
 
 ```bash
 # Security domain
-claude-flow agent run security-auditor "Audit authentication" \
+fidgetflo agent run security-auditor "Audit authentication" \
   --enable-memory \
   --memory-domain security
 
 # Database domain
-claude-flow agent run database-architect "Design schema" \
+fidgetflo agent run database-architect "Design schema" \
   --enable-memory \
   --memory-domain database
 
@@ -934,7 +934,7 @@ describe('AgentExecutor with ReasoningBank', () => {
 describe('ReasoningBank CLI Integration', () => {
   it('should execute with memory enabled via CLI', async () => {
     const { stdout } = await execAsync(
-      'claude-flow agent run coder "Test task" --enable-memory'
+      'fidgetflo agent run coder "Test task" --enable-memory'
     );
 
     expect(stdout).toContain('🧠 Retrieved');
@@ -943,7 +943,7 @@ describe('ReasoningBank CLI Integration', () => {
 
   it('should show memory statistics', async () => {
     const { stdout } = await execAsync(
-      'claude-flow agent memory status'
+      'fidgetflo agent memory status'
     );
 
     expect(stdout).toContain('Total memories');
@@ -952,7 +952,7 @@ describe('ReasoningBank CLI Integration', () => {
 
   it('should consolidate memories', async () => {
     const { stdout } = await execAsync(
-      'claude-flow agent memory consolidate'
+      'fidgetflo agent memory consolidate'
     );
 
     expect(stdout).toContain('Consolidation complete');
@@ -977,10 +977,10 @@ Claude-flow includes ReasoningBank, which gives agents long-term memory and lear
 
 ```bash
 # Initialize database (first time only)
-claude-flow agent memory init
+fidgetflo agent memory init
 
 # Run agent with learning enabled
-claude-flow agent run coder "Build feature" --enable-memory
+fidgetflo agent run coder "Build feature" --enable-memory
 ```
 
 ### How It Works
@@ -1023,13 +1023,13 @@ Create comprehensive user guide with:
 
 2. **Initialize memory (optional):**
    ```bash
-   claude-flow agent memory init
+   fidgetflo agent memory init
    ```
 
 3. **Enable in config:**
    ```json
    {
-     "claude-flow": {
+     "fidgetflo": {
        "execution": {
          "reasoningbank": {
            "enabled": true

@@ -9,7 +9,7 @@ We have successfully integrated the official SWE-bench evaluation system with th
 ### 1. Official SWE-bench Integration (`official_integration.py`)
 - Connects to HuggingFace datasets API
 - Downloads official SWE-bench and SWE-bench-Lite datasets
-- Executes claude-flow commands with proper formatting
+- Executes fidgetflo commands with proper formatting
 - Generates predictions.json for leaderboard submission
 - Validates submission format
 
@@ -19,10 +19,10 @@ We have successfully integrated the official SWE-bench evaluation system with th
 - `swarm-bench swe-bench official --validate` - Validate predictions
 
 ### 3. Command Format
-The system uses the correct claude-flow command format:
+The system uses the correct fidgetflo command format:
 ```bash
-npx claude-flow@alpha swarm "task" --strategy optimization --agents 8 --non-interactive
-npx claude-flow@alpha hive-mind spawn "task" --agents 8 --non-interactive
+npx fidgetflo@alpha swarm "task" --strategy optimization --agents 8 --non-interactive
+npx fidgetflo@alpha hive-mind spawn "task" --agents 8 --non-interactive
 ```
 
 ### 4. Optimal Configuration
@@ -39,7 +39,7 @@ Based on our testing, the optimal configuration is:
 - Full SWE-bench (2,294 instances): ~200-400 hours
 
 ### Resources
-- Requires active claude-flow with API access
+- Requires active fidgetflo with API access
 - Each instance makes multiple API calls
 - Generates git diff patches for each issue
 
@@ -107,7 +107,7 @@ The system has been optimized with:
 ## 🔧 Troubleshooting
 
 If patches aren't generating:
-1. Verify claude-flow is installed: `npx claude-flow@alpha --version`
+1. Verify fidgetflo is installed: `npx fidgetflo@alpha --version`
 2. Check API access is configured
 3. Try increasing timeout in config
 4. Run with `--limit 1` to test single instance
@@ -136,4 +136,4 @@ The implementation is complete and ready for:
 - Performance benchmarking
 - Configuration optimization
 
-The system correctly uses claude-flow commands and generates predictions in the required format for official submission.
+The system correctly uses fidgetflo commands and generates predictions in the required format for official submission.

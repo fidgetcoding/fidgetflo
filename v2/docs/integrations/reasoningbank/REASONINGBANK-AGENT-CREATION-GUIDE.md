@@ -539,7 +539,7 @@ export async function reviewCode(codeContext) {
 export REASONINGBANK_ENABLED=true
 
 # Database location
-export CLAUDE_FLOW_DB_PATH=".swarm/memory.db"
+export FIDGETFLO_DB_PATH=".swarm/memory.db"
 
 # API Keys (choose one)
 export ANTHROPIC_API_KEY="sk-ant-..."  # Recommended

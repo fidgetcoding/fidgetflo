@@ -1,6 +1,6 @@
-# 📚 Claude-Flow Documentation
+# 📚 FidgetFlo Documentation
 
-Welcome to the Claude-Flow documentation! This directory contains comprehensive guides and references for using Claude-Flow v2.7.0.
+Welcome to the FidgetFlo documentation! This directory contains comprehensive guides and references for using FidgetFlo v2.7.0.
 
 ## 📖 Core Documentation
 
@@ -59,7 +59,7 @@ Test reports and validation results
 
 ### 📚 [User Guides](./guides/)
 Tutorials and learning resources
-- [Skills Tutorial](./guides/skills-tutorial.md) - Complete guide to 25 Claude Flow skills
+- [Skills Tutorial](./guides/skills-tutorial.md) - Complete guide to 25 FidgetFlo skills
 
 ### 🔌 [Integrations](./integrations/)
 Third-party platform integrations

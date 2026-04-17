@@ -1,6 +1,6 @@
-# Claude Flow Examples
+# FidgetFlo Examples
 
-This directory contains examples demonstrating various features and capabilities of the Claude Flow system, organized by category.
+This directory contains examples demonstrating various features and capabilities of the FidgetFlo system, organized by category.
 
 ## Directory Structure
 
@@ -17,7 +17,7 @@ examples/
 
 ## Quick Start
 
-1. **New to Claude Flow?** Start with `01-configurations/basic-config.json`
+1. **New to FidgetFlo?** Start with `01-configurations/basic-config.json`
 2. **Want to see it in action?** Run `03-demos/quick-demo.sh`
 3. **Building an app?** Check `05-swarm-apps/` for complete examples
 4. **Testing your setup?** Use `04-testing/test-swarm-cli.sh`
@@ -25,7 +25,7 @@ examples/
 ## Categories
 
 ### 01. Configurations
-System and workflow configuration files showing how to set up Claude Flow for different use cases.
+System and workflow configuration files showing how to set up FidgetFlo for different use cases.
 
 ### 02. Workflows
 Multi-agent workflow definitions demonstrating parallel execution, task dependencies, and agent coordination.
@@ -34,7 +34,7 @@ Multi-agent workflow definitions demonstrating parallel execution, task dependen
 Shell scripts that demonstrate the swarm system creating various types of applications.
 
 ### 04. Testing
-Scripts for testing Claude Flow features, SPARC modes, and system functionality.
+Scripts for testing FidgetFlo features, SPARC modes, and system functionality.
 
 ### 05. Swarm Apps
 Complete applications created by the swarm system, including source code, tests, and documentation.
@@ -50,15 +50,15 @@ cd examples/03-demos
 ./quick-demo.sh
 ```
 
-For configuration examples, use them with Claude Flow commands:
+For configuration examples, use them with FidgetFlo commands:
 ```bash
 cd examples
-../claude-flow swarm create "Your task description" --config ./01-configurations/basic/simple-config.json
+../fidgetflo swarm create "Your task description" --config ./01-configurations/basic/simple-config.json
 ```
 
 Or from the project root:
 ```bash
-./claude-flow swarm create "Your task description" --config ./examples/01-configurations/basic/simple-config.json
+./fidgetflo swarm create "Your task description" --config ./examples/01-configurations/basic/simple-config.json
 ```
 
 ## Contributing

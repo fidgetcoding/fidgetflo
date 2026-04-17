@@ -6,7 +6,7 @@ This folder contains utility scripts for managing ReasoningBank models.
 
 ### Schema Management
 
-**`fix-schema-compatibility.cjs`** - Add claude-flow tables to models
+**`fix-schema-compatibility.cjs`** - Add fidgetflo tables to models
 - Adds missing memory tables (`memory`, `memory_entries`, `collective_memory`, etc.)
 - Creates automatic backups (`.backup` files)
 - Optimizes databases (indexes, ANALYZE, VACUUM)

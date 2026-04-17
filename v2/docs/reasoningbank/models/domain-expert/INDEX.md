@@ -156,7 +156,7 @@ npx agentic-flow agent data-engineer "Build ETL pipeline" --model claude-sonnet-
 
 ## 🔗 Related Resources
 
-- **Claude Flow**: https://github.com/ruvnet/claude-flow
+- **FidgetFlo**: https://github.com/ruvnet/claude-flow
 - **Agentic-Flow**: https://www.npmjs.com/package/agentic-flow
 - **ReasoningBank Docs**: ../../../docs/reasoningbank/
 - **Training Models**: ../README.md
@@ -165,7 +165,7 @@ npx agentic-flow agent data-engineer "Build ETL pipeline" --model claude-sonnet-
 
 - **Issues**: https://github.com/ruvnet/claude-flow/issues
 - **Documentation**: https://github.com/ruvnet/claude-flow
-- **Community**: Claude Flow Discord
+- **Community**: FidgetFlo Discord
 
 ## 📝 Version History
 

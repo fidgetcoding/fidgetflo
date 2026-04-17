@@ -6,7 +6,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue.svg)](https://www.typescriptlang.org/)
 [![Core](https://img.shields.io/badge/Module-Core-blue.svg)](https://github.com/ruvnet/claude-flow)
 
-> Shared utilities, types, and core infrastructure for Claude Flow V3 - the foundation module used by all other @claude-flow packages.
+> Shared utilities, types, and core infrastructure for FidgetFlo V3 - the foundation module used by all other @fidgetflo packages.
 
 ## Features
 
@@ -304,7 +304,7 @@ export * from './types/mcp.types';
 
 ## Used By
 
-This package is a dependency of all other @claude-flow modules:
+This package is a dependency of all other @fidgetflo modules:
 
 - [@claude-flow/cli](../cli) - CLI module
 - [@claude-flow/security](../security) - Security & validation

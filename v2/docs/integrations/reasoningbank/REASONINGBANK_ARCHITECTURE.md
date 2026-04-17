@@ -4,7 +4,7 @@
 
 ```
 ┌──────────────────────────────────────────────────────────────────┐
-│                     claude-flow v2.7.0                           │
+│                     fidgetflo v2.7.0                           │
 │                                                                  │
 │  ┌────────────────┐         ┌─────────────────┐                │
 │  │  CLI Layer     │────────▶│  Agent Executor │                │
@@ -79,7 +79,7 @@
                            │
                            ▼
 ┌──────────────────────────────────────────────────────────────────┐
-│  claude-flow agent run coder "Build REST API" --enable-memory   │
+│  fidgetflo agent run coder "Build REST API" --enable-memory   │
 └──────────────────────────┬───────────────────────────────────────┘
                            │
                            ▼
@@ -290,7 +290,7 @@ For each candidate memory:
 ┌────────────────────────────────────────────────────────────────┐
 │  Layer 2: User Configuration (~/.claude/settings.json)        │
 │  {                                                             │
-│    "claude-flow": {                                            │
+│    "fidgetflo": {                                            │
 │      "execution": {                                            │
 │        "reasoningbank": {                                      │
 │          "enabled": true,                                      │
@@ -325,7 +325,7 @@ Resolution Order:
 3. If not set, use defaults
 
 Example:
-  $ claude-flow agent run coder "task" --memory-k 5
+  $ fidgetflo agent run coder "task" --memory-k 5
 
   Resolved config:
   {
@@ -339,7 +339,7 @@ Example:
 ## File Structure After Integration
 
 ```
-claude-flow/
+fidgetflo/
 ├── package.json                       # agentic-flow@1.4.11
 │
 ├── src/
@@ -472,4 +472,4 @@ Import from backup if available
 
 **Questions?**
 - GitHub: https://github.com/ruvnet/claude-code-flow/issues
-- Discord: https://discord.gg/claude-flow
+- Discord: https://discord.gg/fidgetflo

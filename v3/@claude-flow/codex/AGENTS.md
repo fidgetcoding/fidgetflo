@@ -4,7 +4,7 @@
 
 ## Project Overview
 
-A Claude Flow powered project
+A FidgetFlo powered project
 
 **Tech Stack**: TypeScript, Node.js
 **Architecture**: Domain-Driven Design with bounded contexts
@@ -103,7 +103,7 @@ Use `$skill-name` syntax to invoke:
 
 [optional body]
 
-Co-Authored-By: claude-flow <ruv@ruv.net>
+Co-Authored-By: fidgetflo <ruv@ruv.net>
 ```
 
 Types: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `chore`

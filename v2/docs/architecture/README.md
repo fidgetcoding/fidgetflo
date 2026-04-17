@@ -215,7 +215,7 @@ cd /workspaces/claude-code-flow
 ### Phase 1 Success Indicators
 
 ✅ **Integration tests use real CLI commands**
-- Tests run `./bin/claude-flow` commands
+- Tests run `./bin/fidgetflo` commands
 - Tests use actual npm scripts
 - No `node -e "Math.random()"` fake data
 

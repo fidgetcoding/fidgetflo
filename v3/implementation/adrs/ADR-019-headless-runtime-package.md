@@ -867,7 +867,7 @@ const HARD_LIMITS = {
 ### Neutral
 
 1. **Optional** - Users who don't need headless can skip it
-2. **Standalone** - Can be used without other claude-flow packages
+2. **Standalone** - Can be used without other fidgetflo packages
 
 ---
 

@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 /**
- * Claude Flow WebSocket Bridge Server - REAL MCP Integration
- * Connects browser dashboard to actual claude-flow MCP tools
+ * FidgetFlo WebSocket Bridge Server - REAL MCP Integration
+ * Connects browser dashboard to actual fidgetflo MCP tools
  */
 
 import { WebSocketServer } from 'ws';
@@ -27,13 +27,13 @@ class ClaudeFlowBridgeReal {
     }
 
     /**
-     * Start Claude Flow MCP Server Process
+     * Start FidgetFlo MCP Server Process
      */
     startClaudeFlowMCP() {
-        console.log('🚀 Starting Claude Flow MCP server...');
+        console.log('🚀 Starting FidgetFlo MCP server...');
 
-        // Start the actual claude-flow MCP server
-        this.mcpProcess = spawn('npx', ['claude-flow@alpha', 'mcp', 'start'], {
+        // Start the actual fidgetflo MCP server
+        this.mcpProcess = spawn('npx', ['fidgetflo@alpha', 'mcp', 'start'], {
             stdio: ['pipe', 'pipe', 'pipe'],
             cwd: path.join(__dirname, '../..')
         });
@@ -60,7 +60,7 @@ class ClaudeFlowBridgeReal {
 
         // Wait for MCP to initialize
         setTimeout(() => {
-            console.log('✅ Claude Flow MCP ready');
+            console.log('✅ FidgetFlo MCP ready');
             this.sendMCPCommand({
                 jsonrpc: '2.0',
                 method: 'initialize',
@@ -170,7 +170,7 @@ class ClaudeFlowBridgeReal {
             this.sendToClient(ws, {
                 type: 'connection',
                 status: 'connected',
-                message: 'Connected to real Claude Flow MCP server'
+                message: 'Connected to real FidgetFlo MCP server'
             });
 
             ws.on('message', (message) => {
@@ -194,7 +194,7 @@ class ClaudeFlowBridgeReal {
         });
 
         this.httpServer.listen(this.port, () => {
-            console.log(`\n🌐 Claude Flow Dashboard Server (REAL MCP)`);
+            console.log(`\n🌐 FidgetFlo Dashboard Server (REAL MCP)`);
             console.log(`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`);
             console.log(`📊 Dashboard: http://localhost:${this.port}`);
             console.log(`🔌 WebSocket: ws://localhost:${this.port}`);
@@ -209,7 +209,7 @@ class ClaudeFlowBridgeReal {
         console.log(`📨 Client Request: ${method}`);
 
         // Handle code execution directly
-        if (method === 'mcp__claude-flow__execute_code') {
+        if (method === 'mcp__fidgetflo__execute_code') {
             this.handleCodeExecution(ws, params, id);
             return;
         }
@@ -217,7 +217,7 @@ class ClaudeFlowBridgeReal {
         // Forward to real MCP server with proper format
         const mcpCommand = {
             jsonrpc: '2.0',
-            method: method.replace('mcp__claude-flow__', ''),
+            method: method.replace('mcp__fidgetflo__', ''),
             params: params || {},
             id: id || Date.now()
         };

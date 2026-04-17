@@ -19,89 +19,89 @@ V3 CLI is streamlined with 7 core commands. Many V2 commands need migration or h
 ### agent
 ```bash
 # V2
-npx claude-flow agent spawn --type coder --name my-coder
-npx claude-flow agent list --detailed
-npx claude-flow agent info <agentId>
-npx claude-flow agent terminate <agentId>
+npx fidgetflo agent spawn --type coder --name my-coder
+npx fidgetflo agent list --detailed
+npx fidgetflo agent info <agentId>
+npx fidgetflo agent terminate <agentId>
 
 # V3 (same)
-npx claude-flow agent spawn --type coder --id my-coder
-npx claude-flow agent list --detailed
-npx claude-flow agent status <agentId>
-npx claude-flow agent terminate <agentId>
+npx fidgetflo agent spawn --type coder --id my-coder
+npx fidgetflo agent list --detailed
+npx fidgetflo agent status <agentId>
+npx fidgetflo agent terminate <agentId>
 ```
 
 ### memory
 ```bash
 # V2
-npx claude-flow memory store --namespace default --content "data"
-npx claude-flow memory query --search "keyword" --limit 10
-npx claude-flow memory list --namespace default
+npx fidgetflo memory store --namespace default --content "data"
+npx fidgetflo memory query --search "keyword" --limit 10
+npx fidgetflo memory list --namespace default
 
 # V3 (enhanced)
-npx claude-flow memory store --type episodic --content "data"
-npx claude-flow memory search --query "keyword" --search-type hybrid
-npx claude-flow memory list --type all --sort-by relevance
+npx fidgetflo memory store --type episodic --content "data"
+npx fidgetflo memory search --query "keyword" --search-type hybrid
+npx fidgetflo memory list --type all --sort-by relevance
 ```
 
 ### swarm
 ```bash
 # V2
-npx claude-flow swarm --strategy auto --max-agents 5
+npx fidgetflo swarm --strategy auto --max-agents 5
 
 # V3 (enhanced)
-npx claude-flow swarm init --topology hierarchical-mesh --max-agents 15
-npx claude-flow swarm status --include-metrics
-npx claude-flow swarm scale --target 10 --strategy gradual
+npx fidgetflo swarm init --topology hierarchical-mesh --max-agents 15
+npx fidgetflo swarm status --include-metrics
+npx fidgetflo swarm scale --target 10 --strategy gradual
 ```
 
 ### hooks
 ```bash
 # V2
-npx claude-flow hooks pre-edit --file src/app.ts
-npx claude-flow hooks post-edit --file src/app.ts --success true
+npx fidgetflo hooks pre-edit --file src/app.ts
+npx fidgetflo hooks post-edit --file src/app.ts --success true
 
 # V3 (enhanced with learning)
-npx claude-flow hooks pre-edit src/app.ts
-npx claude-flow hooks post-edit src/app.ts --success true
-npx claude-flow hooks route "implement feature X"
-npx claude-flow hooks explain "implement feature X"
-npx claude-flow hooks pretrain
-npx claude-flow hooks metrics
+npx fidgetflo hooks pre-edit src/app.ts
+npx fidgetflo hooks post-edit src/app.ts --success true
+npx fidgetflo hooks route "implement feature X"
+npx fidgetflo hooks explain "implement feature X"
+npx fidgetflo hooks pretrain
+npx fidgetflo hooks metrics
 ```
 
 ### mcp
 ```bash
 # V2
-npx claude-flow mcp start --port 3000 --transport stdio
-npx claude-flow mcp stop
-npx claude-flow mcp status
+npx fidgetflo mcp start --port 3000 --transport stdio
+npx fidgetflo mcp stop
+npx fidgetflo mcp status
 
 # V3 (same)
-npx claude-flow mcp start --port 3000 --transport stdio
-npx claude-flow mcp stop
-npx claude-flow mcp status
+npx fidgetflo mcp start --port 3000 --transport stdio
+npx fidgetflo mcp stop
+npx fidgetflo mcp status
 ```
 
 ### config
 ```bash
 # V2
-npx claude-flow config get orchestrator
-npx claude-flow config set orchestrator.maxAgents 10
+npx fidgetflo config get orchestrator
+npx fidgetflo config set orchestrator.maxAgents 10
 
 # V3
-npx claude-flow config load --scope project
-npx claude-flow config save --create-backup
-npx claude-flow config validate --strict
+npx fidgetflo config load --scope project
+npx fidgetflo config save --create-backup
+npx fidgetflo config validate --strict
 ```
 
 ### migrate
 ```bash
 # V3 only
-npx claude-flow migrate status
-npx claude-flow migrate run --target all --backup
-npx claude-flow migrate verify
-npx claude-flow migrate rollback --backup-id <id>
+npx fidgetflo migrate status
+npx fidgetflo migrate run --target all --backup
+npx fidgetflo migrate verify
+npx fidgetflo migrate rollback --backup-id <id>
 ```
 
 ## Missing Commands ❌
@@ -111,9 +111,9 @@ npx claude-flow migrate rollback --backup-id <id>
 #### init
 ```bash
 # V2
-npx claude-flow init
-npx claude-flow init --minimal
-npx claude-flow init --flow-nexus
+npx fidgetflo init
+npx fidgetflo init --minimal
+npx fidgetflo init --flow-nexus
 
 # V3 Migration needed:
 # Add to v3/@claude-flow/cli/src/commands/init.ts
@@ -139,9 +139,9 @@ export const initCommand = {
 #### start
 ```bash
 # V2
-npx claude-flow start
-npx claude-flow start --daemon
-npx claude-flow start --port 3000
+npx fidgetflo start
+npx fidgetflo start --daemon
+npx fidgetflo start --port 3000
 
 # V3 Migration needed:
 # Add to v3/@claude-flow/cli/src/commands/start.ts
@@ -165,10 +165,10 @@ export const startCommand = {
 #### status
 ```bash
 # V2
-npx claude-flow status
-npx claude-flow status --watch
-npx claude-flow status --json
-npx claude-flow status --health-check
+npx fidgetflo status
+npx fidgetflo status --watch
+npx fidgetflo status --json
+npx fidgetflo status --health-check
 
 # V3 Migration needed:
 # Add to v3/@claude-flow/cli/src/commands/status.ts
@@ -198,11 +198,11 @@ export const statusCommand = {
 #### task
 ```bash
 # V2
-npx claude-flow task create --type implementation --description "Build feature"
-npx claude-flow task list --status running
-npx claude-flow task status <taskId>
-npx claude-flow task cancel <taskId>
-npx claude-flow task assign <taskId> --agent <agentId>
+npx fidgetflo task create --type implementation --description "Build feature"
+npx fidgetflo task list --status running
+npx fidgetflo task status <taskId>
+npx fidgetflo task cancel <taskId>
+npx fidgetflo task assign <taskId> --agent <agentId>
 
 # V3 Migration needed:
 # Add to v3/@claude-flow/cli/src/commands/task.ts
@@ -230,18 +230,18 @@ export const taskCommand = {
 #### session
 ```bash
 # V2
-npx claude-flow session list
-npx claude-flow session save --description "Checkpoint"
-npx claude-flow session restore <sessionId>
-npx claude-flow session delete <sessionId>
-npx claude-flow session export --include-memory
-npx claude-flow session import <file>
+npx fidgetflo session list
+npx fidgetflo session save --description "Checkpoint"
+npx fidgetflo session restore <sessionId>
+npx fidgetflo session delete <sessionId>
+npx fidgetflo session export --include-memory
+npx fidgetflo session import <file>
 
 # V3 Migration needed:
 # Add to v3/@claude-flow/cli/src/commands/session.ts
 export const sessionCommand = {
   command: 'session',
-  description: 'Manage Claude-Flow sessions',
+  description: 'Manage FidgetFlo sessions',
   subcommands: [
     { command: 'list', options: [{ flags: '-a, --active' }] },
     { command: 'save', options: [{ flags: '-d, --description <desc>' }] },
@@ -258,15 +258,15 @@ export const sessionCommand = {
 #### hive
 ```bash
 # V2
-npx claude-flow hive --topology mesh --consensus quorum --max-agents 8
-npx claude-flow hive-mind init
-npx claude-flow hive-mind status
-npx claude-flow hive-mind spawn --type queen
-npx claude-flow hive-mind task --description "Task"
-npx claude-flow hive-mind wizard
-npx claude-flow hive-mind pause
-npx claude-flow hive-mind resume
-npx claude-flow hive-mind stop
+npx fidgetflo hive --topology mesh --consensus quorum --max-agents 8
+npx fidgetflo hive-mind init
+npx fidgetflo hive-mind status
+npx fidgetflo hive-mind spawn --type queen
+npx fidgetflo hive-mind task --description "Task"
+npx fidgetflo hive-mind wizard
+npx fidgetflo hive-mind pause
+npx fidgetflo hive-mind resume
+npx fidgetflo hive-mind stop
 
 # V3 Migration needed:
 # Add to v3/@claude-flow/cli/src/commands/hive.ts
@@ -294,11 +294,11 @@ export const hiveCommand = {
 #### sparc
 ```bash
 # V2
-npx claude-flow sparc modes
-npx claude-flow sparc info <mode>
-npx claude-flow sparc run --mode specification
-npx claude-flow sparc tdd --sequential
-npx claude-flow sparc workflow --dry-run
+npx fidgetflo sparc modes
+npx fidgetflo sparc info <mode>
+npx fidgetflo sparc run --mode specification
+npx fidgetflo sparc tdd --sequential
+npx fidgetflo sparc workflow --dry-run
 
 # V3 Migration needed:
 # Add to v3/@claude-flow/cli/src/commands/sparc.ts
@@ -318,10 +318,10 @@ export const sparcCommand = {
 #### monitor
 ```bash
 # V2
-npx claude-flow monitor
-npx claude-flow monitor --interval 2
-npx claude-flow monitor --compact
-npx claude-flow monitor --focus agents
+npx fidgetflo monitor
+npx fidgetflo monitor --interval 2
+npx fidgetflo monitor --compact
+npx fidgetflo monitor --focus agents
 
 # V3 Migration needed:
 # Add to v3/@claude-flow/cli/src/commands/monitor.ts
@@ -343,13 +343,13 @@ export const monitorCommand = {
 #### github
 ```bash
 # V2
-npx claude-flow github init
-npx claude-flow github gh-coordinator
-npx claude-flow github pr-manager
-npx claude-flow github issue-tracker
-npx claude-flow github release-manager
-npx claude-flow github repo-architect
-npx claude-flow github sync-coordinator
+npx fidgetflo github init
+npx fidgetflo github gh-coordinator
+npx fidgetflo github pr-manager
+npx fidgetflo github issue-tracker
+npx fidgetflo github release-manager
+npx fidgetflo github repo-architect
+npx fidgetflo github sync-coordinator
 
 # V3 Migration needed:
 # Add to v3/@claude-flow/cli/src/commands/github.ts
@@ -377,26 +377,26 @@ export const githubCommand = {
 #### neural
 ```bash
 # V2
-npx claude-flow neural init
-npx claude-flow neural init --force --target .claude/agents/neural
+npx fidgetflo neural init
+npx fidgetflo neural init --force --target .claude/agents/neural
 
 # V3: Replaced by hooks pretrain
-npx claude-flow hooks pretrain
+npx fidgetflo hooks pretrain
 ```
 
 #### goal
 ```bash
 # V2
-npx claude-flow goal init
+npx fidgetflo goal init
 
 # V3: Replaced by hooks system
-npx claude-flow hooks pretrain --include-goap
+npx fidgetflo hooks pretrain --include-goap
 ```
 
 #### claude
 ```bash
 # V2
-npx claude-flow claude spawn --tools View,Edit,Bash --mode full
+npx fidgetflo claude spawn --tools View,Edit,Bash --mode full
 
 # V3 Migration needed:
 # Add to v3/@claude-flow/cli/src/commands/claude.ts
@@ -419,9 +419,9 @@ export const claudeCommand = {
 #### workflow
 ```bash
 # V2
-npx claude-flow workflow create --name "my-workflow"
-npx claude-flow workflow execute <workflow>
-npx claude-flow workflow list
+npx fidgetflo workflow create --name "my-workflow"
+npx fidgetflo workflow execute <workflow>
+npx fidgetflo workflow list
 
 # V3 Migration needed:
 # Add to v3/@claude-flow/cli/src/commands/workflow.ts
@@ -430,7 +430,7 @@ npx claude-flow workflow list
 #### repl
 ```bash
 # V2
-npx claude-flow repl
+npx fidgetflo repl
 
 # V3 Migration needed:
 # Add to v3/@claude-flow/cli/src/commands/repl.ts
@@ -447,8 +447,8 @@ export const replCommand = {
 #### version
 ```bash
 # V2
-npx claude-flow version
-npx claude-flow version --short
+npx fidgetflo version
+npx fidgetflo version --short
 
 # V3 Migration needed:
 # Add version flag to CLI root
@@ -457,8 +457,8 @@ npx claude-flow version --short
 #### completion
 ```bash
 # V2
-npx claude-flow completion bash
-npx claude-flow completion --install
+npx fidgetflo completion bash
+npx fidgetflo completion --install
 
 # V3 Migration needed:
 # Add to v3/@claude-flow/cli/src/commands/completion.ts

@@ -9,7 +9,7 @@
 
 ## Executive Summary
 
-Successfully implemented MCP 2025-11 specification compliance for Claude Flow, adding support for:
+Successfully implemented MCP 2025-11 specification compliance for FidgetFlo, adding support for:
 - YYYY-MM version format with version negotiation
 - Async job support with job handles (poll/resume semantics)
 - MCP Registry integration for server discovery
@@ -109,13 +109,13 @@ docs/
 #### Via CLI Flag
 ```bash
 # Start MCP server with 2025-11 features
-npx claude-flow mcp start --mcp2025
+npx fidgetflo mcp start --mcp2025
 
 # With specific transport
-npx claude-flow mcp start --mcp2025 --transport http --port 3000
+npx fidgetflo mcp start --mcp2025 --transport http --port 3000
 
 # Disable legacy client support
-npx claude-flow mcp start --mcp2025 --no-legacy
+npx fidgetflo mcp start --mcp2025 --no-legacy
 ```
 
 #### Via Configuration
@@ -455,5 +455,5 @@ Ready for deployment with optional MCP 2025-11 features.
 ---
 
 **Implementation Date**: 2025-11-12
-**Version**: Claude Flow v2.7.32
+**Version**: FidgetFlo v2.7.32
 **Next Release**: v2.8.0 (with MCP 2025-11 enabled by default)

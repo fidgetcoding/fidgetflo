@@ -244,16 +244,16 @@ To test manually using the MCP tools, users can now:
 
 ```bash
 # Train a neural pattern (will persist automatically)
-npx claude-flow hooks neural-train --pattern-type coordination --epochs 50
+npx fidgetflo hooks neural-train --pattern-type coordination --epochs 50
 
 # Retrieve pattern statistics
-npx claude-flow hooks neural-patterns --action stats --pattern-type coordination
+npx fidgetflo hooks neural-patterns --action stats --pattern-type coordination
 
 # List all patterns
-npx claude-flow hooks neural-patterns --action analyze
+npx fidgetflo hooks neural-patterns --action analyze
 
 # Make predictions
-npx claude-flow hooks neural-patterns --action predict --pattern-type coordination
+npx fidgetflo hooks neural-patterns --action predict --pattern-type coordination
 ```
 
 ## Files Modified
@@ -303,13 +303,13 @@ After deploying this fix, verify functionality with:
 npm run build
 
 # 2. Train a pattern and verify storage
-npx claude-flow hooks neural-train --pattern-type coordination --epochs 50
+npx fidgetflo hooks neural-train --pattern-type coordination --epochs 50
 
 # 3. Check if pattern was stored
-npx claude-flow hooks neural-patterns --action analyze
+npx fidgetflo hooks neural-patterns --action analyze
 
 # 4. Verify statistics
-npx claude-flow hooks neural-patterns --action stats --pattern-type coordination
+npx fidgetflo hooks neural-patterns --action stats --pattern-type coordination
 ```
 
 ## Summary

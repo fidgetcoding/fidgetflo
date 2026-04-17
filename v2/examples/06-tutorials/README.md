@@ -1,6 +1,6 @@
 # Tutorials and Guides
 
-Step-by-step tutorials and comprehensive guides for using Claude Flow features.
+Step-by-step tutorials and comprehensive guides for using FidgetFlo features.
 
 ## Directory Structure
 

@@ -158,9 +158,9 @@ New Skill:
 - .claude/skills/agentic-jujutsu/SKILL.md (645 lines)
 
 Metrics Updates:
-- .claude-flow/metrics/performance.json
-- .claude-flow/metrics/system-metrics.json (8070+ lines)
-- .claude-flow/metrics/task-metrics.json
+- .fidgetflo/metrics/performance.json
+- .fidgetflo/metrics/system-metrics.json (8070+ lines)
+- .fidgetflo/metrics/task-metrics.json
 ```
 
 **Impact**: ✅ **NONE** - These are demo/example files only
@@ -190,7 +190,7 @@ Metrics Updates:
 | `package.json` | v2.7.32 | v2.7.32 | ✅ MATCH |
 | `src/cli/commands/memory.ts` | Enhanced | Enhanced | ✅ MATCH |
 | `src/reasoningbank/reasoningbank-adapter.js` | Updated | Updated | ✅ MATCH |
-| `bin/claude-flow` | v2.7.32 | v2.7.32 | ✅ MATCH |
+| `bin/fidgetflo` | v2.7.32 | v2.7.32 | ✅ MATCH |
 
 ### Memory System Verification
 
@@ -208,10 +208,10 @@ Metrics Updates:
 
 **CLI Commands Verified**:
 ```bash
-✅ npx claude-flow memory stats - Shows ReasoningBank data
-✅ npx claude-flow memory list - Lists all memories
-✅ npx claude-flow memory store - Stores with confidence
-✅ npx claude-flow memory query - Semantic search
+✅ npx fidgetflo memory stats - Shows ReasoningBank data
+✅ npx fidgetflo memory list - Lists all memories
+✅ npx fidgetflo memory store - Stores with confidence
+✅ npx fidgetflo memory query - Semantic search
 ```
 
 ---
@@ -320,9 +320,9 @@ git cherry-pick 23e935287
 
 ### CLI Verification
 ```bash
-✅ npx claude-flow --version → v2.7.32
-✅ npx claude-flow memory stats → Shows ReasoningBank data
-✅ npx claude-flow mcp start → Works
+✅ npx fidgetflo --version → v2.7.32
+✅ npx fidgetflo memory stats → Shows ReasoningBank data
+✅ npx fidgetflo mcp start → Works
 ✅ All CLI commands functional
 ```
 

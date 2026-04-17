@@ -1,6 +1,6 @@
 # Event Store Persistence (ADR-007)
 
-Complete event sourcing implementation for V3 Claude Flow with persistent storage, projections, and event replay.
+Complete event sourcing implementation for V3 FidgetFlo with persistent storage, projections, and event replay.
 
 ## Overview
 
@@ -349,4 +349,4 @@ When adding new domain events:
 
 ## License
 
-Part of claude-flow V3 - See root LICENSE file.
+Part of fidgetflo V3 - See root LICENSE file.

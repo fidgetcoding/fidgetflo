@@ -13,29 +13,29 @@ The agentic-flow integration is now fully operational. Here's how to use it:
 
 ### List All Available Agents (66+)
 ```bash
-./bin/claude-flow agent agents
+./bin/fidgetflo agent agents
 ```
 
 ### Get Agent Information
 ```bash
-./bin/claude-flow agent info coder --format json
+./bin/fidgetflo agent info coder --format json
 ```
 
 ### Execute an Agent
 ```bash
-./bin/claude-flow agent execute coder "Write a REST API endpoint"
+./bin/fidgetflo agent execute coder "Write a REST API endpoint"
 ```
 
 ### With Custom Provider
 ```bash
 # Using OpenRouter (99% cost savings)
-./bin/claude-flow agent execute coder "Optimize this algorithm" --provider openrouter
+./bin/fidgetflo agent execute coder "Optimize this algorithm" --provider openrouter
 
 # Using Gemini (free tier)
-./bin/claude-flow agent execute researcher "Research Vue.js patterns" --provider gemini
+./bin/fidgetflo agent execute researcher "Research Vue.js patterns" --provider gemini
 
 # Using ONNX (local, free)
-./bin/claude-flow agent execute coder "Simple function" --provider onnx
+./bin/fidgetflo agent execute coder "Simple function" --provider onnx
 ```
 
 ---
@@ -108,7 +108,7 @@ npx agentic-flow agent info coder --output-format json
 
 **Command:**
 ```bash
-./bin/claude-flow agent execute coder "Write a simple hello world function in JavaScript"
+./bin/fidgetflo agent execute coder "Write a simple hello world function in JavaScript"
 ```
 
 **Result:** ✅ SUCCESS
@@ -219,7 +219,7 @@ memory query api --redact
 - `architecture` - System design
 - `refinement` - Iterative improvement
 
-**[View complete list with `./bin/claude-flow agent agents`]**
+**[View complete list with `./bin/fidgetflo agent agents`]**
 
 ---
 
@@ -237,25 +237,25 @@ memory query api --redact
 **Anthropic (Default):**
 ```bash
 export ANTHROPIC_API_KEY="sk-ant-..."
-./bin/claude-flow agent execute coder "Task"
+./bin/fidgetflo agent execute coder "Task"
 ```
 
 **OpenRouter (99% cost savings):**
 ```bash
 export OPENROUTER_API_KEY="sk-or-..."
-./bin/claude-flow agent execute coder "Task" --provider openrouter
+./bin/fidgetflo agent execute coder "Task" --provider openrouter
 ```
 
 **Gemini (Free tier):**
 ```bash
 export GOOGLE_GEMINI_API_KEY="..."
-./bin/claude-flow agent execute coder "Task" --provider gemini
+./bin/fidgetflo agent execute coder "Task" --provider gemini
 ```
 
 **ONNX (Local, free):**
 ```bash
 # First run downloads 4.9GB Phi-4 model
-./bin/claude-flow agent execute coder "Task" --provider onnx
+./bin/fidgetflo agent execute coder "Task" --provider onnx
 ```
 
 ---

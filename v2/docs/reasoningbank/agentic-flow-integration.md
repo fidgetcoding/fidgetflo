@@ -9,7 +9,7 @@ This document explains how **agentic-flow@1.5.13** underpins ReasoningBank's cap
 1. [What is Agentic-Flow?](#what-is-agentic-flow)
 2. [Architecture Overview](#architecture-overview)
 3. [Core Components](#core-components)
-4. [Integration with Claude-Flow](#integration-with-claude-flow)
+4. [Integration with FidgetFlo](#integration-with-fidgetflo)
 5. [Advanced Features](#advanced-features)
 6. [Extension Points](#extension-points)
 
@@ -44,7 +44,7 @@ This document explains how **agentic-flow@1.5.13** underpins ReasoningBank's cap
 
 ```
 ┌─────────────────────────────────────────────────────┐
-│              Claude-Flow CLI                        │
+│              FidgetFlo CLI                        │
 │  (User commands: memory store, query, list)         │
 └────────────────────┬────────────────────────────────┘
                      │ IPC / File Protocol
@@ -482,11 +482,11 @@ class BayesianLearner {
 
 ---
 
-## Integration with Claude-Flow
+## Integration with FidgetFlo
 
 ### Communication Protocol
 
-Claude-Flow communicates with agentic-flow using:
+FidgetFlo communicates with agentic-flow using:
 
 1. **Process Spawning**: `child_process.spawn('node', ['agentic-flow'])`
 2. **IPC Messages**: JSON-RPC over stdin/stdout
@@ -495,7 +495,7 @@ Claude-Flow communicates with agentic-flow using:
 ### Example Message Flow
 
 ```javascript
-// Claude-Flow sends:
+// FidgetFlo sends:
 {
   "jsonrpc": "2.0",
   "method": "storePattern",

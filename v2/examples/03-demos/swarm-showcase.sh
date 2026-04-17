@@ -1,8 +1,8 @@
 #!/bin/bash
-# Claude Flow Swarm - Complete Feature Showcase
+# FidgetFlo Swarm - Complete Feature Showcase
 # Demonstrates all swarm capabilities with a real application
 
-echo "🐝 Claude Flow Swarm - Complete Feature Showcase"
+echo "🐝 FidgetFlo Swarm - Complete Feature Showcase"
 echo "==============================================="
 echo ""
 echo "This showcase demonstrates the full capabilities of the swarm system"
@@ -60,7 +60,7 @@ create_task_manager() {
 
 /**
  * Task Manager CLI Application
- * Created by Claude Flow Swarm
+ * Created by FidgetFlo Swarm
  * 
  * Demonstrates:
  * - Multi-agent collaboration
@@ -167,7 +167,7 @@ if (require.main === module) {
             console.log('  node task-manager.js stats');
     }
     
-    console.log('\n🐝 Created by Claude Flow Swarm agents working in parallel');
+    console.log('\n🐝 Created by FidgetFlo Swarm agents working in parallel');
 }
 
 module.exports = TaskManager;
@@ -217,7 +217,7 @@ EOF
     cat > "$dir/README.md" << 'EOF'
 # Task Manager CLI
 
-A command-line task management application created by the Claude Flow Swarm system.
+A command-line task management application created by the FidgetFlo Swarm system.
 
 ## Swarm Creation Process
 
@@ -307,7 +307,7 @@ node task-manager.test.js
 
 ---
 
-Created by Claude Flow Swarm v1.0.49
+Created by FidgetFlo Swarm v1.0.49
 EOF
 
     chmod +x "$dir/task-manager.js"
@@ -324,7 +324,7 @@ echo ""
 
 # Show the swarm command
 echo "📌 Swarm Command:"
-echo "npx claude-flow@latest swarm \"create a task manager with CRUD operations\" \\"
+echo "npx fidgetflo@latest swarm \"create a task manager with CRUD operations\" \\"
 echo "  --strategy development \\"
 echo "  --max-agents 5 \\"
 echo "  --parallel \\"
@@ -397,11 +397,11 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
 echo "🎉 Showcase Complete!"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo ""
-echo "The Claude Flow Swarm system is fully functional and can create"
+echo "The FidgetFlo Swarm system is fully functional and can create"
 echo "complete applications through coordinated multi-agent execution."
 echo ""
 echo "📁 All files created in: $SHOWCASE_DIR"
 echo ""
 echo "To run a real swarm task with Claude coordination:"
-echo "npx claude-flow@latest swarm \"your objective\" --strategy development"
+echo "npx fidgetflo@latest swarm \"your objective\" --strategy development"
 echo ""

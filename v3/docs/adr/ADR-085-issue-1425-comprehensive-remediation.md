@@ -29,7 +29,7 @@ Create `v3/@claude-flow/shared/src/ws/` shared websocket module with unified aut
 Create shared `AgentRegistry` in `@claude-flow/shared` that AgentManager, WorkerPool, and MCP agent tools all use. Single source of truth for agent lifecycle.
 
 ### 4. Wire providers to config
-`providers list` reads from `claude-flow.config.json` or environment. `providers test` makes real API health check calls (with timeout).
+`providers list` reads from `fidgetflo.config.json` or environment. `providers test` makes real API health check calls (with timeout).
 
 ### 5. Expand input validation to all command handlers
 Add `validateIdentifier`/`validatePath`/`validateText` calls to all 43 command handlers that accept user input. Focus on boundary inputs: file paths, identifiers, command arguments.

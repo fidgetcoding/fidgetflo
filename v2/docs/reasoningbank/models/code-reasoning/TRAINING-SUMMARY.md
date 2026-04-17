@@ -356,7 +356,7 @@ WHERE pl.src_id = 'pattern-100';
 
 ### Technologies Used
 - **Database**: SQLite with better-sqlite3
-- **Memory**: ReasoningBank with claude-flow
+- **Memory**: ReasoningBank with fidgetflo
 - **Coordination**: Hook-based memory system
 - **Validation**: Custom SQL-based validation suite
 

@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-After cleanup and migration, `npx claude-flow init` now generates a clean, organized structure with:
+After cleanup and migration, `npx fidgetflo init` now generates a clean, organized structure with:
 - **76 agent files** across 20 specialized categories
 - **81 command files** - simple CLI references only
 - **21 comprehensive skills** - complex workflows with YAML frontmatter
@@ -267,7 +267,7 @@ All files are included in the npm package via `package.json`:
 }
 ```
 
-When users run `npx claude-flow init`:
+When users run `npx fidgetflo init`:
 1. ✅ All 76 agent files are copied
 2. ✅ All 81 command files are copied
 3. ✅ All 21 skill files are copied
@@ -305,7 +305,7 @@ When users run `npx claude-flow init`:
 
 ```bash
 # Test the init process
-npx claude-flow init --force
+npx fidgetflo init --force
 
 # Expected output:
 # ✅ Copied 76 agent files

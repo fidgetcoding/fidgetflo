@@ -1,19 +1,19 @@
 # Changelog
 
-All notable changes to the Ruflo project (formerly Claude Flow) are documented here.
+All notable changes to the FidgetFlo project (formerly FidgetFlo) are documented here.
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [3.5.0] - 2026-02-27
 
-### Ruflo v3.5 — First Major Stable Release
+### FidgetFlo v3.5 — First Major Stable Release
 
-This release marks the official rebranding from **Claude Flow** to **Ruflo** and represents the first major stable release after 5,800+ commits, 55 alpha iterations, and 10 months of development.
+This release marks the official rebranding from **FidgetFlo** to **FidgetFlo** and represents the first major stable release after 5,800+ commits, 55 alpha iterations, and 10 months of development.
 
 ### Highlights
 
-- **Rebranding**: Claude Flow → Ruflo across all packages (`@claude-flow/cli`, `claude-flow`, `ruflo`)
+- **Rebranding**: FidgetFlo → FidgetFlo across all packages (`@claude-flow/cli`, `fidgetflo`, `fidgetflo`)
 - **agentic-flow v3.0.0-alpha.1 Integration**: Full deep integration with 10 subpath exports (ReasoningBank, Router, Orchestration, Agent Booster, SDK, Security, QUIC transport)
 - **AgentDB v3.0.0-alpha.9**: 8 new controllers (HierarchicalMemory, MemoryConsolidation, SemanticRouter, GNNService, RVFOptimizer, MutationGuard, AttestationLog, GuardedVectorBackend) + 6 MCP tools
 - **215 MCP Tools**: Full Model Context Protocol server with vector memory, neural training, swarm coordination
@@ -59,9 +59,9 @@ This release marks the official rebranding from **Claude Flow** to **Ruflo** and
 
 ## [3.1.0-alpha.43] - 2026-02-15
 
-### Ruflo Branding Fix
+### FidgetFlo Branding Fix
 
-- Fixed CLI branding: show 'ruflo' instead of 'claude-flow' when run via `npx ruflo`
+- Fixed CLI branding: show 'fidgetflo' instead of 'fidgetflo' when run via `npx fidgetflo`
 - Fixed Windows ESM import crash with `pathToFileURL`
 - Fixed init hook prompt overflow and description field
 
@@ -130,7 +130,7 @@ This release marks the official rebranding from **Claude Flow** to **Ruflo** and
 - MCP memory tools upgraded to sql.js + HNSW backend
 - Claims-based authorization (ADR-016)
 - Node.js worker daemon system
-- Auto-update system for @claude-flow packages (ADR-025)
+- Auto-update system for @fidgetflo packages (ADR-025)
 - Replaced all mock implementations with real functionality
 
 ### v3.0.0-alpha.1 — Foundation (2025-10)
@@ -214,7 +214,7 @@ This release marks the official rebranding from **Claude Flow** to **Ruflo** and
 
 ### v1.0.1 — Initial Release (2025-01-01)
 
-- Complete Claude-Flow AI Agent Orchestration System
+- Complete FidgetFlo AI Agent Orchestration System
 - Configuration guide and comprehensive tests
 - Initial commit
 
@@ -232,4 +232,4 @@ This release marks the official rebranding from **Claude Flow** to **Ruflo** and
 | Plugin Marketplace | v3.0.0-alpha.170 | 2025-12 | 8 plugins + IPFS registry |
 | Guidance Control Plane | v3.0.0-alpha.100 | 2026-01 | WASM policy kernel, ContinueGate |
 | AgentDB v3 | v3.1.0-alpha.55 | 2026-02 | 8 controllers, MutationGuard |
-| **Ruflo v3.5** | **v3.5.0** | **2026-02-27** | **First stable release, rebranding** |
+| **FidgetFlo v3.5** | **v3.5.0** | **2026-02-27** | **First stable release, rebranding** |

@@ -2,15 +2,15 @@
 
 ## Overview
 
-This document describes the implementation of **ADR-001: Adopt agentic-flow as Core Foundation** for agent lifecycle management in Claude Flow v3.
+This document describes the implementation of **ADR-001: Adopt agentic-flow as Core Foundation** for agent lifecycle management in FidgetFlo v3.
 
 ## Implementation Summary
 
-Created two new core classes that bridge Claude Flow's DDD agent architecture with agentic-flow's optimized agent implementations:
+Created two new core classes that bridge FidgetFlo's DDD agent architecture with agentic-flow's optimized agent implementations:
 
 ### 1. AgenticFlowAgent (`agentic-flow-agent.ts`)
 
-**Purpose**: Base class for all Claude Flow v3 agents with automatic delegation to agentic-flow
+**Purpose**: Base class for all FidgetFlo v3 agents with automatic delegation to agentic-flow
 
 **Key Features**:
 - Implements `IAgent` interface for DDD compliance
@@ -33,7 +33,7 @@ Created two new core classes that bridge Claude Flow's DDD agent architecture wi
 
 ### 2. AgentAdapter (`agent-adapter.ts`)
 
-**Purpose**: Bidirectional adapter between Claude Flow and agentic-flow agent formats
+**Purpose**: Bidirectional adapter between FidgetFlo and agentic-flow agent formats
 
 **Key Features**:
 - Converts between agent representations
@@ -43,7 +43,7 @@ Created two new core classes that bridge Claude Flow's DDD agent architecture wi
 - Provides factory methods for agent creation
 
 **Capabilities**:
-- `fromAgenticFlow()`: Convert external agents to Claude Flow format
+- `fromAgenticFlow()`: Convert external agents to FidgetFlo format
 - `toAgenticFlow()`: Export agents in agentic-flow format
 - `createWithDelegation()`: Create agents with automatic delegation
 - Agent pool management (add, get, remove)

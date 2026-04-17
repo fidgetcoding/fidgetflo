@@ -1,8 +1,8 @@
-# Claude Flow Browser Dashboard - Proof of Concept
+# FidgetFlo Browser Dashboard - Proof of Concept
 
 ## Overview
 
-A browser-based real-time swarm orchestration dashboard that demonstrates WebAssembly potential for Claude Flow. This proof of concept shows how Claude Flow's multi-agent coordination could run entirely in the browser using WebSocket transport instead of stdio.
+A browser-based real-time swarm orchestration dashboard that demonstrates WebAssembly potential for FidgetFlo. This proof of concept shows how FidgetFlo's multi-agent coordination could run entirely in the browser using WebSocket transport instead of stdio.
 
 **Key Features**:
 - ✅ Real-time agent status monitoring
@@ -40,7 +40,7 @@ A browser-based real-time swarm orchestration dashboard that demonstrates WebAss
 │                   │                          │
 │                   ▼                          │
 │  ┌──────────────────────────────────────┐   │
-│  │  Claude Flow MCP Tools               │   │
+│  │  FidgetFlo MCP Tools               │   │
 │  │  - agents_spawn_parallel             │   │
 │  │  - query_control                     │   │
 │  │  - swarm_status                      │   │
@@ -75,7 +75,7 @@ open http://localhost:8080
 
 ### Option 2: Full WebSocket Mode
 
-Run the WebSocket bridge server to connect to real Claude Flow MCP tools.
+Run the WebSocket bridge server to connect to real FidgetFlo MCP tools.
 
 ```bash
 # Install dependencies
@@ -137,7 +137,7 @@ Then open the dashboard and click "Connect to Server".
 ```javascript
 {
   "jsonrpc": "2.0",
-  "method": "mcp__claude-flow__agents_spawn_parallel",
+  "method": "mcp__fidgetflo__agents_spawn_parallel",
   "params": {
     "agents": [
       { "type": "researcher", "name": "Agent1", "priority": "high" }
@@ -178,7 +178,7 @@ Then open the dashboard and click "Connect to Server".
 
 ## WebAssembly Potential
 
-This proof of concept demonstrates how Claude Flow could leverage the SDK's `wasm32` compilation target:
+This proof of concept demonstrates how FidgetFlo could leverage the SDK's `wasm32` compilation target:
 
 **Current State**:
 - SDK includes `yoga.wasm` (87KB) for layout rendering
@@ -191,7 +191,7 @@ This proof of concept demonstrates how Claude Flow could leverage the SDK's `was
 import { query, createSdkMcpServer } from '@anthropic-ai/claude-code/wasm';
 
 const swarmOrchestrator = createSdkMcpServer({
-  name: 'claude-flow-browser',
+  name: 'fidgetflo-browser',
   tools: [
     tool('agents_spawn_parallel', ...),
     tool('query_control', ...),
@@ -256,26 +256,26 @@ const stream = query({
 - ✅ Input validation
 - ✅ Encrypted API key storage
 
-## Integration with Claude Flow
+## Integration with FidgetFlo
 
-To integrate with real Claude Flow MCP tools, the server would:
+To integrate with real FidgetFlo MCP tools, the server would:
 
 1. **Import MCP Tools**:
 ```javascript
 const { createSdkMcpServer, tool } = require('@anthropic-ai/claude-code');
-const claudeFlow = require('claude-flow');
+const fidgetFlo = require('fidgetflo');
 ```
 
 2. **Create MCP Bridge**:
 ```javascript
 const mcpServer = createSdkMcpServer({
-  name: 'claude-flow-websocket',
+  name: 'fidgetflo-websocket',
   tools: [
     tool('agents_spawn_parallel', ..., async (params) => {
-      return await claudeFlow.spawnParallel(params);
+      return await fidgetFlo.spawnParallel(params);
     }),
     tool('query_control', ..., async (params) => {
-      return await claudeFlow.queryControl(params);
+      return await fidgetFlo.queryControl(params);
     })
   ]
 });
@@ -300,7 +300,7 @@ ws.on('message', async (message) => {
 - [x] Canvas network graph
 
 **Phase 2: Real Integration** (Future)
-- [ ] Connect to actual claude-flow MCP tools
+- [ ] Connect to actual fidgetflo MCP tools
 - [ ] Real agent spawning (agents_spawn_parallel)
 - [ ] Real consensus verification (verify_consensus)
 - [ ] Query control integration (pause/resume/terminate)
@@ -319,11 +319,11 @@ ws.on('message', async (message) => {
 
 ## License
 
-MIT - Same as Claude Flow
+MIT - Same as FidgetFlo
 
 ## Credits
 
-Built as proof of concept for Claude Flow v2.5.0-alpha.130+ demonstrating WebAssembly potential for browser-based multi-agent orchestration.
+Built as proof of concept for FidgetFlo v2.5.0-alpha.130+ demonstrating WebAssembly potential for browser-based multi-agent orchestration.
 
 **Related PRs**:
 - PR #783 - Agentic Payments Integration

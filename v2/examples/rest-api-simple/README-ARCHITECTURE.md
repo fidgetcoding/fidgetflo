@@ -71,30 +71,30 @@ examples/rest-api-simple/
 ### Option 1: Sequential SPARC Execution (~50 minutes)
 ```bash
 # Phase 1: Setup
-npx claude-flow sparc run code "Setup Express server with health endpoint" --non-interactive
+npx fidgetflo sparc run code "Setup Express server with health endpoint" --non-interactive
 
 # Phase 2: CRUD with TDD
-npx claude-flow sparc run tdd "Implement CRUD operations for tasks" --non-interactive
+npx fidgetflo sparc run tdd "Implement CRUD operations for tasks" --non-interactive
 
 # Phase 3: Validation
-npx claude-flow sparc run code "Add input validation and error handling" --non-interactive
+npx fidgetflo sparc run code "Add input validation and error handling" --non-interactive
 
 # Phase 4: Documentation
-npx claude-flow sparc run docs-writer "Create REST API documentation" --non-interactive
+npx fidgetflo sparc run docs-writer "Create REST API documentation" --non-interactive
 
 # Phase 5: Security Review
-npx claude-flow sparc run security-review "Review API security" --non-interactive
+npx fidgetflo sparc run security-review "Review API security" --non-interactive
 ```
 
 ### Option 2: Parallel Swarm Execution (~15 minutes)
 ```bash
 # Complete implementation with parallel agents
-npx claude-flow swarm "Build complete simple REST API from architecture docs" \
+npx fidgetflo swarm "Build complete simple REST API from architecture docs" \
   --strategy development --background --parallel --testing \
   --max-agents 4 --output ./examples/rest-api-simple/
 
 # Monitor progress
-npx claude-flow monitor
+npx fidgetflo monitor
 ```
 
 ## 📊 API Endpoints Summary

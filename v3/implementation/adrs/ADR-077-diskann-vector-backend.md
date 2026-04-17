@@ -6,7 +6,7 @@
 
 ## Context
 
-ruflo's vector search uses three backends with different tradeoffs. With `@ruvector/diskann@0.1.0` now published (5-platform native binaries), we have a Vamana graph-based SSD-friendly alternative to HNSW.
+fidgetflo's vector search uses three backends with different tradeoffs. With `@ruvector/diskann@0.1.0` now published (5-platform native binaries), we have a Vamana graph-based SSD-friendly alternative to HNSW.
 
 ## Benchmark Results (measured, not theoretical)
 

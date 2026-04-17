@@ -1,8 +1,8 @@
-# Real Metrics Collection for Claude-Flow Benchmarks
+# Real Metrics Collection for FidgetFlo Benchmarks
 
 ## Overview
 
-The real metrics collection system provides accurate, real-time performance monitoring for claude-flow benchmarks. Unlike simulated metrics, this system captures actual execution data including:
+The real metrics collection system provides accurate, real-time performance monitoring for fidgetflo benchmarks. Unlike simulated metrics, this system captures actual execution data including:
 
 - **Execution time** (wall clock and CPU time)
 - **Memory usage** (peak and average)
@@ -16,13 +16,13 @@ The real metrics collection system provides accurate, real-time performance moni
 
 1. **PerformanceCollector** - Collects timing and CPU metrics
 2. **ResourceMonitor** - Monitors memory and system resources
-3. **ProcessTracker** - Tracks claude-flow subprocess execution
+3. **ProcessTracker** - Tracks fidgetflo subprocess execution
 4. **MetricsAggregator** - Aggregates metrics from all sources
 
 ### Metrics Flow
 
 ```
-claude-flow command
+fidgetflo command
     ↓
 ProcessTracker (subprocess monitoring)
     ↓
@@ -123,7 +123,7 @@ monitor.set_thresholds({
 
 ### Process Tracking
 
-Track all claude-flow subprocess executions:
+Track all fidgetflo subprocess executions:
 
 ```python
 tracker = ProcessTracker()
@@ -261,7 +261,7 @@ For production benchmarks:
 ### Common Issues
 
 1. **High memory usage**: Reduce history size or sampling rate
-2. **Missing metrics**: Ensure claude-flow is in PATH
+2. **Missing metrics**: Ensure fidgetflo is in PATH
 3. **Permission errors**: Check file permissions for output directory
 
 ### Debug Mode

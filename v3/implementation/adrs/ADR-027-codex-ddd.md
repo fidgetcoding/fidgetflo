@@ -2,14 +2,14 @@
 
 ## Overview
 
-This document defines the Domain-Driven Design (DDD) architecture for integrating OpenAI Codex support into claude-flow via the `@claude-flow/codex` package. The design follows the existing V3 architecture patterns while introducing new bounded contexts for Codex-specific functionality.
+This document defines the Domain-Driven Design (DDD) architecture for integrating OpenAI Codex support into fidgetflo via the `@claude-flow/codex` package. The design follows the existing V3 architecture patterns while introducing new bounded contexts for Codex-specific functionality.
 
 ## Package Information
 
 - **Package Name**: `@claude-flow/codex`
 - **Location**: `v3/@claude-flow/codex/`
 - **Future Umbrella**: `coflow` (npm/npx coflow)
-- **Compatibility**: Maintains `claude-flow` branding during transition
+- **Compatibility**: Maintains `fidgetflo` branding during transition
 
 ## Strategic Design
 
@@ -17,7 +17,7 @@ This document defines the Domain-Driven Design (DDD) architecture for integratin
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                           Claude Flow V3 Core Domain                         │
+│                           FidgetFlo V3 Core Domain                         │
 ├─────────────────────────────────────────────────────────────────────────────┤
 │                                                                              │
 │  ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────────────────┐ │
@@ -772,7 +772,7 @@ class InitializationApplicationService {
     return {
       claude: claudeResult,
       codex: codexResult,
-      syncConfigPath: path.join(options.projectPath, '.claude-flow', 'platform-sync.yaml')
+      syncConfigPath: path.join(options.projectPath, '.fidgetflo', 'platform-sync.yaml')
     };
   }
 }

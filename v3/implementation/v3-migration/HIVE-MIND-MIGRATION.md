@@ -235,25 +235,25 @@ const hiveAgentTypes = {
 ### V2 Hive Commands
 ```bash
 # V2 Commands
-npx claude-flow hive --topology mesh --consensus quorum --max-agents 8
-npx claude-flow hive-mind init
-npx claude-flow hive-mind status
-npx claude-flow hive-mind spawn --type queen
-npx claude-flow hive-mind task --description "Implement feature"
-npx claude-flow hive-mind wizard
-npx claude-flow hive-mind pause
-npx claude-flow hive-mind resume
-npx claude-flow hive-mind stop
-npx claude-flow hive-mind ps
-npx claude-flow hive-mind optimize-memory
+npx fidgetflo hive --topology mesh --consensus quorum --max-agents 8
+npx fidgetflo hive-mind init
+npx fidgetflo hive-mind status
+npx fidgetflo hive-mind spawn --type queen
+npx fidgetflo hive-mind task --description "Implement feature"
+npx fidgetflo hive-mind wizard
+npx fidgetflo hive-mind pause
+npx fidgetflo hive-mind resume
+npx fidgetflo hive-mind stop
+npx fidgetflo hive-mind ps
+npx fidgetflo hive-mind optimize-memory
 ```
 
 ### V3 Equivalent Commands
 ```bash
 # V3 Commands (partial coverage)
-npx claude-flow swarm init --topology hierarchical-mesh --max-agents 15
-npx claude-flow swarm status
-npx claude-flow agent spawn --type queen-coordinator
+npx fidgetflo swarm init --topology hierarchical-mesh --max-agents 15
+npx fidgetflo swarm status
+npx fidgetflo agent spawn --type queen-coordinator
 
 # Missing V3 commands:
 # - hive (dedicated hive mode)
@@ -296,8 +296,8 @@ const swarmTools = [
 ### Step 1: Update Imports
 ```typescript
 // V2
-import { HiveMind } from 'claude-flow/hive-mind';
-import { Queen } from 'claude-flow/hive-mind/core/Queen';
+import { HiveMind } from 'fidgetflo/hive-mind';
+import { Queen } from 'fidgetflo/hive-mind/core/Queen';
 
 // V3
 import { UnifiedSwarmCoordinator } from '@claude-flow/swarm';

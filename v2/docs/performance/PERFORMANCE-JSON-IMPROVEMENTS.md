@@ -220,17 +220,17 @@ The summary function adds calculated metrics:
 
 ### Before
 ```bash
-cat .claude-flow/metrics/performance.json
+cat .fidgetflo/metrics/performance.json
 # Output: 8 basic fields
 ```
 
 ### After
 ```bash
-cat .claude-flow/metrics/performance.json
+cat .fidgetflo/metrics/performance.json
 # Output: 95+ fields organized in 9 categories
 
 # Or get summary with calculated metrics:
-npx claude-flow memory stats
+npx fidgetflo memory stats
 ```
 
 ## File Size Impact

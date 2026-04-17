@@ -6,7 +6,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue.svg)](https://www.typescriptlang.org/)
 [![AI Learning](https://img.shields.io/badge/AI-Self--Learning-purple.svg)](https://github.com/ruvnet/claude-flow)
 
-> Self-Optimizing Neural Architecture (SONA) module for Claude Flow V3 - adaptive learning, trajectory tracking, and pattern-based optimization.
+> Self-Optimizing Neural Architecture (SONA) module for FidgetFlo V3 - adaptive learning, trajectory tracking, and pattern-based optimization.
 
 ## Features
 

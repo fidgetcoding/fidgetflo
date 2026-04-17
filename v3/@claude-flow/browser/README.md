@@ -7,9 +7,9 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow?style=for-the-badge)](https://opensource.org/licenses/MIT)
 [![Tests](https://img.shields.io/badge/Tests-128%20passing-green?style=for-the-badge&logo=vitest)](./tests)
 
-**AI-Optimized Browser Automation for Claude-Flow Swarms**
+**AI-Optimized Browser Automation for FidgetFlo Swarms**
 
-*Integrate [agent-browser](https://github.com/AugmentCode/agent-browser) with claude-flow for intelligent web automation, trajectory learning, security scanning, and multi-agent browser coordination.*
+*Integrate [agent-browser](https://github.com/AugmentCode/agent-browser) with fidgetflo for intelligent web automation, trajectory learning, security scanning, and multi-agent browser coordination.*
 
 </div>
 
@@ -17,7 +17,7 @@
 
 ## Overview
 
-`@claude-flow/browser` provides a comprehensive browser automation layer for AI agents, combining Vercel Labs' `agent-browser` CLI with claude-flow's learning, memory, and security capabilities. It enables agents to navigate websites, fill forms, extract data, and learn from successful interaction patterns.
+`@claude-flow/browser` provides a comprehensive browser automation layer for AI agents, combining Vercel Labs' `agent-browser` CLI with fidgetflo's learning, memory, and security capabilities. It enables agents to navigate websites, fill forms, extract data, and learn from successful interaction patterns.
 
 ### Architecture
 
@@ -104,7 +104,7 @@ await browser.close();
 
 ### MCP Integration
 
-Register browser tools with claude-flow's MCP server:
+Register browser tools with fidgetflo's MCP server:
 
 ```typescript
 import { browserTools } from '@claude-flow/browser';
@@ -716,14 +716,14 @@ MIT License - see [LICENSE](../../LICENSE) for details.
 
 - [GitHub Repository](https://github.com/ruvnet/claude-flow)
 - [agent-browser](https://github.com/AugmentCode/agent-browser)
-- [Claude-Flow Documentation](https://github.com/ruvnet/claude-flow#readme)
+- [FidgetFlo Documentation](https://github.com/ruvnet/claude-flow#readme)
 - [MCP Protocol](https://modelcontextprotocol.io)
 
 ---
 
 <div align="center">
 
-**Part of the [Claude-Flow](https://github.com/ruvnet/claude-flow) ecosystem**
+**Part of the [FidgetFlo](https://github.com/ruvnet/claude-flow) ecosystem**
 
 Made with ❤️ by [ruvnet](https://github.com/ruvnet)
 

@@ -1,4 +1,4 @@
-# Claude Flow Swarm Intelligence Documentation
+# FidgetFlo Swarm Intelligence Documentation
 
 ## Table of Contents
 
@@ -17,7 +17,7 @@
 
 ## Overview
 
-The Claude Flow Swarm Intelligence System enables self-orchestrating networks of specialized AI agents that collaborate to solve complex tasks. This system implements distributed coordination patterns, consensus mechanisms, and fault-tolerant architectures to create robust, scalable AI agent networks.
+The FidgetFlo Swarm Intelligence System enables self-orchestrating networks of specialized AI agents that collaborate to solve complex tasks. This system implements distributed coordination patterns, consensus mechanisms, and fault-tolerant architectures to create robust, scalable AI agent networks.
 
 ### Key Features
 
@@ -296,7 +296,7 @@ interface RaftConfig {
 
 Usage:
 ```bash
-claude-flow swarm "Complex decision task" \
+fidgetflo swarm "Complex decision task" \
   --topology mesh \
   --consensus raft \
   --election-timeout 5000
@@ -455,7 +455,7 @@ interface ByzantineDetection {
 
 ```bash
 # Start a Byzantine fault-tolerant swarm
-claude-flow swarm "Critical system analysis" \
+fidgetflo swarm "Critical system analysis" \
   --topology mesh \
   --byzantine-tolerance 3 \
   --consensus pbft \
@@ -945,10 +945,10 @@ interface AlertChannel {
 
 ```bash
 # Basic initialization
-claude-flow swarm init --topology mesh --max-agents 10
+fidgetflo swarm init --topology mesh --max-agents 10
 
 # Advanced initialization
-claude-flow swarm init \
+fidgetflo swarm init \
   --topology hierarchical \
   --max-agents 20 \
   --consensus pbft \
@@ -961,10 +961,10 @@ claude-flow swarm init \
 
 ```bash
 # Simple task execution
-claude-flow swarm execute "Build a web application with authentication"
+fidgetflo swarm execute "Build a web application with authentication"
 
 # Complex task with full configuration
-claude-flow swarm execute "Analyze large dataset and provide insights" \
+fidgetflo swarm execute "Analyze large dataset and provide insights" \
   --strategy research \
   --topology distributed \
   --max-agents 15 \
@@ -978,10 +978,10 @@ claude-flow swarm execute "Analyze large dataset and provide insights" \
 
 ```bash
 # Real-time monitoring
-claude-flow swarm monitor --swarm-id swarm-123 --real-time
+fidgetflo swarm monitor --swarm-id swarm-123 --real-time
 
 # Historical analysis
-claude-flow swarm analyze --swarm-id swarm-123 --time-range 24h
+fidgetflo swarm analyze --swarm-id swarm-123 --time-range 24h
 ```
 
 ### Configuration Commands
@@ -990,48 +990,48 @@ claude-flow swarm analyze --swarm-id swarm-123 --time-range 24h
 
 ```bash
 # List available topologies
-claude-flow swarm topologies list
+fidgetflo swarm topologies list
 
 # Optimize topology for current task
-claude-flow swarm topology optimize --swarm-id swarm-123
+fidgetflo swarm topology optimize --swarm-id swarm-123
 
 # Switch topology dynamically
-claude-flow swarm topology switch --swarm-id swarm-123 --new-topology mesh
+fidgetflo swarm topology switch --swarm-id swarm-123 --new-topology mesh
 ```
 
 #### Agent Management
 
 ```bash
 # List agents
-claude-flow swarm agents list --swarm-id swarm-123
+fidgetflo swarm agents list --swarm-id swarm-123
 
 # Add agent to swarm
-claude-flow swarm agents add \
+fidgetflo swarm agents add \
   --type coder \
   --capabilities "javascript,react,nodejs" \
   --swarm-id swarm-123
 
 # Remove agent from swarm
-claude-flow swarm agents remove --agent-id agent-456 --swarm-id swarm-123
+fidgetflo swarm agents remove --agent-id agent-456 --swarm-id swarm-123
 
 # Scale swarm
-claude-flow swarm scale --target-agents 20 --swarm-id swarm-123
+fidgetflo swarm scale --target-agents 20 --swarm-id swarm-123
 ```
 
 #### Memory Management
 
 ```bash
 # Memory status
-claude-flow memory status --namespace swarm-123
+fidgetflo memory status --namespace swarm-123
 
 # Backup memory state
-claude-flow memory backup --namespace swarm-123 --output backup.json
+fidgetflo memory backup --namespace swarm-123 --output backup.json
 
 # Restore memory state
-claude-flow memory restore --namespace swarm-123 --input backup.json
+fidgetflo memory restore --namespace swarm-123 --input backup.json
 
 # Clean expired entries
-claude-flow memory cleanup --namespace swarm-123 --older-than 7d
+fidgetflo memory cleanup --namespace swarm-123 --older-than 7d
 ```
 
 ### Advanced Commands
@@ -1040,40 +1040,40 @@ claude-flow memory cleanup --namespace swarm-123 --older-than 7d
 
 ```bash
 # Create proposal
-claude-flow consensus propose \
+fidgetflo consensus propose \
   --swarm-id swarm-123 \
   --type "architecture-change" \
   --description "Switch to microservices architecture" \
   --voting-period 1800
 
 # Vote on proposal
-claude-flow consensus vote \
+fidgetflo consensus vote \
   --proposal-id prop-456 \
   --vote approve \
   --reason "Better scalability"
 
 # Check consensus status
-claude-flow consensus status --proposal-id prop-456
+fidgetflo consensus status --proposal-id prop-456
 ```
 
 #### Performance Analysis
 
 ```bash
 # Generate performance report
-claude-flow perf report \
+fidgetflo perf report \
   --swarm-id swarm-123 \
   --time-range 24h \
   --format html \
   --output performance-report.html
 
 # Benchmark swarm performance
-claude-flow perf benchmark \
+fidgetflo perf benchmark \
   --task-type coding \
   --agents 10 \
   --iterations 100
 
 # Compare topologies
-claude-flow perf compare-topologies \
+fidgetflo perf compare-topologies \
   --task "web development" \
   --topologies mesh,hierarchical,distributed
 ```
@@ -1082,16 +1082,16 @@ claude-flow perf compare-topologies \
 
 ```bash
 # Debug swarm issues
-claude-flow debug swarm --swarm-id swarm-123 --verbose
+fidgetflo debug swarm --swarm-id swarm-123 --verbose
 
 # Trace agent communication
-claude-flow debug trace-communication \
+fidgetflo debug trace-communication \
   --swarm-id swarm-123 \
   --agent-id agent-456 \
   --duration 300
 
 # Analyze failures
-claude-flow debug analyze-failures \
+fidgetflo debug analyze-failures \
   --swarm-id swarm-123 \
   --time-range 1h
 ```
@@ -1149,7 +1149,7 @@ monitoring:
 
 Usage:
 ```bash
-claude-flow swarm start --config swarm-web-dev.yaml "Build e-commerce platform"
+fidgetflo swarm start --config swarm-web-dev.yaml "Build e-commerce platform"
 ```
 
 ### Research and Analysis Swarm
@@ -1763,13 +1763,13 @@ alerts:
 **Diagnosis**:
 ```bash
 # Check agent connectivity
-claude-flow debug connectivity --swarm-id swarm-123
+fidgetflo debug connectivity --swarm-id swarm-123
 
 # Trace message routing
-claude-flow debug trace-messages --swarm-id swarm-123 --duration 60s
+fidgetflo debug trace-messages --swarm-id swarm-123 --duration 60s
 
 # Analyze network latency
-claude-flow debug network-latency --swarm-id swarm-123
+fidgetflo debug network-latency --swarm-id swarm-123
 ```
 
 **Solutions**:
@@ -1796,13 +1796,13 @@ redundancy:
 **Diagnosis**:
 ```bash
 # Check consensus status
-claude-flow consensus status --swarm-id swarm-123
+fidgetflo consensus status --swarm-id swarm-123
 
 # Analyze voting patterns
-claude-flow debug voting-patterns --swarm-id swarm-123
+fidgetflo debug voting-patterns --swarm-id swarm-123
 
 # Check for Byzantine agents
-claude-flow debug byzantine-detection --swarm-id swarm-123
+fidgetflo debug byzantine-detection --swarm-id swarm-123
 ```
 
 **Solutions**:
@@ -1830,13 +1830,13 @@ deadlock_detection:
 **Diagnosis**:
 ```bash
 # Check memory consistency
-claude-flow memory consistency-check --namespace swarm-123
+fidgetflo memory consistency-check --namespace swarm-123
 
 # Analyze sync conflicts
-claude-flow debug memory-conflicts --namespace swarm-123
+fidgetflo debug memory-conflicts --namespace swarm-123
 
 # Monitor sync performance
-claude-flow memory sync-performance --namespace swarm-123
+fidgetflo memory sync-performance --namespace swarm-123
 ```
 
 **Solutions**:
@@ -1864,13 +1864,13 @@ validation:
 **Diagnosis**:
 ```bash
 # Generate performance profile
-claude-flow perf profile --swarm-id swarm-123 --duration 300s
+fidgetflo perf profile --swarm-id swarm-123 --duration 300s
 
 # Identify bottlenecks
-claude-flow debug bottlenecks --swarm-id swarm-123
+fidgetflo debug bottlenecks --swarm-id swarm-123
 
 # Analyze resource usage
-claude-flow debug resource-usage --swarm-id swarm-123
+fidgetflo debug resource-usage --swarm-id swarm-123
 ```
 
 **Solutions**:
@@ -1901,39 +1901,39 @@ optimization:
 
 ```bash
 # Aggregate logs from all agents
-claude-flow logs aggregate --swarm-id swarm-123 --level ERROR
+fidgetflo logs aggregate --swarm-id swarm-123 --level ERROR
 
 # Search for specific patterns
-claude-flow logs search --pattern "consensus.*timeout" --swarm-id swarm-123
+fidgetflo logs search --pattern "consensus.*timeout" --swarm-id swarm-123
 
 # Generate log summary
-claude-flow logs summary --swarm-id swarm-123 --time-range 1h
+fidgetflo logs summary --swarm-id swarm-123 --time-range 1h
 ```
 
 #### 2. Performance Profiling
 
 ```bash
 # CPU profiling
-claude-flow debug cpu-profile --swarm-id swarm-123 --duration 60s
+fidgetflo debug cpu-profile --swarm-id swarm-123 --duration 60s
 
 # Memory profiling  
-claude-flow debug memory-profile --swarm-id swarm-123
+fidgetflo debug memory-profile --swarm-id swarm-123
 
 # Network profiling
-claude-flow debug network-profile --swarm-id swarm-123
+fidgetflo debug network-profile --swarm-id swarm-123
 ```
 
 #### 3. State Inspection
 
 ```bash
 # Export swarm state
-claude-flow debug export-state --swarm-id swarm-123 --output state.json
+fidgetflo debug export-state --swarm-id swarm-123 --output state.json
 
 # Compare states over time
-claude-flow debug compare-states --before state1.json --after state2.json
+fidgetflo debug compare-states --before state1.json --after state2.json
 
 # Validate state consistency
-claude-flow debug validate-state --swarm-id swarm-123
+fidgetflo debug validate-state --swarm-id swarm-123
 ```
 
 ### Recovery Procedures
@@ -1942,46 +1942,46 @@ claude-flow debug validate-state --swarm-id swarm-123
 
 ```bash
 # Drain tasks before restart
-claude-flow swarm drain --swarm-id swarm-123 --timeout 300s
+fidgetflo swarm drain --swarm-id swarm-123 --timeout 300s
 
 # Restart swarm
-claude-flow swarm restart --swarm-id swarm-123 --preserve-state
+fidgetflo swarm restart --swarm-id swarm-123 --preserve-state
 
 # Verify restart success
-claude-flow swarm health-check --swarm-id swarm-123
+fidgetflo swarm health-check --swarm-id swarm-123
 ```
 
 #### 2. Emergency Recovery
 
 ```bash
 # Emergency stop
-claude-flow swarm emergency-stop --swarm-id swarm-123 --reason "critical-issue"
+fidgetflo swarm emergency-stop --swarm-id swarm-123 --reason "critical-issue"
 
 # Restore from backup
-claude-flow swarm restore --backup-file swarm-backup.json
+fidgetflo swarm restore --backup-file swarm-backup.json
 
 # Partial recovery (specific agents)
-claude-flow agents restart --agent-ids agent-1,agent-2,agent-3
+fidgetflo agents restart --agent-ids agent-1,agent-2,agent-3
 ```
 
 #### 3. Data Recovery
 
 ```bash
 # Recover from memory corruption
-claude-flow memory recover --namespace swarm-123 --backup-timestamp "2024-01-15T10:00:00Z"
+fidgetflo memory recover --namespace swarm-123 --backup-timestamp "2024-01-15T10:00:00Z"
 
 # Rebuild indices
-claude-flow memory rebuild-indices --namespace swarm-123
+fidgetflo memory rebuild-indices --namespace swarm-123
 
 # Repair inconsistencies
-claude-flow memory repair --namespace swarm-123 --dry-run false
+fidgetflo memory repair --namespace swarm-123 --dry-run false
 ```
 
 ---
 
 ## Conclusion
 
-The Claude Flow Swarm Intelligence System represents a sophisticated approach to distributed AI collaboration. By leveraging multiple topology types, consensus mechanisms, and fault-tolerant architectures, it enables the creation of resilient, scalable AI agent networks capable of solving complex real-world problems.
+The FidgetFlo Swarm Intelligence System represents a sophisticated approach to distributed AI collaboration. By leveraging multiple topology types, consensus mechanisms, and fault-tolerant architectures, it enables the creation of resilient, scalable AI agent networks capable of solving complex real-world problems.
 
 Success with swarm systems requires careful consideration of:
 - Appropriate topology selection for your use case

@@ -4,7 +4,7 @@ Learn how to orchestrate complex workflows with multiple specialized agents work
 
 ## Overview
 
-Multi-agent systems in Claude Flow allow you to:
+Multi-agent systems in FidgetFlo allow you to:
 - Parallelize work across specialized agents
 - Coordinate dependencies between tasks
 - Share information between agents
@@ -20,7 +20,7 @@ First, let's explore available agent types:
 
 ```bash
 cd examples
-../claude-flow agent list
+../fidgetflo agent list
 ```
 
 Common agent types:
@@ -108,18 +108,18 @@ Create `ecommerce-workflow.json`:
 Create the e-commerce platform using the swarm system:
 
 ```bash
-../claude-flow swarm create "Build complete e-commerce platform with user management, product catalog, and frontend" --agents 5 --strategy development --output ./output/ecommerce --monitor
+../fidgetflo swarm create "Build complete e-commerce platform with user management, product catalog, and frontend" --agents 5 --strategy development --output ./output/ecommerce --monitor
 ```
 
 ### Step 4: Understanding Coordination Modes
 
-Claude Flow supports different coordination patterns:
+FidgetFlo supports different coordination patterns:
 
 #### Hub-Spoke Pattern
 Central coordinator manages all agents:
 
 ```bash
-../claude-flow orchestrate ./workflow.json \
+../fidgetflo orchestrate ./workflow.json \
   --coordination hub-spoke \
   --monitor
 ```
@@ -133,7 +133,7 @@ Best for:
 Agents communicate directly:
 
 ```bash
-../claude-flow orchestrate ./workflow.json \
+../fidgetflo orchestrate ./workflow.json \
   --coordination mesh \
   --monitor
 ```
@@ -147,7 +147,7 @@ Best for:
 Sequential processing:
 
 ```bash
-../claude-flow orchestrate ./workflow.json \
+../fidgetflo orchestrate ./workflow.json \
   --coordination pipeline \
   --monitor
 ```
@@ -268,7 +268,7 @@ Optimize workflow execution:
 Complete workflow for microservices:
 
 ```bash
-../claude-flow orchestrate \
+../fidgetflo orchestrate \
   ./02-workflows/complex/microservices-workflow.json \
   --monitor \
   --output ./microservices-project
@@ -285,17 +285,17 @@ This creates:
 
 ### Real-time Monitoring
 ```bash
-../claude-flow orchestrate ./workflow.json --monitor
+../fidgetflo orchestrate ./workflow.json --monitor
 ```
 
 ### Debug Mode
 ```bash
-../claude-flow orchestrate ./workflow.json --debug
+../fidgetflo orchestrate ./workflow.json --debug
 ```
 
 ### Performance Metrics
 ```bash
-../claude-flow orchestrate ./workflow.json --metrics
+../fidgetflo orchestrate ./workflow.json --metrics
 ```
 
 ## Best Practices

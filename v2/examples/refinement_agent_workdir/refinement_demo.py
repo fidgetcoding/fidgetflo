@@ -28,10 +28,10 @@ logger = logging.getLogger('refinement_demo')
 
 
 def store_to_memory(key: str, value: dict):
-    """Store results to Claude Flow memory"""
+    """Store results to FidgetFlo memory"""
     try:
         value_str = json.dumps(value)
-        cmd = f'npx claude-flow@alpha memory store "agent/refinement_agent/{key}" \'{value_str}\''
+        cmd = f'npx fidgetflo@alpha memory store "agent/refinement_agent/{key}" \'{value_str}\''
         subprocess.run(cmd, shell=True, capture_output=True)
         logger.info(f"Stored {key} to memory")
     except Exception as e:
@@ -335,7 +335,7 @@ if __name__ == "__main__":
     # Final coordination hook
     try:
         subprocess.run(
-            'npx claude-flow@alpha hooks post-task --task-id "refinement_agent" '
+            'npx fidgetflo@alpha hooks post-task --task-id "refinement_agent" '
             '--analyze-performance true',
             shell=True
         )

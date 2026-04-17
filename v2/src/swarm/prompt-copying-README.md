@@ -1,6 +1,6 @@
 # Robust Prompt Copying System
 
-A comprehensive, enterprise-grade prompt copying mechanism designed for Claude-Flow projects. This system provides efficient, reliable, and safe copying of prompt files with advanced features like parallel processing, conflict resolution, verification, and rollback capabilities.
+A comprehensive, enterprise-grade prompt copying mechanism designed for FidgetFlo projects. This system provides efficient, reliable, and safe copying of prompt files with advanced features like parallel processing, conflict resolution, verification, and rollback capabilities.
 
 ## Features
 

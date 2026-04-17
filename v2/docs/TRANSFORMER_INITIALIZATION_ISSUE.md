@@ -4,7 +4,7 @@
 
 **Date:** January 25, 2025
 **Resolution:** agentic-flow@1.8.9 detects npx environment and skips transformer loading
-**Versions:** claude-flow@2.7.25, agentic-flow@1.8.9
+**Versions:** fidgetflo@2.7.25, agentic-flow@1.8.9
 **Impact:** Zero - Clean user experience with appropriate messaging
 
 ---
@@ -12,7 +12,7 @@
 ## Historical Context (Issue from v2.7.24)
 
 **Previous Issue:** October 25, 2025
-**Affected Versions:** claude-flow@2.7.24, agentic-flow@1.8.7
+**Affected Versions:** fidgetflo@2.7.24, agentic-flow@1.8.7
 **Impact:** Low - System worked but showed confusing errors
 
 ---
@@ -27,10 +27,10 @@
 
 **Result:**
 ```bash
-npx claude-flow@alpha memory store "test" "value"
+npx fidgetflo@alpha memory store "test" "value"
 
 [Embeddings] NPX environment detected - using hash-based embeddings
-[Embeddings] For semantic search, install globally: npm install -g claude-flow
+[Embeddings] For semantic search, install globally: npm install -g fidgetflo
 ✅ Stored successfully
 ```
 
@@ -40,13 +40,13 @@ No more ONNX/WASM errors! Clean user experience maintained.
 
 ## Historical Summary (v2.7.24 Issue)
 
-When using `npx claude-flow@alpha memory` commands in v2.7.24, the local transformer model (Xenova/all-MiniLM-L6-v2) failed to initialize in npx temporary directories due to ONNX runtime and WASM backend issues. The system gracefully fell back to hash-based embeddings, maintaining full functionality but showing confusing error messages.
+When using `npx fidgetflo@alpha memory` commands in v2.7.24, the local transformer model (Xenova/all-MiniLM-L6-v2) failed to initialize in npx temporary directories due to ONNX runtime and WASM backend issues. The system gracefully fell back to hash-based embeddings, maintaining full functionality but showing confusing error messages.
 
 ## Historical Error Output (v2.7.24)
 
 **Before fix:**
 ```bash
-npx claude-flow@alpha memory store "test" "Local embeddings working!"
+npx fidgetflo@alpha memory store "test" "Local embeddings working!"
 
 [Embeddings] Initializing local embedding model (Xenova/all-MiniLM-L6-v2)...
 [Embeddings] First run will download ~23MB model...
@@ -66,10 +66,10 @@ Using `wasm` as a fallback.
 
 **After fix (v2.7.25):**
 ```bash
-npx claude-flow@alpha memory store "test" "Clean experience!"
+npx fidgetflo@alpha memory store "test" "Clean experience!"
 
 [Embeddings] NPX environment detected - using hash-based embeddings
-[Embeddings] For semantic search, install globally: npm install -g claude-flow
+[Embeddings] For semantic search, install globally: npm install -g fidgetflo
 ✅ Stored successfully in ReasoningBank
 ```
 
@@ -139,10 +139,10 @@ npx claude-flow@alpha memory store "test" "Clean experience!"
 
 ```bash
 # Install globally (not via npx)
-npm install -g claude-flow@alpha
+npm install -g fidgetflo@alpha
 
 # Now transformers work better
-claude-flow memory store "test" "value"
+fidgetflo memory store "test" "value"
 # ✅ Real transformer embeddings may work
 ```
 
@@ -150,8 +150,8 @@ claude-flow memory store "test" "value"
 
 ```bash
 # Just use it - fallback works automatically
-npx claude-flow@alpha memory store "key" "value"
-npx claude-flow@alpha memory query "search"
+npx fidgetflo@alpha memory store "key" "value"
+npx fidgetflo@alpha memory query "search"
 # ✅ Works with hash-based similarity
 ```
 
@@ -161,7 +161,7 @@ Set environment variable to skip transformer initialization:
 
 ```bash
 export SKIP_TRANSFORMERS=true
-npx claude-flow@alpha memory store "key" "value"
+npx fidgetflo@alpha memory store "key" "value"
 # ✅ Skips transformer loading, uses hash directly
 ```
 
@@ -271,13 +271,13 @@ try {
 
 ```bash
 # Test with npx (uses fallback)
-npx claude-flow@alpha memory store "test" "value"
-npx claude-flow@alpha memory query "test"
+npx fidgetflo@alpha memory store "test" "value"
+npx fidgetflo@alpha memory query "test"
 # ✅ Should work with hash-based embeddings
 
 # Test with local install (may use transformers)
-npm install -g claude-flow@alpha
-claude-flow memory store "test" "value"
+npm install -g fidgetflo@alpha
+fidgetflo memory store "test" "value"
 # ✅ May use real transformers if environment supports it
 ```
 
@@ -285,15 +285,15 @@ claude-flow memory store "test" "value"
 
 ```bash
 # Store data
-npx claude-flow@alpha memory store "key1" "value1"
-npx claude-flow@alpha memory store "key2" "value2"
+npx fidgetflo@alpha memory store "key1" "value1"
+npx fidgetflo@alpha memory store "key2" "value2"
 
 # List data
-npx claude-flow@alpha memory list
+npx fidgetflo@alpha memory list
 # ✅ Should show both entries
 
 # Query data
-npx claude-flow@alpha memory query "key"
+npx fidgetflo@alpha memory query "key"
 # ✅ Should find both (text matching)
 ```
 
@@ -341,14 +341,14 @@ The memory system includes semantic search capabilities with automatic fallback:
 
 ### Local Installation (Recommended for Semantic Search)
 ```bash
-npm install -g claude-flow@alpha
-claude-flow memory query "authentication"
+npm install -g fidgetflo@alpha
+fidgetflo memory query "authentication"
 # ✅ Attempts to use local transformer model
 ```
 
 ### NPX Usage (Hash-Based Similarity)
 ```bash
-npx claude-flow@alpha memory query "authentication"
+npx fidgetflo@alpha memory query "authentication"
 # ✅ Uses hash-based text matching (fallback)
 ```
 
@@ -406,7 +406,7 @@ const isNpx = process.env.npm_config_user_agent?.includes('npx') ||
 
 if (isNpx && !process.env.FORCE_TRANSFORMERS) {
   console.log('[Embeddings] NPX environment detected - using hash-based embeddings');
-  console.log('[Embeddings] For semantic search, install globally: npm install -g claude-flow');
+  console.log('[Embeddings] For semantic search, install globally: npm install -g fidgetflo');
   return false; // Skip transformer initialization cleanly
 }
 ```

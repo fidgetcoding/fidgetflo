@@ -1,6 +1,6 @@
 # Automation Commands
 
-Commands for automation operations in Claude Flow.
+Commands for automation operations in FidgetFlo.
 
 ## Available Commands
 

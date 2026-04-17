@@ -1,4 +1,4 @@
-# Claude-Flow V3 Plugin System
+# FidgetFlo V3 Plugin System
 
 > Domain-Driven Design Plugin-Based Architecture (ADR-004)
 

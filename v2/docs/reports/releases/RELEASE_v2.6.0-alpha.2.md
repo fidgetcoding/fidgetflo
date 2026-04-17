@@ -8,7 +8,7 @@
 
 ## 📋 Release Overview
 
-This release represents a **major milestone** in Claude-Flow's evolution, introducing:
+This release represents a **major milestone** in FidgetFlo's evolution, introducing:
 
 1. **Multi-Provider AI Execution** - Integration with agentic-flow for 99% cost savings
 2. **Comprehensive Security System** - API key redaction across all operations
@@ -21,7 +21,7 @@ This release represents a **major milestone** in Claude-Flow's evolution, introd
 
 ### 1. 🤖 Agentic-Flow Integration (Phase 1 MVP)
 
-**Full multi-provider AI agent execution engine integrated into Claude-Flow.**
+**Full multi-provider AI agent execution engine integrated into FidgetFlo.**
 
 #### Providers Supported
 - **Anthropic** - Highest quality (Claude 3.5 Sonnet, Opus)
@@ -41,15 +41,15 @@ CATEGORIES:
 #### New CLI Commands
 ```bash
 # Execute agents with multi-provider support
-claude-flow agent run <agent> "<task>" [--provider <provider>]
+fidgetflo agent run <agent> "<task>" [--provider <provider>]
 
 # List all available agents
-claude-flow agent agents
+fidgetflo agent agents
 
 # Execute with specific provider
-claude-flow agent run coder "Build REST API" --provider anthropic
-claude-flow agent run researcher "AI trends" --provider openrouter  # 99% cheaper!
-claude-flow agent run reviewer "Security audit" --provider onnx     # Local + private
+fidgetflo agent run coder "Build REST API" --provider anthropic
+fidgetflo agent run researcher "AI trends" --provider openrouter  # 99% cheaper!
+fidgetflo agent run reviewer "Security audit" --provider onnx     # Local + private
 ```
 
 #### Files Added
@@ -98,16 +98,16 @@ claude-flow agent run reviewer "Security audit" --provider onnx     # Local + pr
 #### Memory Command Integration
 ```bash
 # Automatic warning (no redaction)
-claude-flow memory store api_key "sk-ant-..." --namespace config
+fidgetflo memory store api_key "sk-ant-..." --namespace config
 ⚠️  Potential sensitive data detected! Use --redact flag
 
 # Active protection (with redaction)
-claude-flow memory store api_key "sk-ant-..." --redact
+fidgetflo memory store api_key "sk-ant-..." --redact
 🔒 Stored successfully (with redaction)
 🔒 Security: 1 sensitive pattern(s) redacted
 
 # Query with display redaction
-claude-flow memory query api --redact
+fidgetflo memory query api --redact
 Value: sk-ant-a...[REDACTED]
 🔒 Status: Redacted on storage
 ```
@@ -213,7 +213,7 @@ Performance Impact:
 
 **Multi-Provider Execution Engine**
 ```
-claude-flow (Coordination)
+fidgetflo (Coordination)
     ↓
 agentic-flow (Execution)
     ↓
@@ -279,7 +279,7 @@ Enhanced Files (5):
 ├── src/cli/simple-commands/memory.js  (Redaction integration)
 ├── src/cli/simple-cli.ts              (Help text updates)
 ├── package.json                       (Version + dependency)
-├── bin/claude-flow                    (Version update)
+├── bin/fidgetflo                    (Version update)
 └── src/core/version.ts                (Auto-reads package.json)
 ```
 
@@ -291,17 +291,17 @@ Enhanced Files (5):
 
 ```bash
 # Use Anthropic for highest quality
-claude-flow agent run coder "Build authentication system" \
+fidgetflo agent run coder "Build authentication system" \
   --provider anthropic \
   --model claude-sonnet-4-5-20250929
 
 # Use OpenRouter for 99% cost savings
-claude-flow agent run researcher "Research AI trends 2025" \
+fidgetflo agent run researcher "Research AI trends 2025" \
   --provider openrouter \
   --model meta-llama/llama-3.1-8b-instruct
 
 # Use ONNX for local privacy
-claude-flow agent run reviewer "Security audit of code" \
+fidgetflo agent run reviewer "Security audit of code" \
   --provider onnx \
   --model Xenova/gpt2
 ```
@@ -310,18 +310,18 @@ claude-flow agent run reviewer "Security audit of code" \
 
 ```bash
 # Store API configuration with automatic redaction
-claude-flow memory store api_config \
+fidgetflo memory store api_config \
   "ANTHROPIC_API_KEY=sk-ant-..." \
   --namespace production \
   --redact
 
 # Query configuration safely
-claude-flow memory query api_config \
+fidgetflo memory query api_config \
   --namespace production \
   --redact
 
 # Export memory (redacted entries are safe to share)
-claude-flow memory export backup.json \
+fidgetflo memory export backup.json \
   --namespace production
 ```
 
@@ -329,14 +329,14 @@ claude-flow memory export backup.json \
 
 ```bash
 # Configure default provider
-claude-flow config set defaultProvider openrouter
+fidgetflo config set defaultProvider openrouter
 
 # Set API keys (automatically redacted in logs)
-claude-flow config set anthropicApiKey "sk-ant-..."
-claude-flow config set openrouterApiKey "sk-or-..."
+fidgetflo config set anthropicApiKey "sk-ant-..."
+fidgetflo config set openrouterApiKey "sk-or-..."
 
 # View configuration (redacted display)
-claude-flow config show
+fidgetflo config show
 ```
 
 ---
@@ -416,11 +416,11 @@ claude-flow config show
 **Now Working:**
 ```bash
 # List agents
-claude-flow agent agents  # ✅ Works
+fidgetflo agent agents  # ✅ Works
 
 # Execute agents (with valid API keys)
-claude-flow agent run coder "Build REST API" --provider anthropic  # ✅ Works
-claude-flow agent run researcher "AI trends" --provider openrouter  # ✅ Works
+fidgetflo agent run coder "Build REST API" --provider anthropic  # ✅ Works
+fidgetflo agent run researcher "AI trends" --provider openrouter  # ✅ Works
 ```
 
 **Resolution Report:** See `docs/AGENTIC_FLOW_EXECUTION_FIX_REPORT.md`
@@ -479,9 +479,9 @@ claude-flow agent run researcher "AI trends" --provider openrouter  # ✅ Works
 
 ### Updated Help Text
 ```bash
-claude-flow --help        # Shows v2.6.0 features
-claude-flow agent --help  # Shows new agent commands
-claude-flow memory --help # Shows security features
+fidgetflo --help        # Shows v2.6.0 features
+fidgetflo agent --help  # Shows new agent commands
+fidgetflo memory --help # Shows security features
 ```
 
 ---
@@ -497,22 +497,22 @@ claude-flow memory --help # Shows security features
 1. **Multi-Provider Execution:**
    ```bash
    # List available agents
-   claude-flow agent agents
+   fidgetflo agent agents
 
    # Execute with OpenRouter for cost savings
-   claude-flow agent run coder "your task" --provider openrouter
+   fidgetflo agent run coder "your task" --provider openrouter
    ```
 
 2. **Secure Memory Storage:**
    ```bash
    # Enable redaction for API keys
-   claude-flow memory store key "value" --redact
+   fidgetflo memory store key "value" --redact
    ```
 
 3. **Configure Providers:**
    ```bash
    # Set default provider
-   claude-flow config set defaultProvider openrouter
+   fidgetflo config set defaultProvider openrouter
    ```
 
 ### For New Users
@@ -520,16 +520,16 @@ claude-flow memory --help # Shows security features
 **Quick Start:**
 ```bash
 # Install
-npm install -g claude-flow@alpha
+npm install -g fidgetflo@alpha
 
 # List agents
-claude-flow agent agents
+fidgetflo agent agents
 
 # Execute an agent
-claude-flow agent run coder "Build a REST API" --provider openrouter
+fidgetflo agent run coder "Build a REST API" --provider openrouter
 
 # Store data securely
-claude-flow memory store config "..." --redact
+fidgetflo memory store config "..." --redact
 ```
 
 ---

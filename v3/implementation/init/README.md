@@ -1,12 +1,12 @@
 # V3 Init System
 
-Comprehensive initialization system for Claude Code integration with claude-flow V3.
+Comprehensive initialization system for Claude Code integration with fidgetflo V3.
 
 ## Overview
 
 The V3 init system creates a complete development environment including:
 - `.claude/` directory with settings, skills, commands, agents, and helpers
-- `.claude-flow/` runtime configuration
+- `.fidgetflo/` runtime configuration
 - `.mcp.json` MCP server configuration
 - Cross-platform support (Windows, macOS, Linux)
 
@@ -39,7 +39,7 @@ import { executeInit, DEFAULT_INIT_OPTIONS } from '@claude-flow/cli/init';
 const result = await executeInit({
   ...DEFAULT_INIT_OPTIONS,
   targetDir: process.cwd(),
-  sourceBaseDir: '/path/to/claude-flow',
+  sourceBaseDir: '/path/to/fidgetflo',
 });
 
 console.log(`Created ${result.created.files.length} files`);
@@ -95,7 +95,7 @@ project/
 │   ├── helpers/           # Utility scripts
 │   ├── statusline.sh      # Unix statusline
 │   └── statusline.mjs     # ESM module
-├── .claude-flow/
+├── .fidgetflo/
 │   ├── config.yaml        # Runtime config
 │   ├── data/              # Persistent data
 │   ├── logs/              # Log files

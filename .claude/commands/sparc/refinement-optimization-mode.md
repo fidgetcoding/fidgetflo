@@ -22,7 +22,7 @@ Audit files for clarity, modularity, and size. Break large components (>500 line
 
 ### Option 1: Using MCP Tools (Preferred in Claude Code)
 ```javascript
-mcp__claude-flow__sparc_mode {
+mcp__fidgetflo__sparc_mode {
   mode: "refinement-optimization-mode",
   task_description: "optimize database queries",
   options: {
@@ -35,22 +35,22 @@ mcp__claude-flow__sparc_mode {
 ### Option 2: Using NPX CLI (Fallback when MCP not available)
 ```bash
 # Use when running from terminal or MCP tools unavailable
-npx claude-flow sparc run refinement-optimization-mode "optimize database queries"
+npx fidgetflo sparc run refinement-optimization-mode "optimize database queries"
 
 # For alpha features
-npx claude-flow@alpha sparc run refinement-optimization-mode "optimize database queries"
+npx fidgetflo@alpha sparc run refinement-optimization-mode "optimize database queries"
 
 # With namespace
-npx claude-flow sparc run refinement-optimization-mode "your task" --namespace refinement-optimization-mode
+npx fidgetflo sparc run refinement-optimization-mode "your task" --namespace refinement-optimization-mode
 
 # Non-interactive mode
-npx claude-flow sparc run refinement-optimization-mode "your task" --non-interactive
+npx fidgetflo sparc run refinement-optimization-mode "your task" --non-interactive
 ```
 
 ### Option 3: Local Installation
 ```bash
-# If claude-flow is installed locally
-./claude-flow sparc run refinement-optimization-mode "optimize database queries"
+# If fidgetflo is installed locally
+./fidgetflo sparc run refinement-optimization-mode "optimize database queries"
 ```
 
 ## Memory Integration
@@ -58,7 +58,7 @@ npx claude-flow sparc run refinement-optimization-mode "your task" --non-interac
 ### Using MCP Tools (Preferred)
 ```javascript
 // Store mode-specific context
-mcp__claude-flow__memory_usage {
+mcp__fidgetflo__memory_usage {
   action: "store",
   key: "refinement-optimization-mode_context",
   value: "important decisions",
@@ -66,7 +66,7 @@ mcp__claude-flow__memory_usage {
 }
 
 // Query previous work
-mcp__claude-flow__memory_search {
+mcp__fidgetflo__memory_search {
   pattern: "refinement-optimization-mode",
   namespace: "refinement-optimization-mode",
   limit: 5
@@ -76,8 +76,8 @@ mcp__claude-flow__memory_search {
 ### Using NPX CLI (Fallback)
 ```bash
 # Store mode-specific context
-npx claude-flow memory store "refinement-optimization-mode_context" "important decisions" --namespace refinement-optimization-mode
+npx fidgetflo memory store "refinement-optimization-mode_context" "important decisions" --namespace refinement-optimization-mode
 
 # Query previous work
-npx claude-flow memory query "refinement-optimization-mode" --limit 5
+npx fidgetflo memory query "refinement-optimization-mode" --limit 5
 ```

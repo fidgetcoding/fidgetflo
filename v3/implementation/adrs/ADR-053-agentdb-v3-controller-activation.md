@@ -3,7 +3,7 @@
 **Status:** Implemented
 **Date:** 2026-02-25
 **Updated:** 2026-02-25
-**Authors:** RuvNet, Claude Flow Team
+**Authors:** RuvNet, FidgetFlo Team
 **Version:** 1.3.0
 **Published:** v3.1.0-alpha.51
 **Related:** ADR-006 (Unified Memory), ADR-049 (Self-Learning Memory GNN), ADR-050 (Intelligence Loop), ADR-009 (Hybrid Memory Backend), ADR-060 (Proof-Gated Mutations)
@@ -338,8 +338,8 @@ Controllers are only instantiated when their config section is present and enabl
 This ADR acknowledges issue #1196 (beginner confusion from the paradox of choice). While the controller activation is internal plumbing, the UX problem is real. We recommend:
 
 1. **Beginner's Guide**: Create a "Getting Started in 5 Minutes" doc.
-2. **Auto-start dependencies**: `ruflo` / `claude-flow` should auto-start MCP when needed.
-3. **Simplified CLI entry point**: A single `npx ruflo start "build me a todo app"` command that handles everything.
+2. **Auto-start dependencies**: `fidgetflo` / `fidgetflo` should auto-start MCP when needed.
+3. **Simplified CLI entry point**: A single `npx fidgetflo start "build me a todo app"` command that handles everything.
 4. **Progressive disclosure**: Hide advanced options behind `--advanced` flags.
 
 This is tracked separately but noted here as the most valuable community feedback received.
@@ -535,7 +535,7 @@ Phases 2-6 describe deeper integration where specific CLI commands and hooks cal
 - Issues: #1196, #1204, #1206, #1207-#1230
 - Tracking issue: #1228
 - ADR-060: Proof-Gated State Mutation (agentdb internal)
-- Contributor: @sparkling (claude-flow-patch repository)
+- Contributor: @sparkling (fidgetflo-patch repository)
 - Contributor: @HF-teamdev (hook-handler stdin fix)
 - Contributor: @ffMathy (UX/onboarding feedback)
 - Contributor: @ThyannSeng (Windows Defender false positive report, #1229)

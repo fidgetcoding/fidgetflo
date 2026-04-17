@@ -1,6 +1,6 @@
-# Claude Flow V3
+# FidgetFlo V3
 
-> **Modular AI Agent Coordination System** - A complete reimagining of Claude-Flow with 15-agent hierarchical mesh swarm coordination.
+> **Modular AI Agent Coordination System** - A complete reimagining of FidgetFlo with 15-agent hierarchical mesh swarm coordination.
 
 [![Version](https://img.shields.io/badge/version-3.0.0--alpha.1-blue.svg)](https://github.com/ruvnet/claude-flow)
 [![Node.js](https://img.shields.io/badge/node-%3E%3D20.0.0-green.svg)](https://nodejs.org/)
@@ -9,7 +9,7 @@
 
 ## Introduction
 
-Claude Flow V3 is a next-generation AI agent coordination system built on 10 Architecture Decision Records (ADRs). It provides a modular, security-first, high-performance platform for orchestrating multi-agent swarms with hierarchical mesh topology.
+FidgetFlo V3 is a next-generation AI agent coordination system built on 10 Architecture Decision Records (ADRs). It provides a modular, security-first, high-performance platform for orchestrating multi-agent swarms with hierarchical mesh topology.
 
 V3 represents a complete architectural overhaul:
 - **10x faster testing** with Vitest
@@ -192,8 +192,8 @@ v3/
 │   └── implementation/              # Implementation details
 │
 ├── helpers/                         # Cross-platform helpers
-│   ├── claude-flow-v3.sh            # Master helper (Linux/macOS)
-│   ├── claude-flow-v3.ps1           # Master helper (Windows)
+│   ├── fidgetflo-v3.sh            # Master helper (Linux/macOS)
+│   ├── fidgetflo-v3.ps1           # Master helper (Windows)
 │   └── templates/                   # Helper templates
 │
 ├── scripts/                         # Utility scripts
@@ -378,14 +378,14 @@ Cross-platform automation for V3 development:
 
 ```bash
 # Linux/macOS
-./helpers/claude-flow-v3.sh init
-./helpers/claude-flow-v3.sh status
-./helpers/claude-flow-v3.sh update domain 3
+./helpers/fidgetflo-v3.sh init
+./helpers/fidgetflo-v3.sh status
+./helpers/fidgetflo-v3.sh update domain 3
 
 # Windows (PowerShell)
-.\helpers\claude-flow-v3.ps1 init
-.\helpers\claude-flow-v3.ps1 status
-.\helpers\claude-flow-v3.ps1 update domain 3
+.\helpers\fidgetflo-v3.ps1 init
+.\helpers\fidgetflo-v3.ps1 status
+.\helpers\fidgetflo-v3.ps1 update domain 3
 ```
 
 Features:
@@ -399,7 +399,7 @@ Features:
 ```bash
 # Clone the repository
 git clone https://github.com/ruvnet/claude-flow.git
-cd claude-flow/v3
+cd fidgetflo/v3
 
 # Install dependencies
 pnpm install

@@ -45,7 +45,7 @@ You coordinate multiple headless Codex workers for parallel task execution. You 
 
 ### Step 1: Initialize Swarm
 ```bash
-npx claude-flow@v3alpha swarm init --topology hierarchical --max-agents 6
+npx fidgetflo@v3alpha swarm init --topology hierarchical --max-agents 6
 ```
 
 ### Step 2: Spawn Parallel Workers
@@ -62,7 +62,7 @@ wait
 
 ### Step 3: Collect Results
 ```bash
-npx claude-flow@v3alpha memory list --namespace results
+npx fidgetflo@v3alpha memory list --namespace results
 ```
 
 ## Coordination Patterns
@@ -139,7 +139,7 @@ mcp__ruv-swarm__swarm_init {
 ### Track Worker Status
 ```javascript
 // Store coordination state
-mcp__claude-flow__memory_store {
+mcp__fidgetflo__memory_store {
   key: "coordination/parallel-task",
   value: JSON.stringify({
     workers: ["worker-1", "worker-2", "worker-3"],
@@ -153,7 +153,7 @@ mcp__claude-flow__memory_store {
 ### Aggregate Results
 ```javascript
 // Collect all worker results
-mcp__claude-flow__memory_list {
+mcp__fidgetflo__memory_list {
   namespace: "results"
 }
 ```
@@ -165,7 +165,7 @@ mcp__claude-flow__memory_list {
 FEATURE="user-auth"
 
 # Initialize
-npx claude-flow@v3alpha swarm init --topology hierarchical --max-agents 4
+npx fidgetflo@v3alpha swarm init --topology hierarchical --max-agents 4
 
 # Spawn workers in parallel
 claude -p "Architect: Design $FEATURE" --session-id ${FEATURE}-arch &
@@ -177,7 +177,7 @@ claude -p "Docs: Document $FEATURE" --session-id ${FEATURE}-docs &
 wait
 
 # Collect results
-npx claude-flow@v3alpha memory list --namespace results
+npx fidgetflo@v3alpha memory list --namespace results
 ```
 
 ## Best Practices

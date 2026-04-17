@@ -1,6 +1,6 @@
 # SPARC Test-Driven Development Guide
 
-Learn how to use SPARC methodology for systematic TDD with Claude Flow.
+Learn how to use SPARC methodology for systematic TDD with FidgetFlo.
 
 ## What is SPARC?
 
@@ -13,7 +13,7 @@ SPARC stands for:
 
 ## Prerequisites
 
-- Claude Flow with SPARC modes configured
+- FidgetFlo with SPARC modes configured
 - Understanding of TDD principles
 - Basic programming knowledge
 
@@ -25,7 +25,7 @@ Define what we're building:
 
 ```bash
 cd examples
-../claude-flow sparc run spec-pseudocode \
+../fidgetflo sparc run spec-pseudocode \
   "Design a user authentication system with:
    - Email/password login
    - JWT tokens
@@ -45,7 +45,7 @@ This creates:
 Plan the implementation logic:
 
 ```bash
-../claude-flow sparc run spec-pseudocode \
+../fidgetflo sparc run spec-pseudocode \
   "Create pseudocode for authentication flow:
    - Login process
    - Token generation
@@ -64,7 +64,7 @@ Output includes:
 Design the system structure:
 
 ```bash
-../claude-flow sparc run architect \
+../fidgetflo sparc run architect \
   "Design authentication service architecture:
    - API endpoints
    - Database schema
@@ -83,7 +83,7 @@ Creates:
 Now we implement using Test-Driven Development:
 
 ```bash
-../claude-flow sparc tdd \
+../fidgetflo sparc tdd \
   "Implement user authentication system" \
   --spec ./output/auth-spec.md \
   --architecture ./output/auth-architecture.md
@@ -130,7 +130,7 @@ Now we implement using Test-Driven Development:
 Test the complete system:
 
 ```bash
-../claude-flow sparc run integration \
+../fidgetflo sparc run integration \
   "Test authentication system integration:
    - API endpoints
    - Database operations
@@ -143,7 +143,7 @@ Test the complete system:
 Ensure security best practices:
 
 ```bash
-../claude-flow sparc run security-review \
+../fidgetflo sparc run security-review \
   "Review authentication system for:
    - OWASP compliance
    - SQL injection
@@ -158,7 +158,7 @@ Ensure security best practices:
 Run multiple SPARC modes simultaneously:
 
 ```bash
-../claude-flow sparc run parallel \
+../fidgetflo sparc run parallel \
   --modes "spec-pseudocode,architect,code" \
   "Create payment processing system"
 ```
@@ -169,10 +169,10 @@ Store and retrieve SPARC artifacts:
 
 ```bash
 # Store specifications
-../claude-flow memory store auth_spec "$(cat ./output/auth-spec.md)"
+../fidgetflo memory store auth_spec "$(cat ./output/auth-spec.md)"
 
 # Retrieve for future work
-../claude-flow memory query auth_spec > ./restored-spec.md
+../fidgetflo memory query auth_spec > ./restored-spec.md
 ```
 
 ### Custom Test Patterns
@@ -180,7 +180,7 @@ Store and retrieve SPARC artifacts:
 Define test templates:
 
 ```bash
-../claude-flow sparc tdd \
+../fidgetflo sparc tdd \
   "Create user service" \
   --test-pattern "AAA" \  # Arrange-Act-Assert
   --coverage-threshold 90
@@ -216,20 +216,20 @@ Define test templates:
 
 ### Authentication Flow
 ```bash
-../claude-flow sparc tdd "implement login flow" \
+../fidgetflo sparc tdd "implement login flow" \
   --pattern "request-validate-authenticate-respond"
 ```
 
 ### CRUD Operations
 ```bash
-../claude-flow sparc tdd "implement user CRUD" \
+../fidgetflo sparc tdd "implement user CRUD" \
   --pattern "rest-api" \
   --with-validation
 ```
 
 ### Event-Driven Systems
 ```bash
-../claude-flow sparc tdd "implement event handlers" \
+../fidgetflo sparc tdd "implement event handlers" \
   --pattern "pub-sub" \
   --async
 ```

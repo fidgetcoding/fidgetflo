@@ -34,7 +34,7 @@ interface InitComponents {
   helpers: boolean;     // .claude/helpers/
   statusline: boolean;  // statusline scripts
   mcp: boolean;         // .mcp.json
-  runtime: boolean;     // .claude-flow/
+  runtime: boolean;     // .fidgetflo/
 }
 ```
 
@@ -138,7 +138,7 @@ interface AgentsConfig {
 
 ```typescript
 interface MCPConfig {
-  claudeFlow: boolean;    // claude-flow MCP server
+  claudeFlow: boolean;    // fidgetflo MCP server
   agenticFlow: boolean;   // agentic-flow integration
   memory: boolean;        // Memory MCP tools
   neural: boolean;        // Neural MCP tools
@@ -150,11 +150,11 @@ interface MCPConfig {
 
 | Variable | Default | Description |
 |----------|---------|-------------|
-| `CLAUDE_FLOW_MODE` | `v3` | Operation mode |
-| `CLAUDE_FLOW_HOOKS_ENABLED` | `true` | Enable hooks |
-| `CLAUDE_FLOW_TOPOLOGY` | `hierarchical-mesh` | Swarm topology |
-| `CLAUDE_FLOW_MAX_AGENTS` | `15` | Maximum agents |
-| `CLAUDE_FLOW_MEMORY_BACKEND` | `hybrid` | Memory backend |
+| `FIDGETFLO_MODE` | `v3` | Operation mode |
+| `FIDGETFLO_HOOKS_ENABLED` | `true` | Enable hooks |
+| `FIDGETFLO_TOPOLOGY` | `hierarchical-mesh` | Swarm topology |
+| `FIDGETFLO_MAX_AGENTS` | `15` | Maximum agents |
+| `FIDGETFLO_MEMORY_BACKEND` | `hybrid` | Memory backend |
 
 ## Runtime Configuration
 

@@ -248,7 +248,7 @@ Latency: 4ms ✅
 The model meets all quality criteria and is ready for:
 1. Integration with agentic-flow agents
 2. Claude Code agent reasoning augmentation
-3. MCP tool queries via claude-flow
+3. MCP tool queries via fidgetflo
 4. Multi-pattern reasoning chains
 5. Production problem-solving workflows
 

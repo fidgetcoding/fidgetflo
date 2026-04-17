@@ -48,7 +48,7 @@ Complete a working proof-of-concept with:
 ## Current Architecture
 
 ```
-claude-flow/
+fidgetflo/
 ├── package.json (UPDATED ✅)
 │   └── agentic-flow: ^1.0.0
 │
@@ -125,7 +125,7 @@ I recommend **PAUSING HERE** and:
    - Assign priorities
 
 3. **Implement MVP first**:
-   - Get basic `claude-flow agent run` working
+   - Get basic `fidgetflo agent run` working
    - Validate the architecture
    - Then expand based on learnings
 

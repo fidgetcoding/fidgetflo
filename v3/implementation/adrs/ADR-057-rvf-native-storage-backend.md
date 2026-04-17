@@ -4,7 +4,7 @@
 |-------|-------|
 | **Status** | Proposed |
 | **Date** | 2026-02-28 |
-| **Authors** | Claude Flow Team |
+| **Authors** | FidgetFlo Team |
 | **Supersedes** | — |
 | **Related** | ADR-053 (AgentDB Controller Activation), ADR-054 (RVF Plugin Marketplace), ADR-055 (Controller Bug Remediation), ADR-056 (agentic-flow v3 Integration) |
 
@@ -14,10 +14,10 @@
 
 ### The Problem
 
-`npx ruflo@latest` installs **1.3GB** across 914 packages with a 35-second cold start in Docker. The Docker optimization work (Dockerfile.lite with `--omit=optional` + aggressive pruning) reduced this to 324MB, but the **core dependency chain** still carries unnecessary weight:
+`npx fidgetflo@latest` installs **1.3GB** across 914 packages with a 35-second cold start in Docker. The Docker optimization work (Dockerfile.lite with `--omit=optional` + aggressive pruning) reduced this to 324MB, but the **core dependency chain** still carries unnecessary weight:
 
 ```
-ruflo (5KB wrapper)
+fidgetflo (5KB wrapper)
   └─ @claude-flow/cli (9MB)
        ├─ @claude-flow/shared (11MB) ← depends on sql.js (18MB WASM)
        ├─ @claude-flow/mcp (650KB)
@@ -55,7 +55,7 @@ recommendations.push('Consider using better-sqlite3 with HNSW for faster vector 
 
 ### The Opportunity
 
-RVF (RuVector Format) is a binary container format already used in the Claude Flow ecosystem (ADR-054). It provides everything sql.js does **plus native HNSW indexing** in a fraction of the footprint:
+RVF (RuVector Format) is a binary container format already used in the FidgetFlo ecosystem (ADR-054). It provides everything sql.js does **plus native HNSW indexing** in a fraction of the footprint:
 
 | Capability | sql.js | RVF |
 |-----------|--------|-----|
@@ -204,25 +204,25 @@ async function openStorage(path: string, options: StorageOptions): Promise<IMemo
 
 ```bash
 # Check current storage format and migration status
-ruflo migrate status --storage
+fidgetflo migrate status --storage
 
 # Dry-run migration (report what would change, don't modify)
-ruflo migrate run --storage --dry-run
+fidgetflo migrate run --storage --dry-run
 
 # Migrate specific file
-ruflo migrate run --storage --file ./data/memory/memory.db
+fidgetflo migrate run --storage --file ./data/memory/memory.db
 
 # Migrate all storage files in project
-ruflo migrate run --storage --all
+fidgetflo migrate run --storage --all
 
 # Force re-migration (even if .rvf already exists)
-ruflo migrate run --storage --force
+fidgetflo migrate run --storage --force
 
 # Rollback: restore from .bak files
-ruflo migrate rollback --storage
+fidgetflo migrate rollback --storage
 
 # Validate migrated data integrity
-ruflo migrate validate --storage
+fidgetflo migrate validate --storage
 ```
 
 ### 3.4 Migration for Each Data Type
@@ -467,7 +467,7 @@ async function selectBackend(path: string, options: StorageOptions): Promise<IMe
 1. **Legacy backends become lazy-loaded** — `sql.js` moves to a dynamic `import()`, only loaded when a `.db` file is detected. Zero cost for new installations.
 2. **JSON backend stays** — for the simplest possible fallback (no binary deps at all).
 3. **`.bak` files are kept indefinitely** — users can manually rollback at any time.
-4. **`ruflo migrate rollback --storage`** restores `.bak` → original and removes `.rvf`.
+4. **`fidgetflo migrate rollback --storage`** restores `.bak` → original and removes `.rvf`.
 
 #### Write Compatibility
 
@@ -475,13 +475,13 @@ New writes always go to RVF. The `--legacy-format` flag forces legacy format:
 
 ```bash
 # Force sql.js backend for specific use case
-ruflo memory init --backend sqljs
+fidgetflo memory init --backend sqljs
 
 # Force JSON backend
-ruflo memory init --backend json
+fidgetflo memory init --backend json
 
 # Default (RVF)
-ruflo memory init
+fidgetflo memory init
 ```
 
 #### Version Negotiation
@@ -935,10 +935,10 @@ data/
 
 | Task | Package | Description |
 |------|---------|-------------|
-| P4.1 | `@claude-flow/cli` | `ruflo migrate status --storage` — detect formats, report state |
-| P4.2 | `@claude-flow/cli` | `ruflo migrate run --storage` — batch migration with progress |
-| P4.3 | `@claude-flow/cli` | `ruflo migrate rollback --storage` — restore from `.bak` |
-| P4.4 | `@claude-flow/cli` | `ruflo migrate validate --storage` — integrity verification |
+| P4.1 | `@claude-flow/cli` | `fidgetflo migrate status --storage` — detect formats, report state |
+| P4.2 | `@claude-flow/cli` | `fidgetflo migrate run --storage` — batch migration with progress |
+| P4.3 | `@claude-flow/cli` | `fidgetflo migrate rollback --storage` — restore from `.bak` |
+| P4.4 | `@claude-flow/cli` | `fidgetflo migrate validate --storage` — integrity verification |
 | P4.5 | `@claude-flow/memory` | Automatic migration in `DatabaseProvider.openStorage()` |
 
 ### Phase 5: RVF Embedding Provider (Week 4)
@@ -968,7 +968,7 @@ data/
 |------|---------|-------------|
 | P7.1 | `@claude-flow/cli` | Implement `ProgressiveDownloader` class |
 | P7.2 | `@claude-flow/cli` | Create capability manifest schema and seed registry |
-| P7.3 | `@claude-flow/cli` | `ruflo capabilities status/install/remove/list/prefetch` CLI commands |
+| P7.3 | `@claude-flow/cli` | `fidgetflo capabilities status/install/remove/list/prefetch` CLI commands |
 | P7.4 | `@claude-flow/embeddings` | Integrate progressive download into `createEmbeddingServiceAsync` |
 | P7.5 | `@claude-flow/providers` | Integrate progressive download into `RuVectorProvider` for LLM models |
 | P7.6 | `@claude-flow/cli` | Package Phase 1-2 capabilities as .rvf files on CDN/IPFS |
@@ -1203,7 +1203,7 @@ Backward Compatibility Tests:
 - **Migration complexity** — must support 3 legacy formats (sql.js .db, better-sqlite3 .db, JSON)
 - **New dependency** — `@ruvector/rvf` replaces `sql.js` (smaller, but still a dep)
 - **Learning curve** — team must understand RVF segment model vs SQL tables
-- **Loss of SQL tooling** — can't `sqlite3 memory.db` to inspect data (mitigated by `ruflo memory list`)
+- **Loss of SQL tooling** — can't `sqlite3 memory.db` to inspect data (mitigated by `fidgetflo memory list`)
 - **Hash embeddings are not semantic** — `rvf` provider good for matching, not meaning (mitigated by fallback to neural providers)
 
 ### Neutral
@@ -1219,7 +1219,7 @@ Backward Compatibility Tests:
 ### The Problem
 
 Current install paths are all-or-nothing:
-- `npx ruflo@latest` installs 1.3GB (all optional deps)
+- `npx fidgetflo@latest` installs 1.3GB (all optional deps)
 - `--omit=optional` drops to ~30MB but loses all intelligence features
 - Users who want _some_ advanced features must install _all_ of them
 
@@ -1229,27 +1229,27 @@ RVF's segment model enables a **progressive download** approach where capabiliti
 
 ```
 Phase 0: Core CLI (always installed)
-  ruflo (5KB) → @claude-flow/cli (9MB) → @claude-flow/shared (~13MB with RVF)
+  fidgetflo (5KB) → @claude-flow/cli (9MB) → @claude-flow/shared (~13MB with RVF)
   Total: ~22MB — MCP server, memory, events, CLI commands
 
 Phase 1: Lightweight Embeddings (downloaded on first use)
   @ruvector/rvf WASM kernel (52KB)
   Hash-based embeddings — no neural model needed
-  Downloaded to: ~/.ruflo/capabilities/rvf-wasm.rvf
+  Downloaded to: ~/.fidgetflo/capabilities/rvf-wasm.rvf
 
 Phase 2: Neural Embeddings (downloaded on demand)
   all-MiniLM-L6-v2 ONNX model (~22MB)
-  Stored as: ~/.ruflo/capabilities/models/minilm-l6-v2.rvf
+  Stored as: ~/.fidgetflo/capabilities/models/minilm-l6-v2.rvf
   Segment: WASM_SEG (model weights) + META_SEG (tokenizer config)
 
 Phase 3: Local LLM Inference (downloaded on demand)
   GGUF model files via ruvLLM
-  Stored as: ~/.ruflo/capabilities/models/<model>.rvf
+  Stored as: ~/.fidgetflo/capabilities/models/<model>.rvf
   Segment: MODEL_SEG (quantized weights) + OVERLAY (LoRA adapters)
 
 Phase 4: Advanced Intelligence (downloaded on demand)
   CNN/GNN/Transformer kernels for specialized tasks
-  Stored as: ~/.ruflo/capabilities/kernels/<kernel>.rvf
+  Stored as: ~/.fidgetflo/capabilities/kernels/<kernel>.rvf
   Segment: KERNEL_SEG (WASM bytecode) + EBPF_SEG (filters)
 ```
 
@@ -1288,7 +1288,7 @@ export class ProgressiveDownloader {
   private manifestPath: string;
   private capabilitiesDir: string;
 
-  constructor(rufloHome = '~/.ruflo') {
+  constructor(rufloHome = '~/.fidgetflo') {
     this.manifestPath = `${rufloHome}/capabilities/manifest.json`;
     this.capabilitiesDir = `${rufloHome}/capabilities`;
   }
@@ -1305,7 +1305,7 @@ export class ProgressiveDownloader {
     if (entry.status === 'installed') return entry.rvfPath;
 
     // Download the capability
-    console.info(`[ruflo] Downloading ${entry.name} (${this.formatSize(entry.size)})...`);
+    console.info(`[fidgetflo] Downloading ${entry.name} (${this.formatSize(entry.size)})...`);
     entry.status = 'downloading';
     await this.saveManifest(manifest);
 
@@ -1324,7 +1324,7 @@ export class ProgressiveDownloader {
     entry.rvfPath = rvfPath;
     await this.saveManifest(manifest);
 
-    console.info(`[ruflo] ✓ ${entry.name} ready`);
+    console.info(`[fidgetflo] ✓ ${entry.name} ready`);
     return rvfPath;
   }
 
@@ -1391,21 +1391,21 @@ export class ProgressiveDownloader {
 
 ```bash
 # Check what's installed and available
-ruflo capabilities status
+fidgetflo capabilities status
 
 # Download specific capability
-ruflo capabilities install neural-embeddings
+fidgetflo capabilities install neural-embeddings
 
 # Download all capabilities up to phase N
-ruflo capabilities prefetch --phase 2
+fidgetflo capabilities prefetch --phase 2
 
 # Remove a capability
-ruflo capabilities remove local-llm-qwen
+fidgetflo capabilities remove local-llm-qwen
 
 # List all available models/kernels
-ruflo capabilities list --phase 3
-ruflo capabilities list --type model
-ruflo capabilities list --type kernel
+fidgetflo capabilities list --phase 3
+fidgetflo capabilities list --type model
+fidgetflo capabilities list --type kernel
 ```
 
 ### Available Capabilities by Phase

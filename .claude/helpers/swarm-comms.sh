@@ -1,12 +1,12 @@
 #!/bin/bash
-# RuFlo V3 - Optimized Swarm Communications
+# FidgetFlo V3 - Optimized Swarm Communications
 # Non-blocking, batched, priority-based inter-agent messaging
 
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
-SWARM_DIR="$PROJECT_ROOT/.claude-flow/swarm"
+SWARM_DIR="$PROJECT_ROOT/.fidgetflo/swarm"
 QUEUE_DIR="$SWARM_DIR/queue"
 BATCH_DIR="$SWARM_DIR/batch"
 POOL_FILE="$SWARM_DIR/connection-pool.json"
@@ -317,7 +317,7 @@ case "${1:-help}" in
 
   "help"|*)
     cat << 'EOF'
-RuFlo V3 - Optimized Swarm Communications
+FidgetFlo V3 - Optimized Swarm Communications
 
 Non-blocking, batched, priority-based inter-agent messaging.
 

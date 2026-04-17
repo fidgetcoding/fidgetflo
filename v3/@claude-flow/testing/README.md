@@ -7,7 +7,7 @@
 [![TDD](https://img.shields.io/badge/TDD-London%20School-purple.svg)](https://github.com/ruvnet/claude-flow)
 [![ADR-008](https://img.shields.io/badge/ADR--008-Vitest-green.svg)](https://vitest.dev/)
 
-> Comprehensive testing framework for V3 Claude-Flow modules. Implements London School TDD patterns with behavior verification, shared fixtures, and mock services.
+> Comprehensive testing framework for V3 FidgetFlo modules. Implements London School TDD patterns with behavior verification, shared fixtures, and mock services.
 
 Based on ADR-008 (Vitest over Jest).
 

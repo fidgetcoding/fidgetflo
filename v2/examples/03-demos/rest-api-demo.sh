@@ -1,11 +1,11 @@
 #!/bin/bash
-# Demonstrate what the Claude Flow Swarm creates for a REST API
+# Demonstrate what the FidgetFlo Swarm creates for a REST API
 
-echo "🐝 Claude Flow Swarm - REST API Creation Demo"
+echo "🐝 FidgetFlo Swarm - REST API Creation Demo"
 echo "==========================================="
 echo ""
 echo "This demonstrates what the swarm system creates when you run:"
-echo "./bin/claude-flow swarm \"Build a REST API in examples/\" --strategy development"
+echo "./bin/fidgetflo swarm \"Build a REST API in examples/\" --strategy development"
 echo ""
 
 # Create the REST API structure
@@ -89,7 +89,7 @@ app.use((err, req, res, next) => {
 // Start server
 app.listen(port, () => {
   console.log(`REST API server running on port ${port}`);
-  console.log('Created by Claude Flow Swarm');
+  console.log('Created by FidgetFlo Swarm');
 });
 
 module.exports = app;
@@ -102,15 +102,15 @@ cat > "$API_DIR/package.json" << 'EOF'
 {
   "name": "rest-api",
   "version": "1.0.0",
-  "description": "REST API created by Claude Flow Swarm",
+  "description": "REST API created by FidgetFlo Swarm",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "nodemon server.js",
     "test": "jest"
   },
-  "keywords": ["rest", "api", "swarm", "claude-flow"],
-  "author": "Claude Flow Swarm",
+  "keywords": ["rest", "api", "swarm", "fidgetflo"],
+  "author": "FidgetFlo Swarm",
   "license": "MIT",
   "dependencies": {
     "express": "^4.18.2"
@@ -192,7 +192,7 @@ echo "✅ Created: server.test.js"
 cat > "$API_DIR/README.md" << 'EOF'
 # REST API
 
-This REST API was created by the Claude Flow Swarm system.
+This REST API was created by the FidgetFlo Swarm system.
 
 ## Swarm Details
 - Swarm ID: swarm_demo_12345
@@ -285,7 +285,7 @@ curl -X DELETE http://localhost:3000/api/v1/items/1
 ```
 
 ---
-Created by Claude Flow Swarm
+Created by FidgetFlo Swarm
 EOF
 
 echo "✅ Created: README.md"
@@ -337,6 +337,6 @@ echo "   cd $API_DIR"
 echo "   npm install"
 echo "   npm start"
 echo ""
-echo "This is what the Claude Flow Swarm system creates when you run:"
-echo "./bin/claude-flow swarm \"Build a REST API in examples/\" --strategy development"
+echo "This is what the FidgetFlo Swarm system creates when you run:"
+echo "./bin/fidgetflo swarm \"Build a REST API in examples/\" --strategy development"
 echo ""

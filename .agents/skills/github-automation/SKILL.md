@@ -27,23 +27,23 @@ gh pr create --title "feat: description" --body "## Summary\n..."
 
 ### Review Code
 ```bash
-npx claude-flow github review --pr 123
+npx fidgetflo github review --pr 123
 ```
 
 ### Manage Issues
 ```bash
-npx claude-flow github issues list --state open
-npx claude-flow github issues create --title "Bug: ..."
+npx fidgetflo github issues list --state open
+npx fidgetflo github issues create --title "Bug: ..."
 ```
 
 ### Setup Workflow
 ```bash
-npx claude-flow workflow create --template ci
+npx fidgetflo workflow create --template ci
 ```
 
 ### Release Management
 ```bash
-npx claude-flow deployment release --version 1.0.0
+npx fidgetflo deployment release --version 1.0.0
 ```
 
 ## Agent Types

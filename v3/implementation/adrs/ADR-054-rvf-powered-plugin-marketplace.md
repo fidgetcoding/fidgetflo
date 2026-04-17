@@ -2,13 +2,13 @@
 
 **Status:** Proposed
 **Date:** 2026-02-25
-**Authors:** RuvNet, Claude Flow Team
+**Authors:** RuvNet, FidgetFlo Team
 **Version:** 1.0.0
 **Related:** ADR-053 (Controller Activation), ADR-006 (Unified Memory), ADR-009 (Hybrid Memory Backend), ADR-049 (Self-Learning Memory GNN), ADR-050 (Intelligence Loop)
 
 ## Context
 
-The Claude Flow plugin ecosystem currently comprises 20 plugins distributed via IPFS (Pinata), discovered through a static JSON registry (`QmXbfEAaR7D2Ujm4GAkbwcGZQMHqAMpwDoje4583uNP834`), and searched via keyword substring matching. While functional, this approach has critical limitations as the ecosystem grows:
+The FidgetFlo plugin ecosystem currently comprises 20 plugins distributed via IPFS (Pinata), discovered through a static JSON registry (`QmXbfEAaR7D2Ujm4GAkbwcGZQMHqAMpwDoje4583uNP834`), and searched via keyword substring matching. While functional, this approach has critical limitations as the ecosystem grows:
 
 1. **Search is keyword-only** — `searchPlugins()` in `search.ts` does case-insensitive substring matching across name, description, tags, keywords. A query like "I need permission management" won't find `@claude-flow/claims` unless the user knows the exact term "claims."
 
@@ -217,16 +217,16 @@ async function buildPluginGraph(plugins: PluginEntry[]): Promise<void> {
 
 ```bash
 # Show transitive dependencies
-npx claude-flow plugins deps @claude-flow/security --transitive
+npx fidgetflo plugins deps @claude-flow/security --transitive
 
 # Find plugin ecosystems (community detection)
-npx claude-flow plugins ecosystems
+npx fidgetflo plugins ecosystems
 
 # Show hub plugins (highest PageRank)
-npx claude-flow plugins hubs
+npx fidgetflo plugins hubs
 
 # Check for conflicts
-npx claude-flow plugins conflicts @claude-flow/plugin-a @claude-flow/plugin-b
+npx fidgetflo plugins conflicts @claude-flow/plugin-a @claude-flow/plugin-b
 ```
 
 3. **Graph-enhanced search ranking.** Blend vector similarity with PageRank:
@@ -314,9 +314,9 @@ async function consolidatePluginPatterns(): Promise<void> {
 
 **New CLI Features:**
 ```bash
-npx claude-flow plugins recommend          # Based on installed plugins + context
-npx claude-flow plugins trending           # Real-time trending (not static)
-npx claude-flow plugins why @claude-flow/X # "Why is this recommended?"
+npx fidgetflo plugins recommend          # Based on installed plugins + context
+npx fidgetflo plugins trending           # Real-time trending (not static)
+npx fidgetflo plugins why @claude-flow/X # "Why is this recommended?"
 ```
 
 **Files Modified:**
@@ -363,11 +363,11 @@ async function registerPluginSkills(plugin: PluginEntry): Promise<void> {
 2. **Intent-to-plugin routing.** Developer describes what they need, system finds which plugin provides it:
 
 ```bash
-npx claude-flow plugins find-for "validate user input with schemas"
+npx fidgetflo plugins find-for "validate user input with schemas"
 # → @claude-flow/security (InputValidator — Zod-based validation)
 # → @claude-flow/claims (claims-based authorization)
 
-npx claude-flow plugins find-for "train neural patterns from code"
+npx fidgetflo plugins find-for "train neural patterns from code"
 # → @claude-flow/neural (SONA, MoE, EWC++)
 # → @claude-flow/plugin-neural-coordinator
 ```
@@ -479,7 +479,7 @@ async function verifyPlugin(plugin: PluginEntry): Promise<VerificationResult> {
 | `/api/plugins/:id/why` | GET | Explainable recommendation |
 
 **Deployment Options:**
-- **Self-hosted**: `npx claude-flow marketplace start --port 3001`
+- **Self-hosted**: `npx fidgetflo marketplace start --port 3001`
 - **Serverless**: Deploy as Cloudflare Worker / Vercel Edge Function with SQLite (D1/Turso)
 - **MCP Server**: Expose as MCP tool for Claude Code integration
 
@@ -536,7 +536,7 @@ The IPFS registry JSON format is **unchanged**. RVF indexing happens client-side
 
 | Risk | Impact | Mitigation |
 |---|---|---|
-| Embedding model download (100MB+) blocks first search | High latency on first use | Pre-warm in `daemon start`; cache model in `.claude-flow/models/` |
+| Embedding model download (100MB+) blocks first search | High latency on first use | Pre-warm in `daemon start`; cache model in `.fidgetflo/models/` |
 | Small registry (20 plugins) doesn't benefit from HNSW | Overhead without benefit | Skip HNSW when `registry.plugins.length < 100`; use brute-force cosine for small sets |
 | Learning from small install base may overfit | Bad recommendations | Require minimum 5 episodes before activating recommendations; blend with global popularity |
 | Graph transformer NAPI-RS binary may fail on some platforms | Feature unavailable | 4-tier fallback (native → WASM → legacy WASM → pure JS) already in place |

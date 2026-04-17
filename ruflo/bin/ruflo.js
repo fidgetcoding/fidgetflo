@@ -1,12 +1,12 @@
 #!/usr/bin/env node
-// Ruflo CLI - thin wrapper around @claude-flow/cli with ruflo branding
+// FidgetFlo CLI - thin wrapper around @claude-flow/cli with fidgetflo branding
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { dirname, resolve, join } from 'node:path';
 import { existsSync } from 'node:fs';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-// Walk up from ruflo/bin/ to find @claude-flow/cli in node_modules
+// Walk up from fidgetflo/bin/ to find @claude-flow/cli in node_modules
 function findCliPath() {
   let dir = resolve(__dirname, '..');
   for (let i = 0; i < 10; i++) {
@@ -37,11 +37,11 @@ const isMCPMode = !process.stdin.isTTY && (process.argv.length === 2 || isExplic
 if (isMCPMode) {
   await import(toImportURL(join(cliBase, 'bin', 'cli.js')));
 } else {
-  // CLI mode: use ruflo branding
+  // CLI mode: use fidgetflo branding
   const { CLI } = await import(toImportURL(join(cliBase, 'dist', 'src', 'index.js')));
   const cli = new CLI({
-    name: 'ruflo',
-    description: 'Ruflo - AI Agent Orchestration Platform',
+    name: 'fidgetflo',
+    description: 'FidgetFlo - AI Agent Orchestration Platform',
   });
   cli.run().catch((error) => {
     console.error('Fatal error:', error.message);

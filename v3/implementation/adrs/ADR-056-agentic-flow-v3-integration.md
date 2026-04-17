@@ -8,7 +8,7 @@ Accepted (2026-02-27)
 
 ## Context
 
-The `agentic-flow` package is the upstream coordination engine that powers claude-flow's ReasoningBank, Router, Agent Booster, QUIC transport, and intelligence subsystems. The major version upgrade from 2.0.7 to 3.0.0-alpha.1 introduces breaking changes, new modules, and a complete rewrite of the build pipeline.
+The `agentic-flow` package is the upstream coordination engine that powers fidgetflo's ReasoningBank, Router, Agent Booster, QUIC transport, and intelligence subsystems. The major version upgrade from 2.0.7 to 3.0.0-alpha.1 introduces breaking changes, new modules, and a complete rewrite of the build pipeline.
 
 ### Previous State (2.0.7)
 
@@ -122,7 +122,7 @@ dist/
 | `stdio-full` | stdio | Full-featured stdio server |
 | `http-sse` | HTTP/SSE | Server-Sent Events transport |
 | `http-streaming-updated` | HTTP | Streaming HTTP transport |
-| `claude-flow-sdk` | SDK | Claude Flow SDK server |
+| `fidgetflo-sdk` | SDK | FidgetFlo SDK server |
 | `hooks-server` | mixed | Hooks-specific server |
 
 ### Intelligence Modules

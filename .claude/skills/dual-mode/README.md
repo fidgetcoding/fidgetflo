@@ -63,7 +63,7 @@ See `.claude/agents/dual-mode/` for agent definitions:
 3. **Memory** provides coordination between workers
 4. **MCP tools** handle the underlying operations
 
-All workers share memory via claude-flow MCP tools for seamless coordination.
+All workers share memory via fidgetflo MCP tools for seamless coordination.
 
 ## Installation
 

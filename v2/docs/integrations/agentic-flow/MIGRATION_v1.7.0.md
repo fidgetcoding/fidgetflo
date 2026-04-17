@@ -355,8 +355,8 @@ A: Just upgrade: `npm update agentic-flow`. You get all improvements automatical
 **Q: Should I use HybridReasoningBank or ReasoningBankEngine?**
 A: Both work! HybridReasoningBank is recommended for new code (10x faster).
 
-**Q: Will this work with claude-flow?**
-A: Yes! claude-flow automatically benefits via `"agentic-flow": "*"` dependency.
+**Q: Will this work with fidgetflo?**
+A: Yes! fidgetflo automatically benefits via `"agentic-flow": "*"` dependency.
 
 ### Support Channels
 

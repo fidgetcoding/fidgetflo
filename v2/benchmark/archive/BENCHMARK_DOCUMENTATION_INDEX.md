@@ -1,7 +1,7 @@
 # 📚 Benchmark System Documentation Index
 
 ## Overview
-Complete documentation for the enhanced Claude Flow benchmark system with MLE-STAR integration, automation, and CLAUDE.md optimization.
+Complete documentation for the enhanced FidgetFlo benchmark system with MLE-STAR integration, automation, and CLAUDE.md optimization.
 
 ## 📁 Documentation Structure
 
@@ -29,7 +29,7 @@ Complete documentation for the enhanced Claude Flow benchmark system with MLE-ST
 - **[docs/optimization-guide.md](./docs/optimization-guide.md)** - Performance optimization guide
 - **[docs/coordination-modes.md](./docs/coordination-modes.md)** - Swarm coordination modes
 - **[docs/strategies.md](./docs/strategies.md)** - Benchmark strategies documentation
-- **[docs/integration_guide.md](./docs/integration_guide.md)** - Integration with Claude Flow
+- **[docs/integration_guide.md](./docs/integration_guide.md)** - Integration with FidgetFlo
 - **[docs/cli-reference.md](./docs/cli-reference.md)** - CLI command reference
 - **[docs/PARALLEL_EXECUTION.md](./docs/PARALLEL_EXECUTION.md)** - Parallel execution patterns
 - **[docs/real-benchmark-architecture.md](./docs/real-benchmark-architecture.md)** - Real benchmark architecture
@@ -98,7 +98,7 @@ Complete documentation for the enhanced Claude Flow benchmark system with MLE-ST
 
 ## 🔗 External Resources
 - [GitHub Issue #599](https://github.com/ruvnet/claude-flow/issues/599) - Project tracking
-- [Claude Flow Repository](https://github.com/ruvnet/claude-flow) - Main project
+- [FidgetFlo Repository](https://github.com/ruvnet/claude-flow) - Main project
 
 ---
 

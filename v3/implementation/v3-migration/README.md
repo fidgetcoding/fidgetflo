@@ -1,6 +1,6 @@
 # V3 Migration Documentation
 
-> Comprehensive guide for migrating from Claude Flow V2 to V3
+> Comprehensive guide for migrating from FidgetFlo V2 to V3
 
 ## Overview
 
@@ -95,13 +95,13 @@ This directory contains detailed analysis of capabilities, gaps, and migration p
 
 ```bash
 # Check migration status
-npx claude-flow migrate status
+npx fidgetflo migrate status
 
 # Run automatic migration
-npx claude-flow migrate run --target all --backup
+npx fidgetflo migrate run --target all --backup
 
 # Verify migration
-npx claude-flow migrate verify
+npx fidgetflo migrate verify
 ```
 
 ## Related Documentation

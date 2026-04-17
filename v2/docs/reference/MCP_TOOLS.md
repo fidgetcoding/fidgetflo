@@ -1,26 +1,26 @@
-# Claude Flow MCP Tools Reference
+# FidgetFlo MCP Tools Reference
 
-This document provides a comprehensive reference for all 112 MCP (Model Context Protocol) tools available in the Claude Flow ecosystem.
+This document provides a comprehensive reference for all 112 MCP (Model Context Protocol) tools available in the FidgetFlo ecosystem.
 
 ## Overview
 
-Claude Flow integrates with two MCP tool providers:
-- **claude-flow tools**: 87 tools for core functionality
+FidgetFlo integrates with two MCP tool providers:
+- **fidgetflo tools**: 87 tools for core functionality
 - **ruv-swarm tools**: 25 tools for advanced swarm intelligence
 
 All tools follow the naming convention: `mcp__provider__tool_name`
 
 ---
 
-## Claude Flow Tools (87 tools)
+## FidgetFlo Tools (87 tools)
 
-The claude-flow tools are organized into 8 categories providing comprehensive development, coordination, and system management capabilities.
+The fidgetflo tools are organized into 8 categories providing comprehensive development, coordination, and system management capabilities.
 
 ### Swarm Coordination (12 tools)
 
 These tools manage swarm initialization, agent spawning, and coordination tasks.
 
-#### `mcp__claude-flow__swarm_init`
+#### `mcp__fidgetflo__swarm_init`
 **Function**: Initialize a new swarm with specified topology and configuration
 **Parameters**:
 - `topology` (string): Swarm topology type - "hierarchical", "mesh", "distributed", "centralized"
@@ -38,7 +38,7 @@ These tools manage swarm initialization, agent spawning, and coordination tasks.
 }
 ```
 
-#### `mcp__claude-flow__agent_spawn`
+#### `mcp__fidgetflo__agent_spawn`
 **Function**: Create and spawn new agents with specific roles and capabilities
 **Parameters**:
 - `type` (string): Agent type - "coder", "researcher", "tester", "coordinator", "architect"
@@ -56,7 +56,7 @@ These tools manage swarm initialization, agent spawning, and coordination tasks.
 }
 ```
 
-#### `mcp__claude-flow__task_orchestrate`
+#### `mcp__fidgetflo__task_orchestrate`
 **Function**: Coordinate task distribution and execution across agents
 **Parameters**:
 - `task` (string): Task description
@@ -74,7 +74,7 @@ These tools manage swarm initialization, agent spawning, and coordination tasks.
 }
 ```
 
-#### `mcp__claude-flow__swarm_status`
+#### `mcp__fidgetflo__swarm_status`
 **Function**: Get comprehensive status of all swarms and their components
 **Parameters**:
 - `swarmId` (string, optional): Specific swarm to query
@@ -88,7 +88,7 @@ These tools manage swarm initialization, agent spawning, and coordination tasks.
 }
 ```
 
-#### `mcp__claude-flow__agent_list`
+#### `mcp__fidgetflo__agent_list`
 **Function**: List all agents with their current status and assignments
 **Parameters**:
 - `status` (string, optional): Filter by status - "active", "idle", "offline"
@@ -103,7 +103,7 @@ These tools manage swarm initialization, agent spawning, and coordination tasks.
 }
 ```
 
-#### `mcp__claude-flow__agent_metrics`
+#### `mcp__fidgetflo__agent_metrics`
 **Function**: Retrieve detailed performance metrics for agents
 **Parameters**:
 - `agentId` (string, optional): Specific agent ID
@@ -118,7 +118,7 @@ These tools manage swarm initialization, agent spawning, and coordination tasks.
 }
 ```
 
-#### `mcp__claude-flow__swarm_monitor`
+#### `mcp__fidgetflo__swarm_monitor`
 **Function**: Real-time monitoring of swarm activities and performance
 **Parameters**:
 - `interval` (number): Update interval in milliseconds
@@ -134,7 +134,7 @@ These tools manage swarm initialization, agent spawning, and coordination tasks.
 }
 ```
 
-#### `mcp__claude-flow__topology_optimize`
+#### `mcp__fidgetflo__topology_optimize`
 **Function**: Optimize swarm topology based on current workload and performance
 **Parameters**:
 - `swarmId` (string): Target swarm identifier
@@ -150,7 +150,7 @@ These tools manage swarm initialization, agent spawning, and coordination tasks.
 }
 ```
 
-#### `mcp__claude-flow__load_balance`
+#### `mcp__fidgetflo__load_balance`
 **Function**: Distribute workload evenly across available agents
 **Parameters**:
 - `swarmId` (string): Target swarm identifier
@@ -166,7 +166,7 @@ These tools manage swarm initialization, agent spawning, and coordination tasks.
 }
 ```
 
-#### `mcp__claude-flow__coordination_sync`
+#### `mcp__fidgetflo__coordination_sync`
 **Function**: Synchronize coordination state across all agents in a swarm
 **Parameters**:
 - `swarmId` (string): Target swarm identifier
@@ -180,7 +180,7 @@ These tools manage swarm initialization, agent spawning, and coordination tasks.
 }
 ```
 
-#### `mcp__claude-flow__swarm_scale`
+#### `mcp__fidgetflo__swarm_scale`
 **Function**: Dynamically scale swarm size based on workload demands
 **Parameters**:
 - `swarmId` (string): Target swarm identifier
@@ -196,7 +196,7 @@ These tools manage swarm initialization, agent spawning, and coordination tasks.
 }
 ```
 
-#### `mcp__claude-flow__swarm_destroy`
+#### `mcp__fidgetflo__swarm_destroy`
 **Function**: Safely terminate a swarm and clean up all associated resources
 **Parameters**:
 - `swarmId` (string): Target swarm identifier
@@ -216,7 +216,7 @@ These tools manage swarm initialization, agent spawning, and coordination tasks.
 
 Advanced AI and machine learning capabilities for pattern recognition and adaptive behavior.
 
-#### `mcp__claude-flow__neural_status`
+#### `mcp__fidgetflo__neural_status`
 **Function**: Get status of neural network models and training processes
 **Parameters**:
 - `modelId` (string, optional): Specific model identifier
@@ -229,7 +229,7 @@ Advanced AI and machine learning capabilities for pattern recognition and adapti
 }
 ```
 
-#### `mcp__claude-flow__neural_train`
+#### `mcp__fidgetflo__neural_train`
 **Function**: Train neural networks on coordination patterns and task outcomes
 **Parameters**:
 - `pattern_type` (string): Pattern type - "coordination", "optimization", "prediction"
@@ -247,7 +247,7 @@ Advanced AI and machine learning capabilities for pattern recognition and adapti
 }
 ```
 
-#### `mcp__claude-flow__neural_patterns`
+#### `mcp__fidgetflo__neural_patterns`
 **Function**: Analyze and extract patterns from swarm behavior and outcomes
 **Parameters**:
 - `analysis_type` (string): Analysis type - "behavior", "performance", "communication"
@@ -263,7 +263,7 @@ Advanced AI and machine learning capabilities for pattern recognition and adapti
 }
 ```
 
-#### `mcp__claude-flow__neural_predict`
+#### `mcp__fidgetflo__neural_predict`
 **Function**: Make predictions about task outcomes and optimal strategies
 **Parameters**:
 - `input_data` (object): Input data for prediction
@@ -279,7 +279,7 @@ Advanced AI and machine learning capabilities for pattern recognition and adapti
 }
 ```
 
-#### `mcp__claude-flow__model_load`
+#### `mcp__fidgetflo__model_load`
 **Function**: Load a pre-trained neural network model
 **Parameters**:
 - `modelId` (string): Model identifier
@@ -295,7 +295,7 @@ Advanced AI and machine learning capabilities for pattern recognition and adapti
 }
 ```
 
-#### `mcp__claude-flow__model_save`
+#### `mcp__fidgetflo__model_save`
 **Function**: Save current neural network model state
 **Parameters**:
 - `modelId` (string): Model identifier
@@ -311,7 +311,7 @@ Advanced AI and machine learning capabilities for pattern recognition and adapti
 }
 ```
 
-#### `mcp__claude-flow__wasm_optimize`
+#### `mcp__fidgetflo__wasm_optimize`
 **Function**: Optimize neural network execution using WebAssembly
 **Parameters**:
 - `modelId` (string): Model to optimize
@@ -327,7 +327,7 @@ Advanced AI and machine learning capabilities for pattern recognition and adapti
 }
 ```
 
-#### `mcp__claude-flow__inference_run`
+#### `mcp__fidgetflo__inference_run`
 **Function**: Run inference on loaded neural network models
 **Parameters**:
 - `modelId` (string): Model identifier
@@ -343,7 +343,7 @@ Advanced AI and machine learning capabilities for pattern recognition and adapti
 }
 ```
 
-#### `mcp__claude-flow__pattern_recognize`
+#### `mcp__fidgetflo__pattern_recognize`
 **Function**: Recognize patterns in agent behavior and task execution
 **Parameters**:
 - `data_type` (string): Type of data to analyze - "logs", "metrics", "communications"
@@ -359,7 +359,7 @@ Advanced AI and machine learning capabilities for pattern recognition and adapti
 }
 ```
 
-#### `mcp__claude-flow__cognitive_analyze`
+#### `mcp__fidgetflo__cognitive_analyze`
 **Function**: Perform cognitive analysis of decision-making processes
 **Parameters**:
 - `decision_context` (object): Context of the decision
@@ -375,7 +375,7 @@ Advanced AI and machine learning capabilities for pattern recognition and adapti
 }
 ```
 
-#### `mcp__claude-flow__learning_adapt`
+#### `mcp__fidgetflo__learning_adapt`
 **Function**: Adapt behavior based on learning from past experiences
 **Parameters**:
 - `experience_data` (object): Experience data to learn from
@@ -391,7 +391,7 @@ Advanced AI and machine learning capabilities for pattern recognition and adapti
 }
 ```
 
-#### `mcp__claude-flow__neural_compress`
+#### `mcp__fidgetflo__neural_compress`
 **Function**: Compress neural network models for efficient deployment
 **Parameters**:
 - `modelId` (string): Model to compress
@@ -407,7 +407,7 @@ Advanced AI and machine learning capabilities for pattern recognition and adapti
 }
 ```
 
-#### `mcp__claude-flow__ensemble_create`
+#### `mcp__fidgetflo__ensemble_create`
 **Function**: Create ensemble models from multiple neural networks
 **Parameters**:
 - `modelIds` (array): Models to include in ensemble
@@ -423,7 +423,7 @@ Advanced AI and machine learning capabilities for pattern recognition and adapti
 }
 ```
 
-#### `mcp__claude-flow__transfer_learn`
+#### `mcp__fidgetflo__transfer_learn`
 **Function**: Apply transfer learning from one domain to another
 **Parameters**:
 - `source_model` (string): Source model identifier
@@ -439,7 +439,7 @@ Advanced AI and machine learning capabilities for pattern recognition and adapti
 }
 ```
 
-#### `mcp__claude-flow__neural_explain`
+#### `mcp__fidgetflo__neural_explain`
 **Function**: Provide explanations for neural network decisions and predictions
 **Parameters**:
 - `modelId` (string): Model to explain
@@ -459,7 +459,7 @@ Advanced AI and machine learning capabilities for pattern recognition and adapti
 
 Tools for managing persistent memory, state, and data across swarm sessions.
 
-#### `mcp__claude-flow__memory_usage`
+#### `mcp__fidgetflo__memory_usage`
 **Function**: Store and retrieve data in persistent memory with namespace support
 **Parameters**:
 - `action` (string): Action type - "store", "retrieve", "delete"
@@ -479,7 +479,7 @@ Tools for managing persistent memory, state, and data across swarm sessions.
 }
 ```
 
-#### `mcp__claude-flow__memory_search`
+#### `mcp__fidgetflo__memory_search`
 **Function**: Search memory using patterns and filters
 **Parameters**:
 - `pattern` (string): Search pattern or query
@@ -497,7 +497,7 @@ Tools for managing persistent memory, state, and data across swarm sessions.
 }
 ```
 
-#### `mcp__claude-flow__memory_persist`
+#### `mcp__fidgetflo__memory_persist`
 **Function**: Persist memory data to permanent storage
 **Parameters**:
 - `namespace` (string, optional): Specific namespace to persist
@@ -513,7 +513,7 @@ Tools for managing persistent memory, state, and data across swarm sessions.
 }
 ```
 
-#### `mcp__claude-flow__memory_namespace`
+#### `mcp__fidgetflo__memory_namespace`
 **Function**: Manage memory namespaces (create, delete, list)
 **Parameters**:
 - `action` (string): Action type - "create", "delete", "list", "info"
@@ -529,7 +529,7 @@ Tools for managing persistent memory, state, and data across swarm sessions.
 }
 ```
 
-#### `mcp__claude-flow__memory_backup`
+#### `mcp__fidgetflo__memory_backup`
 **Function**: Create backups of memory data
 **Parameters**:
 - `namespace` (string, optional): Specific namespace to backup
@@ -545,7 +545,7 @@ Tools for managing persistent memory, state, and data across swarm sessions.
 }
 ```
 
-#### `mcp__claude-flow__memory_restore`
+#### `mcp__fidgetflo__memory_restore`
 **Function**: Restore memory data from backups
 **Parameters**:
 - `backup_name` (string): Backup identifier to restore
@@ -561,7 +561,7 @@ Tools for managing persistent memory, state, and data across swarm sessions.
 }
 ```
 
-#### `mcp__claude-flow__memory_compress`
+#### `mcp__fidgetflo__memory_compress`
 **Function**: Compress memory data to save storage space
 **Parameters**:
 - `namespace` (string, optional): Specific namespace to compress
@@ -577,7 +577,7 @@ Tools for managing persistent memory, state, and data across swarm sessions.
 }
 ```
 
-#### `mcp__claude-flow__memory_sync`
+#### `mcp__fidgetflo__memory_sync`
 **Function**: Synchronize memory across multiple swarm instances
 **Parameters**:
 - `source_namespace` (string): Source namespace
@@ -593,7 +593,7 @@ Tools for managing persistent memory, state, and data across swarm sessions.
 }
 ```
 
-#### `mcp__claude-flow__cache_manage`
+#### `mcp__fidgetflo__cache_manage`
 **Function**: Manage cache for frequently accessed memory data
 **Parameters**:
 - `action` (string): Action type - "clear", "optimize", "stats", "configure"
@@ -609,7 +609,7 @@ Tools for managing persistent memory, state, and data across swarm sessions.
 }
 ```
 
-#### `mcp__claude-flow__state_snapshot`
+#### `mcp__fidgetflo__state_snapshot`
 **Function**: Create snapshots of current swarm state
 **Parameters**:
 - `swarmId` (string): Target swarm identifier
@@ -627,7 +627,7 @@ Tools for managing persistent memory, state, and data across swarm sessions.
 }
 ```
 
-#### `mcp__claude-flow__context_restore`
+#### `mcp__fidgetflo__context_restore`
 **Function**: Restore swarm context from snapshots
 **Parameters**:
 - `snapshot_name` (string): Snapshot to restore
@@ -643,7 +643,7 @@ Tools for managing persistent memory, state, and data across swarm sessions.
 }
 ```
 
-#### `mcp__claude-flow__memory_analytics`
+#### `mcp__fidgetflo__memory_analytics`
 **Function**: Analyze memory usage patterns and optimization opportunities
 **Parameters**:
 - `namespace` (string, optional): Specific namespace to analyze
@@ -663,7 +663,7 @@ Tools for managing persistent memory, state, and data across swarm sessions.
 
 Comprehensive monitoring, analysis, and reporting tools for system performance.
 
-#### `mcp__claude-flow__performance_report`
+#### `mcp__fidgetflo__performance_report`
 **Function**: Generate detailed performance reports
 **Parameters**:
 - `timeframe` (string): Time period - "1h", "24h", "7d", "30d"
@@ -681,7 +681,7 @@ Comprehensive monitoring, analysis, and reporting tools for system performance.
 }
 ```
 
-#### `mcp__claude-flow__bottleneck_analyze`
+#### `mcp__fidgetflo__bottleneck_analyze`
 **Function**: Identify and analyze performance bottlenecks
 **Parameters**:
 - `component` (string): Component to analyze - "agents", "tasks", "communication", "memory"
@@ -697,7 +697,7 @@ Comprehensive monitoring, analysis, and reporting tools for system performance.
 }
 ```
 
-#### `mcp__claude-flow__token_usage`
+#### `mcp__fidgetflo__token_usage`
 **Function**: Track and analyze token consumption across operations
 **Parameters**:
 - `operation` (string, optional): Specific operation to analyze
@@ -713,7 +713,7 @@ Comprehensive monitoring, analysis, and reporting tools for system performance.
 }
 ```
 
-#### `mcp__claude-flow__task_status`
+#### `mcp__fidgetflo__task_status`
 **Function**: Get comprehensive status of tasks across swarms
 **Parameters**:
 - `taskId` (string, optional): Specific task identifier
@@ -728,7 +728,7 @@ Comprehensive monitoring, analysis, and reporting tools for system performance.
 }
 ```
 
-#### `mcp__claude-flow__task_results`
+#### `mcp__fidgetflo__task_results`
 **Function**: Retrieve detailed results and outputs from completed tasks
 **Parameters**:
 - `taskId` (string): Task identifier
@@ -744,7 +744,7 @@ Comprehensive monitoring, analysis, and reporting tools for system performance.
 }
 ```
 
-#### `mcp__claude-flow__benchmark_run`
+#### `mcp__fidgetflo__benchmark_run`
 **Function**: Run performance benchmarks on swarm operations
 **Parameters**:
 - `benchmark_type` (string): Benchmark type - "throughput", "latency", "resource_usage", "accuracy"
@@ -760,7 +760,7 @@ Comprehensive monitoring, analysis, and reporting tools for system performance.
 }
 ```
 
-#### `mcp__claude-flow__metrics_collect`
+#### `mcp__fidgetflo__metrics_collect`
 **Function**: Collect and aggregate metrics from all system components
 **Parameters**:
 - `metrics` (array): Specific metrics to collect
@@ -776,7 +776,7 @@ Comprehensive monitoring, analysis, and reporting tools for system performance.
 }
 ```
 
-#### `mcp__claude-flow__trend_analysis`
+#### `mcp__fidgetflo__trend_analysis`
 **Function**: Analyze trends in performance and behavior over time
 **Parameters**:
 - `metric` (string): Metric to analyze
@@ -794,7 +794,7 @@ Comprehensive monitoring, analysis, and reporting tools for system performance.
 }
 ```
 
-#### `mcp__claude-flow__cost_analysis`
+#### `mcp__fidgetflo__cost_analysis`
 **Function**: Analyze costs associated with swarm operations
 **Parameters**:
 - `cost_type` (string): Cost type - "tokens", "compute", "storage", "total"
@@ -810,7 +810,7 @@ Comprehensive monitoring, analysis, and reporting tools for system performance.
 }
 ```
 
-#### `mcp__claude-flow__quality_assess`
+#### `mcp__fidgetflo__quality_assess`
 **Function**: Assess quality of outputs and processes
 **Parameters**:
 - `assessment_type` (string): Assessment type - "code_quality", "task_completion", "communication"
@@ -826,7 +826,7 @@ Comprehensive monitoring, analysis, and reporting tools for system performance.
 }
 ```
 
-#### `mcp__claude-flow__error_analysis`
+#### `mcp__fidgetflo__error_analysis`
 **Function**: Analyze errors and failures to identify improvement opportunities
 **Parameters**:
 - `error_category` (string, optional): Error category to focus on
@@ -844,7 +844,7 @@ Comprehensive monitoring, analysis, and reporting tools for system performance.
 }
 ```
 
-#### `mcp__claude-flow__usage_stats`
+#### `mcp__fidgetflo__usage_stats`
 **Function**: Generate usage statistics and insights
 **Parameters**:
 - `stat_type` (string): Statistics type - "agent_utilization", "feature_usage", "resource_consumption"
@@ -860,7 +860,7 @@ Comprehensive monitoring, analysis, and reporting tools for system performance.
 }
 ```
 
-#### `mcp__claude-flow__health_check`
+#### `mcp__fidgetflo__health_check`
 **Function**: Perform comprehensive health checks on system components
 **Parameters**:
 - `component` (string, optional): Specific component to check
@@ -880,7 +880,7 @@ Comprehensive monitoring, analysis, and reporting tools for system performance.
 
 Tools for creating and managing automated workflows and processes.
 
-#### `mcp__claude-flow__workflow_create`
+#### `mcp__fidgetflo__workflow_create`
 **Function**: Create new automated workflows
 **Parameters**:
 - `workflow_name` (string): Workflow identifier
@@ -901,7 +901,7 @@ Tools for creating and managing automated workflows and processes.
 }
 ```
 
-#### `mcp__claude-flow__sparc_mode`
+#### `mcp__fidgetflo__sparc_mode`
 **Function**: Execute SPARC (Specification, Pseudocode, Architecture, Refinement, Completion) workflows
 **Parameters**:
 - `mode` (string): SPARC mode - "specification", "pseudocode", "architecture", "refinement", "completion"
@@ -920,7 +920,7 @@ Tools for creating and managing automated workflows and processes.
 }
 ```
 
-#### `mcp__claude-flow__workflow_execute`
+#### `mcp__fidgetflo__workflow_execute`
 **Function**: Execute defined workflows
 **Parameters**:
 - `workflow_id` (string): Workflow identifier to execute
@@ -936,7 +936,7 @@ Tools for creating and managing automated workflows and processes.
 }
 ```
 
-#### `mcp__claude-flow__workflow_export`
+#### `mcp__fidgetflo__workflow_export`
 **Function**: Export workflow definitions for sharing or backup
 **Parameters**:
 - `workflow_ids` (array): Workflows to export
@@ -952,7 +952,7 @@ Tools for creating and managing automated workflows and processes.
 }
 ```
 
-#### `mcp__claude-flow__automation_setup`
+#### `mcp__fidgetflo__automation_setup`
 **Function**: Set up automation rules and triggers
 **Parameters**:
 - `rule_name` (string): Automation rule name
@@ -970,7 +970,7 @@ Tools for creating and managing automated workflows and processes.
 }
 ```
 
-#### `mcp__claude-flow__pipeline_create`
+#### `mcp__fidgetflo__pipeline_create`
 **Function**: Create CI/CD-style pipelines
 **Parameters**:
 - `pipeline_name` (string): Pipeline identifier
@@ -992,7 +992,7 @@ Tools for creating and managing automated workflows and processes.
 }
 ```
 
-#### `mcp__claude-flow__scheduler_manage`
+#### `mcp__fidgetflo__scheduler_manage`
 **Function**: Manage task scheduling and cron jobs
 **Parameters**:
 - `action` (string): Action type - "create", "update", "delete", "list", "status"
@@ -1010,7 +1010,7 @@ Tools for creating and managing automated workflows and processes.
 }
 ```
 
-#### `mcp__claude-flow__trigger_setup`
+#### `mcp__fidgetflo__trigger_setup`
 **Function**: Configure event-driven triggers
 **Parameters**:
 - `trigger_name` (string): Trigger identifier
@@ -1028,7 +1028,7 @@ Tools for creating and managing automated workflows and processes.
 }
 ```
 
-#### `mcp__claude-flow__workflow_template`
+#### `mcp__fidgetflo__workflow_template`
 **Function**: Manage workflow templates for reusability
 **Parameters**:
 - `action` (string): Action type - "create", "update", "delete", "list", "instantiate"
@@ -1048,7 +1048,7 @@ Tools for creating and managing automated workflows and processes.
 }
 ```
 
-#### `mcp__claude-flow__batch_process`
+#### `mcp__fidgetflo__batch_process`
 **Function**: Execute batch processing operations
 **Parameters**:
 - `batch_name` (string): Batch operation identifier
@@ -1069,7 +1069,7 @@ Tools for creating and managing automated workflows and processes.
 }
 ```
 
-#### `mcp__claude-flow__parallel_execute`
+#### `mcp__fidgetflo__parallel_execute`
 **Function**: Execute multiple operations in parallel
 **Parameters**:
 - `operations` (array): Operations to execute
@@ -1095,7 +1095,7 @@ Tools for creating and managing automated workflows and processes.
 
 Comprehensive GitHub integration for repository management and collaboration.
 
-#### `mcp__claude-flow__github_repo_analyze`
+#### `mcp__fidgetflo__github_repo_analyze`
 **Function**: Analyze GitHub repositories for structure, patterns, and insights
 **Parameters**:
 - `repo_url` (string): GitHub repository URL
@@ -1113,7 +1113,7 @@ Comprehensive GitHub integration for repository management and collaboration.
 }
 ```
 
-#### `mcp__claude-flow__github_pr_manage`
+#### `mcp__fidgetflo__github_pr_manage`
 **Function**: Manage GitHub pull requests (create, review, merge)
 **Parameters**:
 - `action` (string): Action type - "create", "review", "merge", "close", "list"
@@ -1134,7 +1134,7 @@ Comprehensive GitHub integration for repository management and collaboration.
 }
 ```
 
-#### `mcp__claude-flow__github_issue_track`
+#### `mcp__fidgetflo__github_issue_track`
 **Function**: Track and manage GitHub issues
 **Parameters**:
 - `action` (string): Action type - "create", "update", "close", "list", "assign"
@@ -1155,7 +1155,7 @@ Comprehensive GitHub integration for repository management and collaboration.
 }
 ```
 
-#### `mcp__claude-flow__github_release_coord`
+#### `mcp__fidgetflo__github_release_coord`
 **Function**: Coordinate GitHub releases and versioning
 **Parameters**:
 - `action` (string): Action type - "create", "update", "delete", "list"
@@ -1177,7 +1177,7 @@ Comprehensive GitHub integration for repository management and collaboration.
 }
 ```
 
-#### `mcp__claude-flow__github_workflow_auto`
+#### `mcp__fidgetflo__github_workflow_auto`
 **Function**: Automate GitHub Actions workflows
 **Parameters**:
 - `repo` (string): Repository identifier
@@ -1197,7 +1197,7 @@ Comprehensive GitHub integration for repository management and collaboration.
 }
 ```
 
-#### `mcp__claude-flow__github_code_review`
+#### `mcp__fidgetflo__github_code_review`
 **Function**: Perform automated code reviews using AI
 **Parameters**:
 - `repo` (string): Repository identifier
@@ -1217,7 +1217,7 @@ Comprehensive GitHub integration for repository management and collaboration.
 }
 ```
 
-#### `mcp__claude-flow__github_sync_coord`
+#### `mcp__fidgetflo__github_sync_coord`
 **Function**: Coordinate synchronization between GitHub and local development
 **Parameters**:
 - `repos` (array): Repositories to synchronize
@@ -1235,7 +1235,7 @@ Comprehensive GitHub integration for repository management and collaboration.
 }
 ```
 
-#### `mcp__claude-flow__github_metrics`
+#### `mcp__fidgetflo__github_metrics`
 **Function**: Collect and analyze GitHub repository metrics
 **Parameters**:
 - `repo` (string): Repository identifier
@@ -1257,7 +1257,7 @@ Comprehensive GitHub integration for repository management and collaboration.
 
 Advanced dynamic agent management and architecture tools.
 
-#### `mcp__claude-flow__daa_agent_create`
+#### `mcp__fidgetflo__daa_agent_create`
 **Function**: Create dynamic agents with adaptive capabilities
 **Parameters**:
 - `agent_type` (string): Agent type or capability profile
@@ -1278,7 +1278,7 @@ Advanced dynamic agent management and architecture tools.
 }
 ```
 
-#### `mcp__claude-flow__daa_capability_match`
+#### `mcp__fidgetflo__daa_capability_match`
 **Function**: Match agent capabilities to task requirements
 **Parameters**:
 - `task_requirements` (object): Required capabilities for task
@@ -1299,7 +1299,7 @@ Advanced dynamic agent management and architecture tools.
 }
 ```
 
-#### `mcp__claude-flow__daa_resource_alloc`
+#### `mcp__fidgetflo__daa_resource_alloc`
 **Function**: Dynamically allocate resources to agents based on demand
 **Parameters**:
 - `allocation_strategy` (string): Strategy - "fair", "priority_based", "demand_based", "predictive"
@@ -1317,7 +1317,7 @@ Advanced dynamic agent management and architecture tools.
 }
 ```
 
-#### `mcp__claude-flow__daa_lifecycle_manage`
+#### `mcp__fidgetflo__daa_lifecycle_manage`
 **Function**: Manage dynamic agent lifecycles (creation, scaling, termination)
 **Parameters**:
 - `lifecycle_action` (string): Action - "spawn", "scale", "hibernate", "terminate", "migrate"
@@ -1337,7 +1337,7 @@ Advanced dynamic agent management and architecture tools.
 }
 ```
 
-#### `mcp__claude-flow__daa_communication`
+#### `mcp__fidgetflo__daa_communication`
 **Function**: Manage dynamic communication patterns between agents
 **Parameters**:
 - `communication_pattern` (string): Pattern - "broadcast", "peer_to_peer", "hierarchical", "mesh"
@@ -1355,7 +1355,7 @@ Advanced dynamic agent management and architecture tools.
 }
 ```
 
-#### `mcp__claude-flow__daa_consensus`
+#### `mcp__fidgetflo__daa_consensus`
 **Function**: Implement consensus mechanisms for distributed decision making
 **Parameters**:
 - `consensus_algorithm` (string): Algorithm - "raft", "byzantine", "proof_of_stake", "democratic"
@@ -1373,7 +1373,7 @@ Advanced dynamic agent management and architecture tools.
 }
 ```
 
-#### `mcp__claude-flow__daa_fault_tolerance`
+#### `mcp__fidgetflo__daa_fault_tolerance`
 **Function**: Implement fault tolerance and recovery mechanisms
 **Parameters**:
 - `fault_detection` (object): Fault detection configuration
@@ -1391,7 +1391,7 @@ Advanced dynamic agent management and architecture tools.
 }
 ```
 
-#### `mcp__claude-flow__daa_optimization`
+#### `mcp__fidgetflo__daa_optimization`
 **Function**: Optimize dynamic agent architecture for performance and efficiency
 **Parameters**:
 - `optimization_target` (string): Target - "performance", "cost", "reliability", "energy"
@@ -1413,7 +1413,7 @@ Advanced dynamic agent management and architecture tools.
 
 Core system management and utility functions.
 
-#### `mcp__claude-flow__terminal_execute`
+#### `mcp__fidgetflo__terminal_execute`
 **Function**: Execute terminal commands with safety controls
 **Parameters**:
 - `command` (string): Command to execute
@@ -1433,7 +1433,7 @@ Core system management and utility functions.
 }
 ```
 
-#### `mcp__claude-flow__config_manage`
+#### `mcp__fidgetflo__config_manage`
 **Function**: Manage system configuration settings
 **Parameters**:
 - `action` (string): Action - "get", "set", "update", "delete", "list", "backup", "restore"
@@ -1451,7 +1451,7 @@ Core system management and utility functions.
 }
 ```
 
-#### `mcp__claude-flow__features_detect`
+#### `mcp__fidgetflo__features_detect`
 **Function**: Detect available features and capabilities
 **Parameters**:
 - `component` (string, optional): Specific component to check
@@ -1467,7 +1467,7 @@ Core system management and utility functions.
 }
 ```
 
-#### `mcp__claude-flow__security_scan`
+#### `mcp__fidgetflo__security_scan`
 **Function**: Perform security scans on system components
 **Parameters**:
 - `scan_type` (string): Scan type - "vulnerability", "compliance", "access_control", "data_integrity"
@@ -1485,7 +1485,7 @@ Core system management and utility functions.
 }
 ```
 
-#### `mcp__claude-flow__backup_create`
+#### `mcp__fidgetflo__backup_create`
 **Function**: Create system backups
 **Parameters**:
 - `backup_type` (string): Backup type - "full", "incremental", "differential"
@@ -1505,7 +1505,7 @@ Core system management and utility functions.
 }
 ```
 
-#### `mcp__claude-flow__restore_system`
+#### `mcp__fidgetflo__restore_system`
 **Function**: Restore system from backups
 **Parameters**:
 - `backup_id` (string): Backup identifier to restore
@@ -1523,7 +1523,7 @@ Core system management and utility functions.
 }
 ```
 
-#### `mcp__claude-flow__log_analysis`
+#### `mcp__fidgetflo__log_analysis`
 **Function**: Analyze system logs for insights and issues
 **Parameters**:
 - `log_source` (string): Log source - "system", "agents", "tasks", "communications"
@@ -1541,7 +1541,7 @@ Core system management and utility functions.
 }
 ```
 
-#### `mcp__claude-flow__diagnostic_run`
+#### `mcp__fidgetflo__diagnostic_run`
 **Function**: Run comprehensive system diagnostics
 **Parameters**:
 - `diagnostic_level` (string): Diagnostic level - "quick", "standard", "comprehensive"
@@ -2062,11 +2062,11 @@ The ruv-swarm tools provide advanced swarm intelligence, distributed computing, 
 
 ### Batch Operations
 
-Many claude-flow tools support batch operations for efficiency:
+Many fidgetflo tools support batch operations for efficiency:
 
 ```json
 {
-  "tool": "mcp__claude-flow__parallel_execute",
+  "tool": "mcp__fidgetflo__parallel_execute",
   "params": {
     "operations": [
       {"tool": "memory_usage", "params": {"action": "retrieve", "key": "project_status"}},
@@ -2099,15 +2099,15 @@ Tools can be chained for complex workflows:
 
 ```json
 [
-  {"tool": "mcp__claude-flow__swarm_init", "params": {"topology": "hierarchical"}},
-  {"tool": "mcp__claude-flow__agent_spawn", "params": {"type": "coordinator"}},
+  {"tool": "mcp__fidgetflo__swarm_init", "params": {"topology": "hierarchical"}},
+  {"tool": "mcp__fidgetflo__agent_spawn", "params": {"type": "coordinator"}},
   {"tool": "mcp__ruv-swarm__neural_train", "params": {"pattern_type": "coordination"}}
 ]
 ```
 
 ### Performance Optimization
 
-- Use `mcp__claude-flow__parallel_execute` for concurrent operations
+- Use `mcp__fidgetflo__parallel_execute` for concurrent operations
 - Leverage caching with memory tools for frequently accessed data
 - Monitor performance with analytics tools
 - Use predictive tools to anticipate resource needs
@@ -2129,23 +2129,23 @@ Tools can be chained for complex workflows:
 {
   "workflow": [
     {
-      "tool": "mcp__claude-flow__swarm_init",
+      "tool": "mcp__fidgetflo__swarm_init",
       "params": {"topology": "hierarchical", "maxAgents": 8}
     },
     {
-      "tool": "mcp__claude-flow__agent_spawn",
+      "tool": "mcp__fidgetflo__agent_spawn",
       "params": {"type": "architect", "specialization": ["system_design"]}
     },
     {
-      "tool": "mcp__claude-flow__agent_spawn",
+      "tool": "mcp__fidgetflo__agent_spawn",
       "params": {"type": "coder", "specialization": ["backend"]}
     },
     {
-      "tool": "mcp__claude-flow__agent_spawn",
+      "tool": "mcp__fidgetflo__agent_spawn",
       "params": {"type": "coder", "specialization": ["frontend"]}
     },
     {
-      "tool": "mcp__claude-flow__task_orchestrate",
+      "tool": "mcp__fidgetflo__task_orchestrate",
       "params": {"task": "Build e-commerce platform", "strategy": "parallel"}
     }
   ]
@@ -2166,7 +2166,7 @@ Tools can be chained for complex workflows:
       "params": {"training_mode": "federated", "model_architecture": {"type": "transformer"}}
     },
     {
-      "tool": "mcp__claude-flow__performance_report",
+      "tool": "mcp__fidgetflo__performance_report",
       "params": {"timeframe": "24h", "include_predictions": true}
     }
   ]

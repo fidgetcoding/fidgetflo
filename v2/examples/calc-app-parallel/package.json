@@ -1,7 +1,7 @@
 {
   "name": "app",
   "version": "1.0.0",
-  "description": "app created by Claude Flow Swarm",
+  "description": "app created by FidgetFlo Swarm",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -10,9 +10,9 @@
   },
   "keywords": [
     "swarm",
-    "claude-flow"
+    "fidgetflo"
   ],
-  "author": "Claude Flow Swarm",
+  "author": "FidgetFlo Swarm",
   "license": "MIT",
   "dependencies": {}
 }

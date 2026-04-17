@@ -22,7 +22,7 @@ Use logs, traces, and stack analysis to isolate bugs. Avoid changing env configu
 
 ### Option 1: Using MCP Tools (Preferred in Claude Code)
 ```javascript
-mcp__claude-flow__sparc_mode {
+mcp__fidgetflo__sparc_mode {
   mode: "debug",
   task_description: "fix memory leak in service",
   options: {
@@ -35,22 +35,22 @@ mcp__claude-flow__sparc_mode {
 ### Option 2: Using NPX CLI (Fallback when MCP not available)
 ```bash
 # Use when running from terminal or MCP tools unavailable
-npx claude-flow sparc run debug "fix memory leak in service"
+npx fidgetflo sparc run debug "fix memory leak in service"
 
 # For alpha features
-npx claude-flow@alpha sparc run debug "fix memory leak in service"
+npx fidgetflo@alpha sparc run debug "fix memory leak in service"
 
 # With namespace
-npx claude-flow sparc run debug "your task" --namespace debug
+npx fidgetflo sparc run debug "your task" --namespace debug
 
 # Non-interactive mode
-npx claude-flow sparc run debug "your task" --non-interactive
+npx fidgetflo sparc run debug "your task" --non-interactive
 ```
 
 ### Option 3: Local Installation
 ```bash
-# If claude-flow is installed locally
-./claude-flow sparc run debug "fix memory leak in service"
+# If fidgetflo is installed locally
+./fidgetflo sparc run debug "fix memory leak in service"
 ```
 
 ## Memory Integration
@@ -58,7 +58,7 @@ npx claude-flow sparc run debug "your task" --non-interactive
 ### Using MCP Tools (Preferred)
 ```javascript
 // Store mode-specific context
-mcp__claude-flow__memory_usage {
+mcp__fidgetflo__memory_usage {
   action: "store",
   key: "debug_context",
   value: "important decisions",
@@ -66,7 +66,7 @@ mcp__claude-flow__memory_usage {
 }
 
 // Query previous work
-mcp__claude-flow__memory_search {
+mcp__fidgetflo__memory_search {
   pattern: "debug",
   namespace: "debug",
   limit: 5
@@ -76,8 +76,8 @@ mcp__claude-flow__memory_search {
 ### Using NPX CLI (Fallback)
 ```bash
 # Store mode-specific context
-npx claude-flow memory store "debug_context" "important decisions" --namespace debug
+npx fidgetflo memory store "debug_context" "important decisions" --namespace debug
 
 # Query previous work
-npx claude-flow memory query "debug" --limit 5
+npx fidgetflo memory query "debug" --limit 5
 ```

@@ -7,7 +7,7 @@ Creative problem solving with WebSearch and Memory integration.
 
 ### Option 1: Using MCP Tools (Preferred in Claude Code)
 ```javascript
-mcp__claude-flow__sparc_mode {
+mcp__fidgetflo__sparc_mode {
   mode: "innovator",
   task_description: "innovative solutions for scaling",
   options: {
@@ -20,16 +20,16 @@ mcp__claude-flow__sparc_mode {
 ### Option 2: Using NPX CLI (Fallback when MCP not available)
 ```bash
 # Use when running from terminal or MCP tools unavailable
-npx claude-flow sparc run innovator "innovative solutions for scaling"
+npx fidgetflo sparc run innovator "innovative solutions for scaling"
 
 # For alpha features
-npx claude-flow@alpha sparc run innovator "innovative solutions for scaling"
+npx fidgetflo@alpha sparc run innovator "innovative solutions for scaling"
 ```
 
 ### Option 3: Local Installation
 ```bash
-# If claude-flow is installed locally
-./claude-flow sparc run innovator "innovative solutions for scaling"
+# If fidgetflo is installed locally
+./fidgetflo sparc run innovator "innovative solutions for scaling"
 ```
 
 ## Core Capabilities

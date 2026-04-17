@@ -8,7 +8,7 @@
 
 ## Context
 
-The `aidefence` npm package (v2.1.1) provides a production-ready AI Manipulation Defense System (AIMDS) with capabilities that complement and enhance Claude Flow V3's security architecture:
+The `aidefence` npm package (v2.1.1) provides a production-ready AI Manipulation Defense System (AIMDS) with capabilities that complement and enhance FidgetFlo V3's security architecture:
 
 ### AIMDS Capabilities
 
@@ -21,7 +21,7 @@ The `aidefence` npm package (v2.1.1) provides a production-ready AI Manipulation
 
 ### Strategic Alignment
 
-| aidefence Feature | Claude Flow V3 Equivalent | Synergy |
+| aidefence Feature | FidgetFlo V3 Equivalent | Synergy |
 |-------------------|---------------------------|---------|
 | AgentDB integration | `@claude-flow/memory` with AgentDB | **Direct compatibility** - both use AgentDB for vector search |
 | HNSW threat search | HNSW pattern search (150x faster) | **Shared infrastructure** - unified threat pattern index |
@@ -44,13 +44,13 @@ The current `@claude-flow/security` module addresses CVE-2, CVE-3, HIGH-1, HIGH-
 
 ## Decision
 
-Integrate `aidefence` as a security enhancement layer within Claude Flow V3 using a **bounded context** approach with clear domain boundaries.
+Integrate `aidefence` as a security enhancement layer within FidgetFlo V3 using a **bounded context** approach with clear domain boundaries.
 
 ### 1. Domain-Driven Design Architecture
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────┐
-│                        Claude Flow V3 Security Domain                        │
+│                        FidgetFlo V3 Security Domain                        │
 ├──────────────────────────────────────────────────────────────────────────────┤
 │                                                                              │
 │  ┌────────────────────────────┐    ┌────────────────────────────────────┐   │
@@ -129,7 +129,7 @@ interface AIDefenseContext {
 
 ### 3. Anti-Corruption Layer (ACL)
 
-Translate between aidefence and claude-flow domains:
+Translate between aidefence and fidgetflo domains:
 
 ```typescript
 // v3/@claude-flow/aidefence/src/infrastructure/aidefence-adapter.ts
@@ -145,12 +145,12 @@ export class AIDefenceAdapter {
   }
 
   /**
-   * Translate aidefence detection result to claude-flow threat format
+   * Translate aidefence detection result to fidgetflo threat format
    */
   async detectThreats(input: string): Promise<ThreatDetectionResult> {
     const result: AIDefenseResult = await this.aidefence.defend({
       action: input,
-      source: 'claude-flow-agent'
+      source: 'fidgetflo-agent'
     });
 
     return this.translateToThreatResult(result);
@@ -468,7 +468,7 @@ hooks:
     # ... existing pre-hook ...
 
     # NEW: Check for similar attack patterns via aidefence
-    ATTACK_PATTERNS=$(npx claude-flow@v3alpha security defend --input "$TASK" --mode thorough --json)
+    ATTACK_PATTERNS=$(npx fidgetflo@v3alpha security defend --input "$TASK" --mode thorough --json)
     if echo "$ATTACK_PATTERNS" | jq -e '.threats | length > 0' > /dev/null; then
       echo "⚠️  Potential manipulation detected in task request"
       echo "$ATTACK_PATTERNS" | jq -r '.threats[] | "  - \(.type): \(.description)"'
@@ -478,7 +478,7 @@ hooks:
     # ... existing post-hook ...
 
     # NEW: Feed security assessment to aidefence meta-learner
-    npx claude-flow@v3alpha security behavior --agent "security-architect-$(date +%s)" --record-action "$TASK"
+    npx fidgetflo@v3alpha security behavior --agent "security-architect-$(date +%s)" --record-action "$TASK"
 ```
 
 ### 7. Shared Infrastructure
@@ -491,7 +491,7 @@ hooks:
 export const securityNamespaces: NamespaceConfig[] = [
   {
     name: 'security_threats',
-    description: 'Shared threat pattern storage (aidefence + claude-flow)',
+    description: 'Shared threat pattern storage (aidefence + fidgetflo)',
     vectorDimension: 384,
     hnswConfig: {
       m: 16,
@@ -504,7 +504,7 @@ export const securityNamespaces: NamespaceConfig[] = [
       pattern: { type: 'string' },
       mitigation: { type: 'string' },
       effectiveness: { type: 'number' },
-      source: { type: 'string', enum: ['aidefence', 'claude-flow', 'manual'] }
+      source: { type: 'string', enum: ['aidefence', 'fidgetflo', 'manual'] }
     }
   },
   {

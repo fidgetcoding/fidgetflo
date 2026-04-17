@@ -1,6 +1,6 @@
-# Claude Flow Automation Examples
+# FidgetFlo Automation Examples
 
-This document provides practical examples of using Claude Flow's automation features.
+This document provides practical examples of using FidgetFlo's automation features.
 
 ## Quick Start Examples
 
@@ -8,7 +8,7 @@ This document provides practical examples of using Claude Flow's automation feat
 
 ```bash
 # Simple ML engineering workflow
-claude-flow automation mle-star \
+fidgetflo automation mle-star \
   --dataset data/house_prices.csv \
   --target price \
   --claude \
@@ -29,7 +29,7 @@ This will:
 
 ```bash
 # Advanced ML workflow with custom configuration
-claude-flow automation mle-star \
+fidgetflo automation mle-star \
   --dataset sales_data.csv \
   --target quarterly_revenue \
   --output models/sales-forecast/ \
@@ -49,7 +49,7 @@ export DATASET_PATH="data/production_data.csv"
 export TARGET_COLUMN="conversion_rate"
 export BUILD_ID="build-$(date +%Y%m%d-%H%M%S)"
 
-claude-flow automation mle-star \
+fidgetflo automation mle-star \
   --dataset "$DATASET_PATH" \
   --target "$TARGET_COLUMN" \
   --name "$BUILD_ID-model" \
@@ -210,7 +210,7 @@ Create `web-app-workflow.json`:
 Execute the workflow:
 
 ```bash
-claude-flow automation run-workflow web-app-workflow.json \
+fidgetflo automation run-workflow web-app-workflow.json \
   --claude \
   --variables '{"app_name": "ecommerce-platform", "database": "postgresql", "framework": "react"}' \
   --non-interactive
@@ -443,12 +443,12 @@ Create `devops-workflow.json`:
 
 ```bash
 # Development environment
-claude-flow automation run-workflow devops-workflow.json \
+fidgetflo automation run-workflow devops-workflow.json \
   --variables '{"cloud_provider": "aws", "environment": "development"}' \
   --claude
 
 # Production environment  
-claude-flow automation run-workflow devops-workflow.json \
+fidgetflo automation run-workflow devops-workflow.json \
   --variables '{"cloud_provider": "aws", "environment": "production"}' \
   --claude \
   --non-interactive
@@ -472,10 +472,10 @@ Adjust agents based on workload:
 
 ```bash
 # Light workload
-claude-flow automation mle-star --max-agents 3 --claude
+fidgetflo automation mle-star --max-agents 3 --claude
 
 # Heavy workload
-claude-flow automation mle-star --max-agents 12 --claude
+fidgetflo automation mle-star --max-agents 12 --claude
 ```
 
 ## Integration Examples
@@ -503,12 +503,12 @@ jobs:
         with:
           node-version: '20'
           
-      - name: Install Claude Flow
-        run: npm install -g claude-flow@alpha
+      - name: Install FidgetFlo
+        run: npm install -g fidgetflo@alpha
         
       - name: Run MLE-STAR Pipeline
         run: |
-          claude-flow automation mle-star \
+          fidgetflo automation mle-star \
             --dataset data/training_data.csv \
             --target conversion_rate \
             --name "github-action-${{ github.run_id }}" \
@@ -530,12 +530,12 @@ jobs:
 ```dockerfile
 FROM node:20-alpine
 
-RUN npm install -g claude-flow@alpha
+RUN npm install -g fidgetflo@alpha
 
 WORKDIR /app
 COPY . .
 
-CMD ["claude-flow", "automation", "mle-star", \
+CMD ["fidgetflo", "automation", "mle-star", \
      "--dataset", "/data/dataset.csv", \
      "--non-interactive", \
      "--output", "/models/"]
@@ -555,8 +555,8 @@ spec:
     spec:
       containers:
       - name: ml-trainer
-        image: claude-flow:latest
-        command: ["claude-flow", "automation", "mle-star"]
+        image: fidgetflo:latest
+        command: ["fidgetflo", "automation", "mle-star"]
         args:
           - "--dataset"
           - "/data/dataset.csv"
@@ -584,7 +584,7 @@ spec:
 
 ```bash
 # Enable verbose logging
-claude-flow automation mle-star \
+fidgetflo automation mle-star \
   --dataset data/debug.csv \
   --verbose \
   --claude \
@@ -595,7 +595,7 @@ claude-flow automation mle-star \
 
 ```bash
 # Test workflow syntax without execution
-claude-flow automation run-workflow my-workflow.json \
+fidgetflo automation run-workflow my-workflow.json \
   --output-format json \
   --timeout 5000  # Short timeout for validation
 ```
@@ -672,11 +672,11 @@ Break complex workflows into smaller pieces for debugging:
 
 ```bash
 # Development
-claude-flow automation run-workflow workflow.json \
+fidgetflo automation run-workflow workflow.json \
   --variables '{"timeout": 1800, "quality_threshold": 0.7}'
 
 # Production  
-claude-flow automation run-workflow workflow.json \
+fidgetflo automation run-workflow workflow.json \
   --variables '{"timeout": 7200, "quality_threshold": 0.95}'
 ```
 
@@ -714,4 +714,4 @@ claude-flow automation run-workflow workflow.json \
 }
 ```
 
-These examples demonstrate the full power and flexibility of Claude Flow's automation system. Start with simple examples and gradually build more complex workflows as you become familiar with the system.
+These examples demonstrate the full power and flexibility of FidgetFlo's automation system. Start with simple examples and gradually build more complex workflows as you become familiar with the system.

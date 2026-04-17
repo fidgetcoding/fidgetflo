@@ -22,26 +22,26 @@ Agent Booster provides **ultra-fast code editing** using local WASM processing, 
 
 ## 📋 Available Commands
 
-### `claude-flow agent booster edit <file> "<instruction>"`
+### `fidgetflo agent booster edit <file> "<instruction>"`
 
 Edit a single file with ultra-fast WASM processing.
 
 **Examples**:
 ```bash
 # Add error handling to file
-claude-flow agent booster edit src/app.js "Add try-catch error handling"
+fidgetflo agent booster edit src/app.js "Add try-catch error handling"
 
 # Refactor to async/await
-claude-flow agent booster edit server.ts "Convert callbacks to async/await"
+fidgetflo agent booster edit server.ts "Convert callbacks to async/await"
 
 # Add JSDoc comments
-claude-flow agent booster edit utils.js "Add comprehensive JSDoc comments"
+fidgetflo agent booster edit utils.js "Add comprehensive JSDoc comments"
 
 # Preview changes without applying (dry run)
-claude-flow agent booster edit app.js "Add logging" --dry-run
+fidgetflo agent booster edit app.js "Add logging" --dry-run
 
 # Show performance comparison
-claude-flow agent booster edit app.js "Add logging" --benchmark
+fidgetflo agent booster edit app.js "Add logging" --benchmark
 ```
 
 **Options**:
@@ -52,23 +52,23 @@ claude-flow agent booster edit app.js "Add logging" --benchmark
 
 ---
 
-### `claude-flow agent booster batch <pattern> "<instruction>"`
+### `fidgetflo agent booster batch <pattern> "<instruction>"`
 
 Apply the same edit to multiple files matching a glob pattern.
 
 **Examples**:
 ```bash
 # Refactor all TypeScript files
-claude-flow agent booster batch "src/**/*.ts" "Convert to arrow functions"
+fidgetflo agent booster batch "src/**/*.ts" "Convert to arrow functions"
 
 # Add logging to all JavaScript files
-claude-flow agent booster batch "*.js" "Add console.log for debugging"
+fidgetflo agent booster batch "*.js" "Add console.log for debugging"
 
 # Update imports across project
-claude-flow agent booster batch "components/**/*.jsx" "Update React imports for v19"
+fidgetflo agent booster batch "components/**/*.jsx" "Update React imports for v19"
 
 # Preview batch changes (dry run)
-claude-flow agent booster batch "src/*.js" "Add comments" --dry-run
+fidgetflo agent booster batch "src/*.js" "Add comments" --dry-run
 ```
 
 **Performance**:
@@ -80,7 +80,7 @@ vs LLM API: 35.2s for 100 files, 5.87 minutes for 1000 files
 
 ---
 
-### `claude-flow agent booster parse-markdown <file>`
+### `fidgetflo agent booster parse-markdown <file>`
 
 Parse markdown file with code blocks and apply edits automatically.
 
@@ -109,10 +109,10 @@ export const formatDate = (date: Date): string => {
 **Usage**:
 ```bash
 # Apply all edits from markdown file
-claude-flow agent booster parse-markdown refactoring-plan.md
+fidgetflo agent booster parse-markdown refactoring-plan.md
 
 # Preview changes without applying
-claude-flow agent booster parse-markdown plan.md --dry-run
+fidgetflo agent booster parse-markdown plan.md --dry-run
 ```
 
 **Use Cases**:
@@ -123,20 +123,20 @@ claude-flow agent booster parse-markdown plan.md --dry-run
 
 ---
 
-### `claude-flow agent booster benchmark [options]`
+### `fidgetflo agent booster benchmark [options]`
 
 Run comprehensive performance benchmarks.
 
 **Examples**:
 ```bash
 # Run standard benchmark (100 iterations)
-claude-flow agent booster benchmark
+fidgetflo agent booster benchmark
 
 # Custom iteration count
-claude-flow agent booster benchmark --iterations 50
+fidgetflo agent booster benchmark --iterations 50
 
 # Benchmark specific file
-claude-flow agent booster benchmark --file src/app.js --iterations 100
+fidgetflo agent booster benchmark --file src/app.js --iterations 100
 ```
 
 **What it tests**:
@@ -213,7 +213,7 @@ Annual Savings: $1,825
 ### 1. Autonomous Refactoring
 ```bash
 # Refactor entire codebase instantly
-claude-flow agent booster batch "src/**/*.js" "Convert to ES6 modules"
+fidgetflo agent booster batch "src/**/*.js" "Convert to ES6 modules"
 # Time: 1-2 seconds for 1000 files
 # Cost: $0
 ```
@@ -221,28 +221,28 @@ claude-flow agent booster batch "src/**/*.js" "Convert to ES6 modules"
 ### 2. Real-Time IDE Features
 ```bash
 # Instant code transformations
-claude-flow agent booster edit current-file.ts "Add type annotations"
+fidgetflo agent booster edit current-file.ts "Add type annotations"
 # Latency: <10ms (imperceptible to users)
 ```
 
 ### 3. CI/CD Automation
 ```bash
 # Apply linting fixes in pipeline
-claude-flow agent booster batch "**/*.js" "Apply ESLint fixes"
+fidgetflo agent booster batch "**/*.js" "Apply ESLint fixes"
 # Pipeline overhead: +6 seconds vs +6 minutes with LLM
 ```
 
 ### 4. Batch Migrations
 ```bash
 # JavaScript → TypeScript
-claude-flow agent booster batch "src/**/*.js" "Convert to TypeScript"
+fidgetflo agent booster batch "src/**/*.js" "Convert to TypeScript"
 # 1000 files in 1 second vs 5.87 minutes
 ```
 
 ### 5. Code Modernization
 ```bash
 # Update deprecated APIs
-claude-flow agent booster batch "src/**/*.jsx" "Update React 18 → React 19 APIs"
+fidgetflo agent booster batch "src/**/*.jsx" "Update React 18 → React 19 APIs"
 ```
 
 ---
@@ -253,7 +253,7 @@ Combine Agent Booster with ReasoningBank for agents that are BOTH fast AND smart
 
 ```bash
 # Smart learning + ultra-fast editing
-claude-flow agent run coder "Refactor authentication module" \
+fidgetflo agent run coder "Refactor authentication module" \
   --enable-memory \
   --memory-domain refactoring \
   --use-booster
@@ -361,7 +361,7 @@ node tests/benchmark/agent-booster-benchmark.js
 
 ### Validate 352x Claim
 ```bash
-claude-flow agent booster benchmark --iterations 100
+fidgetflo agent booster benchmark --iterations 100
 ```
 
 ---

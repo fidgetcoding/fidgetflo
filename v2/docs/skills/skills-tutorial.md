@@ -39,7 +39,7 @@ Skills are **modular capabilities** that Claude Code discovers and uses automati
 5. **Claude learns** and gets faster next time (46% improvement)
 
 **Two types of skills available:**
-- ✅ **21 Built-In Skills** (automatic via claude-flow MCP)
+- ✅ **21 Built-In Skills** (automatic via fidgetflo MCP)
 - ✅ **Custom Skills** (create your own with agentic-flow)
 
 A skill is simply a directory with a `SKILL.md` file containing instructions:
@@ -76,15 +76,15 @@ Use for RAG systems, documentation search, similarity matching."
 ### Installation (30 seconds)
 
 ```bash
-# Install claude-flow for 21 built-in skills
-npm install -g claude-flow@alpha
+# Install fidgetflo for 21 built-in skills
+npm install -g fidgetflo@alpha
 
 # Add MCP server (makes skills available)
-claude mcp add claude-flow npx claude-flow@alpha mcp start
+claude mcp add fidgetflo npx fidgetflo@alpha mcp start
 
 # Verify it's running
 claude mcp list
-# ✓ claude-flow@alpha   npx claude-flow@alpha mcp start   ✓ Running
+# ✓ fidgetflo@alpha   npx fidgetflo@alpha mcp start   ✓ Running
 
 # That's it! All 21 skills are now available.
 ```
@@ -120,7 +120,7 @@ npx agentic-flow skills init-builder
 
 ## 📚 Built-In Skills Catalog (21 Total)
 
-All 21 skills are **automatically available** with claude-flow MCP server. No setup required - just use them!
+All 21 skills are **automatically available** with fidgetflo MCP server. No setup required - just use them!
 
 ### 🧠 AI & Memory (3 skills)
 
@@ -465,7 +465,7 @@ Claude Skills specification."
 #### 21. **performance-analysis**
 ```yaml
 description: "Comprehensive performance analysis, bottleneck detection, and
-optimization recommendations for Claude Flow swarms."
+optimization recommendations for FidgetFlo swarms."
 ```
 
 **Key capabilities:**
@@ -642,7 +642,7 @@ Validation: Before/after metrics
 └────────────────┬───────────────────────┬────────────────────┘
                  │                       │
     ┌────────────▼─────────┐   ┌────────▼──────────┐
-    │  claude-flow Skills  │   │ agentic-flow Skills│
+    │  fidgetflo Skills  │   │ agentic-flow Skills│
     │  (21 Built-In)       │   │  (Custom Created)  │
     └────────────┬─────────┘   └────────┬──────────┘
                  │                       │
@@ -650,7 +650,7 @@ Validation: Before/after metrics
                  │    │
     ┌────────────▼────▼──────────────────────────────┐
     │         MCP Integration Layer                  │
-    │  • claude-flow: 213+ coordination tools        │
+    │  • fidgetflo: 213+ coordination tools        │
     │  • ruv-swarm: Enhanced coordination            │
     │  • flow-nexus: Cloud capabilities              │
     │  • agentic-flow: Multi-provider agent runtime  │
@@ -677,7 +677,7 @@ Validation: Before/after metrics
    - Loads team-shared skills
    - Version-controlled with git
 
-3. **Built-In Skills** (from claude-flow MCP)
+3. **Built-In Skills** (from fidgetflo MCP)
    - 21 pre-configured skills
    - Automatically loaded via MCP
 
@@ -715,10 +715,10 @@ Claude Code coordinates:
 └─────────────────────────────────────────────────────────────┘
 
 MCP Tools Used:
-- mcp__claude-flow__swarm_init (topology setup)
-- mcp__claude-flow__agent_spawn (create agents)
-- mcp__claude-flow__memory_usage (coordination)
-- mcp__claude-flow__github_workflow_auto (CI/CD)
+- mcp__fidgetflo__swarm_init (topology setup)
+- mcp__fidgetflo__agent_spawn (create agents)
+- mcp__fidgetflo__memory_usage (coordination)
+- mcp__fidgetflo__github_workflow_auto (CI/CD)
 
 Result: Complete REST API with tests, deployed to GitHub,
         patterns stored for 46% faster next execution
@@ -800,23 +800,23 @@ npx agentic-flow skills create
 node --version    # v18.0.0 or higher
 npm --version     # v9.0.0 or higher
 
-# Option 1: Install claude-flow (includes 21 built-in skills + 213+ MCP tools)
-npm install -g claude-flow@alpha
-npx claude-flow --version  # Should show 2.7.0 or higher
+# Option 1: Install fidgetflo (includes 21 built-in skills + 213+ MCP tools)
+npm install -g fidgetflo@alpha
+npx fidgetflo --version  # Should show 2.7.0 or higher
 
 # Option 2: Install agentic-flow (for custom skill creation)
 npm install -g agentic-flow@latest
 npx agentic-flow --version  # Should show 1.7.3 or higher
 
 # Recommended: Install both for full capabilities
-npm install -g claude-flow@alpha agentic-flow@latest
+npm install -g fidgetflo@alpha agentic-flow@latest
 ```
 
 ### Setup MCP Servers
 
 ```bash
-# Add claude-flow MCP server (required for 21 built-in skills)
-claude mcp add claude-flow npx claude-flow@alpha mcp start
+# Add fidgetflo MCP server (required for 21 built-in skills)
+claude mcp add fidgetflo npx fidgetflo@alpha mcp start
 
 # Optional: Add additional MCP servers for enhanced capabilities
 claude mcp add ruv-swarm npx ruv-swarm mcp start              # Enhanced coordination
@@ -827,7 +827,7 @@ claude mcp add agentic-flow npx agentic-flow@latest mcp start  # Multi-provider 
 claude mcp list
 
 # Should show:
-# claude-flow@alpha   npx claude-flow@alpha mcp start   ✓ Running
+# fidgetflo@alpha   npx fidgetflo@alpha mcp start   ✓ Running
 ```
 
 ### Step 1: Initialize Skills Directories
@@ -2724,7 +2724,7 @@ cat .claude/skills/my-skill/SKILL.md
 
 ### What You Learned
 
-✅ **21 Built-In Skills** from claude-flow (AI, GitHub, Swarm, SPARC, Performance)
+✅ **21 Built-In Skills** from fidgetflo (AI, GitHub, Swarm, SPARC, Performance)
 ✅ **Custom Skill Creation** with agentic-flow's skill-builder
 ✅ **213+ MCP Tools** for coordination, memory, and automation
 ✅ **54 Specialized Agents** for all development scenarios
@@ -2734,11 +2734,11 @@ cat .claude/skills/my-skill/SKILL.md
 
 ### Quick Reference
 
-#### claude-flow (Built-In Skills)
+#### fidgetflo (Built-In Skills)
 ```bash
 # Install and setup MCP server
-npm install -g claude-flow@alpha
-claude mcp add claude-flow npx claude-flow@alpha mcp start
+npm install -g fidgetflo@alpha
+claude mcp add fidgetflo npx fidgetflo@alpha mcp start
 
 # Verify 21 skills are available
 claude mcp list
@@ -2767,17 +2767,17 @@ npx agentic-flow skills validate <path>
 #### Combined Usage
 ```bash
 # Install both systems
-npm install -g claude-flow@alpha agentic-flow@latest
+npm install -g fidgetflo@alpha agentic-flow@latest
 
 # Setup MCP servers
-claude mcp add claude-flow npx claude-flow@alpha mcp start
+claude mcp add fidgetflo npx fidgetflo@alpha mcp start
 
 # Create custom skills
 npx agentic-flow skills init
 npx agentic-flow skills create
 
 # Now you have:
-# ✅ 21 built-in claude-flow skills
+# ✅ 21 built-in fidgetflo skills
 # ✅ 4 sample agentic-flow skills
 # ✅ 213+ MCP coordination tools
 # ✅ 54 specialized agents
@@ -2786,7 +2786,7 @@ npx agentic-flow skills create
 
 ### Skill Categories Available
 
-| Category | claude-flow Built-In | agentic-flow Custom | Total |
+| Category | fidgetflo Built-In | agentic-flow Custom | Total |
 |----------|---------------------|---------------------|-------|
 | AI & Memory | 3 | 2 | 5 |
 | GitHub Integration | 5 | 0 | 5 |
@@ -2799,11 +2799,11 @@ Plus unlimited custom skills you create!
 
 ### Next Steps
 
-1. **Install claude-flow MCP**: Get 21 built-in skills instantly
+1. **Install fidgetflo MCP**: Get 21 built-in skills instantly
 2. **Try built-in skills**: Test agentdb-vector-search, swarm-orchestration, github-code-review
 3. **Install agentic-flow**: Add custom skill creation capabilities
 4. **Create your first custom skill**: Use skill-builder for your domain
-5. **Build multi-agent workflows**: Combine claude-flow + custom skills
+5. **Build multi-agent workflows**: Combine fidgetflo + custom skills
 6. **Explore MCP tools**: 213+ coordination tools available
 7. **Share with your team**: Commit custom skills to git
 8. **Join the community**: Share your skills on GitHub
@@ -2831,7 +2831,7 @@ User: "Build REST API with tests and deploy"
 
 **Custom Domain (built-in + custom):**
 ```
-1. Use claude-flow built-in: swarm-orchestration
+1. Use fidgetflo built-in: swarm-orchestration
 2. Create custom: your-company-api-standards (agentic-flow)
 3. Combine: Company-specific development with best practices
 4. Learn: Patterns stored for 46% faster next time
@@ -2841,9 +2841,9 @@ User: "Build REST API with tests and deploy"
 
 ## 🌐 Resources
 
-### claude-flow
+### fidgetflo
 - **Repository**: [https://github.com/ruvnet/claude-flow](https://github.com/ruvnet/claude-flow)
-- **Wiki**: [claude-flow wiki](https://github.com/ruvnet/claude-flow/wiki)
+- **Wiki**: [fidgetflo wiki](https://github.com/ruvnet/claude-flow/wiki)
 - **21 Built-In Skills**: Available via MCP server
 - **213+ MCP Tools**: Coordination, memory, GitHub, neural patterns
 - **54 Agents**: Core dev to advanced distributed systems
@@ -2864,7 +2864,7 @@ User: "Build REST API with tests and deploy"
 
 ## 📊 Performance Metrics
 
-### With claude-flow + agentic-flow Integration:
+### With fidgetflo + agentic-flow Integration:
 
 - **84.8% SWE-Bench solve rate** (vs industry avg 43%)
 - **32.3% token reduction** through intelligent coordination
@@ -2876,7 +2876,7 @@ User: "Build REST API with tests and deploy"
 
 ---
 
-**Version**: claude-flow v2.0 + agentic-flow v1.7.3
+**Version**: fidgetflo v2.0 + agentic-flow v1.7.3
 **Philosophy**: Pre-built excellence + custom specialization
 **Architecture**: 21 built-in skills + unlimited custom + 213+ MCP tools
 **Result**: Enterprise-grade adaptive intelligence that learns how to think
@@ -2885,10 +2885,10 @@ User: "Build REST API with tests and deploy"
 
 ```bash
 # Full installation (recommended)
-npm install -g claude-flow@alpha agentic-flow@latest
+npm install -g fidgetflo@alpha agentic-flow@latest
 
 # Setup MCP server for built-in skills
-claude mcp add claude-flow npx claude-flow@alpha mcp start
+claude mcp add fidgetflo npx fidgetflo@alpha mcp start
 
 # Create custom skills
 npx agentic-flow skills init
@@ -2896,7 +2896,7 @@ npx agentic-flow skills create
 npx agentic-flow skills init-builder
 
 # You now have access to:
-# ✅ 21 claude-flow built-in skills
+# ✅ 21 fidgetflo built-in skills
 # ✅ 4 agentic-flow sample skills
 # ✅ 213+ MCP coordination tools
 # ✅ 54 specialized agents

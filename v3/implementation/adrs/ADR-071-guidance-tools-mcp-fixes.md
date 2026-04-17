@@ -53,9 +53,9 @@ Changes:
 
 **Self-detection fix**: `start()` now skips the "already running" check when the reported PID matches the current process. `getStatus()` reports `running: true` with `process.pid` for stdio transport even before startup — this is correct for health checks but must not block the initial `start()` call.
 
-**PID reuse guard**: `isProcessRunning()` now verifies the process is actually `node`/`claude-flow`/`npx` by inspecting `/proc/{pid}/cmdline` (Linux) or `ps -p` (macOS). Falls back to `kill -0` on platforms where this isn't available.
+**PID reuse guard**: `isProcessRunning()` now verifies the process is actually `node`/`fidgetflo`/`npx` by inspecting `/proc/{pid}/cmdline` (Linux) or `ps -p` (macOS). Falls back to `kill -0` on platforms where this isn't available.
 
-**Legacy cleanup**: `removePidFile()` now also removes `.claude-flow/mcp-server.pid` from older versions that wrote to a different path than the current `/tmp/claude-flow-mcp.pid`.
+**Legacy cleanup**: `removePidFile()` now also removes `.fidgetflo/mcp-server.pid` from older versions that wrote to a different path than the current `/tmp/fidgetflo-mcp.pid`.
 
 ## Consequences
 
@@ -66,7 +66,7 @@ Changes:
 - `init` generates clean agents when scaffolding new projects
 
 ### Negative
-- `hooks` fields were removed from agent frontmatter (they contained Claude Flow shell scripts, not Claude Code hook references — functionality preserved in CLI hooks system)
+- `hooks` fields were removed from agent frontmatter (they contained FidgetFlo shell scripts, not Claude Code hook references — functionality preserved in CLI hooks system)
 - Guidance tools use a static catalog that must be updated when new capabilities are added
 
 ## Files Changed

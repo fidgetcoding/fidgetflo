@@ -68,7 +68,7 @@
     "level": "warn",
     "format": "json",
     "destination": "file",
-    "filePath": "/var/log/claude-flow/production.log",
+    "filePath": "/var/log/fidgetflo/production.log",
     "maxFileSize": "100MB",
     "maxFiles": 10,
     "compression": true

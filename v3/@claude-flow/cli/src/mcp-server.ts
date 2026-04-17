@@ -72,8 +72,8 @@ const DEFAULT_OPTIONS: Required<MCPServerOptions> = {
   transport: 'stdio',
   host: 'localhost',
   port: 3000,
-  pidFile: path.join(os.tmpdir(), 'claude-flow-mcp.pid'),
-  logFile: path.join(os.tmpdir(), 'claude-flow-mcp.log'),
+  pidFile: path.join(os.tmpdir(), 'fidgetflo-mcp.pid'),
+  logFile: path.join(os.tmpdir(), 'fidgetflo-mcp.log'),
   tools: 'all',
   daemonize: false,
   timeout: 30000,
@@ -317,7 +317,7 @@ export class MCPServerManager extends EventEmitter {
 
     // Log to stderr to not corrupt stdout
     console.error(
-      `[${new Date().toISOString()}] INFO [claude-flow-mcp] (${sessionId}) Starting in stdio mode`
+      `[${new Date().toISOString()}] INFO [fidgetflo-mcp] (${sessionId}) Starting in stdio mode`
     );
 
     // Auto-initialize memory database before tools are registered (#1524)
@@ -328,28 +328,28 @@ export class MCPServerManager extends EventEmitter {
       const status = await checkMemoryInitialization();
       if (!status.initialized) {
         console.error(
-          `[${new Date().toISOString()}] INFO [claude-flow-mcp] (${sessionId}) Auto-initializing memory database...`
+          `[${new Date().toISOString()}] INFO [fidgetflo-mcp] (${sessionId}) Auto-initializing memory database...`
         );
         const result = await initializeMemoryDatabase({ force: false, verbose: false });
         if (result.success) {
           console.error(
-            `[${new Date().toISOString()}] INFO [claude-flow-mcp] (${sessionId}) Memory database initialized at ${result.dbPath}`
+            `[${new Date().toISOString()}] INFO [fidgetflo-mcp] (${sessionId}) Memory database initialized at ${result.dbPath}`
           );
         } else if (result.error && !result.error.includes('already exists')) {
           console.error(
-            `[${new Date().toISOString()}] WARN [claude-flow-mcp] (${sessionId}) Memory database init returned: ${result.error}`
+            `[${new Date().toISOString()}] WARN [fidgetflo-mcp] (${sessionId}) Memory database init returned: ${result.error}`
           );
         }
       } else {
         console.error(
-          `[${new Date().toISOString()}] INFO [claude-flow-mcp] (${sessionId}) Memory database already initialized (v${status.version || 'unknown'})`
+          `[${new Date().toISOString()}] INFO [fidgetflo-mcp] (${sessionId}) Memory database already initialized (v${status.version || 'unknown'})`
         );
       }
     } catch (memInitError) {
       // Graceful degradation: server continues even if memory init fails.
       // Memory tools will attempt lazy init on first call via ensureInitialized().
       console.error(
-        `[${new Date().toISOString()}] WARN [claude-flow-mcp] (${sessionId}) Memory auto-init failed (tools will retry on first call): ${memInitError instanceof Error ? memInitError.message : String(memInitError)}`
+        `[${new Date().toISOString()}] WARN [fidgetflo-mcp] (${sessionId}) Memory auto-init failed (tools will retry on first call): ${memInitError instanceof Error ? memInitError.message : String(memInitError)}`
       );
     }
     console.error(JSON.stringify({
@@ -369,7 +369,7 @@ export class MCPServerManager extends EventEmitter {
       method: 'server.initialized',
       params: {
         serverInfo: {
-          name: 'ruflo',
+          name: 'fidgetflo',
           version: VERSION,
           capabilities: {
             tools: { listChanged: true },
@@ -388,7 +388,7 @@ export class MCPServerManager extends EventEmitter {
 
       if (buffer.length > MAX_BUFFER_SIZE) {
         console.error(
-          `[${new Date().toISOString()}] ERROR [claude-flow-mcp] Buffer exceeded ${MAX_BUFFER_SIZE} bytes, rejecting`
+          `[${new Date().toISOString()}] ERROR [fidgetflo-mcp] Buffer exceeded ${MAX_BUFFER_SIZE} bytes, rejecting`
         );
         buffer = '';
         console.log(JSON.stringify({
@@ -412,7 +412,7 @@ export class MCPServerManager extends EventEmitter {
             }
           } catch (error) {
             console.error(
-              `[${new Date().toISOString()}] ERROR [claude-flow-mcp] Failed to parse message:`,
+              `[${new Date().toISOString()}] ERROR [fidgetflo-mcp] Failed to parse message:`,
               error instanceof Error ? error.message : String(error)
             );
           }
@@ -422,7 +422,7 @@ export class MCPServerManager extends EventEmitter {
 
     process.stdin.on('end', () => {
       console.error(
-        `[${new Date().toISOString()}] INFO [claude-flow-mcp] (${sessionId}) stdin closed, shutting down...`
+        `[${new Date().toISOString()}] INFO [fidgetflo-mcp] (${sessionId}) stdin closed, shutting down...`
       );
       process.exit(0);
     });
@@ -430,14 +430,14 @@ export class MCPServerManager extends EventEmitter {
     // Handle process termination
     process.on('SIGINT', () => {
       console.error(
-        `[${new Date().toISOString()}] INFO [claude-flow-mcp] (${sessionId}) Received SIGINT, shutting down...`
+        `[${new Date().toISOString()}] INFO [fidgetflo-mcp] (${sessionId}) Received SIGINT, shutting down...`
       );
       process.exit(0);
     });
 
     process.on('SIGTERM', () => {
       console.error(
-        `[${new Date().toISOString()}] INFO [claude-flow-mcp] (${sessionId}) Received SIGTERM, shutting down...`
+        `[${new Date().toISOString()}] INFO [fidgetflo-mcp] (${sessionId}) Received SIGTERM, shutting down...`
       );
       process.exit(0);
     });
@@ -473,7 +473,7 @@ export class MCPServerManager extends EventEmitter {
             id: message.id,
             result: {
               protocolVersion: '2024-11-05',
-              serverInfo: { name: 'ruflo', version: '3.0.0' },
+              serverInfo: { name: 'fidgetflo', version: '3.0.0' },
               capabilities: {
                 tools: { listChanged: true },
                 resources: { subscribe: true, listChanged: true },
@@ -530,7 +530,7 @@ export class MCPServerManager extends EventEmitter {
         case 'notifications/initialized':
           // Client notification - no response needed
           console.error(
-            `[${new Date().toISOString()}] INFO [claude-flow-mcp] (${sessionId}) Client initialized`
+            `[${new Date().toISOString()}] INFO [fidgetflo-mcp] (${sessionId}) Client initialized`
           );
           return null;
 
@@ -550,7 +550,7 @@ export class MCPServerManager extends EventEmitter {
       }
     } catch (error) {
       console.error(
-        `[${new Date().toISOString()}] ERROR [claude-flow-mcp] Error handling ${message.method}:`,
+        `[${new Date().toISOString()}] ERROR [fidgetflo-mcp] Error handling ${message.method}:`,
         error
       );
       return {

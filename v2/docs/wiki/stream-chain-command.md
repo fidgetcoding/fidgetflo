@@ -6,14 +6,14 @@ The `stream-chain` command enables you to connect multiple Claude instances via 
 
 ## Installation
 
-The stream-chain command is included in Claude Flow and registered in the command registry:
+The stream-chain command is included in FidgetFlo and registered in the command registry:
 
 ```bash
 # Access stream-chain command
-npx claude-flow stream-chain help
+npx fidgetflo stream-chain help
 
 # Or with the local CLI
-./claude-flow stream-chain help
+./fidgetflo stream-chain help
 ```
 
 ## Command Structure
@@ -39,7 +39,7 @@ stream-chain run "prompt1" "prompt2" "prompt3" [...]
 
 **Example:**
 ```bash
-./claude-flow stream-chain run \
+./fidgetflo stream-chain run \
   "Analyze the user authentication system" \
   "Identify security vulnerabilities" \
   "Generate fixes for the vulnerabilities"
@@ -61,10 +61,10 @@ The demo chain performs:
 **Example:**
 ```bash
 # Run demo in foreground
-./claude-flow stream-chain demo
+./fidgetflo stream-chain demo
 
 # Run demo in background
-./claude-flow stream-chain demo --background
+./fidgetflo stream-chain demo --background
 ```
 
 ### `pipeline` - Execute Predefined Pipelines
@@ -87,13 +87,13 @@ stream-chain pipeline <type> [options]
 **Examples:**
 ```bash
 # Run analysis pipeline
-./claude-flow stream-chain pipeline analysis
+./fidgetflo stream-chain pipeline analysis
 
 # Run refactoring pipeline in background
-./claude-flow stream-chain pipeline refactor --bg
+./fidgetflo stream-chain pipeline refactor --bg
 
 # Run test generation with verbose output
-./claude-flow stream-chain pipeline test --verbose
+./fidgetflo stream-chain pipeline test --verbose
 ```
 
 ### `test` - Test Stream Connection
@@ -110,7 +110,7 @@ Performs two tests:
 
 **Example:**
 ```bash
-./claude-flow stream-chain test --verbose
+./fidgetflo stream-chain test --verbose
 ```
 
 ### `monitor` - Monitor Background Chains
@@ -130,13 +130,13 @@ stream-chain monitor
 
 **Example:**
 ```bash
-$ ./claude-flow stream-chain monitor
+$ ./fidgetflo stream-chain monitor
 
 📊 Background Stream Chains
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 🔗 stream_1755021020133
-   Command: npx claude-flow stream-chain demo
+   Command: npx fidgetflo stream-chain demo
    PID: 366567
    Started: 2025-08-12T17:50:20.135Z
    Status: 🟢 Running
@@ -152,7 +152,7 @@ stream-chain kill <process_id>
 
 **Example:**
 ```bash
-./claude-flow stream-chain kill stream_1755021020133
+./fidgetflo stream-chain kill stream_1755021020133
 ```
 
 ## Options
@@ -180,7 +180,7 @@ stream-chain pipeline analysis --background
 **Background Features:**
 - Process runs detached from terminal
 - Unique process ID generated (e.g., `stream_1234567890`)
-- Process information stored in `.claude-flow/stream-chains.json`
+- Process information stored in `.fidgetflo/stream-chains.json`
 - Continues running after terminal is closed
 - Monitor with `stream-chain monitor`
 - Kill with `stream-chain kill <id>`
@@ -243,13 +243,13 @@ You can manage stream chains programmatically through Claude:
 "Run a stream chain analysis pipeline in the background"
 
 # Claude will execute:
-./claude-flow stream-chain pipeline analysis --background
+./fidgetflo stream-chain pipeline analysis --background
 
 # Ask Claude to check status
 "Check the status of background stream chains"
 
 # Claude will execute:
-./claude-flow stream-chain monitor
+./fidgetflo stream-chain monitor
 ```
 
 ## Practical Examples
@@ -258,7 +258,7 @@ You can manage stream chains programmatically through Claude:
 
 ```bash
 # Create a complete development workflow
-./claude-flow stream-chain run \
+./fidgetflo stream-chain run \
   "Analyze the requirements in docs/requirements.md" \
   "Design the system architecture based on requirements" \
   "Generate the API specification" \
@@ -267,14 +267,14 @@ You can manage stream chains programmatically through Claude:
   --background
 
 # Monitor progress
-./claude-flow stream-chain monitor
+./fidgetflo stream-chain monitor
 ```
 
 ### Example 2: Automated Code Review
 
 ```bash
 # Run code review pipeline in background
-./claude-flow stream-chain run \
+./fidgetflo stream-chain run \
   "Analyze code quality in src/" \
   "Identify code smells and anti-patterns" \
   "Suggest refactoring improvements" \
@@ -282,14 +282,14 @@ You can manage stream chains programmatically through Claude:
   --bg --verbose
 
 # Check when complete
-./claude-flow stream-chain monitor
+./fidgetflo stream-chain monitor
 ```
 
 ### Example 3: Test-Driven Development
 
 ```bash
 # TDD workflow
-./claude-flow stream-chain run \
+./fidgetflo stream-chain run \
   "Write test specifications for user authentication" \
   "Generate unit tests based on specifications" \
   "Implement code to pass the tests" \
@@ -301,10 +301,10 @@ You can manage stream chains programmatically through Claude:
 
 ```bash
 # Generate comprehensive documentation
-./claude-flow stream-chain pipeline analysis --background
+./fidgetflo stream-chain pipeline analysis --background
 
 # After analysis completes, generate docs
-./claude-flow stream-chain run \
+./fidgetflo stream-chain run \
   "Based on the codebase analysis, create API documentation" \
   "Generate user guide based on features" \
   "Create developer setup guide" \
@@ -317,20 +317,20 @@ You can manage stream chains programmatically through Claude:
 
 Background processes are tracked in:
 ```
-.claude-flow/stream-chains.json
+.fidgetflo/stream-chains.json
 ```
 
 **File Structure:**
 ```json
 {
   "stream_1234567890": {
-    "command": "npx claude-flow stream-chain demo",
+    "command": "npx fidgetflo stream-chain demo",
     "pid": 12345,
     "startTime": "2025-08-12T17:50:20.135Z",
     "status": "running"
   },
   "stream_9876543210": {
-    "command": "npx claude-flow stream-chain pipeline analysis",
+    "command": "npx fidgetflo stream-chain pipeline analysis",
     "pid": 67890,
     "startTime": "2025-08-12T18:00:00.000Z",
     "status": "killed",
@@ -370,7 +370,7 @@ For important workflows, monitor actively:
 stream-chain pipeline refactor --bg
 
 # Monitor in another terminal
-watch -n 5 './claude-flow stream-chain monitor'
+watch -n 5 './fidgetflo stream-chain monitor'
 ```
 
 ### 3. Set Appropriate Timeouts
@@ -402,15 +402,15 @@ stream-chain run "task1" "task2" --verbose
 
 ## Advanced Usage
 
-### Combining with Other Claude Flow Features
+### Combining with Other FidgetFlo Features
 
 #### With Hive Mind
 ```bash
 # Start hive mind coordination
-npx claude-flow hive-mind spawn "coordinator"
+npx fidgetflo hive-mind spawn "coordinator"
 
 # Run stream chain managed by hive
-./claude-flow stream-chain run \
+./fidgetflo stream-chain run \
   "Coordinate with hive mind for task distribution" \
   "Execute distributed tasks" \
   "Aggregate results" \
@@ -420,10 +420,10 @@ npx claude-flow hive-mind spawn "coordinator"
 #### With Training Pipeline
 ```bash
 # Train agents first
-./claude-flow train-pipeline run
+./fidgetflo train-pipeline run
 
 # Use trained agents in stream chain
-./claude-flow stream-chain run \
+./fidgetflo stream-chain run \
   "Apply conservative strategy from training" \
   "Apply balanced strategy from training" \
   "Apply aggressive optimization" \
@@ -433,10 +433,10 @@ npx claude-flow hive-mind spawn "coordinator"
 #### With MCP Tools
 ```bash
 # Initialize swarm with MCP
-npx claude-flow swarm init --topology mesh
+npx fidgetflo swarm init --topology mesh
 
 # Run stream chain with swarm coordination
-./claude-flow stream-chain run \
+./fidgetflo stream-chain run \
   "Initialize swarm agents" \
   "Distribute tasks across swarm" \
   "Collect and synthesize results" \
@@ -460,9 +460,9 @@ npx claude-flow swarm init --topology mesh
 **Symptom:** `monitor` doesn't show expected process
 
 **Checks:**
-1. Check process file exists: `ls -la .claude-flow/stream-chains.json`
+1. Check process file exists: `ls -la .fidgetflo/stream-chains.json`
 2. Verify process started: Check terminal output for process ID
-3. Check system processes: `ps aux | grep claude-flow`
+3. Check system processes: `ps aux | grep fidgetflo`
 
 ### Chain Stops Unexpectedly
 
@@ -489,10 +489,10 @@ npx claude-flow swarm init --topology mesh
 ```bash
 # Limit concurrent chains
 MAX_CHAINS=3
-CURRENT=$(./claude-flow stream-chain monitor | grep "🟢 Running" | wc -l)
+CURRENT=$(./fidgetflo stream-chain monitor | grep "🟢 Running" | wc -l)
 
 if [ $CURRENT -lt $MAX_CHAINS ]; then
-  ./claude-flow stream-chain demo --background
+  ./fidgetflo stream-chain demo --background
 else
   echo "Maximum chains running, waiting..."
 fi
@@ -527,11 +527,11 @@ To contribute to the stream-chain command:
 ## Support
 
 For issues or questions:
-- GitHub Issues: [claude-flow/issues](https://github.com/ruvnet/claude-flow/issues)
+- GitHub Issues: [fidgetflo/issues](https://github.com/ruvnet/claude-flow/issues)
 - Documentation: [Stream Chaining Docs](https://github.com/ruvnet/claude-flow/docs/stream-chaining.md)
-- Wiki: [Claude Flow Wiki](https://github.com/ruvnet/claude-flow/wiki)
+- Wiki: [FidgetFlo Wiki](https://github.com/ruvnet/claude-flow/wiki)
 
 ---
 
 *Last updated: August 2025*
-*Claude Flow Version: Alpha 89*
+*FidgetFlo Version: Alpha 89*

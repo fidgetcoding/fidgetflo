@@ -1,9 +1,9 @@
 #!/bin/bash
 
-# Claude Flow Examples - Quick Start Guide
+# FidgetFlo Examples - Quick Start Guide
 # This script demonstrates the new organized example structure
 
-echo "🚀 Claude Flow Examples - Quick Start"
+echo "🚀 FidgetFlo Examples - Quick Start"
 echo "===================================="
 echo ""
 
@@ -52,16 +52,16 @@ echo "# Run a demo:"
 echo "cd examples/03-demos/quick && ./quick-api-demo.sh"
 echo ""
 echo "# Create from workflow template:"
-echo "cd examples && ../claude-flow swarm create 'Build hello world app based on simple workflow' --output ./output/hello"
+echo "cd examples && ../fidgetflo swarm create 'Build hello world app based on simple workflow' --output ./output/hello"
 echo ""
 echo "# Run tests:"
 echo "cd examples/04-testing/unit && ./test-memory-system.sh"
 echo ""
 echo "# Create your first swarm:"
-echo "cd examples && ../claude-flow swarm create 'Build a simple calculator'"
+echo "cd examples && ../fidgetflo swarm create 'Build a simple calculator'"
 echo ""
 echo "# Try SPARC TDD:"
-echo "cd examples && ../claude-flow sparc tdd 'Create user login function'"
+echo "cd examples && ../fidgetflo sparc tdd 'Create user login function'"
 echo ""
 
 echo "📚 For more information, see examples/README.md"

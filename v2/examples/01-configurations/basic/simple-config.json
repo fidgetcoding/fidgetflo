@@ -1,6 +1,6 @@
 {
-  "name": "Simple Claude Flow Configuration",
-  "description": "Basic configuration for getting started with Claude Flow",
+  "name": "Simple FidgetFlo Configuration",
+  "description": "Basic configuration for getting started with FidgetFlo",
   "orchestrator": {
     "model": "claude-3-sonnet-20240229",
     "temperature": 0.7,

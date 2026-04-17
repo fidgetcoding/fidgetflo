@@ -459,13 +459,13 @@ process.on('SIGINT', async () => {
 
 ```bash
 # Force specific provider
-CLAUDE_FLOW_DB_PROVIDER=sql.js
+FIDGETFLO_DB_PROVIDER=sql.js
 
 # Enable verbose logging
-CLAUDE_FLOW_DB_VERBOSE=true
+FIDGETFLO_DB_VERBOSE=true
 
 # Set auto-persist interval (ms)
-CLAUDE_FLOW_DB_PERSIST_INTERVAL=10000
+FIDGETFLO_DB_PERSIST_INTERVAL=10000
 ```
 
 ## Docker Support

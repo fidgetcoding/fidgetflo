@@ -2,7 +2,7 @@
 
 **Status:** Implemented
 **Date:** 2026-02-08
-**Authors:** RuvNet, Claude Flow Team
+**Authors:** RuvNet, FidgetFlo Team
 **Supersedes:** None
 **Related:** ADR-006 (Unified Memory), ADR-018 (Claude Code Integration)
 
@@ -51,7 +51,7 @@ Without integration, insights discovered during swarm orchestration are lost bet
 
 ## Decision
 
-Implement a **bidirectional bridge** between Claude Code auto memory and claude-flow's unified memory system, treating auto memory as a persistent projection of the most relevant AgentDB entries.
+Implement a **bidirectional bridge** between Claude Code auto memory and fidgetflo's unified memory system, treating auto memory as a persistent projection of the most relevant AgentDB entries.
 
 ### Architecture
 
@@ -173,7 +173,7 @@ interface MemoryInsight {
 Generated MEMORY.md structure:
 
 ```markdown
-# Claude Flow V3 Project Memory
+# FidgetFlo V3 Project Memory
 
 ## Project Patterns
 - Use `pnpm` for package management (not npm)
@@ -204,7 +204,7 @@ Generated MEMORY.md structure:
 
 #### 4. Hooks Integration
 
-Auto memory syncs are triggered by claude-flow hooks:
+Auto memory syncs are triggered by fidgetflo hooks:
 
 | Hook | Auto Memory Action |
 |------|--------------------|
@@ -373,20 +373,20 @@ async function persistSwarmLearnings(
 
 #### 8. CLI Commands
 
-New subcommands under `npx claude-flow@v3alpha memory`:
+New subcommands under `npx fidgetflo@v3alpha memory`:
 
 ```bash
 # Sync AgentDB → auto memory files
-npx claude-flow@v3alpha memory sync-auto
+npx fidgetflo@v3alpha memory sync-auto
 
 # Import auto memory → AgentDB
-npx claude-flow@v3alpha memory import-auto
+npx fidgetflo@v3alpha memory import-auto
 
 # Show auto memory status
-npx claude-flow@v3alpha memory auto-status
+npx fidgetflo@v3alpha memory auto-status
 
 # Curate MEMORY.md (prune to 200 lines)
-npx claude-flow@v3alpha memory curate
+npx fidgetflo@v3alpha memory curate
 ```
 
 #### 9. MCP Tool Extensions
@@ -427,7 +427,7 @@ New MCP tools for auto memory operations:
 
 ## Configuration
 
-Add to `claude-flow.config.json`:
+Add to `fidgetflo.config.json`:
 
 ```json
 {

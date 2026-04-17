@@ -1,7 +1,7 @@
 # Training Pipeline - Real Code Execution Only
 
 ## Overview
-The Claude Flow Training Pipeline now **exclusively uses real code execution**. There is no simulation mode - all training runs actual npm tests on real code files to provide genuine learning and improvement.
+The FidgetFlo Training Pipeline now **exclusively uses real code execution**. There is no simulation mode - all training runs actual npm tests on real code files to provide genuine learning and improvement.
 
 ## What Changed
 
@@ -21,7 +21,7 @@ The Claude Flow Training Pipeline now **exclusively uses real code execution**. 
 ## How It Works
 
 ### 1. Task Generation
-The pipeline creates **real code files** in `.claude-flow/training/real-tasks/`:
+The pipeline creates **real code files** in `.fidgetflo/training/real-tasks/`:
 
 ```javascript
 // Example: Email validation function
@@ -57,15 +57,15 @@ The system learns from **actual test results**:
 ### Run Training
 ```bash
 # Always runs with real code - no simulation option
-./claude-flow train-pipeline run
+./fidgetflo train-pipeline run
 
 # Options
-./claude-flow train-pipeline run --complexity hard --iterations 5
+./fidgetflo train-pipeline run --complexity hard --iterations 5
 ```
 
 ### Check Status
 ```bash
-./claude-flow train-pipeline status
+./fidgetflo train-pipeline status
 
 # Output shows real metrics:
 📊 Training Pipeline Status
@@ -81,7 +81,7 @@ The system learns from **actual test results**:
 
 ### Validate Performance
 ```bash
-./claude-flow train-pipeline validate
+./fidgetflo train-pipeline validate
 
 # Shows current real performance:
 📊 Current Performance:
@@ -137,7 +137,7 @@ From actual training runs:
 The training pipeline creates real project structures:
 
 ```
-.claude-flow/training/real-tasks/
+.fidgetflo/training/real-tasks/
 └── task-[timestamp]/
     └── [taskName]/
         ├── index.js        # Real implementation

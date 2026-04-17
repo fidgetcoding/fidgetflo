@@ -17,7 +17,7 @@ npm install @claude-flow/plugin-cognitive-kernel
 ### CLI
 
 ```bash
-npx claude-flow plugins install --name @claude-flow/plugin-cognitive-kernel
+npx fidgetflo plugins install --name @claude-flow/plugin-cognitive-kernel
 ```
 
 ## Quick Start

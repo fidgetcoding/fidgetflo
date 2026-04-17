@@ -1,6 +1,6 @@
-# Claude-Flow Parallel Agent Testing
+# FidgetFlo Parallel Agent Testing
 
-This example demonstrates how to run multiple Claude-Flow SPARC agents in parallel to test their capabilities and measure performance.
+This example demonstrates how to run multiple FidgetFlo SPARC agents in parallel to test their capabilities and measure performance.
 
 ## Overview
 
@@ -171,4 +171,4 @@ To contribute new test cases or improvements:
 
 ## License
 
-This example is part of the Claude-Flow project and follows the same license terms.
+This example is part of the FidgetFlo project and follows the same license terms.

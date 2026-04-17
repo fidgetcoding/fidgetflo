@@ -1,7 +1,7 @@
 # Remote Installation Fix - v2.7.13
 
 ## Issue
-`npx claude-flow@alpha` was failing in remote environments (GitHub Codespaces, Docker containers) with:
+`npx fidgetflo@alpha` was failing in remote environments (GitHub Codespaces, Docker containers) with:
 
 ```
 npm ERR! code ENOENT
@@ -26,7 +26,7 @@ npm ERR! enoent spawn sh ENOENT
 4. **Updated package description** - Documents that agentdb requires manual installation
 
 ### What Works Now:
-✅ `npx claude-flow@alpha --version` works without build tools
+✅ `npx fidgetflo@alpha --version` works without build tools
 ✅ Core functionality works with in-memory storage
 ✅ Graceful fallback when SQLite/AgentDB unavailable
 ✅ Full functionality when locally installed with build tools
@@ -35,8 +35,8 @@ npm ERR! enoent spawn sh ENOENT
 For users who need persistent vector storage with AgentDB:
 
 ```bash
-# Install claude-flow locally (not via npx)
-npm install claude-flow@alpha
+# Install fidgetflo locally (not via npx)
+npm install fidgetflo@alpha
 
 # Install build tools (if needed)
 # Ubuntu/Debian:
@@ -56,7 +56,7 @@ npm install agentdb
 
 ### For Users Experiencing the Issue:
 
-**If you previously ran `npx claude-flow@alpha` and got the error:**
+**If you previously ran `npx fidgetflo@alpha` and got the error:**
 
 1. Clear npx cache:
    ```bash
@@ -65,12 +65,12 @@ npm install agentdb
 
 2. Test with v2.7.13:
    ```bash
-   npx claude-flow@2.7.13 --version
+   npx fidgetflo@2.7.13 --version
    ```
 
 3. Or use alpha tag (wait 5-10 minutes after release):
    ```bash
-   npx claude-flow@alpha --version
+   npx fidgetflo@alpha --version
    ```
 
 **Expected output:**
@@ -94,7 +94,7 @@ The Docker test shows a known npm "Lock compromised" error in minimal container 
 **Breaking change:** Users who rely on AgentDB vector storage will need to manually install it:
 
 ```bash
-npm install claude-flow@alpha agentdb
+npm install fidgetflo@alpha agentdb
 ```
 
 **Non-breaking:** Users who only use basic memory storage (99% of users) are unaffected.
@@ -103,13 +103,13 @@ npm install claude-flow@alpha agentdb
 
 ```bash
 # Verify npm registry
-npm view claude-flow@alpha version
+npm view fidgetflo@alpha version
 # Should show: 2.7.13
 
-npm view claude-flow@alpha dependencies
+npm view fidgetflo@alpha dependencies
 # Should NOT include: agentdb
 
-npm view claude-flow@alpha optionalDependencies
+npm view fidgetflo@alpha optionalDependencies
 # Should include: better-sqlite3, diskusage, node-pty, @types/better-sqlite3
 ```
 

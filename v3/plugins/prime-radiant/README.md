@@ -4,7 +4,7 @@
 
 ## What is this?
 
-This plugin brings advanced mathematical techniques to Claude Flow for ensuring AI reliability:
+This plugin brings advanced mathematical techniques to FidgetFlo for ensuring AI reliability:
 
 - **Coherence Checking** - Detect when information contradicts itself before storing it
 - **Consensus Verification** - Mathematically verify that multiple agents actually agree
@@ -326,7 +326,7 @@ class CoherentKnowledgeBase {
 ## Configuration
 
 ```yaml
-# claude-flow.config.yaml
+# fidgetflo.config.yaml
 plugins:
   prime-radiant:
     enabled: true

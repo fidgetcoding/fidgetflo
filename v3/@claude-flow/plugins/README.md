@@ -1,8 +1,8 @@
 # @claude-flow/plugins
 
-**Unified Plugin SDK for Claude Flow V3**
+**Unified Plugin SDK for FidgetFlo V3**
 
-A comprehensive plugin development framework providing workers, hooks, providers, and security utilities for building Claude Flow extensions.
+A comprehensive plugin development framework providing workers, hooks, providers, and security utilities for building FidgetFlo extensions.
 
 ## Installation
 
@@ -18,7 +18,7 @@ npm install @claude-flow/plugins
 import { PluginBuilder, HookEvent, HookPriority } from '@claude-flow/plugins';
 
 const myPlugin = new PluginBuilder('my-awesome-plugin', '1.0.0')
-  .withDescription('My awesome plugin for Claude Flow')
+  .withDescription('My awesome plugin for FidgetFlo')
   .withAuthor('Your Name')
   .withMCPTools([
     {

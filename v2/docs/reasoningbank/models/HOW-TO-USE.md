@@ -21,11 +21,11 @@ This guide shows you how to copy, install, and use pre-trained ReasoningBank mod
 # 1. Choose a model (e.g., SAFLA for self-learning)
 cd /workspaces/claude-code-flow/docs/reasoningbank/models/safla
 
-# 2. Copy to your claude-flow directory
+# 2. Copy to your fidgetflo directory
 cp memory.db ~/.swarm/memory.db
 
 # 3. Test it!
-npx claude-flow@alpha memory query "API optimization" --reasoningbank
+npx fidgetflo@alpha memory query "API optimization" --reasoningbank
 ```
 
 **That's it!** You now have 2,000+ expert patterns ready to use.
@@ -46,7 +46,7 @@ cp ~/.swarm/memory.db ~/.swarm/memory.db.backup
 cp /path/to/model/memory.db ~/.swarm/memory.db
 
 # Verify
-npx claude-flow@alpha memory query "test" --reasoningbank
+npx fidgetflo@alpha memory query "test" --reasoningbank
 ```
 
 ### Method 2: Merge Multiple Models
@@ -118,10 +118,10 @@ mkdir -p ./my-project/.swarm
 cp /path/to/model/memory.db ./my-project/.swarm/memory.db
 
 # Set environment variable for this project
-export CLAUDE_FLOW_DB_PATH=./my-project/.swarm/memory.db
+export FIDGETFLO_DB_PATH=./my-project/.swarm/memory.db
 
 # Or use --db-path flag
-npx claude-flow@alpha memory query "test" \
+npx fidgetflo@alpha memory query "test" \
   --reasoningbank \
   --db-path ./my-project/.swarm/memory.db
 ```
@@ -142,7 +142,7 @@ docker run --rm -v reasoningbank-data:/data \
 # Use in container
 docker run -v reasoningbank-data:/root/.swarm \
   your-app:latest \
-  npx claude-flow@alpha memory query "test" --reasoningbank
+  npx fidgetflo@alpha memory query "test" --reasoningbank
 ```
 
 ---
@@ -204,18 +204,18 @@ docker run -v reasoningbank-data:/root/.swarm \
 
 ```bash
 # Query patterns
-npx claude-flow@alpha memory query \
+npx fidgetflo@alpha memory query \
   "How to optimize database queries?" \
   --reasoningbank
 
 # Search with filters
-npx claude-flow@alpha memory query \
+npx fidgetflo@alpha memory query \
   "authentication patterns" \
   --namespace security \
   --reasoningbank
 
 # Get high-confidence patterns only
-npx claude-flow@alpha memory query \
+npx fidgetflo@alpha memory query \
   "API rate limiting" \
   --min-confidence 0.8 \
   --reasoningbank
@@ -450,7 +450,7 @@ const result = await agent.execute({
 
 ```bash
 # Pre-load patterns for code generation
-npx claude-flow@alpha memory query \
+npx fidgetflo@alpha memory query \
   "authentication best practices" \
   --reasoningbank \
   --format json > context.json
@@ -547,7 +547,7 @@ await learner.recordOutcome(patternId, true); // Pattern succeeded
 sqlite3 ~/.swarm/memory.db "PRAGMA journal_mode=WAL;"
 
 # Or use separate databases for different processes
-export CLAUDE_FLOW_DB_PATH=./my-app/.swarm/memory.db
+export FIDGETFLO_DB_PATH=./my-app/.swarm/memory.db
 ```
 
 ### Issue: Slow Queries
@@ -599,7 +599,7 @@ sqlite3 ~/.swarm/memory.db "SELECT COUNT(*) FROM patterns;"
 sqlite3 ~/.swarm/memory.db "SELECT DISTINCT domain FROM patterns;"
 
 # Query without namespace filter
-npx claude-flow@alpha memory query "test" --reasoningbank --all-namespaces
+npx fidgetflo@alpha memory query "test" --reasoningbank --all-namespaces
 ```
 
 ---
@@ -615,7 +615,7 @@ cp ~/.swarm/memory.db ~/.swarm/memory.db.$(date +%Y%m%d)
 ### 2. **Validate After Installation**
 ```bash
 # Verify model is working
-npx claude-flow@alpha memory query "test" --reasoningbank
+npx fidgetflo@alpha memory query "test" --reasoningbank
 ```
 
 ### 3. **Use Appropriate Model**

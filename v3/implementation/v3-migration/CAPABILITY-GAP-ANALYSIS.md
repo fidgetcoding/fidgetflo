@@ -25,7 +25,7 @@ V3 represents a major architectural overhaul with significant improvements acros
 | MCP Tools | 119 | ✅ Complete |
 | Hooks Subcommands | 20 | ✅ Complete |
 | Hook MCP Tools | 60+ | ✅ Complete |
-| @claude-flow Packages | 16 | ✅ Complete |
+| @fidgetflo Packages | 16 | ✅ Complete |
 | Total TS Files | 419 | Active |
 
 ---

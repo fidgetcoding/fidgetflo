@@ -1,6 +1,6 @@
 /**
  * Complete SDK Feature Example
- * Claude-Flow v2.5-alpha.130+
+ * FidgetFlo v2.5-alpha.130+
  *
  * Demonstrates ALL SDK-powered features working together:
  * - Session Forking (forkSession + resume + resumeSessionAt)
@@ -359,7 +359,7 @@ async function exampleEverythingTogether() {
  */
 async function main() {
   console.log('\n╔════════════════════════════════════════════════════════════╗');
-  console.log('║  Claude-Flow SDK Features - Complete Examples             ║');
+  console.log('║  FidgetFlo SDK Features - Complete Examples             ║');
   console.log('║  100% Real, SDK-Powered, Verified                          ║');
   console.log('╚════════════════════════════════════════════════════════════╝\n');
 

@@ -125,7 +125,7 @@ python benchmark/run_swe_bench.py --categories code_generation testing
 ### Integration Points
 - ✅ Integrated with swarm-bench CLI
 - ✅ Uses existing benchmark infrastructure
-- ✅ Compatible with claude-flow execution
+- ✅ Compatible with fidgetflo execution
 - ✅ Supports all coordination modes
 - ✅ Full metrics aggregation
 
@@ -150,7 +150,7 @@ swarm-bench swe-bench optimize --max-iterations 10
 
 ## 🎉 Summary
 
-The SWE-Bench implementation is now complete and integrated into the Claude Flow benchmark system. The comprehensive suite tests software engineering capabilities across 7 categories with 18+ tasks, featuring advanced evaluation, real-time metrics, and intelligent optimization.
+The SWE-Bench implementation is now complete and integrated into the FidgetFlo benchmark system. The comprehensive suite tests software engineering capabilities across 7 categories with 18+ tasks, featuring advanced evaluation, real-time metrics, and intelligent optimization.
 
 **Status**: ✅ Implementation Complete - Ready for Testing and Optimization
 

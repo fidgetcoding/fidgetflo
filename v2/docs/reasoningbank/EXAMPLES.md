@@ -19,41 +19,41 @@ This document provides ready-to-use examples and code snippets for common Reason
 
 ```bash
 # Store a simple pattern
-npx claude-flow@alpha memory store api_key \
+npx fidgetflo@alpha memory store api_key \
   "JWT tokens with HMAC SHA256 signing" \
   --namespace backend --reasoningbank
 
 # Query with semantic search
-npx claude-flow@alpha memory query "authentication" \
+npx fidgetflo@alpha memory query "authentication" \
   --namespace backend --reasoningbank
 
 # List all patterns in namespace
-npx claude-flow@alpha memory list --namespace backend --reasoningbank
+npx fidgetflo@alpha memory list --namespace backend --reasoningbank
 
 # Delete a pattern
-npx claude-flow@alpha memory delete api_key \
+npx fidgetflo@alpha memory delete api_key \
   --namespace backend --reasoningbank
 
 # Check system status
-npx claude-flow@alpha memory status --reasoningbank
+npx fidgetflo@alpha memory status --reasoningbank
 ```
 
 ### Advanced Queries
 
 ```bash
 # Query with confidence threshold
-npx claude-flow@alpha memory query "security" \
+npx fidgetflo@alpha memory query "security" \
   --min-confidence 0.7 --reasoningbank
 
 # Query with similarity threshold
-npx claude-flow@alpha memory query "performance" \
+npx fidgetflo@alpha memory query "performance" \
   --min-similarity 0.8 --reasoningbank
 
 # Cross-namespace search
-npx claude-flow@alpha memory query "API design" --reasoningbank
+npx fidgetflo@alpha memory query "API design" --reasoningbank
 
 # Query with limit
-npx claude-flow@alpha memory query "optimization" \
+npx fidgetflo@alpha memory query "optimization" \
   --limit 5 --reasoningbank
 ```
 
@@ -61,13 +61,13 @@ npx claude-flow@alpha memory query "optimization" \
 
 ```bash
 # Store with cognitive pattern
-npx claude-flow@alpha memory store debug_strategy \
+npx fidgetflo@alpha memory store debug_strategy \
   "Use binary search to isolate bugs" \
   --cognitive-pattern convergent \
   --reasoningbank
 
 # Query by cognitive pattern
-npx claude-flow@alpha memory query "problem solving" \
+npx fidgetflo@alpha memory query "problem solving" \
   --cognitive-pattern divergent --reasoningbank
 ```
 
@@ -338,24 +338,24 @@ agent.shutdown();
 
 ```bash
 # Team members store architectural decisions
-npx claude-flow@alpha memory store arch_001 \
+npx fidgetflo@alpha memory store arch_001 \
   "Microservices with event-driven architecture using Kafka" \
   --namespace team_decisions --reasoningbank
 
-npx claude-flow@alpha memory store arch_002 \
+npx fidgetflo@alpha memory store arch_002 \
   "Use PostgreSQL for transactional data, Redis for caching" \
   --namespace team_decisions --reasoningbank
 
-npx claude-flow@alpha memory store arch_003 \
+npx fidgetflo@alpha memory store arch_003 \
   "API Gateway pattern with Kong for rate limiting and auth" \
   --namespace team_decisions --reasoningbank
 
 # New team member queries decisions
-npx claude-flow@alpha memory query "message queue" \
+npx fidgetflo@alpha memory query "message queue" \
   --namespace team_decisions --reasoningbank
 # Returns: arch_001 (Kafka decision)
 
-npx claude-flow@alpha memory query "database choice" \
+npx fidgetflo@alpha memory query "database choice" \
   --namespace team_decisions --reasoningbank
 # Returns: arch_002 (PostgreSQL/Redis)
 ```
@@ -364,20 +364,20 @@ npx claude-flow@alpha memory query "database choice" \
 
 ```bash
 # Store bug solutions as you fix them
-npx claude-flow@alpha memory store bug_cors_error \
+npx fidgetflo@alpha memory store bug_cors_error \
   "CORS error on API calls: Add Access-Control-Allow-Origin header in Express middleware" \
   --namespace debugging --reasoningbank
 
-npx claude-flow@alpha memory store bug_react_rerender \
+npx fidgetflo@alpha memory store bug_react_rerender \
   "Infinite re-renders in useEffect: Use useRef for values that don't need re-renders" \
   --namespace debugging --reasoningbank
 
-npx claude-flow@alpha memory store bug_memory_leak \
+npx fidgetflo@alpha memory store bug_memory_leak \
   "Memory leak in React: Clean up subscriptions in useEffect return function" \
   --namespace debugging --reasoningbank
 
 # Later, when you encounter similar bugs
-npx claude-flow@alpha memory query "React infinite loop" \
+npx fidgetflo@alpha memory query "React infinite loop" \
   --namespace debugging --reasoningbank
 # Instantly finds the solution!
 ```
@@ -386,24 +386,24 @@ npx claude-flow@alpha memory query "React infinite loop" \
 
 ```bash
 # Build a library of API patterns
-npx claude-flow@alpha memory store api_versioning \
+npx fidgetflo@alpha memory store api_versioning \
   "Use /api/v1/, /api/v2/ URL versioning for backward compatibility" \
   --namespace api_patterns --reasoningbank
 
-npx claude-flow@alpha memory store api_pagination \
+npx fidgetflo@alpha memory store api_pagination \
   "Cursor-based pagination: /api/items?limit=20&cursor=abc123" \
   --namespace api_patterns --reasoningbank
 
-npx claude-flow@alpha memory store api_error_format \
+npx fidgetflo@alpha memory store api_error_format \
   'Consistent error format: {"error": true, "message": "...", "code": 400}' \
   --namespace api_patterns --reasoningbank
 
-npx claude-flow@alpha memory store api_rate_limiting \
+npx fidgetflo@alpha memory store api_rate_limiting \
   "100 requests/minute per IP using sliding window algorithm" \
   --namespace api_patterns --reasoningbank
 
 # Query when designing new API
-npx claude-flow@alpha memory query "API response format" \
+npx fidgetflo@alpha memory query "API response format" \
   --namespace api_patterns --reasoningbank
 ```
 
@@ -544,7 +544,7 @@ class SAFLAAgent {
 
 # CSV format: title,content,namespace
 while IFS=',' read -r title content namespace; do
-  npx claude-flow@alpha memory store "$title" "$content" \
+  npx fidgetflo@alpha memory store "$title" "$content" \
     --namespace "$namespace" --reasoningbank
 done < patterns.csv
 
@@ -564,7 +564,7 @@ mkdir -p "$BACKUP_DIR"
 cp .swarm/memory.db "$BACKUP_DIR/"
 
 # Export as JSON (if feature available)
-npx claude-flow@alpha memory export --all > "$BACKUP_DIR/patterns.json"
+npx fidgetflo@alpha memory export --all > "$BACKUP_DIR/patterns.json"
 
 echo "Backup saved to $BACKUP_DIR"
 ```
@@ -579,12 +579,12 @@ echo "ReasoningBank Usage Report"
 echo "=========================="
 echo ""
 
-npx claude-flow@alpha memory status --detailed --reasoningbank | \
+npx fidgetflo@alpha memory status --detailed --reasoningbank | \
   grep -E "(Total Patterns|Most Used|Average Confidence)"
 
 echo ""
 echo "Namespaces:"
-npx claude-flow@alpha memory list --reasoningbank | \
+npx fidgetflo@alpha memory list --reasoningbank | \
   grep -E "^├──|^└──"
 ```
 

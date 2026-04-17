@@ -1,4 +1,4 @@
-# Schema Update Summary - Full Claude-Flow Compatibility
+# Schema Update Summary - Full FidgetFlo Compatibility
 
 ## ✅ All Models Updated Successfully!
 
@@ -10,7 +10,7 @@
 
 ## What Changed
 
-All pre-trained ReasoningBank models have been updated to include **all required claude-flow memory tables**. The models now have **12 tables** instead of 4-8 tables.
+All pre-trained ReasoningBank models have been updated to include **all required fidgetflo memory tables**. The models now have **12 tables** instead of 4-8 tables.
 
 ### Before Update
 
@@ -33,14 +33,14 @@ Models now have **full schema compatibility**:
 - `pattern_links` - 2,000-20,000 links ✅
 - `task_trajectories` - Multi-step reasoning ✅
 
-**NEW: Claude-Flow Memory Tables**:
+**NEW: FidgetFlo Memory Tables**:
 - `memory` - Key-value general storage ✨
 - `memory_entries` - Consolidated memories ✨
 - `collective_memory` - Swarm shared memory ✨
 - `sessions` - Session tracking ✨
 - `session_metrics` - Performance metrics ✨
 
-✅ **Fully compatible** with all claude-flow commands
+✅ **Fully compatible** with all fidgetflo commands
 ✅ **Fully compatible** with hive-mind operations
 ✅ **All pattern data preserved** - zero data loss
 
@@ -66,20 +66,20 @@ Models now have **full schema compatibility**:
 
 ```bash
 # Store any key-value data
-npx claude-flow@alpha memory store api_key "sk-123" --namespace config
+npx fidgetflo@alpha memory store api_key "sk-123" --namespace config
 
 # Query stored data
-npx claude-flow@alpha memory query "api" --namespace config
+npx fidgetflo@alpha memory query "api" --namespace config
 
 # List memories
-npx claude-flow@alpha memory list --namespace config
+npx fidgetflo@alpha memory list --namespace config
 ```
 
 ### 2. Hive-Mind Swarm Operations
 
 ```bash
 # Initialize swarm (uses collective_memory automatically)
-npx claude-flow@alpha hive-mind init --topology mesh
+npx fidgetflo@alpha hive-mind init --topology mesh
 
 # Swarm agents share memory across the collective_memory table
 ```
@@ -88,17 +88,17 @@ npx claude-flow@alpha hive-mind init --topology mesh
 
 ```bash
 # Sessions automatically tracked
-npx claude-flow@alpha hooks session-restore --session-id swarm-123
+npx fidgetflo@alpha hooks session-restore --session-id swarm-123
 
 # Export session metrics
-npx claude-flow@alpha hooks session-end --export-metrics
+npx fidgetflo@alpha hooks session-end --export-metrics
 ```
 
 ### 4. ReasoningBank Patterns (Original Functionality)
 
 ```bash
 # Query patterns semantically (unchanged)
-npx claude-flow@alpha memory query "authentication" --reasoningbank
+npx fidgetflo@alpha memory query "authentication" --reasoningbank
 
 # All 11,000+ patterns still available!
 ```
@@ -176,10 +176,10 @@ sqlite3 models/safla/memory.db "
 cp models/safla/memory.db ~/.swarm/memory.db
 
 # Store a memory
-npx claude-flow@alpha memory store test "Hello World" --namespace demo
+npx fidgetflo@alpha memory store test "Hello World" --namespace demo
 
 # Query it back
-npx claude-flow@alpha memory query "test" --namespace demo
+npx fidgetflo@alpha memory query "test" --namespace demo
 # Output: ✅ Found 1 result
 ```
 
@@ -245,7 +245,7 @@ cp ~/.swarm/memory.db ~/.swarm/memory.db.old
 cp models/safla/memory.db ~/.swarm/memory.db
 
 # 3. Test it
-npx claude-flow@alpha memory query "test" --reasoningbank
+npx fidgetflo@alpha memory query "test" --reasoningbank
 ```
 
 ### For New Users
@@ -366,7 +366,7 @@ Open an issue: [GitHub Issues](https://github.com/ruvnet/claude-flow/issues)
 ✅ **Documentation updated** comprehensively
 ✅ **Production ready** immediately
 
-**The models are now 100% compatible with all claude-flow features!** 🎉
+**The models are now 100% compatible with all fidgetflo features!** 🎉
 
 ---
 

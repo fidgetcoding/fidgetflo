@@ -2,7 +2,7 @@
 
 ## ✅ 100% Backward Compatibility Confirmed
 
-The AgentDB v1.3.9 integration (PR #830) maintains **100% backward compatibility** with existing claude-flow installations. No existing code will break.
+The AgentDB v1.3.9 integration (PR #830) maintains **100% backward compatibility** with existing fidgetflo installations. No existing code will break.
 
 ---
 
@@ -33,18 +33,18 @@ The AgentDB v1.3.9 integration (PR #830) maintains **100% backward compatibility
 ```
 
 **Legacy Commands Still Work:**
-- `claude-flow memory store <key> <value>`
-- `claude-flow memory query <search>`
-- `claude-flow memory list`
-- `claude-flow memory export`
-- `claude-flow memory import`
-- `claude-flow memory stats`
+- `fidgetflo memory store <key> <value>`
+- `fidgetflo memory query <search>`
+- `fidgetflo memory list`
+- `fidgetflo memory export`
+- `fidgetflo memory import`
+- `fidgetflo memory stats`
 - All SPARC, hooks, and swarm commands unchanged
 
 **New Commands (Optional):**
-- `claude-flow memory vector-search <query>` (requires AgentDB)
-- `claude-flow memory store-vector <key> <value>` (requires AgentDB)
-- `claude-flow memory agentdb-info` (informational only)
+- `fidgetflo memory vector-search <query>` (requires AgentDB)
+- `fidgetflo memory store-vector <key> <value>` (requires AgentDB)
+- `fidgetflo memory agentdb-info` (informational only)
 
 ---
 
@@ -55,20 +55,20 @@ The AgentDB v1.3.9 integration (PR #830) maintains **100% backward compatibility
 // All these continue to work exactly as before:
 
 // 1. SharedMemory (unchanged)
-import { SharedMemory } from 'claude-flow/memory';
+import { SharedMemory } from 'fidgetflo/memory';
 const memory = new SharedMemory();
 await memory.store('key', 'value');
 
 // 2. SwarmMemory (unchanged)
-import { SwarmMemory } from 'claude-flow/memory';
+import { SwarmMemory } from 'fidgetflo/memory';
 const memory = new SwarmMemory({ swarmId: 'test' });
 
 // 3. createMemory factory (unchanged)
-import { createMemory } from 'claude-flow/memory';
+import { createMemory } from 'fidgetflo/memory';
 const memory = createMemory(); // Returns SharedMemory by default
 
 // 4. SWARM_NAMESPACES (unchanged)
-import { SWARM_NAMESPACES } from 'claude-flow/memory';
+import { SWARM_NAMESPACES } from 'fidgetflo/memory';
 ```
 
 **New APIs (Optional, Opt-In Only):**
@@ -76,14 +76,14 @@ import { SWARM_NAMESPACES } from 'claude-flow/memory';
 // Only available if you explicitly request AgentDB:
 
 // 1. AgentDB adapter (NEW - opt-in)
-import { AgentDBMemoryAdapter } from 'claude-flow/memory';
+import { AgentDBMemoryAdapter } from 'fidgetflo/memory';
 const memory = new AgentDBMemoryAdapter({ mode: 'hybrid' });
 
 // 2. AgentDB backend (NEW - opt-in)
-import { AgentDBBackend } from 'claude-flow/memory';
+import { AgentDBBackend } from 'fidgetflo/memory';
 
 // 3. Migration bridge (NEW - opt-in)
-import { LegacyDataBridge } from 'claude-flow/memory';
+import { LegacyDataBridge } from 'fidgetflo/memory';
 ```
 
 ---
@@ -91,11 +91,11 @@ import { LegacyDataBridge } from 'claude-flow/memory';
 ### MCP Tools ✅
 
 **All Existing MCP Tools Unchanged:**
-- `mcp__claude-flow__memory_usage` - Works exactly as before
-- `mcp__claude-flow__memory_search` - Works exactly as before
-- `mcp__claude-flow__swarm_init` - Works exactly as before
-- `mcp__claude-flow__agent_spawn` - Works exactly as before
-- `mcp__claude-flow__task_orchestrate` - Works exactly as before
+- `mcp__fidgetflo__memory_usage` - Works exactly as before
+- `mcp__fidgetflo__memory_search` - Works exactly as before
+- `mcp__fidgetflo__swarm_init` - Works exactly as before
+- `mcp__fidgetflo__agent_spawn` - Works exactly as before
+- `mcp__fidgetflo__task_orchestrate` - Works exactly as before
 - All 100+ MCP tools remain functional
 
 **No MCP Tool Changes:**
@@ -211,7 +211,7 @@ await memory.isAgentDBAvailable(); // NEW
 **What Happens:**
 ```javascript
 // Your existing code (no changes needed):
-import { createMemory } from 'claude-flow/memory';
+import { createMemory } from 'fidgetflo/memory';
 const memory = createMemory();
 await memory.store('key', 'value');
 ```
@@ -231,7 +231,7 @@ npm install agentdb@1.3.9
 
 **Step 2: Enable Hybrid Mode (Safest)**
 ```javascript
-import { AgentDBMemoryAdapter } from 'claude-flow/memory';
+import { AgentDBMemoryAdapter } from 'fidgetflo/memory';
 
 const memory = new AgentDBMemoryAdapter({
   mode: 'hybrid' // Default: AgentDB + legacy fallback
@@ -256,7 +256,7 @@ await memory.vectorSearch('query'); // ✅ 150x faster search
 
 **Step 1: Migrate Data (Optional)**
 ```javascript
-import { LegacyDataBridge } from 'claude-flow/memory';
+import { LegacyDataBridge } from 'fidgetflo/memory';
 
 const bridge = new LegacyDataBridge();
 await bridge.migrateToAgentDB(legacyStore, agentdbAdapter, {
@@ -283,13 +283,13 @@ const memory = new AgentDBMemoryAdapter({
 ## 🚨 What Will NOT Break
 
 ### ✅ Existing Installations
-- **npm install claude-flow** - Works exactly as before
-- **npx claude-flow@latest** - All commands work
+- **npm install fidgetflo** - Works exactly as before
+- **npx fidgetflo@latest** - All commands work
 - **Existing projects** - No code changes needed
 - **CI/CD pipelines** - No workflow changes needed
 
 ### ✅ Existing Code
-- **All imports** - `import { SharedMemory } from 'claude-flow/memory'` works
+- **All imports** - `import { SharedMemory } from 'fidgetflo/memory'` works
 - **All methods** - Every existing method signature preserved
 - **All CLI commands** - Every existing command works
 - **All MCP tools** - Every existing tool works
@@ -411,7 +411,7 @@ const memory = new AgentDBMemoryAdapter({
 - ✅ Safe to upgrade immediately
 
 **Bottom Line:**
-> Existing claude-flow installations will **NOT** break. AgentDB integration is an **optional enhancement** that existing users can adopt at their own pace. All legacy functionality is preserved and will continue to work exactly as before.
+> Existing fidgetflo installations will **NOT** break. AgentDB integration is an **optional enhancement** that existing users can adopt at their own pace. All legacy functionality is preserved and will continue to work exactly as before.
 
 ---
 

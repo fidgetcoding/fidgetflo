@@ -1,4 +1,4 @@
-# Claude Code Configuration - Claude Flow V3
+# Claude Code Configuration - FidgetFlo V3
 
 ## 🚨 AUTOMATIC SWARM ORCHESTRATION
 
@@ -568,8 +568,8 @@ Bash("npx @claude-flow/cli@latest neural patterns --list")
 
 ```bash
 # Configuration
-CLAUDE_FLOW_CONFIG=./claude-flow.config.json
-CLAUDE_FLOW_LOG_LEVEL=info
+FIDGETFLO_CONFIG=./fidgetflo.config.json
+FIDGETFLO_LOG_LEVEL=info
 
 # Provider API Keys
 ANTHROPIC_API_KEY=sk-ant-...
@@ -577,13 +577,13 @@ OPENAI_API_KEY=sk-...
 GOOGLE_API_KEY=...
 
 # MCP Server
-CLAUDE_FLOW_MCP_PORT=3000
-CLAUDE_FLOW_MCP_HOST=localhost
-CLAUDE_FLOW_MCP_TRANSPORT=stdio
+FIDGETFLO_MCP_PORT=3000
+FIDGETFLO_MCP_HOST=localhost
+FIDGETFLO_MCP_TRANSPORT=stdio
 
 # Memory
-CLAUDE_FLOW_MEMORY_BACKEND=hybrid
-CLAUDE_FLOW_MEMORY_PATH=./data/memory
+FIDGETFLO_MEMORY_BACKEND=hybrid
+FIDGETFLO_MEMORY_PATH=./data/memory
 ```
 
 ## 🔍 Doctor Health Checks
@@ -604,7 +604,7 @@ Run `npx @claude-flow/cli@latest doctor` to check:
 
 ```bash
 # Add MCP servers (auto-detects MCP mode when stdin is piped)
-claude mcp add claude-flow -- npx -y @claude-flow/cli@latest
+claude mcp add fidgetflo -- npx -y @claude-flow/cli@latest
 claude mcp add ruv-swarm -- npx -y ruv-swarm mcp start  # Optional
 claude mcp add flow-nexus -- npx -y flow-nexus@latest mcp start  # Optional
 
@@ -677,9 +677,9 @@ npx @claude-flow/cli@latest memory init --force --verbose
 
 ## 📚 Full Capabilities Reference
 
-For a comprehensive overview of all Claude Flow V3 features, agents, commands, and integrations, see:
+For a comprehensive overview of all FidgetFlo V3 features, agents, commands, and integrations, see:
 
-**`.claude-flow/CAPABILITIES.md`** - Complete reference generated during init
+**`.fidgetflo/CAPABILITIES.md`** - Complete reference generated during init
 
 This includes:
 - All 60+ agent types with routing recommendations
@@ -697,7 +697,7 @@ This includes:
 
 ---
 
-Remember: **Claude Flow CLI coordinates, Claude Code Task tool creates!**
+Remember: **FidgetFlo CLI coordinates, Claude Code Task tool creates!**
 
 # important-instruction-reminders
 Do what has been asked; nothing more, nothing less.

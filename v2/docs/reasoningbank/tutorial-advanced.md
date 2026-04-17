@@ -56,20 +56,20 @@ This advanced tutorial covers **SAFLA (Self-Aware Feedback Loop Algorithm)**, pa
 
 ```bash
 # Store security patterns
-npx claude-flow@alpha memory store sql_injection \
+npx fidgetflo@alpha memory store sql_injection \
   "Use parameterized queries to prevent SQL injection attacks" \
   --namespace security --reasoningbank
 
-npx claude-flow@alpha memory store xss_prevention \
+npx fidgetflo@alpha memory store xss_prevention \
   "Sanitize user input and escape HTML to prevent XSS" \
   --namespace security --reasoningbank
 
-npx claude-flow@alpha memory store csrf_protection \
+npx fidgetflo@alpha memory store csrf_protection \
   "Use CSRF tokens for state-changing operations" \
   --namespace security --reasoningbank
 
 # Query with broad term
-npx claude-flow@alpha memory query "prevent attacks" \
+npx fidgetflo@alpha memory query "prevent attacks" \
   --namespace security --reasoningbank
 ```
 
@@ -99,7 +99,7 @@ SAFLA tracks every pattern access to identify valuable knowledge:
 
 ```bash
 # Check pattern statistics
-npx claude-flow@alpha memory status --detailed --reasoningbank
+npx fidgetflo@alpha memory status --detailed --reasoningbank
 ```
 
 **Output:**
@@ -126,7 +126,7 @@ Every pattern has a confidence score that evolves based on usage:
 
 ```bash
 # Track confidence evolution
-npx claude-flow@alpha memory info jwt_authentication --reasoningbank
+npx fidgetflo@alpha memory info jwt_authentication --reasoningbank
 ```
 
 **Output:**
@@ -154,20 +154,20 @@ SAFLA builds a knowledge graph connecting related concepts:
 
 ```bash
 # Store related patterns across domains
-npx claude-flow@alpha memory store jwt_auth \
+npx fidgetflo@alpha memory store jwt_auth \
   "JWT tokens with HMAC SHA256 signing" \
   --namespace backend --reasoningbank
 
-npx claude-flow@alpha memory store token_storage \
+npx fidgetflo@alpha memory store token_storage \
   "Store tokens in httpOnly cookies, not localStorage" \
   --namespace frontend --reasoningbank
 
-npx claude-flow@alpha memory store token_refresh \
+npx fidgetflo@alpha memory store token_refresh \
   "Refresh tokens before expiration using interceptors" \
   --namespace frontend --reasoningbank
 
 # Query finds related patterns across namespaces!
-npx claude-flow@alpha memory query "token management" --reasoningbank
+npx fidgetflo@alpha memory query "token management" --reasoningbank
 ```
 
 **Output:**
@@ -198,7 +198,7 @@ Score = 0.4 * Semantic_Similarity +
 **Example**:
 
 ```bash
-npx claude-flow@alpha memory query "authentication" \
+npx fidgetflo@alpha memory query "authentication" \
   --namespace backend --reasoningbank --verbose
 ```
 
@@ -241,7 +241,7 @@ Pattern linking enables **causal reasoning** - understanding how patterns relate
 
 ```bash
 # Method 1: Explicit linking (future feature)
-npx claude-flow@alpha memory link \
+npx fidgetflo@alpha memory link \
   jwt_authentication requires secret_key_rotation \
   --strength 0.9 --reasoningbank
 
@@ -256,22 +256,22 @@ npx claude-flow@alpha memory link \
 
 ```bash
 # Store patterns
-npx claude-flow@alpha memory store postgres_db \
+npx fidgetflo@alpha memory store postgres_db \
   "PostgreSQL with connection pooling" \
   --namespace database --reasoningbank
 
-npx claude-flow@alpha memory store db_indexing \
+npx fidgetflo@alpha memory store db_indexing \
   "B-tree indexes on foreign keys and WHERE clause columns" \
   --namespace database --reasoningbank
 
-npx claude-flow@alpha memory store query_optimization \
+npx fidgetflo@alpha memory store query_optimization \
   "Use EXPLAIN ANALYZE to identify slow queries" \
   --namespace database --reasoningbank
 
 # Query multiple times - SAFLA learns relationships
-npx claude-flow@alpha memory query "database performance" --reasoningbank
-npx claude-flow@alpha memory query "slow queries" --reasoningbank
-npx claude-flow@alpha memory query "PostgreSQL optimization" --reasoningbank
+npx fidgetflo@alpha memory query "database performance" --reasoningbank
+npx fidgetflo@alpha memory query "slow queries" --reasoningbank
+npx fidgetflo@alpha memory query "PostgreSQL optimization" --reasoningbank
 
 # After usage, SAFLA discovers links:
 # db_indexing → enhances → postgres_db
@@ -282,7 +282,7 @@ npx claude-flow@alpha memory query "PostgreSQL optimization" --reasoningbank
 
 ```bash
 # Find all patterns that REQUIRE a specific pattern
-npx claude-flow@alpha memory links jwt_authentication --type requires
+npx fidgetflo@alpha memory links jwt_authentication --type requires
 ```
 
 **Expected Output:**
@@ -320,19 +320,19 @@ ReasoningBank supports **6 cognitive reasoning strategies** inspired by cognitiv
 
 ```bash
 # Store pattern with cognitive type
-npx claude-flow@alpha memory store debug_approach \
+npx fidgetflo@alpha memory store debug_approach \
   "Use binary search to isolate bugs: test middle, eliminate half" \
   --namespace debugging \
   --cognitive-pattern convergent \
   --reasoningbank
 
-npx claude-flow@alpha memory store architecture_brainstorm \
+npx fidgetflo@alpha memory store architecture_brainstorm \
   "Consider microservices, monolith, serverless, hybrid approaches" \
   --namespace architecture \
   --cognitive-pattern divergent \
   --reasoningbank
 
-npx claude-flow@alpha memory store security_audit \
+npx fidgetflo@alpha memory store security_audit \
   "Question all assumptions: Is this input validated? Can this be spoofed?" \
   --namespace security \
   --cognitive-pattern critical \
@@ -343,7 +343,7 @@ npx claude-flow@alpha memory store security_audit \
 
 ```bash
 # Find convergent (focused) approaches
-npx claude-flow@alpha memory query "optimization" \
+npx fidgetflo@alpha memory query "optimization" \
   --cognitive-pattern convergent --reasoningbank
 ```
 
@@ -366,22 +366,22 @@ npx claude-flow@alpha memory query "optimization" \
 
 ```bash
 # Phase 1: Divergent (explore options)
-npx claude-flow@alpha memory query "authentication approaches" \
+npx fidgetflo@alpha memory query "authentication approaches" \
   --cognitive-pattern divergent --reasoningbank
 # Returns: JWT, OAuth2, Session-based, API keys, certificates
 
 # Phase 2: Critical (evaluate each)
-npx claude-flow@alpha memory query "JWT security concerns" \
+npx fidgetflo@alpha memory query "JWT security concerns" \
   --cognitive-pattern critical --reasoningbank
 # Returns: Token theft, XSS risks, CSRF considerations
 
 # Phase 3: Convergent (pick best solution)
-npx claude-flow@alpha memory query "production JWT implementation" \
+npx fidgetflo@alpha memory query "production JWT implementation" \
   --cognitive-pattern convergent --reasoningbank
 # Returns: JWT with refresh rotation (best practice)
 
 # Phase 4: Systems (understand full picture)
-npx claude-flow@alpha memory query "JWT integration points" \
+npx fidgetflo@alpha memory query "JWT integration points" \
   --cognitive-pattern systems --reasoningbank
 # Returns: Frontend storage, backend validation, refresh flow, logout
 
@@ -399,29 +399,29 @@ Track **sequential reasoning steps** to learn complete workflows.
 
 ```bash
 # Start a task trajectory
-npx claude-flow@alpha memory trajectory start build_api \
+npx fidgetflo@alpha memory trajectory start build_api \
   "Building RESTful API with authentication" \
   --reasoningbank
 
 # Record each step
-npx claude-flow@alpha memory trajectory step build_api \
+npx fidgetflo@alpha memory trajectory step build_api \
   "Designed database schema with users, tokens tables" \
   --reasoningbank
 
-npx claude-flow@alpha memory trajectory step build_api \
+npx fidgetflo@alpha memory trajectory step build_api \
   "Implemented JWT token generation with HMAC SHA256" \
   --reasoningbank
 
-npx claude-flow@alpha memory trajectory step build_api \
+npx fidgetflo@alpha memory trajectory step build_api \
   "Added refresh token rotation with secure cookies" \
   --reasoningbank
 
-npx claude-flow@alpha memory trajectory step build_api \
+npx fidgetflo@alpha memory trajectory step build_api \
   "Tested with Postman: 100% pass rate" \
   --reasoningbank
 
 # Complete trajectory
-npx claude-flow@alpha memory trajectory end build_api \
+npx fidgetflo@alpha memory trajectory end build_api \
   --outcome success --reasoningbank
 ```
 
@@ -429,7 +429,7 @@ npx claude-flow@alpha memory trajectory end build_api \
 
 ```bash
 # Get full trajectory
-npx claude-flow@alpha memory trajectory get build_api --reasoningbank
+npx fidgetflo@alpha memory trajectory get build_api --reasoningbank
 ```
 
 **Output:**
@@ -468,7 +468,7 @@ SAFLA uses trajectories to:
 
 ```bash
 # Query for similar task
-npx claude-flow@alpha memory query "build authentication API" \
+npx fidgetflo@alpha memory query "build authentication API" \
   --include-trajectories --reasoningbank
 ```
 
@@ -508,7 +508,7 @@ Simplified:
 
 ```bash
 # Day 1: Store new pattern
-npx claude-flow@alpha memory store async_pattern \
+npx fidgetflo@alpha memory store async_pattern \
   "Use async/await with try-catch for error handling" \
   --namespace javascript --reasoningbank
 # Confidence: 50% (prior belief: "probably works")
@@ -533,12 +533,12 @@ npx claude-flow@alpha memory store async_pattern \
 
 ```bash
 # Report success (future feature)
-npx claude-flow@alpha memory feedback async_pattern \
+npx fidgetflo@alpha memory feedback async_pattern \
   --outcome success --notes "Worked perfectly in production" \
   --reasoningbank
 
 # Report failure (future feature)
-npx claude-flow@alpha memory feedback async_pattern \
+npx fidgetflo@alpha memory feedback async_pattern \
   --outcome failure --notes "Didn't handle promise rejection properly" \
   --reasoningbank
 ```
@@ -547,7 +547,7 @@ npx claude-flow@alpha memory feedback async_pattern \
 
 ```bash
 # Query with confidence threshold
-npx claude-flow@alpha memory query "error handling" \
+npx fidgetflo@alpha memory query "error handling" \
   --min-confidence 0.7 --reasoningbank
 ```
 
@@ -577,7 +577,7 @@ Excluded (low confidence):
 
 ```bash
 # Prioritize recent, reliable patterns
-npx claude-flow@alpha memory query "database optimization" \
+npx fidgetflo@alpha memory query "database optimization" \
   --min-confidence 0.6 \
   --max-age 90 \
   --namespace backend \
@@ -588,7 +588,7 @@ npx claude-flow@alpha memory query "database optimization" \
 
 ```bash
 # Only return highly relevant results
-npx claude-flow@alpha memory query "authentication" \
+npx fidgetflo@alpha memory query "authentication" \
   --min-similarity 0.75 \
   --reasoningbank
 ```
@@ -597,7 +597,7 @@ npx claude-flow@alpha memory query "authentication" \
 
 ```bash
 # Search all namespaces, group by domain
-npx claude-flow@alpha memory query "performance" \
+npx fidgetflo@alpha memory query "performance" \
   --all-namespaces \
   --group-by namespace \
   --reasoningbank
@@ -626,12 +626,12 @@ DevOps (1 result):
 
 ```bash
 # Find patterns used recently
-npx claude-flow@alpha memory query "API design" \
+npx fidgetflo@alpha memory query "API design" \
   --since "2025-10-01" \
   --reasoningbank
 
 # Find patterns from specific time period
-npx claude-flow@alpha memory query "security" \
+npx fidgetflo@alpha memory query "security" \
   --between "2025-09-01" "2025-10-01" \
   --reasoningbank
 ```
@@ -717,7 +717,7 @@ await agent.learnFromExperience();
 # Agent learns from code reviews over time
 
 # Week 1: Store initial patterns
-npx claude-flow@alpha memory store code_review_001 \
+npx fidgetflo@alpha memory store code_review_001 \
   "Check for SQL injection vulnerabilities in raw queries" \
   --namespace code_review --reasoningbank
 
@@ -725,7 +725,7 @@ npx claude-flow@alpha memory store code_review_001 \
 # Confidence: 50% → 65%
 
 # Week 5: Agent misses XSS vulnerability → Need new pattern
-npx claude-flow@alpha memory store code_review_002 \
+npx fidgetflo@alpha memory store code_review_002 \
   "Validate and escape user input to prevent XSS attacks" \
   --namespace code_review --reasoningbank
 
@@ -734,7 +734,7 @@ npx claude-flow@alpha memory store code_review_002 \
 # Pattern 2 confidence: 50% → 74%
 
 # Week 20: Query for code review patterns
-npx claude-flow@alpha memory query "security vulnerabilities" \
+npx fidgetflo@alpha memory query "security vulnerabilities" \
   --namespace code_review --reasoningbank
 # Returns both patterns, ranked by reliability!
 ```
@@ -748,11 +748,11 @@ npx claude-flow@alpha memory query "security vulnerabilities" \
 ```bash
 # ❌ Slow: Sequential stores
 for file in *.md; do
-  npx claude-flow@alpha memory store "$file" "$(cat $file)" --reasoningbank
+  npx fidgetflo@alpha memory store "$file" "$(cat $file)" --reasoningbank
 done
 
 # ✅ Fast: Batch import (future feature)
-npx claude-flow@alpha memory import patterns.json --reasoningbank
+npx fidgetflo@alpha memory import patterns.json --reasoningbank
 ```
 
 ### 2. Namespace Partitioning
@@ -761,14 +761,14 @@ npx claude-flow@alpha memory import patterns.json --reasoningbank
 # For large databases, partition by namespace
 # Each namespace becomes separate table/index
 
-npx claude-flow@alpha memory optimize --partition-namespaces --reasoningbank
+npx fidgetflo@alpha memory optimize --partition-namespaces --reasoningbank
 ```
 
 ### 3. Embedding Caching
 
 ```bash
 # Cache embeddings for frequently queried terms
-npx claude-flow@alpha memory cache-embeddings \
+npx fidgetflo@alpha memory cache-embeddings \
   --queries "authentication,performance,security" \
   --reasoningbank
 ```
@@ -777,7 +777,7 @@ npx claude-flow@alpha memory cache-embeddings \
 
 ```bash
 # For > 10,000 patterns, use ANN (future feature)
-npx claude-flow@alpha memory config \
+npx fidgetflo@alpha memory config \
   --search-algorithm ann \
   --ann-neighbors 100 \
   --reasoningbank

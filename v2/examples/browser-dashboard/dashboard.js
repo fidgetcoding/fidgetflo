@@ -1,5 +1,5 @@
 /**
- * Claude Flow Browser Dashboard - Proof of Concept
+ * FidgetFlo Browser Dashboard - Proof of Concept
  * WebSocket-based real-time swarm monitoring
  */
 
@@ -42,7 +42,7 @@ class ClaudeFlowDashboard {
 
             this.ws.onopen = () => {
                 this.updateConnectionStatus(true);
-                this.addLog('Connected to Claude Flow MCP server', 'success');
+                this.addLog('Connected to FidgetFlo MCP server', 'success');
                 this.sendCommand('swarm_status');
             };
 
@@ -69,7 +69,7 @@ class ClaudeFlowDashboard {
         if (this.ws && this.ws.readyState === WebSocket.OPEN) {
             this.ws.send(JSON.stringify({
                 jsonrpc: '2.0',
-                method: `mcp__claude-flow__${command}`,
+                method: `mcp__fidgetflo__${command}`,
                 params,
                 id: Date.now()
             }));

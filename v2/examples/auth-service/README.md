@@ -1,6 +1,6 @@
 # Swarm Application
 
-This application was created by the Claude Flow Swarm system.
+This application was created by the FidgetFlo Swarm system.
 
 ## Objective
 create an authentication service with JWT tokens and user registration in ./examples/auth-service

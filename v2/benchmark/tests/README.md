@@ -1,6 +1,6 @@
 # Benchmark Test Suite
 
-Comprehensive test suite for the Claude Flow benchmark enhancement project, providing thorough validation of all new functionality including MLE-STAR integration, automation systems, advanced metrics, collective intelligence, and CLAUDE.md optimization.
+Comprehensive test suite for the FidgetFlo benchmark enhancement project, providing thorough validation of all new functionality including MLE-STAR integration, automation systems, advanced metrics, collective intelligence, and CLAUDE.md optimization.
 
 ## 🎯 Test Coverage
 
@@ -11,7 +11,7 @@ The test suite is organized into multiple layers to ensure comprehensive validat
   - Ensemble executor functionality
   - Voting strategies (majority, weighted, stacking, bayesian)
   - Model coordination and performance tracking
-  - Integration with Claude Flow MCP tools
+  - Integration with FidgetFlo MCP tools
 
 - **Automation Systems** (`test_automation.py`)
   - Batch processor with resource pooling

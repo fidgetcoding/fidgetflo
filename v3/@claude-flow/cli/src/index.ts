@@ -1,6 +1,6 @@
 /**
  * V3 CLI Main Entry Point
- * Modernized CLI for RuFlo V3
+ * Modernized CLI for FidgetFlo V3
  *
  * Created with ❤️ by ruv.io
  */
@@ -50,8 +50,8 @@ export class CLI {
   private interactive: boolean;
 
   constructor(options: CLIOptions = {}) {
-    this.name = options.name || 'ruflo';
-    this.description = options.description || 'RuFlo V3 - AI Agent Orchestration Platform';
+    this.name = options.name || 'fidgetflo';
+    this.description = options.description || 'FidgetFlo V3 - AI Agent Orchestration Platform';
     this.version = options.version || VERSION;
     this.parser = commandParser;
     this.output = output;

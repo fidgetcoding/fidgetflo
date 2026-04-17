@@ -2,7 +2,7 @@
 
 **Status:** Implemented
 **Date:** 2026-02-10
-**Authors:** RuvNet, Claude Flow Team
+**Authors:** RuvNet, FidgetFlo Team
 **Version:** 2.0.0
 **Related:** ADR-006 (Unified Memory), ADR-009 (Hybrid Memory Backend), ADR-027 (RuVector PostgreSQL), ADR-048 (Auto Memory Integration), ADR-049 (Self-Learning Memory GNN), ADR-052 (Statusline Observability)
 **Implementation:** `.claude/helpers/context-persistence-hook.mjs` (~1600 lines), `.claude/helpers/patch-aggressive-prune.mjs` (~120 lines)
@@ -210,7 +210,7 @@ instead of blocking.
 |  |              Memory Backend (tiered)                        |   |
 |  |                                                            |   |
 |  |  Tier 1: SQLite (better-sqlite3)                           |   |
-|  |    -> .claude-flow/data/transcript-archive.db              |   |
+|  |    -> .fidgetflo/data/transcript-archive.db              |   |
 |  |    -> WAL mode, indexed queries, ACID transactions         |   |
 |  |                                                            |   |
 |  |  Tier 2: RuVector PostgreSQL (if RUVECTOR_* env set)       |   |
@@ -222,7 +222,7 @@ instead of blocking.
 |  |    -> Vector-indexed retrieval                             |   |
 |  |                                                            |   |
 |  |  Tier 4: JsonFileBackend                                   |   |
-|  |    -> .claude-flow/data/transcript-archive.json            |   |
+|  |    -> .fidgetflo/data/transcript-archive.json            |   |
 |  |    -> Zero dependencies, always available                  |   |
 |  +-----------------------------------------------------------+   |
 |                                                                   |
@@ -478,7 +478,7 @@ The autopilot state is read by the statusline script to display real-time metric
 
 ### Autopilot State Persistence
 
-State is persisted to `.claude-flow/data/autopilot-state.json`:
+State is persisted to `.fidgetflo/data/autopilot-state.json`:
 
 ```json
 {
@@ -528,14 +528,14 @@ State is persisted to `.claude-flow/data/autopilot-state.json`:
 
 | Environment Variable | Default | Description |
 |---------------------|---------|-------------|
-| `CLAUDE_FLOW_COMPACT_RESTORE_BUDGET` | `4000` | Max chars for restored context in SessionStart |
-| `CLAUDE_FLOW_COMPACT_INSTRUCTION_BUDGET` | `2000` | Max chars for custom compact instructions |
-| `CLAUDE_FLOW_AUTO_OPTIMIZE` | `true` | Enable importance ranking, pruning, RuVector sync |
-| `CLAUDE_FLOW_RETENTION_DAYS` | `30` | Auto-prune never-accessed entries older than N days |
-| `CLAUDE_FLOW_CONTEXT_AUTOPILOT` | `true` | Enable Context Autopilot tracking |
-| `CLAUDE_FLOW_CONTEXT_WINDOW` | `200000` | Context window size in tokens |
-| `CLAUDE_FLOW_AUTOPILOT_WARN` | `0.70` | Warning threshold (70%) |
-| `CLAUDE_FLOW_AUTOPILOT_PRUNE` | `0.85` | Critical threshold (85%) — session rotation advised |
+| `FIDGETFLO_COMPACT_RESTORE_BUDGET` | `4000` | Max chars for restored context in SessionStart |
+| `FIDGETFLO_COMPACT_INSTRUCTION_BUDGET` | `2000` | Max chars for custom compact instructions |
+| `FIDGETFLO_AUTO_OPTIMIZE` | `true` | Enable importance ranking, pruning, RuVector sync |
+| `FIDGETFLO_RETENTION_DAYS` | `30` | Auto-prune never-accessed entries older than N days |
+| `FIDGETFLO_CONTEXT_AUTOPILOT` | `true` | Enable Context Autopilot tracking |
+| `FIDGETFLO_CONTEXT_WINDOW` | `200000` | Context window size in tokens |
+| `FIDGETFLO_AUTOPILOT_WARN` | `0.70` | Warning threshold (70%) |
+| `FIDGETFLO_AUTOPILOT_PRUNE` | `0.85` | Critical threshold (85%) — session rotation advised |
 
 ### RuVector PostgreSQL (Optional)
 
@@ -552,7 +552,7 @@ State is persisted to `.claude-flow/data/autopilot-state.json`:
 
 1. **No credentials in transcript**: Tool inputs may contain file paths but not secrets
    (Claude Code already redacts sensitive content before tool execution)
-2. **Local storage default**: SQLite writes to `.claude-flow/data/` which is
+2. **Local storage default**: SQLite writes to `.fidgetflo/data/` which is
    gitignored. No network calls unless RuVector PostgreSQL is configured.
 3. **Parameterized queries**: SQLite uses prepared statements, RuVector uses `$N`
    parameterized queries -- no SQL injection risk.
@@ -597,7 +597,7 @@ State is persisted to `.claude-flow/data/autopilot-state.json`:
 
 ## Self-Learning Optimization Pipeline
 
-When `CLAUDE_FLOW_AUTO_OPTIMIZE` is not `false` (default: enabled), the system
+When `FIDGETFLO_AUTO_OPTIMIZE` is not `false` (default: enabled), the system
 automatically optimizes storage and retrieval using 5 self-learning stages:
 
 ### Stage 1: Confidence Decay
@@ -628,7 +628,7 @@ survive regardless of age, while irrelevant entries are pruned quickly.
 
 Standard retention policy as safety net:
 - **Criteria**: `access_count = 0` AND `created_at < now - RETENTION_DAYS`
-- **Default retention**: 30 days (configurable via `CLAUDE_FLOW_RETENTION_DAYS`)
+- **Default retention**: 30 days (configurable via `FIDGETFLO_RETENTION_DAYS`)
 - **Never prunes accessed entries**: If it was ever restored, it's kept
 
 ### Stage 4: ONNX Embedding Generation (384-dim)
@@ -787,8 +787,8 @@ All capabilities confirmed working (2026-02-10):
 
 | Class | Lines | Storage | Features |
 |-------|-------|---------|----------|
-| `SQLiteBackend` | 57-272 | `.claude-flow/data/transcript-archive.db` | WAL mode, indexed queries, prepared statements, importance-ranked queries, access tracking, stale pruning |
-| `JsonFileBackend` | 278-355 | `.claude-flow/data/transcript-archive.json` | Zero dependencies, Map-based in-memory with JSON persist |
+| `SQLiteBackend` | 57-272 | `.fidgetflo/data/transcript-archive.db` | WAL mode, indexed queries, prepared statements, importance-ranked queries, access tracking, stale pruning |
+| `JsonFileBackend` | 278-355 | `.fidgetflo/data/transcript-archive.json` | Zero dependencies, Map-based in-memory with JSON persist |
 | `RuVectorBackend` | 361-596 | PostgreSQL with pgvector | Connection pooling (max 3), JSONB metadata, 768-dim vector column, ON CONFLICT dedup, async hash check |
 
 ### Exported Functions (for testing)

@@ -1,13 +1,13 @@
 # ReasoningBank v1.5.13 Validation Report
 
-**Package**: `claude-flow@2.7.0-alpha.8`
+**Package**: `fidgetflo@2.7.0-alpha.8`
 **Date**: 2025-10-13
 **Validation**: Docker + Live Testing
 
 ## ✅ Publication Confirmed
 
 ```bash
-npm view claude-flow@alpha version
+npm view fidgetflo@alpha version
 # Result: 2.7.0-alpha.8
 
 npm publish --tag alpha
@@ -18,7 +18,7 @@ npm publish --tag alpha
 
 ```dockerfile
 FROM node:20-slim
-RUN npm install -g claude-flow@alpha
+RUN npm install -g fidgetflo@alpha
 
 # Result: v2.7.0-alpha.8 installed successfully
 ```
@@ -27,7 +27,7 @@ RUN npm install -g claude-flow@alpha
 
 ### Initialization
 ```bash
-npx claude-flow@alpha memory init --reasoningbank
+npx fidgetflo@alpha memory init --reasoningbank
 
 # Output:
 [ReasoningBank] Initializing...
@@ -40,7 +40,7 @@ npx claude-flow@alpha memory init --reasoningbank
 
 ### Memory Storage
 ```bash
-npx claude-flow@alpha memory store test_key "validation test data" --namespace test
+npx fidgetflo@alpha memory store test_key "validation test data" --namespace test
 
 # Output:
 ✅ Stored successfully in ReasoningBank
@@ -169,16 +169,16 @@ const stats = await getStatus()
 ### Installation
 ```bash
 # Install latest alpha
-npm install -g claude-flow@alpha
+npm install -g fidgetflo@alpha
 
 # Or use npx
-npx claude-flow@alpha --version
+npx fidgetflo@alpha --version
 ```
 
 ### First-Time Setup
 ```bash
 # Initialize ReasoningBank
-npx claude-flow@alpha memory init --reasoningbank
+npx fidgetflo@alpha memory init --reasoningbank
 
 # Optional: Set embedding provider
 export ANTHROPIC_API_KEY=$YOUR_API_KEY
@@ -187,13 +187,13 @@ export ANTHROPIC_API_KEY=$YOUR_API_KEY
 ### Usage
 ```bash
 # Store memory (with semantic search)
-npx claude-flow@alpha memory store api-pattern "Use env vars for keys" --reasoningbank
+npx fidgetflo@alpha memory store api-pattern "Use env vars for keys" --reasoningbank
 
 # Query semantically
-npx claude-flow@alpha memory query "API configuration" --reasoningbank
+npx fidgetflo@alpha memory query "API configuration" --reasoningbank
 
 # Check status
-npx claude-flow@alpha memory status --reasoningbank
+npx fidgetflo@alpha memory status --reasoningbank
 ```
 
 ## Rollback Plan
@@ -201,7 +201,7 @@ npx claude-flow@alpha memory status --reasoningbank
 If issues arise:
 ```bash
 # Revert to previous version
-npm install -g claude-flow@2.7.0-alpha.7
+npm install -g fidgetflo@2.7.0-alpha.7
 
 # Or downgrade dependency
 npm install agentic-flow@1.5.12 --legacy-peer-deps
@@ -226,7 +226,7 @@ The agentic-flow@1.5.13 integration is confirmed working with:
 - ✅ Cross-session memory persistence
 - ✅ Backward-compatible API
 
-**Recommendation**: Safe to deploy `claude-flow@2.7.0-alpha.8` for production use.
+**Recommendation**: Safe to deploy `fidgetflo@2.7.0-alpha.8` for production use.
 
 ---
 

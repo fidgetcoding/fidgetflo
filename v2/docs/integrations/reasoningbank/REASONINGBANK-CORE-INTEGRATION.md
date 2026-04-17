@@ -2,20 +2,20 @@
 
 ## 🎯 Overview
 
-Integrate ReasoningBank as an **optional enhanced mode** for `claude-flow memory` while maintaining full backward compatibility with existing installations.
+Integrate ReasoningBank as an **optional enhanced mode** for `fidgetflo memory` while maintaining full backward compatibility with existing installations.
 
 ## 📊 Current State
 
 ### Two Separate Systems
 
-**Core Memory** (`claude-flow memory`)
+**Core Memory** (`fidgetflo memory`)
 - Basic key-value storage
 - File-based (JSON): `./memory/memory-store.json`
 - Commands: store, query, stats, export, import, clear, list
 - No AI/learning capabilities
 - Always available, no dependencies
 
-**ReasoningBank** (`claude-flow agent memory`)
+**ReasoningBank** (`fidgetflo agent memory`)
 - AI-powered learning memory
 - Database-based (SQLite): `.swarm/memory.db`
 - Commands: init, status, list, demo, test, benchmark
@@ -28,27 +28,27 @@ Integrate ReasoningBank as an **optional enhanced mode** for `claude-flow memory
 
 ```bash
 # Basic mode (current behavior - backward compatible)
-claude-flow memory store api_key "sk-ant-xxx" --redact
-claude-flow memory query research
+fidgetflo memory store api_key "sk-ant-xxx" --redact
+fidgetflo memory query research
 
 # Enhanced mode (NEW - opt-in via flag)
-claude-flow memory store api_key "sk-ant-xxx" --reasoningbank
-claude-flow memory query research --reasoningbank
-claude-flow memory status --reasoningbank
+fidgetflo memory store api_key "sk-ant-xxx" --reasoningbank
+fidgetflo memory query research --reasoningbank
+fidgetflo memory status --reasoningbank
 
 # Short form
-claude-flow memory store api_key "sk-ant-xxx" --rb
-claude-flow memory query research --rb
+fidgetflo memory store api_key "sk-ant-xxx" --rb
+fidgetflo memory query research --rb
 ```
 
 ### Auto-Detection
 
 ```bash
 # Automatically detect which mode is appropriate
-claude-flow memory query research --auto
+fidgetflo memory query research --auto
 
 # Check if ReasoningBank is available
-claude-flow memory detect
+fidgetflo memory detect
 ```
 
 ## 🏗️ Architecture
@@ -57,7 +57,7 @@ claude-flow memory detect
 
 ```
 ┌─────────────────────────────────────────┐
-│  claude-flow memory <cmd> [--rb|--auto] │
+│  fidgetflo memory <cmd> [--rb|--auto] │
 └────────────────┬────────────────────────┘
                  │
         ┌────────▼─────────┐
@@ -92,22 +92,22 @@ claude-flow memory detect
 
 ```bash
 # Initialize ReasoningBank (one-time setup)
-claude-flow memory init --reasoningbank
+fidgetflo memory init --reasoningbank
 
 # Check ReasoningBank status
-claude-flow memory status --reasoningbank
+fidgetflo memory status --reasoningbank
 
 # Show which mode is active
-claude-flow memory mode
+fidgetflo memory mode
 
 # Detect ReasoningBank availability
-claude-flow memory detect
+fidgetflo memory detect
 
 # Migrate basic → ReasoningBank
-claude-flow memory migrate --to reasoningbank
+fidgetflo memory migrate --to reasoningbank
 
 # Consolidate/optimize ReasoningBank
-claude-flow memory consolidate --reasoningbank
+fidgetflo memory consolidate --reasoningbank
 ```
 
 ## 🔄 Backward Compatibility
@@ -117,8 +117,8 @@ claude-flow memory consolidate --reasoningbank
 1. **Existing commands work unchanged**
    ```bash
    # These continue to work exactly as before
-   claude-flow memory store key value
-   claude-flow memory query search
+   fidgetflo memory store key value
+   fidgetflo memory query search
    ```
 
 2. **No breaking changes**
@@ -135,19 +135,19 @@ claude-flow memory consolidate --reasoningbank
 
 ```bash
 # Step 1: Check current memory
-claude-flow memory stats
+fidgetflo memory stats
 # Shows: 150 entries in basic mode
 
 # Step 2: Initialize ReasoningBank
-claude-flow memory init --reasoningbank
+fidgetflo memory init --reasoningbank
 # Creates .swarm/memory.db
 
 # Step 3: (Optional) Migrate existing data
-claude-flow memory migrate --to reasoningbank
+fidgetflo memory migrate --to reasoningbank
 # Imports all 150 entries + generates embeddings
 
 # Step 4: Use ReasoningBank mode
-claude-flow memory query api --reasoningbank
+fidgetflo memory query api --reasoningbank
 # Now uses semantic search with AI
 ```
 
@@ -235,28 +235,28 @@ case 'detect':
 
 ```bash
 # Install and use basic memory immediately
-$ claude-flow memory store project "Started new API project"
+$ fidgetflo memory store project "Started new API project"
 ✅ Stored: project
 
-$ claude-flow memory query project
+$ fidgetflo memory query project
 ✅ Found 1 result:
    project: Started new API project
 
 # Later: Discover ReasoningBank
-$ claude-flow memory detect
+$ fidgetflo memory detect
 ℹ️  Memory Modes Available:
    ✅ Basic Mode (active)
    ⚠️  ReasoningBank (not initialized)
 
 💡 To enable AI-powered memory:
-   claude-flow memory init --reasoningbank
+   fidgetflo memory init --reasoningbank
 ```
 
 ### Existing User (Backward Compatible)
 
 ```bash
 # Existing installation - everything works unchanged
-$ claude-flow memory stats
+$ fidgetflo memory stats
 📊 Memory Statistics:
    Total entries: 247
    Namespaces: 5
@@ -264,22 +264,22 @@ $ claude-flow memory stats
    Mode: Basic
 
 # Opt-in to ReasoningBank
-$ claude-flow memory init --reasoningbank
+$ fidgetflo memory init --reasoningbank
 🧠 Initializing ReasoningBank...
 ✅ Created: .swarm/memory.db
 ✅ ReasoningBank ready!
 
 # Migrate existing data (optional)
-$ claude-flow memory migrate --to reasoningbank
+$ fidgetflo memory migrate --to reasoningbank
 📦 Migrating 247 entries...
 ⏳ Generating embeddings... (this may take a moment)
 ✅ Migrated successfully!
 
 # Now use either mode
-$ claude-flow memory query api
+$ fidgetflo memory query api
 # Uses basic mode (default)
 
-$ claude-flow memory query api --reasoningbank
+$ fidgetflo memory query api --reasoningbank
 # Uses ReasoningBank with semantic search
 ```
 
@@ -287,15 +287,15 @@ $ claude-flow memory query api --reasoningbank
 
 ```bash
 # Set default mode via config
-$ claude-flow config set memory.default_mode reasoningbank
+$ fidgetflo config set memory.default_mode reasoningbank
 ✅ Default memory mode: ReasoningBank
 
 # Now all commands use ReasoningBank by default
-$ claude-flow memory query performance
+$ fidgetflo memory query performance
 # Automatically uses ReasoningBank
 
 # Override to use basic mode
-$ claude-flow memory query performance --basic
+$ fidgetflo memory query performance --basic
 # Forces basic mode
 ```
 
@@ -312,10 +312,10 @@ $ claude-flow memory query performance --basic
 
 ```bash
 # Redact sensitive data in both modes
-claude-flow memory store api "sk-ant-xxx" --redact
+fidgetflo memory store api "sk-ant-xxx" --redact
 
 # ReasoningBank with privacy-first local embeddings
-claude-flow memory init --reasoningbank --local-embeddings
+fidgetflo memory init --reasoningbank --local-embeddings
 # Uses ONNX local models, no data sent to external APIs
 ```
 
@@ -337,15 +337,15 @@ claude-flow memory init --reasoningbank --local-embeddings
 
 ```bash
 # Test 1: Existing commands work unchanged
-claude-flow memory store test "value"
-claude-flow memory query test
+fidgetflo memory store test "value"
+fidgetflo memory query test
 
 # Test 2: No forced migration
-claude-flow memory stats
+fidgetflo memory stats
 # Should show basic mode by default
 
 # Test 3: Opt-in works
-claude-flow memory query test --reasoningbank
+fidgetflo memory query test --reasoningbank
 # Should fail gracefully if not initialized
 ```
 
@@ -353,15 +353,15 @@ claude-flow memory query test --reasoningbank
 
 ```bash
 # Test 4: ReasoningBank initialization
-claude-flow memory init --reasoningbank
-claude-flow memory status --reasoningbank
+fidgetflo memory init --reasoningbank
+fidgetflo memory status --reasoningbank
 
 # Test 5: Migration
-claude-flow memory migrate --to reasoningbank
-claude-flow memory stats --reasoningbank
+fidgetflo memory migrate --to reasoningbank
+fidgetflo memory stats --reasoningbank
 
 # Test 6: Mode detection
-claude-flow memory detect
+fidgetflo memory detect
 ```
 
 ## 📚 Documentation Updates
@@ -369,12 +369,12 @@ claude-flow memory detect
 ### Help Text Updates
 
 ```bash
-$ claude-flow memory --help
+$ fidgetflo memory --help
 
 Memory Management
 
 USAGE:
-  claude-flow memory <command> [options]
+  fidgetflo memory <command> [options]
 
 MODES:
   Basic Mode (default)     Simple key-value storage in JSON file
@@ -460,10 +460,10 @@ EXAMPLES:
 
 ### Current MCP Tools
 
-**Existing** (`mcp__claude-flow__memory_usage`)
+**Existing** (`mcp__fidgetflo__memory_usage`)
 ```javascript
 // Current implementation - basic mode only
-mcp__claude-flow__memory_usage({
+mcp__fidgetflo__memory_usage({
   action: "store",
   key: "api_config",
   value: "some data"
@@ -475,7 +475,7 @@ mcp__claude-flow__memory_usage({
 **Option 1: Add Mode Parameter**
 ```javascript
 // Backward compatible - defaults to basic mode
-mcp__claude-flow__memory_usage({
+mcp__fidgetflo__memory_usage({
   action: "store",
   key: "api_config",
   value: "some data",
@@ -483,7 +483,7 @@ mcp__claude-flow__memory_usage({
 })
 
 // Opt-in to ReasoningBank
-mcp__claude-flow__memory_usage({
+mcp__fidgetflo__memory_usage({
   action: "store",
   key: "api_config",
   value: "some data",
@@ -491,7 +491,7 @@ mcp__claude-flow__memory_usage({
 })
 
 // Auto-detect best mode
-mcp__claude-flow__memory_usage({
+mcp__fidgetflo__memory_usage({
   action: "store",
   key: "api_config",
   value: "some data",
@@ -505,14 +505,14 @@ Keep backward compatibility and add new tools:
 
 ```javascript
 // Existing tool - unchanged (basic mode)
-mcp__claude-flow__memory_usage({
+mcp__fidgetflo__memory_usage({
   action: "store",
   key: "api_config",
   value: "some data"
 })
 
 // NEW tool - ReasoningBank
-mcp__claude-flow__reasoningbank_memory({
+mcp__fidgetflo__reasoningbank_memory({
   action: "store",
   key: "api_config",
   value: "some data",
@@ -521,7 +521,7 @@ mcp__claude-flow__reasoningbank_memory({
 })
 
 // NEW tool - semantic query
-mcp__claude-flow__reasoningbank_query({
+mcp__fidgetflo__reasoningbank_query({
   query: "how to configure API",
   k: 3,                    // Top-k results
   min_confidence: 0.7      // Minimum confidence threshold
@@ -533,7 +533,7 @@ mcp__claude-flow__reasoningbank_query({
 **Enhanced memory_usage tool**:
 ```json
 {
-  "name": "mcp__claude-flow__memory_usage",
+  "name": "mcp__fidgetflo__memory_usage",
   "description": "Store/retrieve memory with optional ReasoningBank mode",
   "parameters": {
     "action": {
@@ -557,7 +557,7 @@ mcp__claude-flow__reasoningbank_query({
 **NEW ReasoningBank-specific tools**:
 ```json
 {
-  "name": "mcp__claude-flow__reasoningbank_store",
+  "name": "mcp__fidgetflo__reasoningbank_store",
   "description": "Store memory with AI learning (ReasoningBank)",
   "parameters": {
     "key": { "type": "string" },
@@ -588,7 +588,7 @@ mcp__claude-flow__reasoningbank_query({
 "Store the API configuration I just learned"
 
 // Claude Code MCP call (auto-detects mode):
-await mcp__claude-flow__memory_usage({
+await mcp__fidgetflo__memory_usage({
   action: "store",
   key: "api_config_pattern",
   value: "Always use environment variables for API keys",
@@ -599,7 +599,7 @@ await mcp__claude-flow__memory_usage({
 "What did I learn about API configuration?"
 
 // Claude Code MCP call:
-await mcp__claude-flow__reasoningbank_query({
+await mcp__fidgetflo__reasoningbank_query({
   query: "API configuration best practices",
   k: 3
 })
@@ -622,11 +622,11 @@ await mcp__claude-flow__reasoningbank_query({
 
 ```typescript
 // Phase 1: Current (v2.6.x)
-mcp__claude-flow__memory_usage({ action: "store", ... })
+mcp__fidgetflo__memory_usage({ action: "store", ... })
 // Always uses basic mode
 
 // Phase 2: Enhanced (v2.7.0)
-mcp__claude-flow__memory_usage({
+mcp__fidgetflo__memory_usage({
   action: "store",
   mode: "auto",  // NEW parameter (optional)
   ...
@@ -634,7 +634,7 @@ mcp__claude-flow__memory_usage({
 // Auto-detects ReasoningBank if available
 
 // Phase 3: Specialized (v2.7.0)
-mcp__claude-flow__reasoningbank_store({
+mcp__fidgetflo__reasoningbank_store({
   key: "pattern",
   value: "learned behavior",
   domain: "coding",

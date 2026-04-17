@@ -5,7 +5,7 @@ Analyze performance bottlenecks in swarm operations and suggest optimizations.
 ## Usage
 
 ```bash
-npx claude-flow bottleneck detect [options]
+npx fidgetflo bottleneck detect [options]
 ```
 
 ## Options
@@ -21,25 +21,25 @@ npx claude-flow bottleneck detect [options]
 ### Basic bottleneck detection
 
 ```bash
-npx claude-flow bottleneck detect
+npx fidgetflo bottleneck detect
 ```
 
 ### Analyze specific swarm
 
 ```bash
-npx claude-flow bottleneck detect --swarm-id swarm-123
+npx fidgetflo bottleneck detect --swarm-id swarm-123
 ```
 
 ### Last 24 hours with export
 
 ```bash
-npx claude-flow bottleneck detect -t 24h -e bottlenecks.json
+npx fidgetflo bottleneck detect -t 24h -e bottlenecks.json
 ```
 
 ### Auto-fix detected issues
 
 ```bash
-npx claude-flow bottleneck detect --fix --threshold 15
+npx fidgetflo bottleneck detect --fix --threshold 15
 ```
 
 ## Metrics Analyzed
@@ -147,7 +147,7 @@ Typical improvements after bottleneck resolution:
 
 ```javascript
 // Check for bottlenecks in Claude Code
-mcp__claude-flow__bottleneck_detect {
+mcp__fidgetflo__bottleneck_detect {
   timeRange: "1h",
   threshold: 20,
   autoFix: false

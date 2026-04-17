@@ -1,6 +1,6 @@
 # V3 Implementation Documentation
 
-This directory contains all implementation documentation, planning, and research for Claude-Flow V3.
+This directory contains all implementation documentation, planning, and research for FidgetFlo V3.
 
 ## Directory Structure
 
@@ -51,7 +51,7 @@ implementation/
 ### Planning
 | Document | Description |
 |----------|-------------|
-| [CLAUDE-FLOW-V3-MASTER-PLAN.md](./planning/CLAUDE-FLOW-V3-MASTER-PLAN.md) | Complete V3 master plan |
+| [FIDGETFLO-V3-MASTER-PLAN.md](./planning/FIDGETFLO-V3-MASTER-PLAN.md) | Complete V3 master plan |
 | [LEARNING-OPTIMIZED-PLAN.md](./planning/LEARNING-OPTIMIZED-PLAN.md) | Learning system optimization |
 | [V3-OPTIMIZED-PLAN.md](./planning/V3-OPTIMIZED-PLAN.md) | Optimized implementation plan |
 

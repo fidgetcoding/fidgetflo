@@ -231,11 +231,11 @@ The `bin/rg` file uses [dotslash](https://dotslash-cli.com/) format:
 }
 ```
 
-## Integration with Claude Flow
+## Integration with FidgetFlo
 
 ### Parallels
 
-| Claude Flow | Codex | Notes |
+| FidgetFlo | Codex | Notes |
 |-------------|-------|-------|
 | `CLAUDE.md` | `AGENTS.md` | Project instructions |
 | `CLAUDE.local.md` | `AGENTS.override.md` | Local overrides |
@@ -250,7 +250,7 @@ The `bin/rg` file uses [dotslash](https://dotslash-cli.com/) format:
 
 1. **MCP Server Mode**
    - Codex can run as MCP server (`codex mcp-server`)
-   - Claude Flow can connect to Codex as MCP client
+   - FidgetFlo can connect to Codex as MCP client
    - Enables cross-platform agent orchestration
 
 2. **Skills Conversion**
@@ -263,7 +263,7 @@ The `bin/rg` file uses [dotslash](https://dotslash-cli.com/) format:
 
 4. **Session Interop**
    - Codex sessions use `codex resume`/`codex fork`
-   - Claude Flow uses session persistence
+   - FidgetFlo uses session persistence
    - Consider session format translation
 
 ## Security Considerations
@@ -303,7 +303,7 @@ This flag bypasses ALL safety checks. Only use in:
 1. **Generate AGENTS.md** from project analysis
 2. **Create `.agents/skills/`** directory with converted skills
 3. **Generate `config.toml`** with:
-   - MCP server configuration for claude-flow
+   - MCP server configuration for fidgetflo
    - Skill enablement
    - Default approval policy (`on-request`)
    - Default sandbox mode (`workspace-write`)
@@ -313,15 +313,15 @@ This flag bypasses ALL safety checks. Only use in:
 ### For Dual-Mode Support
 
 1. **Keep both configurations in sync**
-2. **Use `.claude-flow/` as shared runtime**
+2. **Use `.fidgetflo/` as shared runtime**
 3. **Generate platform-specific skills**
 4. **Map hooks ↔ automations**
 
 ### For MCP Integration
 
 ```toml
-# Claude Flow as MCP server for Codex
-[mcp_servers.claude-flow]
+# FidgetFlo as MCP server for Codex
+[mcp_servers.fidgetflo]
 command = "npx"
 args = ["-y", "@claude-flow/cli@latest"]
 enabled = true
@@ -334,7 +334,7 @@ The following features were discovered through binary string analysis and are no
 
 ### Undocumented Environment Variables
 
-| Variable | Purpose | Claude Flow Use Case |
+| Variable | Purpose | FidgetFlo Use Case |
 |----------|---------|---------------------|
 | `CODEX_HOME` | Override config directory (default: `~/.codex`) | Custom config locations |
 | `CODEX_API_KEY` | Alternative to `OPENAI_API_KEY` | API key management |
@@ -480,7 +480,7 @@ Available models include:
 - `gpt-5.2-codex`
 - `gpt-5-codex`
 
-## Claude Flow Integration Opportunities
+## FidgetFlo Integration Opportunities
 
 ### Using Undocumented Features
 
@@ -512,7 +512,7 @@ Available models include:
    Via JSON-RPC: `thread/fork` with collaboration mode for multi-agent workflows.
 
 6. **Dynamic Tools**
-   Register claude-flow tools at runtime via the MCP protocol.
+   Register fidgetflo tools at runtime via the MCP protocol.
 
 ### Programmatic Control via JSON-RPC
 
@@ -561,7 +561,7 @@ The undocumented features provide significant opportunities for deep integration
 - **Ghost snapshots** for state management
 - **Dynamic tools** for runtime extensibility
 
-The package architecture is similar to Claude Code's approach, making it straightforward to create a compatible Codex integration in claude-flow.
+The package architecture is similar to Claude Code's approach, making it straightforward to create a compatible Codex integration in fidgetflo.
 
 ## @claude-flow/codex Package
 
@@ -626,7 +626,7 @@ npx @claude-flow/codex skills
 
 ### Future: coflow Umbrella
 
-This package is the first step in transitioning from `claude-flow` to `coflow`:
+This package is the first step in transitioning from `fidgetflo` to `coflow`:
 
 ```bash
 # Current

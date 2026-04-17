@@ -6,7 +6,7 @@
 |----------|-------|
 | Version | 1.0.0 |
 | Status | Draft |
-| Author | Claude Flow Architecture Team |
+| Author | FidgetFlo Architecture Team |
 | Last Updated | 2026-01-16 |
 | ADR References | ADR-006 (Unified Memory), ADR-009 (Hybrid Memory Backend) |
 
@@ -14,7 +14,7 @@
 
 ## 1. Executive Summary
 
-The RuVector PostgreSQL Bridge plugin provides a high-performance integration layer between Claude-Flow v3 and PostgreSQL databases enhanced with RuVector extensions. This plugin exposes 53+ SQL functions for vector operations, 39 attention mechanisms, Graph Neural Network (GNN) layers, hyperbolic embeddings, and self-learning capabilities through MCP tools.
+The RuVector PostgreSQL Bridge plugin provides a high-performance integration layer between FidgetFlo v3 and PostgreSQL databases enhanced with RuVector extensions. This plugin exposes 53+ SQL functions for vector operations, 39 attention mechanisms, Graph Neural Network (GNN) layers, hyperbolic embeddings, and self-learning capabilities through MCP tools.
 
 ### Key Capabilities
 
@@ -36,7 +36,7 @@ The RuVector PostgreSQL Bridge plugin provides a high-performance integration la
                                 | MCP Protocol (stdio/HTTP/WebSocket)
                                 v
 +------------------------------------------------------------------+
-|                    Claude-Flow v3 MCP Server                      |
+|                    FidgetFlo v3 MCP Server                      |
 |  +------------------------------------------------------------+  |
 |  |                 RuVector PostgreSQL Bridge                  |  |
 |  |  +----------------+  +----------------+  +---------------+  |  |
@@ -1040,7 +1040,7 @@ const QUANTIZATION_RECOMMENDATIONS = {
 +------------------------------------------+
 |           Application Server             |
 |  +------------------------------------+  |
-|  |      Claude-Flow MCP Server        |  |
+|  |      FidgetFlo MCP Server        |  |
 |  |  +------------------------------+  |  |
 |  |  |   RuVector Bridge Plugin     |  |  |
 |  |  +------------------------------+  |  |

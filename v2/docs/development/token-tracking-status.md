@@ -23,7 +23,7 @@ We've researched and implemented real token tracking capabilities for Claude API
 #### `claude-track.js`
 - Background token tracker for Claude sessions
 - Parses telemetry stream for token information
-- Saves data to `.claude-flow/metrics/token-usage.json`
+- Saves data to `.fidgetflo/metrics/token-usage.json`
 
 #### Analysis Commands
 - `analysis setup-telemetry` - Configure token tracking

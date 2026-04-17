@@ -1,4 +1,4 @@
-# Claude Flow Plugin Structure
+# FidgetFlo Plugin Structure
 
 ## Official Claude Code Plugin Format
 
@@ -7,7 +7,7 @@ This plugin follows the official Claude Code plugin specification.
 ## Directory Structure
 
 ```
-claude-flow/
+fidgetflo/
 ├── .claude-plugin/              # Plugin metadata and documentation
 │   ├── plugin.json              # Plugin manifest
 │   ├── marketplace.json         # Marketplace distribution metadata
@@ -87,14 +87,14 @@ Users install with:
 
 ### Hooks (`hooks/hooks.json`)
 - Event handler configuration
-- Integration with Claude Flow coordination
+- Integration with FidgetFlo coordination
 - Pre/post task execution, session management
 
 ## MCP Integration
 
 The plugin configures 3 MCP servers:
 
-1. **claude-flow** (Required)
+1. **fidgetflo** (Required)
    - 40+ orchestration tools
    - Swarm coordination
    - Agent management

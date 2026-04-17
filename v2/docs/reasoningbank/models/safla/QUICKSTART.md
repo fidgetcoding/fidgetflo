@@ -17,7 +17,7 @@ cp /workspaces/claude-code-flow/docs/reasoningbank/models/safla/memory.db ./.swa
 
 ```bash
 # Check model is accessible
-npx claude-flow@alpha memory search "test" --namespace safla
+npx fidgetflo@alpha memory search "test" --namespace safla
 
 # Expected: Returns SAFLA patterns related to testing
 ```
@@ -26,7 +26,7 @@ npx claude-flow@alpha memory search "test" --namespace safla
 
 ```bash
 # Search for API optimization patterns
-npx claude-flow@alpha memory search "optimize API performance" --namespace safla
+npx fidgetflo@alpha memory search "optimize API performance" --namespace safla
 
 # Expected output:
 # 🔍 Found patterns related to:
@@ -43,50 +43,50 @@ npx claude-flow@alpha memory search "optimize API performance" --namespace safla
 
 ```bash
 # Get patterns for API optimization
-npx claude-flow@alpha memory search "API optimization" --namespace safla
+npx fidgetflo@alpha memory search "API optimization" --namespace safla
 
 # Get high-confidence REST patterns
-npx claude-flow@alpha memory retrieve "domain:self-learning AND tags:rest" --namespace safla
+npx fidgetflo@alpha memory retrieve "domain:self-learning AND tags:rest" --namespace safla
 ```
 
 ### 2. During Code Review
 
 ```bash
 # Get feedback loop patterns
-npx claude-flow@alpha memory search "code review feedback" --namespace safla
+npx fidgetflo@alpha memory search "code review feedback" --namespace safla
 
 # Get patterns that improve review quality
-npx claude-flow@alpha memory retrieve "domain:feedback-optimization AND confidence:>0.80" --namespace safla
+npx fidgetflo@alpha memory retrieve "domain:feedback-optimization AND confidence:>0.80" --namespace safla
 ```
 
 ### 3. During Debugging
 
 ```bash
 # Get error recovery patterns
-npx claude-flow@alpha memory search "error recovery adaptation" --namespace safla
+npx fidgetflo@alpha memory search "error recovery adaptation" --namespace safla
 
 # Get distilled failure patterns
-npx claude-flow@alpha memory retrieve "domain:distillation AND tags:error" --namespace safla
+npx fidgetflo@alpha memory retrieve "domain:distillation AND tags:error" --namespace safla
 ```
 
 ### 4. During Performance Optimization
 
 ```bash
 # Get optimization patterns
-npx claude-flow@alpha memory search "performance optimization" --namespace safla
+npx fidgetflo@alpha memory search "performance optimization" --namespace safla
 
 # Get recursive improvement patterns
-npx claude-flow@alpha memory retrieve "domain:recursive-cycles AND success_rate:>0.90" --namespace safla
+npx fidgetflo@alpha memory retrieve "domain:recursive-cycles AND success_rate:>0.90" --namespace safla
 ```
 
 ### 5. During Architecture Design
 
 ```bash
 # Get architecture patterns
-npx claude-flow@alpha memory search "architecture refinement" --namespace safla
+npx fidgetflo@alpha memory search "architecture refinement" --namespace safla
 
 # Get high-confidence system design patterns
-npx claude-flow@alpha memory retrieve "domain:recursive-cycles AND tags:architecture" --namespace safla
+npx fidgetflo@alpha memory retrieve "domain:recursive-cycles AND tags:architecture" --namespace safla
 ```
 
 ---
@@ -151,95 +151,95 @@ db.close();
 
 ```bash
 # API optimization patterns
-npx claude-flow@alpha memory search "API endpoint optimization" --namespace safla
+npx fidgetflo@alpha memory search "API endpoint optimization" --namespace safla
 
 # Database query learning
-npx claude-flow@alpha memory search "database query learning" --namespace safla
+npx fidgetflo@alpha memory search "database query learning" --namespace safla
 
 # Resource allocation patterns
-npx claude-flow@alpha memory search "resource allocation learning" --namespace safla
+npx fidgetflo@alpha memory search "resource allocation learning" --namespace safla
 ```
 
 ### Feedback-Optimization Domain (400 patterns)
 
 ```bash
 # User feedback patterns
-npx claude-flow@alpha memory search "user interaction feedback" --namespace safla
+npx fidgetflo@alpha memory search "user interaction feedback" --namespace safla
 
 # A/B testing integration
-npx claude-flow@alpha memory search "A/B test result integration" --namespace safla
+npx fidgetflo@alpha memory search "A/B test result integration" --namespace safla
 
 # Performance monitoring
-npx claude-flow@alpha memory search "performance metric feedback" --namespace safla
+npx fidgetflo@alpha memory search "performance metric feedback" --namespace safla
 ```
 
 ### Confidence-Adjustment Domain (400 patterns)
 
 ```bash
 # Bayesian updating
-npx claude-flow@alpha memory search "prior belief updating" --namespace safla
+npx fidgetflo@alpha memory search "prior belief updating" --namespace safla
 
 # Uncertainty quantification
-npx claude-flow@alpha memory search "uncertainty quantification" --namespace safla
+npx fidgetflo@alpha memory search "uncertainty quantification" --namespace safla
 
 # Multi-source evidence
-npx claude-flow@alpha memory search "multi-source evidence integration" --namespace safla
+npx fidgetflo@alpha memory search "multi-source evidence integration" --namespace safla
 ```
 
 ### Distillation Domain (400 patterns)
 
 ```bash
 # Deployment success patterns
-npx claude-flow@alpha memory search "deployment success pattern extraction" --namespace safla
+npx fidgetflo@alpha memory search "deployment success pattern extraction" --namespace safla
 
 # Incident learning
-npx claude-flow@alpha memory search "incident post-mortem learning" --namespace safla
+npx fidgetflo@alpha memory search "incident post-mortem learning" --namespace safla
 
 # Test failure analysis
-npx claude-flow@alpha memory search "test failure root cause" --namespace safla
+npx fidgetflo@alpha memory search "test failure root cause" --namespace safla
 ```
 
 ### Recursive-Cycles Domain (400 patterns)
 
 ```bash
 # Meta-learning patterns
-npx claude-flow@alpha memory search "meta-learning from optimization" --namespace safla
+npx fidgetflo@alpha memory search "meta-learning from optimization" --namespace safla
 
 # Self-improving tests
-npx claude-flow@alpha memory search "self-improving test suite" --namespace safla
+npx fidgetflo@alpha memory search "self-improving test suite" --namespace safla
 
 # Architecture refinement
-npx claude-flow@alpha memory search "architecture refinement cycles" --namespace safla
+npx fidgetflo@alpha memory search "architecture refinement cycles" --namespace safla
 ```
 
 ---
 
-## 🛠️ Integration with Claude Flow
+## 🛠️ Integration with FidgetFlo
 
 ### During Development
 
 ```bash
 # Before starting a task
-npx claude-flow@alpha hooks pre-task --description "API optimization task"
+npx fidgetflo@alpha hooks pre-task --description "API optimization task"
 
 # Query SAFLA for relevant patterns
-npx claude-flow@alpha memory search "API optimization microservices" --namespace safla
+npx fidgetflo@alpha memory search "API optimization microservices" --namespace safla
 
 # After completing work
-npx claude-flow@alpha hooks post-task --task-id "api-opt-task"
+npx fidgetflo@alpha hooks post-task --task-id "api-opt-task"
 ```
 
 ### With Swarm Coordination
 
 ```bash
 # Initialize swarm
-npx claude-flow@alpha swarm init --topology mesh
+npx fidgetflo@alpha swarm init --topology mesh
 
 # Spawn agents with SAFLA context
-npx claude-flow@alpha agent spawn --type coder --context "Use SAFLA patterns"
+npx fidgetflo@alpha agent spawn --type coder --context "Use SAFLA patterns"
 
 # Share patterns in swarm memory
-npx claude-flow@alpha memory store "swarm/patterns/api" "$(npx claude-flow@alpha memory search 'API' --namespace safla)" --namespace swarm
+npx fidgetflo@alpha memory store "swarm/patterns/api" "$(npx fidgetflo@alpha memory search 'API' --namespace safla)" --namespace swarm
 ```
 
 ---
@@ -248,13 +248,13 @@ npx claude-flow@alpha memory store "swarm/patterns/api" "$(npx claude-flow@alpha
 
 ```bash
 # Get domain distribution
-npx claude-flow@alpha memory query "SELECT domain, COUNT(*) FROM patterns GROUP BY domain" --namespace safla
+npx fidgetflo@alpha memory query "SELECT domain, COUNT(*) FROM patterns GROUP BY domain" --namespace safla
 
 # Get confidence distribution
-npx claude-flow@alpha memory query "SELECT ROUND(confidence, 1) as conf, COUNT(*) FROM patterns GROUP BY conf" --namespace safla
+npx fidgetflo@alpha memory query "SELECT ROUND(confidence, 1) as conf, COUNT(*) FROM patterns GROUP BY conf" --namespace safla
 
 # Get top technologies
-npx claude-flow@alpha memory query "SELECT tags FROM patterns LIMIT 100" --namespace safla | grep -o '"[^"]*"' | sort | uniq -c | sort -rn | head -20
+npx fidgetflo@alpha memory query "SELECT tags FROM patterns LIMIT 100" --namespace safla | grep -o '"[^"]*"' | sort | uniq -c | sort -rn | head -20
 ```
 
 ---
@@ -271,7 +271,7 @@ npx claude-flow@alpha memory query "SELECT tags FROM patterns LIMIT 100" --names
 1. Use programmatic access with Node.js
 2. Explore knowledge graph relationships
 3. Filter by confidence and success rates
-4. Integrate with Claude Flow hooks
+4. Integrate with FidgetFlo hooks
 
 ### Advanced (Week 4+)
 1. Build custom query functions
@@ -297,10 +297,10 @@ cp /workspaces/claude-code-flow/docs/reasoningbank/models/safla/memory.db ~/.swa
 
 ```bash
 # Check namespace
-npx claude-flow@alpha memory search "your query" --namespace safla
+npx fidgetflo@alpha memory search "your query" --namespace safla
 
 # Try broader search
-npx claude-flow@alpha memory search "optimization" --namespace safla
+npx fidgetflo@alpha memory search "optimization" --namespace safla
 ```
 
 ### Slow Queries
@@ -338,7 +338,7 @@ sqlite3 ~/.swarm/memory.db "PRAGMA journal_mode;"
 
 ## 🔗 Resources
 
-- **ReasoningBank CLI**: `npx claude-flow@alpha memory --help`
+- **ReasoningBank CLI**: `npx fidgetflo@alpha memory --help`
 - **GitHub**: https://github.com/ruvnet/claude-flow
 - **Full README**: `/workspaces/claude-code-flow/docs/reasoningbank/models/safla/README.md`
 

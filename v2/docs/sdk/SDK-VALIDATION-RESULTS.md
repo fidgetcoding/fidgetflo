@@ -1,5 +1,5 @@
 # SDK Integration Validation Results
-**Claude-Flow v2.5-alpha.130+**
+**FidgetFlo v2.5-alpha.130+**
 
 ## Executive Summary
 
@@ -56,7 +56,7 @@ The SDK integrations are:
 - ✅ Persists across restarts
 
 **Proof Points:**
-- Saves pause state to `.claude-flow/paused-queries/*.json`
+- Saves pause state to `.fidgetflo/paused-queries/*.json`
 - Each pause point = message UUID (can resume from exact point)
 - Uses SDK's `resumeSessionAt` - NOT fake `interrupt()` + flag
 
@@ -72,7 +72,7 @@ The SDK integrations are:
 **Validated Capabilities:**
 - ✅ Checkpoint ID = message UUID (not fake sequential numbers)
 - ✅ Uses `resumeSessionAt: checkpointId` for rollback
-- ✅ Persists to disk (`.claude-flow/checkpoints/*.json`)
+- ✅ Persists to disk (`.fidgetflo/checkpoints/*.json`)
 - ✅ Auto-checkpoint at configurable intervals
 - ✅ Instant rollback to any checkpoint
 
@@ -180,7 +180,7 @@ Features multiply (not just add):
 - Forking + Checkpoints = Safe parallel exploration (rollback bad forks)
 - Pause + Checkpoints = Resume from any historical point
 - In-Process + Forking = Fast parallel state management
-- All 3 + MCP tools = Full power Claude Flow orchestration
+- All 3 + MCP tools = Full power FidgetFlo orchestration
 
 **Total multiplier: 10-50x improvement in complex workflows**
 
@@ -246,9 +246,9 @@ if (forkA.getDiff().filesModified.length > 0) {
 
 ---
 
-## Claude Flow MCP Integration
+## FidgetFlo MCP Integration
 
-**How SDK Features Enhance Claude Flow MCP Tools:**
+**How SDK Features Enhance FidgetFlo MCP Tools:**
 
 ### Before (Fake Features):
 ```typescript
@@ -294,7 +294,7 @@ const rolledBack = query({
 
 ### Integration with MCP Tools:
 ```typescript
-// Use Claude Flow MCP tools WITH SDK features
+// Use FidgetFlo MCP tools WITH SDK features
 const session = new IntegratedClaudeFlowSession({
   enableSessionForking: true,
   enableCheckpoints: true,
@@ -303,8 +303,8 @@ const session = new IntegratedClaudeFlowSession({
 
 const q = await session.createIntegratedQuery(
   `
-  Use mcp__claude-flow__swarm_init to create mesh topology.
-  Use mcp__claude-flow__task_orchestrate to distribute work.
+  Use mcp__fidgetflo__swarm_init to create mesh topology.
+  Use mcp__fidgetflo__task_orchestrate to distribute work.
   Create checkpoints before each major step.
   `,
   'swarm-session'
@@ -352,7 +352,7 @@ await session.resumeFromCheckpoint(checkpointId, 'Continue deployment');
 - ✅ Features work together seamlessly
 - ✅ No state conflicts or race conditions
 - ✅ Complex workflows supported
-- ✅ Enhances Claude Flow MCP tools
+- ✅ Enhances FidgetFlo MCP tools
 
 ---
 
@@ -365,7 +365,7 @@ await session.resumeFromCheckpoint(checkpointId, 'Continue deployment');
 - `src/sdk/in-process-mcp.ts` - In-process MCP servers (489 lines)
 
 **Integration:**
-- `src/sdk/claude-flow-mcp-integration.ts` - MCP + SDK integration (387 lines)
+- `src/sdk/fidgetflo-mcp-integration.ts` - MCP + SDK integration (387 lines)
 
 **Validation:**
 - `src/sdk/validation-demo.ts` - Validation tests (545 lines)
@@ -397,4 +397,4 @@ All SDK features are:
 - ✅ Provide real benefits (measurable gains)
 - ✅ Truly integrated (work together seamlessly)
 
-**Claude Flow can now deliver on its "10-20x faster" claims because the features are REAL, not marketing fluff.**
+**FidgetFlo can now deliver on its "10-20x faster" claims because the features are REAL, not marketing fluff.**

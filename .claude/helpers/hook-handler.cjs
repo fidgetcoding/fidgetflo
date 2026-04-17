@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Claude Flow Hook Handler (Cross-Platform)
+ * FidgetFlo Hook Handler (Cross-Platform)
  * Dispatches hook events to the appropriate helper modules.
  */
 

@@ -6,9 +6,9 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3+-blue.svg)](https://www.typescriptlang.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-20+-green.svg)](https://nodejs.org/)
 
-> Event-driven lifecycle hooks with ReasoningBank learning integration for Claude Flow V3
+> Event-driven lifecycle hooks with ReasoningBank learning integration for FidgetFlo V3
 
-The `@claude-flow/hooks` package provides a comprehensive hooks system for intercepting and extending Claude Flow operations. It enables intelligent task routing, pattern learning, background metrics collection, and real-time statusline integration.
+The `@claude-flow/hooks` package provides a comprehensive hooks system for intercepting and extending FidgetFlo operations. It enables intelligent task routing, pattern learning, background metrics collection, and real-time statusline integration.
 
 ## Features
 
@@ -151,7 +151,7 @@ statusline --help
 
 **Example Output:**
 ```
-▊ Claude Flow V3 ● agentic-flow@alpha  │  ⎇ v3
+▊ FidgetFlo V3 ● agentic-flow@alpha  │  ⎇ v3
 ─────────────────────────────────────────────────────
 🏗️  DDD Domains    [●●●●●]  5/5    ⚡ 1.0x → 2.49x-7.47x
 🤖 Swarm Agents    ◉ [ 5/15]      🟢 CVE 3/3    💾 156 patterns
@@ -220,22 +220,22 @@ The hooks system includes 12 specialized background workers that can be triggere
 
 ```bash
 # List all available workers
-claude-flow hooks worker list
+fidgetflo hooks worker list
 
 # Detect triggers from prompt text
-claude-flow hooks worker detect --prompt "optimize performance"
+fidgetflo hooks worker detect --prompt "optimize performance"
 
 # Auto-dispatch when triggers match (confidence ≥0.6)
-claude-flow hooks worker detect --prompt "deep dive into auth" --auto-dispatch --min-confidence 0.6
+fidgetflo hooks worker detect --prompt "deep dive into auth" --auto-dispatch --min-confidence 0.6
 
 # Manually dispatch a worker
-claude-flow hooks worker dispatch --trigger refactor --context "auth module"
+fidgetflo hooks worker dispatch --trigger refactor --context "auth module"
 
 # Check worker status
-claude-flow hooks worker status
+fidgetflo hooks worker status
 
 # Cancel a running worker
-claude-flow hooks worker cancel --id worker_refactor_1_abc123
+fidgetflo hooks worker cancel --id worker_refactor_1_abc123
 ```
 
 ### Performance Targets
@@ -258,7 +258,7 @@ Workers are automatically triggered via the `UserPromptSubmit` hook when prompt 
       "hooks": [{
         "type": "command",
         "timeout": 6000,
-        "command": "claude-flow hooks worker detect --prompt \"$USER_PROMPT\" --auto-dispatch --min-confidence 0.6"
+        "command": "fidgetflo hooks worker detect --prompt \"$USER_PROMPT\" --auto-dispatch --min-confidence 0.6"
       }]
     }]
   }
@@ -384,13 +384,13 @@ class StatuslineGenerator {
 
 | Variable | Description | Default |
 |----------|-------------|---------|
-| `CLAUDE_FLOW_HOOK_TIMEOUT` | Hook execution timeout (ms) | `5000` |
-| `CLAUDE_FLOW_REASONINGBANK_ENABLED` | Enable ReasoningBank | `true` |
-| `CLAUDE_FLOW_HOOKS_NAMESPACE` | Learning namespace | `hooks-learning` |
-| `CLAUDE_FLOW_HOOKS_LOG_LEVEL` | Logging level | `info` |
-| `CLAUDE_FLOW_SHOW_HOOKS_METRICS` | Show hooks in statusline | `true` |
-| `CLAUDE_FLOW_SHOW_SWARM_ACTIVITY` | Show swarm in statusline | `true` |
-| `CLAUDE_FLOW_SHOW_PERFORMANCE` | Show performance targets | `true` |
+| `FIDGETFLO_HOOK_TIMEOUT` | Hook execution timeout (ms) | `5000` |
+| `FIDGETFLO_REASONINGBANK_ENABLED` | Enable ReasoningBank | `true` |
+| `FIDGETFLO_HOOKS_NAMESPACE` | Learning namespace | `hooks-learning` |
+| `FIDGETFLO_HOOKS_LOG_LEVEL` | Logging level | `info` |
+| `FIDGETFLO_SHOW_HOOKS_METRICS` | Show hooks in statusline | `true` |
+| `FIDGETFLO_SHOW_SWARM_ACTIVITY` | Show swarm in statusline | `true` |
+| `FIDGETFLO_SHOW_PERFORMANCE` | Show performance targets | `true` |
 
 ## Integration with Claude Code
 
@@ -437,4 +437,4 @@ Add to your Claude settings (`~/.claude/settings.json`):
 
 ## License
 
-MIT © [Claude Flow Team](https://github.com/ruvnet/claude-flow)
+MIT © [FidgetFlo Team](https://github.com/ruvnet/claude-flow)

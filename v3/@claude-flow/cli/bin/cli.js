@@ -2,7 +2,7 @@
 /**
  * @claude-flow/cli - CLI Entry Point
  *
- * Claude Flow V3 Command Line Interface
+ * FidgetFlo V3 Command Line Interface
  *
  * Auto-detects MCP mode when stdin is piped and no args provided.
  * This allows: echo '{"jsonrpc":"2.0",...}' | npx @claude-flow/cli
@@ -22,7 +22,7 @@ console.warn = (...args) => {
 // Check if we should run in MCP server mode
 // Conditions:
 //   1. stdin is being piped AND no CLI arguments provided (auto-detect)
-//   2. stdin is being piped AND args are "mcp start" (explicit, e.g. npx claude-flow@alpha mcp start)
+//   2. stdin is being piped AND args are "mcp start" (explicit, e.g. npx fidgetflo@latest mcp start)
 const cliArgs = process.argv.slice(2);
 const isExplicitMCP = cliArgs.length >= 1 && cliArgs[0] === 'mcp' && (cliArgs.length === 1 || cliArgs[1] === 'start');
 const isMCPMode = !process.stdin.isTTY && (process.argv.length === 2 || isExplicitMCP);
@@ -35,7 +35,7 @@ if (isMCPMode) {
   const sessionId = `mcp-${Date.now()}-${randomUUID().slice(0, 8)}`;
 
   console.error(
-    `[${new Date().toISOString()}] INFO [claude-flow-mcp] (${sessionId}) Starting in stdio mode`
+    `[${new Date().toISOString()}] INFO [fidgetflo-mcp] (${sessionId}) Starting in stdio mode`
   );
 
   let buffer = '';
@@ -86,7 +86,7 @@ if (isMCPMode) {
           id: message.id,
           result: {
             protocolVersion: '2024-11-05',
-            serverInfo: { name: 'claude-flow', version: VERSION },
+            serverInfo: { name: 'fidgetflo', version: VERSION },
             capabilities: {
               tools: { listChanged: true },
               resources: { subscribe: true, listChanged: true },

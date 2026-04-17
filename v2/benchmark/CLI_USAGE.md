@@ -1,7 +1,7 @@
 # Swarm-Benchmark CLI Usage Guide
 
 ## Overview
-The `swarm-benchmark` CLI provides comprehensive benchmarking for Claude Flow with real command execution.
+The `swarm-benchmark` CLI provides comprehensive benchmarking for FidgetFlo with real command execution.
 
 ## Installation
 ```bash
@@ -12,7 +12,7 @@ pip install -e .
 ## Commands
 
 ### Real Execution (Production)
-Execute actual claude-flow commands and measure real performance:
+Execute actual fidgetflo commands and measure real performance:
 
 ```bash
 # Basic swarm benchmark
@@ -127,7 +127,7 @@ Example output structure:
     "agents_spawned": 3,
     "memory_peak_mb": 156.4
   },
-  "command": ["./claude-flow", "swarm", "..."],
+  "command": ["./fidgetflo", "swarm", "..."],
   "timestamp": "2025-01-06T02:45:00Z"
 }
 ```

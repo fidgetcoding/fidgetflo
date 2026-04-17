@@ -16,21 +16,21 @@ At session end, automatically saves:
 ### 2. Session Restoration
 ```javascript
 // Using MCP tools for memory operations
-mcp__claude-flow__memory_usage({
+mcp__fidgetflo__memory_usage({
   "action": "retrieve",
   "key": "session-state",
   "namespace": "sessions"
 })
 
 // Restore swarm state
-mcp__claude-flow__context_restore({
+mcp__fidgetflo__context_restore({
   "snapshotId": "sess-123"
 })
 ```
 
 **Fallback with npx:**
 ```bash
-npx claude-flow hook session-restore --session-id "sess-123"
+npx fidgetflo hook session-restore --session-id "sess-123"
 ```
 
 ### 3. Memory Types
@@ -56,20 +56,20 @@ npx claude-flow hook session-restore --session-id "sess-123"
 ### 4. Privacy & Control
 ```javascript
 // List memory contents
-mcp__claude-flow__memory_usage({
+mcp__fidgetflo__memory_usage({
   "action": "list",
   "namespace": "sessions"
 })
 
 // Delete specific memory
-mcp__claude-flow__memory_usage({
+mcp__fidgetflo__memory_usage({
   "action": "delete",
   "key": "session-123",
   "namespace": "sessions"
 })
 
 // Backup memory
-mcp__claude-flow__memory_backup({
+mcp__fidgetflo__memory_backup({
   "path": "./backups/memory-backup.json"
 })
 ```
@@ -77,10 +77,10 @@ mcp__claude-flow__memory_backup({
 **Manual control:**
 ```bash
 # View stored memory
-ls .claude-flow/memory/
+ls .fidgetflo/memory/
 
 # Disable memory
-export CLAUDE_FLOW_MEMORY_PERSIST=false
+export FIDGETFLO_MEMORY_PERSIST=false
 ```
 
 ## Benefits

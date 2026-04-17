@@ -1,6 +1,6 @@
 # Enhanced Benchmark Reporting Tools
 
-This directory contains advanced tools for viewing, analyzing, and comparing Claude Flow benchmark reports with detailed metrics and file references.
+This directory contains advanced tools for viewing, analyzing, and comparing FidgetFlo benchmark reports with detailed metrics and file references.
 
 ## 🛠️ Available Tools
 

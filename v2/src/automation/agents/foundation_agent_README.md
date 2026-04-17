@@ -143,16 +143,16 @@ The agent uses Claude-flow hooks for coordination:
 
 ```bash
 # Pre-task coordination
-npx claude-flow@alpha hooks pre-task --description "Foundation building"
+npx fidgetflo@alpha hooks pre-task --description "Foundation building"
 
 # Post-edit notifications
-npx claude-flow@alpha hooks post-edit --file "model.pkl"
+npx fidgetflo@alpha hooks post-edit --file "model.pkl"
 
 # Memory storage
-npx claude-flow@alpha memory store "agent/foundation/results" "{...}"
+npx fidgetflo@alpha memory store "agent/foundation/results" "{...}"
 
 # Result sharing
-npx claude-flow@alpha hooks notify --message "Foundation complete"
+npx fidgetflo@alpha hooks notify --message "Foundation complete"
 ```
 
 ## Output Structure
@@ -271,4 +271,4 @@ When contributing to the Foundation Agent:
 
 ## License
 
-This module is part of the Claude-Flow project and follows the same licensing terms.
+This module is part of the FidgetFlo project and follows the same licensing terms.

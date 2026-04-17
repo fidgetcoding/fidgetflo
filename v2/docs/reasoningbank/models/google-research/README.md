@@ -123,8 +123,8 @@ cd /workspaces/claude-code-flow/docs/reasoningbank/models/google-research
 #### 1. Find Success Strategies for a Domain
 
 ```bash
-# Using claude-flow CLI
-npx claude-flow@alpha memory search "web-automation success" \
+# Using fidgetflo CLI
+npx fidgetflo@alpha memory search "web-automation success" \
   --namespace google-research \
   --reasoningbank \
   --limit 10
@@ -192,18 +192,18 @@ sqlite3 memory.db "
 "
 ```
 
-### Integration with Claude Flow
+### Integration with FidgetFlo
 
 ```bash
 # Store decision using Google Research patterns
-npx claude-flow@alpha memory store \
+npx fidgetflo@alpha memory store \
   "project/decision/authentication" \
   "Using OAuth2 with JWT tokens based on google-research pattern #427" \
   --namespace project \
   --reasoningbank
 
 # Query for similar past decisions
-npx claude-flow@alpha memory search "authentication oauth jwt" \
+npx fidgetflo@alpha memory search "authentication oauth jwt" \
   --namespace project \
   --reasoningbank
 ```

@@ -1,16 +1,16 @@
 {
   "name": "swarm-app",
   "version": "1.0.0",
-  "description": "Application created by Claude Flow Swarm: build a real-time chat application with websockets and message history in ./examples/chat-app",
+  "description": "Application created by FidgetFlo Swarm: build a real-time chat application with websockets and message history in ./examples/chat-app",
   "main": "app.js",
   "scripts": {
     "start": "node app.js"
   },
   "keywords": [
     "swarm",
-    "claude-flow"
+    "fidgetflo"
   ],
-  "author": "Claude Flow Swarm",
+  "author": "FidgetFlo Swarm",
   "license": "MIT",
   "swarmMetadata": {
     "swarmId": "swarm_4vss8ckrh_ps9ptpmzk",

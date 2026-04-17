@@ -329,7 +329,7 @@ description: "Brief description of what this skill does and when Claude should u
 1. **Complex workflows** → **Skills** (with YAML frontmatter, progressive disclosure)
 2. **Simple CLI triggers** → **Commands** (without YAML, concise reference)
 3. **Clear separation of concerns**:
-   - Commands: Execute operations (`npx claude-flow swarm "task"`)
+   - Commands: Execute operations (`npx fidgetflo swarm "task"`)
    - Skills: Teach workflows (Claude learns patterns and best practices)
 4. **Different discovery mechanisms**:
    - Commands: CLI help, documentation

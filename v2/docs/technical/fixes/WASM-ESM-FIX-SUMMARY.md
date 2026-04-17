@@ -1,7 +1,7 @@
 # ReasoningBank WASM Integration - COMPLETE ✅
 
 **Status:** Production-Ready  
-**Version:** claude-flow@2.7.0-alpha.7 + agentic-flow@1.5.12  
+**Version:** fidgetflo@2.7.0-alpha.7 + agentic-flow@1.5.12  
 **Date:** 2025-10-13
 
 ---
@@ -53,14 +53,14 @@ import * as wasm from "./reasoningbank_wasm_bg.wasm";
 export * from "./reasoningbank_wasm_bg.js";
 ```
 
-### claude-flow@2.7.0-alpha.7 - Clean Integration
+### fidgetflo@2.7.0-alpha.7 - Clean Integration
 
 ```javascript
 // Direct import - no workarounds needed!
 import { createReasoningBank } from 'agentic-flow/dist/reasoningbank/wasm-adapter.js';
 
 async function getWasmInstance() {
-  const rb = await createReasoningBank('claude-flow-memory');
+  const rb = await createReasoningBank('fidgetflo-memory');
   return rb; // ✅ Works!
 }
 ```

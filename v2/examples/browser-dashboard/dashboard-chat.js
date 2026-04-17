@@ -1,5 +1,5 @@
 /**
- * Claude Flow Chat Interface
+ * FidgetFlo Chat Interface
  * Claude Code-style chat with integrated swarm orchestration
  */
 
@@ -52,8 +52,8 @@ class ClaudeFlowChat {
     }
 
     getDefaultCode() {
-        return `// Claude Flow - Execute code via MCP
-console.log('Hello from Claude Flow!');
+        return `// FidgetFlo - Execute code via MCP
+console.log('Hello from FidgetFlo!');
 
 // Spawn a researcher agent
 async function spawnAgent() {
@@ -75,7 +75,7 @@ spawnAgent();`;
             this.ws = new WebSocket(url);
 
             this.ws.onopen = () => {
-                this.addAssistantMessage('Connected to Claude Flow MCP server! Ready to help.');
+                this.addAssistantMessage('Connected to FidgetFlo MCP server! Ready to help.');
                 this.sendCommand('swarm_status');
             };
 
@@ -100,7 +100,7 @@ spawnAgent();`;
         if (this.ws && this.ws.readyState === WebSocket.OPEN) {
             this.ws.send(JSON.stringify({
                 jsonrpc: '2.0',
-                method: `mcp__claude-flow__${command}`,
+                method: `mcp__fidgetflo__${command}`,
                 params,
                 id: Date.now()
             }));
@@ -207,7 +207,7 @@ spawnAgent();`;
             <div class="message-avatar assistant-avatar">🤖</div>
             <div class="message-content">
                 <div class="message-header">
-                    <span class="message-author">Claude Flow</span>
+                    <span class="message-author">FidgetFlo</span>
                     <span class="message-time">${new Date().toLocaleTimeString()}</span>
                 </div>
                 <div class="message-text">${this.formatText(text)}</div>

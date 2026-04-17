@@ -150,7 +150,7 @@ class ReasoningBankAdapter {
 ### Store Operation
 
 ```
-User: npx claude-flow memory store api_key "JWT tokens" --reasoningbank
+User: npx fidgetflo memory store api_key "JWT tokens" --reasoningbank
          ↓
 [1] CLI Parser
     → command: 'store'
@@ -189,7 +189,7 @@ Total Time: 5-8ms
 ### Query Operation
 
 ```
-User: npx claude-flow memory query "authentication" --reasoningbank
+User: npx fidgetflo memory query "authentication" --reasoningbank
          ↓
 [1] CLI Parser
     → command: 'query'

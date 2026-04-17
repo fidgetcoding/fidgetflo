@@ -21,8 +21,8 @@ This guide shows you how to create custom pre-trained ReasoningBank models with 
 # Install dependencies
 npm install better-sqlite3
 
-# Ensure claude-flow is available
-npx claude-flow@alpha --version
+# Ensure fidgetflo is available
+npx fidgetflo@alpha --version
 ```
 
 ### Create a Simple Model (100 patterns)
@@ -145,7 +145,7 @@ node _scripts/validation-suite.cjs my-custom-model my-custom-model
 
 ### Required Tables
 
-Every `memory.db` must include these tables for full claude-flow compatibility:
+Every `memory.db` must include these tables for full fidgetflo compatibility:
 
 **ReasoningBank Core:**
 - `patterns` - Core pattern storage
@@ -153,15 +153,15 @@ Every `memory.db` must include these tables for full claude-flow compatibility:
 - `task_trajectories` - Multi-step reasoning
 - `pattern_links` - Pattern relationships
 
-**Claude-Flow Memory:**
+**FidgetFlo Memory:**
 - `memories` - General memory storage
 - `memory_embeddings` - Memory vectors
 
-**Claude-Flow Session:**
+**FidgetFlo Session:**
 - `sessions` - Session tracking
 - `session_metrics` - Performance metrics
 
-**Claude-Flow Neural:**
+**FidgetFlo Neural:**
 - `neural_patterns` - Neural network patterns
 - `training_data` - Training examples
 
@@ -399,13 +399,13 @@ console.log('✅ All agents completed training');
 
 ```bash
 # Store training progress in shared memory
-npx claude-flow@alpha memory store \
+npx fidgetflo@alpha memory store \
   "training/progress/agent-1" \
   '{"patterns": 250, "status": "in_progress"}' \
   --namespace training --reasoningbank
 
 # Query agent status
-npx claude-flow@alpha memory query \
+npx fidgetflo@alpha memory query \
   "training/progress" \
   --namespace training --reasoningbank
 ```

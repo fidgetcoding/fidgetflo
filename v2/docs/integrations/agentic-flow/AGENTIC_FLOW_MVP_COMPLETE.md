@@ -13,7 +13,7 @@
 
 ### Phase 1: MVP (Minimal Viable Product)
 
-This implementation provides the **foundation** for agentic-flow integration while maintaining **100% backwards compatibility** with existing claude-flow features.
+This implementation provides the **foundation** for agentic-flow integration while maintaining **100% backwards compatibility** with existing fidgetflo features.
 
 ### ✅ Completed Components
 
@@ -53,16 +53,16 @@ This implementation provides the **foundation** for agentic-flow integration whi
 **New Commands Available:**
 ```bash
 # Execute agents with multi-provider support
-claude-flow agent run coder "Build REST API"
-claude-flow agent run researcher "Research AI" --provider openrouter
-claude-flow agent run security-auditor "Audit code" --provider onnx
+fidgetflo agent run coder "Build REST API"
+fidgetflo agent run researcher "Research AI" --provider openrouter
+fidgetflo agent run security-auditor "Audit code" --provider onnx
 
 # List available agents
-claude-flow agent agents
+fidgetflo agent agents
 
 # All existing commands still work
-claude-flow agent spawn researcher --name "DataBot"
-claude-flow agent list
+fidgetflo agent spawn researcher --name "DataBot"
+fidgetflo agent list
 ```
 
 **Created (not yet registered):** `src/cli/simple-commands/config.ts`
@@ -150,14 +150,14 @@ Manage providers via:
 
 **Version Command:**
 ```bash
-$ ./bin/claude-flow --version
+$ ./bin/fidgetflo --version
 v2.6.0-alpha.1
 ```
 
 **Help Command:**
 ```bash
-$ ./bin/claude-flow --help
-🌊 Claude-Flow v2.6.0-alpha.1 - Enterprise-Grade AI Agent Orchestration Platform
+$ ./bin/fidgetflo --help
+🌊 FidgetFlo v2.6.0-alpha.1 - Enterprise-Grade AI Agent Orchestration Platform
 
 🎯 NEW IN v2.6.0: Multi-Provider Execution Engine with Agentic-Flow Integration
    • 66+ specialized agents with multi-provider support
@@ -167,7 +167,7 @@ $ ./bin/claude-flow --help
 
 **Agent Command:**
 ```bash
-$ ./bin/claude-flow agent
+$ ./bin/fidgetflo agent
 Agent commands:
 
 🚀 Agentic-Flow Integration (NEW in v2.6.0):
@@ -180,11 +180,11 @@ Agent commands:
 
 ### Backwards Compatibility ✅
 All existing commands continue to work:
-- `claude-flow agent spawn` ✅
-- `claude-flow agent list` ✅
-- `claude-flow sparc` ✅
-- `claude-flow swarm` ✅
-- `claude-flow status` ✅
+- `fidgetflo agent spawn` ✅
+- `fidgetflo agent list` ✅
+- `fidgetflo sparc` ✅
+- `fidgetflo swarm` ✅
+- `fidgetflo status` ✅
 
 ---
 
@@ -212,35 +212,35 @@ All existing commands continue to work:
 ### Basic Execution
 ```bash
 # Use default provider (Anthropic)
-claude-flow agent run coder "Create a REST API with authentication"
+fidgetflo agent run coder "Create a REST API with authentication"
 
 # Specify provider for cost savings
-claude-flow agent run researcher "Research React 19 features" --provider openrouter
+fidgetflo agent run researcher "Research React 19 features" --provider openrouter
 
 # Use local privacy-first execution
-claude-flow agent run security-auditor "Audit this code" --provider onnx
+fidgetflo agent run security-auditor "Audit this code" --provider onnx
 
 # List all available agents
-claude-flow agent agents
+fidgetflo agent agents
 ```
 
 ### Advanced Options
 ```bash
 # With model specification
-claude-flow agent run coder "Build API" \
+fidgetflo agent run coder "Build API" \
   --provider openrouter \
   --model meta-llama/llama-3.1-8b-instruct
 
 # With temperature control
-claude-flow agent run creative-writer "Write story" \
+fidgetflo agent run creative-writer "Write story" \
   --temperature 0.9
 
 # With output formatting
-claude-flow agent run data-analyst "Analyze data" \
+fidgetflo agent run data-analyst "Analyze data" \
   --format json
 
 # Verbose output
-claude-flow agent run debugger "Fix bug" \
+fidgetflo agent run debugger "Fix bug" \
   --verbose
 ```
 
@@ -254,7 +254,7 @@ claude-flow agent run debugger "Fix bug" \
 └────────────────────────────────────────┘
                   ↓
 ┌────────────────────────────────────────┐
-│          Claude-Flow CLI               │
+│          FidgetFlo CLI               │
 │    (command-registry.js dispatcher)    │
 └────────────────────────────────────────┘
                   ↓

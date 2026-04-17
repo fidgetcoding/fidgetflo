@@ -1,6 +1,6 @@
-# Claude Flow Benchmark Examples
+# FidgetFlo Benchmark Examples
 
-This directory contains organized examples for using the Claude Flow benchmark suite with different strategies, coordination modes, and real-world scenarios.
+This directory contains organized examples for using the FidgetFlo benchmark suite with different strategies, coordination modes, and real-world scenarios.
 
 ## Directory Structure
 
@@ -8,7 +8,7 @@ This directory contains organized examples for using the Claude Flow benchmark s
 examples/
 ├── basic/                  # Simple examples for getting started
 ├── advanced/               # Complex examples with advanced features
-├── real/                   # Real claude-flow execution examples
+├── real/                   # Real fidgetflo execution examples
 ├── cli/                    # Command-line interface examples
 └── output/                 # Generated results and metrics
 ```
@@ -47,7 +47,7 @@ python3 parallel_benchmarks.py
 
 ## Real Examples (`real/`)
 
-**Production-ready benchmarks with actual claude-flow execution:**
+**Production-ready benchmarks with actual fidgetflo execution:**
 
 - `real_swarm_benchmark.py` - Real swarm execution with comprehensive metrics
 - `real_token_tracking.py` - Token consumption analysis and cost optimization
@@ -144,9 +144,9 @@ output/
 pip install psutil  # For system monitoring
 ```
 
-**Claude Flow:**
+**FidgetFlo:**
 ```bash
-npm install -g claude-flow@alpha
+npm install -g fidgetflo@alpha
 ```
 
 **Benchmark Suite:**
@@ -198,7 +198,7 @@ Use batch scripts for automated testing:
 
 **Common Issues:**
 
-1. **Command not found**: Ensure `claude-flow@alpha` is installed globally
+1. **Command not found**: Ensure `fidgetflo@alpha` is installed globally
 2. **Permission denied**: Run `chmod +x cli/*.sh`
 3. **Import errors**: Install with `pip install -e .` from benchmark root
 4. **Timeout errors**: Increase timeout values in configurations

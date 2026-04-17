@@ -79,7 +79,7 @@ benchmark/examples/
 - **real_performance.py**: System performance monitoring with bottleneck identification
 - **real_hive_mind_benchmark.py**: Production hive-mind collective intelligence
 - **real_sparc_benchmark.py**: Production SPARC methodology execution
-- **Integration examples**: Real claude-flow integration and verification
+- **Integration examples**: Real fidgetflo integration and verification
 
 ### CLI Examples (Command-Line)
 - **cli_examples.sh**: 50+ CLI command examples across all methodologies
@@ -90,7 +90,7 @@ benchmark/examples/
 ### Comprehensive Example Coverage
 - ✅ Basic usage patterns for all three methodologies (Swarm, Hive-Mind, SPARC)
 - ✅ Advanced parallel and concurrent execution strategies
-- ✅ Real production-ready benchmarks with actual claude-flow execution
+- ✅ Real production-ready benchmarks with actual fidgetflo execution
 - ✅ CLI interface demonstrations and batch processing
 - ✅ Token tracking and cost optimization analysis
 - ✅ Performance monitoring and system resource analysis
@@ -153,7 +153,7 @@ cd cli/
 - **Comprehensive Coverage**: All methodologies, strategies, and coordination modes
 
 ### Technical Benefits  
-- **Real Integration**: Examples use actual claude-flow commands and APIs
+- **Real Integration**: Examples use actual fidgetflo commands and APIs
 - **Comprehensive Metrics**: Token tracking, performance monitoring, resource analysis
 - **Production Ready**: Error handling, timeouts, resource cleanup
 - **Analysis Friendly**: JSON/CSV outputs for further analysis
@@ -170,7 +170,7 @@ The examples directory now provides:
 
 1. **🎯 Clear Learning Path**: From simple concepts to production deployment
 2. **📊 Comprehensive Coverage**: All methodologies, strategies, and use cases
-3. **🔧 Production Ready**: Real claude-flow integration with proper error handling
+3. **🔧 Production Ready**: Real fidgetflo integration with proper error handling
 4. **📖 Excellent Documentation**: Clear usage guidance and best practices
 5. **🚀 Easy Automation**: CLI scripts for batch processing and CI/CD integration
 

@@ -602,7 +602,7 @@ node -e "import('agentdb').then(db => db.init())"
    - `verify_ed25519_signature` - Verify certificate signature
    - `create_certificate_chain` - Build trust chain
 
-**Phase 2: Integrate with Claude-Flow**
+**Phase 2: Integrate with FidgetFlo**
 
 1. **Update reasoningbank-adapter.js:**
    - Add Ed25519 verification config
@@ -611,7 +611,7 @@ node -e "import('agentdb').then(db => db.init())"
 
 2. **Add hooks support:**
    ```bash
-   npx claude-flow@alpha hooks pre-edit \
+   npx fidgetflo@alpha hooks pre-edit \
      --file "src/api.js" \
      --sign-with-ed25519 \
      --key-id "agent-123"
@@ -619,7 +619,7 @@ node -e "import('agentdb').then(db => db.init())"
 
 3. **MCP tool enhancement:**
    ```javascript
-   mcp__claude-flow__memory_usage({
+   mcp__fidgetflo__memory_usage({
      action: "store",
      key: "api-pattern",
      value: "REST endpoint design",
@@ -809,7 +809,7 @@ if (!verification.valid) {
 3. **Test Integration** ✅
    ```bash
    npm run test:integration
-   npm run validate:claude-flow
+   npm run validate:fidgetflo
    ```
    **Benefit:** Ensure compatibility
    **Risk:** None

@@ -6,7 +6,7 @@
 
 ## Context
 
-The claude-flow intelligence pipeline (ReasoningBank, EWC++, LoRA, SONA, cosine similarity) is implemented in pure JavaScript using Float32Array operations. `@ruvector/ruvllm@2.5.4` is installed and provides structured ML components.
+The fidgetflo intelligence pipeline (ReasoningBank, EWC++, LoRA, SONA, cosine similarity) is implemented in pure JavaScript using Float32Array operations. `@ruvector/ruvllm@2.5.4` is installed and provides structured ML components.
 
 ### API Testing Results (2026-04-07)
 

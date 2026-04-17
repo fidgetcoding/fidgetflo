@@ -44,7 +44,7 @@ class ParallelCoordinator {
     console.log(`📋 Starting ${task.name} agent (mode: ${task.mode})...`);
 
     try {
-      const command = `npx claude-flow sparc run ${task.mode} "${task.task}"`;
+      const command = `npx fidgetflo sparc run ${task.mode} "${task.task}"`;
       const { stdout, stderr } = await execAsync(command, {
         cwd: process.cwd(),
         timeout: 300000 // 5 minute timeout

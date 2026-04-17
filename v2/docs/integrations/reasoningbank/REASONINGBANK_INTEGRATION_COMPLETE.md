@@ -9,7 +9,7 @@
 
 ## 🎉 Integration Summary
 
-ReasoningBank from agentic-flow v1.4.11 is now fully integrated into claude-flow, providing a closed-loop memory system that improves agent task success rates from 23% to 98% through experience-based learning.
+ReasoningBank from agentic-flow v1.4.11 is now fully integrated into fidgetflo, providing a closed-loop memory system that improves agent task success rates from 23% to 98% through experience-based learning.
 
 ### What Was Completed
 
@@ -62,27 +62,27 @@ ReasoningBank from agentic-flow v1.4.11 is now fully integrated into claude-flow
 ### For NPM Users (Local Installation)
 
 ```bash
-# Install claude-flow with ReasoningBank support
-npm install claude-flow@latest
+# Install fidgetflo with ReasoningBank support
+npm install fidgetflo@latest
 
 # Initialize memory system
-npx claude-flow agent memory init
+npx fidgetflo agent memory init
 
 # Verify installation
-npx claude-flow agent memory status
+npx fidgetflo agent memory status
 ```
 
 ### For NPX Users (Remote Execution)
 
 ```bash
 # Initialize memory (creates .swarm/memory.db)
-npx claude-flow@latest agent memory init
+npx fidgetflo@latest agent memory init
 
 # Run agent with memory enabled
-npx claude-flow@latest agent run coder "Build REST API" --enable-memory
+npx fidgetflo@latest agent run coder "Build REST API" --enable-memory
 
 # Check learning progress
-npx claude-flow@latest agent memory status
+npx fidgetflo@latest agent memory status
 ```
 
 ### Verify Installation
@@ -95,7 +95,7 @@ npm list agentic-flow
 npx agentic-flow reasoningbank help
 
 # Run interactive demo (23% → 98% success improvement)
-npx claude-flow agent memory demo
+npx fidgetflo agent memory demo
 ```
 
 ---
@@ -106,7 +106,7 @@ npx claude-flow agent memory demo
 
 ```bash
 # Initialize ReasoningBank database
-claude-flow agent memory init
+fidgetflo agent memory init
 
 # Output:
 # 🧠 Initializing ReasoningBank memory system...
@@ -118,20 +118,20 @@ claude-flow agent memory init
 
 ```bash
 # First execution (no prior memories)
-claude-flow agent run coder "Build REST API with auth" --enable-memory
+fidgetflo agent run coder "Build REST API with auth" --enable-memory
 
 # Second execution (learns from first attempt)
-claude-flow agent run coder "Add JWT authentication" --enable-memory --memory-domain api
+fidgetflo agent run coder "Add JWT authentication" --enable-memory --memory-domain api
 
 # Third execution (retrieves top 5 relevant memories)
-claude-flow agent run coder "Implement OAuth2 flow" --enable-memory --memory-k 5
+fidgetflo agent run coder "Implement OAuth2 flow" --enable-memory --memory-k 5
 ```
 
 ### 3. Memory Management
 
 ```bash
 # Check current memory statistics
-claude-flow agent memory status
+fidgetflo agent memory status
 
 # Output:
 # 📊 ReasoningBank Status
@@ -141,10 +141,10 @@ claude-flow agent memory status
 # • Total trajectories: 8
 
 # List memories for specific domain
-claude-flow agent memory list --domain api --limit 10
+fidgetflo agent memory list --domain api --limit 10
 
 # Consolidate memories (deduplicate + prune low quality)
-claude-flow agent memory consolidate
+fidgetflo agent memory consolidate
 
 # Output:
 # 🧠 Consolidating ReasoningBank memories...
@@ -157,39 +157,39 @@ claude-flow agent memory consolidate
 
 ```bash
 # Anthropic (highest quality, learns best patterns)
-claude-flow agent run coder "Build API" --enable-memory --provider anthropic
+fidgetflo agent run coder "Build API" --enable-memory --provider anthropic
 
 # OpenRouter (99% cost savings, still learns)
-claude-flow agent run coder "Add endpoints" --enable-memory --provider openrouter
+fidgetflo agent run coder "Add endpoints" --enable-memory --provider openrouter
 
 # ONNX (free local, learns from local patterns)
-claude-flow agent run coder "Write tests" --enable-memory --provider onnx
+fidgetflo agent run coder "Write tests" --enable-memory --provider onnx
 
 # Gemini (free tier, learns efficiently)
-claude-flow agent run coder "Document code" --enable-memory --provider gemini
+fidgetflo agent run coder "Document code" --enable-memory --provider gemini
 ```
 
 ### 5. Advanced Memory Configuration
 
 ```bash
 # Custom database location
-claude-flow agent run coder "Build feature" \
+fidgetflo agent run coder "Build feature" \
   --enable-memory \
   --memory-db ./project/.memory/db.sqlite
 
 # Domain-specific memory with high k
-claude-flow agent run coder "Security audit" \
+fidgetflo agent run coder "Security audit" \
   --enable-memory \
   --memory-domain security \
   --memory-k 10
 
 # Disable learning (retrieve only, don't store new memories)
-claude-flow agent run coder "Quick fix" \
+fidgetflo agent run coder "Quick fix" \
   --enable-memory \
   --no-memory-learning
 
 # High confidence threshold (only use very reliable memories)
-claude-flow agent run coder "Critical bug fix" \
+fidgetflo agent run coder "Critical bug fix" \
   --enable-memory \
   --memory-min-confidence 0.9
 ```
@@ -265,22 +265,22 @@ npm test tests/integration/reasoningbank-integration.test.js
 
 ```bash
 # 1. Initialize memory
-claude-flow agent memory init
+fidgetflo agent memory init
 
 # 2. Run demo (shows learning progression)
-claude-flow agent memory demo
+fidgetflo agent memory demo
 
 # 3. Check status
-claude-flow agent memory status
+fidgetflo agent memory status
 
 # 4. List memories
-claude-flow agent memory list --limit 10
+fidgetflo agent memory list --limit 10
 
 # 5. Run agent with memory
-claude-flow agent run coder "Build calculator" --enable-memory --provider onnx
+fidgetflo agent run coder "Build calculator" --enable-memory --provider onnx
 
 # 6. Verify memory was created
-claude-flow agent memory status  # Should show 1+ memories
+fidgetflo agent memory status  # Should show 1+ memories
 ```
 
 ---
@@ -329,7 +329,7 @@ interface AgentExecutionResult {
 ### JavaScript Usage
 
 ```javascript
-import { AgentExecutor } from 'claude-flow';
+import { AgentExecutor } from 'fidgetflo';
 
 const executor = new AgentExecutor();
 
@@ -377,7 +377,7 @@ export OPENAI_API_KEY=sk-...
 export REASONINGBANK_ENABLED=true
 
 # Custom database path
-export CLAUDE_FLOW_DB_PATH=.swarm/memory.db
+export FIDGETFLO_DB_PATH=.swarm/memory.db
 ```
 
 ### Configuration Files
@@ -413,7 +413,7 @@ consolidation:
 ```bash
 # Error: Database file not found
 # Solution: Initialize first
-claude-flow agent memory init
+fidgetflo agent memory init
 ```
 
 ### Permission Errors
@@ -433,21 +433,21 @@ chmod 644 .swarm/memory.db
 export ANTHROPIC_API_KEY=sk-ant-...
 
 # Or use ONNX provider (no API key needed)
-claude-flow agent run coder "task" --enable-memory --provider onnx
+fidgetflo agent run coder "task" --enable-memory --provider onnx
 ```
 
 ### Memory Not Improving Performance
 
 ```bash
 # Check memory statistics
-claude-flow agent memory status
+fidgetflo agent memory status
 
 # If Total memories = 0, learning might be disabled
 # Enable learning explicitly:
-claude-flow agent run coder "task" --enable-memory --memory-learning true
+fidgetflo agent run coder "task" --enable-memory --memory-learning true
 
 # If confidence is low, consolidate:
-claude-flow agent memory consolidate
+fidgetflo agent memory consolidate
 ```
 
 ---
@@ -468,17 +468,17 @@ ReasoningBank is optimized for remote npm/npx usage:
 
 ```bash
 # 1. Use domain filters to improve relevance
-claude-flow agent run coder "API task" --enable-memory --memory-domain api
+fidgetflo agent run coder "API task" --enable-memory --memory-domain api
 
 # 2. Increase k for complex tasks
-claude-flow agent run coder "Complex feature" --enable-memory --memory-k 10
+fidgetflo agent run coder "Complex feature" --enable-memory --memory-k 10
 
 # 3. Consolidate regularly (dedup + prune)
-claude-flow agent memory consolidate
+fidgetflo agent memory consolidate
 
 # 4. Use appropriate provider for task
-claude-flow agent run coder "Quick fix" --enable-memory --provider onnx  # Fast
-claude-flow agent run coder "Critical bug" --enable-memory --provider anthropic  # Best
+fidgetflo agent run coder "Quick fix" --enable-memory --provider onnx  # Fast
+fidgetflo agent run coder "Critical bug" --enable-memory --provider anthropic  # Best
 ```
 
 ---
@@ -489,27 +489,27 @@ claude-flow agent run coder "Critical bug" --enable-memory --provider anthropic 
 
 1. **Initialize** memory system once:
    ```bash
-   claude-flow agent memory init
+   fidgetflo agent memory init
    ```
 
 2. **Run demo** to see learning in action:
    ```bash
-   claude-flow agent memory demo
+   fidgetflo agent memory demo
    ```
 
 3. **Start using** memory in your workflows:
    ```bash
-   claude-flow agent run coder "Your task" --enable-memory
+   fidgetflo agent run coder "Your task" --enable-memory
    ```
 
 4. **Monitor** learning progress:
    ```bash
-   claude-flow agent memory status
+   fidgetflo agent memory status
    ```
 
 5. **Consolidate** periodically (weekly/monthly):
    ```bash
-   claude-flow agent memory consolidate
+   fidgetflo agent memory consolidate
    ```
 
 ### Future Enhancements (Roadmap)
@@ -527,7 +527,7 @@ claude-flow agent run coder "Critical bug" --enable-memory --provider anthropic 
 
 - **ReasoningBank Paper**: https://arxiv.org/html/2509.25140v1
 - **Agentic-Flow Docs**: https://github.com/ruvnet/agentic-flow
-- **Claude-Flow Docs**: https://github.com/ruvnet/claude-flow
+- **FidgetFlo Docs**: https://github.com/ruvnet/claude-flow
 - **Integration Plan**: docs/REASONINGBANK_INTEGRATION_PLAN.md
 - **Architecture**: docs/REASONINGBANK_ARCHITECTURE.md
 - **Test Suite**: tests/integration/reasoningbank-integration.test.js
@@ -555,4 +555,4 @@ claude-flow agent run coder "Critical bug" --enable-memory --provider anthropic 
 
 **ReasoningBank integration is complete and ready for production use!** 🚀
 
-Users can now run `claude-flow agent run coder "task" --enable-memory` to leverage experience-based learning that improves success rates from 23% to 98%.
+Users can now run `fidgetflo agent run coder "task" --enable-memory` to leverage experience-based learning that improves success rates from 23% to 98%.

@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-**Current State**: Claude-Flow v2.7.47 uses `agentic-flow@^1.9.4`
+**Current State**: FidgetFlo v2.7.47 uses `agentic-flow@^1.9.4`
 **Latest Alpha**: `agentic-flow@2.0.1-alpha.50` (published yesterday)
 **Upgrade Impact**: Major performance and capability improvements
 
@@ -135,7 +135,7 @@ export {
 
 ---
 
-## 2. Current Claude-Flow Integration Points
+## 2. Current FidgetFlo Integration Points
 
 ### 2.1 Existing Integrations (29 files)
 
@@ -399,7 +399,7 @@ const agentdbPerf = getWrapperPerformance('agentdb-fast');
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                    Claude-Flow v3                           │
+│                    FidgetFlo v3                           │
 ├─────────────────────────────────────────────────────────────┤
 │  ┌─────────────────────────────────────────────────────┐   │
 │  │           v2 Compatibility Layer                     │   │
@@ -429,7 +429,7 @@ const agentdbPerf = getWrapperPerformance('agentdb-fast');
 
 ### 4.2 Integration Points Map
 
-| Claude-Flow Component | agentic-flow v2 Integration | Priority |
+| FidgetFlo Component | agentic-flow v2 Integration | Priority |
 |-----------------------|-----------------------------|----------|
 | `SwarmCoordinator` | `AttentionCoordinator` | HIGH |
 | `AgentManager` | `EnhancedAgentDBWrapper` | HIGH |
@@ -823,7 +823,7 @@ export const sonaTools = [
 ];
 ```
 
-### 11.2 SONA Integration for Claude-Flow v3
+### 11.2 SONA Integration for FidgetFlo v3
 
 ```typescript
 // src/v3/learning/sona-integration.ts
@@ -1153,7 +1153,7 @@ Nightly  → FlashAttention Consolidation + A/B Experiments + Transfer Learning
 
 ```bash
 # Minimal install - works on all platforms
-npm install claude-flow@3 --save
+npm install fidgetflo@3 --save
 # ~2MB, no native dependencies, pure JavaScript
 ```
 
@@ -1167,37 +1167,37 @@ npm install claude-flow@3 --save
 
 ```bash
 # Install components as needed
-npx claude-flow install <component>
+npx fidgetflo install <component>
 
 # Available components:
-npx claude-flow install learning      # RL + trajectory tracking
-npx claude-flow install memory        # Persistent memory (SQLite/WASM)
-npx claude-flow install attention     # Flash/MoE attention mechanisms
-npx claude-flow install transport     # QUIC transport layer
-npx claude-flow install neural        # Neural pattern training
-npx claude-flow install gnn           # GNN query enhancement
+npx fidgetflo install learning      # RL + trajectory tracking
+npx fidgetflo install memory        # Persistent memory (SQLite/WASM)
+npx fidgetflo install attention     # Flash/MoE attention mechanisms
+npx fidgetflo install transport     # QUIC transport layer
+npx fidgetflo install neural        # Neural pattern training
+npx fidgetflo install gnn           # GNN query enhancement
 ```
 
 ### 16.4 Platform-Specific Installation
 
 #### Linux (Fastest)
 ```bash
-npm install claude-flow@3
-npx claude-flow install native   # NAPI bindings (50-200x faster)
+npm install fidgetflo@3
+npx fidgetflo install native   # NAPI bindings (50-200x faster)
 # Total: ~15MB with native bindings
 ```
 
 #### macOS (Apple Silicon + Intel)
 ```bash
-npm install claude-flow@3
-npx claude-flow install native   # Universal binary
+npm install fidgetflo@3
+npx fidgetflo install native   # Universal binary
 # Fallback: WASM if Rosetta issues
 ```
 
 #### Windows
 ```bash
-npm install claude-flow@3
-npx claude-flow install wasm     # WASM backend (recommended)
+npm install fidgetflo@3
+npx fidgetflo install wasm     # WASM backend (recommended)
 # Note: NAPI optional but requires build tools
 ```
 
@@ -1254,7 +1254,7 @@ const platform = {
 ### 16.7 Feature Flags
 
 ```typescript
-// .claude-flow/config.json
+// .fidgetflo/config.json
 {
   "core": {
     "runtime": "auto",           // auto | napi | wasm | js
@@ -1287,19 +1287,19 @@ const platform = {
 
 ```bash
 # Minimal CLI usage
-npm install -g claude-flow@3
+npm install -g fidgetflo@3
 
 # Basic swarm coordination
-npm install claude-flow@3
+npm install fidgetflo@3
 
 # With persistent memory
-npm install claude-flow@3 && npx claude-flow install memory
+npm install fidgetflo@3 && npx fidgetflo install memory
 
 # Full learning system
-npm install claude-flow@3 && npx claude-flow install learning memory
+npm install fidgetflo@3 && npx fidgetflo install learning memory
 
 # Maximum performance (Linux/Mac)
-npm install claude-flow@3 && npx claude-flow install --all --native
+npm install fidgetflo@3 && npx fidgetflo install --all --native
 ```
 
 ---
@@ -1334,17 +1334,17 @@ npm install claude-flow@3 && npx claude-flow install --all --native
 
 ```bash
 # Run performance benchmarks
-npx claude-flow benchmark
+npx fidgetflo benchmark
 
 # Specific component benchmarks
-npx claude-flow benchmark memory --iterations 1000
-npx claude-flow benchmark learning --episodes 100
-npx claude-flow benchmark attention --batch-size 32
+npx fidgetflo benchmark memory --iterations 1000
+npx fidgetflo benchmark learning --episodes 100
+npx fidgetflo benchmark attention --batch-size 32
 
 # Compare runtimes
-npx claude-flow benchmark --runtime napi
-npx claude-flow benchmark --runtime wasm
-npx claude-flow benchmark --runtime js
+npx fidgetflo benchmark --runtime napi
+npx fidgetflo benchmark --runtime wasm
+npx fidgetflo benchmark --runtime js
 ```
 
 ### 17.4 Regression Detection
@@ -1416,11 +1416,11 @@ const learningConfig = {
 
 ```bash
 # View real-time metrics
-npx claude-flow metrics
+npx fidgetflo metrics
 
 # Export metrics for external systems
-npx claude-flow metrics --format prometheus
-npx claude-flow metrics --format json > metrics.json
+npx fidgetflo metrics --format prometheus
+npx fidgetflo metrics --format json > metrics.json
 ```
 
 ### 19.2 Key Metrics
@@ -1437,11 +1437,11 @@ npx claude-flow metrics --format json > metrics.json
 ### 19.3 Logging Levels
 
 ```typescript
-// .claude-flow/config.json
+// .fidgetflo/config.json
 {
   "logging": {
     "level": "info",           // error | warn | info | debug | trace
-    "file": ".claude-flow/logs/claude-flow.log",
+    "file": ".fidgetflo/logs/fidgetflo.log",
     "maxSize": "10MB",
     "maxFiles": 5,
     "components": {
@@ -1460,10 +1460,10 @@ npx claude-flow metrics --format json > metrics.json
 
 ```bash
 # Audit before install
-npm audit claude-flow@3
+npm audit fidgetflo@3
 
 # Verify checksums
-npx claude-flow verify --checksums
+npx fidgetflo verify --checksums
 ```
 
 ### 20.2 Data Privacy
@@ -1478,7 +1478,7 @@ npx claude-flow verify --checksums
 ### 20.3 MCP Tool Access Control
 
 ```typescript
-// .claude-flow/config.json
+// .fidgetflo/config.json
 {
   "security": {
     "mcpToolAllowlist": [
@@ -1502,4 +1502,4 @@ npx claude-flow verify --checksums
 *Deep review completed: 2026-01-03*
 *agentic-flow version analyzed: 2.0.1-alpha.50*
 *agentdb version analyzed: 2.0.0-alpha.3.1*
-*Claude-Flow version: 2.7.47*
+*FidgetFlo version: 2.7.47*

@@ -1,4 +1,4 @@
-# ADR-028: Neural Attention Mechanisms for Claude-Flow V3
+# ADR-028: Neural Attention Mechanisms for FidgetFlo V3
 
 **Status:** Proposed
 **Date:** 2026-01-16
@@ -7,7 +7,7 @@
 
 ## Context
 
-Claude-Flow v3 requires advanced attention mechanisms for several critical operations:
+FidgetFlo v3 requires advanced attention mechanisms for several critical operations:
 
 1. **Agent Memory Retrieval**: Current memory lookups use basic vector similarity (cosine/dot product). More sophisticated attention mechanisms can improve retrieval quality by weighing relevance, recency, and contextual importance.
 
@@ -17,11 +17,11 @@ Claude-Flow v3 requires advanced attention mechanisms for several critical opera
 
 4. **Swarm Coordination Signals**: Multi-agent coordination requires cross-attention mechanisms to share relevant context between agents while filtering noise.
 
-The RuVector intelligence system provides 39 attention mechanism implementations optimized for AI agent workloads. Integrating these into Claude-Flow v3 will significantly improve memory retrieval, context management, and agent coordination.
+The RuVector intelligence system provides 39 attention mechanism implementations optimized for AI agent workloads. Integrating these into FidgetFlo v3 will significantly improve memory retrieval, context management, and agent coordination.
 
 ## Decision
 
-Integrate RuVector's 39 attention mechanism types into Claude-Flow v3 via a unified **AttentionService** that provides:
+Integrate RuVector's 39 attention mechanism types into FidgetFlo v3 via a unified **AttentionService** that provides:
 
 1. **Pluggable attention backends** - Select mechanisms based on use case
 2. **Automatic fallback** - Graceful degradation when GPU unavailable
@@ -215,7 +215,7 @@ interface MoEAttentionConfig {
 
 ---
 
-## Use Cases in Claude-Flow V3
+## Use Cases in FidgetFlo V3
 
 ### 1. Agent Memory Retrieval
 
@@ -797,7 +797,7 @@ v3/@claude-flow/attention/
 ## Configuration Schema
 
 ```typescript
-// claude-flow.config.json
+// fidgetflo.config.json
 {
   "attention": {
     // Default mechanism for general use

@@ -201,7 +201,7 @@ npm run build
 export ANTHROPIC_API_KEY=sk-ant-...  # For LLM-based judge/distill
 export OPENAI_API_KEY=sk-...     # Optional: for real embeddings
 export REASONINGBANK_ENABLED=true
-export CLAUDE_FLOW_DB_PATH=.swarm/memory.db
+export FIDGETFLO_DB_PATH=.swarm/memory.db
 ```
 
 ### Step 2: Run Database Migrations

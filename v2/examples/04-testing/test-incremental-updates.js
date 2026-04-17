@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /**
- * Demonstration of incremental update functionality in Claude Flow
+ * Demonstration of incremental update functionality in FidgetFlo
  * This script tests various incremental update scenarios across the system
  */
 
@@ -10,7 +10,7 @@ const { ConfigurationManager } = require('../../dist/core/config');
 const { SimpleCache } = require('../../dist/memory/cache');
 const { deepMerge } = require('../../dist/utils/helpers');
 
-console.log('🧪 Testing Incremental Updates in Claude Flow\n');
+console.log('🧪 Testing Incremental Updates in FidgetFlo\n');
 
 // Test 1: SwarmMemory Version Tracking
 console.log('1️⃣ Testing SwarmMemory Version Tracking');

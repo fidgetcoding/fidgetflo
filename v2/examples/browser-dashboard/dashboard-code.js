@@ -1,5 +1,5 @@
 /**
- * Claude Flow + Claude Code - Browser IDE
+ * FidgetFlo + Claude Code - Browser IDE
  * Combines swarm orchestration with interactive code editing
  */
 
@@ -61,10 +61,10 @@ class ClaudeCodeDashboard {
     }
 
     getDefaultCode() {
-        return `// Claude Flow + Claude Code - Browser IDE
+        return `// FidgetFlo + Claude Code - Browser IDE
 // Write your code here and click "Run Code" to execute via MCP
 
-console.log('Hello from Claude Flow!');
+console.log('Hello from FidgetFlo!');
 
 // Example: Spawn agents via MCP
 async function spawnResearchAgent() {
@@ -103,7 +103,7 @@ spawnResearchAgent();
 
             this.ws.onopen = () => {
                 this.updateConnectionStatus(true);
-                this.addLog('Connected to Claude Flow MCP server', 'success');
+                this.addLog('Connected to FidgetFlo MCP server', 'success');
                 this.sendCommand('swarm_status');
             };
 
@@ -132,7 +132,7 @@ spawnResearchAgent();
         if (this.ws && this.ws.readyState === WebSocket.OPEN) {
             const message = {
                 jsonrpc: '2.0',
-                method: `mcp__claude-flow__${command}`,
+                method: `mcp__fidgetflo__${command}`,
                 params,
                 id: Date.now()
             };
@@ -165,7 +165,7 @@ spawnResearchAgent();
      */
     executeCode() {
         const code = this.editor.getValue();
-        this.addTerminalOutput('> Executing code via Claude Flow MCP...\n', 'command');
+        this.addTerminalOutput('> Executing code via FidgetFlo MCP...\n', 'command');
 
         // Send code to MCP server for execution
         this.sendCommand('execute_code', {

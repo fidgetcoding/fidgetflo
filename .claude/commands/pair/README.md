@@ -9,20 +9,20 @@ The `pair` command enables collaborative pair programming between you and AI age
 ## Usage
 
 ```bash
-claude-flow pair [--start] [options]
+fidgetflo pair [--start] [options]
 ```
 
 ## Quick Start
 
 ```bash
 # Start pair programming session
-claude-flow pair --start
+fidgetflo pair --start
 
 # Start with specific agent
-claude-flow pair --start --agent senior-dev
+fidgetflo pair --start --agent senior-dev
 
 # Start with verification
-claude-flow pair --start --verify --threshold 0.98
+fidgetflo pair --start --verify --threshold 0.98
 ```
 
 ## Options
@@ -42,19 +42,19 @@ claude-flow pair --start --verify --threshold 0.98
 ### Driver Mode
 You write code, AI provides suggestions and reviews.
 ```bash
-claude-flow pair --start --mode driver
+fidgetflo pair --start --mode driver
 ```
 
 ### Navigator Mode
 AI writes code, you provide guidance and review.
 ```bash
-claude-flow pair --start --mode navigator
+fidgetflo pair --start --mode navigator
 ```
 
 ### Switch Mode (Default)
 Alternate between driver and navigator roles.
 ```bash
-claude-flow pair --start --mode switch --interval 10m
+fidgetflo pair --start --mode switch --interval 10m
 ```
 
 ## Features
@@ -87,10 +87,10 @@ claude-flow pair --start --mode switch --interval 10m
 ### Start Session
 ```bash
 # Basic start
-claude-flow pair --start
+fidgetflo pair --start
 
 # With configuration
-claude-flow pair --start \
+fidgetflo pair --start \
   --agent expert-coder \
   --verify \
   --test \
@@ -115,17 +115,17 @@ claude-flow pair --start \
 ### End Session
 ```bash
 # End and save session
-claude-flow pair --end --save
+fidgetflo pair --end --save
 
 # End and generate report
-claude-flow pair --end --report
+fidgetflo pair --end --report
 ```
 
 ## Examples
 
 ### Refactoring Session
 ```bash
-claude-flow pair --start \
+fidgetflo pair --start \
   --focus refactor \
   --verify \
   --threshold 0.98
@@ -133,7 +133,7 @@ claude-flow pair --start \
 
 ### Test-Driven Development
 ```bash
-claude-flow pair --start \
+fidgetflo pair --start \
   --focus test \
   --mode tdd \
   --language javascript
@@ -141,7 +141,7 @@ claude-flow pair --start \
 
 ### Bug Fixing
 ```bash
-claude-flow pair --start \
+fidgetflo pair --start \
   --focus debug \
   --agent debugger-expert \
   --test
@@ -149,7 +149,7 @@ claude-flow pair --start \
 
 ### Code Review Session
 ```bash
-claude-flow pair --start \
+fidgetflo pair --start \
   --review \
   --verify \
   --agent senior-reviewer
@@ -160,25 +160,25 @@ claude-flow pair --start \
 ### With Git
 ```bash
 # Auto-commit with verification
-claude-flow pair --start --git --auto-commit
+fidgetflo pair --start --git --auto-commit
 
 # Review before commit
-claude-flow pair --start --git --review-commit
+fidgetflo pair --start --git --review-commit
 ```
 
 ### With Testing Frameworks
 ```bash
 # Jest integration
-claude-flow pair --start --test-framework jest
+fidgetflo pair --start --test-framework jest
 
 # Pytest integration
-claude-flow pair --start --test-framework pytest
+fidgetflo pair --start --test-framework pytest
 ```
 
 ### With CI/CD
 ```bash
 # CI-friendly mode
-claude-flow pair --start --ci --non-interactive
+fidgetflo pair --start --ci --non-interactive
 ```
 
 ## Session Output
@@ -216,7 +216,7 @@ Type /help for commands or start coding...
 
 ## Configuration
 
-Configure pair programming in `.claude-flow/config.json`:
+Configure pair programming in `.fidgetflo/config.json`:
 
 ```json
 {

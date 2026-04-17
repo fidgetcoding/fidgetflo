@@ -54,22 +54,22 @@ Before sending ANY message, ask yourself:
 If ANY answer is "No", you MUST combine operations into a single message!
 
 ## Project Overview
-This project uses the SPARC (Specification, Pseudocode, Architecture, Refinement, Completion) methodology for systematic Test-Driven Development with AI assistance through Claude-Flow orchestration.
+This project uses the SPARC (Specification, Pseudocode, Architecture, Refinement, Completion) methodology for systematic Test-Driven Development with AI assistance through FidgetFlo orchestration.
 
 **🚀 Batchtools Optimization Enabled**: This configuration includes optimized prompts and parallel processing capabilities for improved performance and efficiency.
 
 ## SPARC Development Commands
 
 ### Core SPARC Commands
-- `npx claude-flow sparc modes`: List all available SPARC development modes
-- `npx claude-flow sparc run <mode> "<task>"`: Execute specific SPARC mode for a task
-- `npx claude-flow sparc tdd "<feature>"`: Run complete TDD workflow using SPARC methodology
-- `npx claude-flow sparc info <mode>`: Get detailed information about a specific mode
+- `npx fidgetflo sparc modes`: List all available SPARC development modes
+- `npx fidgetflo sparc run <mode> "<task>"`: Execute specific SPARC mode for a task
+- `npx fidgetflo sparc tdd "<feature>"`: Run complete TDD workflow using SPARC methodology
+- `npx fidgetflo sparc info <mode>`: Get detailed information about a specific mode
 
 ### Batchtools Commands (Optimized)
-- `npx claude-flow sparc batch <modes> "<task>"`: Execute multiple SPARC modes in parallel
-- `npx claude-flow sparc pipeline "<task>"`: Execute full SPARC pipeline with parallel processing
-- `npx claude-flow sparc concurrent <mode> "<tasks-file>"`: Process multiple tasks concurrently
+- `npx fidgetflo sparc batch <modes> "<task>"`: Execute multiple SPARC modes in parallel
+- `npx fidgetflo sparc pipeline "<task>"`: Execute full SPARC pipeline with parallel processing
+- `npx fidgetflo sparc concurrent <mode> "<tasks-file>"`: Process multiple tasks concurrently
 
 ### Standard Build Commands
 - `npm run build`: Build the project
@@ -82,35 +82,35 @@ This project uses the SPARC (Specification, Pseudocode, Architecture, Refinement
 ### 1. Specification Phase (Parallel Analysis)
 ```bash
 # Create detailed specifications with concurrent requirements analysis
-npx claude-flow sparc run spec-pseudocode "Define user authentication requirements" --parallel
+npx fidgetflo sparc run spec-pseudocode "Define user authentication requirements" --parallel
 ```
 **Batchtools Optimization**: Simultaneously analyze multiple requirement sources, validate constraints in parallel, and generate comprehensive specifications.
 
 ### 2. Pseudocode Phase (Concurrent Logic Design)
 ```bash
 # Develop algorithmic logic with parallel pattern analysis
-npx claude-flow sparc run spec-pseudocode "Create authentication flow pseudocode" --batch-optimize
+npx fidgetflo sparc run spec-pseudocode "Create authentication flow pseudocode" --batch-optimize
 ```
 **Batchtools Optimization**: Process multiple algorithm patterns concurrently, validate logic flows in parallel, and optimize data structures simultaneously.
 
 ### 3. Architecture Phase (Parallel Component Design)
 ```bash
 # Design system architecture with concurrent component analysis
-npx claude-flow sparc run architect "Design authentication service architecture" --parallel
+npx fidgetflo sparc run architect "Design authentication service architecture" --parallel
 ```
 **Batchtools Optimization**: Generate multiple architectural alternatives simultaneously, validate integration points in parallel, and create comprehensive documentation concurrently.
 
 ### 4. Refinement Phase (Parallel TDD Implementation)
 ```bash
 # Execute Test-Driven Development with parallel test generation
-npx claude-flow sparc tdd "implement user authentication system" --batch-tdd
+npx fidgetflo sparc tdd "implement user authentication system" --batch-tdd
 ```
 **Batchtools Optimization**: Generate multiple test scenarios simultaneously, implement and validate code in parallel, and optimize performance concurrently.
 
 ### 5. Completion Phase (Concurrent Integration)
 ```bash
 # Integration with parallel validation and documentation
-npx claude-flow sparc run integration "integrate authentication with user management" --parallel
+npx fidgetflo sparc run integration "integrate authentication with user management" --parallel
 ```
 **Batchtools Optimization**: Run integration tests in parallel, generate documentation concurrently, and validate requirements simultaneously.
 
@@ -365,7 +365,7 @@ If ANY answer is "No", you MUST combine operations into a single message!
 - 🧪 **ALL testing** and validation
 - 🔧 **ALL debugging** and troubleshooting
 
-### 🧠 Claude Flow MCP Tools ONLY Handle:
+### 🧠 FidgetFlo MCP Tools ONLY Handle:
 
 - 🎯 **Coordination only** - Planning Claude Code's actions
 - 💾 **Memory management** - Storing decisions and context
@@ -402,17 +402,17 @@ If ANY answer is "No", you MUST combine operations into a single message!
 
 **✅ CORRECT Workflow:**
 
-1. **MCP**: `mcp__claude-flow__swarm_init` (coordination setup)
-2. **MCP**: `mcp__claude-flow__agent_spawn` (planning agents)
-3. **MCP**: `mcp__claude-flow__task_orchestrate` (task coordination)
+1. **MCP**: `mcp__fidgetflo__swarm_init` (coordination setup)
+2. **MCP**: `mcp__fidgetflo__agent_spawn` (planning agents)
+3. **MCP**: `mcp__fidgetflo__task_orchestrate` (task coordination)
 4. **Claude Code**: `Task` tool to spawn agents with coordination instructions
 5. **Claude Code**: `TodoWrite` with ALL todos batched (5-10+ in ONE call)
 6. **Claude Code**: `Read`, `Write`, `Edit`, `Bash` (actual work)
-7. **MCP**: `mcp__claude-flow__memory_usage` (store results)
+7. **MCP**: `mcp__fidgetflo__memory_usage` (store results)
 
 **❌ WRONG Workflow:**
 
-1. **MCP**: `mcp__claude-flow__terminal_execute` (DON'T DO THIS)
+1. **MCP**: `mcp__fidgetflo__terminal_execute` (DON'T DO THIS)
 2. **MCP**: File creation via MCP (DON'T DO THIS)
 3. **MCP**: Code generation via MCP (DON'T DO THIS)
 4. **Claude Code**: Sequential Task calls (DON'T DO THIS)
@@ -455,12 +455,12 @@ If you need to do X operations, they should be in 1 message, not X messages
 ```javascript
 [Single Message with BatchTool]:
   // MCP coordination setup
-  mcp__claude-flow__swarm_init { topology: "mesh", maxAgents: 6 }
-  mcp__claude-flow__agent_spawn { type: "researcher" }
-  mcp__claude-flow__agent_spawn { type: "coder" }
-  mcp__claude-flow__agent_spawn { type: "code-analyzer" }
-  mcp__claude-flow__agent_spawn { type: "tester" }
-  mcp__claude-flow__agent_spawn { type: "task-orchestrator" }
+  mcp__fidgetflo__swarm_init { topology: "mesh", maxAgents: 6 }
+  mcp__fidgetflo__agent_spawn { type: "researcher" }
+  mcp__fidgetflo__agent_spawn { type: "coder" }
+  mcp__fidgetflo__agent_spawn { type: "code-analyzer" }
+  mcp__fidgetflo__agent_spawn { type: "tester" }
+  mcp__fidgetflo__agent_spawn { type: "task-orchestrator" }
 
   // Claude Code execution - ALL in parallel
   Task("You are researcher agent. MUST coordinate via hooks...")
@@ -479,7 +479,7 @@ If you need to do X operations, they should be in 1 message, not X messages
 **❌ WRONG - Multiple Messages (NEVER DO THIS):**
 
 ```javascript
-Message 1: mcp__claude-flow__swarm_init
+Message 1: mcp__fidgetflo__swarm_init
 Message 2: Task("researcher agent")
 Message 3: Task("coder agent")
 Message 4: TodoWrite({ todo: "single todo" })
@@ -521,29 +521,29 @@ Message 6: Write "package.json"
 ### 1. Add MCP Server (Stdio - No Port Needed)
 
 ```bash
-# Add Claude Flow MCP server to Claude Code using stdio
-claude mcp add claude-flow npx claude-flow@alpha mcp start
+# Add FidgetFlo MCP server to Claude Code using stdio
+claude mcp add fidgetflo npx fidgetflo@alpha mcp start
 ```
 
 ### 2. Use MCP Tools for Coordination in Claude Code
 
-Once configured, Claude Flow MCP tools enhance Claude Code's coordination:
+Once configured, FidgetFlo MCP tools enhance Claude Code's coordination:
 
 **Initialize a swarm:**
 
-- Use the `mcp__claude-flow__swarm_init` tool to set up coordination topology
+- Use the `mcp__fidgetflo__swarm_init` tool to set up coordination topology
 - Choose: mesh, hierarchical, ring, or star
 - This creates a coordination framework for Claude Code's work
 
 **Spawn agents:**
 
-- Use `mcp__claude-flow__agent_spawn` tool to create specialized coordinators
+- Use `mcp__fidgetflo__agent_spawn` tool to create specialized coordinators
 - Agent types represent different thinking patterns, not actual coders
 - They help Claude Code approach problems from different angles
 
 **Orchestrate tasks:**
 
-- Use `mcp__claude-flow__task_orchestrate` tool to coordinate complex workflows
+- Use `mcp__fidgetflo__task_orchestrate` tool to coordinate complex workflows
 - This breaks down tasks for Claude Code to execute systematically
 - The agents don't write code - they coordinate Claude Code's actions
 
@@ -551,38 +551,38 @@ Once configured, Claude Flow MCP tools enhance Claude Code's coordination:
 
 ### Coordination Tools:
 
-- `mcp__claude-flow__swarm_init` - Set up coordination topology for Claude Code
-- `mcp__claude-flow__agent_spawn` - Create cognitive patterns to guide Claude Code
-- `mcp__claude-flow__task_orchestrate` - Break down and coordinate complex tasks
+- `mcp__fidgetflo__swarm_init` - Set up coordination topology for Claude Code
+- `mcp__fidgetflo__agent_spawn` - Create cognitive patterns to guide Claude Code
+- `mcp__fidgetflo__task_orchestrate` - Break down and coordinate complex tasks
 
 ### Monitoring Tools:
 
-- `mcp__claude-flow__swarm_status` - Monitor coordination effectiveness
-- `mcp__claude-flow__agent_list` - View active cognitive patterns
-- `mcp__claude-flow__agent_metrics` - Track coordination performance
-- `mcp__claude-flow__task_status` - Check workflow progress
-- `mcp__claude-flow__task_results` - Review coordination outcomes
+- `mcp__fidgetflo__swarm_status` - Monitor coordination effectiveness
+- `mcp__fidgetflo__agent_list` - View active cognitive patterns
+- `mcp__fidgetflo__agent_metrics` - Track coordination performance
+- `mcp__fidgetflo__task_status` - Check workflow progress
+- `mcp__fidgetflo__task_results` - Review coordination outcomes
 
 ### Memory & Neural Tools:
 
-- `mcp__claude-flow__memory_usage` - Persistent memory across sessions
-- `mcp__claude-flow__neural_status` - Neural pattern effectiveness
-- `mcp__claude-flow__neural_train` - Improve coordination patterns
-- `mcp__claude-flow__neural_patterns` - Analyze thinking approaches
+- `mcp__fidgetflo__memory_usage` - Persistent memory across sessions
+- `mcp__fidgetflo__neural_status` - Neural pattern effectiveness
+- `mcp__fidgetflo__neural_train` - Improve coordination patterns
+- `mcp__fidgetflo__neural_patterns` - Analyze thinking approaches
 
 ### GitHub Integration Tools (NEW!):
 
-- `mcp__claude-flow__github_swarm` - Create specialized GitHub management swarms
-- `mcp__claude-flow__repo_analyze` - Deep repository analysis with AI
-- `mcp__claude-flow__pr_enhance` - AI-powered pull request improvements
-- `mcp__claude-flow__issue_triage` - Intelligent issue classification
-- `mcp__claude-flow__code_review` - Automated code review with swarms
+- `mcp__fidgetflo__github_swarm` - Create specialized GitHub management swarms
+- `mcp__fidgetflo__repo_analyze` - Deep repository analysis with AI
+- `mcp__fidgetflo__pr_enhance` - AI-powered pull request improvements
+- `mcp__fidgetflo__issue_triage` - Intelligent issue classification
+- `mcp__fidgetflo__code_review` - Automated code review with swarms
 
 ### System Tools:
 
-- `mcp__claude-flow__benchmark_run` - Measure coordination efficiency
-- `mcp__claude-flow__features_detect` - Available capabilities
-- `mcp__claude-flow__swarm_monitor` - Real-time coordination tracking
+- `mcp__fidgetflo__benchmark_run` - Measure coordination efficiency
+- `mcp__fidgetflo__features_detect` - Available capabilities
+- `mcp__fidgetflo__swarm_monitor` - Real-time coordination tracking
 
 ## Workflow Examples (Coordination-Focused)
 
@@ -592,31 +592,31 @@ Once configured, Claude Flow MCP tools enhance Claude Code's coordination:
 
 **Step 1:** Set up research coordination
 
-- Tool: `mcp__claude-flow__swarm_init`
+- Tool: `mcp__fidgetflo__swarm_init`
 - Parameters: `{"topology": "mesh", "maxAgents": 5, "strategy": "balanced"}`
 - Result: Creates a mesh topology for comprehensive exploration
 
 **Step 2:** Define research perspectives
 
-- Tool: `mcp__claude-flow__agent_spawn`
+- Tool: `mcp__fidgetflo__agent_spawn`
 - Parameters: `{"type": "researcher", "name": "Literature Review"}`
-- Tool: `mcp__claude-flow__agent_spawn`
+- Tool: `mcp__fidgetflo__agent_spawn`
 - Parameters: `{"type": "code-analyzer", "name": "Data Analysis"}`
 - Result: Different cognitive patterns for Claude Code to use
 
 **Step 3:** Coordinate research execution
 
-- Tool: `mcp__claude-flow__task_orchestrate`
+- Tool: `mcp__fidgetflo__task_orchestrate`
 - Parameters: `{"task": "Research neural architecture search papers", "strategy": "adaptive"}`
 - Result: Claude Code systematically searches, reads, and analyzes papers
 
 **What Actually Happens:**
 
 1. The swarm sets up a coordination framework
-2. Each agent MUST use Claude Flow hooks for coordination:
-   - `npx claude-flow@alpha hooks pre-task` before starting
-   - `npx claude-flow@alpha hooks post-edit` after each file operation
-   - `npx claude-flow@alpha hooks notify` to share decisions
+2. Each agent MUST use FidgetFlo hooks for coordination:
+   - `npx fidgetflo@alpha hooks pre-task` before starting
+   - `npx fidgetflo@alpha hooks post-edit` after each file operation
+   - `npx fidgetflo@alpha hooks notify` to share decisions
 3. Claude Code uses its native Read, WebSearch, and Task tools
 4. The swarm coordinates through shared memory and hooks
 5. Results are synthesized by Claude Code with full coordination history
@@ -627,19 +627,19 @@ Once configured, Claude Flow MCP tools enhance Claude Code's coordination:
 
 **Step 1:** Set up development coordination
 
-- Tool: `mcp__claude-flow__swarm_init`
+- Tool: `mcp__fidgetflo__swarm_init`
 - Parameters: `{"topology": "hierarchical", "maxAgents": 8, "strategy": "specialized"}`
 - Result: Hierarchical structure for organized development
 
 **Step 2:** Define development perspectives
 
-- Tool: `mcp__claude-flow__agent_spawn`
+- Tool: `mcp__fidgetflo__agent_spawn`
 - Parameters: `{"type": "system-architect", "name": "System Design"}`
 - Result: Architectural thinking pattern for Claude Code
 
 **Step 3:** Coordinate implementation
 
-- Tool: `mcp__claude-flow__task_orchestrate`
+- Tool: `mcp__fidgetflo__task_orchestrate`
 - Parameters: `{"task": "Implement user authentication with JWT", "strategy": "parallel"}`
 - Result: Claude Code implements features using its native tools
 
@@ -651,7 +651,7 @@ Once configured, Claude Flow MCP tools enhance Claude Code's coordination:
    - Post-edit hooks for progress tracking
    - Memory storage for cross-agent coordination
 3. Claude Code uses Write, Edit, Bash tools for implementation
-4. Agents share progress through Claude Flow memory
+4. Agents share progress through FidgetFlo memory
 5. All code is written by Claude Code with full coordination
 
 ### GitHub Repository Management Example (NEW!)
@@ -660,19 +660,19 @@ Once configured, Claude Flow MCP tools enhance Claude Code's coordination:
 
 **Step 1:** Initialize GitHub swarm
 
-- Tool: `mcp__claude-flow__github_swarm`
+- Tool: `mcp__fidgetflo__github_swarm`
 - Parameters: `{"repository": "owner/repo", "agents": 5, "focus": "maintenance"}`
 - Result: Specialized swarm for repository management
 
 **Step 2:** Analyze repository health
 
-- Tool: `mcp__claude-flow__repo_analyze`
+- Tool: `mcp__fidgetflo__repo_analyze`
 - Parameters: `{"deep": true, "include": ["issues", "prs", "code"]}`
 - Result: Comprehensive repository analysis
 
 **Step 3:** Enhance pull requests
 
-- Tool: `mcp__claude-flow__pr_enhance`
+- Tool: `mcp__fidgetflo__pr_enhance`
 - Parameters: `{"pr_number": 123, "add_tests": true, "improve_docs": true}`
 - Result: AI-powered PR improvements
 
@@ -706,7 +706,7 @@ The swarm provides persistent memory that helps Claude Code:
 
 ## Performance Benefits
 
-When using Claude Flow coordination with Claude Code:
+When using FidgetFlo coordination with Claude Code:
 
 - **84.8% SWE-Bench solve rate** - Better problem-solving through coordination
 - **32.3% token reduction** - Efficient task breakdown reduces redundancy
@@ -716,7 +716,7 @@ When using Claude Flow coordination with Claude Code:
 
 ## Claude Code Hooks Integration
 
-Claude Flow includes powerful hooks that automate coordination:
+FidgetFlo includes powerful hooks that automate coordination:
 
 ### Pre-Operation Hooks
 
@@ -790,13 +790,13 @@ See `.claude/commands/` for detailed documentation on all features.
 1. **SPAWN ALL AGENTS IN ONE BATCH** - Use multiple tool calls in a SINGLE message
 2. **EXECUTE TASKS IN PARALLEL** - Never wait for one task before starting another
 3. **USE BATCHTOOL FOR EVERYTHING** - Multiple operations = Single message with multiple tools
-4. **ALL AGENTS MUST USE COORDINATION TOOLS** - Every spawned agent MUST use claude-flow hooks and memory
+4. **ALL AGENTS MUST USE COORDINATION TOOLS** - Every spawned agent MUST use fidgetflo hooks and memory
 
 ### 🎯 AGENT COUNT CONFIGURATION
 
 **CRITICAL: Dynamic Agent Count Rules**
 
-1. **Check CLI Arguments First**: If user runs `npx claude-flow@alpha --agents 5`, use 5 agents
+1. **Check CLI Arguments First**: If user runs `npx fidgetflo@alpha --agents 5`, use 5 agents
 2. **Auto-Decide if No Args**: Without CLI args, analyze task complexity:
    - Simple tasks (1-3 components): 3-4 agents
    - Medium tasks (4-6 components): 5-7 agents
@@ -810,7 +810,7 @@ See `.claude/commands/` for detailed documentation on all features.
 **Example Auto-Decision Logic:**
 
 ```javascript
-// If CLI args provided: npx claude-flow@alpha --agents 6
+// If CLI args provided: npx fidgetflo@alpha --agents 6
 maxAgents = CLI_ARGS.agents || determineAgentCount(task);
 
 function determineAgentCount(task) {
@@ -832,29 +832,29 @@ When you spawn an agent using the Task tool, that agent MUST:
 
 ```bash
 # Check previous work and load context
-npx claude-flow@alpha hooks pre-task --description "[agent task]" --auto-spawn-agents false
-npx claude-flow@alpha hooks session-restore --session-id "swarm-[id]" --load-memory true
+npx fidgetflo@alpha hooks pre-task --description "[agent task]" --auto-spawn-agents false
+npx fidgetflo@alpha hooks session-restore --session-id "swarm-[id]" --load-memory true
 ```
 
 **2️⃣ DURING Work (After EVERY Major Step):**
 
 ```bash
 # Store progress in memory after each file operation
-npx claude-flow@alpha hooks post-edit --file "[filepath]" --memory-key "swarm/[agent]/[step]"
+npx fidgetflo@alpha hooks post-edit --file "[filepath]" --memory-key "swarm/[agent]/[step]"
 
 # Store decisions and findings
-npx claude-flow@alpha hooks notify --message "[what was done]" --telemetry true
+npx fidgetflo@alpha hooks notify --message "[what was done]" --telemetry true
 
 # Check coordination with other agents
-npx claude-flow@alpha hooks pre-search --query "[what to check]" --cache-results true
+npx fidgetflo@alpha hooks pre-search --query "[what to check]" --cache-results true
 ```
 
 **3️⃣ AFTER Completing Work:**
 
 ```bash
 # Save all results and learnings
-npx claude-flow@alpha hooks post-task --task-id "[task]" --analyze-performance true
-npx claude-flow@alpha hooks session-end --export-metrics true --generate-summary true
+npx fidgetflo@alpha hooks post-task --task-id "[task]" --analyze-performance true
+npx fidgetflo@alpha hooks session-end --export-metrics true --generate-summary true
 ```
 
 ### 🎯 AGENT PROMPT TEMPLATE
@@ -865,10 +865,10 @@ When spawning agents, ALWAYS include these coordination instructions:
 You are the [Agent Type] agent in a coordinated swarm.
 
 MANDATORY COORDINATION:
-1. START: Run `npx claude-flow@alpha hooks pre-task --description "[your task]"`
-2. DURING: After EVERY file operation, run `npx claude-flow@alpha hooks post-edit --file "[file]" --memory-key "agent/[step]"`
-3. MEMORY: Store ALL decisions using `npx claude-flow@alpha hooks notify --message "[decision]"`
-4. END: Run `npx claude-flow@alpha hooks post-task --task-id "[task]" --analyze-performance true`
+1. START: Run `npx fidgetflo@alpha hooks pre-task --description "[your task]"`
+2. DURING: After EVERY file operation, run `npx fidgetflo@alpha hooks post-edit --file "[file]" --memory-key "agent/[step]"`
+3. MEMORY: Store ALL decisions using `npx fidgetflo@alpha hooks notify --message "[decision]"`
+4. END: Run `npx fidgetflo@alpha hooks post-task --task-id "[task]" --analyze-performance true`
 
 Your specific task: [detailed task description]
 
@@ -893,12 +893,12 @@ Message 6: TodoWrite (another single todo)
 ```
 Message 1: [BatchTool]
   // MCP coordination setup
-  - mcp__claude-flow__swarm_init
-  - mcp__claude-flow__agent_spawn (researcher)
-  - mcp__claude-flow__agent_spawn (coder)
-  - mcp__claude-flow__agent_spawn (code-analyzer)
-  - mcp__claude-flow__agent_spawn (tester)
-  - mcp__claude-flow__agent_spawn (task-orchestrator)
+  - mcp__fidgetflo__swarm_init
+  - mcp__fidgetflo__agent_spawn (researcher)
+  - mcp__fidgetflo__agent_spawn (coder)
+  - mcp__fidgetflo__agent_spawn (code-analyzer)
+  - mcp__fidgetflo__agent_spawn (tester)
+  - mcp__fidgetflo__agent_spawn (task-orchestrator)
 
 Message 2: [BatchTool - Claude Code execution]
   // Task agents with full coordination instructions
@@ -932,7 +932,7 @@ When given ANY complex task with swarms:
 STEP 1: IMMEDIATE PARALLEL SPAWN (Single Message!)
 [BatchTool]:
   // IMPORTANT: Check CLI args for agent count, otherwise auto-decide based on task complexity
-  - mcp__claude-flow__swarm_init {
+  - mcp__fidgetflo__swarm_init {
       topology: "hierarchical",
       maxAgents: CLI_ARGS.agents || AUTO_DECIDE(task_complexity), // Use CLI args or auto-decide
       strategy: "parallel"
@@ -940,19 +940,19 @@ STEP 1: IMMEDIATE PARALLEL SPAWN (Single Message!)
 
   // Spawn agents based on maxAgents count and task requirements
   // If CLI specifies 3 agents, spawn 3. If no args, auto-decide optimal count (3-12)
-  - mcp__claude-flow__agent_spawn { type: "system-architect", name: "System Designer" }
-  - mcp__claude-flow__agent_spawn { type: "coder", name: "API Developer" }
-  - mcp__claude-flow__agent_spawn { type: "coder", name: "Frontend Dev" }
-  - mcp__claude-flow__agent_spawn { type: "code-analyzer", name: "DB Designer" }
-  - mcp__claude-flow__agent_spawn { type: "tester", name: "QA Engineer" }
-  - mcp__claude-flow__agent_spawn { type: "researcher", name: "Tech Lead" }
-  - mcp__claude-flow__agent_spawn { type: "task-orchestrator", name: "PM" }
+  - mcp__fidgetflo__agent_spawn { type: "system-architect", name: "System Designer" }
+  - mcp__fidgetflo__agent_spawn { type: "coder", name: "API Developer" }
+  - mcp__fidgetflo__agent_spawn { type: "coder", name: "Frontend Dev" }
+  - mcp__fidgetflo__agent_spawn { type: "code-analyzer", name: "DB Designer" }
+  - mcp__fidgetflo__agent_spawn { type: "tester", name: "QA Engineer" }
+  - mcp__fidgetflo__agent_spawn { type: "researcher", name: "Tech Lead" }
+  - mcp__fidgetflo__agent_spawn { type: "task-orchestrator", name: "PM" }
   - TodoWrite { todos: [multiple todos at once] }
 
 STEP 2: PARALLEL TASK EXECUTION (Single Message!)
 [BatchTool]:
-  - mcp__claude-flow__task_orchestrate { task: "main task", strategy: "parallel" }
-  - mcp__claude-flow__memory_usage { action: "store", key: "init", value: {...} }
+  - mcp__fidgetflo__task_orchestrate { task: "main task", strategy: "parallel" }
+  - mcp__fidgetflo__memory_usage { action: "store", key: "init", value: {...} }
   - Multiple Read operations
   - Multiple Write operations
   - Multiple Bash commands
@@ -997,13 +997,13 @@ Dependencies: ↳ X deps | Actionable: ▶
 // ✅ CORRECT: SINGLE MESSAGE with ALL operations
 [BatchTool - Message 1]:
   // Initialize and spawn ALL agents at once
-  mcp__claude-flow__swarm_init { topology: "hierarchical", maxAgents: 8, strategy: "parallel" }
-  mcp__claude-flow__agent_spawn { type: "system-architect", name: "System Designer" }
-  mcp__claude-flow__agent_spawn { type: "coder", name: "API Developer" }
-  mcp__claude-flow__agent_spawn { type: "coder", name: "Auth Expert" }
-  mcp__claude-flow__agent_spawn { type: "code-analyzer", name: "DB Designer" }
-  mcp__claude-flow__agent_spawn { type: "tester", name: "Test Engineer" }
-  mcp__claude-flow__agent_spawn { type: "task-orchestrator", name: "Lead" }
+  mcp__fidgetflo__swarm_init { topology: "hierarchical", maxAgents: 8, strategy: "parallel" }
+  mcp__fidgetflo__agent_spawn { type: "system-architect", name: "System Designer" }
+  mcp__fidgetflo__agent_spawn { type: "coder", name: "API Developer" }
+  mcp__fidgetflo__agent_spawn { type: "coder", name: "Auth Expert" }
+  mcp__fidgetflo__agent_spawn { type: "code-analyzer", name: "DB Designer" }
+  mcp__fidgetflo__agent_spawn { type: "tester", name: "Test Engineer" }
+  mcp__fidgetflo__agent_spawn { type: "task-orchestrator", name: "Lead" }
 
   // Update ALL todos at once - NEVER split todos!
   TodoWrite { todos: [
@@ -1018,10 +1018,10 @@ Dependencies: ↳ X deps | Actionable: ▶
   ]}
 
   // Start orchestration
-  mcp__claude-flow__task_orchestrate { task: "Build REST API", strategy: "parallel" }
+  mcp__fidgetflo__task_orchestrate { task: "Build REST API", strategy: "parallel" }
 
   // Store initial memory
-  mcp__claude-flow__memory_usage { action: "store", key: "project/init", value: { started: Date.now() } }
+  mcp__fidgetflo__memory_usage { action: "store", key: "project/init", value: { started: Date.now() } }
 
 [BatchTool - Message 2]:
   // Create ALL directories at once
@@ -1052,9 +1052,9 @@ Dependencies: ↳ X deps | Actionable: ▶
 
 ```javascript
 // ❌ WRONG: Multiple messages, one operation each
-Message 1: mcp__claude-flow__swarm_init
-Message 2: mcp__claude-flow__agent_spawn (just one agent)
-Message 3: mcp__claude-flow__agent_spawn (another agent)
+Message 1: mcp__fidgetflo__swarm_init
+Message 2: mcp__fidgetflo__agent_spawn (just one agent)
+Message 3: mcp__fidgetflo__agent_spawn (another agent)
 Message 4: TodoWrite (single todo)
 Message 5: Write (single file)
 // This is 5x slower and wastes swarm coordination!
@@ -1066,7 +1066,7 @@ Every agent coordination step MUST use memory:
 
 ```
 // After each major decision or implementation
-mcp__claude-flow__memory_usage
+mcp__fidgetflo__memory_usage
   action: "store"
   key: "swarm-{id}/agent-{name}/{step}"
   value: {
@@ -1078,12 +1078,12 @@ mcp__claude-flow__memory_usage
   }
 
 // To retrieve coordination data
-mcp__claude-flow__memory_usage
+mcp__fidgetflo__memory_usage
   action: "retrieve"
   key: "swarm-{id}/agent-{name}/{step}"
 
 // To check all swarm progress
-mcp__claude-flow__memory_usage
+mcp__fidgetflo__memory_usage
   action: "list"
   pattern: "swarm-{id}/*"
 ```
@@ -1093,7 +1093,7 @@ mcp__claude-flow__memory_usage
 1. **Batch Everything**: Never operate on single files when multiple are needed
 2. **Parallel First**: Always think "what can run simultaneously?"
 3. **Memory is Key**: Use memory for ALL cross-agent coordination
-4. **Monitor Progress**: Use mcp**claude-flow**swarm_monitor for real-time tracking
+4. **Monitor Progress**: Use mcp**fidgetflo**swarm_monitor for real-time tracking
 5. **Auto-Optimize**: Let hooks handle topology and agent selection
 
 ### 🎨 VISUAL SWARM STATUS
@@ -1163,9 +1163,9 @@ Message 3: TodoWrite { todos: [{ id: "3", content: "Task 3", ... }] }
 // This breaks parallel coordination!
 ```
 
-## Claude Flow v2.0.0 Features
+## FidgetFlo v2.0.0 Features
 
-Claude Flow extends the base coordination with:
+FidgetFlo extends the base coordination with:
 
 - **🔗 GitHub Integration** - Deep repository management
 - **🎯 Project Templates** - Quick-start for common projects
@@ -1182,4 +1182,4 @@ Claude Flow extends the base coordination with:
 
 ---
 
-Remember: **Claude Flow coordinates, Claude Code creates!** Start with `mcp__claude-flow__swarm_init` to enhance your development workflow.
+Remember: **FidgetFlo coordinates, Claude Code creates!** Start with `mcp__fidgetflo__swarm_init` to enhance your development workflow.

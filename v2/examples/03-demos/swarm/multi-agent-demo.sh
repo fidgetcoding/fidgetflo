@@ -1,7 +1,7 @@
 #!/bin/bash
 # Multi-Agent Swarm Demo - Shows agent coordination in action
 
-echo "🐝 Claude Flow Multi-Agent Swarm Demo"
+echo "🐝 FidgetFlo Multi-Agent Swarm Demo"
 echo "====================================="
 echo ""
 echo "Watch multiple specialized agents work together to build a complete application!"
@@ -61,7 +61,7 @@ show_agent_activity "Backend Dev" "Adjusting endpoints based on Frontend needs"
 
 # Actually create the application
 echo -e "\n🏗️ Building the application..."
-../claude-flow swarm create \
+../fidgetflo swarm create \
   "Build a real-time dashboard with:
    - Live data updates
    - Multiple chart types

@@ -166,7 +166,7 @@ Result: Fast, reliable, production-ready
 # Store GOAP patterns with AI features
 export NODE_OPTIONS="--experimental-wasm-modules"
 
-npx claude-flow@alpha memory store \
+npx fidgetflo@alpha memory store \
   "goap/planning/advanced" \
   "Complex multi-step planning with A* pathfinding..." \
   --namespace goap \
@@ -179,7 +179,7 @@ npx claude-flow@alpha memory store \
 
 ```bash
 # Query GOAP patterns
-npx claude-flow@alpha memory query 'pathfinding' \
+npx fidgetflo@alpha memory query 'pathfinding' \
   --reasoningbank \
   --namespace goap
 
@@ -212,7 +212,7 @@ npx claude-flow@alpha memory query 'pathfinding' \
 
 **Before (v2.7.0-alpha.6):**
 ```
-Developer: npx claude-flow memory query 'pathfinding' --reasoningbank
+Developer: npx fidgetflo memory query 'pathfinding' --reasoningbank
 System: [hangs...]
 System: [30 seconds pass...]
 System: [60 seconds pass...]
@@ -224,7 +224,7 @@ Developer: 😤 "ReasoningBank doesn't work, I'll just use basic mode"
 
 **After (v2.7.0-alpha.7):**
 ```
-Developer: npx claude-flow memory query 'pathfinding' --reasoningbank
+Developer: npx fidgetflo memory query 'pathfinding' --reasoningbank
 System: [INFO] Semantic search returned 0 results, trying SQL fallback
 System: ✅ Found 1 results (in ~3s)
 System: 📌 goap_planner - A* pathfinding algorithm...
@@ -361,6 +361,6 @@ Semantic similarity will be a **bonus feature** in v2.8.0+, not a requirement fo
 ---
 
 **Report Created:** 2025-10-13
-**Version:** claude-flow v2.7.0-alpha.7
+**Version:** fidgetflo v2.7.0-alpha.7
 **Assessment:** ✅ **PRODUCTION READY**
 **Confidence:** **HIGH** (validated in Docker tests)

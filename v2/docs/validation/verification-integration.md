@@ -35,7 +35,7 @@ export VERIFICATION_MODE=strict
 export VERIFICATION_ROLLBACK=true
 
 # Run swarm with verification hooks
-claude-flow swarm "Build REST API" --verify
+fidgetflo swarm "Build REST API" --verify
 
 # The swarm will:
 # 1. Run pre-task verification
@@ -48,7 +48,7 @@ claude-flow swarm "Build REST API" --verify
 
 ```bash
 # Non-interactive with verification
-claude-flow swarm "Build feature" \
+fidgetflo swarm "Build feature" \
   -p \
   --output-format stream-json \
   --verify \
@@ -79,7 +79,7 @@ Verification results automatically feed into the training system:
 
 ```bash
 # View training data
-cat .claude-flow/training/verification-data.jsonl
+cat .fidgetflo/training/verification-data.jsonl
 
 # Sample output:
 {"taskId":"task-123","agentType":"coder","preScore":1,"postScore":0.75,"success":false,"timestamp":"2025-01-12T15:00:00Z"}
@@ -111,10 +111,10 @@ export VERIFICATION_THRESHOLD=0.95
 
 ```bash
 # 1. Initialize verification
-./claude-flow verify init strict
+./fidgetflo verify init strict
 
 # 2. Run a coder task with verification
-./claude-flow swarm "Implement user authentication" --verify
+./fidgetflo swarm "Implement user authentication" --verify
 
 # Output:
 🔍 Pre-task verification: swarm-123 (coder)

@@ -6,7 +6,7 @@ Complete guide to managing pair programming sessions.
 
 ### 1. Initialization
 ```bash
-claude-flow pair --start
+fidgetflo pair --start
 ```
 
 ### 2. Active Session
@@ -17,7 +17,7 @@ claude-flow pair --start
 
 ### 3. Completion
 ```bash
-claude-flow pair --end
+fidgetflo pair --end
 ```
 
 ## Session Commands
@@ -93,7 +93,7 @@ During an active session, use these commands:
 Check current session status:
 
 ```bash
-claude-flow pair --status
+fidgetflo pair --status
 ```
 
 Output:
@@ -127,7 +127,7 @@ Next Switch: in 3 minutes
 View past sessions:
 
 ```bash
-claude-flow pair --history
+fidgetflo pair --history
 ```
 
 Output:
@@ -194,17 +194,17 @@ Rollbacks: 1
 
 ### Save Session
 ```bash
-claude-flow pair --save [--name <name>]
+fidgetflo pair --save [--name <name>]
 ```
 
 ### Load Session
 ```bash
-claude-flow pair --load <session-id>
+fidgetflo pair --load <session-id>
 ```
 
 ### Export Session
 ```bash
-claude-flow pair --export <session-id> [--format json|md]
+fidgetflo pair --export <session-id> [--format json|md]
 ```
 
 ## Background Sessions
@@ -213,17 +213,17 @@ Run pair programming in background:
 
 ### Start Background Session
 ```bash
-claude-flow pair --start --background
+fidgetflo pair --start --background
 ```
 
 ### Monitor Background Session
 ```bash
-claude-flow pair --monitor
+fidgetflo pair --monitor
 ```
 
 ### Attach to Background Session
 ```bash
-claude-flow pair --attach <session-id>
+fidgetflo pair --attach <session-id>
 ```
 
 ## Session Configuration
@@ -245,7 +245,7 @@ claude-flow pair --attach <session-id>
 
 ### Per-Session Config
 ```bash
-claude-flow pair --start \
+fidgetflo pair --start \
   --config custom-config.json
 ```
 
@@ -253,7 +253,7 @@ claude-flow pair --start \
 
 ### Refactoring Template
 ```bash
-claude-flow pair --template refactor
+fidgetflo pair --template refactor
 ```
 - Focus: Code improvement
 - Verification: High (0.98)
@@ -262,7 +262,7 @@ claude-flow pair --template refactor
 
 ### Feature Template
 ```bash
-claude-flow pair --template feature
+fidgetflo pair --template feature
 ```
 - Focus: Implementation
 - Verification: Standard (0.95)
@@ -271,7 +271,7 @@ claude-flow pair --template feature
 
 ### Debug Template
 ```bash
-claude-flow pair --template debug
+fidgetflo pair --template debug
 ```
 - Focus: Problem solving
 - Verification: Moderate (0.90)
@@ -280,7 +280,7 @@ claude-flow pair --template debug
 
 ### Learning Template
 ```bash
-claude-flow pair --template learn
+fidgetflo pair --template learn
 ```
 - Mode: Mentor
 - Pace: Slow
@@ -292,7 +292,7 @@ claude-flow pair --template learn
 Generate session report:
 
 ```bash
-claude-flow pair --report <session-id>
+fidgetflo pair --report <session-id>
 ```
 
 Report includes:
@@ -308,17 +308,17 @@ Report includes:
 
 ### List Active Sessions
 ```bash
-claude-flow pair --list
+fidgetflo pair --list
 ```
 
 ### Switch Between Sessions
 ```bash
-claude-flow pair --switch <session-id>
+fidgetflo pair --switch <session-id>
 ```
 
 ### Merge Sessions
 ```bash
-claude-flow pair --merge <session-1> <session-2>
+fidgetflo pair --merge <session-1> <session-2>
 ```
 
 ## Session Recovery
@@ -328,49 +328,49 @@ Sessions auto-save every 5 minutes with recovery points.
 
 ### Manual Recovery
 ```bash
-claude-flow pair --recover [--point <timestamp>]
+fidgetflo pair --recover [--point <timestamp>]
 ```
 
 ### Crash Recovery
 ```bash
-claude-flow pair --crash-recovery
+fidgetflo pair --crash-recovery
 ```
 
 ## Session Sharing
 
 ### Share with Team
 ```bash
-claude-flow pair --share <session-id> \
+fidgetflo pair --share <session-id> \
   --team <team-id>
 ```
 
 ### Export for Review
 ```bash
-claude-flow pair --export-review <session-id>
+fidgetflo pair --export-review <session-id>
 ```
 
 ### Create Learning Material
 ```bash
-claude-flow pair --create-tutorial <session-id>
+fidgetflo pair --create-tutorial <session-id>
 ```
 
 ## Advanced Features
 
 ### Session Recording
 ```bash
-claude-flow pair --start --record
+fidgetflo pair --start --record
 ```
 Records all interactions for playback.
 
 ### Session Replay
 ```bash
-claude-flow pair --replay <session-id>
+fidgetflo pair --replay <session-id>
 ```
 Replay recorded session for learning.
 
 ### Session Analytics
 ```bash
-claude-flow pair --analytics <session-id>
+fidgetflo pair --analytics <session-id>
 ```
 Deep analysis of session patterns.
 

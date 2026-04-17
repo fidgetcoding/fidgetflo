@@ -7,7 +7,7 @@
 
 ## Context
 
-The `@anthropic-ai/claude-code` package (v2.1.1) provides the official CLI for Claude AI. Deep integration with Claude Code enables enhanced developer experience for claude-flow users. This ADR documents **undocumented integration points** discovered through source code analysis that are not covered in official documentation.
+The `@anthropic-ai/claude-code` package (v2.1.1) provides the official CLI for Claude AI. Deep integration with Claude Code enables enhanced developer experience for fidgetflo users. This ADR documents **undocumented integration points** discovered through source code analysis that are not covered in official documentation.
 
 ### Analysis Methodology
 
@@ -121,22 +121,22 @@ interface PreToolUseOutput {
     "PreToolUse": [
       {
         "matcher": "Bash",
-        "hooks": ["npx claude-flow@v3alpha hooks modify-bash"]
+        "hooks": ["npx fidgetflo@v3alpha hooks modify-bash"]
       },
       {
         "matcher": "Write|Edit",
-        "hooks": ["npx claude-flow@v3alpha hooks modify-file"]
+        "hooks": ["npx fidgetflo@v3alpha hooks modify-file"]
       }
     ],
     "PostToolUse": [
       {
         "matcher": ".*",
-        "hooks": ["npx claude-flow@v3alpha hooks post-command"]
+        "hooks": ["npx fidgetflo@v3alpha hooks post-command"]
       }
     ],
     "UserPromptSubmit": [
       {
-        "hooks": ["npx claude-flow@v3alpha hooks route --task \"$PROMPT\""]
+        "hooks": ["npx fidgetflo@v3alpha hooks route --task \"$PROMPT\""]
       }
     ]
   }
@@ -239,9 +239,9 @@ MCP servers can have per-tool access control:
 ```json
 {
   "mcpServers": {
-    "claude-flow": {
+    "fidgetflo": {
       "command": "npx",
-      "args": ["claude-flow@v3alpha", "mcp", "start"],
+      "args": ["fidgetflo@v3alpha", "mcp", "start"],
       "allowlist": [
         "swarm_init",
         "agent_spawn",
@@ -403,7 +403,7 @@ export async function configureIntegration(options: {
 
   // Add MCP server if requested
   if (options.enableMcp && status.configPath) {
-    await exec(`claude mcp add ${options.mcpServerName || 'claude-flow'} npx claude-flow@v3alpha mcp start`);
+    await exec(`claude mcp add ${options.mcpServerName || 'fidgetflo'} npx fidgetflo@v3alpha mcp start`);
   }
 }
 ```
@@ -414,7 +414,7 @@ export async function configureIntegration(options: {
 // src/claude-code/hooks.ts
 
 /**
- * Install claude-flow hooks into Claude Code settings
+ * Install fidgetflo hooks into Claude Code settings
  */
 export async function installHooks(): Promise<void> {
   const status = await detectClaudeCode();
@@ -436,7 +436,7 @@ export async function installHooks(): Promise<void> {
   if (!bashHook) {
     settings.hooks.PreToolUse.push({
       matcher: 'Bash',
-      hooks: ['npx claude-flow@v3alpha hooks modify-bash']
+      hooks: ['npx fidgetflo@v3alpha hooks modify-bash']
     });
   }
 
@@ -448,24 +448,24 @@ export async function installHooks(): Promise<void> {
 
 ## CLI Integration Commands
 
-### `claude-flow setup claude-code`
+### `fidgetflo setup claude-code`
 
 ```bash
 # Auto-detect and configure integration
-npx claude-flow@v3alpha setup claude-code
+npx fidgetflo@v3alpha setup claude-code
 
 # Options:
 #   --hooks         Install hooks into Claude Code settings
-#   --mcp           Register claude-flow MCP server
+#   --mcp           Register fidgetflo MCP server
 #   --agents        Install custom agent definitions
 #   --verify        Verify integration status
 ```
 
-### `claude-flow doctor --claude-code`
+### `fidgetflo doctor --claude-code`
 
 ```bash
 # Check Claude Code integration health
-npx claude-flow@v3alpha doctor --claude-code
+npx fidgetflo@v3alpha doctor --claude-code
 
 # Output:
 # ✓ Claude Code installed (v2.1.1)
@@ -492,9 +492,9 @@ Hooks execute with user permissions. Recommendations:
 // Recommended MCP server configuration
 {
   "mcpServers": {
-    "claude-flow": {
+    "fidgetflo": {
       "command": "npx",
-      "args": ["claude-flow@v3alpha", "mcp", "start"],
+      "args": ["fidgetflo@v3alpha", "mcp", "start"],
       // Restrict to safe tools only
       "allowlist": [
         "memory_*",

@@ -172,7 +172,7 @@ Get embeddings system status and configuration.
 │          ▼                     ▼                    ▼       │
 │  ┌─────────────────────────────────────────────────────────┐│
 │  │               Configuration Layer                        ││
-│  │    .claude-flow/embeddings.json (persistent config)      ││
+│  │    .fidgetflo/embeddings.json (persistent config)      ││
 │  └─────────────────────────────────────────────────────────┘│
 │                          │                                   │
 │          ┌───────────────┼───────────────┐                  │
@@ -213,12 +213,12 @@ where scale ensures ||m|| < maxNorm
 
 ## Configuration
 
-Tools store configuration in `.claude-flow/embeddings.json`:
+Tools store configuration in `.fidgetflo/embeddings.json`:
 
 ```json
 {
   "model": "all-MiniLM-L6-v2",
-  "modelPath": ".claude-flow/models",
+  "modelPath": ".fidgetflo/models",
   "dimension": 384,
   "cacheSize": 256,
   "hyperbolic": {

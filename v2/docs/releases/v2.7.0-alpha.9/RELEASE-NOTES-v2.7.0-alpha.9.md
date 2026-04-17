@@ -12,7 +12,7 @@
 CLI commands would hang indefinitely after successful execution, requiring manual termination (Ctrl+C).
 
 ```bash
-$ npx claude-flow@alpha memory store test "data" --reasoningbank
+$ npx fidgetflo@alpha memory store test "data" --reasoningbank
 ✅ Stored successfully in ReasoningBank
 [ReasoningBank] Database connection closed
 # Process hangs here indefinitely ❌
@@ -63,7 +63,7 @@ export function cleanup() {
 
 ### Verified with Real Data
 ```bash
-$ ./claude-flow memory store semantic_test "config data" --reasoningbank
+$ ./fidgetflo memory store semantic_test "config data" --reasoningbank
 ✅ Stored successfully
 [ReasoningBank] Database connection closed
 $ echo $?  # Exit code: 0 ✅
@@ -103,13 +103,13 @@ $ echo $?  # Exit code: 0 ✅
 
 ### Before (alpha.8)
 ```bash
-$ timeout 10 npx claude-flow@alpha memory store test "data"
+$ timeout 10 npx fidgetflo@alpha memory store test "data"
 # Timed out after 10s ❌
 ```
 
 ### After (alpha.9)
 ```bash
-$ timeout 5 node bin/claude-flow.js memory store test "data" --reasoningbank
+$ timeout 5 node bin/fidgetflo.js memory store test "data" --reasoningbank
 ✅ Stored successfully in ReasoningBank
 [ReasoningBank] Database connection closed
 ✅ PROCESS EXITED SUCCESSFULLY
@@ -128,17 +128,17 @@ $ sqlite3 .swarm/memory.db "SELECT COUNT(*) FROM patterns WHERE type='reasoning_
 ### Update to Latest Alpha
 ```bash
 # NPM
-npm install -g claude-flow@alpha
+npm install -g fidgetflo@alpha
 
 # Or use npx (always latest)
-npx claude-flow@alpha --version
+npx fidgetflo@alpha --version
 # Output: v2.7.0-alpha.9
 ```
 
 ### Verify Fix
 ```bash
 # Test command exits properly
-npx claude-flow@alpha memory store test_fix "verification" --reasoningbank
+npx fidgetflo@alpha memory store test_fix "verification" --reasoningbank
 # Should complete and exit within 2 seconds ✅
 ```
 
@@ -164,7 +164,7 @@ npx claude-flow@alpha memory store test_fix "verification" --reasoningbank
 
 ### From alpha.8
 ```bash
-npm install -g claude-flow@alpha
+npm install -g fidgetflo@alpha
 # Automatic update, no migration needed
 ```
 
@@ -182,7 +182,7 @@ None - this release resolves the critical process hanging issue.
 ## 📝 Next Steps
 
 Users should:
-1. ✅ Update to alpha.9: `npm install -g claude-flow@alpha`
+1. ✅ Update to alpha.9: `npm install -g fidgetflo@alpha`
 2. ✅ Test commands exit properly
 3. ✅ Verify data persistence: `ls -lh .swarm/memory.db`
 
@@ -205,4 +205,4 @@ Users should:
 ---
 
 **Status**: ✅ **PRODUCTION READY**
-**Recommendation**: Safe to deploy `claude-flow@2.7.0-alpha.9` for production use.
+**Recommendation**: Safe to deploy `fidgetflo@2.7.0-alpha.9` for production use.

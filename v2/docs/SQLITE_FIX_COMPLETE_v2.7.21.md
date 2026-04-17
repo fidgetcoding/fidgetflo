@@ -2,7 +2,7 @@
 
 **Status:** ✅ **FULLY WORKING**
 **Date:** 2025-10-25
-**Versions:** claude-flow@2.7.21 + agentic-flow@1.8.4
+**Versions:** fidgetflo@2.7.21 + agentic-flow@1.8.4
 
 ---
 
@@ -11,7 +11,7 @@
 npx users can now use **full SQLite + ReasoningBank features** with memory commands!
 
 ```bash
-$ npx claude-flow@alpha memory store "api-design" "REST with JWT auth"
+$ npx fidgetflo@alpha memory store "api-design" "REST with JWT auth"
 
 ℹ️  🧠 Using ReasoningBank mode...
 [ReasoningBank] Initializing...
@@ -33,7 +33,7 @@ $ npx claude-flow@alpha memory store "api-design" "REST with JWT auth"
 
 ### Original Issue
 ```bash
-npx claude-flow@alpha memory store "key" "value"
+npx fidgetflo@alpha memory store "key" "value"
 ❌ TypeError: BetterSqlite3 is not a constructor
 ❌ Failed to store: Failed to initialize ReasoningBank
 ```
@@ -84,9 +84,9 @@ This caused all SQLite operations to fail because the Database constructor was n
    - Version: 1.8.4
    - Package: https://www.npmjs.com/package/agentic-flow
 
-### Step 2: Updated claude-flow@2.7.21
+### Step 2: Updated fidgetflo@2.7.21
 
-**Changes made to claude-flow:**
+**Changes made to fidgetflo:**
 
 1. **Updated dependency** (`package.json`):
    ```json
@@ -104,7 +104,7 @@ This caused all SQLite operations to fail because the Database constructor was n
 
 3. **Published to npm:**
    - Version: 2.7.21
-   - Package: https://www.npmjs.com/package/claude-flow
+   - Package: https://www.npmjs.com/package/fidgetflo
 
 ---
 
@@ -138,21 +138,21 @@ This caused all SQLite operations to fail because the Database constructor was n
 
 ### Store Memory
 ```bash
-npx claude-flow@alpha memory store "api-pattern" "REST with JWT auth"
+npx fidgetflo@alpha memory store "api-pattern" "REST with JWT auth"
 # ✅ Stored successfully in ReasoningBank
 # 🧠 Memory ID: 998e10dc-db9a-4625-8f2d-458827dbb933
 ```
 
 ### Query with Semantic Search
 ```bash
-npx claude-flow@alpha memory query "authentication"
+npx fidgetflo@alpha memory query "authentication"
 # ✅ Found 1 result(s):
 #    api-pattern = REST with JWT auth (similarity: 0.87)
 ```
 
 ### View Statistics
 ```bash
-npx claude-flow@alpha memory stats
+npx fidgetflo@alpha memory stats
 # ✅ Memory Bank Statistics:
 #    Total Entries: 5
 #    Embeddings: 5
@@ -161,7 +161,7 @@ npx claude-flow@alpha memory stats
 
 ### Check System Status
 ```bash
-npx claude-flow@alpha memory status
+npx fidgetflo@alpha memory status
 # ✅ ReasoningBank Status:
 #    Total memories: 5
 #    Average confidence: 85.2%
@@ -179,7 +179,7 @@ npx claude-flow@alpha memory status
 2. `dist/reasoningbank/db/queries.js` - Built output with fix
 3. `package.json` - Added better-sqlite3 dependency
 
-**claude-flow@2.7.21:**
+**fidgetflo@2.7.21:**
 1. `package.json` - Updated to agentic-flow@1.8.4
 2. `src/reasoningbank/reasoningbank-adapter.js` - Maintained fallback logic
 3. `src/cli/simple-commands/memory.js` - Enhanced error handling
@@ -187,7 +187,7 @@ npx claude-flow@alpha memory status
 ### Dependency Tree
 
 ```
-claude-flow@2.7.21
+fidgetflo@2.7.21
 └── agentic-flow@1.8.4
     └── better-sqlite3@11.10.0 (now working!)
 ```
@@ -199,7 +199,7 @@ claude-flow@2.7.21
 - Branch: `updates-oct-25`
 - Published: v1.8.4
 
-**claude-flow repository:**
+**fidgetflo repository:**
 - `fix: v2.7.21 - Update to agentic-flow@1.8.4`
 - Branch: `fix/dependency-update-v2.7.14`
 - Published: v2.7.21
@@ -216,7 +216,7 @@ No action needed! v2.7.21 will automatically upgrade you to SQLite:
 
 ```bash
 # Just upgrade to latest
-npx claude-flow@alpha memory store "key" "value"
+npx fidgetflo@alpha memory store "key" "value"
 # Will now use SQLite instead of JSON
 ```
 
@@ -224,10 +224,10 @@ npx claude-flow@alpha memory store "key" "value"
 
 ```bash
 # Export from JSON (if you have old data)
-npx claude-flow@2.7.20 memory export backup.json
+npx fidgetflo@2.7.20 memory export backup.json
 
 # Import to SQLite (with new version)
-npx claude-flow@alpha memory import backup.json
+npx fidgetflo@alpha memory import backup.json
 ```
 
 ### For New Users
@@ -235,7 +235,7 @@ npx claude-flow@alpha memory import backup.json
 Just use the latest version:
 
 ```bash
-npx claude-flow@alpha memory store "my-key" "my-value"
+npx fidgetflo@alpha memory store "my-key" "my-value"
 # ✅ Works perfectly with SQLite!
 ```
 
@@ -265,17 +265,17 @@ npx claude-flow@alpha memory store "my-key" "my-value"
 **1. Clear npx cache:**
 ```bash
 rm -rf ~/.npm/_npx/
-npx claude-flow@alpha memory store "test" "value"
+npx fidgetflo@alpha memory store "test" "value"
 ```
 
 **2. Use specific version:**
 ```bash
-npx claude-flow@2.7.21 memory store "test" "value"
+npx fidgetflo@2.7.21 memory store "test" "value"
 ```
 
 **3. Verify version:**
 ```bash
-npx claude-flow@alpha --version
+npx fidgetflo@alpha --version
 # Should show: v2.7.21 or higher
 ```
 
@@ -312,6 +312,6 @@ Full details: https://github.com/ruvnet/claude-flow/issues/840
 
 **The npx memory command issue is now COMPLETELY FIXED!** 🎉
 
-**Version:** claude-flow@2.7.21 + agentic-flow@1.8.4
+**Version:** fidgetflo@2.7.21 + agentic-flow@1.8.4
 **Status:** ✅ Production Ready
 **Tested:** Multiple remote environments with npx

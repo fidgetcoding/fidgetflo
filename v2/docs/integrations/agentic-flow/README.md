@@ -35,7 +35,7 @@
 ### Installation
 
 ```bash
-# Install agentic-flow (automatically included in claude-flow)
+# Install agentic-flow (automatically included in fidgetflo)
 npm install agentic-flow@^1.7.0
 
 # Or update existing installation
@@ -113,10 +113,10 @@ See [RELEASE-v1.7.1.md](./RELEASE-v1.7.1.md) for complete details and API exampl
 
 ## 🔗 Related Documentation
 
-### Claude-Flow Integration
-- **[AgentDB Integration](../../agentdb/)** - AgentDB v1.3.9 integration in claude-flow
+### FidgetFlo Integration
+- **[AgentDB Integration](../../agentdb/)** - AgentDB v1.3.9 integration in fidgetflo
 - **[ReasoningBank Architecture](../../reasoningbank/architecture.md)** - ReasoningBank system design
-- **[Integration Architecture](../reasoningbank/REASONINGBANK_ARCHITECTURE.md)** - How claude-flow uses agentic-flow
+- **[Integration Architecture](../reasoningbank/REASONINGBANK_ARCHITECTURE.md)** - How fidgetflo uses agentic-flow
 
 ### Upstream Resources
 - **[GitHub Repository](https://github.com/ruvnet/agentic-flow)** - Agentic-flow source code
@@ -127,17 +127,17 @@ See [RELEASE-v1.7.1.md](./RELEASE-v1.7.1.md) for complete details and API exampl
 
 ## 💡 Best Practices
 
-### For Claude-Flow Users
+### For FidgetFlo Users
 
 1. **Automatic Benefits**: Claude-flow uses `"agentic-flow": "*"` dependency
    - Always gets latest agentic-flow version
    - No manual updates needed
    - All performance improvements automatic
 
-2. **Recommended Approach**: Let claude-flow manage integration
+2. **Recommended Approach**: Let fidgetflo manage integration
    - Don't pin agentic-flow version
    - Trust semver for backwards compatibility
-   - Update claude-flow to get agentic-flow updates
+   - Update fidgetflo to get agentic-flow updates
 
 3. **Advanced Usage**: Optional direct usage
    ```typescript
@@ -177,9 +177,9 @@ npm run bench:search -- --vectors 100000
 
 See [agentic-flow#34](https://github.com/ruvnet/agentic-flow/issues/34) for details.
 
-### Claude-Flow Impact
+### FidgetFlo Impact
 
-All improvements automatically benefit claude-flow users:
+All improvements automatically benefit fidgetflo users:
 - No code changes required
 - Seamless updates via npm
 - 100% backwards compatibility guaranteed
@@ -213,7 +213,7 @@ For users upgrading from v1.6.x to v1.7.0:
 - [ ] Verify performance: `npm run bench:*`
 - [ ] Update documentation if using new APIs
 
-**Note**: For claude-flow users, run `npm update` in the claude-flow directory.
+**Note**: For fidgetflo users, run `npm update` in the fidgetflo directory.
 
 ---
 
@@ -226,4 +226,4 @@ For users upgrading from v1.6.x to v1.7.0:
 ---
 
 *Last Updated: 2025-01-24*
-*This documentation is part of the claude-flow project.*
+*This documentation is part of the fidgetflo project.*

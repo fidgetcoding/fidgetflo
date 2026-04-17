@@ -9,7 +9,7 @@
 After agentic-flow@1.5.13 integration, CLI commands would execute successfully but fail to exit:
 
 ```bash
-npx claude-flow@alpha memory store test_key "data" --reasoningbank
+npx fidgetflo@alpha memory store test_key "data" --reasoningbank
 # Output: ✅ Stored successfully in ReasoningBank
 # Process hangs indefinitely (requires Ctrl+C)
 ```
@@ -77,13 +77,13 @@ Added explicit exit after cleanup in CLI commands:
 
 ### Before Fix (alpha.8):
 ```bash
-$ timeout 10 npx claude-flow@alpha memory store test "data" --reasoningbank
+$ timeout 10 npx fidgetflo@alpha memory store test "data" --reasoningbank
 # Command timed out after 10s (process hanging)
 ```
 
 ### After Fix (alpha.9):
 ```bash
-$ timeout 5 node bin/claude-flow.js memory store test "data" --reasoningbank
+$ timeout 5 node bin/fidgetflo.js memory store test "data" --reasoningbank
 ✅ ✅ Stored successfully in ReasoningBank
 [ReasoningBank] Database connection closed
 ✅ PROCESS EXITED SUCCESSFULLY
@@ -136,10 +136,10 @@ None - this is a complete fix for the process hanging issue.
 
 ```bash
 # Install latest alpha
-npm install -g claude-flow@alpha
+npm install -g fidgetflo@alpha
 
 # Or use npx (always fetches latest)
-npx claude-flow@alpha --version
+npx fidgetflo@alpha --version
 # Should show: v2.7.0-alpha.9
 ```
 

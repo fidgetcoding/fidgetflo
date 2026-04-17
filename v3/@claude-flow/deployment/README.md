@@ -7,7 +7,7 @@
 [![CI/CD](https://img.shields.io/badge/CI%2FCD-Automated-green.svg)](https://github.com/ruvnet/claude-flow)
 [![Semantic Release](https://img.shields.io/badge/Semantic-Release-brightgreen.svg)](https://semantic-release.gitbook.io/)
 
-> Release management, CI/CD, and versioning module for Claude Flow v3.
+> Release management, CI/CD, and versioning module for FidgetFlo v3.
 
 ## Features
 

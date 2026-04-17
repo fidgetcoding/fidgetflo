@@ -80,7 +80,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   - JSON Schema 1.1 validation (Draft 2020-12) with format support
   - Enhanced MCP server with dual-mode operation (2025-11 + legacy)
   - Server factory with automatic feature detection
-  - Enable with: `npx claude-flow mcp start --mcp2025`
+  - Enable with: `npx fidgetflo mcp start --mcp2025`
 - **Progressive Disclosure Pattern** - 98.7% token reduction (150k→2k tokens)
   - Filesystem-based tool discovery with lazy loading
   - Tools loaded on first invocation instead of at startup
@@ -236,7 +236,7 @@ NEW:
 docker build -f tests/docker/Dockerfile.v2.7.31-test -t test .
 docker run --rm test
 
-✅ Test 1: Claude-Flow version is v2.7.31
+✅ Test 1: FidgetFlo version is v2.7.31
 ✅ Test 2: agentic-flow is ^1.9.4 in package.json
 ✅ Test 3: agentic-flow 1.9.4 installed
 ✅ Test 4: agentdb 1.6.1 still installed (no regression)
@@ -250,13 +250,13 @@ docker run --rm test
 
 ```bash
 # NPX users (recommended)
-npx claude-flow@latest init
+npx fidgetflo@latest init
 
 # Global installation
-npm install -g claude-flow@latest
+npm install -g fidgetflo@latest
 
 # Verify
-claude-flow --version  # v2.7.31
+fidgetflo --version  # v2.7.31
 ```
 
 ### 💡 CLI Features (via agentic-flow v1.9.4)
@@ -344,13 +344,13 @@ docker run --rm test
 
 ```bash
 # NPX users (recommended)
-npx claude-flow@latest init
+npx fidgetflo@latest init
 
 # Global installation
-npm install -g claude-flow@latest
+npm install -g fidgetflo@latest
 
 # Verify
-claude-flow --version  # v2.7.30
+fidgetflo --version  # v2.7.30
 ```
 
 ### 🔗 Related Issues
@@ -377,7 +377,7 @@ Fixed critical installation blocker by removing `@xenova/transformers@^3.2.0` an
 
 ### 🐛 Bug Fixed
 
-**Issue**: Users unable to install claude-flow due to non-existent dependency
+**Issue**: Users unable to install fidgetflo due to non-existent dependency
 ```
 npm error Could not resolve dependency:
 npm error optional @xenova/transformers@"^3.2.0"
@@ -417,8 +417,8 @@ npm error optional @xenova/transformers@"^3.2.0"
 **Docker Validation** (`tests/docker/Dockerfile.v2.7.29-test`):
 ```bash
 # Build and test
-docker build -f tests/docker/Dockerfile.v2.7.29-test -t claude-flow-v2.7.29-test .
-docker run --rm claude-flow-v2.7.29-test
+docker build -f tests/docker/Dockerfile.v2.7.29-test -t fidgetflo-v2.7.29-test .
+docker run --rm fidgetflo-v2.7.29-test
 
 ✅ Test 1: Version is v2.7.29
 ✅ Test 2: @xenova/transformers removed
@@ -432,13 +432,13 @@ docker run --rm claude-flow-v2.7.29-test
 
 ```bash
 # NPX users (recommended)
-npx claude-flow@latest init
+npx fidgetflo@latest init
 
 # Global installation
-npm install -g claude-flow@latest
+npm install -g fidgetflo@latest
 
 # Verify
-claude-flow --version  # v2.7.29
+fidgetflo --version  # v2.7.29
 ```
 
 ### 📝 Affected Versions
@@ -473,7 +473,7 @@ Removed automatic installation of `agentic-payments` MCP server from the init pr
 #### 1. **Removed from setupMcpServers Function** (`src/cli/simple-commands/init/index.js:104-120`)
    - Removed agentic-payments server configuration
    - Reduced automatic MCP servers from 4 to 3:
-     - ✅ claude-flow (core)
+     - ✅ fidgetflo (core)
      - ✅ ruv-swarm (coordination)
      - ✅ flow-nexus (advanced features)
      - ❌ agentic-payments (removed)
@@ -531,10 +531,10 @@ Removed automatic installation of `agentic-payments` MCP server from the init pr
 **Run Tests**:
 ```bash
 # Build test image
-docker build -f tests/docker/Dockerfile.init-test -t claude-flow-init-test:v2.7.28 .
+docker build -f tests/docker/Dockerfile.init-test -t fidgetflo-init-test:v2.7.28 .
 
 # Run tests
-docker run --rm claude-flow-init-test:v2.7.28
+docker run --rm fidgetflo-init-test:v2.7.28
 ```
 
 ### 🔄 Migration Guide
@@ -551,7 +551,7 @@ claude mcp add agentic-payments npx agentic-payments@latest mcp
 ```json
 {
   "mcpServers": {
-    "claude-flow@alpha": { ... },
+    "fidgetflo@alpha": { ... },
     "ruv-swarm": { ... },
     "flow-nexus": { ... },
     "agentic-payments": {
@@ -590,7 +590,7 @@ claude mcp add agentic-payments npx agentic-payments@latest mcp
 Modified:
   • src/cli/simple-commands/init/index.js
   • src/core/MCPIntegrator.ts
-  • bin/claude-flow (version bump)
+  • bin/fidgetflo (version bump)
   • package.json (version bump)
 
 Created:
@@ -610,7 +610,7 @@ Created:
 
 #### Why Not Make All Optional?
 
-- **claude-flow**: Core orchestration - always needed
+- **fidgetflo**: Core orchestration - always needed
 - **ruv-swarm**: Enhanced coordination - core feature
 - **flow-nexus**: Advanced features - commonly used
 - **agentic-payments**: Specialized use case - opt-in
@@ -620,15 +620,15 @@ Created:
 #### NPX Users (Automatic)
 ```bash
 # Next run uses v2.7.28
-npx claude-flow@latest init
+npx fidgetflo@latest init
 ```
 
 #### Global Install Users
 ```bash
-npm update -g claude-flow
+npm update -g fidgetflo
 
 # Verify version
-claude-flow --version  # Should show v2.7.28
+fidgetflo --version  # Should show v2.7.28
 ```
 
 ### 🔗 Related Documentation
@@ -644,31 +644,31 @@ claude-flow --version  # Should show v2.7.28
 > **🐛 Critical Bug Fix**: NPX ENOTEMPTY error fix with automatic retry and cache cleanup
 
 ### Summary
-Fixed NPM ENOTEMPTY errors occurring during npx claude-flow execution, particularly after recent agentic-flow module updates. Implemented automatic retry logic with exponential backoff and intelligent cache cleanup.
+Fixed NPM ENOTEMPTY errors occurring during npx fidgetflo execution, particularly after recent agentic-flow module updates. Implemented automatic retry logic with exponential backoff and intelligent cache cleanup.
 
 ### 🐛 Bug Fixed
 
-**Issue**: NPM encounters ENOTEMPTY errors when npx tries to install claude-flow
+**Issue**: NPM encounters ENOTEMPTY errors when npx tries to install fidgetflo
 - Error: `npm error ENOTEMPTY: directory not empty, rename '/home/codespace/.npm/_npx/.../node_modules/agentic-flow'`
 - Occurred frequently after v2.7.26 updates
 - Caused by concurrent NPX executions and cache conflicts
 
 ### 🔧 Solution Implemented
 
-#### 1. **Automatic Retry Logic** (`bin/claude-flow:62-101`)
+#### 1. **Automatic Retry Logic** (`bin/fidgetflo:62-101`)
    - **3 retry attempts** with exponential backoff
    - **Wait times**: 2s, 4s, 8s between retries
    - **ENOTEMPTY-specific**: Only retries on this error type
    - **Error detection**: Grep-based pattern matching
    - **User feedback**: Clear progress messages during retries
 
-#### 2. **Cache Cleanup Function** (`bin/claude-flow:53-59`)
+#### 2. **Cache Cleanup Function** (`bin/fidgetflo:53-59`)
    - **Automatic cleanup**: Removes stale cache directories
    - **Safe cleanup**: Only removes directories >1 hour old
    - **Non-blocking**: Doesn't disrupt concurrent operations
    - **Smart timing**: Triggered only on ENOTEMPTY errors
 
-#### 3. **NPX Optimization Flags** (`bin/claude-flow:113`)
+#### 3. **NPX Optimization Flags** (`bin/fidgetflo:113`)
    - **--yes**: Skip confirmation prompts
    - **--prefer-offline**: Use cache when available
    - **Reduced conflicts**: Fewer concurrent cache operations
@@ -704,16 +704,16 @@ Fixed NPM ENOTEMPTY errors occurring during npx claude-flow execution, particula
 **Run Tests**:
 ```bash
 # Build test image
-docker build -f tests/docker/Dockerfile.npx-test -t claude-flow-npx-test:v2.7.27 .
+docker build -f tests/docker/Dockerfile.npx-test -t fidgetflo-npx-test:v2.7.27 .
 
 # Run tests
-docker run --rm claude-flow-npx-test:v2.7.27
+docker run --rm fidgetflo-npx-test:v2.7.27
 ```
 
 ### 🔧 Technical Details
 
 **Files Modified**:
-- `bin/claude-flow` - Added retry logic and cache cleanup
+- `bin/fidgetflo` - Added retry logic and cache cleanup
 - `package.json` - Version bump to 2.7.27
 
 **New Files**:
@@ -724,14 +724,14 @@ docker run --rm claude-flow-npx-test:v2.7.27
 
 ```bash
 # NPX users (always latest)
-npx claude-flow@latest --version  # Should show v2.7.27
+npx fidgetflo@latest --version  # Should show v2.7.27
 
 # Global install users
-npm update -g claude-flow
-claude-flow --version  # Should show v2.7.27
+npm update -g fidgetflo
+fidgetflo --version  # Should show v2.7.27
 
 # Verify the fix
-npx claude-flow@latest init
+npx fidgetflo@latest init
 # Should complete without ENOTEMPTY errors
 ```
 
@@ -794,12 +794,12 @@ This release COMPLETELY resolves the MCP stdio mode stdout corruption issue. The
 ### 📝 Technical Details
 ```bash
 # Before v2.7.8 - stdout was corrupted:
-$ npx claude-flow@2.7.7 mcp start
-✅ Starting Claude Flow MCP server...  # <- ON STDOUT (BAD!)
+$ npx fidgetflo@2.7.7 mcp start
+✅ Starting FidgetFlo MCP server...  # <- ON STDOUT (BAD!)
 {"jsonrpc":"2.0",...}
 
 # After v2.7.8 - stdout is clean:
-$ npx claude-flow@2.7.8 mcp start
+$ npx fidgetflo@2.7.8 mcp start
 {"jsonrpc":"2.0",...}  # <- ONLY JSON-RPC (GOOD!)
 # All startup messages go to stderr
 ```
@@ -1004,7 +1004,7 @@ $ npx claude-flow@2.7.8 mcp start
 #### **Skills System Initialization**
 - **Fixed**: Skills copier path resolution in both `bin/init/skills-copier.js` and `src/cli/simple-commands/init/skills-copier.js`
   - Skills now copy correctly from npm package installations (global and local)
-  - All 21 built-in skills properly initialize during `npx claude-flow init`
+  - All 21 built-in skills properly initialize during `npx fidgetflo init`
   - Tested and verified in Docker environment
   - Resolves issue where `.claude/skills/` directory remained empty after init
 
@@ -1055,7 +1055,7 @@ $ npx claude-flow@2.7.8 mcp start
 - **New**: `bin/init/skills-copier.js` - Automated skills installation
 
 #### **Init System Enhancements**
-- **Skills Integration**: `npx claude-flow init` now copies 21 built-in skills to `.claude/skills/`
+- **Skills Integration**: `npx fidgetflo init` now copies 21 built-in skills to `.claude/skills/`
 - **Folder Structure**: Organized `bin/init/` with separate help and skills modules
 - **Auto-Setup**: Skills automatically available after init command
 
@@ -1074,7 +1074,7 @@ $ npx claude-flow@2.7.8 mcp start
 
 - **Updated**: `.gitignore` to exclude `.claude/skills/` from version control
 - **Updated**: `README.md` references to skills system
-- **Updated**: Integration guide for claude-flow + agentic-flow
+- **Updated**: Integration guide for fidgetflo + agentic-flow
 
 ### 🏗️ Architecture Improvements
 
@@ -1089,7 +1089,7 @@ $ npx claude-flow@2.7.8 mcp start
 **Integration Architecture:**
 ```
 Claude Code
-  ├─ claude-flow Skills (21 Built-In)
+  ├─ fidgetflo Skills (21 Built-In)
   ├─ agentic-flow Skills (Custom Created)
   └─ MCP Integration Layer
       ├─ 213+ coordination tools
@@ -1111,7 +1111,7 @@ Claude Code
 
 **Files Modified:**
 1. `package.json` - Version: 2.7.0-alpha.11
-2. `bin/claude-flow` - Version: 2.7.0-alpha.11
+2. `bin/fidgetflo` - Version: 2.7.0-alpha.11
 3. `bin/init/index.js` - Added skills copier integration
 4. `bin/init/skills-copier.js` - New: Skills installation module
 5. `src/cli/simple-commands/init/index.js` - Updated init command
@@ -1133,14 +1133,14 @@ Claude Code
 
 **Installation:**
 ```bash
-# Install claude-flow
-npm install -g claude-flow@alpha
+# Install fidgetflo
+npm install -g fidgetflo@alpha
 
 # Setup MCP server (enables 21 skills)
-claude mcp add claude-flow npx claude-flow@alpha mcp start
+claude mcp add fidgetflo npx fidgetflo@alpha mcp start
 
 # Initialize project with skills
-npx claude-flow init
+npx fidgetflo init
 
 # Skills are now auto-discovered!
 ```
@@ -1159,9 +1159,9 @@ Claude (automatically):
 ### 📝 Upgrade Notes
 
 **For Existing Users:**
-1. Update to alpha.11: `npm install -g claude-flow@alpha`
-2. Run init: `npx claude-flow init` (copies skills to `.claude/skills/`)
-3. MCP server: `claude mcp add claude-flow npx claude-flow@alpha mcp start`
+1. Update to alpha.11: `npm install -g fidgetflo@alpha`
+2. Run init: `npx fidgetflo init` (copies skills to `.claude/skills/`)
+3. MCP server: `claude mcp add fidgetflo npx fidgetflo@alpha mcp start`
 4. Skills activate automatically - no code changes needed!
 
 **Breaking Changes:**
@@ -1243,7 +1243,7 @@ Claude (automatically):
 
 **Files Modified:**
 1. `package.json` - Version: 2.7.0-alpha.10
-2. `bin/claude-flow` - Version: 2.7.0-alpha.10
+2. `bin/fidgetflo` - Version: 2.7.0-alpha.10
 3. `src/reasoningbank/reasoningbank-adapter.js` - Result mapping and parameter fix
 4. `dist-cjs/` - Rebuilt with latest Node.js backend code
 
@@ -1254,14 +1254,14 @@ Claude (automatically):
 
 **Before (alpha.9):**
 ```bash
-$ npx claude-flow@alpha memory query "config" --namespace semantic --reasoningbank
+$ npx fidgetflo@alpha memory query "config" --namespace semantic --reasoningbank
 [INFO] No memory candidates found
 ⚠️ No results found
 ```
 
 **After (alpha.10):**
 ```bash
-$ npx claude-flow@alpha memory query "config" --namespace semantic --reasoningbank
+$ npx fidgetflo@alpha memory query "config" --namespace semantic --reasoningbank
 [INFO] Found 3 candidates
 [INFO] Retrieval complete: 3 memories in 2ms
 ✅ Found 3 results (semantic search):
@@ -1277,15 +1277,15 @@ $ npx claude-flow@alpha memory query "config" --namespace semantic --reasoningba
 
 ```bash
 # Update to latest alpha
-npm install -g claude-flow@alpha
+npm install -g fidgetflo@alpha
 
 # Or use npx (always latest)
-npx claude-flow@alpha --version
+npx fidgetflo@alpha --version
 # Output: v2.7.0-alpha.10
 
 # Verify semantic search works
-npx claude-flow@alpha memory store test "validation data" --namespace semantic --reasoningbank
-npx claude-flow@alpha memory query "validation" --namespace semantic --reasoningbank
+npx fidgetflo@alpha memory store test "validation data" --namespace semantic --reasoningbank
+npx fidgetflo@alpha memory query "validation" --namespace semantic --reasoningbank
 # ✅ Should return stored memory
 ```
 
@@ -1319,7 +1319,7 @@ All existing commands continue to work as before, but now return correct results
 
 ### 🔗 Links
 
-- **npm Package**: [claude-flow@2.7.0-alpha.10](https://www.npmjs.com/package/claude-flow/v/2.7.0-alpha.10)
+- **npm Package**: [fidgetflo@2.7.0-alpha.10](https://www.npmjs.com/package/fidgetflo/v/2.7.0-alpha.10)
 - **Release Notes**: [docs/RELEASE-NOTES-v2.7.0-alpha.10.md](./docs/RELEASE-NOTES-v2.7.0-alpha.10.md)
 - **GitHub Issues**: [Report bugs](https://github.com/ruvnet/claude-flow/issues)
 
@@ -1334,17 +1334,17 @@ All existing commands continue to work as before, but now return correct results
   - Deleted `.claude/agents/sublinear/` folder creation during init
   - Removed `--sublinear` flag from init command
   - Removed sublinear MCP server setup and configuration
-  - Simplified initialization to focus on core MCP servers (claude-flow, ruv-swarm, flow-nexus)
+  - Simplified initialization to focus on core MCP servers (fidgetflo, ruv-swarm, flow-nexus)
   - Updated help documentation to remove sublinear references
 
 ### ✨ Improved
-- **Cleaner Initialization**: `npx claude-flow init` now sets up only core, stable MCP servers
+- **Cleaner Initialization**: `npx fidgetflo init` now sets up only core, stable MCP servers
 - **Streamlined Documentation**: Removed experimental sublinear references from templates
 - **Simplified Configuration**: Reduced complexity in MCP server setup
 
 ### 🔧 Technical Changes
 - Removed `sublinear-copier.js` and related initialization code
-- Updated CLAUDE.md templates with claude-flow MCP tools instead of sublinear examples
+- Updated CLAUDE.md templates with fidgetflo MCP tools instead of sublinear examples
 - Cleaned up help text and example commands
 
 ## [2.0.0-alpha.110] - 2025-09-18
@@ -1354,12 +1354,12 @@ All existing commands continue to work as before, but now return correct results
 ### ✨ Changed
 
 #### 🎯 Simplified Module Initialization
-- **Neural Module**: `npx claude-flow@alpha neural init` now creates only the essential `safla-neural.md` agent file
+- **Neural Module**: `npx fidgetflo@alpha neural init` now creates only the essential `safla-neural.md` agent file
   - Removed unnecessary `config.json` generation
   - Removed unnecessary `README.md` generation
   - Cleaner, simpler initialization focused on the agent definition
 
-- **Goal Module**: `npx claude-flow@alpha goal init` now creates only the essential `goal-planner.md` agent file
+- **Goal Module**: `npx fidgetflo@alpha goal init` now creates only the essential `goal-planner.md` agent file
   - Removed unnecessary `config.json` generation
   - Removed unnecessary `README.md` generation
   - Streamlined initialization for immediate use
@@ -1454,7 +1454,7 @@ All existing commands continue to work as before, but now return correct results
 - `package.json` - Version bump to 2.0.0-alpha.91
 - `src/core/version.js` - Fallback version update
 - `src/core/version.ts` - TypeScript version update
-- `bin/claude-flow.js` - Version display and release notes
+- `bin/fidgetflo.js` - Version display and release notes
 
 ### 🛠️ Command Documentation Improvements
 
@@ -1481,7 +1481,7 @@ All existing commands continue to work as before, but now return correct results
 2. **MCP tools are ONLY** for coordination setup, not execution
 3. **Batch everything**: Spawn ALL agents in ONE message
 4. **TodoWrite must batch**: Always include 5-10+ todos in ONE call
-5. **Use coordination hooks**: Every agent must use claude-flow hooks
+5. **Use coordination hooks**: Every agent must use fidgetflo hooks
 6. **Proper file organization**: Never save files to root directory
 
 This release ensures users understand the critical distinction between:
@@ -1595,11 +1595,11 @@ This release ensures users understand the critical distinction between:
 
 ### 📦 Installation
 ```bash
-npm install -g claude-flow@alpha
+npm install -g fidgetflo@alpha
 ```
 
 ### 🔗 Links
-- [npm Package](https://www.npmjs.com/package/claude-flow/v/2.0.0-alpha.90)
+- [npm Package](https://www.npmjs.com/package/fidgetflo/v/2.0.0-alpha.90)
 - [Pull Request #661](https://github.com/ruvnet/claude-flow/pull/661)
 - [Issue #660](https://github.com/ruvnet/claude-flow/issues/660)
 
@@ -1686,7 +1686,7 @@ npm install -g claude-flow@alpha
   - Verification scoring with configurable thresholds (default 0.95)
   - Test result tracking and coverage monitoring
   - Pre-commit verification gates
-  - Session data persistence in `.claude-flow/sessions/pair/`
+  - Session data persistence in `.fidgetflo/sessions/pair/`
 
 - **Working Auto-Fix Implementation** (2025-08-13):
   - **Real Fix Application**: Actually applies fixes instead of simulating
@@ -1843,11 +1843,11 @@ npm install -g claude-flow@alpha
   - Truth metrics documentation
   - All commands now have structured documentation
 
-- **Stream Chain Command Wiki**: Created `/claude-flow-wiki/Stream-Chain-Command.md`
+- **Stream Chain Command Wiki**: Created `/fidgetflo-wiki/Stream-Chain-Command.md`
   - Complete command reference with all subcommands
   - Background execution guide
   - Performance characteristics
-  - Integration with other Claude Flow features
+  - Integration with other FidgetFlo features
   - Troubleshooting section
 
 - **Training Pipeline Documentation**: `/docs/training-pipeline-real-only.md`
@@ -1900,7 +1900,7 @@ npm install -g claude-flow@alpha
 - `/src/cli/simple-commands/stream-chain.js` - Stream chain command implementation
 - `/src/cli/simple-commands/train-and-stream.js` - Integrated training/streaming
 - `/src/cli/simple-commands/pair.js` - Interactive pair programming implementation
-- `/claude-flow-wiki/Stream-Chain-Command.md` - Wiki documentation
+- `/fidgetflo-wiki/Stream-Chain-Command.md` - Wiki documentation
 - `/docs/training-pipeline-real-only.md` - Real training documentation
 - `/performance-validation.md` - Performance validation report
 - `.claude/commands/stream-chain/README.md` - Stream chain main documentation
@@ -1920,7 +1920,7 @@ npm install -g claude-flow@alpha
 - `/src/cli/command-registry.js` - Updated pair command to use new pair.js
 - `/src/cli/simple-commands/training-pipeline.js` - Removed simulation mode
 - `/src/cli/simple-commands/verification.js` - Enhanced verification features
-- `/.claude-flow/agents/profiles.json` - Updated with real execution metrics
+- `/.fidgetflo/agents/profiles.json` - Updated with real execution metrics
 - `/CLAUDE.md` - Updated with stream chain examples
 - `/CHANGELOG.md` - Updated with alpha-89 release notes
 
@@ -2053,7 +2053,7 @@ npm install -g claude-flow@alpha
 
 ### 📦 Package Optimization
 - **Reduced NPM Package Size by 31%**:
-  - Excluded unnecessary `bin/claude-flow-node-pkg` binary (45MB) from npm package
+  - Excluded unnecessary `bin/fidgetflo-node-pkg` binary (45MB) from npm package
   - Package size reduced from 58MB to 40MB
   - Binary is only needed for standalone distribution, not for npm/npx users
   - Updated package.json files field to exclude the precompiled binary
@@ -2092,22 +2092,22 @@ npm install -g claude-flow@alpha
   - Smart optimization recommendations to reduce costs
 
 - **Real Performance Analytics**: ALL analysis commands now use real data
-  - `claude-flow analysis performance-report` - Real task execution metrics
-  - `claude-flow analysis bottleneck-detect` - Actual system bottleneck detection
+  - `fidgetflo analysis performance-report` - Real task execution metrics
+  - `fidgetflo analysis bottleneck-detect` - Actual system bottleneck detection
   - Automatic performance tracking for all commands
   - System resource monitoring (CPU, memory)
   - Agent performance metrics by type
   - Trend analysis comparing periods
 
 - **Enhanced Analytics Command**: 
-  - `claude-flow analysis token-usage --breakdown --cost-analysis`
+  - `fidgetflo analysis token-usage --breakdown --cost-analysis`
   - Real-time token consumption metrics
   - Cost projections with current Anthropic pricing
   - Filter by agent type with `--agent <type>`
 
 - **Optional Monitoring During Init**:
-  - `claude-flow init --monitoring` sets up token tracking
-  - Creates `.claude-flow/` directory with tracking configuration
+  - `fidgetflo init --monitoring` sets up token tracking
+  - Creates `.fidgetflo/` directory with tracking configuration
   - Generates environment setup script for telemetry
   - Adds token tracking hooks to Claude settings
 
@@ -2125,7 +2125,7 @@ npm install -g claude-flow@alpha
 - **Token Usage Tracking**:
   - OpenTelemetry metrics (when `CLAUDE_CODE_ENABLE_TELEMETRY=1`)
   - Local Claude Code metrics (`~/.claude/metrics/usage.json`)
-  - Project-specific tracking (`.claude-flow/token-usage.json`)
+  - Project-specific tracking (`.fidgetflo/token-usage.json`)
 - **Performance Tracking**:
   - Task execution metrics (duration, success rate)
   - Agent performance by type
@@ -2226,11 +2226,11 @@ npm install -g claude-flow@alpha
 ## [2.0.0-alpha.69] - 2025-01-22
 
 ### 🔧 Critical Fix
-- **Init Template**: Fixed `claude-flow init` creating broken settings.json with xargs quote errors
+- **Init Template**: Fixed `fidgetflo init` creating broken settings.json with xargs quote errors
   - Updated template to use `printf '%s\0'` instead of problematic `cat | jq | xargs -I` pipeline
   - Changed to `xargs -0` with single quotes around `{}` placeholders  
   - Removed non-existent `--train-neural` flag from post-edit hooks
-  - All new projects initialized with `claude-flow init` now have working hooks
+  - All new projects initialized with `fidgetflo init` now have working hooks
 
 ### 🛠️ Template Improvements
 - **Safer Command Execution**: Printf-based approach prevents quote parsing issues
@@ -2320,7 +2320,7 @@ npm install -g claude-flow@alpha
 ### 🔧 Bug Fixes
 - Fixed wrapper script hardcoded to use outdated alpha-27 version
 - Updated wrapper to use `@alpha` tag for always getting latest alpha version
-- Ensures `./claude-flow` wrapper always uses the most recent alpha release
+- Ensures `./fidgetflo` wrapper always uses the most recent alpha release
 
 ### 📦 Dependencies
 - No dependency changes, only template fix
@@ -2588,7 +2588,7 @@ npm install -g claude-flow@alpha
 - **Security hardening** with non-root containers and best practices implementation
 
 #### **Enhanced CLI Capabilities**
-- **Advanced swarm coordination commands** with `npx claude-flow swarm`
+- **Advanced swarm coordination commands** with `npx fidgetflo swarm`
 - **GitHub integration commands** accessible through enhanced CLI interface
 - **Improved error handling** and validation with detailed error messages
 - **Enhanced UI** with `--ui` flag support for interactive management
@@ -2723,35 +2723,35 @@ npm install -g claude-flow@alpha
 
 1. **Uninstall previous version** (if installed globally):
    ```bash
-   npm uninstall -g claude-flow
+   npm uninstall -g fidgetflo
    ```
 
 2. **Install v2.0.0**:
    ```bash
-   npm install -g claude-flow@2.0.0
+   npm install -g fidgetflo@2.0.0
    ```
 
 3. **Verify installation**:
    ```bash
-   claude-flow --version  # Should show 2.0.0
-   claude-flow --help     # Verify all commands available
+   fidgetflo --version  # Should show 2.0.0
+   fidgetflo --help     # Verify all commands available
    ```
 
 ### Configuration Updates
 
 1. **Initialize new features**:
    ```bash
-   npx claude-flow init --sparc
+   npx fidgetflo init --sparc
    ```
 
 2. **Test swarm capabilities**:
    ```bash
-   npx claude-flow swarm init
+   npx fidgetflo swarm init
    ```
 
 3. **Explore GitHub integration**:
    ```bash
-   npx claude-flow github --help
+   npx fidgetflo github --help
    ```
 
 ### Breaking Changes
@@ -2777,26 +2777,26 @@ npm install -g claude-flow@alpha
 #### Swarm Coordination
 ```bash
 # Initialize swarm
-npx claude-flow swarm init
+npx fidgetflo swarm init
 
 # Spawn agents
-npx claude-flow agent spawn researcher
-npx claude-flow agent spawn coder
+npx fidgetflo agent spawn researcher
+npx fidgetflo agent spawn coder
 
 # Orchestrate tasks
-npx claude-flow task orchestrate "complex development task"
+npx fidgetflo task orchestrate "complex development task"
 ```
 
 #### GitHub Integration
 ```bash
 # Automated PR management
-npx claude-flow github pr-manager "review and merge feature branch"
+npx fidgetflo github pr-manager "review and merge feature branch"
 
 # Issue tracking
-npx claude-flow github issue-tracker "manage project issues"
+npx fidgetflo github issue-tracker "manage project issues"
 
 # Release coordination
-npx claude-flow github release-manager "prepare v2.0.0 release"
+npx fidgetflo github release-manager "prepare v2.0.0 release"
 ```
 
 #### Docker Development
@@ -2814,16 +2814,16 @@ After migration, verify functionality:
 
 ```bash
 # Basic functionality
-claude-flow --version
-claude-flow --help
-claude-flow status
+fidgetflo --version
+fidgetflo --help
+fidgetflo status
 
 # Swarm features
-claude-flow swarm init
-claude-flow agent list
+fidgetflo swarm init
+fidgetflo agent list
 
 # GitHub integration
-claude-flow github --help
+fidgetflo github --help
 
 # Docker testing
 cd infrastructure/docker && docker-compose up
@@ -2848,7 +2848,7 @@ cd infrastructure/docker && docker-compose up
 ## [1.0.0] - 2025-01-01
 
 ### Added
-- Initial release of claude-flow
+- Initial release of fidgetflo
 - Basic AI agent orchestration
 - CLI interface for agent management
 - Core workflow automation

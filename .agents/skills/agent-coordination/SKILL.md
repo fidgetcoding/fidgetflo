@@ -35,32 +35,32 @@ Spawn and coordinate agents for complex multi-agent tasks.
 
 ### Spawn Agent
 ```bash
-npx claude-flow agent spawn --type coder --name my-coder
+npx fidgetflo agent spawn --type coder --name my-coder
 ```
 
 ### List Agents
 ```bash
-npx claude-flow agent list --filter active
+npx fidgetflo agent list --filter active
 ```
 
 ### Agent Status
 ```bash
-npx claude-flow agent status --id agent-123
+npx fidgetflo agent status --id agent-123
 ```
 
 ### Agent Metrics
 ```bash
-npx claude-flow agent metrics --id agent-123
+npx fidgetflo agent metrics --id agent-123
 ```
 
 ### Stop Agent
 ```bash
-npx claude-flow agent stop --id agent-123
+npx fidgetflo agent stop --id agent-123
 ```
 
 ### Pool Management
 ```bash
-npx claude-flow agent pool --size 5 --type coder
+npx fidgetflo agent pool --size 5 --type coder
 ```
 
 ## Routing Codes

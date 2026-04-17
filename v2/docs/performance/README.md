@@ -1,6 +1,6 @@
 # ⚡ Performance Documentation
 
-Performance optimization guides, metrics, and analysis for claude-flow.
+Performance optimization guides, metrics, and analysis for fidgetflo.
 
 ## Documents
 

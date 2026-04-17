@@ -1,8 +1,8 @@
-# 📖 Claude-Flow User Guide
+# 📖 FidgetFlo User Guide
 
-## Complete Practical Guide for Claude-Flow v2.0.0
+## Complete Practical Guide for FidgetFlo v2.0.0
 
-Welcome to the comprehensive user guide for Claude-Flow! This document provides everything you need to get started and master the platform, from basic installation to advanced swarm coordination.
+Welcome to the comprehensive user guide for FidgetFlo! This document provides everything you need to get started and master the platform, from basic installation to advanced swarm coordination.
 
 ---
 
@@ -24,7 +24,7 @@ Welcome to the comprehensive user guide for Claude-Flow! This document provides 
 
 ### Prerequisites
 
-Before starting with Claude-Flow, ensure you have:
+Before starting with FidgetFlo, ensure you have:
 
 - **Node.js** ≥ 20.0.0 ([Download](https://nodejs.org/))
 - **npm** ≥ 9.0.0 (comes with Node.js)
@@ -35,35 +35,35 @@ Before starting with Claude-Flow, ensure you have:
 
 ```bash
 # Option 1: Use npx (recommended for first-time users)
-npx claude-flow@alpha --help
+npx fidgetflo@alpha --help
 
 # Option 2: Global installation
-npm install -g claude-flow@alpha
+npm install -g fidgetflo@alpha
 
 # Option 3: Project-specific installation
-npm install claude-flow@alpha
+npm install fidgetflo@alpha
 ```
 
 ### Initial Setup
 
 ```bash
-# Initialize Claude-Flow in your project
-npx claude-flow@alpha init --force
+# Initialize FidgetFlo in your project
+npx fidgetflo@alpha init --force
 
 # Verify installation
-npx claude-flow@alpha version
+npx fidgetflo@alpha version
 
 # Run health check
-npx claude-flow@alpha health
+npx fidgetflo@alpha health
 ```
 
 ### First Command
 
-Try your first Claude-Flow command:
+Try your first FidgetFlo command:
 
 ```bash
 # Simple task execution
-npx claude-flow@alpha swarm "create a simple Hello World application"
+npx fidgetflo@alpha swarm "create a simple Hello World application"
 ```
 
 ---
@@ -163,16 +163,16 @@ For straightforward development tasks:
 
 ```bash
 # Code generation
-npx claude-flow@alpha swarm "create a REST API for user management"
+npx fidgetflo@alpha swarm "create a REST API for user management"
 
 # Bug fixing
-npx claude-flow@alpha swarm "fix all TypeScript errors in the project"
+npx fidgetflo@alpha swarm "fix all TypeScript errors in the project"
 
 # Documentation
-npx claude-flow@alpha swarm "generate comprehensive API documentation"
+npx fidgetflo@alpha swarm "generate comprehensive API documentation"
 
 # Testing
-npx claude-flow@alpha swarm "create unit tests for all service classes"
+npx fidgetflo@alpha swarm "create unit tests for all service classes"
 ```
 
 #### 2. Project-Based Development
@@ -180,18 +180,18 @@ For larger projects requiring coordination:
 
 ```bash
 # Initialize project swarm
-npx claude-flow@alpha hive-mind spawn "e-commerce platform" \
+npx fidgetflo@alpha hive-mind spawn "e-commerce platform" \
   --agents architect,backend-dev,frontend-dev,tester \
   --topology hierarchical
 
 # Continue development in same session
-npx claude-flow@alpha swarm "implement user authentication" --continue-session
+npx fidgetflo@alpha swarm "implement user authentication" --continue-session
 
 # Add new features
-npx claude-flow@alpha swarm "add payment processing integration"
+npx fidgetflo@alpha swarm "add payment processing integration"
 
 # Monitor progress
-npx claude-flow@alpha swarm status --watch
+npx fidgetflo@alpha swarm status --watch
 ```
 
 #### 3. SPARC Development Methodology
@@ -199,15 +199,15 @@ Structured development using Specification → Pseudocode → Architecture → R
 
 ```bash
 # Full SPARC pipeline
-npx claude-flow@alpha sparc pipeline "user management system"
+npx fidgetflo@alpha sparc pipeline "user management system"
 
 # Individual SPARC phases
-npx claude-flow@alpha sparc spec "define requirements for authentication"
-npx claude-flow@alpha sparc architecture "design microservices structure"
-npx claude-flow@alpha sparc code "implement user service"
+npx fidgetflo@alpha sparc spec "define requirements for authentication"
+npx fidgetflo@alpha sparc architecture "design microservices structure"
+npx fidgetflo@alpha sparc code "implement user service"
 
 # Test-driven development
-npx claude-flow@alpha sparc tdd "payment processing module"
+npx fidgetflo@alpha sparc tdd "payment processing module"
 ```
 
 ### Operational Workflows
@@ -215,37 +215,37 @@ npx claude-flow@alpha sparc tdd "payment processing module"
 #### 1. Code Review and Quality
 ```bash
 # Comprehensive code review
-npx claude-flow@alpha swarm "perform security audit and code review" \
+npx fidgetflo@alpha swarm "perform security audit and code review" \
   --agents security-analyst,reviewer,code-quality-checker
 
 # Performance optimization
-npx claude-flow@alpha swarm "analyze and optimize application performance" \
+npx fidgetflo@alpha swarm "analyze and optimize application performance" \
   --agents performance-analyst,optimizer
 ```
 
 #### 2. DevOps and Deployment
 ```bash
 # CI/CD setup
-npx claude-flow@alpha swarm "setup complete CI/CD pipeline" \
+npx fidgetflo@alpha swarm "setup complete CI/CD pipeline" \
   --agents devops-engineer,cicd-specialist
 
 # Container deployment
-npx claude-flow@alpha swarm "containerize application with Docker" \
+npx fidgetflo@alpha swarm "containerize application with Docker" \
   --agents docker-specialist,devops-engineer
 
 # Kubernetes deployment
-npx claude-flow@alpha swarm "deploy to Kubernetes cluster" \
+npx fidgetflo@alpha swarm "deploy to Kubernetes cluster" \
   --agents k8s-specialist,devops-engineer
 ```
 
 #### 3. Documentation and Maintenance
 ```bash
 # Generate documentation
-npx claude-flow@alpha swarm "create comprehensive project documentation" \
+npx fidgetflo@alpha swarm "create comprehensive project documentation" \
   --agents technical-writer,api-docs-generator
 
 # Code maintenance
-npx claude-flow@alpha swarm "refactor legacy code and improve maintainability" \
+npx fidgetflo@alpha swarm "refactor legacy code and improve maintainability" \
   --agents refactoring-specialist,code-quality-checker
 ```
 
@@ -261,8 +261,8 @@ npx claude-flow@alpha swarm "refactor legacy code and improve maintainability" \
 mkdir my-api-project
 cd my-api-project
 
-# Initialize Claude-Flow
-npx claude-flow@alpha init --force
+# Initialize FidgetFlo
+npx fidgetflo@alpha init --force
 
 # Initialize npm project
 npm init -y
@@ -271,32 +271,32 @@ npm init -y
 #### Step 2: Define Requirements
 ```bash
 # Use SPARC specification mode
-npx claude-flow@alpha sparc spec "REST API for task management with CRUD operations, authentication, and data validation"
+npx fidgetflo@alpha sparc spec "REST API for task management with CRUD operations, authentication, and data validation"
 ```
 
 #### Step 3: Create Architecture
 ```bash
 # Generate system architecture
-npx claude-flow@alpha sparc architecture "Node.js Express API with PostgreSQL database, JWT authentication, and comprehensive error handling"
+npx fidgetflo@alpha sparc architecture "Node.js Express API with PostgreSQL database, JWT authentication, and comprehensive error handling"
 ```
 
 #### Step 4: Implement Code
 ```bash
 # Generate implementation
-npx claude-flow@alpha sparc code "implement the complete task management API based on the architecture"
+npx fidgetflo@alpha sparc code "implement the complete task management API based on the architecture"
 ```
 
 #### Step 5: Add Tests
 ```bash
 # Create comprehensive tests
-npx claude-flow@alpha swarm "create unit tests, integration tests, and API endpoint tests" \
+npx fidgetflo@alpha swarm "create unit tests, integration tests, and API endpoint tests" \
   --agents tester,test-automation-specialist
 ```
 
 #### Step 6: Setup DevOps
 ```bash
 # Add CI/CD and deployment
-npx claude-flow@alpha swarm "setup GitHub Actions CI/CD and Docker deployment" \
+npx fidgetflo@alpha swarm "setup GitHub Actions CI/CD and Docker deployment" \
   --agents devops-engineer,cicd-specialist
 ```
 
@@ -305,7 +305,7 @@ npx claude-flow@alpha swarm "setup GitHub Actions CI/CD and Docker deployment" \
 #### Step 1: Project Planning
 ```bash
 # Initialize large project swarm
-npx claude-flow@alpha hive-mind spawn "full-stack social media application" \
+npx fidgetflo@alpha hive-mind spawn "full-stack social media application" \
   --agents architect,planner,backend-dev,frontend-dev,mobile-dev,tester,devops-engineer \
   --topology hierarchical \
   --max-agents 12
@@ -314,35 +314,35 @@ npx claude-flow@alpha hive-mind spawn "full-stack social media application" \
 #### Step 2: Architecture Design
 ```bash
 # Create comprehensive architecture
-npx claude-flow@alpha swarm "design microservices architecture with event-driven communication" \
+npx fidgetflo@alpha swarm "design microservices architecture with event-driven communication" \
   --agents system-architect,backend-architect,frontend-architect
 ```
 
 #### Step 3: Backend Development
 ```bash
 # Develop backend services
-npx claude-flow@alpha swarm "implement user service, post service, and notification service" \
+npx fidgetflo@alpha swarm "implement user service, post service, and notification service" \
   --agents backend-dev,api-developer,database-specialist
 ```
 
 #### Step 4: Frontend Development
 ```bash
 # Create frontend applications
-npx claude-flow@alpha swarm "build React web app and React Native mobile app" \
+npx fidgetflo@alpha swarm "build React web app and React Native mobile app" \
   --agents frontend-dev,mobile-dev,ui-ux-specialist
 ```
 
 #### Step 5: Testing and Quality Assurance
 ```bash
 # Comprehensive testing
-npx claude-flow@alpha swarm "create automated test suites and perform security audit" \
+npx fidgetflo@alpha swarm "create automated test suites and perform security audit" \
   --agents tester,security-analyst,qa-specialist
 ```
 
 #### Step 6: Deployment and Monitoring
 ```bash
 # Deploy and monitor
-npx claude-flow@alpha swarm "deploy to cloud and setup monitoring" \
+npx fidgetflo@alpha swarm "deploy to cloud and setup monitoring" \
   --agents devops-engineer,cloud-specialist,monitoring-specialist
 ```
 
@@ -351,7 +351,7 @@ npx claude-flow@alpha swarm "deploy to cloud and setup monitoring" \
 #### Step 1: Define Feature Requirements
 ```bash
 # Start TDD cycle
-npx claude-flow@alpha sparc tdd "user authentication with email verification" \
+npx fidgetflo@alpha sparc tdd "user authentication with email verification" \
   --test-framework jest \
   --coverage 95
 ```
@@ -359,26 +359,26 @@ npx claude-flow@alpha sparc tdd "user authentication with email verification" \
 #### Step 2: Write Tests First
 ```bash
 # Create test specifications
-npx claude-flow@alpha swarm "write comprehensive test cases for authentication flow" \
+npx fidgetflo@alpha swarm "write comprehensive test cases for authentication flow" \
   --agents test-architect,tdd-specialist
 ```
 
 #### Step 3: Implement Minimal Code
 ```bash
 # Implement just enough to pass tests
-npx claude-flow@alpha sparc code "implement minimal authentication logic to pass tests"
+npx fidgetflo@alpha sparc code "implement minimal authentication logic to pass tests"
 ```
 
 #### Step 4: Refactor and Optimize
 ```bash
 # Improve implementation
-npx claude-flow@alpha sparc refinement "optimize authentication performance and security"
+npx fidgetflo@alpha sparc refinement "optimize authentication performance and security"
 ```
 
 #### Step 5: Add Integration Tests
 ```bash
 # Create integration tests
-npx claude-flow@alpha swarm "add integration tests for complete authentication flow" \
+npx fidgetflo@alpha swarm "add integration tests for complete authentication flow" \
   --agents integration-tester,api-tester
 ```
 
@@ -391,10 +391,10 @@ npx claude-flow@alpha swarm "add integration tests for complete authentication f
 #### Environment Variables
 ```bash
 # Core settings
-export CLAUDE_FLOW_DEBUG=true
-export CLAUDE_FLOW_LOG_LEVEL=info
-export CLAUDE_FLOW_DATA_DIR=./data
-export CLAUDE_FLOW_MAX_AGENTS=50
+export FIDGETFLO_DEBUG=true
+export FIDGETFLO_LOG_LEVEL=info
+export FIDGETFLO_DATA_DIR=./data
+export FIDGETFLO_MAX_AGENTS=50
 
 # API configuration
 export CLAUDE_API_KEY="your_claude_api_key"
@@ -402,13 +402,13 @@ export OPENAI_API_KEY="your_openai_api_key"
 export ANTHROPIC_API_KEY="your_anthropic_api_key"
 
 # Performance tuning
-export CLAUDE_FLOW_MEMORY_LIMIT=1024
-export CLAUDE_FLOW_TIMEOUT=300000
-export CLAUDE_FLOW_CONCURRENT_TASKS=10
+export FIDGETFLO_MEMORY_LIMIT=1024
+export FIDGETFLO_TIMEOUT=300000
+export FIDGETFLO_CONCURRENT_TASKS=10
 ```
 
 #### Configuration File
-Create `.claude-flow.json` in your project root:
+Create `.fidgetflo.json` in your project root:
 
 ```json
 {
@@ -524,7 +524,7 @@ Define custom agent combinations for specific use cases:
       },
       "backup": {
         "type": "s3",
-        "bucket": "claude-flow-backup",
+        "bucket": "fidgetflo-backup",
         "region": "us-east-1"
       }
     },
@@ -573,27 +573,27 @@ Define custom agent combinations for specific use cases:
 #### Basic MCP Setup
 ```bash
 # Start MCP server
-npx claude-flow@alpha mcp start --port 3000
+npx fidgetflo@alpha mcp start --port 3000
 
 # Configure MCP tools
-npx claude-flow@alpha mcp config --tools all
+npx fidgetflo@alpha mcp config --tools all
 
 # Add custom MCP server
-npx claude-flow@alpha mcp add-server \
+npx fidgetflo@alpha mcp add-server \
   --name "custom-tools" \
   --command "node custom-mcp-server.js"
 ```
 
 #### MCP Integration with Claude Code
 ```bash
-# Add Claude-Flow MCP server to Claude Code
-claude mcp add claude-flow npx claude-flow@alpha mcp start
+# Add FidgetFlo MCP server to Claude Code
+claude mcp add fidgetflo npx fidgetflo@alpha mcp start
 
 # List available MCP tools
-npx claude-flow@alpha mcp tools --list
+npx fidgetflo@alpha mcp tools --list
 
 # Test MCP connection
-npx claude-flow@alpha mcp test --tool swarm_init
+npx fidgetflo@alpha mcp test --tool swarm_init
 ```
 
 ---
@@ -607,7 +607,7 @@ npx claude-flow@alpha mcp test --tool swarm_init
 **Issue: npm install fails with permission errors**
 ```bash
 # Solution 1: Use npx instead
-npx claude-flow@alpha --help
+npx fidgetflo@alpha --help
 
 # Solution 2: Fix npm permissions
 npm config set prefix ~/.npm-global
@@ -639,37 +639,37 @@ npm install --no-optional
 **Issue: "Agent not found" error**
 ```bash
 # Check available agents
-npx claude-flow@alpha agents list
+npx fidgetflo@alpha agents list
 
 # Verify agent spelling
-npx claude-flow@alpha agents info coder
+npx fidgetflo@alpha agents info coder
 
 # Use default agent if uncertain
-npx claude-flow@alpha swarm "your task" --agent coder
+npx fidgetflo@alpha swarm "your task" --agent coder
 ```
 
 **Issue: Memory-related errors**
 ```bash
 # Check memory usage
-npx claude-flow@alpha memory stats
+npx fidgetflo@alpha memory stats
 
 # Clear memory cache
-npx claude-flow@alpha memory clear --cache
+npx fidgetflo@alpha memory clear --cache
 
 # Optimize memory settings
-npx claude-flow@alpha config set memory.cacheSizeMB 256
+npx fidgetflo@alpha config set memory.cacheSizeMB 256
 ```
 
 **Issue: API rate limiting**
 ```bash
 # Check API status
-npx claude-flow@alpha health --api
+npx fidgetflo@alpha health --api
 
 # Configure rate limiting
-npx claude-flow@alpha config set providers.anthropic.rateLimit 60
+npx fidgetflo@alpha config set providers.anthropic.rateLimit 60
 
 # Use multiple providers
-npx claude-flow@alpha config set providers.fallback openai
+npx fidgetflo@alpha config set providers.fallback openai
 ```
 
 #### Performance Issues
@@ -677,25 +677,25 @@ npx claude-flow@alpha config set providers.fallback openai
 **Issue: Slow task execution**
 ```bash
 # Run diagnostics
-npx claude-flow@alpha diagnostics --performance
+npx fidgetflo@alpha diagnostics --performance
 
 # Optimize configuration
-npx claude-flow@alpha optimize --auto
+npx fidgetflo@alpha optimize --auto
 
 # Monitor real-time performance
-npx claude-flow@alpha monitor --interval 5s
+npx fidgetflo@alpha monitor --interval 5s
 ```
 
 **Issue: High memory usage**
 ```bash
 # Check memory breakdown
-npx claude-flow@alpha memory analyze
+npx fidgetflo@alpha memory analyze
 
 # Enable compression
-npx claude-flow@alpha config set memory.compressionEnabled true
+npx fidgetflo@alpha config set memory.compressionEnabled true
 
 # Reduce cache size
-npx claude-flow@alpha config set memory.cacheSizeMB 128
+npx fidgetflo@alpha config set memory.cacheSizeMB 128
 ```
 
 ### Debug Mode
@@ -704,45 +704,45 @@ Enable detailed logging for troubleshooting:
 
 ```bash
 # Enable debug mode
-export CLAUDE_FLOW_DEBUG=true
-export CLAUDE_FLOW_LOG_LEVEL=debug
+export FIDGETFLO_DEBUG=true
+export FIDGETFLO_LOG_LEVEL=debug
 
 # Run with verbose output
-npx claude-flow@alpha swarm "your task" --verbose
+npx fidgetflo@alpha swarm "your task" --verbose
 
 # Generate diagnostic report
-npx claude-flow@alpha diagnostics --full --output debug-report.json
+npx fidgetflo@alpha diagnostics --full --output debug-report.json
 ```
 
 ### Log Analysis
 
 ```bash
 # View recent logs
-npx claude-flow@alpha logs --tail 100
+npx fidgetflo@alpha logs --tail 100
 
 # Filter logs by level
-npx claude-flow@alpha logs --level error
+npx fidgetflo@alpha logs --level error
 
 # Search logs
-npx claude-flow@alpha logs --grep "swarm"
+npx fidgetflo@alpha logs --grep "swarm"
 
 # Export logs
-npx claude-flow@alpha logs --export logs.json
+npx fidgetflo@alpha logs --export logs.json
 ```
 
 ### Health Checks
 
 ```bash
 # Comprehensive health check
-npx claude-flow@alpha health --comprehensive
+npx fidgetflo@alpha health --comprehensive
 
 # Check specific components
-npx claude-flow@alpha health --component memory
-npx claude-flow@alpha health --component agents
-npx claude-flow@alpha health --component mcp
+npx fidgetflo@alpha health --component memory
+npx fidgetflo@alpha health --component agents
+npx fidgetflo@alpha health --component mcp
 
 # Automated health monitoring
-npx claude-flow@alpha health --monitor --interval 60s
+npx fidgetflo@alpha health --monitor --interval 60s
 ```
 
 ---
@@ -764,29 +764,29 @@ npx claude-flow@alpha health --monitor --interval 60s
 
 ```bash
 # Configure memory limits
-npx claude-flow@alpha config set memory.cacheSizeMB 512
-npx claude-flow@alpha config set memory.maxMemoryMB 2048
+npx fidgetflo@alpha config set memory.cacheSizeMB 512
+npx fidgetflo@alpha config set memory.maxMemoryMB 2048
 
 # Enable compression
-npx claude-flow@alpha config set memory.compressionEnabled true
-npx claude-flow@alpha config set memory.indexingEnabled true
+npx fidgetflo@alpha config set memory.compressionEnabled true
+npx fidgetflo@alpha config set memory.indexingEnabled true
 
 # Set retention policies
-npx claude-flow@alpha config set memory.retentionDays 30
-npx claude-flow@alpha config set memory.autoCleanup true
+npx fidgetflo@alpha config set memory.retentionDays 30
+npx fidgetflo@alpha config set memory.autoCleanup true
 ```
 
 #### Agent Pool Optimization
 
 ```bash
 # Configure agent pools
-npx claude-flow@alpha config set orchestrator.maxConcurrentAgents 50
-npx claude-flow@alpha config set orchestrator.agentPoolSize 20
+npx fidgetflo@alpha config set orchestrator.maxConcurrentAgents 50
+npx fidgetflo@alpha config set orchestrator.agentPoolSize 20
 
 # Enable auto-scaling
-npx claude-flow@alpha config set swarm.autoScaling true
-npx claude-flow@alpha config set swarm.minAgents 2
-npx claude-flow@alpha config set swarm.maxAgents 100
+npx fidgetflo@alpha config set swarm.autoScaling true
+npx fidgetflo@alpha config set swarm.minAgents 2
+npx fidgetflo@alpha config set swarm.maxAgents 100
 ```
 
 ### Task Optimization
@@ -794,14 +794,14 @@ npx claude-flow@alpha config set swarm.maxAgents 100
 #### Batch Processing
 ```bash
 # Process multiple tasks in parallel
-npx claude-flow@alpha swarm batch \
+npx fidgetflo@alpha swarm batch \
   "create user service" \
   "create product service" \
   "create order service" \
   --parallel
 
 # Use agent profiles for efficiency
-npx claude-flow@alpha swarm "build microservices" \
+npx fidgetflo@alpha swarm "build microservices" \
   --profile backend-development \
   --optimize-for speed
 ```
@@ -809,37 +809,37 @@ npx claude-flow@alpha swarm "build microservices" \
 #### Caching Strategy
 ```bash
 # Enable aggressive caching
-npx claude-flow@alpha config set performance.cacheEnabled true
-npx claude-flow@alpha config set performance.cacheStrategy aggressive
+npx fidgetflo@alpha config set performance.cacheEnabled true
+npx fidgetflo@alpha config set performance.cacheStrategy aggressive
 
 # Pre-warm caches
-npx claude-flow@alpha cache warm --agents common
-npx claude-flow@alpha cache warm --tools frequent
+npx fidgetflo@alpha cache warm --agents common
+npx fidgetflo@alpha cache warm --tools frequent
 ```
 
 ### Network Optimization
 
 ```bash
 # Configure connection pooling
-npx claude-flow@alpha config set network.connectionPooling true
-npx claude-flow@alpha config set network.maxConnections 100
+npx fidgetflo@alpha config set network.connectionPooling true
+npx fidgetflo@alpha config set network.maxConnections 100
 
 # Enable compression
-npx claude-flow@alpha config set network.compressionEnabled true
-npx claude-flow@alpha config set network.timeout 30000
+npx fidgetflo@alpha config set network.compressionEnabled true
+npx fidgetflo@alpha config set network.timeout 30000
 ```
 
 ### Monitoring and Metrics
 
 ```bash
 # Real-time performance monitoring
-npx claude-flow@alpha monitor --dashboard
+npx fidgetflo@alpha monitor --dashboard
 
 # Generate performance report
-npx claude-flow@alpha performance report --period 7d
+npx fidgetflo@alpha performance report --period 7d
 
 # Set up performance alerts
-npx claude-flow@alpha alerts configure \
+npx fidgetflo@alpha alerts configure \
   --cpu-threshold 80 \
   --memory-threshold 85 \
   --response-time-threshold 5000
@@ -854,10 +854,10 @@ npx claude-flow@alpha alerts configure \
 #### Setup
 ```bash
 # Initialize GitHub integration
-npx claude-flow@alpha github init --token YOUR_GITHUB_TOKEN
+npx fidgetflo@alpha github init --token YOUR_GITHUB_TOKEN
 
 # Configure repository
-npx claude-flow@alpha github config \
+npx fidgetflo@alpha github config \
   --repo "username/repository" \
   --default-branch main
 ```
@@ -865,19 +865,19 @@ npx claude-flow@alpha github config \
 #### Common GitHub Workflows
 ```bash
 # Pull Request Management
-npx claude-flow@alpha github pr-manager \
+npx fidgetflo@alpha github pr-manager \
   "review and merge pending PRs" \
   --auto-merge \
   --require-reviews 2
 
 # Issue Management
-npx claude-flow@alpha github issue-tracker \
+npx fidgetflo@alpha github issue-tracker \
   "analyze and categorize open issues" \
   --auto-label \
   --assign-to-team
 
 # Release Management
-npx claude-flow@alpha github release-manager \
+npx fidgetflo@alpha github release-manager \
   "prepare v2.1.0 release" \
   --generate-changelog \
   --create-release-notes
@@ -886,13 +886,13 @@ npx claude-flow@alpha github release-manager \
 #### Advanced GitHub Features
 ```bash
 # Automated code review
-npx claude-flow@alpha github code-review \
+npx fidgetflo@alpha github code-review \
   --pr-number 123 \
   --agents security-analyst,code-reviewer \
   --auto-comment
 
 # Repository analysis
-npx claude-flow@alpha github analyze-repo \
+npx fidgetflo@alpha github analyze-repo \
   --metrics code-quality,security,performance \
   --generate-report
 ```
@@ -902,18 +902,18 @@ npx claude-flow@alpha github analyze-repo \
 #### Container Management
 ```bash
 # Containerize application
-npx claude-flow@alpha docker containerize \
+npx fidgetflo@alpha docker containerize \
   --app-type node \
   --multi-stage \
   --optimize-size
 
 # Build and push images
-npx claude-flow@alpha docker build-push \
+npx fidgetflo@alpha docker build-push \
   --registry docker.io \
   --tags latest,v2.0.0
 
 # Container orchestration
-npx claude-flow@alpha docker compose \
+npx fidgetflo@alpha docker compose \
   --services api,database,redis \
   --environment production
 ```
@@ -923,19 +923,19 @@ npx claude-flow@alpha docker compose \
 #### Cluster Management
 ```bash
 # Deploy to Kubernetes
-npx claude-flow@alpha k8s deploy \
+npx fidgetflo@alpha k8s deploy \
   --cluster production \
   --namespace default \
   --replicas 3
 
 # Manage services
-npx claude-flow@alpha k8s services \
+npx fidgetflo@alpha k8s services \
   "setup load balancer and ingress" \
   --ssl-enabled \
   --auto-scaling
 
 # Monitor cluster
-npx claude-flow@alpha k8s monitor \
+npx fidgetflo@alpha k8s monitor \
   --real-time \
   --alerts \
   --dashboard
@@ -946,14 +946,14 @@ npx claude-flow@alpha k8s monitor \
 #### GitHub Actions
 ```bash
 # Setup CI/CD pipeline
-npx claude-flow@alpha cicd github-actions \
+npx fidgetflo@alpha cicd github-actions \
   "create complete CI/CD workflow" \
   --tests \
   --security-scan \
   --deploy-staging
 
 # Custom workflows
-npx claude-flow@alpha cicd custom \
+npx fidgetflo@alpha cicd custom \
   --provider github-actions \
   --stages "lint,test,build,deploy" \
   --environments "staging,production"
@@ -962,7 +962,7 @@ npx claude-flow@alpha cicd custom \
 #### Jenkins Integration
 ```bash
 # Jenkins pipeline
-npx claude-flow@alpha cicd jenkins \
+npx fidgetflo@alpha cicd jenkins \
   "setup Jenkins pipeline with parallel stages" \
   --agents 4 \
   --parallel-tests
@@ -973,13 +973,13 @@ npx claude-flow@alpha cicd jenkins \
 #### AWS Integration
 ```bash
 # Deploy to AWS
-npx claude-flow@alpha aws deploy \
+npx fidgetflo@alpha aws deploy \
   --service ecs \
   --region us-east-1 \
   --auto-scaling
 
 # Infrastructure as Code
-npx claude-flow@alpha aws infrastructure \
+npx fidgetflo@alpha aws infrastructure \
   "create complete AWS infrastructure" \
   --terraform \
   --best-practices
@@ -988,7 +988,7 @@ npx claude-flow@alpha aws infrastructure \
 #### Azure Integration
 ```bash
 # Azure deployment
-npx claude-flow@alpha azure deploy \
+npx fidgetflo@alpha azure deploy \
   --service app-service \
   --resource-group production \
   --scaling-rules
@@ -997,7 +997,7 @@ npx claude-flow@alpha azure deploy \
 #### Google Cloud Integration
 ```bash
 # GCP deployment
-npx claude-flow@alpha gcp deploy \
+npx fidgetflo@alpha gcp deploy \
   --service cloud-run \
   --region us-central1 \
   --auto-scaling
@@ -1009,36 +1009,36 @@ npx claude-flow@alpha gcp deploy \
 
 ### General Questions
 
-**Q: What is Claude-Flow?**
-A: Claude-Flow is an enterprise-grade AI agent orchestration platform that enables distributed AI development through swarm intelligence, featuring 54+ specialized agents and 87 MCP tools.
+**Q: What is FidgetFlo?**
+A: FidgetFlo is an enterprise-grade AI agent orchestration platform that enables distributed AI development through swarm intelligence, featuring 54+ specialized agents and 87 MCP tools.
 
-**Q: How is Claude-Flow different from other AI tools?**
-A: Claude-Flow provides true multi-agent coordination with swarm intelligence, persistent memory management, and enterprise-grade features like security, monitoring, and scalability.
+**Q: How is FidgetFlo different from other AI tools?**
+A: FidgetFlo provides true multi-agent coordination with swarm intelligence, persistent memory management, and enterprise-grade features like security, monitoring, and scalability.
 
-**Q: Do I need Claude Code to use Claude-Flow?**
-A: While Claude-Flow can work independently, Claude Code integration provides the best experience with full MCP protocol support and seamless agent coordination.
+**Q: Do I need Claude Code to use FidgetFlo?**
+A: While FidgetFlo can work independently, Claude Code integration provides the best experience with full MCP protocol support and seamless agent coordination.
 
 ### Installation and Setup
 
 **Q: Which Node.js version should I use?**
-A: Claude-Flow requires Node.js ≥ 20.0.0. We recommend using the latest LTS version for best performance and security.
+A: FidgetFlo requires Node.js ≥ 20.0.0. We recommend using the latest LTS version for best performance and security.
 
-**Q: Can I use Claude-Flow without global installation?**
-A: Yes! Using `npx claude-flow@alpha` is actually recommended as it always uses the latest version without requiring global installation.
+**Q: Can I use FidgetFlo without global installation?**
+A: Yes! Using `npx fidgetflo@alpha` is actually recommended as it always uses the latest version without requiring global installation.
 
 **Q: How do I handle API key configuration?**
-A: Set your API keys as environment variables or in the `.claude-flow.json` configuration file. Never commit API keys to version control.
+A: Set your API keys as environment variables or in the `.fidgetflo.json` configuration file. Never commit API keys to version control.
 
 ### Usage and Functionality
 
 **Q: How many agents can I run simultaneously?**
-A: By default, Claude-Flow can handle up to 100 concurrent agents. This can be configured based on your system resources and API limits.
+A: By default, FidgetFlo can handle up to 100 concurrent agents. This can be configured based on your system resources and API limits.
 
 **Q: Can I create custom agents?**
-A: Currently, Claude-Flow provides 54+ pre-built agents. Custom agent creation is planned for a future release.
+A: Currently, FidgetFlo provides 54+ pre-built agents. Custom agent creation is planned for a future release.
 
 **Q: How does the memory system work?**
-A: Claude-Flow uses a distributed memory system with SQLite backend by default. Memory is automatically synchronized across agents and persists between sessions.
+A: FidgetFlo uses a distributed memory system with SQLite backend by default. Memory is automatically synchronized across agents and persists between sessions.
 
 **Q: What swarm topology should I choose?**
 A: 
@@ -1055,27 +1055,27 @@ A: Enable parallel processing, use appropriate swarm topologies, configure cachi
 **Q: What should I do if I hit API rate limits?**
 A: Configure multiple providers, adjust rate limiting settings, or implement request batching and queuing.
 
-**Q: How much disk space does Claude-Flow use?**
+**Q: How much disk space does FidgetFlo use?**
 A: Base installation requires ~100MB. Memory database and cache can grow based on usage, typically 10-100MB for most projects.
 
 ### Integration and Compatibility
 
-**Q: Can Claude-Flow work with my existing CI/CD pipeline?**
-A: Yes, Claude-Flow provides integrations for GitHub Actions, Jenkins, and other CI/CD platforms.
+**Q: Can FidgetFlo work with my existing CI/CD pipeline?**
+A: Yes, FidgetFlo provides integrations for GitHub Actions, Jenkins, and other CI/CD platforms.
 
-**Q: Is Claude-Flow compatible with Docker and Kubernetes?**
-A: Absolutely! Claude-Flow includes specialized agents for Docker containerization and Kubernetes orchestration.
+**Q: Is FidgetFlo compatible with Docker and Kubernetes?**
+A: Absolutely! FidgetFlo includes specialized agents for Docker containerization and Kubernetes orchestration.
 
-**Q: Can I use Claude-Flow in enterprise environments?**
-A: Yes, Claude-Flow is designed for enterprise use with security features, audit logging, and scalable architecture.
+**Q: Can I use FidgetFlo in enterprise environments?**
+A: Yes, FidgetFlo is designed for enterprise use with security features, audit logging, and scalable architecture.
 
 ### Troubleshooting
 
 **Q: What should I do if an agent fails?**
-A: Claude-Flow includes automatic fault recovery. You can also check logs with `npx claude-flow@alpha logs` and restart failed tasks.
+A: FidgetFlo includes automatic fault recovery. You can also check logs with `npx fidgetflo@alpha logs` and restart failed tasks.
 
 **Q: How do I debug performance issues?**
-A: Use the built-in diagnostics: `npx claude-flow@alpha diagnostics --performance` and monitor real-time metrics.
+A: Use the built-in diagnostics: `npx fidgetflo@alpha diagnostics --performance` and monitor real-time metrics.
 
 **Q: Where can I get help if I'm stuck?**
 A: Check this guide, review the comprehensive documentation, search GitHub issues, or join our Discord community.
@@ -1085,11 +1085,11 @@ A: Check this guide, review the comprehensive documentation, search GitHub issue
 **Q: How does SPARC methodology work?**
 A: SPARC (Specification → Pseudocode → Architecture → Refinement → Code) is a structured development methodology that ensures thorough planning and high-quality implementation.
 
-**Q: Can I use Claude-Flow for machine learning projects?**
-A: Yes! Claude-Flow includes specialized ML agents for model development, training, and deployment.
+**Q: Can I use FidgetFlo for machine learning projects?**
+A: Yes! FidgetFlo includes specialized ML agents for model development, training, and deployment.
 
-**Q: How secure is Claude-Flow?**
-A: Claude-Flow includes enterprise-grade security features including input validation, data encryption, audit logging, and role-based access control.
+**Q: How secure is FidgetFlo?**
+A: FidgetFlo includes enterprise-grade security features including input validation, data encryption, audit logging, and role-based access control.
 
 ---
 
@@ -1098,9 +1098,9 @@ A: Claude-Flow includes enterprise-grade security features including input valid
 ### Getting Help
 
 - **📖 Documentation**: [Complete Documentation](https://github.com/ruvnet/claude-flow/docs)
-- **💬 Discord Community**: [Join Discord](https://discord.gg/claude-flow)
+- **💬 Discord Community**: [Join Discord](https://discord.gg/fidgetflo)
 - **🐛 Issue Tracker**: [GitHub Issues](https://github.com/ruvnet/claude-flow/issues)
-- **📧 Email Support**: support@claude-flow.ai
+- **📧 Email Support**: support@fidgetflo.ai
 
 ### Contributing
 
@@ -1115,8 +1115,8 @@ We welcome contributions! Please see our [Contributing Guide](../CONTRIBUTING.md
 ### Stay Updated
 
 - 🐦 **Twitter/X**: [@claudeflow](https://twitter.com/claudeflow)
-- 📰 **Blog**: [blog.claude-flow.ai](https://blog.claude-flow.ai)
-- 📺 **YouTube**: [Claude-Flow Channel](https://youtube.com/@claudeflow)
+- 📰 **Blog**: [blog.fidgetflo.ai](https://blog.fidgetflo.ai)
+- 📺 **YouTube**: [FidgetFlo Channel](https://youtube.com/@claudeflow)
 - 🌟 **GitHub**: [Star the Repository](https://github.com/ruvnet/claude-flow)
 
 ---
@@ -1125,14 +1125,14 @@ We welcome contributions! Please see our [Contributing Guide](../CONTRIBUTING.md
 
 ## 🎉 Ready to Get Started?
 
-You now have everything you need to master Claude-Flow!
+You now have everything you need to master FidgetFlo!
 
 [🚀 Start Building](../README.md#-quick-start) | [📖 API Reference](API_DOCUMENTATION.md) | [🏗️ Architecture Guide](ARCHITECTURE.md)
 
 ---
 
-**Claude-Flow User Guide v2.0.0**
+**FidgetFlo User Guide v2.0.0**
 
-*Built with ❤️ by the Claude-Flow Community*
+*Built with ❤️ by the FidgetFlo Community*
 
 </div>

@@ -2,12 +2,12 @@
 
 **Status:** Accepted  
 **Date:** 2026-04-08  
-**Author:** ruflo team  
+**Author:** fidgetflo team  
 **Relates to:** ADR-076 (Memory Bridge), ADR-077 (DiskANN), ADR-075 (Learning Pipeline)
 
 ## Context
 
-[MemPalace](https://github.com/milla-jovovich/mempalace), a new open-source AI memory system, reported a **96.6% raw score** and **100% hybrid score** on [LongMemEval](https://github.com/xiaowu0162/LongMemEval) (ICLR 2025) — a benchmark of 500 questions testing long-term conversational memory across 6 question types. This prompted the question: how does Ruflo's AgentDB memory system compare?
+[MemPalace](https://github.com/milla-jovovich/mempalace), a new open-source AI memory system, reported a **96.6% raw score** and **100% hybrid score** on [LongMemEval](https://github.com/xiaowu0162/LongMemEval) (ICLR 2025) — a benchmark of 500 questions testing long-term conversational memory across 6 question types. This prompted the question: how does FidgetFlo's AgentDB memory system compare?
 
 ### LongMemEval Landscape (April 2026)
 
@@ -173,7 +173,7 @@ Following the honesty audit standards from v3.5.71+:
 - First published LongMemEval score for AgentDB — fills a credibility gap
 - Identifies specific areas where AgentDB's retrieval can be improved
 - Provides a reproducible benchmark for regression testing
-- Positions Ruflo in the growing "AI memory leaderboard" conversation
+- Positions FidgetFlo in the growing "AI memory leaderboard" conversation
 
 ### Negative
 - If AgentDB scores significantly below 90%, it's a public admission of weakness

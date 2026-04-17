@@ -1,6 +1,6 @@
 # Swarm Benchmark Documentation
 
-Welcome to the comprehensive documentation for the Claude Flow Swarm Benchmarking Tool. This documentation covers everything you need to know about benchmarking, optimizing, and analyzing swarm performance.
+Welcome to the comprehensive documentation for the FidgetFlo Swarm Benchmarking Tool. This documentation covers everything you need to know about benchmarking, optimizing, and analyzing swarm performance.
 
 ## 📚 Documentation Index
 
@@ -26,7 +26,7 @@ Welcome to the comprehensive documentation for the Claude Flow Swarm Benchmarkin
 
 ### Advanced Topics
 - [Custom Strategies](custom-strategies.md) - Creating your own strategies
-- [Integration Guide](integration.md) - Integrating with Claude Flow
+- [Integration Guide](integration.md) - Integrating with FidgetFlo
 - [Troubleshooting](troubleshooting.md) - Common issues and solutions
 
 ## 🚀 Quick Links
@@ -38,7 +38,7 @@ Welcome to the comprehensive documentation for the Claude Flow Swarm Benchmarkin
 
 ## 📊 What is Swarm Benchmarking?
 
-The Swarm Benchmarking Tool is designed to measure, analyze, and optimize the performance of agent swarms in the Claude Flow system. It provides:
+The Swarm Benchmarking Tool is designed to measure, analyze, and optimize the performance of agent swarms in the FidgetFlo system. It provides:
 
 - **Performance Metrics**: Execution time, resource usage, success rates
 - **Quality Assessment**: Accuracy, completeness, and consistency scores
@@ -76,4 +76,4 @@ We welcome contributions! See our [Contributing Guide](contributing.md) for deta
 
 ---
 
-© 2024 Claude Flow Team | [License](../LICENSE) | [Code of Conduct](code-of-conduct.md)
+© 2024 FidgetFlo Team | [License](../LICENSE) | [Code of Conduct](code-of-conduct.md)

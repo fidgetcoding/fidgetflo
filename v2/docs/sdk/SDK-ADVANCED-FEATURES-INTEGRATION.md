@@ -1,4 +1,4 @@
-# Claude-Flow Integration: Network Sandboxing & DevTools
+# FidgetFlo Integration: Network Sandboxing & DevTools
 ## Advanced SDK Feature Integration for Swarm Orchestration
 
 **Version**: 2.5.0-alpha.130
@@ -9,7 +9,7 @@
 
 ## 🎯 Overview
 
-This document explores how to integrate two advanced Claude Code SDK features into Claude-Flow's swarm orchestration system:
+This document explores how to integrate two advanced Claude Code SDK features into FidgetFlo's swarm orchestration system:
 
 1. **Network Request Sandboxing** - Per-agent network isolation and governance
 2. **React DevTools Integration** - Real-time swarm visualization and profiling
@@ -45,7 +45,7 @@ function promptNetworkAccess(
 
 ---
 
-### 🚀 Claude-Flow Integration Strategy
+### 🚀 FidgetFlo Integration Strategy
 
 #### **Use Case 1: Per-Agent Network Policies**
 
@@ -406,7 +406,7 @@ window.__REACT_DEVTOOLS_COMPONENT_FILTERS__
 
 ---
 
-### 🚀 Claude-Flow Integration Strategy
+### 🚀 FidgetFlo Integration Strategy
 
 #### **Use Case 1: Swarm Visualization Dashboard**
 
@@ -598,7 +598,7 @@ export const SwarmMonitorUI: React.FC = () => {
       {/* Header */}
       <Box borderStyle="double" borderColor="green">
         <Text bold color="green">
-          🌊 Claude-Flow Swarm Monitor v2.5.0
+          🌊 FidgetFlo Swarm Monitor v2.5.0
         </Text>
       </Box>
 
@@ -685,7 +685,7 @@ export const SwarmMonitorUI: React.FC = () => {
 
 ### Network Policy Configuration
 ```typescript
-// claude-flow.config.ts
+// fidgetflo.config.ts
 export default {
   swarm: {
     networkPolicies: {
@@ -720,4 +720,4 @@ export default {
 
 ---
 
-*Integration design for Claude-Flow v2.5.0-alpha.130*
+*Integration design for FidgetFlo v2.5.0-alpha.130*

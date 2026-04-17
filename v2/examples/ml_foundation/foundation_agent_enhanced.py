@@ -78,7 +78,7 @@ class EnhancedFoundationAgent:
     - Advanced model selection
     - Hyperparameter optimization
     - Model interpretability
-    - Claude Flow coordination
+    - FidgetFlo coordination
     """
     
     def __init__(self, 
@@ -113,7 +113,7 @@ class EnhancedFoundationAgent:
         self.best_model = None
         self.performance_metrics = {}
         
-        # Claude Flow coordination
+        # FidgetFlo coordination
         self._setup_coordination()
         
         logger.info(f"Initialized Enhanced Foundation Agent: {agent_id}")
@@ -164,10 +164,10 @@ class EnhancedFoundationAgent:
         }
     
     def _setup_coordination(self):
-        """Setup Claude Flow coordination"""
+        """Setup FidgetFlo coordination"""
         try:
             # Notify coordination start
-            cmd = f"npx claude-flow@alpha hooks notify --message 'Foundation Agent initialized: {self.agent_id}'"
+            cmd = f"npx fidgetflo@alpha hooks notify --message 'Foundation Agent initialized: {self.agent_id}'"
             subprocess.run(cmd, shell=True, capture_output=True)
             
             # Store agent status
@@ -178,7 +178,7 @@ class EnhancedFoundationAgent:
                 'capabilities': ['data_preprocessing', 'feature_engineering', 'baseline_models', 'hyperparameter_tuning']
             }
             
-            cmd = f"npx claude-flow@alpha memory store 'agent/{self.agent_id}/status' '{json.dumps(status)}'"
+            cmd = f"npx fidgetflo@alpha memory store 'agent/{self.agent_id}/status' '{json.dumps(status)}'"
             subprocess.run(cmd, shell=True, capture_output=True)
             
         except Exception as e:
@@ -731,11 +731,11 @@ class EnhancedFoundationAgent:
                 'recommendations': results['recommendations']
             }
             
-            cmd = f"npx claude-flow@alpha memory store 'agent/{self.agent_id}/handoff' '{json.dumps(handoff_data)}'"
+            cmd = f"npx fidgetflo@alpha memory store 'agent/{self.agent_id}/handoff' '{json.dumps(handoff_data)}'"
             subprocess.run(cmd, shell=True, capture_output=True)
             
             # Notify completion
-            cmd = f"npx claude-flow@alpha hooks post-task --task-id '{self.agent_id}' --analyze-performance true"
+            cmd = f"npx fidgetflo@alpha hooks post-task --task-id '{self.agent_id}' --analyze-performance true"
             subprocess.run(cmd, shell=True, capture_output=True)
             
             logger.info("Handoff to next agent completed")
@@ -746,7 +746,7 @@ class EnhancedFoundationAgent:
     def _store_insights(self, key: str, data: Dict):
         """Store insights in memory"""
         try:
-            cmd = f"npx claude-flow@alpha memory store 'agent/{self.agent_id}/{key}' '{json.dumps(data, default=str)}'"
+            cmd = f"npx fidgetflo@alpha memory store 'agent/{self.agent_id}/{key}' '{json.dumps(data, default=str)}'"
             subprocess.run(cmd, shell=True, capture_output=True)
         except Exception as e:
             logger.warning(f"Memory storage warning: {e}")
@@ -755,7 +755,7 @@ class EnhancedFoundationAgent:
         """Store individual model performance"""
         try:
             key = f'agent/{self.agent_id}/model_{model_name}'
-            cmd = f"npx claude-flow@alpha memory store '{key}' '{json.dumps(metrics, default=str)}'"
+            cmd = f"npx fidgetflo@alpha memory store '{key}' '{json.dumps(metrics, default=str)}'"
             subprocess.run(cmd, shell=True, capture_output=True)
         except Exception as e:
             logger.warning(f"Performance storage warning: {e}")
@@ -770,10 +770,10 @@ class EnhancedFoundationAgent:
                 'session': self.session_id
             }
             
-            cmd = f"npx claude-flow@alpha memory store 'agent/{self.agent_id}/error' '{json.dumps(error_data)}'"
+            cmd = f"npx fidgetflo@alpha memory store 'agent/{self.agent_id}/error' '{json.dumps(error_data)}'"
             subprocess.run(cmd, shell=True, capture_output=True)
             
-            cmd = f"npx claude-flow@alpha hooks notify --message 'Foundation Agent error: {str(error)}'"
+            cmd = f"npx fidgetflo@alpha hooks notify --message 'Foundation Agent error: {str(error)}'"
             subprocess.run(cmd, shell=True, capture_output=True)
             
         except Exception as e:

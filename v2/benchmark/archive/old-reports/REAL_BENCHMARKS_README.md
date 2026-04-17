@@ -1,12 +1,12 @@
-# Real Claude Flow Benchmarks
+# Real FidgetFlo Benchmarks
 
-**CRITICAL**: These are REAL benchmarks that execute actual `./claude-flow` commands. NO simulations.
+**CRITICAL**: These are REAL benchmarks that execute actual `./fidgetflo` commands. NO simulations.
 
 ## 🎯 Overview
 
-This benchmark suite implements real-world performance testing for Claude Flow by:
+This benchmark suite implements real-world performance testing for FidgetFlo by:
 
-1. **Executing Real Commands**: Uses actual `./claude-flow` subprocess calls
+1. **Executing Real Commands**: Uses actual `./fidgetflo` subprocess calls
 2. **Measuring Actual Performance**: Tracks real execution time, token usage, memory consumption
 3. **Parsing Real Responses**: Extracts metrics from actual JSON streaming responses
 4. **Tracking Real Resources**: Monitors CPU, memory, and I/O during execution
@@ -32,7 +32,7 @@ benchmark/
 ### 1. Test Installation
 
 ```bash
-# Validate Claude Flow is available and benchmarks work
+# Validate FidgetFlo is available and benchmarks work
 python test_real_benchmarks.py --quick
 ```
 
@@ -89,7 +89,7 @@ class RealBenchmarkResult:
 
 ### ClaudeFlowRealExecutor
 
-Executes real Claude Flow commands with comprehensive monitoring:
+Executes real FidgetFlo commands with comprehensive monitoring:
 
 ```python
 executor = ClaudeFlowRealExecutor()
@@ -180,7 +180,7 @@ for category, benchmarks in results.items():
 from swarm_benchmark.scenarios.real_benchmarks import ClaudeFlowRealExecutor
 
 executor = ClaudeFlowRealExecutor(
-    claude_flow_path="/path/to/claude-flow",
+    claude_flow_path="/path/to/fidgetflo",
     working_dir="/workspace"
 )
 
@@ -222,7 +222,7 @@ class ResourceMonitor:
 Real output parsing extracts actual metrics:
 
 ```python
-# Extract token usage from real Claude Flow output
+# Extract token usage from real FidgetFlo output
 tokens = executor._extract_token_usage(stdout)
 
 # Extract actual agent count from output  
@@ -239,14 +239,14 @@ metrics = executor._parse_json_metrics(stdout)
 Required environment for real benchmarks:
 
 ```bash
-# Ensure claude-flow is available
-export PATH="/path/to/claude-flow/bin:$PATH"
+# Ensure fidgetflo is available
+export PATH="/path/to/fidgetflo/bin:$PATH"
 
 # Set working directory
 export CLAUDE_WORKING_DIR="/workspace"
 
-# Optional: Custom claude-flow path
-export CLAUDE_FLOW_PATH="/custom/path/claude-flow"
+# Optional: Custom fidgetflo path
+export FIDGETFLO_PATH="/custom/path/fidgetflo"
 ```
 
 ### Benchmark Configuration
@@ -288,7 +288,7 @@ Real benchmark results are saved as JSON:
   "output_size_bytes": 15420,
   "error_count": 0,
   "warning_count": 1,
-  "command_executed": ["./claude-flow", "swarm", "..."],
+  "command_executed": ["./fidgetflo", "swarm", "..."],
   "stdout_excerpt": "Starting swarm execution...",
   "stderr_excerpt": "",
   "metrics_raw": {"performance": 0.95},
@@ -324,7 +324,7 @@ python examples/real_sparc_benchmark.py --workflow
 
 ### Real Execution Requirements
 
-1. **Claude Flow Installation**: Must have working `./claude-flow` executable
+1. **FidgetFlo Installation**: Must have working `./fidgetflo` executable
 2. **Network Access**: Real benchmarks may require internet connectivity
 3. **API Limits**: Respect Claude API rate limits and token usage
 4. **Execution Time**: Real benchmarks take actual time to complete
@@ -401,4 +401,4 @@ def run_ci_benchmarks():
     return results
 ```
 
-This real benchmark implementation provides comprehensive, accurate performance measurement for Claude Flow operations using actual command execution and real-world metrics.
+This real benchmark implementation provides comprehensive, accurate performance measurement for FidgetFlo operations using actual command execution and real-world metrics.

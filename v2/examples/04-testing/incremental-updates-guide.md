@@ -1,10 +1,10 @@
-# Incremental Updates Guide for Claude Flow
+# Incremental Updates Guide for FidgetFlo
 
-This guide demonstrates and tests various incremental update mechanisms implemented throughout the Claude Flow system.
+This guide demonstrates and tests various incremental update mechanisms implemented throughout the FidgetFlo system.
 
 ## Overview
 
-Incremental updates are a core pattern in Claude Flow, enabling:
+Incremental updates are a core pattern in FidgetFlo, enabling:
 - Version tracking for memory entries
 - Atomic counter operations for metrics
 - Progressive task execution monitoring
@@ -215,17 +215,17 @@ npm test -- incremental
 
 ## Monitoring Incremental Updates
 
-Use Claude Flow's built-in monitoring:
+Use FidgetFlo's built-in monitoring:
 
 ```bash
 # Monitor memory updates
-npx claude-flow memory monitor
+npx fidgetflo memory monitor
 
 # Track swarm progress
-npx claude-flow swarm status --watch
+npx fidgetflo swarm status --watch
 
 # View cache statistics
-npx claude-flow cache stats
+npx fidgetflo cache stats
 ```
 
 ## Troubleshooting
@@ -240,4 +240,4 @@ Common issues and solutions:
 
 ## Conclusion
 
-Incremental updates are fundamental to Claude Flow's distributed architecture. By following these patterns and best practices, you can build reliable, scalable systems that track changes efficiently and maintain consistency across distributed components.
+Incremental updates are fundamental to FidgetFlo's distributed architecture. By following these patterns and best practices, you can build reliable, scalable systems that track changes efficiently and maintain consistency across distributed components.

@@ -1,9 +1,9 @@
-# ADR-072: Autopilot Integration — Persistent Swarm Completion for Claude-Flow CLI
+# ADR-072: Autopilot Integration — Persistent Swarm Completion for FidgetFlo CLI
 
 - **Status**: Proposed
 - **Date**: 2026-03-25
 - **Depends on**: ADR-058 (Autopilot Swarm Completion in agentic-flow)
-- **Related**: ADR-037 (Autopilot Chat Mode in Ruflo UI), ADR-071 (Guidance MCP Tools)
+- **Related**: ADR-037 (Autopilot Chat Mode in FidgetFlo UI), ADR-071 (Guidance MCP Tools)
 
 ## Problem Statement
 
@@ -21,7 +21,7 @@ The result is that complex multi-phase tasks (implement feature + write tests + 
 
 Integrate agentic-flow's **Autopilot Persistent Completion System** (ADR-058) into the `@claude-flow/cli` package at three layers:
 
-1. **CLI commands** — 9 subcommands under `npx claude-flow autopilot`
+1. **CLI commands** — 9 subcommands under `npx fidgetflo autopilot`
 2. **MCP tools** — 10 tools registered in the MCP server
 3. **Stop hook integration** — Intercept agent stop events to check for remaining tasks
 4. **CLAUDE.md injection** — Auto-inject autopilot instructions into project configuration
@@ -76,8 +76,8 @@ Autopilot discovers incomplete tasks from three sources, aggregated into a unifi
 | Source | Location | Format | Priority |
 |--------|----------|--------|----------|
 | **Team Tasks** | `~/.claude/tasks/{team-name}/` | Claude Code task files | Highest |
-| **Swarm Tasks** | `.claude-flow/swarm-tasks.json` | agentic-flow swarm state | High |
-| **Checklist Files** | `.claude-flow/data/checklist.json` | Manual task checklists | Normal |
+| **Swarm Tasks** | `.fidgetflo/swarm-tasks.json` | agentic-flow swarm state | High |
+| **Checklist Files** | `.fidgetflo/data/checklist.json` | Manual task checklists | Normal |
 
 A task is **incomplete** if its status is not one of: `completed`, `done`, `cancelled`, `skipped`.
 
@@ -88,7 +88,7 @@ The autopilot loop exits (allows the agent to stop) when **any** of these condit
 1. **All tasks complete**: Every discovered task has a terminal status
 2. **Max iterations reached**: Default 50, configurable up to 1000
 3. **Timeout exceeded**: Default 240 minutes, configurable up to 24 hours
-4. **Manual disable**: User runs `npx claude-flow autopilot disable` or calls `autopilot_disable` MCP tool
+4. **Manual disable**: User runs `npx fidgetflo autopilot disable` or calls `autopilot_disable` MCP tool
 5. **No tasks found**: If all 3 sources return zero tasks (nothing to track)
 
 ### Re-Engagement Protocol
@@ -125,7 +125,7 @@ Continue working on the remaining tasks. Do not stop until all are complete.
 
 ## Implementation Plan
 
-### Phase 1: CLI Command (npx claude-flow autopilot)
+### Phase 1: CLI Command (npx fidgetflo autopilot)
 
 **File**: `v3/@claude-flow/cli/src/commands/autopilot.ts`
 
@@ -250,7 +250,7 @@ async function autopilotStopHook(context: StopHookContext): Promise<StopHookResu
         "hooks": [
           {
             "type": "command",
-            "command": "npx claude-flow@latest hooks autopilot-check"
+            "command": "npx fidgetflo@latest hooks autopilot-check"
           }
         ]
       }
@@ -263,7 +263,7 @@ async function autopilotStopHook(context: StopHookContext): Promise<StopHookResu
 
 **File**: `v3/@claude-flow/cli/src/init/executor.ts`
 
-When `npx claude-flow init` runs, inject autopilot behavioral instructions into the generated CLAUDE.md:
+When `npx fidgetflo init` runs, inject autopilot behavioral instructions into the generated CLAUDE.md:
 
 ```markdown
 ## Autopilot: Persistent Task Completion
@@ -276,10 +276,10 @@ This project uses autopilot for persistent swarm completion. When enabled:
 4. **Report progress**: Periodically report completion percentage
 
 ### Autopilot Commands
-- `npx claude-flow autopilot status` — Check current progress
-- `npx claude-flow autopilot enable` — Enable persistent completion
-- `npx claude-flow autopilot disable` — Disable (allow early stop)
-- `npx claude-flow autopilot predict` — Get AI-recommended next action
+- `npx fidgetflo autopilot status` — Check current progress
+- `npx fidgetflo autopilot enable` — Enable persistent completion
+- `npx fidgetflo autopilot disable` — Disable (allow early stop)
+- `npx fidgetflo autopilot predict` — Get AI-recommended next action
 ```
 
 ### Phase 5: agentic-flow Export Fix
@@ -324,7 +324,7 @@ Publish as `agentic-flow@3.0.0-alpha.3`.
 
 ### Autopilot State File
 
-**Location**: `.claude-flow/data/autopilot-state.json`
+**Location**: `.fidgetflo/data/autopilot-state.json`
 
 ```json
 {
@@ -342,7 +342,7 @@ Publish as `agentic-flow@3.0.0-alpha.3`.
 
 ### Autopilot Event Log
 
-**Location**: `.claude-flow/data/autopilot-log.json`
+**Location**: `.fidgetflo/data/autopilot-log.json`
 
 Array of events:
 
@@ -368,7 +368,7 @@ Array of events:
       "timeoutMinutes": 240,
       "taskSources": ["team-tasks", "swarm-tasks", "file-checklist"],
       "completionCriteria": "all-tasks-done",
-      "logFile": ".claude-flow/data/autopilot-log.json"
+      "logFile": ".fidgetflo/data/autopilot-log.json"
     }
   }
 }
@@ -472,16 +472,16 @@ After 10 stalled iterations, autopilot disables itself and records a failure epi
 
 ### Acceptance Criteria
 
-1. `npx claude-flow autopilot status` returns current state (enabled, iterations, progress)
-2. `npx claude-flow autopilot enable/disable` toggles persistent completion
-3. `npx claude-flow autopilot config --max-iterations 100` persists to settings
+1. `npx fidgetflo autopilot status` returns current state (enabled, iterations, progress)
+2. `npx fidgetflo autopilot enable/disable` toggles persistent completion
+3. `npx fidgetflo autopilot config --max-iterations 100` persists to settings
 4. All 10 MCP tools respond correctly when called via MCP client
 5. Stop hook intercepts agent stop and re-engages when tasks remain
 6. Stop hook allows stop when all tasks are complete
 7. Stop hook respects max iterations and timeout limits
 8. AgentDB learning records episodes and can discover patterns
-9. `npx claude-flow autopilot predict` returns actionable recommendations
-10. `npx claude-flow init` includes autopilot configuration in generated settings
+9. `npx fidgetflo autopilot predict` returns actionable recommendations
+10. `npx fidgetflo init` includes autopilot configuration in generated settings
 11. Stall detection triggers after 5 iterations with no progress
 12. All existing tests continue to pass (no regressions)
 

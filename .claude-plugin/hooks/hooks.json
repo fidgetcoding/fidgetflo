@@ -6,7 +6,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "cat | npx claude-flow@alpha hooks modify-bash"
+            "command": "cat | npx fidgetflo@alpha hooks modify-bash"
           }
         ]
       },
@@ -15,7 +15,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "cat | npx claude-flow@alpha hooks modify-file"
+            "command": "cat | npx fidgetflo@alpha hooks modify-file"
           }
         ]
       }
@@ -26,7 +26,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "cat | jq -r '.tool_input.command // empty' | tr '\\n' '\\0' | xargs -0 -I {} npx claude-flow@alpha hooks post-command --command '{}' --track-metrics true --store-results true"
+            "command": "cat | jq -r '.tool_input.command // empty' | tr '\\n' '\\0' | xargs -0 -I {} npx fidgetflo@alpha hooks post-command --command '{}' --track-metrics true --store-results true"
           }
         ]
       },
@@ -35,7 +35,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "cat | jq -r '.tool_input.file_path // .tool_input.path // empty' | tr '\\n' '\\0' | xargs -0 -I {} npx claude-flow@alpha hooks post-edit --file '{}' --format true --update-memory true"
+            "command": "cat | jq -r '.tool_input.file_path // .tool_input.path // empty' | tr '\\n' '\\0' | xargs -0 -I {} npx fidgetflo@alpha hooks post-edit --file '{}' --format true --update-memory true"
           }
         ]
       }
@@ -65,7 +65,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "npx claude-flow@alpha hooks session-end --generate-summary true --persist-state true --export-metrics true"
+            "command": "npx fidgetflo@alpha hooks session-end --generate-summary true --persist-state true --export-metrics true"
           }
         ]
       }

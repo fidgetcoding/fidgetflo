@@ -59,11 +59,11 @@ See [_scripts/README.md](./_scripts/README.md) for detailed documentation.
 # 1. Choose model
 cd /workspaces/claude-code-flow/docs/reasoningbank/models/safla
 
-# 2. Copy to claude-flow
+# 2. Copy to fidgetflo
 cp memory.db ~/.swarm/memory.db
 
 # 3. Try it
-npx claude-flow@alpha memory query "API optimization best practices"
+npx fidgetflo@alpha memory query "API optimization best practices"
 ```
 
 ### Tutorial 2: Merge Multiple Models (10 minutes)
@@ -185,7 +185,7 @@ See [HOW-TO-USE.md - Pattern 1: Agentic-Flow Integration](./HOW-TO-USE.md#patter
 **Guide**: [HOW-TO-USE.md - Usage Examples](./HOW-TO-USE.md#usage-examples)
 **Example**:
 ```bash
-npx claude-flow@alpha memory query "JWT authentication" --reasoningbank
+npx fidgetflo@alpha memory query "JWT authentication" --reasoningbank
 ```
 
 ### Task: Merge models

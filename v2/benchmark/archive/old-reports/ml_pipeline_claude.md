@@ -98,7 +98,7 @@
 ### Ensemble Coordination Pattern
 ```python
 # Initialize MLE-STAR ensemble
-mcp__claude-flow__swarm_init({
+mcp__fidgetflo__swarm_init({
   topology: "mesh",
   maxAgents: 8,
   mle_star: {

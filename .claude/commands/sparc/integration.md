@@ -22,7 +22,7 @@ Verify interface compatibility, shared modules, and env config standards. Split 
 
 ### Option 1: Using MCP Tools (Preferred in Claude Code)
 ```javascript
-mcp__claude-flow__sparc_mode {
+mcp__fidgetflo__sparc_mode {
   mode: "integration",
   task_description: "connect payment service",
   options: {
@@ -35,22 +35,22 @@ mcp__claude-flow__sparc_mode {
 ### Option 2: Using NPX CLI (Fallback when MCP not available)
 ```bash
 # Use when running from terminal or MCP tools unavailable
-npx claude-flow sparc run integration "connect payment service"
+npx fidgetflo sparc run integration "connect payment service"
 
 # For alpha features
-npx claude-flow@alpha sparc run integration "connect payment service"
+npx fidgetflo@alpha sparc run integration "connect payment service"
 
 # With namespace
-npx claude-flow sparc run integration "your task" --namespace integration
+npx fidgetflo sparc run integration "your task" --namespace integration
 
 # Non-interactive mode
-npx claude-flow sparc run integration "your task" --non-interactive
+npx fidgetflo sparc run integration "your task" --non-interactive
 ```
 
 ### Option 3: Local Installation
 ```bash
-# If claude-flow is installed locally
-./claude-flow sparc run integration "connect payment service"
+# If fidgetflo is installed locally
+./fidgetflo sparc run integration "connect payment service"
 ```
 
 ## Memory Integration
@@ -58,7 +58,7 @@ npx claude-flow sparc run integration "your task" --non-interactive
 ### Using MCP Tools (Preferred)
 ```javascript
 // Store mode-specific context
-mcp__claude-flow__memory_usage {
+mcp__fidgetflo__memory_usage {
   action: "store",
   key: "integration_context",
   value: "important decisions",
@@ -66,7 +66,7 @@ mcp__claude-flow__memory_usage {
 }
 
 // Query previous work
-mcp__claude-flow__memory_search {
+mcp__fidgetflo__memory_search {
   pattern: "integration",
   namespace: "integration",
   limit: 5
@@ -76,8 +76,8 @@ mcp__claude-flow__memory_search {
 ### Using NPX CLI (Fallback)
 ```bash
 # Store mode-specific context
-npx claude-flow memory store "integration_context" "important decisions" --namespace integration
+npx fidgetflo memory store "integration_context" "important decisions" --namespace integration
 
 # Query previous work
-npx claude-flow memory query "integration" --limit 5
+npx fidgetflo memory query "integration" --limit 5
 ```

@@ -830,7 +830,7 @@ self.onmessage = async (e: MessageEvent) => {
 
 ### Why WASM in the Browser?
 
-Currently, all intelligence runs server-side: the MCP bridge calls ruvector/ruflo via stdio, gets results, sends them back. This adds latency and server load for operations that could run client-side.
+Currently, all intelligence runs server-side: the MCP bridge calls ruvector/fidgetflo via stdio, gets results, sends them back. This adds latency and server load for operations that could run client-side.
 
 RuVector's core capabilities — vector search, pattern matching, agent routing, HNSW indexing — are written in Rust and compile to WASM. Running them in-browser enables:
 

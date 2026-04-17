@@ -46,9 +46,9 @@ V3 introduces breaking changes per ADR-001 through ADR-010. This document outlin
 // Provides V2-compatible imports
 
 // V2 imports
-import { HiveMind } from 'claude-flow/hive-mind';
-import { SwarmCoordinator } from 'claude-flow/swarm';
-import { MemoryManager } from 'claude-flow/memory';
+import { HiveMind } from 'fidgetflo/hive-mind';
+import { SwarmCoordinator } from 'fidgetflo/swarm';
+import { MemoryManager } from 'fidgetflo/memory';
 
 // V3 compatibility layer
 export { UnifiedSwarmCoordinator as HiveMind } from '@claude-flow/swarm';
@@ -171,13 +171,13 @@ export const commandMapping: Record<string, string[]> = {
 
 ### V2 Configuration
 ```yaml
-# v2/.claude-flow/config.yaml
+# v2/.fidgetflo/config.yaml
 orchestrator:
   maxAgents: 10
   defaultStrategy: balanced
 memory:
   backend: sqlite
-  path: ./.claude-flow/memory.db
+  path: ./.fidgetflo/memory.db
 coordination:
   topology: hierarchical
   consensus: quorum
@@ -185,7 +185,7 @@ coordination:
 
 ### V3 Configuration
 ```yaml
-# v3/.claude-flow/config.yaml
+# v3/.fidgetflo/config.yaml
 swarm:
   topology: hierarchical-mesh
   maxAgents: 15
@@ -195,7 +195,7 @@ swarm:
 memory:
   backend: hybrid  # SQLite + AgentDB
   sqlite:
-    path: ./.claude-flow/memory.db
+    path: ./.fidgetflo/memory.db
   agentdb:
     enableHNSW: true
     dimensions: 384
@@ -224,7 +224,7 @@ export async function migrateConfig(v2ConfigPath: string): Promise<void> {
     memory: {
       backend: 'hybrid',
       sqlite: {
-        path: v2Config.memory?.path || './.claude-flow/memory.db'
+        path: v2Config.memory?.path || './.fidgetflo/memory.db'
       },
       agentdb: {
         enableHNSW: true,
@@ -239,7 +239,7 @@ export async function migrateConfig(v2ConfigPath: string): Promise<void> {
     }
   };
 
-  await saveYaml('.claude-flow/config.yaml', v3Config);
+  await saveYaml('.fidgetflo/config.yaml', v3Config);
 }
 
 function mapTopology(v2Topology: string): string {

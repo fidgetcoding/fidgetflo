@@ -17,10 +17,10 @@ This package provides a complete system for coordinating work between humans and
 npm install @claude-flow/claims
 ```
 
-Or install via Claude Flow CLI:
+Or install via FidgetFlo CLI:
 
 ```bash
-npx claude-flow plugins install @claude-flow/claims
+npx fidgetflo plugins install @claude-flow/claims
 ```
 
 ---
@@ -220,19 +220,19 @@ All claim operations are event-sourced (ADR-007):
 
 ```bash
 # Claim an issue
-npx claude-flow claims claim --issue ISSUE-123 --claimant "human:alice"
+npx fidgetflo claims claim --issue ISSUE-123 --claimant "human:alice"
 
 # Release a claim
-npx claude-flow claims release --issue ISSUE-123
+npx fidgetflo claims release --issue ISSUE-123
 
 # View claims board
-npx claude-flow claims board
+npx fidgetflo claims board
 
 # List stealable issues
-npx claude-flow claims stealable
+npx fidgetflo claims stealable
 
 # Rebalance workload
-npx claude-flow claims rebalance --dry-run
+npx fidgetflo claims rebalance --dry-run
 ```
 
 ---
@@ -240,7 +240,7 @@ npx claude-flow claims rebalance --dry-run
 ## Configuration
 
 ```yaml
-# claude-flow.config.yaml
+# fidgetflo.config.yaml
 claims:
   autoExpiration:
     enabled: true

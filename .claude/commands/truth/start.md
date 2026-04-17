@@ -9,7 +9,7 @@ The `truth` command provides comprehensive insights into code quality, agent per
 ## Usage
 
 ```bash
-claude-flow truth [options]
+fidgetflo truth [options]
 ```
 
 ## Options
@@ -45,28 +45,28 @@ claude-flow truth [options]
 ### Basic Usage
 ```bash
 # View current truth scores
-claude-flow truth
+fidgetflo truth
 
 # View scores for last 7 days
-claude-flow truth --period 7d
+fidgetflo truth --period 7d
 
 # Export to HTML report
-claude-flow truth --export report.html --format html
+fidgetflo truth --export report.html --format html
 ```
 
 ### Advanced Analysis
 ```bash
 # Monitor real-time scores
-claude-flow truth --watch
+fidgetflo truth --watch
 
 # Find problematic files
-claude-flow truth --threshold 0.8
+fidgetflo truth --threshold 0.8
 
 # Agent-specific metrics
-claude-flow truth --agent coder --period 24h
+fidgetflo truth --agent coder --period 24h
 
 # JSON for processing
-claude-flow truth --format json | jq '.overall_score'
+fidgetflo truth --format json | jq '.overall_score'
 ```
 
 ## Dashboard View
@@ -100,7 +100,7 @@ Recent Tasks:
 # GitHub Actions example
 - name: Check Truth Scores
   run: |
-    claude-flow truth --format json > truth.json
+    fidgetflo truth --format json > truth.json
     score=$(jq '.overall_score' truth.json)
     if (( $(echo "$score < 0.95" | bc -l) )); then
       echo "Truth score too low: $score"
@@ -111,7 +111,7 @@ Recent Tasks:
 ### With Monitoring
 ```bash
 # Send to monitoring system
-claude-flow truth --format json | \
+fidgetflo truth --format json | \
   curl -X POST https://metrics.example.com/api/truth \
   -H "Content-Type: application/json" \
   -d @-
@@ -119,7 +119,7 @@ claude-flow truth --format json | \
 
 ## Configuration
 
-Set truth display preferences in `.claude-flow/config.json`:
+Set truth display preferences in `.fidgetflo/config.json`:
 
 ```json
 {
@@ -130,7 +130,7 @@ Set truth display preferences in `.claude-flow/config.json`:
     "criticalThreshold": 0.75,
     "autoExport": {
       "enabled": true,
-      "path": ".claude-flow/metrics/truth-daily.json"
+      "path": ".fidgetflo/metrics/truth-daily.json"
     }
   }
 }

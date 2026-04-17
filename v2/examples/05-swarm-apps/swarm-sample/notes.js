@@ -2,7 +2,7 @@
 
 /**
  * Notes CLI Application
- * Created by Claude Flow Swarm
+ * Created by FidgetFlo Swarm
  * 
  * Agent contributions:
  * - Developer-1: Core note management logic
@@ -132,7 +132,7 @@ const manager = new NotesManager();
 
 program
     .name('notes')
-    .description('CLI tool for managing notes - Created by Claude Flow Swarm')
+    .description('CLI tool for managing notes - Created by FidgetFlo Swarm')
     .version('1.0.0');
 
 // Add command
@@ -248,7 +248,7 @@ program
         if (stats.tags.length > 0) {
             console.log(chalk.cyan(`\nTags: ${stats.tags.join(', ')}`));
         }
-        console.log(chalk.gray(`\n🐝 Created by Claude Flow Swarm`));
+        console.log(chalk.gray(`\n🐝 Created by FidgetFlo Swarm`));
     });
 
 // Info command
@@ -256,7 +256,7 @@ program
     .command('info')
     .description('Show swarm creation information')
     .action(() => {
-        console.log(chalk.blue('\n🐝 Claude Flow Swarm Information:\n'));
+        console.log(chalk.blue('\n🐝 FidgetFlo Swarm Information:\n'));
         console.log(chalk.white('This application was created through coordinated agent collaboration:'));
         console.log(chalk.green('  • Coordinator-1: Task decomposition and agent assignment'));
         console.log(chalk.green('  • Developer-1: Core note management implementation'));

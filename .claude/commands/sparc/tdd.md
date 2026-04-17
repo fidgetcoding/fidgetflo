@@ -7,7 +7,7 @@ Test-driven development with TodoWrite planning and comprehensive testing.
 
 ### Option 1: Using MCP Tools (Preferred in Claude Code)
 ```javascript
-mcp__claude-flow__sparc_mode {
+mcp__fidgetflo__sparc_mode {
   mode: "tdd",
   task_description: "shopping cart feature",
   options: {
@@ -20,16 +20,16 @@ mcp__claude-flow__sparc_mode {
 ### Option 2: Using NPX CLI (Fallback when MCP not available)
 ```bash
 # Use when running from terminal or MCP tools unavailable
-npx claude-flow sparc run tdd "shopping cart feature"
+npx fidgetflo sparc run tdd "shopping cart feature"
 
 # For alpha features
-npx claude-flow@alpha sparc run tdd "shopping cart feature"
+npx fidgetflo@alpha sparc run tdd "shopping cart feature"
 ```
 
 ### Option 3: Local Installation
 ```bash
-# If claude-flow is installed locally
-./claude-flow sparc run tdd "shopping cart feature"
+# If fidgetflo is installed locally
+./fidgetflo sparc run tdd "shopping cart feature"
 ```
 
 ## Core Capabilities

@@ -35,25 +35,25 @@ import { createRequire } from 'module';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const PROJECT_ROOT = join(__dirname, '../..');
-const DATA_DIR = join(PROJECT_ROOT, '.claude-flow', 'data');
+const DATA_DIR = join(PROJECT_ROOT, '.fidgetflo', 'data');
 const ARCHIVE_JSON_PATH = join(DATA_DIR, 'transcript-archive.json');
 const ARCHIVE_DB_PATH = join(DATA_DIR, 'transcript-archive.db');
 
 const NAMESPACE = 'transcript-archive';
-const RESTORE_BUDGET = parseInt(process.env.CLAUDE_FLOW_COMPACT_RESTORE_BUDGET || '4000', 10);
+const RESTORE_BUDGET = parseInt(process.env.FIDGETFLO_COMPACT_RESTORE_BUDGET || '4000', 10);
 const MAX_MESSAGES = 500;
-const BLOCK_COMPACTION = process.env.CLAUDE_FLOW_BLOCK_COMPACTION === 'true';
-const COMPACT_INSTRUCTION_BUDGET = parseInt(process.env.CLAUDE_FLOW_COMPACT_INSTRUCTION_BUDGET || '2000', 10);
-const RETENTION_DAYS = parseInt(process.env.CLAUDE_FLOW_RETENTION_DAYS || '30', 10);
-const AUTO_OPTIMIZE = process.env.CLAUDE_FLOW_AUTO_OPTIMIZE !== 'false'; // on by default
+const BLOCK_COMPACTION = process.env.FIDGETFLO_BLOCK_COMPACTION === 'true';
+const COMPACT_INSTRUCTION_BUDGET = parseInt(process.env.FIDGETFLO_COMPACT_INSTRUCTION_BUDGET || '2000', 10);
+const RETENTION_DAYS = parseInt(process.env.FIDGETFLO_RETENTION_DAYS || '30', 10);
+const AUTO_OPTIMIZE = process.env.FIDGETFLO_AUTO_OPTIMIZE !== 'false'; // on by default
 
 // ============================================================================
 // Context Autopilot — prevent compaction by managing context size in real-time
 // ============================================================================
-const AUTOPILOT_ENABLED = process.env.CLAUDE_FLOW_CONTEXT_AUTOPILOT !== 'false'; // on by default
-const CONTEXT_WINDOW_TOKENS = parseInt(process.env.CLAUDE_FLOW_CONTEXT_WINDOW || '200000', 10);
-const AUTOPILOT_WARN_PCT = parseFloat(process.env.CLAUDE_FLOW_AUTOPILOT_WARN || '0.70');
-const AUTOPILOT_PRUNE_PCT = parseFloat(process.env.CLAUDE_FLOW_AUTOPILOT_PRUNE || '0.85');
+const AUTOPILOT_ENABLED = process.env.FIDGETFLO_CONTEXT_AUTOPILOT !== 'false'; // on by default
+const CONTEXT_WINDOW_TOKENS = parseInt(process.env.FIDGETFLO_CONTEXT_WINDOW || '200000', 10);
+const AUTOPILOT_WARN_PCT = parseFloat(process.env.FIDGETFLO_AUTOPILOT_WARN || '0.70');
+const AUTOPILOT_PRUNE_PCT = parseFloat(process.env.FIDGETFLO_AUTOPILOT_PRUNE || '0.85');
 const AUTOPILOT_STATE_PATH = join(DATA_DIR, 'autopilot-state.json');
 
 // Approximate tokens per character (Claude averages ~3.5 chars per token)
@@ -465,7 +465,7 @@ class RuVectorBackend {
       max: 3,
       idleTimeoutMillis: 10000,
       connectionTimeoutMillis: 3000,
-      application_name: 'claude-flow-context-persistence',
+      application_name: 'fidgetflo-context-persistence',
     });
 
     // Test connection and create schema

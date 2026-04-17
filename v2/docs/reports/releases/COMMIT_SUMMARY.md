@@ -90,15 +90,15 @@ npx agentic-flow agent info coder --output-format json
 ### ✅ All Tests Passing
 
 1. **Agent Listing Test**
-   - Command: `./bin/claude-flow agent agents`
+   - Command: `./bin/fidgetflo agent agents`
    - Result: ✅ PASS (66+ agents displayed)
 
 2. **Agent Info Test**
-   - Command: `./bin/claude-flow agent info coder --format json`
+   - Command: `./bin/fidgetflo agent info coder --format json`
    - Result: ✅ PASS (metadata retrieved correctly)
 
 3. **End-to-End Execution Test**
-   - Command: `./bin/claude-flow agent execute coder "Write a simple hello world function"`
+   - Command: `./bin/fidgetflo agent execute coder "Write a simple hello world function"`
    - Result: ✅ PASS (agent executed successfully with Anthropic API)
    - Output: High-quality JavaScript function with JSDoc comments
 

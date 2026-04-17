@@ -29,7 +29,7 @@ User raised valid concerns about "limitations" in ReasoningBank:
 Base: node:20 (official Docker image)
 Tools: sqlite3, npm
 Location: /tmp (clean filesystem)
-Package: /app (mounted claude-flow source)
+Package: /app (mounted fidgetflo source)
 ```
 
 ### Database Schema
@@ -225,7 +225,7 @@ const memories = await reasoningBank.retrieveMemories(query);
 **Setup:**
 ```bash
 # Developer stores GOAP pattern
-npx claude-flow memory store \
+npx fidgetflo memory store \
   "goap_planner" \
   "A* pathfinding algorithm for optimal action sequences" \
   --namespace test \
@@ -235,7 +235,7 @@ npx claude-flow memory store \
 **Query Attempt:**
 ```bash
 # Later, developer searches for it
-npx claude-flow memory query 'pathfinding' --reasoningbank --namespace test
+npx fidgetflo memory query 'pathfinding' --reasoningbank --namespace test
 ```
 
 **Without SQL Fallback (OLD):**
@@ -278,7 +278,7 @@ Developer: 😊 "Great! Pattern matching works perfectly!"
 
 **Status:** ✅ **CONFIRMED**
 ```bash
-$ npx claude-flow memory status --reasoningbank
+$ npx fidgetflo memory status --reasoningbank
 Memories: 0  # Shows 0 despite data existing
 ```
 

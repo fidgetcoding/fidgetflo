@@ -12,7 +12,7 @@ cd safla  # or google-research, code-reasoning, problem-solving, domain-expert
 cp memory.db ~/.swarm/memory.db
 
 # Try it!
-npx claude-flow@alpha memory query "your question here" --reasoningbank
+npx fidgetflo@alpha memory query "your question here" --reasoningbank
 ```
 
 **That's it!** You now have expert-level patterns ready to use.
@@ -197,20 +197,20 @@ mkdir ./my-project/.swarm
 cp code-reasoning/.swarm/memory.db ./my-project/.swarm/
 
 # Set environment variable
-export CLAUDE_FLOW_DB_PATH=./my-project/.swarm/memory.db
+export FIDGETFLO_DB_PATH=./my-project/.swarm/memory.db
 
 # Or use --db-path flag
-npx claude-flow@alpha memory query "test" --db-path ./my-project/.swarm/memory.db
+npx fidgetflo@alpha memory query "test" --db-path ./my-project/.swarm/memory.db
 ```
 
 ### Query Examples
 
 ```bash
 # Find patterns by domain
-npx claude-flow@alpha memory query "API authentication" --namespace security
+npx fidgetflo@alpha memory query "API authentication" --namespace security
 
 # High confidence only
-npx claude-flow@alpha memory query "database optimization" --min-confidence 0.8
+npx fidgetflo@alpha memory query "database optimization" --min-confidence 0.8
 
 # Specific domain
 sqlite3 ~/.swarm/memory.db "SELECT * FROM patterns WHERE domain = 'api-development' LIMIT 5"
@@ -277,7 +277,7 @@ await agent.execute({ task: 'Implement JWT auth' });
 
 ```bash
 # Load patterns as context
-npx claude-flow@alpha memory query "authentication patterns" > context.json
+npx fidgetflo@alpha memory query "authentication patterns" > context.json
 
 # Use in Claude Code
 claude code --context context.json "Implement auth"

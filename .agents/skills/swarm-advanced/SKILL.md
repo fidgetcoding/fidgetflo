@@ -4,7 +4,7 @@ description: Advanced swarm orchestration patterns for research, development, te
 version: 2.0.0
 category: orchestration
 tags: [swarm, distributed, parallel, research, testing, development, coordination]
-author: Claude Flow Team
+author: FidgetFlo Team
 ---
 
 # Advanced Swarm Orchestration
@@ -15,23 +15,23 @@ Master advanced swarm patterns for distributed research, development, and testin
 
 ### Prerequisites
 ```bash
-# Ensure Claude Flow is installed
-npm install -g claude-flow@alpha
+# Ensure FidgetFlo is installed
+npm install -g fidgetflo@alpha
 
 # Add MCP server (if using MCP tools)
-claude mcp add claude-flow npx claude-flow@alpha mcp start
+claude mcp add fidgetflo npx fidgetflo@alpha mcp start
 ```
 
 ### Basic Pattern
 ```javascript
 // 1. Initialize swarm topology
-mcp__claude-flow__swarm_init({ topology: "mesh", maxAgents: 6 })
+mcp__fidgetflo__swarm_init({ topology: "mesh", maxAgents: 6 })
 
 // 2. Spawn specialized agents
-mcp__claude-flow__agent_spawn({ type: "researcher", name: "Agent 1" })
+mcp__fidgetflo__agent_spawn({ type: "researcher", name: "Agent 1" })
 
 // 3. Orchestrate tasks
-mcp__claude-flow__task_orchestrate({ task: "...", strategy: "parallel" })
+mcp__fidgetflo__task_orchestrate({ task: "...", strategy: "parallel" })
 ```
 
 ## Core Concepts
@@ -73,7 +73,7 @@ Deep research through parallel information gathering, analysis, and synthesis.
 ### Architecture
 ```javascript
 // Initialize research swarm
-mcp__claude-flow__swarm_init({
+mcp__fidgetflo__swarm_init({
   "topology": "mesh",
   "maxAgents": 6,
   "strategy": "adaptive"
@@ -110,7 +110,7 @@ const researchAgents = [
 
 // Spawn all agents
 researchAgents.forEach(agent => {
-  mcp__claude-flow__agent_spawn({
+  mcp__fidgetflo__agent_spawn({
     type: agent.type,
     name: agent.name,
     capabilities: agent.capabilities
@@ -123,7 +123,7 @@ researchAgents.forEach(agent => {
 #### Phase 1: Information Gathering
 ```javascript
 // Parallel information collection
-mcp__claude-flow__parallel_execute({
+mcp__fidgetflo__parallel_execute({
   "tasks": [
     {
       "id": "web-search",
@@ -145,7 +145,7 @@ mcp__claude-flow__parallel_execute({
 })
 
 // Store research findings in memory
-mcp__claude-flow__memory_usage({
+mcp__fidgetflo__memory_usage({
   "action": "store",
   "key": "research-findings-" + Date.now(),
   "value": JSON.stringify(findings),
@@ -157,24 +157,24 @@ mcp__claude-flow__memory_usage({
 #### Phase 2: Analysis and Validation
 ```javascript
 // Pattern recognition in findings
-mcp__claude-flow__pattern_recognize({
+mcp__fidgetflo__pattern_recognize({
   "data": researchData,
   "patterns": ["trend", "correlation", "outlier", "emerging-pattern"]
 })
 
 // Cognitive analysis
-mcp__claude-flow__cognitive_analyze({
+mcp__fidgetflo__cognitive_analyze({
   "behavior": "research-synthesis"
 })
 
 // Quality assessment
-mcp__claude-flow__quality_assess({
+mcp__fidgetflo__quality_assess({
   "target": "research-sources",
   "criteria": ["credibility", "relevance", "recency", "authority"]
 })
 
 // Cross-reference validation
-mcp__claude-flow__neural_patterns({
+mcp__fidgetflo__neural_patterns({
   "action": "analyze",
   "operation": "fact-checking",
   "metadata": { "sources": sourcesArray }
@@ -184,14 +184,14 @@ mcp__claude-flow__neural_patterns({
 #### Phase 3: Knowledge Management
 ```javascript
 // Search existing knowledge base
-mcp__claude-flow__memory_search({
+mcp__fidgetflo__memory_search({
   "pattern": "topic X",
   "namespace": "research",
   "limit": 20
 })
 
 // Create knowledge graph connections
-mcp__claude-flow__neural_patterns({
+mcp__fidgetflo__neural_patterns({
   "action": "learn",
   "operation": "knowledge-graph",
   "metadata": {
@@ -202,7 +202,7 @@ mcp__claude-flow__neural_patterns({
 })
 
 // Store connections for future use
-mcp__claude-flow__memory_usage({
+mcp__fidgetflo__memory_usage({
   "action": "store",
   "key": "knowledge-graph-X",
   "value": JSON.stringify(knowledgeGraph),
@@ -214,7 +214,7 @@ mcp__claude-flow__memory_usage({
 #### Phase 4: Report Generation
 ```javascript
 // Orchestrate report generation
-mcp__claude-flow__task_orchestrate({
+mcp__fidgetflo__task_orchestrate({
   "task": "generate comprehensive research report",
   "strategy": "sequential",
   "priority": "high",
@@ -222,12 +222,12 @@ mcp__claude-flow__task_orchestrate({
 })
 
 // Monitor research progress
-mcp__claude-flow__swarm_status({
+mcp__fidgetflo__swarm_status({
   "swarmId": "research-swarm"
 })
 
 // Generate final report
-mcp__claude-flow__workflow_execute({
+mcp__fidgetflo__workflow_execute({
   "workflowId": "research-report-generation",
   "params": {
     "findings": findings,
@@ -240,7 +240,7 @@ mcp__claude-flow__workflow_execute({
 ### CLI Fallback
 ```bash
 # Quick research swarm
-npx claude-flow swarm "research AI trends in 2025" \
+npx fidgetflo swarm "research AI trends in 2025" \
   --strategy research \
   --mode distributed \
   --max-agents 6 \
@@ -256,7 +256,7 @@ Full-stack development through coordinated specialist agents.
 ### Architecture
 ```javascript
 // Initialize development swarm with hierarchy
-mcp__claude-flow__swarm_init({
+mcp__fidgetflo__swarm_init({
   "topology": "hierarchical",
   "maxAgents": 8,
   "strategy": "balanced"
@@ -276,7 +276,7 @@ const devTeam = [
 
 // Spawn all team members
 devTeam.forEach(member => {
-  mcp__claude-flow__agent_spawn({
+  mcp__fidgetflo__agent_spawn({
     type: member.type,
     name: member.name,
     capabilities: member.capabilities,
@@ -290,7 +290,7 @@ devTeam.forEach(member => {
 #### Phase 1: Architecture and Design
 ```javascript
 // System architecture design
-mcp__claude-flow__task_orchestrate({
+mcp__fidgetflo__task_orchestrate({
   "task": "design system architecture for REST API",
   "strategy": "sequential",
   "priority": "critical",
@@ -298,7 +298,7 @@ mcp__claude-flow__task_orchestrate({
 })
 
 // Store architecture decisions
-mcp__claude-flow__memory_usage({
+mcp__fidgetflo__memory_usage({
   "action": "store",
   "key": "architecture-decisions",
   "value": JSON.stringify(architectureDoc),
@@ -309,7 +309,7 @@ mcp__claude-flow__memory_usage({
 #### Phase 2: Parallel Implementation
 ```javascript
 // Parallel development tasks
-mcp__claude-flow__parallel_execute({
+mcp__fidgetflo__parallel_execute({
   "tasks": [
     {
       "id": "backend-api",
@@ -335,7 +335,7 @@ mcp__claude-flow__parallel_execute({
 })
 
 // Monitor development progress
-mcp__claude-flow__swarm_monitor({
+mcp__fidgetflo__swarm_monitor({
   "swarmId": "dev-swarm",
   "interval": 5000
 })
@@ -344,7 +344,7 @@ mcp__claude-flow__swarm_monitor({
 #### Phase 3: Testing and Validation
 ```javascript
 // Comprehensive testing
-mcp__claude-flow__batch_process({
+mcp__fidgetflo__batch_process({
   "items": [
     { type: "unit", target: "all-modules" },
     { type: "integration", target: "api-endpoints" },
@@ -355,7 +355,7 @@ mcp__claude-flow__batch_process({
 })
 
 // Quality assessment
-mcp__claude-flow__quality_assess({
+mcp__fidgetflo__quality_assess({
   "target": "codebase",
   "criteria": ["coverage", "complexity", "maintainability", "security"]
 })
@@ -364,7 +364,7 @@ mcp__claude-flow__quality_assess({
 #### Phase 4: Review and Deployment
 ```javascript
 // Code review workflow
-mcp__claude-flow__workflow_execute({
+mcp__fidgetflo__workflow_execute({
   "workflowId": "code-review-process",
   "params": {
     "reviewers": ["Code Reviewer"],
@@ -373,7 +373,7 @@ mcp__claude-flow__workflow_execute({
 })
 
 // CI/CD pipeline
-mcp__claude-flow__pipeline_create({
+mcp__fidgetflo__pipeline_create({
   "config": {
     "stages": ["build", "test", "security-scan", "deploy"],
     "environment": "production"
@@ -384,7 +384,7 @@ mcp__claude-flow__pipeline_create({
 ### CLI Fallback
 ```bash
 # Quick development swarm
-npx claude-flow swarm "build REST API with authentication" \
+npx fidgetflo swarm "build REST API with authentication" \
   --strategy development \
   --mode hierarchical \
   --monitor \
@@ -399,7 +399,7 @@ Comprehensive quality assurance through distributed testing.
 ### Architecture
 ```javascript
 // Initialize testing swarm with star topology
-mcp__claude-flow__swarm_init({
+mcp__fidgetflo__swarm_init({
   "topology": "star",
   "maxAgents": 7,
   "strategy": "parallel"
@@ -446,7 +446,7 @@ const testingTeam = [
 
 // Spawn all testers
 testingTeam.forEach(tester => {
-  mcp__claude-flow__agent_spawn({
+  mcp__fidgetflo__agent_spawn({
     type: tester.type,
     name: tester.name,
     capabilities: tester.capabilities,
@@ -460,7 +460,7 @@ testingTeam.forEach(tester => {
 #### Phase 1: Test Planning
 ```javascript
 // Analyze test coverage requirements
-mcp__claude-flow__quality_assess({
+mcp__fidgetflo__quality_assess({
   "target": "test-coverage",
   "criteria": [
     "line-coverage",
@@ -471,7 +471,7 @@ mcp__claude-flow__quality_assess({
 })
 
 // Identify test scenarios
-mcp__claude-flow__pattern_recognize({
+mcp__fidgetflo__pattern_recognize({
   "data": testScenarios,
   "patterns": [
     "edge-case",
@@ -482,7 +482,7 @@ mcp__claude-flow__pattern_recognize({
 })
 
 // Store test plan
-mcp__claude-flow__memory_usage({
+mcp__fidgetflo__memory_usage({
   "action": "store",
   "key": "test-plan-" + Date.now(),
   "value": JSON.stringify(testPlan),
@@ -493,7 +493,7 @@ mcp__claude-flow__memory_usage({
 #### Phase 2: Parallel Test Execution
 ```javascript
 // Execute all test suites in parallel
-mcp__claude-flow__parallel_execute({
+mcp__fidgetflo__parallel_execute({
   "tasks": [
     {
       "id": "unit-tests",
@@ -524,7 +524,7 @@ mcp__claude-flow__parallel_execute({
 })
 
 // Batch process test suites
-mcp__claude-flow__batch_process({
+mcp__fidgetflo__batch_process({
   "items": testSuites,
   "operation": "execute-test-suite"
 })
@@ -533,24 +533,24 @@ mcp__claude-flow__batch_process({
 #### Phase 3: Performance and Security
 ```javascript
 // Run performance benchmarks
-mcp__claude-flow__benchmark_run({
+mcp__fidgetflo__benchmark_run({
   "suite": "comprehensive-performance"
 })
 
 // Bottleneck analysis
-mcp__claude-flow__bottleneck_analyze({
+mcp__fidgetflo__bottleneck_analyze({
   "component": "application",
   "metrics": ["response-time", "throughput", "memory", "cpu"]
 })
 
 // Security scanning
-mcp__claude-flow__security_scan({
+mcp__fidgetflo__security_scan({
   "target": "application",
   "depth": "comprehensive"
 })
 
 // Vulnerability analysis
-mcp__claude-flow__error_analysis({
+mcp__fidgetflo__error_analysis({
   "logs": securityScanLogs
 })
 ```
@@ -558,24 +558,24 @@ mcp__claude-flow__error_analysis({
 #### Phase 4: Monitoring and Reporting
 ```javascript
 // Real-time test monitoring
-mcp__claude-flow__swarm_monitor({
+mcp__fidgetflo__swarm_monitor({
   "swarmId": "testing-swarm",
   "interval": 2000
 })
 
 // Generate comprehensive test report
-mcp__claude-flow__performance_report({
+mcp__fidgetflo__performance_report({
   "format": "detailed",
   "timeframe": "current-run"
 })
 
 // Get test results
-mcp__claude-flow__task_results({
+mcp__fidgetflo__task_results({
   "taskId": "test-execution-001"
 })
 
 // Trend analysis
-mcp__claude-flow__trend_analysis({
+mcp__fidgetflo__trend_analysis({
   "metric": "test-coverage",
   "period": "30d"
 })
@@ -584,7 +584,7 @@ mcp__claude-flow__trend_analysis({
 ### CLI Fallback
 ```bash
 # Quick testing swarm
-npx claude-flow swarm "test application comprehensively" \
+npx fidgetflo swarm "test application comprehensively" \
   --strategy testing \
   --mode star \
   --parallel \
@@ -599,7 +599,7 @@ Deep code and system analysis through specialized analyzers.
 ### Architecture
 ```javascript
 // Initialize analysis swarm
-mcp__claude-flow__swarm_init({
+mcp__fidgetflo__swarm_init({
   "topology": "mesh",
   "maxAgents": 5,
   "strategy": "adaptive"
@@ -636,7 +636,7 @@ const analysisTeam = [
 
 // Spawn all analysts
 analysisTeam.forEach(analyst => {
-  mcp__claude-flow__agent_spawn({
+  mcp__fidgetflo__agent_spawn({
     type: analyst.type,
     name: analyst.name,
     capabilities: analyst.capabilities
@@ -647,7 +647,7 @@ analysisTeam.forEach(analyst => {
 ### Analysis Workflow
 ```javascript
 // Parallel analysis execution
-mcp__claude-flow__parallel_execute({
+mcp__fidgetflo__parallel_execute({
   "tasks": [
     { "id": "analyze-code", "command": "analyze codebase structure and quality" },
     { "id": "analyze-security", "command": "scan for security vulnerabilities" },
@@ -657,13 +657,13 @@ mcp__claude-flow__parallel_execute({
 })
 
 // Generate comprehensive analysis report
-mcp__claude-flow__performance_report({
+mcp__fidgetflo__performance_report({
   "format": "detailed",
   "timeframe": "current"
 })
 
 // Cost analysis
-mcp__claude-flow__cost_analysis({
+mcp__fidgetflo__cost_analysis({
   "timeframe": "30d"
 })
 ```
@@ -674,30 +674,30 @@ mcp__claude-flow__cost_analysis({
 
 ```javascript
 // Setup fault tolerance for all agents
-mcp__claude-flow__daa_fault_tolerance({
+mcp__fidgetflo__daa_fault_tolerance({
   "agentId": "all",
   "strategy": "auto-recovery"
 })
 
 // Error handling pattern
 try {
-  await mcp__claude-flow__task_orchestrate({
+  await mcp__fidgetflo__task_orchestrate({
     "task": "complex operation",
     "strategy": "parallel",
     "priority": "high"
   })
 } catch (error) {
   // Check swarm health
-  const status = await mcp__claude-flow__swarm_status({})
+  const status = await mcp__fidgetflo__swarm_status({})
 
   // Analyze error patterns
-  await mcp__claude-flow__error_analysis({
+  await mcp__fidgetflo__error_analysis({
     "logs": [error.message]
   })
 
   // Auto-recovery attempt
   if (status.healthy) {
-    await mcp__claude-flow__task_orchestrate({
+    await mcp__fidgetflo__task_orchestrate({
       "task": "retry failed operation",
       "strategy": "sequential"
     })
@@ -709,28 +709,28 @@ try {
 
 ```javascript
 // Cross-session persistence
-mcp__claude-flow__memory_persist({
+mcp__fidgetflo__memory_persist({
   "sessionId": "swarm-session-001"
 })
 
 // Namespace management for different swarms
-mcp__claude-flow__memory_namespace({
+mcp__fidgetflo__memory_namespace({
   "namespace": "research-swarm",
   "action": "create"
 })
 
 // Create state snapshot
-mcp__claude-flow__state_snapshot({
+mcp__fidgetflo__state_snapshot({
   "name": "development-checkpoint-1"
 })
 
 // Restore from snapshot if needed
-mcp__claude-flow__context_restore({
+mcp__fidgetflo__context_restore({
   "snapshotId": "development-checkpoint-1"
 })
 
 // Backup memory stores
-mcp__claude-flow__memory_backup({
+mcp__fidgetflo__memory_backup({
   "path": "$workspaces$claude-code-flow$backups$swarm-memory.json"
 })
 ```
@@ -739,14 +739,14 @@ mcp__claude-flow__memory_backup({
 
 ```javascript
 // Train neural patterns from successful workflows
-mcp__claude-flow__neural_train({
+mcp__fidgetflo__neural_train({
   "pattern_type": "coordination",
   "training_data": JSON.stringify(successfulWorkflows),
   "epochs": 50
 })
 
 // Adaptive learning from experience
-mcp__claude-flow__learning_adapt({
+mcp__fidgetflo__learning_adapt({
   "experience": {
     "workflow": "research-to-report",
     "success": true,
@@ -756,7 +756,7 @@ mcp__claude-flow__learning_adapt({
 })
 
 // Pattern recognition for optimization
-mcp__claude-flow__pattern_recognize({
+mcp__fidgetflo__pattern_recognize({
   "data": workflowMetrics,
   "patterns": ["bottleneck", "optimization-opportunity", "efficiency-gain"]
 })
@@ -766,7 +766,7 @@ mcp__claude-flow__pattern_recognize({
 
 ```javascript
 // Create reusable workflow
-mcp__claude-flow__workflow_create({
+mcp__fidgetflo__workflow_create({
   "name": "full-stack-development",
   "steps": [
     { "phase": "design", "agents": ["architect"] },
@@ -779,7 +779,7 @@ mcp__claude-flow__workflow_create({
 })
 
 // Setup automation rules
-mcp__claude-flow__automation_setup({
+mcp__fidgetflo__automation_setup({
   "rules": [
     {
       "trigger": "file-changed",
@@ -794,7 +794,7 @@ mcp__claude-flow__automation_setup({
 })
 
 // Event-driven triggers
-mcp__claude-flow__trigger_setup({
+mcp__fidgetflo__trigger_setup({
   "events": ["code-commit", "PR-merge", "deployment"],
   "actions": ["test", "analyze", "document"]
 })
@@ -804,23 +804,23 @@ mcp__claude-flow__trigger_setup({
 
 ```javascript
 // Topology optimization
-mcp__claude-flow__topology_optimize({
+mcp__fidgetflo__topology_optimize({
   "swarmId": "current-swarm"
 })
 
 // Load balancing
-mcp__claude-flow__load_balance({
+mcp__fidgetflo__load_balance({
   "swarmId": "development-swarm",
   "tasks": taskQueue
 })
 
 // Agent coordination sync
-mcp__claude-flow__coordination_sync({
+mcp__fidgetflo__coordination_sync({
   "swarmId": "development-swarm"
 })
 
 // Auto-scaling
-mcp__claude-flow__swarm_scale({
+mcp__fidgetflo__swarm_scale({
   "swarmId": "development-swarm",
   "targetSize": 12
 })
@@ -830,28 +830,28 @@ mcp__claude-flow__swarm_scale({
 
 ```javascript
 // Real-time swarm monitoring
-mcp__claude-flow__swarm_monitor({
+mcp__fidgetflo__swarm_monitor({
   "swarmId": "active-swarm",
   "interval": 3000
 })
 
 // Collect comprehensive metrics
-mcp__claude-flow__metrics_collect({
+mcp__fidgetflo__metrics_collect({
   "components": ["agents", "tasks", "memory", "performance"]
 })
 
 // Health monitoring
-mcp__claude-flow__health_check({
+mcp__fidgetflo__health_check({
   "components": ["swarm", "agents", "neural", "memory"]
 })
 
 // Usage statistics
-mcp__claude-flow__usage_stats({
+mcp__fidgetflo__usage_stats({
   "component": "swarm-orchestration"
 })
 
 // Trend analysis
-mcp__claude-flow__trend_analysis({
+mcp__fidgetflo__trend_analysis({
   "metric": "agent-performance",
   "period": "7d"
 })
@@ -906,7 +906,7 @@ mcp__claude-flow__trend_analysis({
 ### Example 1: AI Research Project
 ```javascript
 // Research AI trends, analyze findings, generate report
-mcp__claude-flow__swarm_init({ topology: "mesh", maxAgents: 6 })
+mcp__fidgetflo__swarm_init({ topology: "mesh", maxAgents: 6 })
 // Spawn: 2 researchers, 2 analysts, 1 synthesizer, 1 documenter
 // Parallel gather → Analyze patterns → Synthesize → Report
 ```
@@ -914,7 +914,7 @@ mcp__claude-flow__swarm_init({ topology: "mesh", maxAgents: 6 })
 ### Example 2: Full-Stack Application
 ```javascript
 // Build complete web application with testing
-mcp__claude-flow__swarm_init({ topology: "hierarchical", maxAgents: 8 })
+mcp__fidgetflo__swarm_init({ topology: "hierarchical", maxAgents: 8 })
 // Spawn: 1 architect, 2 devs, 1 db engineer, 2 testers, 1 reviewer, 1 devops
 // Design → Parallel implement → Test → Review → Deploy
 ```
@@ -922,7 +922,7 @@ mcp__claude-flow__swarm_init({ topology: "hierarchical", maxAgents: 8 })
 ### Example 3: Security Audit
 ```javascript
 // Comprehensive security analysis
-mcp__claude-flow__swarm_init({ topology: "star", maxAgents: 5 })
+mcp__fidgetflo__swarm_init({ topology: "star", maxAgents: 5 })
 // Spawn: 1 coordinator, 1 code analyzer, 1 security scanner, 1 penetration tester, 1 reporter
 // Parallel scan → Vulnerability analysis → Penetration test → Report
 ```
@@ -930,7 +930,7 @@ mcp__claude-flow__swarm_init({ topology: "star", maxAgents: 5 })
 ### Example 4: Performance Optimization
 ```javascript
 // Identify and fix performance bottlenecks
-mcp__claude-flow__swarm_init({ topology: "mesh", maxAgents: 4 })
+mcp__fidgetflo__swarm_init({ topology: "mesh", maxAgents: 4 })
 // Spawn: 1 profiler, 1 bottleneck analyzer, 1 optimizer, 1 tester
 // Profile → Identify bottlenecks → Optimize → Validate
 ```
@@ -960,10 +960,10 @@ mcp__claude-flow__swarm_init({ topology: "mesh", maxAgents: 4 })
 
 ## References
 
-- [Claude Flow Documentation](https:/$github.com$ruvnet$claude-flow)
-- [Swarm Orchestration Guide](https:/$github.com$ruvnet$claude-flow$wiki$swarm)
-- [MCP Tools Reference](https:/$github.com$ruvnet$claude-flow$wiki$mcp)
-- [Performance Optimization](https:/$github.com$ruvnet$claude-flow$wiki$performance)
+- [FidgetFlo Documentation](https:/$github.com$ruvnet$fidgetflo)
+- [Swarm Orchestration Guide](https:/$github.com$ruvnet$fidgetflo$wiki$swarm)
+- [MCP Tools Reference](https:/$github.com$ruvnet$fidgetflo$wiki$mcp)
+- [Performance Optimization](https:/$github.com$ruvnet$fidgetflo$wiki$performance)
 
 ---
 

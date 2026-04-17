@@ -6,7 +6,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue.svg)](https://www.typescriptlang.org/)
 [![Benchmarks](https://img.shields.io/badge/Benchmarks-Vitest-green.svg)](https://vitest.dev/)
 
-> Comprehensive performance benchmarking module for Claude Flow V3 - statistical analysis, memory tracking, regression detection, and Flash Attention validation.
+> Comprehensive performance benchmarking module for FidgetFlo V3 - statistical analysis, memory tracking, regression detection, and Flash Attention validation.
 
 ## Features
 
