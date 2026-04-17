@@ -2,14 +2,14 @@ name: Upstream Digest (ruvnet/ruflo)
 
 on:
   schedule:
-    # Sundays at 13:00 UTC = 9am ET (EDT). Weekly digest of upstream activity.
-    - cron: '0 13 * * 0'
+    # 1st and 15th of every month at 13:00 UTC = 9am ET (EDT). Bi-weekly cadence.
+    - cron: '0 13 1,15 * *'
   workflow_dispatch:
     inputs:
       window_days:
         description: 'How many days of history to summarize'
         required: false
-        default: '7'
+        default: '14'
 
 permissions:
   contents: read
@@ -34,7 +34,7 @@ jobs:
         id: digest
         run: |
           set -euo pipefail
-          WINDOW="${{ github.event.inputs.window_days || '7' }}"
+          WINDOW="${{ github.event.inputs.window_days || '14' }}"
           SINCE="$(date -u -d "${WINDOW} days ago" +%Y-%m-%d)"
           TIP="$(git rev-parse --short upstream/main)"
 
