@@ -2,7 +2,7 @@
 
 ## Executive Summary
 
-This document outlines a comprehensive verification and truth enforcement architecture for the Claude-Flow multi-agent system. The architecture ensures high-fidelity execution through mandatory checkpoints, truth scoring with a 0.95 minimum threshold, cross-agent integration testing, state management with rollback capabilities, and full GitHub Actions CI/CD integration.
+This document outlines a comprehensive verification and truth enforcement architecture for the FidgetFlo multi-agent system. The architecture ensures high-fidelity execution through mandatory checkpoints, truth scoring with a 0.95 minimum threshold, cross-agent integration testing, state management with rollback capabilities, and full GitHub Actions CI/CD integration.
 
 ## 1. Architecture Overview
 
@@ -539,13 +539,13 @@ jobs:
         run: npm ci
       
       - name: Run capability verification
-        run: npx claude-flow verification check-capabilities
+        run: npx fidgetflo verification check-capabilities
       
       - name: Validate agent configurations
-        run: npx claude-flow verification validate-agents
+        run: npx fidgetflo verification validate-agents
       
       - name: Check system prerequisites
-        run: npx claude-flow verification check-prerequisites
+        run: npx fidgetflo verification check-prerequisites
 
   truth_scoring:
     name: Truth Score Validation
@@ -561,12 +561,12 @@ jobs:
         run: npm run test:integration
       
       - name: Run cross-agent tests
-        run: npx claude-flow verification run-cross-agent-tests
+        run: npx fidgetflo verification run-cross-agent-tests
       
       - name: Calculate truth score
         id: truth_score
         run: |
-          SCORE=$(npx claude-flow verification calculate-truth-score)
+          SCORE=$(npx fidgetflo verification calculate-truth-score)
           echo "score=$SCORE" >> $GITHUB_OUTPUT
       
       - name: Validate truth threshold
@@ -584,16 +584,16 @@ jobs:
       - uses: actions/checkout@v4
       
       - name: Create test checkpoint
-        run: npx claude-flow verification create-checkpoint "ci_test"
+        run: npx fidgetflo verification create-checkpoint "ci_test"
       
       - name: Simulate state changes
-        run: npx claude-flow verification simulate-changes
+        run: npx fidgetflo verification simulate-changes
       
       - name: Test rollback capability
-        run: npx claude-flow verification test-rollback "ci_test"
+        run: npx fidgetflo verification test-rollback "ci_test"
       
       - name: Validate state consistency
-        run: npx claude-flow verification validate-consistency
+        run: npx fidgetflo verification validate-consistency
 
   deployment_verification:
     name: Deployment Verification
@@ -604,16 +604,16 @@ jobs:
       - uses: actions/checkout@v4
       
       - name: Deploy to staging
-        run: npx claude-flow deploy staging
+        run: npx fidgetflo deploy staging
       
       - name: Run end-to-end verification
-        run: npx claude-flow verification run-e2e-tests staging
+        run: npx fidgetflo verification run-e2e-tests staging
       
       - name: Validate production readiness
-        run: npx claude-flow verification validate-production-readiness
+        run: npx fidgetflo verification validate-production-readiness
       
       - name: Generate verification report
-        run: npx claude-flow verification generate-report
+        run: npx fidgetflo verification generate-report
         
       - name: Upload verification artifacts
         uses: actions/upload-artifact@v4
@@ -830,7 +830,7 @@ graph LR
 
 ## 12. Conclusion
 
-This verification and truth enforcement architecture provides a robust foundation for ensuring high-fidelity execution in the Claude-Flow multi-agent system. By implementing mandatory checkpoints, rigorous truth scoring, comprehensive integration testing, and reliable state management, the system can maintain exceptional reliability and trust.
+This verification and truth enforcement architecture provides a robust foundation for ensuring high-fidelity execution in the FidgetFlo multi-agent system. By implementing mandatory checkpoints, rigorous truth scoring, comprehensive integration testing, and reliable state management, the system can maintain exceptional reliability and trust.
 
 The architecture is designed to be:
 - **Scalable**: Handles increasing numbers of agents and tasks

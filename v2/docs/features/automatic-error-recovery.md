@@ -1,6 +1,6 @@
 # Automatic Error Recovery
 
-Claude-Flow v2.7.35+ includes intelligent automatic error recovery that handles common installation and initialization issues without manual intervention.
+FidgetFlo v2.7.35+ includes intelligent automatic error recovery that handles common installation and initialization issues without manual intervention.
 
 ## Overview
 
@@ -69,10 +69,10 @@ if (sqliteInitFails && retries > maxRetries) {
 
 ```bash
 # Standard initialization with automatic recovery
-npx claude-flow@alpha init
+npx fidgetflo@alpha init
 
 # Force mode with extended retries (5 attempts)
-npx claude-flow@alpha init --force
+npx fidgetflo@alpha init --force
 ```
 
 ### Manual Recovery Commands
@@ -85,10 +85,10 @@ npm cache clean --force
 rm -rf ~/.npm/_npx
 
 # Check WSL environment
-npx claude-flow@alpha diagnose --wsl
+npx fidgetflo@alpha diagnose --wsl
 
 # Verify dependencies
-npx claude-flow@alpha verify --deps
+npx fidgetflo@alpha verify --deps
 ```
 
 ## Recovery Process Flow
@@ -191,7 +191,7 @@ export interface RetryOptions {
 ### Error Recovery Settings
 
 ```json
-// .claude-flow/config.json
+// .fidgetflo/config.json
 {
   "errorRecovery": {
     "enabled": true,
@@ -208,7 +208,7 @@ export interface RetryOptions {
 ### Recovery Log Output
 
 ```bash
-npx claude-flow@alpha init --force
+npx fidgetflo@alpha init --force
 
 🔍 WSL environment detected
 ✅ WSL environment optimized
@@ -234,7 +234,7 @@ npx claude-flow@alpha init --force
 
 ```bash
 # Enable verbose error recovery logging
-DEBUG=claude-flow:error-recovery npx claude-flow@alpha init --force
+DEBUG=fidgetflo:error-recovery npx fidgetflo@alpha init --force
 ```
 
 ## API Usage
@@ -242,7 +242,7 @@ DEBUG=claude-flow:error-recovery npx claude-flow@alpha init --force
 ### Programmatic Error Recovery
 
 ```typescript
-import { errorRecovery } from 'claude-flow/utils/error-recovery';
+import { errorRecovery } from 'fidgetflo/utils/error-recovery';
 
 // Check if error is recoverable
 if (errorRecovery.isNpmCacheError(error)) {

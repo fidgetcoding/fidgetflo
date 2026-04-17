@@ -3,7 +3,7 @@
   "version": "1.5.0",
   "description": "Complete development workflow with TDD, CI/CD integration, and automated testing",
   "metadata": {
-    "author": "Claude-Flow DevOps Team",
+    "author": "FidgetFlo DevOps Team",
     "category": "Development",
     "tags": ["development", "testing", "deployment", "automation"]
   },

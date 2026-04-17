@@ -6,7 +6,7 @@
 
 ## Overview
 
-Successfully implemented MCP-first API design for Claude Flow V3. CLI commands now call MCP tools rather than implementing functionality directly, following the principle:
+Successfully implemented MCP-first API design for FidgetFlo V3. CLI commands now call MCP tools rather than implementing functionality directly, following the principle:
 
 > **"MCP coordinates, Claude Code creates!"**
 
@@ -104,7 +104,7 @@ Implemented in `index.ts`:
 
 ## Integration with MCP Server
 
-Updated `/workspaces/claude-flow/v3/mcp/server.ts`:
+Updated `/workspaces/fidgetflo/v3/mcp/server.ts`:
 
 ```typescript
 private async registerBuiltInTools(): Promise<void> {
@@ -352,16 +352,16 @@ This implementation satisfies:
 
 ## Files Created
 
-1. `/workspaces/claude-flow/v3/mcp/tools/agent-tools.ts` (463 lines)
-2. `/workspaces/claude-flow/v3/mcp/tools/swarm-tools.ts` (489 lines)
-3. `/workspaces/claude-flow/v3/mcp/tools/memory-tools.ts` (575 lines)
-4. `/workspaces/claude-flow/v3/mcp/tools/config-tools.ts` (568 lines)
-5. `/workspaces/claude-flow/v3/mcp/tools/index.ts` (300 lines)
-6. `/workspaces/claude-flow/v3/mcp/tools/README.md` (405 lines)
+1. `/workspaces/fidgetflo/v3/mcp/tools/agent-tools.ts` (463 lines)
+2. `/workspaces/fidgetflo/v3/mcp/tools/swarm-tools.ts` (489 lines)
+3. `/workspaces/fidgetflo/v3/mcp/tools/memory-tools.ts` (575 lines)
+4. `/workspaces/fidgetflo/v3/mcp/tools/config-tools.ts` (568 lines)
+5. `/workspaces/fidgetflo/v3/mcp/tools/index.ts` (300 lines)
+6. `/workspaces/fidgetflo/v3/mcp/tools/README.md` (405 lines)
 
 ## Files Modified
 
-1. `/workspaces/claude-flow/v3/mcp/server.ts` (updated `registerBuiltInTools()`)
+1. `/workspaces/fidgetflo/v3/mcp/server.ts` (updated `registerBuiltInTools()`)
 
 ## Testing Checklist
 
@@ -442,7 +442,7 @@ All MCP tools now exposed via CLI commands in `@claude-flow/cli@3.0.0-alpha.7`:
 #### File-Based Persistence Architecture
 
 ```
-.claude-flow/
+.fidgetflo/
 ├── agents/store.json       # Agent lifecycle state
 ├── tasks/store.json        # Task execution state
 ├── sessions/store.json     # Session management
@@ -496,7 +496,7 @@ All MCP tools now exposed via CLI commands in `@claude-flow/cli@3.0.0-alpha.7`:
 
 4. **Mac Settings Validation** (alpha.89) - Fixed Claude Code settings.json validation errors on macOS
    - Issue: `PermissionRequest` hook type not recognized; permission patterns required `:*` syntax
-   - Fix: Removed `PermissionRequest` hook block; changed patterns from `*` to `:*` (e.g., `Bash(npx claude-flow:*)`)
+   - Fix: Removed `PermissionRequest` hook block; changed patterns from `*` to `:*` (e.g., `Bash(npx fidgetflo:*)`)
    - Affected: `settings-generator.ts`, `types.ts`, `.claude/settings.json`
 
 #### Testing Results
@@ -611,11 +611,11 @@ Added automatic dist-tag updates to `scripts/publish.sh`:
 npm dist-tag add @claude-flow/cli@$VERSION alpha
 npm dist-tag add @claude-flow/cli@$VERSION latest
 npm dist-tag add @claude-flow/cli@$VERSION v3alpha
-npm dist-tag add claude-flow@$VERSION alpha
-npm dist-tag add claude-flow@$VERSION latest
-npm dist-tag add claude-flow@$VERSION v3alpha
+npm dist-tag add fidgetflo@$VERSION alpha
+npm dist-tag add fidgetflo@$VERSION latest
+npm dist-tag add fidgetflo@$VERSION v3alpha
 ```
 
-This ensures `npx claude-flow@alpha` always gets the latest version.
+This ensures `npx fidgetflo@alpha` always gets the latest version.
 
-**Published**: `@claude-flow/cli@3.0.0-alpha.95`, `claude-flow@3.0.0-alpha.46`
+**Published**: `@claude-flow/cli@3.0.0-alpha.95`, `fidgetflo@3.0.0-alpha.46`

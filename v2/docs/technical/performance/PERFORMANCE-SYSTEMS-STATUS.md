@@ -1,4 +1,4 @@
-# Claude-Flow Performance Systems Status
+# FidgetFlo Performance Systems Status
 
 **Last Updated**: 2025-10-12
 **Status**: ReasoningBank ✅ | Agent Booster ⚠️
@@ -10,10 +10,10 @@
 ### What We Have:
 ```bash
 # Complete ReasoningBank integration
-claude-flow agent run coder "Build API" --enable-memory
-claude-flow agent memory init
-claude-flow agent memory status
-claude-flow init --env  # Setup .env for API keys
+fidgetflo agent run coder "Build API" --enable-memory
+fidgetflo agent memory init
+fidgetflo agent memory status
+fidgetflo init --env  # Setup .env for API keys
 ```
 
 ### Performance Gains AVAILABLE NOW:
@@ -57,7 +57,7 @@ mcp__agentic-flow__agent_booster_parse_markdown
 ```
 
 ### What's MISSING:
-❌ No direct CLI command: `claude-flow agent booster edit`
+❌ No direct CLI command: `fidgetflo agent booster edit`
 ❌ No agent integration: agents don't auto-use booster for edits
 ❌ Not in help text or docs
 ❌ Users don't know it exists
@@ -66,9 +66,9 @@ mcp__agentic-flow__agent_booster_parse_markdown
 ### Potential If Integrated:
 ```bash
 # What we COULD have:
-claude-flow agent booster edit file.js "Add logging"
-claude-flow agent booster batch-edit *.js "Refactor imports"
-claude-flow agent run coder "Task" --use-booster  # Auto-use for edits
+fidgetflo agent booster edit file.js "Add logging"
+fidgetflo agent booster batch-edit *.js "Refactor imports"
+fidgetflo agent run coder "Task" --use-booster  # Auto-use for edits
 ```
 
 **Impact**: 352x faster code edits, $0 cost, autonomous refactoring
@@ -174,16 +174,16 @@ Savings: 351x faster, $10 saved, 85% less manual work
 
 ### Integration Plan:
 ```bash
-# Add these commands to claude-flow:
-claude-flow agent booster edit <file> "<instruction>"
-claude-flow agent booster batch <pattern> "<instruction>"
-claude-flow agent booster parse-markdown <file>
+# Add these commands to fidgetflo:
+fidgetflo agent booster edit <file> "<instruction>"
+fidgetflo agent booster batch <pattern> "<instruction>"
+fidgetflo agent booster parse-markdown <file>
 
 # Auto-enable for agent runs:
-claude-flow agent run coder "Task" --use-booster
+fidgetflo agent run coder "Task" --use-booster
 
 # Or make it default for code operations:
-claude-flow agent config set USE_AGENT_BOOSTER true
+fidgetflo agent config set USE_AGENT_BOOSTER true
 ```
 
 ### Estimated Integration Effort:

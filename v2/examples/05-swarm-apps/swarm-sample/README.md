@@ -1,6 +1,6 @@
 # Notes CLI
 
-A powerful command-line note-taking application created by the Claude Flow Swarm system.
+A powerful command-line note-taking application created by the FidgetFlo Swarm system.
 
 ## 🐝 Swarm Creation Details
 
@@ -169,11 +169,11 @@ This project was created by swarm agents, but human contributions are welcome!
 
 ## 📄 License
 
-MIT License - Created by Claude Flow Swarm
+MIT License - Created by FidgetFlo Swarm
 
 ## 🙏 Acknowledgments
 
-Special thanks to the Claude Flow Swarm system and all participating agents:
+Special thanks to the FidgetFlo Swarm system and all participating agents:
 - Coordinator-1 for excellent project management
 - Developer-1 & Developer-2 for robust implementation
 - Tester-1 for comprehensive quality assurance
@@ -182,6 +182,6 @@ Special thanks to the Claude Flow Swarm system and all participating agents:
 
 ---
 
-**Created with Claude Flow Swarm v1.0.49**
+**Created with FidgetFlo Swarm v1.0.49**
 
 *Strategy: Development | Mode: Parallel | Quality: 0.9*

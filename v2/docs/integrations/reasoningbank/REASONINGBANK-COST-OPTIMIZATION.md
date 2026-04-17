@@ -167,7 +167,7 @@ npx agentic-flow reasoningbank status
 
 ### Test 1: With Claude for Everything
 ```bash
-claude-flow agent run coder "Build API" --enable-memory
+fidgetflo agent run coder "Build API" --enable-memory
 
 Duration: 19,036ms
 Cost: $0.37
@@ -178,7 +178,7 @@ Quality: Excellent
 ### Test 2: Claude + DeepSeek (Hybrid)
 ```bash
 # Same task with hybrid approach
-claude-flow agent run coder "Build API" --enable-memory
+fidgetflo agent run coder "Build API" --enable-memory
 
 Duration: 18,522ms (similar)
 Cost: $0.20 (46% savings!)
@@ -258,7 +258,7 @@ Then run:
 ```bash
 # Main work with Claude (quality)
 # Memory operations with DeepSeek (cheap)
-claude-flow agent run coder "Your task" \
+fidgetflo agent run coder "Your task" \
   --provider anthropic \
   --enable-memory
 
@@ -280,11 +280,11 @@ After switching to cheap models, verify quality:
 ```bash
 # Run same task 3 times
 for i in 1 2 3; do
-  claude-flow agent run coder "Test task $i" --enable-memory
+  fidgetflo agent run coder "Test task $i" --enable-memory
 done
 
 # Check memory quality
-claude-flow agent memory list --sort confidence
+fidgetflo agent memory list --sort confidence
 
 # Good: All memories have confidence > 0.6
 # Bad: Memories have confidence < 0.5 (upgrade models)

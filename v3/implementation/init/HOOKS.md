@@ -169,24 +169,24 @@ Executes on notifications. Used for swarm status updates.
 
 ### PermissionRequest Hook
 
-Executes on permission requests. Used for auto-allowing claude-flow tools.
+Executes on permission requests. Used for auto-allowing fidgetflo tools.
 
 ```json
 {
   "PermissionRequest": [
     {
-      "matcher": "^mcp__claude-flow__.*$",
+      "matcher": "^mcp__fidgetflo__.*$",
       "hooks": [{
         "type": "command",
-        "command": "echo '{\"decision\": \"allow\", \"reason\": \"claude-flow MCP tool auto-approved\"}'",
+        "command": "echo '{\"decision\": \"allow\", \"reason\": \"fidgetflo MCP tool auto-approved\"}'",
         "timeout": 1000
       }]
     },
     {
-      "matcher": "^Bash\\(npx @?claude-flow.*\\)$",
+      "matcher": "^Bash\\(npx @?fidgetflo.*\\)$",
       "hooks": [{
         "type": "command",
-        "command": "echo '{\"decision\": \"allow\", \"reason\": \"claude-flow CLI auto-approved\"}'",
+        "command": "echo '{\"decision\": \"allow\", \"reason\": \"fidgetflo CLI auto-approved\"}'",
         "timeout": 1000
       }]
     }

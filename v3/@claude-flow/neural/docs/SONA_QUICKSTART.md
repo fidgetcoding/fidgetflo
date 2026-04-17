@@ -161,7 +161,7 @@ v3/@claude-flow/neural/
 
 ---
 
-**Location**: `/workspaces/claude-flow/v3/@claude-flow/neural/`
+**Location**: `/workspaces/fidgetflo/v3/@claude-flow/neural/`
 
 **Package**: `@ruvector/sona@0.1.5`
 

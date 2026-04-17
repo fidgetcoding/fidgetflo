@@ -1,6 +1,6 @@
 # NPX Memory Command Fix - v2.7.19 Final Solution
 
-**Issue:** `npx claude-flow@alpha memory` commands fail with BetterSqlite3 constructor error
+**Issue:** `npx fidgetflo@alpha memory` commands fail with BetterSqlite3 constructor error
 **Status:** ✅ **FIXED in v2.7.19**
 **Date:** 2025-10-25
 **Versions:** v2.7.16 → v2.7.17 → v2.7.18 → **v2.7.19 (WORKING)**
@@ -9,7 +9,7 @@
 
 ## Problem Summary
 
-When users run memory commands via `npx claude-flow@alpha memory store ...`, they encounter:
+When users run memory commands via `npx fidgetflo@alpha memory store ...`, they encounter:
 
 ```bash
 TypeError: BetterSqlite3 is not a constructor
@@ -78,8 +78,8 @@ initPromise = (async () => {
       console.error('\n⚠️  NPX LIMITATION DETECTED\n');
       console.error('ReasoningBank requires better-sqlite3, not available in npx.\n');
       console.error('📚 Solutions:\n');
-      console.error('  1. LOCAL INSTALL: npm install && node_modules/.bin/claude-flow\n');
-      console.error('  2. USE MCP TOOLS: mcp__claude-flow__memory_usage(...)\n');
+      console.error('  1. LOCAL INSTALL: npm install && node_modules/.bin/fidgetflo\n');
+      console.error('  2. USE MCP TOOLS: mcp__fidgetflo__memory_usage(...)\n');
       console.error('  3. USE JSON FALLBACK (automatic): Command will continue...\n');
       return false; // Signal failure but allow fallback
     }
@@ -132,7 +132,7 @@ async function detectMemoryMode(flags, subArgs) {
 ### With npx (Automatic Fallback)
 
 ```bash
-$ npx claude-flow@alpha memory store "api-design" "REST with JWT auth"
+$ npx fidgetflo@alpha memory store "api-design" "REST with JWT auth"
 
 ⚠️  NPX LIMITATION DETECTED
 
@@ -140,10 +140,10 @@ ReasoningBank requires better-sqlite3, not available in npx temp directories.
 
 📚 Solutions:
   1. LOCAL INSTALL (Recommended):
-     npm install && node_modules/.bin/claude-flow memory store "key" "value"
+     npm install && node_modules/.bin/fidgetflo memory store "key" "value"
 
   2. USE MCP TOOLS instead:
-     mcp__claude-flow__memory_usage({ action: "store", key: "test", value: "data" })
+     mcp__fidgetflo__memory_usage({ action: "store", key: "test", value: "data" })
 
   3. USE JSON FALLBACK (automatic):
      Command will continue with JSON storage...
@@ -160,7 +160,7 @@ ReasoningBank requires better-sqlite3, not available in npx temp directories.
 
 ```bash
 $ npm install
-$ node_modules/.bin/claude-flow memory store "api-design" "REST with JWT auth"
+$ node_modules/.bin/fidgetflo memory store "api-design" "REST with JWT auth"
 
 🗄️  Initialized SQLite backend (.swarm/memory.db)
 ✅ Stored successfully in ReasoningBank
@@ -176,14 +176,14 @@ $ node_modules/.bin/claude-flow memory store "api-design" "REST with JWT auth"
 
 ### Test 1: Version Check
 ```bash
-$ npx claude-flow@alpha --version
+$ npx fidgetflo@alpha --version
 v2.7.19
 ✅ PASS
 ```
 
 ### Test 2: Memory Store (npx)
 ```bash
-$ npx claude-flow@alpha memory store "test-key" "test-value"
+$ npx fidgetflo@alpha memory store "test-key" "test-value"
 ⚠️  NPX LIMITATION DETECTED
 ✅ Automatically using JSON fallback for this command
 ✅ Stored successfully
@@ -192,7 +192,7 @@ $ npx claude-flow@alpha memory store "test-key" "test-value"
 
 ### Test 3: Memory Query (npx)
 ```bash
-$ npx claude-flow@alpha memory query "test"
+$ npx fidgetflo@alpha memory query "test"
 ✅ Found 1 result(s):
    test-key = test-value (namespace: default)
 ✅ PASS
@@ -200,7 +200,7 @@ $ npx claude-flow@alpha memory query "test"
 
 ### Test 4: Memory Stats (npx)
 ```bash
-$ npx claude-flow@alpha memory stats
+$ npx fidgetflo@alpha memory stats
 ✅ Memory Bank Statistics:
    Total Entries: 1
    Namespaces: 1
@@ -265,21 +265,21 @@ $ npx claude-flow@alpha memory stats
 
 ### For Quick Testing (npx)
 ```bash
-npx claude-flow@alpha memory store "key" "value"
+npx fidgetflo@alpha memory store "key" "value"
 # Works with JSON fallback - no installation required
 ```
 
 ### For Production (local install)
 ```bash
-npm install claude-flow@alpha
-node_modules/.bin/claude-flow memory store "key" "value"
+npm install fidgetflo@alpha
+node_modules/.bin/fidgetflo memory store "key" "value"
 # Uses SQLite with full ReasoningBank features
 ```
 
 ### For Workflows (MCP tools)
 ```javascript
 // In Claude Code / Claude Desktop
-mcp__claude-flow__memory_usage({
+mcp__fidgetflo__memory_usage({
   action: "store",
   key: "api-pattern",
   value: "REST with JWT auth",

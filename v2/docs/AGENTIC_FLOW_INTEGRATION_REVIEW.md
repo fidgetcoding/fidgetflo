@@ -1,6 +1,6 @@
 # Agentic-Flow NPM Integration Review
 **Date:** 2025-10-25
-**Claude-Flow Version:** 2.7.14
+**FidgetFlo Version:** 2.7.14
 **Current agentic-flow:** 1.7.4
 **Latest agentic-flow:** 1.8.3
 **Review Status:** ⚠️ OUTDATED VERSION DETECTED
@@ -82,7 +82,7 @@ The agentic-flow integration is **working correctly** but is running an **outdat
     "@anthropic-ai/sdk": "^0.65.0",
     "agentdb": "^1.3.9",
     "better-sqlite3": "^12.4.1",
-    "claude-flow": "^2.0.0",     // Circular dependency (intentional)
+    "fidgetflo": "^2.0.0",     // Circular dependency (intentional)
     "fastmcp": "^3.19.0",
     "tiktoken": "^1.0.22",
     "zod": "^3.25.76"
@@ -91,9 +91,9 @@ The agentic-flow integration is **working correctly** but is running an **outdat
 ```
 
 **Notable:**
-- 🔄 **Circular dependency:** `agentic-flow` → `claude-flow` → `agentic-flow`
+- 🔄 **Circular dependency:** `agentic-flow` → `fidgetflo` → `agentic-flow`
 - ✅ **Intentional design:** Each package extends the other
-- ✅ **Version constraint:** `claude-flow: "^2.0.0"` (claude-flow is on 2.7.12)
+- ✅ **Version constraint:** `fidgetflo: "^2.0.0"` (fidgetflo is on 2.7.12)
 
 ---
 
@@ -132,11 +132,11 @@ import * as ReasoningBank from 'agentic-flow/reasoningbank';
 - ✅ **Query caching** (LRU, 100 items, 60s TTL)
 - ✅ **Graceful fallback** (semantic → SQL)
 - ✅ **Error handling** with detailed logging
-- ✅ **Memory mapping** (claude-flow model → ReasoningBank pattern model)
+- ✅ **Memory mapping** (fidgetflo model → ReasoningBank pattern model)
 
 ### 3.2 Memory Model Mapping ✅
 
-**Claude-Flow → ReasoningBank:**
+**FidgetFlo → ReasoningBank:**
 ```javascript
 {
   key         → title
@@ -148,7 +148,7 @@ import * as ReasoningBank from 'agentic-flow/reasoningbank';
 }
 ```
 
-**ReasoningBank → Claude-Flow:**
+**ReasoningBank → FidgetFlo:**
 ```javascript
 {
   title       → key
@@ -217,7 +217,7 @@ import * as ReasoningBank from 'agentic-flow/reasoningbank';
 ```bash
 npm run validate              # All validations
 npm run validate:sdk          # SDK validation
-npm run validate:claude-flow  # Claude-flow specific tests
+npm run validate:fidgetflo  # Claude-flow specific tests
 npm run test:memory          # Memory system tests
 npm run test:coordination    # Coordination tests
 npm run test:hybrid          # Hybrid system tests
@@ -229,7 +229,7 @@ npm run test:hybrid          # Hybrid system tests
 
 ## 6. Documentation
 
-### Agentic-Flow Documentation (in claude-flow)
+### Agentic-Flow Documentation (in fidgetflo)
 
 **Integration Guides:**
 - `/docs/integrations/agentic-flow/README.md`
@@ -314,7 +314,7 @@ Search: Semantic (MMR) + SQL fallback
 - **Priority:** MEDIUM
 
 **2. Circular Dependency** ℹ️
-- **Issue:** claude-flow ↔ agentic-flow circular dependency
+- **Issue:** fidgetflo ↔ agentic-flow circular dependency
 - **Impact:** None (intentional design)
 - **Status:** BY DESIGN
 - **Priority:** INFO ONLY
@@ -361,7 +361,7 @@ npm list agentic-flow
 **Step 3: Run Tests**
 ```bash
 npm run test:integration
-npm run validate:claude-flow  # If agentic-flow scripts are accessible
+npm run validate:fidgetflo  # If agentic-flow scripts are accessible
 ```
 
 **Step 4: Update Comments**
@@ -374,9 +374,9 @@ npm run validate:claude-flow  # If agentic-flow scripts are accessible
 
 **Step 5: Validate Features**
 ```bash
-npx claude-flow@alpha memory status
-npx claude-flow@alpha memory store "test" "value"
-npx claude-flow@alpha memory query "test"
+npx fidgetflo@alpha memory status
+npx fidgetflo@alpha memory store "test" "value"
+npx fidgetflo@alpha memory query "test"
 ```
 
 **Risk Level:** 🟢 LOW
@@ -445,7 +445,7 @@ npx claude-flow@alpha memory query "test"
 
 **Potential Concerns:**
 - ℹ️ **better-sqlite3** - Native dependency (requires compilation)
-  - **Mitigation:** Moved to optionalDependencies in claude-flow
+  - **Mitigation:** Moved to optionalDependencies in fidgetflo
   - **Status:** ✅ Handled gracefully
 
 **Security Best Practices:**
@@ -524,7 +524,7 @@ npx claude-flow@alpha memory query "test"
 ### Overall Integration Status: ✅ EXCELLENT (with minor update needed)
 
 **Summary:**
-The agentic-flow integration in claude-flow is **well-designed and properly implemented**. The ReasoningBank adapter demonstrates best practices in error handling, caching, and graceful degradation. The only issue is running an outdated version (1.7.4 vs 1.8.3), which is easily resolved.
+The agentic-flow integration in fidgetflo is **well-designed and properly implemented**. The ReasoningBank adapter demonstrates best practices in error handling, caching, and graceful degradation. The only issue is running an outdated version (1.7.4 vs 1.8.3), which is easily resolved.
 
 **Key Achievements:**
 - ✅ 66 specialized agents available
@@ -540,7 +540,7 @@ The agentic-flow integration in claude-flow is **well-designed and properly impl
 ⚠️ **UPDATE TO 1.8.3** - Run `npm update agentic-flow`
 
 **Future-Proof:**
-The wildcard dependency (`"*"`) ensures claude-flow stays current with agentic-flow releases. Regular updates are recommended to maintain compatibility and access new features.
+The wildcard dependency (`"*"`) ensures fidgetflo stays current with agentic-flow releases. Regular updates are recommended to maintain compatibility and access new features.
 
 ---
 
@@ -566,7 +566,7 @@ The wildcard dependency (`"*"`) ensures claude-flow stays current with agentic-f
 
 ## Appendix B: Integration Files
 
-### Key Files in Claude-Flow
+### Key Files in FidgetFlo
 
 **Adapter:**
 - `/src/reasoningbank/reasoningbank-adapter.js` (404 lines)

@@ -252,8 +252,8 @@ interface CollectionManagerState {
 ```typescript
 // Core collection - essential plugins
 const coreCollection: PluginCollection = {
-  id: 'claude-flow-core',
-  name: 'Claude Flow Core Plugins',
+  id: 'fidgetflo-core',
+  name: 'FidgetFlo Core Plugins',
   version: '3.0.0',
   plugins: [
     { plugin: memoryPlugin, defaultEnabled: true, category: 'memory' },
@@ -264,7 +264,7 @@ const coreCollection: PluginCollection = {
 
 // Development collection - coding assistance
 const developmentCollection: PluginCollection = {
-  id: 'claude-flow-development',
+  id: 'fidgetflo-development',
   name: 'Development Tools',
   version: '3.0.0',
   plugins: [
@@ -278,7 +278,7 @@ const developmentCollection: PluginCollection = {
 
 // Intelligence collection - AI/ML features
 const intelligenceCollection: PluginCollection = {
-  id: 'claude-flow-intelligence',
+  id: 'fidgetflo-intelligence',
   name: 'Intelligence & Learning',
   version: '3.0.0',
   plugins: [
@@ -290,7 +290,7 @@ const intelligenceCollection: PluginCollection = {
 
 // Swarm collection - multi-agent coordination
 const swarmCollection: PluginCollection = {
-  id: 'claude-flow-swarm',
+  id: 'fidgetflo-swarm',
   name: 'Swarm Coordination',
   version: '3.0.0',
   plugins: [
@@ -303,7 +303,7 @@ const swarmCollection: PluginCollection = {
 
 // Security collection - security features
 const securityCollection: PluginCollection = {
-  id: 'claude-flow-security',
+  id: 'fidgetflo-security',
   name: 'Security & Audit',
   version: '3.0.0',
   plugins: [
@@ -465,7 +465,7 @@ class SecurePluginContext implements PluginContext {
 
 ### Phase 5: CLI Integration (2026-01-24)
 - [x] PluginManager for CLI (real npm installation)
-- [x] Persist to `.claude-flow/plugins/installed.json`
+- [x] Persist to `.fidgetflo/plugins/installed.json`
 - [x] Install, uninstall, upgrade, toggle commands
 - [x] Local plugin installation support
 - [x] Discovery service with npm fallback (IPFS demo mode)
@@ -596,7 +596,7 @@ CLI Commands (plugins.ts)
     │
     └── PluginManager (manager.ts)
             │
-            ├── InstalledPlugins manifest (.claude-flow/plugins/installed.json)
+            ├── InstalledPlugins manifest (.fidgetflo/plugins/installed.json)
             ├── npm install/uninstall
             └── PluginDiscoveryService (discovery.ts)
                     │

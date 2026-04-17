@@ -1,14 +1,14 @@
 {
-  "name": "claude-flow-browser-dashboard",
+  "name": "fidgetflo-browser-dashboard",
   "version": "1.0.0",
-  "description": "Browser-based Claude Flow swarm monitoring dashboard (Proof of Concept)",
+  "description": "Browser-based FidgetFlo swarm monitoring dashboard (Proof of Concept)",
   "type": "module",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
     "dev": "node server.js"
   },
-  "keywords": ["claude-flow", "swarm", "dashboard", "websocket", "browser"],
+  "keywords": ["fidgetflo", "swarm", "dashboard", "websocket", "browser"],
   "author": "",
   "license": "MIT",
   "dependencies": {

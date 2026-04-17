@@ -5,7 +5,7 @@ Send coordination notifications and track important decisions.
 ## Usage
 
 ```bash
-npx claude-flow hook notification [options]
+npx fidgetflo hook notification [options]
 ```
 
 ## Options
@@ -21,25 +21,25 @@ npx claude-flow hook notification [options]
 ### Basic notification
 
 ```bash
-npx claude-flow hook notification --message "Completed authentication module"
+npx fidgetflo hook notification --message "Completed authentication module"
 ```
 
 ### Warning notification
 
 ```bash
-npx claude-flow hook notification -m "Potential security issue found" -l warning
+npx fidgetflo hook notification -m "Potential security issue found" -l warning
 ```
 
 ### Broadcast to swarm
 
 ```bash
-npx claude-flow hook notification -m "API refactoring started" --broadcast
+npx fidgetflo hook notification -m "API refactoring started" --broadcast
 ```
 
 ### Decision tracking
 
 ```bash
-npx claude-flow hook notification -m "Chose JWT over sessions for auth" --memory-store
+npx fidgetflo hook notification -m "Chose JWT over sessions for auth" --memory-store
 ```
 
 ## Features
@@ -85,7 +85,7 @@ Manual usage in agents:
 
 ```bash
 # For coordination
-npx claude-flow hook notification --message "Starting database migration" --broadcast --memory-store
+npx fidgetflo hook notification --message "Starting database migration" --broadcast --memory-store
 ```
 
 ## Output

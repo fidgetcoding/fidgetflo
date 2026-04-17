@@ -3,7 +3,7 @@
 
 set -e
 
-echo "🤖 Claude Flow Chat Bot Demo"
+echo "🤖 FidgetFlo Chat Bot Demo"
 echo "============================"
 echo ""
 echo "This demo will create an interactive chat bot application."
@@ -31,7 +31,7 @@ echo ""
 show_progress "Creating your $PERSONALITY $BOT_TYPE bot..."
 
 # Create the chat bot
-../claude-flow swarm create \
+../fidgetflo swarm create \
   "Build an interactive chat bot for $BOT_TYPE with a $PERSONALITY personality. Include:
    - Command-line interface
    - Conversation history

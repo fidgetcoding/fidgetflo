@@ -1,16 +1,16 @@
-# Real Claude-Flow Benchmark Quick Start Guide
+# Real FidgetFlo Benchmark Quick Start Guide
 
 ## Overview
 
-The Real Benchmark Engine executes actual `claude-flow` commands and captures comprehensive performance metrics, resource usage, and quality assessments. This guide helps you get started quickly.
+The Real Benchmark Engine executes actual `fidgetflo` commands and captures comprehensive performance metrics, resource usage, and quality assessments. This guide helps you get started quickly.
 
 ## Installation
 
-1. Ensure `claude-flow` is installed and accessible:
+1. Ensure `fidgetflo` is installed and accessible:
 ```bash
-which claude-flow
+which fidgetflo
 # or
-claude-flow --version
+fidgetflo --version
 ```
 
 2. Install benchmark dependencies:
@@ -251,13 +251,13 @@ asyncio.run(profile_task())
 
 ## Troubleshooting
 
-### Issue: claude-flow not found
+### Issue: fidgetflo not found
 ```bash
 # Check installation
-which claude-flow
+which fidgetflo
 
 # Add to PATH if needed
-export PATH="$PATH:/path/to/claude-flow"
+export PATH="$PATH:/path/to/fidgetflo"
 ```
 
 ### Issue: Timeout errors

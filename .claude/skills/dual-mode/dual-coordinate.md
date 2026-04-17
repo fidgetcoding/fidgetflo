@@ -65,7 +65,7 @@ claude -p "{{this.task}}" --session-id {{this.id}} &
 wait
 
 # Phase 3: Review (Claude Code)
-npx claude-flow@v3alpha memory list --namespace results
+npx fidgetflo@v3alpha memory list --namespace results
 ```
 
 ## Example: Full Hybrid Workflow

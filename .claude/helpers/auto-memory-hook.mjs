@@ -18,7 +18,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const PROJECT_ROOT = join(__dirname, '../..');
-const DATA_DIR = join(PROJECT_ROOT, '.claude-flow', 'data');
+const DATA_DIR = join(PROJECT_ROOT, '.fidgetflo', 'data');
 const STORE_PATH = join(DATA_DIR, 'auto-memory-store.json');
 
 // Colors
@@ -140,7 +140,7 @@ async function loadMemoryPackage() {
   }
 
   // Strategy 2: Use createRequire for CJS-style resolution (handles nested node_modules
-  // when installed as a transitive dependency via npx ruflo / npx claude-flow)
+  // when installed as a transitive dependency via npx fidgetflo / npx fidgetflo)
   try {
     const { createRequire } = await import('module');
     const require = createRequire(join(PROJECT_ROOT, 'package.json'));
@@ -156,7 +156,7 @@ async function loadMemoryPackage() {
   let searchDir = PROJECT_ROOT;
   const { parse } = await import('path');
   while (searchDir !== parse(searchDir).root) {
-    const candidate = join(searchDir, 'node_modules', '@claude-flow', 'memory', 'dist', 'index.js');
+    const candidate = join(searchDir, 'node_modules', '@fidgetflo', 'memory', 'dist', 'index.js');
     if (existsSync(candidate)) {
       try {
         return await import(`file://${candidate}`);
@@ -169,11 +169,11 @@ async function loadMemoryPackage() {
 }
 
 // ============================================================================
-// Read config from .claude-flow/config.yaml
+// Read config from .fidgetflo/config.yaml
 // ============================================================================
 
 function readConfig() {
-  const configPath = join(PROJECT_ROOT, '.claude-flow', 'config.yaml');
+  const configPath = join(PROJECT_ROOT, '.fidgetflo', 'config.yaml');
   const defaults = {
     learningBridge: { enabled: true, sonaMode: 'balanced', confidenceDecayRate: 0.005, accessBoostAmount: 0.03, consolidationThreshold: 10 },
     memoryGraph: { enabled: true, pageRankDamping: 0.85, maxNodes: 5000, similarityThreshold: 0.8 },
@@ -386,7 +386,7 @@ async function doStatus() {
 
   // AgentDB vector status
   try {
-    const dbPath = join(PROJECT_ROOT, '.claude-flow', 'memory', 'memory.db');
+    const dbPath = join(PROJECT_ROOT, '.fidgetflo', 'memory', 'memory.db');
     const swarmDbPath = join(PROJECT_ROOT, '.swarm', 'memory.db');
     const hasDb = existsSync(dbPath) || existsSync(swarmDbPath);
     console.log(`  AgentDB:        ${hasDb ? '✅ sql.js database exists' : '⏸ Not initialized'}`);

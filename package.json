@@ -1,20 +1,16 @@
 {
-  "name": "claude-flow",
-  "version": "3.5.80",
-  "description": "Ruflo - Enterprise AI agent orchestration for Claude Code. Deploy 60+ specialized agents in coordinated swarms with self-learning, fault-tolerant consensus, vector memory, and MCP integration",
+  "name": "fidgetflo",
+  "version": "0.1.0",
+  "description": "FidgetFlo - Nathan Davidovich's fork of Ruflo (by @ruvnet). Enterprise AI agent orchestration for Claude Code: 60+ specialized agents, swarm coordination, self-learning hooks, fault-tolerant consensus, vector memory, and MCP integration. Based on Ruflo by @ruvnet (https://github.com/ruvnet/ruflo).",
   "main": "dist/index.js",
   "type": "module",
   "bin": {
+    "fidgetflo": "./bin/cli.js",
     "claude-flow": "./bin/cli.js"
   },
-  "homepage": "https://github.com/ruvnet/claude-flow#readme",
+  "homepage": "https://github.com/lorecraft-io/fidgetflo#readme",
   "bugs": {
-    "url": "https://github.com/ruvnet/claude-flow/issues",
-    "email": "support@ruv.io"
-  },
-  "funding": {
-    "type": "github",
-    "url": "https://github.com/sponsors/ruvnet"
+    "url": "https://github.com/lorecraft-io/fidgetflo/issues"
   },
   "files": [
     "bin/**",
@@ -85,12 +81,17 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ruvnet/claude-flow.git"
+    "url": "git+https://github.com/lorecraft-io/fidgetflo.git"
   },
   "keywords": [
+    "fidgetflo",
+    "fidgetcoding",
+    "lorecraft",
+    "ruflo",
     "ruvflow",
     "claude",
     "claude-code",
+    "claude-flow",
     "anthropic",
     "ai",
     "ai-agents",
@@ -122,11 +123,14 @@
     "consensus",
     "self-learning"
   ],
-  "author": {
-    "name": "RuvNet",
-    "email": "ruv@ruv.io",
-    "url": "https://ruv.io"
-  },
+  "author": "Nathan Davidovich <nate@lorecraft.io> (https://github.com/lorecraft-io)",
+  "contributors": [
+    {
+      "name": "ruvnet",
+      "url": "https://github.com/ruvnet",
+      "role": "original work (Ruflo — https://github.com/ruvnet/ruflo)"
+    }
+  ],
   "license": "MIT",
   "publishConfig": {
     "access": "public",

@@ -1,4 +1,4 @@
-# Deep Code Review - Claude Flow v2.7.33
+# Deep Code Review - FidgetFlo v2.7.33
 
 **Review Date**: 2025-11-12
 **Branch**: `claude/align-flow-with-mcp-011CV45c34eF2MawJHUpj9XD`
@@ -517,7 +517,7 @@ private sessions: Map<string, {
 2. **Hardcoded Version**: Server version is hardcoded
    ```typescript
    metadata: {
-     name: 'Claude Flow',
+     name: 'FidgetFlo',
      version: '2.7.32', // ⚠️ Hardcoded, should come from package.json
      description: 'Enterprise AI orchestration with MCP 2025-11 support',
    }

@@ -7,7 +7,7 @@ The `memory stats` command always returns zero entries/namespaces/size, even whe
 ## Bug Details
 
 ### Issue
-- **Command**: `npx claude-flow@alpha memory stats`
+- **Command**: `npx fidgetflo@alpha memory stats`
 - **Expected**: Shows statistics for ReasoningBank database (19 entries found via direct SQL query)
 - **Actual**: Returns all zeros (0 entries, 0 namespaces, 0.00 KB)
 - **Severity**: High - Users cannot see their stored data statistics
@@ -17,14 +17,14 @@ The `memory stats` command always returns zero entries/namespaces/size, even whe
 
 ```bash
 # Command returns zeros
-$ npx claude-flow@alpha memory stats
+$ npx fidgetflo@alpha memory stats
 ✅ Memory Bank Statistics:
    Total Entries: 0
    Namespaces: 0
    Size: 0.00 KB
 
 # But ReasoningBank list shows 10+ entries
-$ npx claude-flow@alpha memory list --reasoningbank
+$ npx fidgetflo@alpha memory list --reasoningbank
 ✅ ReasoningBank memories (10 shown):
 📌 test-key
 📌 test-sqlite
@@ -36,7 +36,7 @@ $ sqlite3 .swarm/memory.db "SELECT COUNT(*) FROM patterns WHERE type = 'reasonin
 19
 
 # ReasoningBank status confirms data exists
-$ npx claude-flow@alpha memory status --reasoningbank
+$ npx fidgetflo@alpha memory status --reasoningbank
 ✅ 📊 ReasoningBank Status:
    Total memories: 19
    Average confidence: 80.0%
@@ -130,7 +130,7 @@ The `memory stats` command should:
 
 ```bash
 # Auto mode (should detect ReasoningBank if initialized)
-$ npx claude-flow@alpha memory stats
+$ npx fidgetflo@alpha memory stats
 ✅ Memory Bank Statistics:
    Storage Backend: ReasoningBank (SQLite)
    Total Entries: 19
@@ -145,7 +145,7 @@ $ npx claude-flow@alpha memory stats
 💡 Use 'memory stats --basic' for JSON statistics
 
 # Force ReasoningBank mode
-$ npx claude-flow@alpha memory stats --reasoningbank
+$ npx fidgetflo@alpha memory stats --reasoningbank
 ✅ ReasoningBank Statistics:
    Database: .swarm/memory.db
    Total Memories: 19
@@ -156,7 +156,7 @@ $ npx claude-flow@alpha memory stats --reasoningbank
    Database Size: 9.14 MB
 
 # Force basic mode
-$ npx claude-flow@alpha memory stats --basic
+$ npx fidgetflo@alpha memory stats --basic
 ✅ JSON Memory Statistics:
    Total Entries: 0
    Namespaces: 0
@@ -260,37 +260,37 @@ async function showMemoryStats(loadMemory, mode) {
 1. **Test with empty JSON, empty ReasoningBank**
    ```bash
    rm -rf memory/ .swarm/
-   npx claude-flow@alpha memory stats
+   npx fidgetflo@alpha memory stats
    # Expected: Show zeros for both backends
    ```
 
 2. **Test with data in ReasoningBank only**
    ```bash
-   npx claude-flow@alpha memory store "test" "value" --reasoningbank
-   npx claude-flow@alpha memory stats
+   npx fidgetflo@alpha memory store "test" "value" --reasoningbank
+   npx fidgetflo@alpha memory stats
    # Expected: Show ReasoningBank stats with 1 entry
    ```
 
 3. **Test with data in JSON only**
    ```bash
-   npx claude-flow@alpha memory store "test" "value" --basic
-   npx claude-flow@alpha memory stats
+   npx fidgetflo@alpha memory store "test" "value" --basic
+   npx fidgetflo@alpha memory stats
    # Expected: Show JSON stats with 1 entry
    ```
 
 4. **Test with data in both backends**
    ```bash
-   npx claude-flow@alpha memory store "json-key" "json-value" --basic
-   npx claude-flow@alpha memory store "rb-key" "rb-value" --reasoningbank
-   npx claude-flow@alpha memory stats
+   npx fidgetflo@alpha memory store "json-key" "json-value" --basic
+   npx fidgetflo@alpha memory store "rb-key" "rb-value" --reasoningbank
+   npx fidgetflo@alpha memory stats
    # Expected: Show stats for both backends
    ```
 
 5. **Test with flags**
    ```bash
-   npx claude-flow@alpha memory stats --reasoningbank
-   npx claude-flow@alpha memory stats --basic
-   npx claude-flow@alpha memory stats --auto
+   npx fidgetflo@alpha memory stats --reasoningbank
+   npx fidgetflo@alpha memory stats --basic
+   npx fidgetflo@alpha memory stats --auto
    # Expected: Respect mode flags
    ```
 
@@ -343,10 +343,10 @@ Users can check ReasoningBank data using:
 - JSON Storage: Empty (0 entries)
 
 ### Reproduction Steps
-1. Initialize ReasoningBank: `npx claude-flow@alpha memory init --reasoningbank`
-2. Store data: `npx claude-flow@alpha memory store test-key "test value" --reasoningbank`
-3. Verify storage: `npx claude-flow@alpha memory list --reasoningbank` (shows data)
-4. Run stats: `npx claude-flow@alpha memory stats` (shows zeros ❌)
+1. Initialize ReasoningBank: `npx fidgetflo@alpha memory init --reasoningbank`
+2. Store data: `npx fidgetflo@alpha memory store test-key "test value" --reasoningbank`
+3. Verify storage: `npx fidgetflo@alpha memory list --reasoningbank` (shows data)
+4. Run stats: `npx fidgetflo@alpha memory stats` (shows zeros ❌)
 
 ### Related Files
 - `/workspaces/claude-code-flow/src/cli/simple-commands/memory.js` (main bug location)

@@ -23,7 +23,7 @@ You are Agent 1 - Core Plugin Foundation Architect.
 🚨 MANDATORY MEMORY WRITES:
 
 // 1. START - Write initial status
-mcp__claude-flow__memory_usage {
+mcp__fidgetflo__memory_usage {
   action: "store",
   key: "swarm/agent-1-core/status",
   namespace: "coordination",
@@ -42,7 +42,7 @@ mcp__claude-flow__memory_usage {
 }
 
 // 2. After creating plugin traits - SHARE them
-mcp__claude-flow__memory_usage {
+mcp__fidgetflo__memory_usage {
   action: "store",
   key: "swarm/shared/plugin-traits",
   namespace: "coordination", 
@@ -66,7 +66,7 @@ mcp__claude-flow__memory_usage {
 }
 
 // 3. Update progress
-mcp__claude-flow__memory_usage {
+mcp__fidgetflo__memory_usage {
   action: "store",
   key: "swarm/agent-1-core/progress",
   namespace: "coordination",
@@ -86,7 +86,7 @@ mcp__claude-flow__memory_usage {
 }
 
 // 4. Signal when ready for others
-mcp__claude-flow__memory_usage {
+mcp__fidgetflo__memory_usage {
   action: "store",
   key: "swarm/agent-1-core/complete",
   namespace: "coordination",
@@ -114,7 +114,7 @@ You are Agent 2 - WASM Security Specialist.
 🚨 MANDATORY MEMORY WRITES:
 
 // 1. Write initial status
-mcp__claude-flow__memory_usage {
+mcp__fidgetflo__memory_usage {
   action: "store",
   key: "swarm/agent-2-wasm/status",
   namespace: "coordination",
@@ -127,7 +127,7 @@ mcp__claude-flow__memory_usage {
 }
 
 // 2. CHECK for Agent 1's interfaces
-const pluginTraits = mcp__claude-flow__memory_usage {
+const pluginTraits = mcp__fidgetflo__memory_usage {
   action: "retrieve",
   key: "swarm/shared/plugin-traits",
   namespace: "coordination"
@@ -135,7 +135,7 @@ const pluginTraits = mcp__claude-flow__memory_usage {
 
 if (!pluginTraits.found) {
   // WRITE that we're waiting
-  mcp__claude-flow__memory_usage {
+  mcp__fidgetflo__memory_usage {
     action: "store",
     key: "swarm/agent-2-wasm/waiting",
     namespace: "coordination",
@@ -149,7 +149,7 @@ if (!pluginTraits.found) {
 }
 
 // 3. Share security policies for others
-mcp__claude-flow__memory_usage {
+mcp__fidgetflo__memory_usage {
   action: "store",
   key: "swarm/shared/security-policies",
   namespace: "coordination",
@@ -169,7 +169,7 @@ mcp__claude-flow__memory_usage {
 }
 
 // 4. Update progress
-mcp__claude-flow__memory_usage {
+mcp__fidgetflo__memory_usage {
   action: "store",
   key: "swarm/agent-2-wasm/progress",
   namespace: "coordination",
@@ -191,40 +191,40 @@ You are Agent 3 - MCP Integration Specialist.
 🚨 MANDATORY COORDINATION:
 
 // 1. Initial status
-mcp__claude-flow__memory_usage {
+mcp__fidgetflo__memory_usage {
   action: "store",
   key: "swarm/agent-3-mcp/status",
   namespace: "coordination",
   value: JSON.stringify({
     agent: "agent-3-mcp",
     status: "starting",
-    tasks: ["Create MCP bridges", "Claude-Flow integration"],
+    tasks: ["Create MCP bridges", "FidgetFlo integration"],
     progress: 0
   })
 }
 
 // 2. Check dependencies from BOTH Agent 1 and 2
-const traits = mcp__claude-flow__memory_usage {
+const traits = mcp__fidgetflo__memory_usage {
   action: "retrieve",
   key: "swarm/shared/plugin-traits",
   namespace: "coordination"
 }
 
-const security = mcp__claude-flow__memory_usage {
+const security = mcp__fidgetflo__memory_usage {
   action: "retrieve",
   key: "swarm/shared/security-policies",
   namespace: "coordination"
 }
 
 // 3. Share MCP bridge interfaces
-mcp__claude-flow__memory_usage {
+mcp__fidgetflo__memory_usage {
   action: "store",
   key: "swarm/shared/mcp-bridges",
   namespace: "coordination",
   value: JSON.stringify({
     type: "api",
     bridges: {
-      "claude-flow": "McpBridge::claude_flow()",
+      "fidgetflo": "McpBridge::claude_flow()",
       "ruv-swarm": "McpBridge::ruv_swarm()",
       "flow-nexus": "McpBridge::flow_nexus()"
     },
@@ -237,21 +237,21 @@ mcp__claude-flow__memory_usage {
 // COORDINATION MONITORING
 // ============================================
 // Check overall swarm progress
-mcp__claude-flow__memory_usage {
+mcp__fidgetflo__memory_usage {
   action: "list",
   namespace: "coordination",
   pattern: "swarm/*/progress"
 }
 
 // Get all shared components
-mcp__claude-flow__memory_usage {
+mcp__fidgetflo__memory_usage {
   action: "list", 
   namespace: "coordination",
   pattern: "swarm/shared/*"
 }
 
 // Check for blocking issues
-mcp__claude-flow__memory_usage {
+mcp__fidgetflo__memory_usage {
   action: "list",
   namespace: "coordination", 
   pattern: "swarm/*/waiting"
@@ -315,16 +315,16 @@ if (!dep.found) {
 
 ```bash
 # View all agent statuses
-npx claude-flow@alpha memory search "swarm/*/status" --namespace coordination
+npx fidgetflo@alpha memory search "swarm/*/status" --namespace coordination
 
 # Check progress
-npx claude-flow@alpha memory search "swarm/*/progress" --namespace coordination  
+npx fidgetflo@alpha memory search "swarm/*/progress" --namespace coordination  
 
 # Find blocking issues
-npx claude-flow@alpha memory search "swarm/*/waiting" --namespace coordination
+npx fidgetflo@alpha memory search "swarm/*/waiting" --namespace coordination
 
 # List shared components
-npx claude-flow@alpha memory search "swarm/shared/*" --namespace coordination
+npx fidgetflo@alpha memory search "swarm/shared/*" --namespace coordination
 ```
 
 ## Common Pitfalls to Avoid

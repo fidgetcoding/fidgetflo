@@ -2,9 +2,18 @@
   "name": "@claude-flow/shared",
   "version": "3.0.0-alpha.7",
   "type": "module",
-  "description": "Shared module - common types, events, utilities, core interfaces",
+  "description": "FidgetFlo shared module - common types, events, utilities, core interfaces (based on Ruflo by @ruvnet)",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "homepage": "https://github.com/lorecraft-io/fidgetflo#readme",
+  "bugs": {
+    "url": "https://github.com/lorecraft-io/fidgetflo/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lorecraft-io/fidgetflo.git",
+    "directory": "v3/@claude-flow/shared"
+  },
   "exports": {
     ".": "./dist/index.js",
     "./types": "./dist/types/index.js",

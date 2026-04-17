@@ -3,13 +3,13 @@
   "customInstructions": "Follow the project's CLAUDE.md guidelines. Use concurrent execution for all operations. Prioritize v3 implementation with security-first development, 15-agent swarm coordination, phased performance optimization, and cross-platform helper automation.",
   "env": {
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1",
-    "CLAUDE_FLOW_V3_ENABLED": "true",
-    "CLAUDE_FLOW_HOOKS_ENABLED": "true"
+    "FIDGETFLO_V3_ENABLED": "true",
+    "FIDGETFLO_HOOKS_ENABLED": "true"
   },
   "permissions": {
     "allow": [
       "Bash(npx @claude-flow*)",
-      "Bash(npx claude-flow*)",
+      "Bash(npx fidgetflo*)",
       "Bash(node .claude/*)",
       "Bash(npm run:*)",
       "Bash(npm test:*)",
@@ -30,7 +30,7 @@
       "Bash(pwd)",
       "Bash(ls:*)",
       "Bash(npx:*)",
-      "mcp__claude-flow__*",
+      "mcp__fidgetflo__*",
       "mcp__ruv-swarm__*",
       "mcp__flow-nexus__*"
     ],
@@ -179,10 +179,10 @@
     ]
   },
   "attribution": {
-    "commit": "Co-Authored-By: claude-flow <ruv@ruv.net>",
-    "pr": "\ud83e\udd16 Generated with [claude-flow](https://github.com/ruvnet/claude-flow)"
+    "commit": "Co-Authored-By: fidgetflo <nate@lorecraft.io>",
+    "pr": "\ud83e\udd16 Generated with [FidgetFlo](https://github.com/lorecraft-io/fidgetflo)"
   },
-  "claudeFlow": {
+  "fidgetFlo": {
     "version": "3.5.2",
     "enabled": true,
     "modelPreferences": {
@@ -289,17 +289,17 @@
     "command": "node \"$CLAUDE_PROJECT_DIR/.claude/helpers/statusline.cjs\""
   },
   "mcpServers": {
-    "claude-flow": {
+    "fidgetflo": {
       "command": "node",
       "args": [
-        "/workspaces/claude-flow/v3/@claude-flow/cli/bin/cli.js",
+        "/workspaces/fidgetflo/v3/@claude-flow/cli/bin/cli.js",
         "mcp",
         "start"
       ]
     }
   },
   "enabledMcpjsonServers": [
-    "claude-flow",
+    "fidgetflo",
     "ruv-swarm"
   ]
 }

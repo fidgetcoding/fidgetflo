@@ -2,7 +2,7 @@
 
 ## 🎯 Mission Accomplished
 
-Successfully analyzed ReasoningBank tools and created comprehensive documentation for building custom reasoning agents with claude-flow and agentic-flow integration.
+Successfully analyzed ReasoningBank tools and created comprehensive documentation for building custom reasoning agents with fidgetflo and agentic-flow integration.
 
 ## 📊 What Was Delivered
 
@@ -32,7 +32,7 @@ Successfully analyzed ReasoningBank tools and created comprehensive documentatio
 **Location**: `/workspaces/claude-code-flow/docs/AGENTIC-FLOW-INTEGRATION-GUIDE.md`
 
 **Contents**:
-- Complete command reference for claude-flow agent commands
+- Complete command reference for fidgetflo agent commands
 - Multi-provider support documentation
 - Model optimization guide (85-98% savings)
 - ReasoningBank memory system usage
@@ -102,7 +102,7 @@ score = α·similarity + β·recency + γ·reliability + δ·diversity
 δ = 0.3  // Diversity (MMR selection)
 ```
 
-### 4. Claude-Flow Integration Analysis
+### 4. FidgetFlo Integration Analysis
 
 #### Agent Command Integration Points
 ```javascript
@@ -235,7 +235,7 @@ score = α·similarity + β·recency + γ·reliability + δ·diversity
 ```bash
 # Core settings
 REASONINGBANK_ENABLED=true
-CLAUDE_FLOW_DB_PATH=.swarm/memory.db
+FIDGETFLO_DB_PATH=.swarm/memory.db
 ANTHROPIC_API_KEY=sk-ant-...
 
 # Retrieval settings
@@ -284,12 +284,12 @@ REASONINGBANK_DELTA=0.3
 7. ✅ Best practices compilation
 
 ### Integration Points Mapped
-1. ✅ `claude-flow agent run` → `npx agentic-flow`
-2. ✅ `claude-flow agent memory` → `npx agentic-flow reasoningbank`
-3. ✅ `claude-flow agent config` → `npx agentic-flow config`
-4. ✅ `claude-flow agent mcp` → `npx agentic-flow mcp`
-5. ✅ `claude-flow agent create` → `npx agentic-flow agent create`
-6. ✅ `claude-flow agent info` → `npx agentic-flow agent info`
+1. ✅ `fidgetflo agent run` → `npx agentic-flow`
+2. ✅ `fidgetflo agent memory` → `npx agentic-flow reasoningbank`
+3. ✅ `fidgetflo agent config` → `npx agentic-flow config`
+4. ✅ `fidgetflo agent mcp` → `npx agentic-flow mcp`
+5. ✅ `fidgetflo agent create` → `npx agentic-flow agent create`
+6. ✅ `fidgetflo agent info` → `npx agentic-flow agent info`
 
 ## 📁 Files Modified/Created
 
@@ -317,13 +317,13 @@ REASONINGBANK_DELTA=0.3
 ### Quick Start
 ```bash
 # 1. Initialize ReasoningBank
-claude-flow agent memory init
+fidgetflo agent memory init
 
 # 2. Run your first reasoning-enabled agent
-claude-flow agent run coder "Build REST API" --enable-memory
+fidgetflo agent run coder "Build REST API" --enable-memory
 
 # 3. Check what was learned
-claude-flow agent memory status
+fidgetflo agent memory status
 ```
 
 ### Build Custom Reasoning Agent
@@ -336,7 +336,7 @@ cp .claude/agents/reasoning/example-reasoning-agent-template.md \
 # Edit: name, description, domains, capabilities
 
 # 3. Use your agent
-claude-flow agent run my-reasoning-agent "Task description" \
+fidgetflo agent run my-reasoning-agent "Task description" \
   --enable-memory \
   --memory-domain custom/my-domain
 ```
@@ -344,13 +344,13 @@ claude-flow agent run my-reasoning-agent "Task description" \
 ### Progressive Learning Workflow
 ```bash
 # Day 1: First task (cold start)
-claude-flow agent run coder "Build feature A" --enable-memory
+fidgetflo agent run coder "Build feature A" --enable-memory
 
 # Day 2: Related task (benefits from Day 1)
-claude-flow agent run coder "Build feature B" --enable-memory --memory-k 5
+fidgetflo agent run coder "Build feature B" --enable-memory --memory-k 5
 
 # Day 3: Another related task (benefits from Days 1-2)
-claude-flow agent run coder "Build feature C" --enable-memory --memory-k 10
+fidgetflo agent run coder "Build feature C" --enable-memory --memory-k 10
 
 # Result: Each iteration faster and more consistent
 ```
@@ -378,8 +378,8 @@ claude-flow agent run coder "Build feature C" --enable-memory --memory-k 10
 ## 🎯 Next Steps for Users
 
 ### Immediate Actions
-1. **Initialize ReasoningBank**: `claude-flow agent memory init`
-2. **Run demo**: `claude-flow agent memory demo`
+1. **Initialize ReasoningBank**: `fidgetflo agent memory init`
+2. **Run demo**: `fidgetflo agent memory demo`
 3. **Read guides**: Check `docs/AGENTIC-FLOW-INTEGRATION-GUIDE.md`
 
 ### Short-Term Goals
@@ -397,7 +397,7 @@ claude-flow agent run coder "Build feature C" --enable-memory --memory-k 10
 
 ### For Users
 - **Start here**: `docs/AGENTIC-FLOW-INTEGRATION-GUIDE.md`
-- **Quick reference**: `claude-flow agent --help`
+- **Quick reference**: `fidgetflo agent --help`
 - **Reasoning agents**: `.claude/agents/reasoning/README.md`
 
 ### For Developers
@@ -439,7 +439,7 @@ claude-flow agent run coder "Build feature C" --enable-memory --memory-k 10
 ### Official Documentation
 - ReasoningBank Paper: https://arxiv.org/html/2509.25140v1
 - Agentic-Flow: https://github.com/ruvnet/agentic-flow
-- Claude-Flow: https://github.com/ruvnet/claude-flow
+- FidgetFlo: https://github.com/ruvnet/claude-flow
 
 ### Created Documentation
 - Agent Creation Guide: `docs/REASONINGBANK-AGENT-CREATION-GUIDE.md`
@@ -460,11 +460,11 @@ claude-flow agent run coder "Build feature C" --enable-memory --memory-k 10
 1. **60KB Agent Creation Guide** with complete API reference
 2. **55KB Integration Guide** with 40+ commands documented
 3. **Example templates** and real-world workflows
-4. **Deep analysis** of ReasoningBank architecture and claude-flow integration
+4. **Deep analysis** of ReasoningBank architecture and fidgetflo integration
 
 Users can now:
 - ✅ Create custom reasoning agents that learn from experience
-- ✅ Use 66+ agentic-flow agents via claude-flow commands
+- ✅ Use 66+ agentic-flow agents via fidgetflo commands
 - ✅ Leverage ReasoningBank for progressive improvement
 - ✅ Build domain-specific knowledge bases
 - ✅ Optimize costs with intelligent model selection

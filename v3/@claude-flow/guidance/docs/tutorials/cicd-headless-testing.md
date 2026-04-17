@@ -245,14 +245,14 @@ For cross-session analysis, use the persistent ledger:
 ```ts
 import { createPersistentLedger, createEventStore } from '@claude-flow/guidance/persistence';
 
-const store = createEventStore({ dataDir: './.claude-flow/guidance/events' });
+const store = createEventStore({ dataDir: './.fidgetflo/guidance/events' });
 const ledger = createPersistentLedger(store);
 
 // Events are automatically persisted to disk
 const event = ledger.createEvent('task-1', 'feature', 'constitution-hash');
 // ... work ...
 ledger.finalizeEvent(event);
-// Event is now on disk at .claude-flow/guidance/events/
+// Event is now on disk at .fidgetflo/guidance/events/
 
 // Load historical data
 const stats = await store.getStats();

@@ -1,6 +1,6 @@
 ---
 name: browser
-description: Web browser automation with AI-optimized snapshots for claude-flow agents
+description: Web browser automation with AI-optimized snapshots for fidgetflo agents
 version: 1.0.0
 triggers:
   - /browser
@@ -166,7 +166,7 @@ agent-browser --session scrape open https://example.com/data
 agent-browser --session scrape snapshot -i
 ```
 
-## Integration with Claude Flow
+## Integration with FidgetFlo
 
 ### MCP Tools
 All browser operations are available as MCP tools with `browser/` prefix:

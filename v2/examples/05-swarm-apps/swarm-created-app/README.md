@@ -1,6 +1,6 @@
 # Task Manager CLI
 
-A command-line task management application created by the Claude Flow Swarm system.
+A command-line task management application created by the FidgetFlo Swarm system.
 
 ## Swarm Creation Process
 
@@ -90,4 +90,4 @@ node task-manager.test.js
 
 ---
 
-Created by Claude Flow Swarm v1.0.49
+Created by FidgetFlo Swarm v1.0.49

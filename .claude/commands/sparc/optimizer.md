@@ -7,7 +7,7 @@ Performance optimization with systematic analysis and improvements.
 
 ### Option 1: Using MCP Tools (Preferred in Claude Code)
 ```javascript
-mcp__claude-flow__sparc_mode {
+mcp__fidgetflo__sparc_mode {
   mode: "optimizer",
   task_description: "optimize application performance",
   options: {
@@ -20,16 +20,16 @@ mcp__claude-flow__sparc_mode {
 ### Option 2: Using NPX CLI (Fallback when MCP not available)
 ```bash
 # Use when running from terminal or MCP tools unavailable
-npx claude-flow sparc run optimizer "optimize application performance"
+npx fidgetflo sparc run optimizer "optimize application performance"
 
 # For alpha features
-npx claude-flow@alpha sparc run optimizer "optimize application performance"
+npx fidgetflo@alpha sparc run optimizer "optimize application performance"
 ```
 
 ### Option 3: Local Installation
 ```bash
-# If claude-flow is installed locally
-./claude-flow sparc run optimizer "optimize application performance"
+# If fidgetflo is installed locally
+./fidgetflo sparc run optimizer "optimize application performance"
 ```
 
 ## Core Capabilities

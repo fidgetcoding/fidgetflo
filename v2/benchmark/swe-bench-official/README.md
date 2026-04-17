@@ -1,4 +1,4 @@
-# Official SWE-bench Integration for Claude Flow
+# Official SWE-bench Integration for FidgetFlo
 
 This is the OFFICIAL SWE-bench integration for creating verified submissions to the [SWE-bench leaderboard](https://www.swebench.com/).
 
@@ -14,7 +14,7 @@ SWE-bench is a benchmark for evaluating large language models on real-world soft
 
 1. **SWE-bench-Lite**: Subset of 300 instances for faster evaluation
 2. **Test Harness**: Official evaluation framework
-3. **Claude Flow Agent**: Our implementation for solving SWE-bench tasks
+3. **FidgetFlo Agent**: Our implementation for solving SWE-bench tasks
 
 ## Installation
 
@@ -33,7 +33,7 @@ python setup_evaluation.py
 
 ```bash
 # Run on SWE-bench-Lite (300 instances)
-python run_swebench.py --dataset lite --model claude-flow
+python run_swebench.py --dataset lite --model fidgetflo
 
 # Run on specific instance
 python run_swebench.py --instance "django__django-11099"
@@ -49,7 +49,7 @@ The submission must be a `predictions.json` file with format:
 {
   "instance_id": {
     "model_patch": "diff --git a/file.py b/file.py\n...",
-    "model_name_or_path": "claude-flow"
+    "model_name_or_path": "fidgetflo"
   }
 }
 ```
@@ -67,7 +67,7 @@ swe-bench-official/
 ├── download_swebench.py      # Download official dataset
 ├── setup_evaluation.py        # Setup test environment
 ├── run_swebench.py           # Main runner
-├── claude_flow_agent.py      # Claude Flow SWE-bench agent
+├── claude_flow_agent.py      # FidgetFlo SWE-bench agent
 ├── generate_submission.py    # Create submission file
 ├── data/                     # Downloaded datasets
 ├── predictions/              # Generated predictions

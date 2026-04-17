@@ -17,7 +17,7 @@ npm install @claude-flow/plugin-neural-coordination
 ### CLI
 
 ```bash
-npx claude-flow plugins install --name @claude-flow/plugin-neural-coordination
+npx fidgetflo plugins install --name @claude-flow/plugin-neural-coordination
 ```
 
 ## Quick Start

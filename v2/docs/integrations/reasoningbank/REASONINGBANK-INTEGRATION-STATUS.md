@@ -44,7 +44,7 @@ npx agentic-flow --agent coder --task "Build REST API using best practices"
 
 ```bash
 # ❌ INCORRECT: Direct CLI memory operations
-npx claude-flow memory store pattern "..." --reasoningbank
+npx fidgetflo memory store pattern "..." --reasoningbank
 # This doesn't work because ReasoningBank has no store/query CLI commands
 ```
 
@@ -54,16 +54,16 @@ npx claude-flow memory store pattern "..." --reasoningbank
 
 ```bash
 # Standard key-value memory (always works)
-claude-flow memory store api_pattern "Use environment variables for config"
-claude-flow memory query "API"
-claude-flow memory stats
+fidgetflo memory store api_pattern "Use environment variables for config"
+fidgetflo memory query "API"
+fidgetflo memory stats
 ```
 
 ### Solution 2: Use ReasoningBank via Agents
 
 ```bash
 # Initialize ReasoningBank
-claude-flow memory init --reasoningbank
+fidgetflo memory init --reasoningbank
 
 # Use agentic-flow agents (they'll use ReasoningBank automatically)
 npx agentic-flow --agent coder --task "Implement user authentication"
@@ -93,12 +93,12 @@ npx agentic-flow reasoningbank list          # List memories
 
 **Full CLI Integration:**
 - Implement direct `store/query` operations
-- Bridge claude-flow memory commands to ReasoningBank SDK
+- Bridge fidgetflo memory commands to ReasoningBank SDK
 - Add migration tool: `memory migrate --to reasoningbank`
 
 **Implementation Plan:**
 1. Import agentic-flow's ReasoningBank SDK directly
-2. Wrap SDK methods in claude-flow memory commands
+2. Wrap SDK methods in fidgetflo memory commands
 3. Provide seamless experience for both modes
 
 ## Current Workaround
@@ -107,10 +107,10 @@ If you initialized ReasoningBank and want to use its learning capabilities:
 
 ```bash
 # 1. Initialize (one-time)
-claude-flow memory init --reasoningbank
+fidgetflo memory init --reasoningbank
 
 # 2. Use basic memory for manual storage
-claude-flow memory store api_best_practice "Always validate input"
+fidgetflo memory store api_best_practice "Always validate input"
 
 # 3. Use agentic-flow agents for AI-powered learning
 npx agentic-flow --agent coder --task "Build secure API endpoints"
@@ -126,7 +126,7 @@ npx agentic-flow --agent coder --task "Build secure API endpoints"
 
 ```
 ┌─────────────────────────────────────┐
-│      claude-flow memory             │
+│      fidgetflo memory             │
 ├─────────────────────────────────────┤
 │                                     │
 │  Basic Mode (default)               │

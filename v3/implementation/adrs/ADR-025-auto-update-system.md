@@ -1,4 +1,4 @@
-# ADR-025: Auto-Update System for @claude-flow Packages
+# ADR-025: Auto-Update System for @fidgetflo Packages
 
 ## Status
 **Implemented** - 2026-01-13
@@ -18,7 +18,7 @@
 
 ## Context
 
-The Claude Flow V3 ecosystem consists of multiple packages:
+The FidgetFlo V3 ecosystem consists of multiple packages:
 - `@claude-flow/cli` - Main CLI tool
 - `@claude-flow/embeddings` - Vector embeddings
 - `@claude-flow/security` - Security utilities
@@ -129,7 +129,7 @@ interface RateLimitState {
   packageVersions: Record<string, string>;
 }
 
-// Stored in: ~/.claude-flow/update-state.json
+// Stored in: ~/.fidgetflo/update-state.json
 ```
 
 #### 3. PackageValidator (`src/update/validator.ts`)
@@ -148,7 +148,7 @@ interface ValidationResult {
 ```
 1. CLI Start
    │
-   ├─► Check rate limit cache (~/.claude-flow/update-state.json)
+   ├─► Check rate limit cache (~/.fidgetflo/update-state.json)
    │   └─► If checked within 24h AND no --force-update → Skip
    │
    ├─► Query npm registry for @claude-flow/* packages
@@ -165,40 +165,40 @@ interface ValidationResult {
    │   └─► Log to update history
    │
    └─► Display notification for non-auto updates
-       └─► "Run `npx claude-flow update` to update X packages"
+       └─► "Run `npx fidgetflo update` to update X packages"
 ```
 
 ### CLI Commands
 
 ```bash
 # Check for updates (manual)
-npx claude-flow update check
+npx fidgetflo update check
 
 # Update all packages
-npx claude-flow update all
+npx fidgetflo update all
 
 # Update specific package
-npx claude-flow update @claude-flow/embeddings
+npx fidgetflo update @claude-flow/embeddings
 
 # View update history
-npx claude-flow update history
+npx fidgetflo update history
 
 # Rollback last update
-npx claude-flow update rollback
+npx fidgetflo update rollback
 
 # Configure auto-update
-npx claude-flow config set update.autoUpdateMinor true
-npx claude-flow config set update.checkIntervalHours 12
+npx fidgetflo config set update.autoUpdateMinor true
+npx fidgetflo config set update.checkIntervalHours 12
 ```
 
 ### Environment Variables
 
 ```bash
 # Disable auto-update entirely
-CLAUDE_FLOW_AUTO_UPDATE=false
+FIDGETFLO_AUTO_UPDATE=false
 
 # Force update check
-CLAUDE_FLOW_FORCE_UPDATE=true
+FIDGETFLO_FORCE_UPDATE=true
 
 # CI/CD mode (no interactive prompts, no auto-update)
 CI=true
@@ -207,7 +207,7 @@ CI=true
 ### Configuration File
 
 ```json
-// claude-flow.config.json
+// fidgetflo.config.json
 {
   "update": {
     "enabled": true,

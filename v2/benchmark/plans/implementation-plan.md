@@ -1,7 +1,7 @@
 # Agent Swarm Benchmarking Tool - Implementation Plan
 
 ## Project Overview
-A comprehensive Python-based benchmarking tool for agent swarms that interfaces with the Claude Flow Advanced Swarm System. This tool will measure performance, efficiency, and effectiveness of different swarm strategies and coordination modes.
+A comprehensive Python-based benchmarking tool for agent swarms that interfaces with the FidgetFlo Advanced Swarm System. This tool will measure performance, efficiency, and effectiveness of different swarm strategies and coordination modes.
 
 ## 📋 Project Structure
 ```
@@ -32,7 +32,7 @@ benchmark/
 
 ### Phase 1: Specification
 - Define comprehensive requirements
-- Map all claude-flow swarm commands to benchmark tests
+- Map all fidgetflo swarm commands to benchmark tests
 - Create detailed user stories and acceptance criteria
 - Establish performance metrics and KPIs
 

@@ -1,7 +1,7 @@
 # agentic-flow v1.7.1 Integration Test Report
 
 **Test Date**: 2025-10-24
-**Claude-Flow Version**: v2.7.1
+**FidgetFlo Version**: v2.7.1
 **agentic-flow Version**: v1.7.1 (upgraded from v1.6.6)
 **Tester**: Claude Code
 
@@ -191,7 +191,7 @@ const rb = new HybridReasoningBank({
 ✅ **PASS** - Existing ReasoningBank functionality works
 
 ```bash
-npx claude-flow@alpha memory list
+npx fidgetflo@alpha memory list
 # Output: ✅ ReasoningBank memories (10 shown)
 ```
 
@@ -324,7 +324,7 @@ sed -i "s/from '\\.\\/EmbeddingService'/from '.\/EmbeddingService.js'/g" node_mo
 
 ## Recommendations
 
-### For Claude-Flow Maintainers
+### For FidgetFlo Maintainers
 
 1. ✅ **Safe to use v1.7.1** - All core functionality works
 2. ⚠️ **Use v1.7.0 exports for now** - Advanced features need workarounds
@@ -394,7 +394,7 @@ import * as ReasoningBank from 'agentic-flow/reasoningbank';
    - Watch for agentic-flow v1.7.2 with fixes
    - Test when proper exports are available
 
-4. **Document in claude-flow**:
+4. **Document in fidgetflo**:
    - Add workaround guide to documentation
    - Update integration examples
 

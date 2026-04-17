@@ -33,7 +33,7 @@
 - `sqlite_stat1`
 - `sqlite_stat4`
 
-## Claude-Flow Compatibility
+## FidgetFlo Compatibility
 
 ### Required Tables
 
@@ -55,9 +55,9 @@
 **Status**: ✅ FULLY COMPATIBLE
 
 This model can now be used with:
-- ✅ `npx claude-flow@alpha memory store` - General memory commands
-- ✅ `npx claude-flow@alpha memory query` - Memory queries
-- ✅ `npx claude-flow@alpha memory query --reasoningbank` - ReasoningBank patterns
+- ✅ `npx fidgetflo@alpha memory store` - General memory commands
+- ✅ `npx fidgetflo@alpha memory query` - Memory queries
+- ✅ `npx fidgetflo@alpha memory query --reasoningbank` - ReasoningBank patterns
 - ✅ Hive-mind swarm operations
 - ✅ Session tracking and metrics
 

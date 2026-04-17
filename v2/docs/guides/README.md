@@ -1,11 +1,11 @@
 # 📚 User Guides & Tutorials
 
-Comprehensive guides and tutorials for using claude-flow.
+Comprehensive guides and tutorials for using fidgetflo.
 
 ## Featured Guides
 
 ### Skills System
-- **[Skills Tutorial](./skills-tutorial.md)** - Complete guide to 25 Claude Flow skills with natural language invocation
+- **[Skills Tutorial](./skills-tutorial.md)** - Complete guide to 25 FidgetFlo skills with natural language invocation
 
 ## Skill Categories
 

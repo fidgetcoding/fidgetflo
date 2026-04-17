@@ -123,7 +123,7 @@ gates.setActiveRules(allRules);
 
 ## Step 6: Wire into Hooks
 
-In a Claude Flow hook:
+In a FidgetFlo hook:
 
 ```ts
 import { createGuidanceHooks } from '@claude-flow/guidance/hooks';

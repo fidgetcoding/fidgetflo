@@ -1,4 +1,4 @@
-# ADR-043: Gas Town Bridge Plugin for Claude Flow V3
+# ADR-043: Gas Town Bridge Plugin for FidgetFlo V3
 
 ## Status
 **Implemented** - Ultra-Optimized (2026-01-24)
@@ -20,7 +20,7 @@
 - **GUPP**: Gastown Universal Propulsion Principle for crash-resilient execution
 - **Molecules/Wisps**: Chained work units for durable workflows
 
-Claude Flow V3 would benefit from:
+FidgetFlo V3 would benefit from:
 1. Interoperability with Gas Town installations
 2. Adopting Gas Town's durable workflow patterns
 3. Bridging Beads with AgentDB for unified work tracking
@@ -41,7 +41,7 @@ Create `@claude-flow/plugin-gastown-bridge` with a **WASM-centric hybrid archite
 3. **Beads Sync**: Bidirectional sync between Beads and AgentDB
 4. **Formula Engine**: WASM-based TOML formula parser/executor
 5. **Graph Analysis**: WASM-based dependency resolution and DAG operations
-6. **GUPP Adapter**: Translate GUPP hooks to Claude Flow session persistence
+6. **GUPP Adapter**: Translate GUPP hooks to FidgetFlo session persistence
 
 ## Architecture
 
@@ -49,7 +49,7 @@ Create `@claude-flow/plugin-gastown-bridge` with a **WASM-centric hybrid archite
 
 ```
 ┌─────────────────────────────────────────────────────────────────────┐
-│                      Claude Flow V3 Plugin Host                      │
+│                      FidgetFlo V3 Plugin Host                      │
 ├─────────────────────────────────────────────────────────────────────┤
 │                                                                      │
 │  ┌─────────────────────┐    ┌─────────────────────────────────────┐ │
@@ -118,7 +118,7 @@ Create `@claude-flow/plugin-gastown-bridge` with a **WASM-centric hybrid archite
 {
   "name": "@claude-flow/plugin-gastown-bridge",
   "version": "0.1.0",
-  "description": "Gas Town orchestrator integration for Claude Flow V3",
+  "description": "Gas Town orchestrator integration for FidgetFlo V3",
   "keywords": ["gastown", "beads", "orchestration", "workflows", "formulas"]
 }
 ```
@@ -355,7 +355,7 @@ export class BeadsSyncService {
           title: parsed.title || task.key,
           description: parsed.description || '',
           priority: parsed.priority || 2,
-          labels: ['from-claude-flow'],
+          labels: ['from-fidgetflo'],
         });
         pushed++;
       }
@@ -546,10 +546,10 @@ export interface GasTownConfig {
   // Enable native formula execution (vs. shelling to gt)
   nativeFormulas: boolean;
 
-  // Enable convoy tracking in Claude Flow
+  // Enable convoy tracking in FidgetFlo
   enableConvoys: boolean;
 
-  // Auto-create beads from Claude Flow tasks
+  // Auto-create beads from FidgetFlo tasks
   autoCreateBeads: boolean;
 
   // GUPP integration
@@ -590,7 +590,7 @@ export interface GasTownConfig {
 
 ### Phase 4: Sync & Convoys (Week 5)
 - Beads-AgentDB bidirectional sync with WASM graph analysis
-- Convoy tracking with Claude Flow tasks
+- Convoy tracking with FidgetFlo tasks
 - 3 Convoy MCP tools
 - 3 Orchestration MCP tools
 - WASM-based convoy optimization
@@ -598,7 +598,7 @@ export interface GasTownConfig {
 ### Phase 5: GUPP Adapter & Polish (Week 6)
 - Translate GUPP hooks to session persistence
 - Automatic work continuation on restart
-- Integration with Claude Flow daemon
+- Integration with FidgetFlo daemon
 - Performance profiling and optimization
 - Documentation and examples
 
@@ -939,6 +939,6 @@ User Request → MCP Tool → Route Decision
 - [ADR-037: RuVector Learning WASM](./ADR-037-ruvector-learning-wasm.md) - Optimization
 - [ADR-032: RuVector WASM Plugins Architecture](./ADR-032-ruvector-wasm-plugins.md)
 
-### Claude Flow V3
+### FidgetFlo V3
 - [ADR-006: Unified Memory Service](./ADR-006-unified-memory-service.md)
 - [ADR-001: Deep Agentic Flow Integration](./ADR-001-deep-agentic-flow-integration.md)

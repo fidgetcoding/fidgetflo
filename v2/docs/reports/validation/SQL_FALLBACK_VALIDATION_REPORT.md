@@ -1,7 +1,7 @@
 # 🚀 ReasoningBank SQL Fallback - Validation Report
 
 **Feature:** Automatic SQL fallback when semantic search returns empty
-**Version:** claude-flow v2.7.0-alpha.7
+**Version:** fidgetflo v2.7.0-alpha.7
 **Test Date:** 2025-10-13
 **Status:** ✅ **SQL FALLBACK WORKING**
 
@@ -299,7 +299,7 @@ User Experience: ✨ Fast, reliable, works!
 
 ### Before (v2.7.0-alpha.5)
 ```
-User: "npx claude-flow memory query 'pathfinding' --reasoningbank"
+User: "npx fidgetflo memory query 'pathfinding' --reasoningbank"
 System: [hangs for 60+ seconds]
 System: ⚠️ No results found
 
@@ -308,7 +308,7 @@ User Reaction: 😤 "This doesn't work, I'll use basic mode"
 
 ### After (v2.7.0-alpha.7)
 ```
-User: "npx claude-flow memory query 'pathfinding' --reasoningbank"
+User: "npx fidgetflo memory query 'pathfinding' --reasoningbank"
 System: [INFO] Semantic search returned 0 results, trying SQL fallback
 System: ✅ Found 1 results
 System: 📌 goap_planner - A* pathfinding algorithm...
@@ -400,6 +400,6 @@ The SQL fallback feature transforms ReasoningBank from a **slow, unreliable alph
 
 **Test Report Created:** 2025-10-13
 **Tested By:** Claude Code + Docker Validation Suite
-**Version:** claude-flow v2.7.0-alpha.7
+**Version:** fidgetflo v2.7.0-alpha.7
 **Confidence Level:** **HIGH**
 **Production Ready:** ✅ **YES**

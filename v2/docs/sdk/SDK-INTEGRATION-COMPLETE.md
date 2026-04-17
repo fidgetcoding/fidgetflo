@@ -1,9 +1,9 @@
 # SDK Integration - COMPLETE ✅
-**Claude-Flow v2.5.0-alpha.138+**
+**FidgetFlo v2.5.0-alpha.138+**
 
 ## Summary
 
-Successfully integrated **100% real, SDK-powered features** into Claude Flow with **zero breaking changes**.
+Successfully integrated **100% real, SDK-powered features** into FidgetFlo with **zero breaking changes**.
 
 ---
 
@@ -17,7 +17,7 @@ Successfully integrated **100% real, SDK-powered features** into Claude Flow wit
 | `src/sdk/query-control.ts` | 315 | TRUE pause/resume with `resumeSessionAt` | ✅ Complete |
 | `src/sdk/checkpoint-manager.ts` | 403 | Git-like checkpoints using message UUIDs | ✅ Complete |
 | `src/sdk/in-process-mcp.ts` | 489 | 100-500x faster in-process MCP servers | ✅ Complete |
-| `src/sdk/claude-flow-mcp-integration.ts` | 387 | Integration layer for MCP + SDK | ✅ Complete |
+| `src/sdk/fidgetflo-mcp-integration.ts` | 387 | Integration layer for MCP + SDK | ✅ Complete |
 
 **Total: ~1,879 lines of REAL, verified SDK code**
 
@@ -153,26 +153,26 @@ Speed gain: 3x
 
 ```bash
 # Create checkpoint
-npx claude-flow checkpoint create <session-id> "Before deployment"
+npx fidgetflo checkpoint create <session-id> "Before deployment"
 
 # List checkpoints
-npx claude-flow checkpoint list <session-id>
+npx fidgetflo checkpoint list <session-id>
 
 # Rollback
-npx claude-flow checkpoint rollback <checkpoint-id>
+npx fidgetflo checkpoint rollback <checkpoint-id>
 
 # Get checkpoint info
-npx claude-flow checkpoint info <checkpoint-id>
+npx fidgetflo checkpoint info <checkpoint-id>
 ```
 
 ### 2. Enhanced Pause (Updated)
 
 ```bash
 # Pause now uses SDK for TRUE pause/resume
-npx claude-flow hive-mind pause -s <session-id>
+npx fidgetflo hive-mind pause -s <session-id>
 
 # State saved to disk - can resume across restarts!
-npx claude-flow hive-mind resume -s <session-id>
+npx fidgetflo hive-mind resume -s <session-id>
 ```
 
 ### 3. Swarm with Forking (Enhanced)
@@ -304,7 +304,7 @@ Features always enabled:
 - `src/sdk/query-control.ts`
 - `src/sdk/checkpoint-manager.ts`
 - `src/sdk/in-process-mcp.ts`
-- `src/sdk/claude-flow-mcp-integration.ts`
+- `src/sdk/fidgetflo-mcp-integration.ts`
 - `src/sdk/validation-demo.ts`
 - `src/cli/commands/checkpoint.ts`
 - `examples/sdk/complete-example.ts`
@@ -319,7 +319,7 @@ Features always enabled:
 - `src/cli/commands/index.ts` - Added checkpoint command + help
 - `src/cli/simple-cli.ts` - Updated help text
 - `src/hooks/index.ts` - Exported SDK managers
-- `src/mcp/claude-flow-tools.ts` - **Added 7 new MCP tools**
+- `src/mcp/fidgetflo-tools.ts` - **Added 7 new MCP tools**
 
 ### Unchanged (No Modifications)
 - All core files unchanged
@@ -338,7 +338,7 @@ Features always enabled:
 
 **SDK Integration: COMPLETE AND VALIDATED ✅**
 
-Claude Flow now has:
+FidgetFlo now has:
 - ✅ Real session forking (not fake `Promise.allSettled`)
 - ✅ True pause/resume (not fake `interrupt()`)
 - ✅ Git-like checkpointing (instant time travel)

@@ -19,7 +19,7 @@ Scan for exposed secrets, env leaks, and monoliths. Recommend mitigations or ref
 
 ### Option 1: Using MCP Tools (Preferred in Claude Code)
 ```javascript
-mcp__claude-flow__sparc_mode {
+mcp__fidgetflo__sparc_mode {
   mode: "security-review",
   task_description: "audit API security",
   options: {
@@ -32,22 +32,22 @@ mcp__claude-flow__sparc_mode {
 ### Option 2: Using NPX CLI (Fallback when MCP not available)
 ```bash
 # Use when running from terminal or MCP tools unavailable
-npx claude-flow sparc run security-review "audit API security"
+npx fidgetflo sparc run security-review "audit API security"
 
 # For alpha features
-npx claude-flow@alpha sparc run security-review "audit API security"
+npx fidgetflo@alpha sparc run security-review "audit API security"
 
 # With namespace
-npx claude-flow sparc run security-review "your task" --namespace security-review
+npx fidgetflo sparc run security-review "your task" --namespace security-review
 
 # Non-interactive mode
-npx claude-flow sparc run security-review "your task" --non-interactive
+npx fidgetflo sparc run security-review "your task" --non-interactive
 ```
 
 ### Option 3: Local Installation
 ```bash
-# If claude-flow is installed locally
-./claude-flow sparc run security-review "audit API security"
+# If fidgetflo is installed locally
+./fidgetflo sparc run security-review "audit API security"
 ```
 
 ## Memory Integration
@@ -55,7 +55,7 @@ npx claude-flow sparc run security-review "your task" --non-interactive
 ### Using MCP Tools (Preferred)
 ```javascript
 // Store mode-specific context
-mcp__claude-flow__memory_usage {
+mcp__fidgetflo__memory_usage {
   action: "store",
   key: "security-review_context",
   value: "important decisions",
@@ -63,7 +63,7 @@ mcp__claude-flow__memory_usage {
 }
 
 // Query previous work
-mcp__claude-flow__memory_search {
+mcp__fidgetflo__memory_search {
   pattern: "security-review",
   namespace: "security-review",
   limit: 5
@@ -73,8 +73,8 @@ mcp__claude-flow__memory_search {
 ### Using NPX CLI (Fallback)
 ```bash
 # Store mode-specific context
-npx claude-flow memory store "security-review_context" "important decisions" --namespace security-review
+npx fidgetflo memory store "security-review_context" "important decisions" --namespace security-review
 
 # Query previous work
-npx claude-flow memory query "security-review" --limit 5
+npx fidgetflo memory query "security-review" --limit 5
 ```

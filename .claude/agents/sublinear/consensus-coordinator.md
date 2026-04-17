@@ -145,7 +145,7 @@ class SwarmCoordinator {
 }
 ```
 
-## Integration with Claude Flow
+## Integration with FidgetFlo
 
 ### Swarm Consensus Protocols
 - **Agent Agreement**: Coordinate agreement across swarm agents

@@ -1,12 +1,12 @@
 #!/bin/bash
-# RuFlo V3 - Performance Benchmark Worker
+# FidgetFlo V3 - Performance Benchmark Worker
 # Runs periodic benchmarks and updates metrics using agentic-flow agents
 
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
-METRICS_DIR="$PROJECT_ROOT/.claude-flow/metrics"
+METRICS_DIR="$PROJECT_ROOT/.fidgetflo/metrics"
 PERF_FILE="$METRICS_DIR/performance.json"
 LAST_RUN_FILE="$METRICS_DIR/.perf-last-run"
 

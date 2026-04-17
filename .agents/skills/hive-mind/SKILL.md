@@ -40,22 +40,22 @@ Byzantine fault-tolerant consensus and distributed swarm coordination.
 
 ### Initialize Hive-Mind
 ```bash
-npx claude-flow hive-mind init --topology hierarchical-mesh --consensus raft
+npx fidgetflo hive-mind init --topology hierarchical-mesh --consensus raft
 ```
 
 ### Spawn Queen
 ```bash
-npx claude-flow hive-mind spawn --role queen --name coordinator
+npx fidgetflo hive-mind spawn --role queen --name coordinator
 ```
 
 ### Check Consensus Status
 ```bash
-npx claude-flow hive-mind consensus --status
+npx fidgetflo hive-mind consensus --status
 ```
 
 ### View Sessions
 ```bash
-npx claude-flow hive-mind sessions --active
+npx fidgetflo hive-mind sessions --active
 ```
 
 ## Best Practices

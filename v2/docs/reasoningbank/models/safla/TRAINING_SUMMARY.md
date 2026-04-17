@@ -112,7 +112,7 @@ All required files have been created:
 - Example queries with expected results
 - Performance benchmarks
 - Training methodology details
-- Integration with Claude Flow
+- Integration with FidgetFlo
 
 ### 4. ✅ Validation Report
 **Location**: `/workspaces/claude-code-flow/docs/reasoningbank/models/safla/validation-report.md`
@@ -163,13 +163,13 @@ cp /workspaces/claude-code-flow/docs/reasoningbank/models/safla/memory.db ./.swa
 
 ```bash
 # Search for self-learning patterns
-npx claude-flow@alpha memory search "API optimization" --namespace safla
+npx fidgetflo@alpha memory search "API optimization" --namespace safla
 
 # Get high-confidence patterns
-npx claude-flow@alpha memory retrieve "confidence:>0.85" --namespace safla
+npx fidgetflo@alpha memory retrieve "confidence:>0.85" --namespace safla
 
 # Find patterns by domain
-npx claude-flow@alpha memory retrieve "domain:feedback-optimization" --namespace safla
+npx fidgetflo@alpha memory retrieve "domain:feedback-optimization" --namespace safla
 ```
 
 ---
@@ -274,7 +274,7 @@ GROUP BY relationship;
 
 ### 4. Benchmark Query Speed
 ```bash
-time npx claude-flow@alpha memory search "optimize" --namespace safla
+time npx fidgetflo@alpha memory search "optimize" --namespace safla
 # Expected: < 100ms total (includes CLI overhead)
 ```
 
@@ -327,14 +327,14 @@ cat training.log
 ### Integration
 ```bash
 # Initialize with SAFLA model
-npx claude-flow@alpha hooks pre-task --description "Using SAFLA model"
-npx claude-flow@alpha hooks session-restore --session-id "safla-session"
+npx fidgetflo@alpha hooks pre-task --description "Using SAFLA model"
+npx fidgetflo@alpha hooks session-restore --session-id "safla-session"
 
 # Query patterns during development
-npx claude-flow@alpha memory search "your query" --namespace safla
+npx fidgetflo@alpha memory search "your query" --namespace safla
 
 # Store outcomes for future training
-npx claude-flow@alpha hooks post-task --task-id "task-id"
+npx fidgetflo@alpha hooks post-task --task-id "task-id"
 ```
 
 ---
@@ -359,7 +359,7 @@ npx claude-flow@alpha hooks post-task --task-id "task-id"
 ## 🎖️ Acknowledgments
 
 **Training Agent**: SAFLA Model Training Agent
-**Coordination**: Claude Flow Hooks System
+**Coordination**: FidgetFlo Hooks System
 **Algorithm**: Self-Aware Feedback Loop Algorithm (SAFLA)
 **Database**: SQLite3 with better-sqlite3
 **Validation**: Custom validation suite
@@ -372,7 +372,7 @@ For questions or issues with the SAFLA model:
 
 - **Documentation**: See `/workspaces/claude-code-flow/docs/reasoningbank/models/safla/README.md`
 - **GitHub**: https://github.com/ruvnet/claude-flow/issues
-- **ReasoningBank CLI**: `npx claude-flow@alpha memory --help`
+- **ReasoningBank CLI**: `npx fidgetflo@alpha memory --help`
 
 ---
 

@@ -40,7 +40,7 @@ import { executeInit, DEFAULT_INIT_OPTIONS } from '@claude-flow/cli/init';
 const result = await executeInit({
   ...DEFAULT_INIT_OPTIONS,
   targetDir: '/path/to/project',
-  sourceBaseDir: '/path/to/claude-flow',
+  sourceBaseDir: '/path/to/fidgetflo',
   force: true,
 });
 
@@ -168,7 +168,7 @@ const json = generateMCPJson(options);
 
 // Generate manual add commands
 const commands = generateMCPCommands(options);
-// ['claude mcp add claude-flow -- npx @claude-flow/cli mcp start', ...]
+// ['claude mcp add fidgetflo -- npx @claude-flow/cli mcp start', ...]
 ```
 
 ### Helpers Generator
@@ -264,7 +264,7 @@ import { executeInit, DEFAULT_INIT_OPTIONS } from '@claude-flow/cli/init';
 const result = await executeInit({
   ...DEFAULT_INIT_OPTIONS,
   targetDir: '/my/project',
-  sourceBaseDir: '/path/to/claude-flow', // Source for skills/commands/agents
+  sourceBaseDir: '/path/to/fidgetflo', // Source for skills/commands/agents
   force: true,
   components: {
     ...DEFAULT_INIT_OPTIONS.components,

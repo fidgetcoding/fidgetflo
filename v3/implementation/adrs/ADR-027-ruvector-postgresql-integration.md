@@ -1,4 +1,4 @@
-# ADR-027: RuVector PostgreSQL Integration for Claude-Flow v3
+# ADR-027: RuVector PostgreSQL Integration for FidgetFlo v3
 
 **Status:** Proposed
 **Date:** 2026-01-16
@@ -7,7 +7,7 @@
 
 ## Context
 
-Claude-Flow v3 currently uses a hybrid memory backend (ADR-009) combining SQLite for structured queries and AgentDB for vector search. While this approach works well for many use cases, production deployments increasingly require:
+FidgetFlo v3 currently uses a hybrid memory backend (ADR-009) combining SQLite for structured queries and AgentDB for vector search. While this approach works well for many use cases, production deployments increasingly require:
 
 1. **Scalable Vector Database** - AgentDB (in-memory HNSW) has limitations for datasets exceeding available RAM
 2. **Graph Capabilities** - No native support for graph queries, relationship traversal, or GNN-based analysis
@@ -27,7 +27,7 @@ This creates an opportunity to offer users a high-performance alternative to the
 
 ## Decision
 
-Integrate `@ruvector/postgres-cli` as an **optional plugin bridge** in Claude-Flow v3, following the plugin architecture established in ADR-015-v2. This provides a production-grade vector database option while maintaining backward compatibility with existing AgentDB deployments.
+Integrate `@ruvector/postgres-cli` as an **optional plugin bridge** in FidgetFlo v3, following the plugin architecture established in ADR-015-v2. This provides a production-grade vector database option while maintaining backward compatibility with existing AgentDB deployments.
 
 ### Design Principles
 
@@ -153,7 +153,7 @@ export class RuVectorPostgresPlugin implements IPlugin {
     name: 'ruvector-postgres',
     version: '1.0.0',
     description: 'RuVector PostgreSQL integration for high-performance vector/graph operations',
-    author: 'Claude Flow Team',
+    author: 'FidgetFlo Team',
     tags: ['vector', 'graph', 'postgresql', 'storage', 'production'],
     dependencies: [
       { name: 'core-plugin', version: '^3.0.0' }
@@ -1073,7 +1073,7 @@ class DualWriteAdapter implements IMemoryBackend {
 
 2. **Phase 2: Enable Dual-Write**
    ```typescript
-   // claude-flow.config.ts
+   // fidgetflo.config.ts
    export default {
      memory: {
        backend: 'dual-write',
@@ -1088,7 +1088,7 @@ class DualWriteAdapter implements IMemoryBackend {
 
 3. **Phase 3: Migrate Existing Data**
    ```bash
-   npx claude-flow migrate \
+   npx fidgetflo migrate \
      --from agentdb \
      --to ruvector-postgres \
      --batch-size 5000
@@ -1188,7 +1188,7 @@ await plugin.attentionQuery({ query: 'complex reasoning', mechanism: 'multi_head
 - [ ] End-to-end tests
 - [ ] Security audit
 - [ ] Performance optimization
-- [ ] CLI integration (`claude-flow memory --backend ruvector-postgres`)
+- [ ] CLI integration (`fidgetflo memory --backend ruvector-postgres`)
 - [ ] User documentation
 
 ## References

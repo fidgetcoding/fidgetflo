@@ -17,7 +17,7 @@ npm install @claude-flow/plugin-quantum-optimizer
 ### CLI
 
 ```bash
-npx claude-flow plugins install --name @claude-flow/plugin-quantum-optimizer
+npx fidgetflo plugins install --name @claude-flow/plugin-quantum-optimizer
 ```
 
 ## Quick Start

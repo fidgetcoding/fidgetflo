@@ -393,7 +393,7 @@ await aidefence.endTrajectory('session-123', 'success');
 
 ## CLI Integration
 
-Use via Claude Flow CLI:
+Use via FidgetFlo CLI:
 
 ```bash
 # Basic threat scan
@@ -579,7 +579,7 @@ Contributions are welcome! Please see our [Contributing Guide](https://github.co
 ```bash
 # Clone repository
 git clone https://github.com/ruvnet/claude-flow.git
-cd claude-flow/v3/@claude-flow/aidefence
+cd fidgetflo/v3/@claude-flow/aidefence
 
 # Install dependencies
 npm install
@@ -620,11 +620,11 @@ MIT License - see [LICENSE](LICENSE) for details.
 
 - [`@claude-flow/cli`](https://www.npmjs.com/package/@claude-flow/cli) - CLI with security commands
 - [`agentdb`](https://www.npmjs.com/package/agentdb) - HNSW vector database
-- [`claude-flow`](https://www.npmjs.com/package/claude-flow) - Full AI coordination system
+- [`fidgetflo`](https://www.npmjs.com/package/fidgetflo) - Full AI coordination system
 
 ---
 
 <p align="center">
   <strong>Built with security in mind by <a href="https://ruv.io">rUv</a></strong><br>
-  <sub>Part of the Claude Flow ecosystem</sub>
+  <sub>Part of the FidgetFlo ecosystem</sub>
 </p>

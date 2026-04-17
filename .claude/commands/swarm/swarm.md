@@ -1,10 +1,10 @@
 # swarm
 
-Main swarm orchestration command for Claude Flow.
+Main swarm orchestration command for FidgetFlo.
 
 ## Usage
 ```bash
-npx claude-flow swarm <objective> [options]
+npx fidgetflo swarm <objective> [options]
 ```
 
 ## Options
@@ -17,11 +17,11 @@ npx claude-flow swarm <objective> [options]
 ## Examples
 ```bash
 # Basic swarm
-npx claude-flow swarm "Build REST API"
+npx fidgetflo swarm "Build REST API"
 
 # With strategy
-npx claude-flow swarm "Research AI patterns" --strategy research
+npx fidgetflo swarm "Research AI patterns" --strategy research
 
 # Open in Claude Code
-npx claude-flow swarm "Build API" --claude
+npx fidgetflo swarm "Build API" --claude
 ```

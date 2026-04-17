@@ -18,10 +18,10 @@ ReasoningBank stores information as **patterns** - reusable solutions, decisions
 
 ```bash
 # Store a pattern
-npx claude-flow@alpha memory store <key> <value> --reasoningbank
+npx fidgetflo@alpha memory store <key> <value> --reasoningbank
 
 # Query semantically (finds related concepts)
-npx claude-flow@alpha memory query "<search query>" --reasoningbank
+npx fidgetflo@alpha memory query "<search query>" --reasoningbank
 
 # Patterns are stored in ~/.swarm/memory.db (SQLite)
 ```
@@ -56,11 +56,11 @@ This allows the system to learn which solutions work without explicit training.
 ### Step 1: Installation (30 seconds)
 
 ```bash
-# Install claude-flow
-npx claude-flow@alpha init --force
+# Install fidgetflo
+npx fidgetflo@alpha init --force
 
 # Verify installation
-npx claude-flow@alpha --version
+npx fidgetflo@alpha --version
 # v2.7.0-alpha.10
 ```
 
@@ -70,7 +70,7 @@ The memory database is automatically created at `~/.swarm/memory.db`.
 
 ```bash
 # Store a debugging solution
-npx claude-flow@alpha memory store memory_leak_fix \
+npx fidgetflo@alpha memory store memory_leak_fix \
   "Memory leaks often caused by unclosed event listeners. Use removeEventListener in cleanup." \
   --namespace debugging --reasoningbank
 
@@ -84,7 +84,7 @@ npx claude-flow@alpha memory store memory_leak_fix \
 
 ```bash
 # Search for the pattern
-npx claude-flow@alpha memory query "memory leak" --reasoningbank
+npx fidgetflo@alpha memory query "memory leak" --reasoningbank
 
 # Output:
 # ✅ Found 1 result
@@ -261,10 +261,10 @@ Retrieval accuracy: 85% (hash) / 94% (OpenAI embeddings)
 
 ```bash
 # Install latest version
-npx claude-flow@alpha init --force
+npx fidgetflo@alpha init --force
 
 # Verify
-npx claude-flow@alpha --version
+npx fidgetflo@alpha --version
 # v2.7.0-alpha.10
 ```
 
@@ -272,12 +272,12 @@ npx claude-flow@alpha --version
 
 ```bash
 # 1. Store a pattern
-npx claude-flow@alpha memory store api_auth \
+npx fidgetflo@alpha memory store api_auth \
   "Use JWT tokens with 15-minute expiration" \
   --namespace backend --reasoningbank
 
 # 2. Query semantically (finds related concepts, not just keywords)
-npx claude-flow@alpha memory query "authentication" \
+npx fidgetflo@alpha memory query "authentication" \
   --namespace backend --reasoningbank
 
 # Output:
@@ -298,7 +298,7 @@ npx claude-flow@alpha memory query "authentication" \
 
 ```bash
 # Same query later
-npx claude-flow@alpha memory query "authentication" --reasoningbank
+npx fidgetflo@alpha memory query "authentication" --reasoningbank
 
 # Output:
 # Key: api_auth
@@ -327,11 +327,11 @@ npx claude-flow@alpha memory query "authentication" --reasoningbank
 ```bash
 # Option 1: SAFLA (Self-Learning)
 cp docs/reasoningbank/models/safla/memory.db ~/.swarm/memory.db
-npx claude-flow@alpha memory query "optimization strategies"
+npx fidgetflo@alpha memory query "optimization strategies"
 
 # Option 2: Code Reasoning (Programming)
 cp docs/reasoningbank/models/code-reasoning/.swarm/memory.db ~/.swarm/memory.db
-npx claude-flow@alpha memory query "design patterns"
+npx fidgetflo@alpha memory query "design patterns"
 
 # Option 3: All models at once (merge)
 # See: docs/reasoningbank/models/HOW-TO-USE.md#method-2-merge-multiple-models
@@ -393,7 +393,7 @@ ReasoningBank implements a **5-step recursive cycle** based on Google Research's
 
 ```bash
 # Week 1: Store initial approach
-npx claude-flow@alpha memory store bug_fix_001 \
+npx fidgetflo@alpha memory store bug_fix_001 \
   "Restart server to fix memory leak" \
   --namespace debugging --reasoningbank
 # Confidence: 50%
@@ -402,7 +402,7 @@ npx claude-flow@alpha memory store bug_fix_001 \
 # System learns: confidence → 35% (-15% penalty)
 
 # Week 3: Store improved approach
-npx claude-flow@alpha memory store bug_fix_002 \
+npx fidgetflo@alpha memory store bug_fix_002 \
   "Fix memory leak by cleaning up event listeners" \
   --namespace debugging --reasoningbank
 # Confidence: 50%
@@ -411,7 +411,7 @@ npx claude-flow@alpha memory store bug_fix_002 \
 # System learns: confidence → 65% (+20% boost)
 
 # Week 10: Query for similar issue
-npx claude-flow@alpha memory query "memory leak" \
+npx fidgetflo@alpha memory query "memory leak" \
   --namespace debugging --reasoningbank
 ```
 
@@ -462,7 +462,7 @@ ReasoningBank is based on the groundbreaking paper **"ReasoningBank: Scaling Age
 
 **Key Innovation**: Unlike traditional approaches that only learn from successes, ReasoningBank **extracts valuable lessons from failures**, creating a more robust and adaptive learning system.
 
-**Full Details**: Read [Google Research Paper Analysis](./google-research.md) for implementation algorithms and integration with claude-flow.
+**Full Details**: Read [Google Research Paper Analysis](./google-research.md) for implementation algorithms and integration with fidgetflo.
 
 ---
 
@@ -482,7 +482,7 @@ AI: "I don't have access to previous conversations..."
 
 **With ReasoningBank:**
 ```bash
-AI queries: npx claude-flow@alpha memory query "CORS error fix"
+AI queries: npx fidgetflo@alpha memory query "CORS error fix"
 # Instantly retrieves: "Add Access-Control-Allow-Origin in Express middleware"
 # With: 87% confidence, used 12 times successfully, 2ms retrieval time
 ```
@@ -707,7 +707,7 @@ Meta: "I don't have experience with this yet 🔍"
 
 ### Real-World Intelligence Gains (Measured)
 
-Based on Google Research benchmarks and claude-flow production usage:
+Based on Google Research benchmarks and fidgetflo production usage:
 
 | Use Case | Baseline | With ReasoningBank | Gain |
 |----------|----------|-------------------|------|
@@ -771,12 +771,12 @@ Based on Google Research benchmarks and claude-flow production usage:
 
 ```bash
 # Store pattern (no API call)
-npx claude-flow@alpha memory store cache_redis \
+npx fidgetflo@alpha memory store cache_redis \
   "Use Redis for session caching with 1-hour TTL" \
   --namespace backend --reasoningbank
 
 # Query finds related concepts (no API call)
-npx claude-flow@alpha memory query "performance optimization" \
+npx fidgetflo@alpha memory query "performance optimization" \
   --namespace backend --reasoningbank
 # ✅ Found: cache_redis (score: 79%)
 # Cost: $0
@@ -838,12 +838,12 @@ Apply different thinking patterns for different problems:
 
 ```bash
 # Store with cognitive pattern
-npx claude-flow@alpha memory store debug_strategy \
+npx fidgetflo@alpha memory store debug_strategy \
   "Use binary search to isolate bugs" \
   --cognitive-pattern convergent --reasoningbank
 
 # Query by thinking style
-npx claude-flow@alpha memory query "problem solving" \
+npx fidgetflo@alpha memory query "problem solving" \
   --cognitive-pattern divergent --reasoningbank
 ```
 
@@ -855,20 +855,20 @@ Record **sequential reasoning steps** to learn complete workflows:
 
 ```bash
 # Track multi-step process
-npx claude-flow@alpha memory trajectory start api_build \
+npx fidgetflo@alpha memory trajectory start api_build \
   "Building REST API" --reasoningbank
 
-npx claude-flow@alpha memory trajectory step api_build \
+npx fidgetflo@alpha memory trajectory step api_build \
   "Designed database schema" --reasoningbank
 
-npx claude-flow@alpha memory trajectory step api_build \
+npx fidgetflo@alpha memory trajectory step api_build \
   "Implemented endpoints" --reasoningbank
 
-npx claude-flow@alpha memory trajectory end api_build \
+npx fidgetflo@alpha memory trajectory end api_build \
   --outcome success --reasoningbank
 
 # Later, retrieve the workflow
-npx claude-flow@alpha memory trajectory get api_build --reasoningbank
+npx fidgetflo@alpha memory trajectory get api_build --reasoningbank
 ```
 
 **Result**: System learns the **sequence of steps** that led to success.
@@ -900,17 +900,17 @@ Discover relationships **across namespaces**:
 
 ```bash
 # Backend pattern
-npx claude-flow@alpha memory store jwt_backend \
+npx fidgetflo@alpha memory store jwt_backend \
   "JWT signing with HMAC SHA256" \
   --namespace backend --reasoningbank
 
 # Frontend pattern
-npx claude-flow@alpha memory store jwt_frontend \
+npx fidgetflo@alpha memory store jwt_frontend \
   "Store JWT in httpOnly cookies" \
   --namespace frontend --reasoningbank
 
 # Query finds both!
-npx claude-flow@alpha memory query "JWT security" --reasoningbank
+npx fidgetflo@alpha memory query "JWT security" --reasoningbank
 # Returns patterns from backend AND frontend
 ```
 
@@ -948,12 +948,12 @@ async function selfHealingAgent(problem) {
 
 ```bash
 # Team stores decisions as they make them
-npx claude-flow@alpha memory store arch_microservices \
+npx fidgetflo@alpha memory store arch_microservices \
   "Use event-driven microservices with Kafka (rejected monolith due to scale)" \
   --namespace team_decisions --reasoningbank
 
 # New team member queries 6 months later
-npx claude-flow@alpha memory query "why microservices" \
+npx fidgetflo@alpha memory query "why microservices" \
   --namespace team_decisions --reasoningbank
 # Instantly gets context and rationale!
 ```
@@ -964,12 +964,12 @@ npx claude-flow@alpha memory query "why microservices" \
 
 ```bash
 # Store bug fix
-npx claude-flow@alpha memory store cors_fix \
+npx fidgetflo@alpha memory store cors_fix \
   "CORS error: Add Access-Control-Allow-Origin in Express middleware" \
   --namespace debugging --reasoningbank
 
 # Week later, similar error
-npx claude-flow@alpha memory query "CORS blocked" --reasoningbank
+npx fidgetflo@alpha memory query "CORS blocked" --reasoningbank
 # Instantly finds solution with 2ms latency!
 ```
 
@@ -979,12 +979,12 @@ npx claude-flow@alpha memory query "CORS blocked" --reasoningbank
 
 ```bash
 # Build pattern library over time
-npx claude-flow@alpha memory store pagination \
+npx fidgetflo@alpha memory store pagination \
   "Cursor-based pagination with limit/before/after params" \
   --namespace api_patterns --reasoningbank
 
 # Query when designing new API
-npx claude-flow@alpha memory query "listing endpoints" \
+npx fidgetflo@alpha memory query "listing endpoints" \
   --namespace api_patterns --reasoningbank
 ```
 
@@ -998,7 +998,7 @@ ReasoningBank uses **agentic-flow@1.5.13** (Node.js backend) with SQLite:
 
 ```
 ┌───────────────────────────────────────────┐
-│         Claude-Flow CLI                   │
+│         FidgetFlo CLI                   │
 │  (memory store, query, list, delete)      │
 └──────────────┬────────────────────────────┘
                ↓ JSON-RPC
@@ -1099,15 +1099,15 @@ ReasoningBank uses **agentic-flow@1.5.13** (Node.js backend) with SQLite:
 
 ```bash
 # 1. Install (30 seconds)
-npx claude-flow@alpha init --force
+npx fidgetflo@alpha init --force
 
 # 2. Store your first pattern (10 seconds)
-npx claude-flow@alpha memory store hello \
+npx fidgetflo@alpha memory store hello \
   "ReasoningBank learns automatically!" \
   --reasoningbank
 
 # 3. Query semantically (2ms)
-npx claude-flow@alpha memory query "learning" --reasoningbank
+npx fidgetflo@alpha memory query "learning" --reasoningbank
 
 # 4. Watch it improve over time! 📈
 ```

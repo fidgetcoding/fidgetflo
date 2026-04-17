@@ -140,16 +140,16 @@ To verify the fix works:
 
 ```bash
 # 1. Train a neural pattern (will auto-persist)
-npx claude-flow hooks neural-train --pattern-type coordination --epochs 50
+npx fidgetflo hooks neural-train --pattern-type coordination --epochs 50
 
 # 2. Retrieve the pattern
-npx claude-flow hooks neural-patterns --action analyze
+npx fidgetflo hooks neural-patterns --action analyze
 
 # 3. Check statistics
-npx claude-flow hooks neural-patterns --action stats --pattern-type coordination
+npx fidgetflo hooks neural-patterns --action stats --pattern-type coordination
 
 # 4. Make a prediction
-npx claude-flow hooks neural-patterns --action predict --pattern-type coordination
+npx fidgetflo hooks neural-patterns --action predict --pattern-type coordination
 ```
 
 ## 📈 Performance Characteristics
@@ -187,9 +187,9 @@ npx claude-flow hooks neural-patterns --action predict --pattern-type coordinati
 
 **Installation**:
 ```bash
-npm install claude-flow@2.7.1
+npm install fidgetflo@2.7.1
 # or
-pnpm install claude-flow@2.7.1
+pnpm install fidgetflo@2.7.1
 ```
 
 **From GitHub**:

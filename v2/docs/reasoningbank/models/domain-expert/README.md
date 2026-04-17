@@ -49,23 +49,23 @@ The Domain Expert model contains **1500 expert-level patterns** distributed acro
 
 ```bash
 # Kubernetes resource optimization
-npx claude-flow@alpha memory search "kubernetes resource optimization" --reasoningbank --namespace domain-expert
+npx fidgetflo@alpha memory search "kubernetes resource optimization" --reasoningbank --namespace domain-expert
 
 # GDPR compliance implementation
-npx claude-flow@alpha memory search "GDPR right to erasure" --reasoningbank --namespace domain-expert
+npx fidgetflo@alpha memory search "GDPR right to erasure" --reasoningbank --namespace domain-expert
 
 # API rate limiting strategies
-npx claude-flow@alpha memory search "API rate limiting high traffic" --reasoningbank --namespace domain-expert
+npx fidgetflo@alpha memory search "API rate limiting high traffic" --reasoningbank --namespace domain-expert
 ```
 
 ### Cross-Domain Pattern Discovery
 
 ```bash
 # DevOps + Security patterns
-npx claude-flow@alpha memory search "CI/CD security scanning" --reasoningbank --namespace domain-expert
+npx fidgetflo@alpha memory search "CI/CD security scanning" --reasoningbank --namespace domain-expert
 
 # Data Engineering + Performance
-npx claude-flow@alpha memory search "real-time ETL performance" --reasoningbank --namespace domain-expert
+npx fidgetflo@alpha memory search "real-time ETL performance" --reasoningbank --namespace domain-expert
 ```
 
 ### Integration with Agentic-Flow
@@ -144,7 +144,7 @@ This model is designed for **senior/expert-level** technical decision-making:
 
 ## Integration Points
 
-### With Claude-Flow Agents
+### With FidgetFlo Agents
 
 ```javascript
 // Load domain expert knowledge
@@ -204,7 +204,7 @@ This model represents aggregated industry best practices and patterns from:
 For issues or questions about this model:
 - GitHub Issues: https://github.com/ruvnet/claude-flow/issues
 - Documentation: https://github.com/ruvnet/claude-flow
-- Community: Claude Flow Discord
+- Community: FidgetFlo Discord
 
 ---
 

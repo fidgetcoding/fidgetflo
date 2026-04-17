@@ -31,9 +31,9 @@
 ```
 
 **MCP tools are ONLY for coordination setup:**
-- `mcp__claude-flow__swarm_init` - Initialize coordination topology
-- `mcp__claude-flow__agent_spawn` - Define agent types for coordination
-- `mcp__claude-flow__task_orchestrate` - Orchestrate high-level workflows
+- `mcp__fidgetflo__swarm_init` - Initialize coordination topology
+- `mcp__fidgetflo__agent_spawn` - Define agent types for coordination
+- `mcp__fidgetflo__task_orchestrate` - Orchestrate high-level workflows
 
 ### 📁 File Organization Rules
 
@@ -47,20 +47,20 @@
 
 ## Project Overview
 
-This project uses SPARC (Specification, Pseudocode, Architecture, Refinement, Completion) methodology with Claude-Flow orchestration for systematic Test-Driven Development.
+This project uses SPARC (Specification, Pseudocode, Architecture, Refinement, Completion) methodology with FidgetFlo orchestration for systematic Test-Driven Development.
 
 ## SPARC Commands
 
 ### Core Commands
-- `npx claude-flow sparc modes` - List available modes
-- `npx claude-flow sparc run <mode> "<task>"` - Execute specific mode
-- `npx claude-flow sparc tdd "<feature>"` - Run complete TDD workflow
-- `npx claude-flow sparc info <mode>` - Get mode details
+- `npx fidgetflo sparc modes` - List available modes
+- `npx fidgetflo sparc run <mode> "<task>"` - Execute specific mode
+- `npx fidgetflo sparc tdd "<feature>"` - Run complete TDD workflow
+- `npx fidgetflo sparc info <mode>` - Get mode details
 
 ### Batchtools Commands
-- `npx claude-flow sparc batch <modes> "<task>"` - Parallel execution
-- `npx claude-flow sparc pipeline "<task>"` - Full pipeline processing
-- `npx claude-flow sparc concurrent <mode> "<tasks-file>"` - Multi-task processing
+- `npx fidgetflo sparc batch <modes> "<task>"` - Parallel execution
+- `npx fidgetflo sparc pipeline "<task>"` - Full pipeline processing
+- `npx fidgetflo sparc concurrent <mode> "<tasks-file>"` - Multi-task processing
 
 ### Build Commands
 - `npm run build` - Build project
@@ -160,10 +160,10 @@ When Claude Code detects a complex task (multi-file, new feature, or refactoring
 [Single Message - Complete Swarm Spawn]:
 
   // MCP: Initialize coordination topology
-  mcp__claude-flow__swarm_init { topology: "hierarchical-mesh", maxAgents: 15, strategy: "adaptive" }
-  mcp__claude-flow__agent_spawn { type: "coordinator", name: "queen" }
-  mcp__claude-flow__task_orchestrate { task: "[user's task]", strategy: "adaptive", priority: "high" }
-  mcp__claude-flow__memory_usage { action: "store", namespace: "swarm", key: "session", value: "..." }
+  mcp__fidgetflo__swarm_init { topology: "hierarchical-mesh", maxAgents: 15, strategy: "adaptive" }
+  mcp__fidgetflo__agent_spawn { type: "coordinator", name: "queen" }
+  mcp__fidgetflo__task_orchestrate { task: "[user's task]", strategy: "adaptive", priority: "high" }
+  mcp__fidgetflo__memory_usage { action: "store", namespace: "swarm", key: "session", value: "..." }
 
   // Task Tool: Spawn REAL working agents (THIS IS REQUIRED!)
   Task("Coordinator", "Orchestrate the swarm, manage agent coordination...", "hierarchical-coordinator")
@@ -187,15 +187,15 @@ When Claude Code detects a complex task (multi-file, new feature, or refactoring
 **❌ WRONG - MCP only (no actual work happens):**
 ```javascript
 // This ONLY sets up coordination - no agents actually work!
-mcp__claude-flow__swarm_init { ... }
-mcp__claude-flow__agent_spawn { ... }
+mcp__fidgetflo__swarm_init { ... }
+mcp__fidgetflo__agent_spawn { ... }
 // Missing Task tool calls = nothing executes!
 ```
 
 **✅ CORRECT - MCP + Task tool together:**
 ```javascript
 // Same message: coordination + execution
-mcp__claude-flow__swarm_init { ... }
+mcp__fidgetflo__swarm_init { ... }
 Task("Agent1", "Do actual work...", "agent-type")
 Task("Agent2", "Do actual work...", "agent-type")
 ```
@@ -233,8 +233,8 @@ Claude Code should ensure proper settings via hooks:
 
 ```bash
 # Auto-configure on session start
-npx claude-flow@alpha hooks session-start --auto-configure
-npx claude-flow@alpha memory store --key "session/config" --value '{"topology":"hierarchical-mesh","maxAgents":15}'
+npx fidgetflo@alpha hooks session-start --auto-configure
+npx fidgetflo@alpha memory store --key "session/config" --value '{"topology":"hierarchical-mesh","maxAgents":15}'
 ```
 
 ### Swarm Lifecycle Management
@@ -243,11 +243,11 @@ npx claude-flow@alpha memory store --key "session/config" --value '{"topology":"
 ```javascript
 [Auto-Init on Complex Task]:
   // Check task complexity
-  mcp__claude-flow__features_detect { component: "task-analyzer" }
+  mcp__fidgetflo__features_detect { component: "task-analyzer" }
 
   // Initialize if complex
-  mcp__claude-flow__swarm_init { topology: "hierarchical-mesh" }
-  mcp__claude-flow__memory_usage { action: "store", key: "session/active", value: "true" }
+  mcp__fidgetflo__swarm_init { topology: "hierarchical-mesh" }
+  mcp__fidgetflo__memory_usage { action: "store", key: "session/active", value: "true" }
 
   // Spawn initial agents
   Task("Coordinator", "Manage swarm coordination...", "hierarchical-coordinator")
@@ -257,33 +257,33 @@ npx claude-flow@alpha memory store --key "session/config" --value '{"topology":"
 ```javascript
 [During Task - Memory Coordination]:
   // Store decisions in shared memory
-  mcp__claude-flow__memory_usage { action: "store", key: "task/decisions", value: "[decisions]" }
+  mcp__fidgetflo__memory_usage { action: "store", key: "task/decisions", value: "[decisions]" }
 
   // Track progress
-  mcp__claude-flow__task_status { taskId: "[current-task]" }
+  mcp__fidgetflo__task_status { taskId: "[current-task]" }
 
   // Neural learning from patterns
-  mcp__claude-flow__neural_patterns { action: "learn", operation: "[what was done]", outcome: "[result]" }
+  mcp__fidgetflo__neural_patterns { action: "learn", operation: "[what was done]", outcome: "[result]" }
 ```
 
 **Session End (automatic):**
 ```javascript
 [Auto-Cleanup]:
   // Persist learnings
-  mcp__claude-flow__memory_persist { sessionId: "[session-id]" }
+  mcp__fidgetflo__memory_persist { sessionId: "[session-id]" }
 
   // Export metrics
-  mcp__claude-flow__swarm_status { verbose: true }
+  mcp__fidgetflo__swarm_status { verbose: true }
 
   // Train neural patterns
-  mcp__claude-flow__neural_train { pattern_type: "coordination", training_data: "[session-summary]" }
+  mcp__fidgetflo__neural_train { pattern_type: "coordination", training_data: "[session-summary]" }
 ```
 
 ## 🚀 Quick Setup
 
 ```bash
-# Add MCP servers (Claude Flow required, others optional)
-claude mcp add claude-flow npx claude-flow@alpha mcp start
+# Add MCP servers (FidgetFlo required, others optional)
+claude mcp add fidgetflo npx fidgetflo@alpha mcp start
 claude mcp add ruv-swarm npx ruv-swarm mcp start  # Optional: Enhanced coordination
 claude mcp add flow-nexus npx flow-nexus@latest mcp start  # Optional: Cloud features
 ```
@@ -358,20 +358,20 @@ Flow-Nexus extends MCP capabilities with 70+ cloud-based orchestration tools:
 
 **1️⃣ BEFORE Work:**
 ```bash
-npx claude-flow@alpha hooks pre-task --description "[task]"
-npx claude-flow@alpha hooks session-restore --session-id "swarm-[id]"
+npx fidgetflo@alpha hooks pre-task --description "[task]"
+npx fidgetflo@alpha hooks session-restore --session-id "swarm-[id]"
 ```
 
 **2️⃣ DURING Work:**
 ```bash
-npx claude-flow@alpha hooks post-edit --file "[file]" --memory-key "swarm/[agent]/[step]"
-npx claude-flow@alpha hooks notify --message "[what was done]"
+npx fidgetflo@alpha hooks post-edit --file "[file]" --memory-key "swarm/[agent]/[step]"
+npx fidgetflo@alpha hooks notify --message "[what was done]"
 ```
 
 **3️⃣ AFTER Work:**
 ```bash
-npx claude-flow@alpha hooks post-task --task-id "[task]"
-npx claude-flow@alpha hooks session-end --export-metrics true
+npx fidgetflo@alpha hooks post-task --task-id "[task]"
+npx fidgetflo@alpha hooks session-end --export-metrics true
 ```
 
 ## 🎯 Concurrent Execution Examples
@@ -381,10 +381,10 @@ npx claude-flow@alpha hooks session-end --export-metrics true
 ```javascript
 // Step 1: MCP tools set up coordination (optional, for complex tasks)
 [Single Message - Coordination Setup]:
-  mcp__claude-flow__swarm_init { topology: "mesh", maxAgents: 6 }
-  mcp__claude-flow__agent_spawn { type: "researcher" }
-  mcp__claude-flow__agent_spawn { type: "coder" }
-  mcp__claude-flow__agent_spawn { type: "tester" }
+  mcp__fidgetflo__swarm_init { topology: "mesh", maxAgents: 6 }
+  mcp__fidgetflo__agent_spawn { type: "researcher" }
+  mcp__fidgetflo__agent_spawn { type: "coder" }
+  mcp__fidgetflo__agent_spawn { type: "tester" }
 
 // Step 2: Claude Code Task tool spawns ACTUAL agents that do the work
 [Single Message - Parallel Agent Execution]:
@@ -417,7 +417,7 @@ npx claude-flow@alpha hooks session-end --export-metrics true
 
 ### ❌ WRONG (Multiple Messages):
 ```javascript
-Message 1: mcp__claude-flow__swarm_init
+Message 1: mcp__fidgetflo__swarm_init
 Message 2: Task("agent 1")
 Message 3: TodoWrite { todos: [single todo] }
 Message 4: Write "file.js"
@@ -483,7 +483,7 @@ Message 4: Write "file.js"
 
 ---
 
-Remember: **Claude Flow coordinates, Claude Code creates!**
+Remember: **FidgetFlo coordinates, Claude Code creates!**
 
 # important-instruction-reminders
 Do what has been asked; nothing more, nothing less.

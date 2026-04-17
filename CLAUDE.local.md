@@ -3,12 +3,12 @@
 ## Environment Variables
 
 ```bash
-CLAUDE_FLOW_CONFIG=./claude-flow.config.json
-CLAUDE_FLOW_LOG_LEVEL=info
-CLAUDE_FLOW_MEMORY_BACKEND=hybrid
-CLAUDE_FLOW_MEMORY_PATH=./data/memory
-CLAUDE_FLOW_MCP_PORT=3000
-CLAUDE_FLOW_MCP_TRANSPORT=stdio
+FIDGETFLO_CONFIG=./fidgetflo.config.json
+FIDGETFLO_LOG_LEVEL=info
+FIDGETFLO_MEMORY_BACKEND=hybrid
+FIDGETFLO_MEMORY_PATH=./data/memory
+FIDGETFLO_MCP_PORT=3000
+FIDGETFLO_MCP_TRANSPORT=stdio
 ```
 
 ## Plugin Registry Maintenance (IPFS/Pinata)
@@ -26,16 +26,16 @@ Security: NEVER hardcode API keys. Source from .env at runtime. NEVER commit .en
 
 ## Doctor Health Checks
 
-`npx claude-flow@v3alpha doctor` checks: Node 20+, npm 9+, git, config, daemon, memory DB, API keys, MCP servers, disk space, TypeScript.
+`npx fidgetflo@v3alpha doctor` checks: Node 20+, npm 9+, git, config, daemon, memory DB, API keys, MCP servers, disk space, TypeScript.
 
 ## Hooks Quick Reference
 
 ```bash
-npx claude-flow@v3alpha hooks pre-task --description "[task]"
-npx claude-flow@v3alpha hooks post-task --task-id "[id]" --success true
-npx claude-flow@v3alpha hooks session-start --session-id "[id]"
-npx claude-flow@v3alpha hooks route --task "[task]"
-npx claude-flow@v3alpha hooks worker list
+npx fidgetflo@v3alpha hooks pre-task --description "[task]"
+npx fidgetflo@v3alpha hooks post-task --task-id "[id]" --success true
+npx fidgetflo@v3alpha hooks session-start --session-id "[id]"
+npx fidgetflo@v3alpha hooks route --task "[task]"
+npx fidgetflo@v3alpha hooks worker list
 ```
 
 ## Intelligence System (RuVector)

@@ -326,7 +326,7 @@ const newBackend = new HybridBackend({
 Run the comprehensive test suite:
 
 ```bash
-cd /workspaces/claude-flow/v3/@claude-flow/memory
+cd /workspaces/fidgetflo/v3/@claude-flow/memory
 npm test src/hybrid-backend.test.ts
 ```
 
@@ -411,4 +411,4 @@ The HybridBackend implementation successfully achieves ADR-009 goals:
 - ✅ Comprehensive test coverage
 - ✅ Production-ready monitoring
 
-This provides Claude Flow V3 with a **flexible, performant, and reliable** memory system that adapts to different query patterns while maintaining consistency across both backends.
+This provides FidgetFlo V3 with a **flexible, performant, and reliable** memory system that adapts to different query patterns while maintaining consistency across both backends.

@@ -1,8 +1,8 @@
-# 🤖 Claude-Flow Agent Reference
+# 🤖 FidgetFlo Agent Reference
 
 ## Complete Guide to All 65+ Specialized AI Agents
 
-Claude-Flow provides a comprehensive ecosystem of specialized AI agents designed for enterprise-grade software development, coordination, and automation. Each agent is optimized for specific tasks and domains, enabling intelligent swarm coordination and autonomous workflow execution.
+FidgetFlo provides a comprehensive ecosystem of specialized AI agents designed for enterprise-grade software development, coordination, and automation. Each agent is optimized for specific tasks and domains, enabling intelligent swarm coordination and autonomous workflow execution.
 
 ---
 
@@ -39,8 +39,8 @@ Claude-Flow provides a comprehensive ecosystem of specialized AI agents designed
 
 **Usage Examples**:
 ```bash
-npx claude-flow@alpha agent spawn coder --name "API-Builder"
-npx claude-flow@alpha task assign coder "implement REST API endpoints"
+npx fidgetflo@alpha agent spawn coder --name "API-Builder"
+npx fidgetflo@alpha task assign coder "implement REST API endpoints"
 ```
 
 ### `planner`
@@ -55,8 +55,8 @@ npx claude-flow@alpha task assign coder "implement REST API endpoints"
 
 **Usage Examples**:
 ```bash
-npx claude-flow@alpha agent spawn planner --name "Project-Strategist"
-npx claude-flow@alpha sparc run planner "create microservices architecture plan"
+npx fidgetflo@alpha agent spawn planner --name "Project-Strategist"
+npx fidgetflo@alpha sparc run planner "create microservices architecture plan"
 ```
 
 ### `researcher`
@@ -71,8 +71,8 @@ npx claude-flow@alpha sparc run planner "create microservices architecture plan"
 
 **Usage Examples**:
 ```bash
-npx claude-flow@alpha agent spawn researcher --name "Tech-Scout"
-npx claude-flow@alpha task assign researcher "research GraphQL best practices"
+npx fidgetflo@alpha agent spawn researcher --name "Tech-Scout"
+npx fidgetflo@alpha task assign researcher "research GraphQL best practices"
 ```
 
 ### `reviewer`
@@ -87,8 +87,8 @@ npx claude-flow@alpha task assign researcher "research GraphQL best practices"
 
 **Usage Examples**:
 ```bash
-npx claude-flow@alpha agent spawn reviewer --name "Quality-Guardian"
-npx claude-flow@alpha task assign reviewer "review authentication implementation"
+npx fidgetflo@alpha agent spawn reviewer --name "Quality-Guardian"
+npx fidgetflo@alpha task assign reviewer "review authentication implementation"
 ```
 
 ### `tester`
@@ -103,8 +103,8 @@ npx claude-flow@alpha task assign reviewer "review authentication implementation
 
 **Usage Examples**:
 ```bash
-npx claude-flow@alpha agent spawn tester --name "Test-Master"
-npx claude-flow@alpha sparc tdd "user authentication system"
+npx fidgetflo@alpha agent spawn tester --name "Test-Master"
+npx fidgetflo@alpha sparc tdd "user authentication system"
 ```
 
 ---
@@ -123,8 +123,8 @@ npx claude-flow@alpha sparc tdd "user authentication system"
 
 **Usage Examples**:
 ```bash
-npx claude-flow@alpha swarm init --topology hierarchical --coordinator queen-coordinator
-npx claude-flow@alpha agent spawn hierarchical-coordinator --name "Queen-Genesis"
+npx fidgetflo@alpha swarm init --topology hierarchical --coordinator queen-coordinator
+npx fidgetflo@alpha agent spawn hierarchical-coordinator --name "Queen-Genesis"
 ```
 
 ### `mesh-coordinator`
@@ -139,8 +139,8 @@ npx claude-flow@alpha agent spawn hierarchical-coordinator --name "Queen-Genesis
 
 **Usage Examples**:
 ```bash
-npx claude-flow@alpha swarm init --topology mesh --max-agents 8
-npx claude-flow@alpha agent spawn mesh-coordinator --name "Mesh-Alpha"
+npx fidgetflo@alpha swarm init --topology mesh --max-agents 8
+npx fidgetflo@alpha agent spawn mesh-coordinator --name "Mesh-Alpha"
 ```
 
 ### `adaptive-coordinator`
@@ -155,8 +155,8 @@ npx claude-flow@alpha agent spawn mesh-coordinator --name "Mesh-Alpha"
 
 **Usage Examples**:
 ```bash
-npx claude-flow@alpha swarm init --topology adaptive --auto-scale
-npx claude-flow@alpha agent spawn adaptive-coordinator --name "Adaptive-Prime"
+npx fidgetflo@alpha swarm init --topology adaptive --auto-scale
+npx fidgetflo@alpha agent spawn adaptive-coordinator --name "Adaptive-Prime"
 ```
 
 ### `collective-intelligence-coordinator`
@@ -171,8 +171,8 @@ npx claude-flow@alpha agent spawn adaptive-coordinator --name "Adaptive-Prime"
 
 **Usage Examples**:
 ```bash
-npx claude-flow@alpha hive-mind spawn --collective-intelligence
-npx claude-flow@alpha agent spawn collective-intelligence-coordinator --name "Hive-Mind"
+npx fidgetflo@alpha hive-mind spawn --collective-intelligence
+npx fidgetflo@alpha agent spawn collective-intelligence-coordinator --name "Hive-Mind"
 ```
 
 ### `swarm-memory-manager`
@@ -187,8 +187,8 @@ npx claude-flow@alpha agent spawn collective-intelligence-coordinator --name "Hi
 
 **Usage Examples**:
 ```bash
-npx claude-flow@alpha agent spawn swarm-memory-manager --name "Memory-Keeper"
-npx claude-flow@alpha memory distributed init --coordinator swarm-memory-manager
+npx fidgetflo@alpha agent spawn swarm-memory-manager --name "Memory-Keeper"
+npx fidgetflo@alpha memory distributed init --coordinator swarm-memory-manager
 ```
 
 ---
@@ -780,23 +780,23 @@ npx claude-flow@alpha memory distributed init --coordinator swarm-memory-manager
 ### Single Agent Usage
 ```bash
 # Spawn individual agents
-npx claude-flow@alpha agent spawn coder --name "API-Builder"
-npx claude-flow@alpha agent spawn reviewer --name "Code-Guardian"
+npx fidgetflo@alpha agent spawn coder --name "API-Builder"
+npx fidgetflo@alpha agent spawn reviewer --name "Code-Guardian"
 
 # Assign tasks to specific agents
-npx claude-flow@alpha task assign coder "implement user authentication"
-npx claude-flow@alpha task assign tester "create unit tests for auth module"
+npx fidgetflo@alpha task assign coder "implement user authentication"
+npx fidgetflo@alpha task assign tester "create unit tests for auth module"
 ```
 
 ### Swarm Coordination
 ```bash
 # Initialize different swarm topologies
-npx claude-flow@alpha swarm init --topology hierarchical --max-agents 8
-npx claude-flow@alpha swarm init --topology mesh --agents researcher,coder,tester
-npx claude-flow@alpha swarm init --topology adaptive --auto-scale
+npx fidgetflo@alpha swarm init --topology hierarchical --max-agents 8
+npx fidgetflo@alpha swarm init --topology mesh --agents researcher,coder,tester
+npx fidgetflo@alpha swarm init --topology adaptive --auto-scale
 
 # Batch agent spawning for complex projects
-npx claude-flow@alpha swarm spawn \
+npx fidgetflo@alpha swarm spawn \
   --agents system-architect,backend-dev,frontend-dev,tester,reviewer \
   --task "build e-commerce platform"
 ```
@@ -804,18 +804,18 @@ npx claude-flow@alpha swarm spawn \
 ### SPARC Development Workflow
 ```bash
 # Full SPARC methodology execution
-npx claude-flow@alpha sparc pipeline "user authentication system"
-npx claude-flow@alpha sparc run specification "define user management requirements"
-npx claude-flow@alpha sparc run architecture "design auth system architecture"
-npx claude-flow@alpha sparc run code "implement authentication module"
+npx fidgetflo@alpha sparc pipeline "user authentication system"
+npx fidgetflo@alpha sparc run specification "define user management requirements"
+npx fidgetflo@alpha sparc run architecture "design auth system architecture"
+npx fidgetflo@alpha sparc run code "implement authentication module"
 ```
 
 ### GitHub Integration
 ```bash
 # GitHub workflow automation
-npx claude-flow@alpha github pr-manager "review and merge feature branch"
-npx claude-flow@alpha github issue-tracker "manage project issues"
-npx claude-flow@alpha github release-manager "prepare v2.0.0 release"
+npx fidgetflo@alpha github pr-manager "review and merge feature branch"
+npx fidgetflo@alpha github issue-tracker "manage project issues"
+npx fidgetflo@alpha github release-manager "prepare v2.0.0 release"
 ```
 
 ---
@@ -923,16 +923,16 @@ priority: high
 ### Agent Performance Metrics
 ```bash
 # View agent performance
-npx claude-flow@alpha metrics agents --detailed
-npx claude-flow@alpha performance analyze --agent-type coder
-npx claude-flow@alpha swarm status --topology hierarchical
+npx fidgetflo@alpha metrics agents --detailed
+npx fidgetflo@alpha performance analyze --agent-type coder
+npx fidgetflo@alpha swarm status --topology hierarchical
 ```
 
 ### Real-time Monitoring
 ```bash
 # Monitor swarm coordination
-npx claude-flow@alpha monitor swarm --real-time
-npx claude-flow@alpha dashboard --agents --performance
+npx fidgetflo@alpha monitor swarm --real-time
+npx fidgetflo@alpha dashboard --agents --performance
 ```
 
 ---
@@ -992,13 +992,13 @@ npx claude-flow@alpha dashboard --agents --performance
 
 ### Community
 - [GitHub Repository](https://github.com/ruvnet/claude-flow)
-- [Discord Community](https://discord.gg/claude-flow)
+- [Discord Community](https://discord.gg/fidgetflo)
 - [Issue Tracker](https://github.com/ruvnet/claude-flow/issues)
 
 ### Contact
-- **Email**: support@claude-flow.ai
-- **Documentation**: https://claude-flow.ai/docs
-- **Blog**: https://blog.claude-flow.ai
+- **Email**: support@fidgetflo.ai
+- **Documentation**: https://fidgetflo.ai/docs
+- **Blog**: https://blog.fidgetflo.ai
 
 ---
 
@@ -1006,6 +1006,6 @@ npx claude-flow@alpha dashboard --agents --performance
 
 **🤖 65+ Specialized Agents • 🐝 Intelligent Swarm Coordination • 🚀 Enterprise-Ready**
 
-[⬆ Back to Top](#-claude-flow-agent-reference)
+[⬆ Back to Top](#-fidgetflo-agent-reference)
 
 </div>

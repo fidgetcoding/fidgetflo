@@ -17,7 +17,7 @@ npm install @claude-flow/plugin-hyperbolic-reasoning
 ### CLI
 
 ```bash
-npx claude-flow plugins install --name @claude-flow/plugin-hyperbolic-reasoning
+npx fidgetflo plugins install --name @claude-flow/plugin-hyperbolic-reasoning
 ```
 
 ## Quick Start

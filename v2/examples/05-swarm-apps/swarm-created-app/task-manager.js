@@ -2,7 +2,7 @@
 
 /**
  * Task Manager CLI Application
- * Created by Claude Flow Swarm
+ * Created by FidgetFlo Swarm
  * 
  * Demonstrates:
  * - Multi-agent collaboration
@@ -109,7 +109,7 @@ if (require.main === module) {
             console.log('  node task-manager.js stats');
     }
     
-    console.log('\n🐝 Created by Claude Flow Swarm agents working in parallel');
+    console.log('\n🐝 Created by FidgetFlo Swarm agents working in parallel');
 }
 
 module.exports = TaskManager;

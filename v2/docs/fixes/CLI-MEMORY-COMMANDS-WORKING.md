@@ -10,7 +10,7 @@
 
 The documentation in `REASONINGBANK-INTEGRATION-STATUS.md` was incorrect. **All CLI memory commands ARE fully implemented and working** in v2.7.0-alpha.7.
 
-The issue was NOT missing functionality - it was the Node.js `--experimental-wasm-modules` flag requirement. This is now automatically included in `bin/claude-flow`, so users don't need to worry about it.
+The issue was NOT missing functionality - it was the Node.js `--experimental-wasm-modules` flag requirement. This is now automatically included in `bin/fidgetflo`, so users don't need to worry about it.
 
 ---
 
@@ -19,7 +19,7 @@ The issue was NOT missing functionality - it was the Node.js `--experimental-was
 ### v2.7.0-alpha.6 → v2.7.0-alpha.7
 
 1. **WASM Integration**: Fixed CommonJS/ESM mismatch with agentic-flow@1.5.12
-2. **CLI Script**: Added `--experimental-wasm-modules` to `bin/claude-flow`
+2. **CLI Script**: Added `--experimental-wasm-modules` to `bin/fidgetflo`
 3. **Documentation**: Corrected status from "not working" to "fully working"
 
 ---
@@ -28,14 +28,14 @@ The issue was NOT missing functionality - it was the Node.js `--experimental-was
 
 ### ✅ memory init --reasoningbank
 ```bash
-$ ./bin/claude-flow memory init --reasoningbank
+$ ./bin/fidgetflo memory init --reasoningbank
 ✅ ReasoningBank initialized successfully!
 Database: .swarm/memory.db
 ```
 
 ### ✅ memory store --reasoningbank
 ```bash
-$ ./bin/claude-flow memory store test_pattern "A* pathfinding" --reasoningbank
+$ ./bin/fidgetflo memory store test_pattern "A* pathfinding" --reasoningbank
 ✅ Stored successfully in ReasoningBank
 📝 Key: test_pattern
 🧠 Memory ID: 6e27c6bc-c99a-46e9-8f9e-14ebe46cbee8
@@ -45,14 +45,14 @@ $ ./bin/claude-flow memory store test_pattern "A* pathfinding" --reasoningbank
 
 ### ✅ memory query --reasoningbank
 ```bash
-$ ./bin/claude-flow memory query "pathfinding" --reasoningbank
+$ ./bin/fidgetflo memory query "pathfinding" --reasoningbank
 [ReasoningBank] Semantic search returned 0 results, trying category fallback
 ✅ SQL fallback working (finds results when semantic index empty)
 ```
 
 ### ✅ memory status --reasoningbank
 ```bash
-$ ./bin/claude-flow memory status --reasoningbank
+$ ./bin/fidgetflo memory status --reasoningbank
 ✅ 📊 ReasoningBank Status:
    Total memories: 0
    Average confidence: 80.0%
@@ -103,7 +103,7 @@ The old documentation stated:
 ### The Fix
 
 1. Updated to agentic-flow@1.5.12 (pure ESM WASM)
-2. Added WASM flag to `bin/claude-flow`:
+2. Added WASM flag to `bin/fidgetflo`:
    ```bash
    exec node --experimental-wasm-modules "$ROOT_DIR/src/cli/simple-cli.js" "$@"
    ```
@@ -125,13 +125,13 @@ The old documentation stated:
 
 ### Before (v2.7.0-alpha.6)
 ```bash
-$ npx claude-flow@alpha memory store test "value" --reasoningbank
+$ npx fidgetflo@alpha memory store test "value" --reasoningbank
 ❌ Error: Cannot find module 'reasoningbank_wasm'
 ```
 
 ### After (v2.7.0-alpha.7)
 ```bash
-$ npx claude-flow@alpha memory store test "value" --reasoningbank
+$ npx fidgetflo@alpha memory store test "value" --reasoningbank
 ✅ Stored successfully in ReasoningBank
 🧠 Memory ID: 6e27c6bc-c99a-46e9-8f9e-14ebe46cbee8
 ```

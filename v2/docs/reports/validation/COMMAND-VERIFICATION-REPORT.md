@@ -2,7 +2,7 @@
 ## Agent Help Integration Testing
 
 **Date**: 2025-10-12
-**Test Scope**: All commands listed in `claude-flow agent --help`
+**Test Scope**: All commands listed in `fidgetflo agent --help`
 **Purpose**: Verify all agentic-flow integration commands function correctly
 
 ---
@@ -23,7 +23,7 @@
 **Status**: Working (command structure verified)
 **Test**:
 ```bash
-./bin/claude-flow agent run --help
+./bin/fidgetflo agent run --help
 ```
 **Result**: Help output shows correct usage with multi-provider support
 **Note**: Full execution test skipped (requires API keys or long ONNX model download)
@@ -32,7 +32,7 @@
 **Status**: Working
 **Test**:
 ```bash
-./bin/claude-flow agent agents
+./bin/fidgetflo agent agents
 ```
 **Result**:
 - Lists 66+ available agentic-flow agents
@@ -61,7 +61,7 @@ CONSENSUS:
 **Status**: Working (verified via help and benchmark)
 **Test**:
 ```bash
-./bin/claude-flow agent booster help
+./bin/fidgetflo agent booster help
 ```
 **Result**:
 - Shows complete Agent Booster help
@@ -77,7 +77,7 @@ CONSENSUS:
 **Status**: Working
 **Test**:
 ```bash
-./bin/claude-flow agent booster benchmark
+./bin/fidgetflo agent booster benchmark
 ```
 **Result**:
 - Ran 100 edit operations
@@ -115,7 +115,7 @@ LLM API (estimated):
 **Status**: Working (memory system already initialized)
 **Test**:
 ```bash
-./bin/claude-flow agent memory status
+./bin/fidgetflo agent memory status
 ```
 **Result**:
 - ReasoningBank connected to database
@@ -138,7 +138,7 @@ LLM API (estimated):
 **Status**: Working
 **Test**:
 ```bash
-./bin/claude-flow agent memory list
+./bin/fidgetflo agent memory list
 ```
 **Result**:
 - Lists all stored memories
@@ -163,7 +163,7 @@ LLM API (estimated):
 **Status**: Working
 **Test**:
 ```bash
-./bin/claude-flow agent config get provider
+./bin/fidgetflo agent config get provider
 ```
 **Result**: `provider is not set`
 **Behavior**: Correctly shows unset config values
@@ -172,7 +172,7 @@ LLM API (estimated):
 **Status**: Working
 **Test**:
 ```bash
-./bin/claude-flow agent mcp status
+./bin/fidgetflo agent mcp status
 ```
 **Result**:
 - Starts MCP server on stdio transport
@@ -202,14 +202,14 @@ LLM API (estimated):
 **Status**: Working
 **Test**:
 ```bash
-./bin/claude-flow agent spawn --type researcher --name "Test Agent"
+./bin/fidgetflo agent spawn --type researcher --name "Test Agent"
 ```
 **Result**:
 - Successfully created agent
 - Agent ID: general-1760280512706
 - Type: general
 - Status: active
-- Saved to: `.claude-flow/agents/general-1760280512706.json`
+- Saved to: `.fidgetflo/agents/general-1760280512706.json`
 
 **Output**:
 ```
@@ -226,7 +226,7 @@ LLM API (estimated):
 **Status**: Working
 **Test**:
 ```bash
-./bin/claude-flow agent list
+./bin/fidgetflo agent list
 ```
 **Result**:
 - Lists 3 active internal agents
@@ -258,7 +258,7 @@ LLM API (estimated):
 **Status**: Working
 **Test**:
 ```bash
-./bin/claude-flow agent info coder-1758290254250
+./bin/fidgetflo agent info coder-1758290254250
 ```
 **Result**: Shows "Agent not found" with helpful message
 **Behavior**: Correctly handles non-existent agents with user-friendly error
@@ -278,7 +278,7 @@ Use "agentic-flow agent list" to see all available agents
 **Status**: Working
 **Test**:
 ```bash
-./bin/claude-flow agent terminate coder-1758290254250
+./bin/fidgetflo agent terminate coder-1758290254250
 ```
 **Result**:
 - Successfully acknowledges termination request
@@ -294,7 +294,7 @@ Use "agentic-flow agent list" to see all available agents
 **Status**: Working
 **Test**:
 ```bash
-./bin/claude-flow agent hierarchy
+./bin/fidgetflo agent hierarchy
 ```
 **Result**: Shows available hierarchy subcommands
 
@@ -302,15 +302,15 @@ Use "agentic-flow agent list" to see all available agents
 ```
 Hierarchy commands: create, show
 Examples:
-  claude-flow agent hierarchy create enterprise
-  claude-flow agent hierarchy show
+  fidgetflo agent hierarchy create enterprise
+  fidgetflo agent hierarchy show
 ```
 
 #### ✅ `agent ecosystem`
 **Status**: Working
 **Test**:
 ```bash
-./bin/claude-flow agent ecosystem
+./bin/fidgetflo agent ecosystem
 ```
 **Result**: Shows available ecosystem subcommands
 
@@ -373,8 +373,8 @@ Ecosystem commands: status, optimize
 ## Integration Status
 
 ### ✅ Help System Integration
-- Main help (`claude-flow --help`) shows Agent Booster
-- Agent help (`claude-flow agent --help`) shows all 18 commands
+- Main help (`fidgetflo --help`) shows Agent Booster
+- Agent help (`fidgetflo agent --help`) shows all 18 commands
 - All NEW commands marked with (NEW) indicator
 - Help formatter correctly displays command metadata
 
@@ -394,7 +394,7 @@ Ecosystem commands: status, optimize
 ## Known Behaviors
 
 1. **Agent Info**: Queries agentic-flow agent registry, not internal agents
-   - Internal agents tracked separately in `.claude-flow/agents/`
+   - Internal agents tracked separately in `.fidgetflo/agents/`
    - This is expected behavior showing proper system separation
 
 2. **MCP Status**: Starts server on stdio transport
@@ -414,7 +414,7 @@ Ecosystem commands: status, optimize
 
 ## Conclusion
 
-✅ **All 18 commands in `claude-flow agent --help` are functional**
+✅ **All 18 commands in `fidgetflo agent --help` are functional**
 
 - 7 NEW agentic-flow integration commands working
 - 6 original internal agent commands working

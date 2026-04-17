@@ -5,7 +5,7 @@ Run verification checks on code, tasks, or agent outputs.
 ## Usage
 
 ```bash
-claude-flow verify check [options]
+fidgetflo verify check [options]
 ```
 
 ## Options
@@ -22,16 +22,16 @@ claude-flow verify check [options]
 
 ```bash
 # Basic file verification
-claude-flow verify check --file src/app.js
+fidgetflo verify check --file src/app.js
 
 # Verify with higher threshold
-claude-flow verify check --file src/critical.js --threshold 0.99
+fidgetflo verify check --file src/critical.js --threshold 0.99
 
 # Verify and auto-fix issues
-claude-flow verify check --directory src/ --auto-fix
+fidgetflo verify check --directory src/ --auto-fix
 
 # Get JSON output for CI/CD
-claude-flow verify check --json > verification.json
+fidgetflo verify check --json > verification.json
 ```
 
 ## Truth Scoring

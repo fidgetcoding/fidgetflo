@@ -1,4 +1,4 @@
-# ADR-029: Graph Neural Network Integration for Claude-Flow V3
+# ADR-029: Graph Neural Network Integration for FidgetFlo V3
 
 **Status:** Proposed
 **Date:** 2026-01-16
@@ -7,7 +7,7 @@
 
 ## Context
 
-Claude-Flow V3 processes complex, interconnected data structures that naturally form graphs:
+FidgetFlo V3 processes complex, interconnected data structures that naturally form graphs:
 
 1. **Codebase Dependency Graphs** - Files, modules, and packages with import/export relationships
 2. **Agent Relationship Networks** - Agents with communication patterns, task delegation, and coordination
@@ -39,7 +39,7 @@ However, these are hand-crafted algorithms that don't learn from data. GNN integ
 
 ## Decision
 
-Integrate Graph Neural Network layers from RuVector into Claude-Flow V3 for graph-aware processing. The integration follows the **optional dependency pattern** established in ADR-017.
+Integrate Graph Neural Network layers from RuVector into FidgetFlo V3 for graph-aware processing. The integration follows the **optional dependency pattern** established in ADR-017.
 
 ### Design Principles
 

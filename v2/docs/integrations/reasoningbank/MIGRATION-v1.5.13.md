@@ -2,7 +2,7 @@
 
 ## Overview
 
-Claude-Flow has been updated to use **agentic-flow@1.5.13** with the **Node.js backend** for ReasoningBank, replacing the previous WASM adapter approach.
+FidgetFlo has been updated to use **agentic-flow@1.5.13** with the **Node.js backend** for ReasoningBank, replacing the previous WASM adapter approach.
 
 ## Key Changes
 
@@ -21,7 +21,7 @@ Claude-Flow has been updated to use **agentic-flow@1.5.13** with the **Node.js b
 
 ### API Compatibility
 
-✅ **No breaking changes to external API** - All claude-flow memory functions remain the same:
+✅ **No breaking changes to external API** - All fidgetflo memory functions remain the same:
 - `storeMemory(key, value, options)`
 - `queryMemories(searchQuery, options)`
 - `listMemories(options)`
@@ -82,7 +82,7 @@ When you upgrade to v2.7.0-alpha.7+, ReasoningBank will automatically:
 
 ```bash
 # Optional: Custom database path
-export CLAUDE_FLOW_DB_PATH="/path/to/memory.db"
+export FIDGETFLO_DB_PATH="/path/to/memory.db"
 
 # Optional: Disable ReasoningBank
 export REASONINGBANK_ENABLED=false
@@ -136,10 +136,10 @@ node tests/test-semantic-search.mjs
 ### Issue: "Database not found"
 ```bash
 # Ensure initialization ran
-npx claude-flow@alpha memory status
+npx fidgetflo@alpha memory status
 
 # Manually initialize if needed
-npx claude-flow@alpha memory init
+npx fidgetflo@alpha memory init
 ```
 
 ### Issue: "No results from semantic search"
@@ -186,4 +186,4 @@ For issues or questions:
 
 ---
 
-**Migration completed**: Claude-Flow v2.7.0-alpha.7 with agentic-flow@1.5.13 Node.js backend ✅
+**Migration completed**: FidgetFlo v2.7.0-alpha.7 with agentic-flow@1.5.13 Node.js backend ✅

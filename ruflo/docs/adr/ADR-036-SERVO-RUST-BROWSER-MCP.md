@@ -295,12 +295,12 @@ Same `browser` group, new backend:
 browser: {
   enabled: process.env.MCP_GROUP_BROWSER === "true",
   description: "Headless browser automation — navigate, click, fill, screenshot (Servo)",
-  source: "ruflo",
+  source: "fidgetflo",
   prefixes: ["browser_"],
 }
 ```
 
-The ruflo `browser_*` tools will use `ServoAdapter` internally instead of `AgentBrowserAdapter`. No MCP bridge changes required.
+The fidgetflo `browser_*` tools will use `ServoAdapter` internally instead of `AgentBrowserAdapter`. No MCP bridge changes required.
 
 ### Docker Impact
 
@@ -392,7 +392,7 @@ For the 95% of agent browsing tasks (navigate, read content, fill forms, click b
 ## Related
 
 - [ADR-035: MCP Tool Groups](ADR-035-MCP-TOOL-GROUPS.md) — browser group architecture
-- [ADR-033: RuVector + Ruflo MCP Integration](ADR-033-RUVECTOR-RUFLO-MCP-INTEGRATION.md) — stdio MCP client pattern
+- [ADR-033: RuVector + FidgetFlo MCP Integration](ADR-033-RUVECTOR-FIDGETFLO-MCP-INTEGRATION.md) — stdio MCP client pattern
 - [@claude-flow/browser README](https://github.com/ruvnet/ruflo/blob/main/v3/@claude-flow/browser/README.md) — existing 59-tool API surface
 - [Servo project](https://servo.org/) — Linux Foundation browser engine
 - [napi-rs](https://napi.rs/) — Rust ↔ Node.js FFI framework

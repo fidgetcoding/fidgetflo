@@ -247,8 +247,8 @@ gh release create v2.8.0 \
 ```
 
 ### Post-Publishing
-- [ ] Verify package on npm: https://www.npmjs.com/package/claude-flow
-- [ ] Test installation: `npm install -g claude-flow@latest`
+- [ ] Verify package on npm: https://www.npmjs.com/package/fidgetflo
+- [ ] Test installation: `npm install -g fidgetflo@latest`
 - [ ] Update documentation website (if applicable)
 - [ ] Announce on Discord/Twitter
 - [ ] Update GitHub README badges

@@ -35,7 +35,7 @@ If you have Pinata's paid plan with Dedicated Gateways:
 curl -X POST "https://api.pinata.cloud/v3/ipfs/keys" \
   -H "Authorization: Bearer $PINATA_JWT" \
   -H "Content-Type: application/json" \
-  -d '{"name": "claude-flow-registry"}'
+  -d '{"name": "fidgetflo-registry"}'
 ```
 
 ## Step 2: Google Cloud Setup
@@ -44,13 +44,13 @@ curl -X POST "https://api.pinata.cloud/v3/ipfs/keys" \
 
 ```bash
 # Create new project
-gcloud projects create claude-flow-registry --name="Claude Flow Registry"
+gcloud projects create fidgetflo-registry --name="FidgetFlo Registry"
 
 # Set as active project
-gcloud config set project claude-flow-registry
+gcloud config set project fidgetflo-registry
 
 # Enable billing (required for Cloud Functions)
-gcloud beta billing projects link claude-flow-registry \
+gcloud beta billing projects link fidgetflo-registry \
   --billing-account=YOUR_BILLING_ACCOUNT_ID
 ```
 
@@ -68,15 +68,15 @@ gcloud services enable \
 
 ```bash
 # Create bucket for registry source data
-gcloud storage buckets create gs://claude-flow-plugin-registry \
+gcloud storage buckets create gs://fidgetflo-plugin-registry \
   --location=US \
   --uniform-bucket-level-access
 
 # Enable versioning for rollback
-gsutil versioning set on gs://claude-flow-plugin-registry
+gsutil versioning set on gs://fidgetflo-plugin-registry
 
 # Make registry.json publicly readable (optional)
-gsutil iam ch allUsers:objectViewer gs://claude-flow-plugin-registry
+gsutil iam ch allUsers:objectViewer gs://fidgetflo-plugin-registry
 ```
 
 ### 2.4 Create Service Account
@@ -87,12 +87,12 @@ gcloud iam service-accounts create plugin-registry-publisher \
   --display-name="Plugin Registry Publisher"
 
 # Grant permissions
-gcloud projects add-iam-policy-binding claude-flow-registry \
-  --member="serviceAccount:plugin-registry-publisher@claude-flow-registry.iam.gserviceaccount.com" \
+gcloud projects add-iam-policy-binding fidgetflo-registry \
+  --member="serviceAccount:plugin-registry-publisher@fidgetflo-registry.iam.gserviceaccount.com" \
   --role="roles/storage.objectAdmin"
 
-gcloud projects add-iam-policy-binding claude-flow-registry \
-  --member="serviceAccount:plugin-registry-publisher@claude-flow-registry.iam.gserviceaccount.com" \
+gcloud projects add-iam-policy-binding fidgetflo-registry \
+  --member="serviceAccount:plugin-registry-publisher@fidgetflo-registry.iam.gserviceaccount.com" \
   --role="roles/secretmanager.secretAccessor"
 ```
 
@@ -156,7 +156,7 @@ const secretManager = new SecretManagerServiceClient();
 
 async function getSecret(name) {
   const [version] = await secretManager.accessSecretVersion({
-    name: `projects/claude-flow-registry/secrets/${name}/versions/latest`,
+    name: `projects/fidgetflo-registry/secrets/${name}/versions/latest`,
   });
   return version.payload.data.toString();
 }
@@ -168,7 +168,7 @@ export async function publishRegistry(req, res) {
     const privateKey = await getSecret('registry-private-key');
 
     // Fetch registry from GCS
-    const bucket = storage.bucket('claude-flow-plugin-registry');
+    const bucket = storage.bucket('fidgetflo-plugin-registry');
     const file = bucket.file('registry.json');
     const [content] = await file.download();
     const registry = JSON.parse(content.toString());
@@ -201,7 +201,7 @@ export async function publishRegistry(req, res) {
       body: JSON.stringify({
         pinataContent: registry,
         pinataMetadata: {
-          name: 'claude-flow-plugin-registry',
+          name: 'fidgetflo-plugin-registry',
           keyvalues: {
             version: registry.version,
             updatedAt: registry.updatedAt,
@@ -244,8 +244,8 @@ gcloud functions deploy publish-registry \
   --entry-point=publishRegistry \
   --trigger-http \
   --allow-unauthenticated \
-  --service-account=plugin-registry-publisher@claude-flow-registry.iam.gserviceaccount.com \
-  --set-env-vars=GCP_PROJECT=claude-flow-registry
+  --service-account=plugin-registry-publisher@fidgetflo-registry.iam.gserviceaccount.com \
+  --set-env-vars=GCP_PROJECT=fidgetflo-registry
 ```
 
 ## Step 4: Create Initial Registry
@@ -257,7 +257,7 @@ gcloud functions deploy publish-registry \
 npx tsx scripts/publish-registry.ts --dry-run > registry.json
 
 # Upload to GCS
-gsutil cp registry.json gs://claude-flow-plugin-registry/registry.json
+gsutil cp registry.json gs://fidgetflo-plugin-registry/registry.json
 ```
 
 ### 4.2 Trigger First Publish
@@ -285,14 +285,14 @@ steps:
 
   # Upload to GCS
   - name: 'gcr.io/cloud-builders/gsutil'
-    args: ['cp', 'registry.json', 'gs://claude-flow-plugin-registry/registry.json']
+    args: ['cp', 'registry.json', 'gs://fidgetflo-plugin-registry/registry.json']
 
   # Trigger Cloud Function
   - name: 'gcr.io/cloud-builders/curl'
     args: ['-X', 'POST', '${_FUNCTION_URL}']
 
 substitutions:
-  _FUNCTION_URL: 'https://us-central1-claude-flow-registry.cloudfunctions.net/publish-registry'
+  _FUNCTION_URL: 'https://us-central1-fidgetflo-registry.cloudfunctions.net/publish-registry'
 
 # Run daily at 2am UTC
 options:
@@ -305,11 +305,11 @@ options:
 gcloud scheduler jobs create http publish-registry-daily \
   --location=us-central1 \
   --schedule="0 2 * * *" \
-  --uri="https://us-central1-claude-flow-registry.cloudfunctions.net/publish-registry" \
+  --uri="https://us-central1-fidgetflo-registry.cloudfunctions.net/publish-registry" \
   --http-method=POST
 ```
 
-## Step 6: Update Claude Flow CLI
+## Step 6: Update FidgetFlo CLI
 
 Update `DEFAULT_PLUGIN_STORE_CONFIG` in `discovery.ts`:
 
@@ -317,8 +317,8 @@ Update `DEFAULT_PLUGIN_STORE_CONFIG` in `discovery.ts`:
 export const DEFAULT_PLUGIN_STORE_CONFIG: PluginStoreConfig = {
   registries: [
     {
-      name: 'claude-flow-official',
-      description: 'Official Claude Flow plugin registry',
+      name: 'fidgetflo-official',
+      description: 'Official FidgetFlo plugin registry',
       // Use the CID from your first publish
       ipnsName: 'YOUR_IPNS_KEY_OR_CID',
       gateway: 'https://gateway.pinata.cloud',

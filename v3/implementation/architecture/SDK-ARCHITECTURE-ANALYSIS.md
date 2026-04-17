@@ -1,8 +1,8 @@
-# Claude-Flow v3 SDK Architecture Analysis
+# FidgetFlo v3 SDK Architecture Analysis
 
 ## Deep Review: agentic-flow@alpha + ruvector Ecosystem
 
-This document provides a comprehensive analysis of using `agentic-flow@2.0.1-alpha.50` as the SDK foundation for Claude-Flow v3, including additional capabilities from the ruvector ecosystem.
+This document provides a comprehensive analysis of using `agentic-flow@2.0.1-alpha.50` as the SDK foundation for FidgetFlo v3, including additional capabilities from the ruvector ecosystem.
 
 ---
 
@@ -10,7 +10,7 @@ This document provides a comprehensive analysis of using `agentic-flow@2.0.1-alp
 
 ### Key Findings
 
-**agentic-flow@alpha provides a complete, production-ready SDK** that wraps and fixes the raw @ruvector/* alpha packages. Claude-Flow v3 should use agentic-flow as its primary SDK rather than importing @ruvector/* packages directly.
+**agentic-flow@alpha provides a complete, production-ready SDK** that wraps and fixes the raw @ruvector/* alpha packages. FidgetFlo v3 should use agentic-flow as its primary SDK rather than importing @ruvector/* packages directly.
 
 | Aspect | agentic-flow@alpha | Raw @ruvector/* |
 |--------|-------------------|------------------|
@@ -24,7 +24,7 @@ This document provides a comprehensive analysis of using `agentic-flow@2.0.1-alp
 
 ```
 ┌─────────────────────────────────────────────────────────────────┐
-│                     Claude-Flow v3                               │
+│                     FidgetFlo v3                               │
 ├─────────────────────────────────────────────────────────────────┤
 │  Thin Integration Layer (~500 lines)                            │
 │  - Hook event mapping                                           │
@@ -385,7 +385,7 @@ const config = await optimizer.getOptimization(
                       │
                       ▼
 ┌─────────────────────────────────────────────────────────────┐
-│              Claude-Flow Hook Dispatcher                     │
+│              FidgetFlo Hook Dispatcher                     │
 │         (Maps Claude events → agentic-flow hooks)           │
 └─────────────────────┬───────────────────────────────────────┘
                       │
@@ -466,31 +466,31 @@ const result = await integration.completeTrajectory(trajectoryId, results);
 
 ---
 
-## 8. Claude-Flow v3 Integration Strategy
+## 8. FidgetFlo v3 Integration Strategy
 
 ### 8.1 Installation Tiers
 
 **Tier 1: Core (~2MB)**
 ```bash
-npm install claude-flow@3 agentic-flow@alpha
+npm install fidgetflo@3 agentic-flow@alpha
 # Includes: hooks, routing, basic learning
 ```
 
 **Tier 2: Learning (~8MB)**
 ```bash
-npx claude-flow enable-learning
+npx fidgetflo enable-learning
 # Adds: SONA, AgentDB, ReasoningBank
 ```
 
 **Tier 3: Full (~15MB)**
 ```bash
-npx claude-flow enable-swarm
+npx fidgetflo enable-swarm
 # Adds: QUIC, attention coordination, GNN
 ```
 
 ### 8.2 Integration Layer
 
-Claude-Flow v3 needs a thin integration layer (~500 lines):
+FidgetFlo v3 needs a thin integration layer (~500 lines):
 
 ```typescript
 // src/integrations/agentic-flow.ts
@@ -531,19 +531,19 @@ export async function initSwarmCoordination(config) {
 
 ```bash
 # Learning
-npx claude-flow learn status          # Show learning stats
-npx claude-flow learn force           # Force learning cycle
-npx claude-flow learn export <path>   # Export learned patterns
+npx fidgetflo learn status          # Show learning stats
+npx fidgetflo learn force           # Force learning cycle
+npx fidgetflo learn export <path>   # Export learned patterns
 
 # Hooks
-npx claude-flow hooks list            # List available hooks
-npx claude-flow hooks enable <hook>   # Enable specific hook
-npx claude-flow hooks metrics         # Show hook performance
+npx fidgetflo hooks list            # List available hooks
+npx fidgetflo hooks enable <hook>   # Enable specific hook
+npx fidgetflo hooks metrics         # Show hook performance
 
 # Swarm
-npx claude-flow swarm init <topology> # Initialize swarm
-npx claude-flow swarm status          # Show swarm status
-npx claude-flow swarm optimize        # Get optimization recommendations
+npx fidgetflo swarm init <topology> # Initialize swarm
+npx fidgetflo swarm status          # Show swarm status
+npx fidgetflo swarm optimize        # Get optimization recommendations
 ```
 
 ---
@@ -598,11 +598,11 @@ npx claude-flow swarm optimize        # Get optimization recommendations
 
 ---
 
-## 11. Claude-Flow v3 Modular Package Constellation
+## 11. FidgetFlo v3 Modular Package Constellation
 
 ### 11.1 Overview
 
-Claude-Flow v3 will be architected as a **modular constellation of npm packages** similar to the @ruvector/* collection. Each component can operate independently or integrate seamlessly within the ecosystem.
+FidgetFlo v3 will be architected as a **modular constellation of npm packages** similar to the @ruvector/* collection. Each component can operate independently or integrate seamlessly within the ecosystem.
 
 ```
                         ┌─────────────────────────┐
@@ -1104,7 +1104,7 @@ npm install @claude-flow/core @claude-flow/swarm @claude-flow/agents @claude-flo
 
 #### Full Installation
 ```bash
-npm install claude-flow
+npm install fidgetflo
 # Meta-package that includes all @claude-flow/* packages
 # 15MB, everything included
 ```
@@ -1323,7 +1323,7 @@ export interface HookResult {
 #### Tool Selection: pnpm Workspaces + Turborepo
 
 ```
-claude-flow/
+fidgetflo/
 ├── package.json              # Root workspace config
 ├── pnpm-workspace.yaml       # pnpm workspace definition
 ├── turbo.json                # Turborepo pipeline config
@@ -1774,12 +1774,12 @@ interface ClaudeCodeMetrics {
   tools_invoked: Record<string, number>;
   tool_success_rate: number;
 
-  // Learning metrics (Claude-Flow specific)
+  // Learning metrics (FidgetFlo specific)
   patterns_learned: number;
   learning_cycles: number;
   avg_pattern_quality: number;
 
-  // Swarm metrics (Claude-Flow specific)
+  // Swarm metrics (FidgetFlo specific)
   agents_spawned: number;
   tasks_completed: number;
   consensus_rounds: number;
@@ -1828,7 +1828,7 @@ class SwarmTracer {
 
 | v2 API | v3 API | Migration |
 |--------|--------|-----------|
-| `require('claude-flow')` | `import { ClaudeFlowCore } from '@claude-flow/core'` | ESM only |
+| `require('fidgetflo')` | `import { ClaudeFlowCore } from '@claude-flow/core'` | ESM only |
 | `claudeFlow.init()` | `new ClaudeFlowCore()` | Constructor-based |
 | `claudeFlow.swarm.create()` | `import { createSwarm } from '@claude-flow/swarm'` | Modular import |
 | `claudeFlow.memory.store()` | `memoryModule.store()` | Module instance |
@@ -1856,10 +1856,10 @@ export default function transformer(file, api) {
   const j = api.jscodeshift;
   const root = j(file.source);
 
-  // Transform: require('claude-flow') → import
+  // Transform: require('fidgetflo') → import
   root.find(j.CallExpression, {
     callee: { name: 'require' },
-    arguments: [{ value: 'claude-flow' }]
+    arguments: [{ value: 'fidgetflo' }]
   }).replaceWith(() =>
     j.importDeclaration(
       [j.importSpecifier(j.identifier('ClaudeFlowCore'))],
@@ -1991,10 +1991,10 @@ core.use(analyzerPlugin);
 
 ```bash
 # Install community extension
-npm install @community/claude-flow-security
+npm install @community/fidgetflo-security
 
 # Auto-discovered via naming convention
-# @*/claude-flow-* or claude-flow-plugin-*
+# @*/fidgetflo-* or fidgetflo-plugin-*
 ```
 
 ---
@@ -2005,17 +2005,17 @@ npm install @community/claude-flow-security
 
 1. **Programmatic** (highest) - `core.configure({ ... })`
 2. **CLI flags** - `--swarm-topology=mesh`
-3. **Environment variables** - `CLAUDE_FLOW_SWARM_TOPOLOGY=mesh`
-4. **Project config** - `.claude-flow.json` or `claude-flow.config.js`
-5. **User config** - `~/.claude-flow/config.json`
+3. **Environment variables** - `FIDGETFLO_SWARM_TOPOLOGY=mesh`
+4. **Project config** - `.fidgetflo.json` or `fidgetflo.config.js`
+5. **User config** - `~/.fidgetflo/config.json`
 6. **Defaults** (lowest) - Built-in defaults
 
 #### Configuration File
 
 ```json
-// .claude-flow.json
+// .fidgetflo.json
 {
-  "$schema": "https://claude-flow.dev/schema.json",
+  "$schema": "https://fidgetflo.dev/schema.json",
   "version": "3.0",
 
   "core": {
@@ -2042,7 +2042,7 @@ npm install @community/claude-flow-security
 
   "memory": {
     "backend": "hybrid",
-    "path": ".claude-flow/memory",
+    "path": ".fidgetflo/memory",
     "consolidationInterval": 3600000
   }
 }
@@ -2051,11 +2051,11 @@ npm install @community/claude-flow-security
 #### Environment Variable Mapping
 
 ```bash
-# Pattern: CLAUDE_FLOW_<MODULE>_<OPTION>
-CLAUDE_FLOW_LEARNING_ALGORITHM=PPO
-CLAUDE_FLOW_SWARM_TOPOLOGY=mesh
-CLAUDE_FLOW_MEMORY_BACKEND=sqlite
-CLAUDE_FLOW_HOOKS_TIMEOUT=10000
+# Pattern: FIDGETFLO_<MODULE>_<OPTION>
+FIDGETFLO_LEARNING_ALGORITHM=PPO
+FIDGETFLO_SWARM_TOPOLOGY=mesh
+FIDGETFLO_MEMORY_BACKEND=sqlite
+FIDGETFLO_HOOKS_TIMEOUT=10000
 ```
 
 #### Configuration API
@@ -2283,7 +2283,7 @@ const DEFAULT_DEGRADED: DegradedModeConfig = {
 
 ### 12.1 SDK Foundation
 
-**agentic-flow@alpha provides everything Claude-Flow v3 needs:**
+**agentic-flow@alpha provides everything FidgetFlo v3 needs:**
 
 - ✅ 19 hook tools for comprehensive integration
 - ✅ 9 RL algorithms for adaptive learning
@@ -2295,7 +2295,7 @@ const DEFAULT_DEGRADED: DegradedModeConfig = {
 
 ### 12.2 Modular Package Architecture
 
-**Claude-Flow v3 will be a modular constellation of 10 npm packages:**
+**FidgetFlo v3 will be a modular constellation of 10 npm packages:**
 
 | Package | Purpose | Size | Standalone |
 |---------|---------|------|------------|
@@ -2344,8 +2344,8 @@ const DEFAULT_DEGRADED: DegradedModeConfig = {
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                         claude-flow (meta-package)                       │
-│                      npm install claude-flow@3                           │
+│                         fidgetflo (meta-package)                       │
+│                      npm install fidgetflo@3                           │
 ├─────────────────────────────────────────────────────────────────────────┤
 │  @claude-flow/*                                                          │
 │  ┌───────┬─────────┬───────┬────────┬────────┬──────┬──────┬─────────┐ │
@@ -2707,7 +2707,7 @@ const patterns = await ruvector.findPatterns(topic, 5);
 
 ### 13.7 @claude-flow/workers Package
 
-Claude-Flow v3 workers package specification:
+FidgetFlo v3 workers package specification:
 
 ```typescript
 // @claude-flow/workers

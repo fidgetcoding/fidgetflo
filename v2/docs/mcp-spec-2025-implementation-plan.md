@@ -1,4 +1,4 @@
-# MCP Spec 2025 Implementation Plan for Claude Flow
+# MCP Spec 2025 Implementation Plan for FidgetFlo
 
 **Timeline**: RC November 14, 2025 → Final November 25, 2025
 **Status**: Implementation Phase
@@ -8,7 +8,7 @@
 
 ## Executive Summary
 
-The upcoming MCP spec introduces **3 major changes** that require updates to Claude Flow:
+The upcoming MCP spec introduces **3 major changes** that require updates to FidgetFlo:
 
 1. **Async Operations** (First-class support for long-running tasks)
 2. **Registry-Backed Discovery** (Formal MCP Registry integration)
@@ -45,7 +45,7 @@ MCP will support first-class async operations:
 - Clients poll or resume to retrieve results without blocking
 - Job state persisted for resumability
 
-### Current State: Claude Flow
+### Current State: FidgetFlo
 - Tools execute synchronously in `handler()` functions
 - No job persistence or state management
 - Long-running tasks block the MCP connection
@@ -948,7 +948,7 @@ async function main() {
   const client = new RegistryClient(apiKey);
 
   const metadata: ServerMetadata = {
-    name: 'claude-flow',
+    name: 'fidgetflo',
     version,
     description: 'Advanced MCP server with swarm coordination, async operations, and neural capabilities',
     author: 'ruvnet',
@@ -1169,12 +1169,12 @@ describe('MCP Spec 2025 Compliance', () => {
   describe('Registry Integration', () => {
     it('should be discoverable in MCP Registry', async () => {
       const servers = await registryClient.searchServers({
-        tags: ['claude-flow'],
+        tags: ['fidgetflo'],
       });
 
       expect(servers).toContainEqual(
         expect.objectContaining({
-          name: 'claude-flow',
+          name: 'fidgetflo',
           capabilities: expect.objectContaining({
             async: true,
           }),
@@ -1314,7 +1314,7 @@ npm run jobs:monitor
 
 - **Spec Questions**: mcp-spec@anthropic.com
 - **Registry Issues**: registry-support@anthropic.com
-- **Claude Flow Issues**: GitHub Issues
+- **FidgetFlo Issues**: GitHub Issues
 - **Urgent**: Create issue with `[MCP-2025-URGENT]` prefix
 
 ---

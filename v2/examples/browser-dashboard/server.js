@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 /**
- * Claude Flow WebSocket Bridge Server
- * Connects browser dashboard to claude-flow MCP tools via WebSocket
+ * FidgetFlo WebSocket Bridge Server
+ * Connects browser dashboard to fidgetflo MCP tools via WebSocket
  */
 
 import { WebSocketServer } from 'ws';
@@ -95,7 +95,7 @@ class ClaudeFlowBridge {
         });
 
         this.httpServer.listen(this.port, () => {
-            console.log(`\n🌐 Claude Flow Dashboard Server`);
+            console.log(`\n🌐 FidgetFlo Dashboard Server`);
             console.log(`━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━`);
             console.log(`📊 Dashboard: http://localhost:${this.port}`);
             console.log(`🔌 WebSocket: ws://localhost:${this.port}`);
@@ -110,13 +110,13 @@ class ClaudeFlowBridge {
 
         // Route MCP commands
         switch (method) {
-            case 'mcp__claude-flow__swarm_status':
+            case 'mcp__fidgetflo__swarm_status':
                 this.handleSwarmStatus(ws, id);
                 break;
-            case 'mcp__claude-flow__agents_spawn_parallel':
+            case 'mcp__fidgetflo__agents_spawn_parallel':
                 this.handleSpawnAgents(ws, params, id);
                 break;
-            case 'mcp__claude-flow__query_control':
+            case 'mcp__fidgetflo__query_control':
                 this.handleQueryControl(ws, params, id);
                 break;
             case 'mcp__agentic-payments__verify_consensus':

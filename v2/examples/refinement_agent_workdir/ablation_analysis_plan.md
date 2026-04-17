@@ -87,7 +87,7 @@ All refinements will be tracked with:
 ### 4. Coordination Protocol
 
 As per MLE-STAR requirements, I will:
-- Store all decisions in memory using `npx claude-flow@alpha memory store`
+- Store all decisions in memory using `npx fidgetflo@alpha memory store`
 - Log progress after each major step with hooks
 - Share findings with other agents through the memory system
 - Maintain full audit trail of optimizations

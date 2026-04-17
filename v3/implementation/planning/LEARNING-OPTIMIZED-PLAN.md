@@ -1,4 +1,4 @@
-# Claude-Flow v3: Optimized Learning System Plan
+# FidgetFlo v3: Optimized Learning System Plan
 
 ## Executive Summary
 
@@ -17,7 +17,7 @@ This plan integrates the learning capabilities from **agentic-flow@2.0.1-alpha.5
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│                     Claude-Flow v3 Learning System                       │
+│                     FidgetFlo v3 Learning System                       │
 ├─────────────────────────────────────────────────────────────────────────┤
 │                                                                          │
 │  ┌─────────────────────────────────────────────────────────────────────┐│
@@ -682,17 +682,17 @@ export const memoryOptimizations = {
 
 ```bash
 # Tier 1: Basic Learning (Minimal)
-npx claude-flow install learning:basic
+npx fidgetflo install learning:basic
 # Includes: Pattern storage, skill lookup, basic RL (Q-Learning, SARSA)
 # Size: ~1MB | Platforms: All
 
 # Tier 2: Standard Learning (Recommended)
-npx claude-flow install learning
+npx fidgetflo install learning
 # Includes: Tier 1 + 5 more RL algorithms, reflexion memory, trajectory tracking
 # Size: ~2MB | Platforms: All
 
 # Tier 3: Advanced Learning (Full)
-npx claude-flow install learning:advanced
+npx fidgetflo install learning:advanced
 # Includes: Tier 2 + causal graphs, nightly learner, FlashAttention
 # Size: ~4MB | Platforms: All (NAPI for FlashAttention speedup)
 ```
@@ -722,22 +722,22 @@ npx claude-flow install learning:advanced
 
 ```bash
 # Linux: Maximum performance
-npx claude-flow install learning:advanced --native
+npx fidgetflo install learning:advanced --native
 # Uses NAPI for FlashAttention (4x faster, 75% less memory)
 
 # macOS: Universal binary
-npx claude-flow install learning:advanced
+npx fidgetflo install learning:advanced
 # Auto-detects ARM vs Intel, uses native when possible
 
 # Windows: WASM-optimized
-npx claude-flow install learning:advanced --wasm
+npx fidgetflo install learning:advanced --wasm
 # Full features via WebAssembly, no build tools required
 ```
 
 ### 9.4 Lazy Loading Configuration
 
 ```typescript
-// .claude-flow/config.json
+// .fidgetflo/config.json
 {
   "learning": {
     "tier": "standard",              // basic | standard | advanced
@@ -778,33 +778,33 @@ npx claude-flow install learning:advanced --wasm
 
 ```bash
 # Install core + basic learning
-npm install claude-flow@3
-npx claude-flow install learning:basic
+npm install fidgetflo@3
+npx fidgetflo install learning:basic
 
 # Start using immediately
-npx claude-flow learning start --algorithm q-learning
+npx fidgetflo learning start --algorithm q-learning
 ```
 
 ### 10.2 Recommended Learning Setup
 
 ```bash
 # Install with persistent memory
-npm install claude-flow@3
-npx claude-flow install memory learning
+npm install fidgetflo@3
+npx fidgetflo install memory learning
 
 # Initialize with sensible defaults
-npx claude-flow init --learning
+npx fidgetflo init --learning
 ```
 
 ### 10.3 Production Learning Setup
 
 ```bash
 # Full installation with native bindings
-npm install claude-flow@3
-npx claude-flow install --all --native
+npm install fidgetflo@3
+npx fidgetflo install --all --native
 
 # Configure for production
-cat > .claude-flow/config.json << 'EOF'
+cat > .fidgetflo/config.json << 'EOF'
 {
   "learning": {
     "tier": "advanced",
@@ -825,11 +825,11 @@ EOF
 
 ```bash
 # Minimal for CI (no native deps)
-npm install claude-flow@3
-npx claude-flow install learning:basic --wasm
+npm install fidgetflo@3
+npx fidgetflo install learning:basic --wasm
 
 # Run tests with learning
-npx claude-flow test --with-learning
+npx fidgetflo test --with-learning
 ```
 
 ---
@@ -840,26 +840,26 @@ npx claude-flow test --with-learning
 
 ```bash
 # Upgrade from basic to standard
-npx claude-flow install learning --upgrade
+npx fidgetflo install learning --upgrade
 
 # Upgrade from standard to advanced
-npx claude-flow install learning:advanced --upgrade
+npx fidgetflo install learning:advanced --upgrade
 
 # Downgrade (preserves data)
-npx claude-flow install learning:basic --downgrade
+npx fidgetflo install learning:basic --downgrade
 ```
 
 ### 11.2 Data Migration
 
 ```bash
 # Export learning data before major upgrade
-npx claude-flow learning export --output learning-backup.json
+npx fidgetflo learning export --output learning-backup.json
 
 # Import after upgrade
-npx claude-flow learning import --input learning-backup.json
+npx fidgetflo learning import --input learning-backup.json
 
 # Verify data integrity
-npx claude-flow learning verify
+npx fidgetflo learning verify
 ```
 
 ---
@@ -879,16 +879,16 @@ npx claude-flow learning verify
 
 ```bash
 # Check learning system status
-npx claude-flow learning status
+npx fidgetflo learning status
 
 # View component load times
-npx claude-flow learning diagnostics
+npx fidgetflo learning diagnostics
 
 # Test RL algorithms
-npx claude-flow learning test --algorithm ppo
+npx fidgetflo learning test --algorithm ppo
 
 # Verify installation
-npx claude-flow verify --component learning
+npx fidgetflo verify --component learning
 ```
 
 ---

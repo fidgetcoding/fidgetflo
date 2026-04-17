@@ -1,4 +1,4 @@
-// Application created by Claude Flow Swarm
+// Application created by FidgetFlo Swarm
 // Objective: build a real-time chat application with websockets and message history in ./examples/chat-app-2
 // Swarm ID: swarm_oh514gvlb_z5kel2a1p
 

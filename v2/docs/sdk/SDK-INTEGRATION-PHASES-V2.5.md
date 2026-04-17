@@ -1,4 +1,4 @@
-# Claude-Flow v2.5.0-alpha.130 - SDK Integration Phases
+# FidgetFlo v2.5.0-alpha.130 - SDK Integration Phases
 ## Updated Implementation Plan with Critical & High Priority Features
 
 **Status**: Phases 1-2 Complete, Phases 3-8 Planned
@@ -183,7 +183,7 @@ export class ParallelSwarmExecutor {
             resume: baseSession.id,
             forkSession: true,  // Key: instant fork!
             mcpServers: {
-              'claude-flow-swarm': claudeFlowSwarmServer
+              'fidgetflo-swarm': claudeFlowSwarmServer
             }
           }
         });
@@ -504,14 +504,14 @@ Replace stdio-based MCP transport with in-process SDK server for **ZERO IPC over
 ### Implementation
 
 ```typescript
-// src/mcp/claude-flow-swarm-server.ts
+// src/mcp/fidgetflo-swarm-server.ts
 import { createSdkMcpServer, tool } from '@anthropic-ai/claude-code/sdk';
 import { z } from 'zod';
 import { SwarmCoordinator } from '../swarm/coordinator';
 import { SwarmMemory } from '../swarm/memory';
 
 export const claudeFlowSwarmServer = createSdkMcpServer({
-  name: 'claude-flow-swarm',
+  name: 'fidgetflo-swarm',
   version: '2.5.0-alpha.130',
   tools: [
     // Swarm Initialization
@@ -601,9 +601,9 @@ export class SwarmCoordinator {
       prompt: 'Initialize swarm with mesh topology and 5 agents',
       options: {
         mcpServers: {
-          'claude-flow-swarm': {
+          'fidgetflo-swarm': {
             type: 'sdk',  // In-process!
-            name: 'claude-flow-swarm',
+            name: 'fidgetflo-swarm',
             instance: claudeFlowSwarmServer.instance
           }
         }
@@ -657,7 +657,7 @@ export class McpHealthMonitor {
 ```
 
 ### Tasks
-- [ ] Create `claude-flow-swarm` in-process MCP server
+- [ ] Create `fidgetflo-swarm` in-process MCP server
 - [ ] Implement 40+ swarm coordination tools
 - [ ] Add MCP health monitoring
 - [ ] Benchmark stdio vs in-process performance
@@ -747,4 +747,4 @@ export class McpHealthMonitor {
 
 ---
 
-*Updated phases for Claude-Flow v2.5.0-alpha.130 with critical and high priority features*
+*Updated phases for FidgetFlo v2.5.0-alpha.130 with critical and high priority features*

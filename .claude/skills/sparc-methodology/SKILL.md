@@ -8,7 +8,7 @@ description: |
 
 ## Overview
 
-SPARC (Specification, Pseudocode, Architecture, Refinement, Completion) is a systematic development methodology integrated with Claude Flow's multi-agent orchestration capabilities. It provides 17 specialized modes for comprehensive software development, from initial research through deployment and monitoring.
+SPARC (Specification, Pseudocode, Architecture, Refinement, Completion) is a systematic development methodology integrated with FidgetFlo's multi-agent orchestration capabilities. It provides 17 specialized modes for comprehensive software development, from initial research through deployment and monitoring.
 
 ## Table of Contents
 
@@ -120,7 +120,7 @@ Multi-agent task orchestration with TodoWrite/Task/Memory coordination.
 
 **Usage**:
 ```javascript
-mcp__claude-flow__sparc_mode {
+mcp__fidgetflo__sparc_mode {
   mode: "orchestrator",
   task_description: "coordinate feature development",
   options: { parallel: true, monitor: true }
@@ -180,7 +180,7 @@ Autonomous code generation with batch file operations.
 
 **Usage**:
 ```javascript
-mcp__claude-flow__sparc_mode {
+mcp__fidgetflo__sparc_mode {
   mode: "coder",
   task_description: "implement user authentication with JWT",
   options: {
@@ -216,7 +216,7 @@ System design with Memory-based coordination.
 
 **Usage**:
 ```javascript
-mcp__claude-flow__sparc_mode {
+mcp__fidgetflo__sparc_mode {
   mode: "architect",
   task_description: "design scalable e-commerce platform",
   options: {
@@ -253,7 +253,7 @@ Test-driven development with comprehensive testing.
 
 **Usage**:
 ```javascript
-mcp__claude-flow__sparc_mode {
+mcp__fidgetflo__sparc_mode {
   mode: "tdd",
   task_description: "shopping cart feature with payment integration",
   options: {
@@ -292,7 +292,7 @@ Code review using batch file analysis.
 
 **Usage**:
 ```javascript
-mcp__claude-flow__sparc_mode {
+mcp__fidgetflo__sparc_mode {
   mode: "reviewer",
   task_description: "review authentication module PR #123",
   options: {
@@ -333,7 +333,7 @@ Deep research with parallel WebSearch/WebFetch and Memory coordination.
 
 **Usage**:
 ```javascript
-mcp__claude-flow__sparc_mode {
+mcp__fidgetflo__sparc_mode {
   mode: "researcher",
   task_description: "research microservices best practices 2024",
   options: {
@@ -438,7 +438,7 @@ Knowledge management and context preservation.
 
 ```javascript
 // Basic mode execution
-mcp__claude-flow__sparc_mode {
+mcp__fidgetflo__sparc_mode {
   mode: "<mode-name>",
   task_description: "<task description>",
   options: {
@@ -447,20 +447,20 @@ mcp__claude-flow__sparc_mode {
 }
 
 // Initialize swarm for complex tasks
-mcp__claude-flow__swarm_init {
+mcp__fidgetflo__swarm_init {
   topology: "hierarchical",  // or "mesh", "ring", "star"
   strategy: "auto",           // or "balanced", "specialized", "adaptive"
   maxAgents: 8
 }
 
 // Spawn specialized agents
-mcp__claude-flow__agent_spawn {
+mcp__fidgetflo__agent_spawn {
   type: "<agent-type>",
   capabilities: ["<capability1>", "<capability2>"]
 }
 
 // Monitor execution
-mcp__claude-flow__swarm_monitor {
+mcp__fidgetflo__swarm_monitor {
   swarmId: "current",
   interval: 5000
 }
@@ -472,37 +472,37 @@ mcp__claude-flow__swarm_monitor {
 
 ```bash
 # Execute specific mode
-npx claude-flow sparc run <mode> "task description"
+npx fidgetflo sparc run <mode> "task description"
 
 # Use alpha features
-npx claude-flow@alpha sparc run <mode> "task description"
+npx fidgetflo@alpha sparc run <mode> "task description"
 
 # List all available modes
-npx claude-flow sparc modes
+npx fidgetflo sparc modes
 
 # Get help for specific mode
-npx claude-flow sparc help <mode>
+npx fidgetflo sparc help <mode>
 
 # Run with options
-npx claude-flow sparc run <mode> "task" --parallel --monitor
+npx fidgetflo sparc run <mode> "task" --parallel --monitor
 
 # Execute TDD workflow
-npx claude-flow sparc tdd "feature description"
+npx fidgetflo sparc tdd "feature description"
 
 # Batch execution
-npx claude-flow sparc batch <mode1,mode2,mode3> "task"
+npx fidgetflo sparc batch <mode1,mode2,mode3> "task"
 
 # Pipeline execution
-npx claude-flow sparc pipeline "task description"
+npx fidgetflo sparc pipeline "task description"
 ```
 
 ### Method 3: Local Installation
 
-**Best for**: Projects with local claude-flow installation
+**Best for**: Projects with local fidgetflo installation
 
 ```bash
-# If claude-flow is installed locally
-./claude-flow sparc run <mode> "task description"
+# If fidgetflo is installed locally
+./fidgetflo sparc run <mode> "task description"
 ```
 
 ---
@@ -515,22 +515,22 @@ npx claude-flow sparc pipeline "task description"
 
 ```javascript
 // Initialize hierarchical swarm
-mcp__claude-flow__swarm_init {
+mcp__fidgetflo__swarm_init {
   topology: "hierarchical",
   maxAgents: 12
 }
 
 // Spawn coordinator
-mcp__claude-flow__agent_spawn {
+mcp__fidgetflo__agent_spawn {
   type: "coordinator",
   capabilities: ["planning", "delegation", "monitoring"]
 }
 
 // Spawn specialized workers
-mcp__claude-flow__agent_spawn { type: "architect" }
-mcp__claude-flow__agent_spawn { type: "coder" }
-mcp__claude-flow__agent_spawn { type: "tester" }
-mcp__claude-flow__agent_spawn { type: "reviewer" }
+mcp__fidgetflo__agent_spawn { type: "architect" }
+mcp__fidgetflo__agent_spawn { type: "coder" }
+mcp__fidgetflo__agent_spawn { type: "tester" }
+mcp__fidgetflo__agent_spawn { type: "reviewer" }
 ```
 
 ### Pattern 2: Mesh Coordination
@@ -538,7 +538,7 @@ mcp__claude-flow__agent_spawn { type: "reviewer" }
 **Best for**: Collaborative tasks requiring peer-to-peer communication
 
 ```javascript
-mcp__claude-flow__swarm_init {
+mcp__fidgetflo__swarm_init {
   topology: "mesh",
   strategy: "balanced",
   maxAgents: 6
@@ -550,7 +550,7 @@ mcp__claude-flow__swarm_init {
 **Best for**: Ordered workflow execution (spec → design → code → test → review)
 
 ```javascript
-mcp__claude-flow__workflow_create {
+mcp__fidgetflo__workflow_create {
   name: "development-pipeline",
   steps: [
     { mode: "researcher", task: "gather requirements" },
@@ -568,7 +568,7 @@ mcp__claude-flow__workflow_create {
 **Best for**: Independent tasks that can run concurrently
 
 ```javascript
-mcp__claude-flow__task_orchestrate {
+mcp__fidgetflo__task_orchestrate {
   task: "build full-stack application",
   strategy: "parallel",
   dependencies: {
@@ -585,7 +585,7 @@ mcp__claude-flow__task_orchestrate {
 **Best for**: Dynamic workloads with changing requirements
 
 ```javascript
-mcp__claude-flow__swarm_init {
+mcp__fidgetflo__swarm_init {
   topology: "hierarchical",
   strategy: "adaptive",  // Auto-adjusts based on workload
   maxAgents: 20
@@ -600,25 +600,25 @@ mcp__claude-flow__swarm_init {
 
 ```javascript
 // Step 1: Initialize TDD swarm
-mcp__claude-flow__swarm_init {
+mcp__fidgetflo__swarm_init {
   topology: "hierarchical",
   maxAgents: 8
 }
 
 // Step 2: Research and planning
-mcp__claude-flow__sparc_mode {
+mcp__fidgetflo__sparc_mode {
   mode: "researcher",
   task_description: "research testing best practices for feature X"
 }
 
 // Step 3: Architecture design
-mcp__claude-flow__sparc_mode {
+mcp__fidgetflo__sparc_mode {
   mode: "architect",
   task_description: "design testable architecture for feature X"
 }
 
 // Step 4: TDD implementation
-mcp__claude-flow__sparc_mode {
+mcp__fidgetflo__sparc_mode {
   mode: "tdd",
   task_description: "implement feature X with 90% coverage",
   options: {
@@ -629,7 +629,7 @@ mcp__claude-flow__sparc_mode {
 }
 
 // Step 5: Code review
-mcp__claude-flow__sparc_mode {
+mcp__fidgetflo__sparc_mode {
   mode: "reviewer",
   task_description: "review feature X implementation",
   options: {
@@ -639,7 +639,7 @@ mcp__claude-flow__sparc_mode {
 }
 
 // Step 6: Optimization
-mcp__claude-flow__sparc_mode {
+mcp__fidgetflo__sparc_mode {
   mode: "optimizer",
   task_description: "optimize feature X performance"
 }
@@ -649,21 +649,21 @@ mcp__claude-flow__sparc_mode {
 
 ```javascript
 // RED: Write failing test
-mcp__claude-flow__sparc_mode {
+mcp__fidgetflo__sparc_mode {
   mode: "tester",
   task_description: "create failing test for shopping cart add item",
   options: { expect_failure: true }
 }
 
 // GREEN: Minimal implementation
-mcp__claude-flow__sparc_mode {
+mcp__fidgetflo__sparc_mode {
   mode: "coder",
   task_description: "implement minimal code to pass test",
   options: { minimal: true }
 }
 
 // REFACTOR: Improve code quality
-mcp__claude-flow__sparc_mode {
+mcp__fidgetflo__sparc_mode {
   mode: "coder",
   task_description: "refactor shopping cart implementation",
   options: { maintain_tests: true }
@@ -680,7 +680,7 @@ mcp__claude-flow__sparc_mode {
 
 ```javascript
 // Store architectural decisions
-mcp__claude-flow__memory_usage {
+mcp__fidgetflo__memory_usage {
   action: "store",
   namespace: "architecture",
   key: "api-design-v1",
@@ -689,7 +689,7 @@ mcp__claude-flow__memory_usage {
 }
 
 // Retrieve in subsequent agents
-mcp__claude-flow__memory_usage {
+mcp__fidgetflo__memory_usage {
   action: "retrieve",
   namespace: "architecture",
   key: "api-design-v1"
@@ -703,14 +703,14 @@ mcp__claude-flow__memory_usage {
 ```javascript
 // ✅ CORRECT: All operations together
 [Single Message]:
-  mcp__claude-flow__agent_spawn { type: "researcher" }
-  mcp__claude-flow__agent_spawn { type: "coder" }
-  mcp__claude-flow__agent_spawn { type: "tester" }
+  mcp__fidgetflo__agent_spawn { type: "researcher" }
+  mcp__fidgetflo__agent_spawn { type: "coder" }
+  mcp__fidgetflo__agent_spawn { type: "tester" }
   TodoWrite { todos: [8-10 todos] }
 
 // ❌ WRONG: Multiple messages
-Message 1: mcp__claude-flow__agent_spawn { type: "researcher" }
-Message 2: mcp__claude-flow__agent_spawn { type: "coder" }
+Message 1: mcp__fidgetflo__agent_spawn { type: "researcher" }
+Message 2: mcp__fidgetflo__agent_spawn { type: "coder" }
 Message 3: TodoWrite { todos: [...] }
 ```
 
@@ -720,13 +720,13 @@ Message 3: TodoWrite { todos: [...] }
 
 ```bash
 # Before work
-npx claude-flow@alpha hooks pre-task --description "implement auth"
+npx fidgetflo@alpha hooks pre-task --description "implement auth"
 
 # During work
-npx claude-flow@alpha hooks post-edit --file "auth.js"
+npx fidgetflo@alpha hooks post-edit --file "auth.js"
 
 # After work
-npx claude-flow@alpha hooks post-task --task-id "task-123"
+npx fidgetflo@alpha hooks post-task --task-id "task-123"
 ```
 
 ### 4. Test Coverage
@@ -773,40 +773,40 @@ project/
 [Single Message - Parallel Agent Execution]:
 
 // Initialize swarm
-mcp__claude-flow__swarm_init {
+mcp__fidgetflo__swarm_init {
   topology: "hierarchical",
   maxAgents: 10
 }
 
 // Architecture phase
-mcp__claude-flow__sparc_mode {
+mcp__fidgetflo__sparc_mode {
   mode: "architect",
   task_description: "design REST API with authentication",
   options: { memory_enabled: true }
 }
 
 // Research phase
-mcp__claude-flow__sparc_mode {
+mcp__fidgetflo__sparc_mode {
   mode: "researcher",
   task_description: "research authentication best practices"
 }
 
 // Implementation phase
-mcp__claude-flow__sparc_mode {
+mcp__fidgetflo__sparc_mode {
   mode: "coder",
   task_description: "implement Express API with JWT auth",
   options: { test_driven: true }
 }
 
 // Testing phase
-mcp__claude-flow__sparc_mode {
+mcp__fidgetflo__sparc_mode {
   mode: "tdd",
   task_description: "comprehensive API tests",
   options: { coverage_target: 90 }
 }
 
 // Review phase
-mcp__claude-flow__sparc_mode {
+mcp__fidgetflo__sparc_mode {
   mode: "reviewer",
   task_description: "security and performance review",
   options: { security_check: true }
@@ -831,7 +831,7 @@ TodoWrite {
 
 ```javascript
 // Research phase
-mcp__claude-flow__sparc_mode {
+mcp__fidgetflo__sparc_mode {
   mode: "researcher",
   task_description: "research AI-powered search implementations",
   options: {
@@ -841,27 +841,27 @@ mcp__claude-flow__sparc_mode {
 }
 
 // Innovation phase
-mcp__claude-flow__sparc_mode {
+mcp__fidgetflo__sparc_mode {
   mode: "innovator",
   task_description: "propose novel search algorithm",
   options: { memory_enabled: true }
 }
 
 // Architecture phase
-mcp__claude-flow__sparc_mode {
+mcp__fidgetflo__sparc_mode {
   mode: "architect",
   task_description: "design scalable search system"
 }
 
 // Implementation phase
-mcp__claude-flow__sparc_mode {
+mcp__fidgetflo__sparc_mode {
   mode: "coder",
   task_description: "implement search algorithm",
   options: { test_driven: true }
 }
 
 // Documentation phase
-mcp__claude-flow__sparc_mode {
+mcp__fidgetflo__sparc_mode {
   mode: "documenter",
   task_description: "document search system architecture and API"
 }
@@ -871,33 +871,33 @@ mcp__claude-flow__sparc_mode {
 
 ```javascript
 // Analysis phase
-mcp__claude-flow__sparc_mode {
+mcp__fidgetflo__sparc_mode {
   mode: "analyzer",
   task_description: "analyze legacy codebase dependencies"
 }
 
 // Planning phase
-mcp__claude-flow__sparc_mode {
+mcp__fidgetflo__sparc_mode {
   mode: "orchestrator",
   task_description: "plan incremental refactoring strategy"
 }
 
 // Testing phase (create safety net)
-mcp__claude-flow__sparc_mode {
+mcp__fidgetflo__sparc_mode {
   mode: "tester",
   task_description: "create comprehensive test suite for legacy code",
   options: { coverage_target: 80 }
 }
 
 // Refactoring phase
-mcp__claude-flow__sparc_mode {
+mcp__fidgetflo__sparc_mode {
   mode: "coder",
   task_description: "refactor module X with modern patterns",
   options: { maintain_tests: true }
 }
 
 // Review phase
-mcp__claude-flow__sparc_mode {
+mcp__fidgetflo__sparc_mode {
   mode: "reviewer",
   task_description: "validate refactoring maintains functionality"
 }
@@ -911,58 +911,58 @@ mcp__claude-flow__sparc_mode {
 
 ```bash
 # Step 1: Research and planning
-npx claude-flow sparc run researcher "authentication patterns"
+npx fidgetflo sparc run researcher "authentication patterns"
 
 # Step 2: Architecture design
-npx claude-flow sparc run architect "design auth system"
+npx fidgetflo sparc run architect "design auth system"
 
 # Step 3: TDD implementation
-npx claude-flow sparc tdd "user authentication feature"
+npx fidgetflo sparc tdd "user authentication feature"
 
 # Step 4: Code review
-npx claude-flow sparc run reviewer "review auth implementation"
+npx fidgetflo sparc run reviewer "review auth implementation"
 
 # Step 5: Documentation
-npx claude-flow sparc run documenter "document auth API"
+npx fidgetflo sparc run documenter "document auth API"
 ```
 
 ### Workflow 2: Bug Investigation
 
 ```bash
 # Step 1: Analyze issue
-npx claude-flow sparc run analyzer "investigate bug #456"
+npx fidgetflo sparc run analyzer "investigate bug #456"
 
 # Step 2: Debug systematically
-npx claude-flow sparc run debugger "fix memory leak in service X"
+npx fidgetflo sparc run debugger "fix memory leak in service X"
 
 # Step 3: Create tests
-npx claude-flow sparc run tester "regression tests for bug #456"
+npx fidgetflo sparc run tester "regression tests for bug #456"
 
 # Step 4: Review fix
-npx claude-flow sparc run reviewer "validate bug fix"
+npx fidgetflo sparc run reviewer "validate bug fix"
 ```
 
 ### Workflow 3: Performance Optimization
 
 ```bash
 # Step 1: Profile performance
-npx claude-flow sparc run analyzer "profile API response times"
+npx fidgetflo sparc run analyzer "profile API response times"
 
 # Step 2: Identify bottlenecks
-npx claude-flow sparc run optimizer "optimize database queries"
+npx fidgetflo sparc run optimizer "optimize database queries"
 
 # Step 3: Implement improvements
-npx claude-flow sparc run coder "implement caching layer"
+npx fidgetflo sparc run coder "implement caching layer"
 
 # Step 4: Benchmark results
-npx claude-flow sparc run tester "performance benchmarks"
+npx fidgetflo sparc run tester "performance benchmarks"
 ```
 
 ### Workflow 4: Complete Pipeline
 
 ```bash
 # Execute full development pipeline
-npx claude-flow sparc pipeline "e-commerce checkout feature"
+npx fidgetflo sparc pipeline "e-commerce checkout feature"
 
 # This automatically runs:
 # 1. researcher - Gather requirements
@@ -982,7 +982,7 @@ npx claude-flow sparc pipeline "e-commerce checkout feature"
 
 ```javascript
 // Train patterns from successful workflows
-mcp__claude-flow__neural_train {
+mcp__fidgetflo__neural_train {
   pattern_type: "coordination",
   training_data: "successful_tdd_workflow.json",
   epochs: 50
@@ -993,12 +993,12 @@ mcp__claude-flow__neural_train {
 
 ```javascript
 // Save session state
-mcp__claude-flow__memory_persist {
+mcp__fidgetflo__memory_persist {
   sessionId: "feature-auth-v1"
 }
 
 // Restore in new session
-mcp__claude-flow__context_restore {
+mcp__fidgetflo__context_restore {
   snapshotId: "feature-auth-v1"
 }
 ```
@@ -1007,13 +1007,13 @@ mcp__claude-flow__context_restore {
 
 ```javascript
 // Analyze repository
-mcp__claude-flow__github_repo_analyze {
+mcp__fidgetflo__github_repo_analyze {
   repo: "owner/repo",
   analysis_type: "code_quality"
 }
 
 // Manage pull requests
-mcp__claude-flow__github_pr_manage {
+mcp__fidgetflo__github_pr_manage {
   repo: "owner/repo",
   pr_number: 123,
   action: "review"
@@ -1024,19 +1024,19 @@ mcp__claude-flow__github_pr_manage {
 
 ```javascript
 // Real-time swarm monitoring
-mcp__claude-flow__swarm_monitor {
+mcp__fidgetflo__swarm_monitor {
   swarmId: "current",
   interval: 5000
 }
 
 // Bottleneck analysis
-mcp__claude-flow__bottleneck_analyze {
+mcp__fidgetflo__bottleneck_analyze {
   component: "api-layer",
   metrics: ["latency", "throughput", "errors"]
 }
 
 // Token usage tracking
-mcp__claude-flow__token_usage {
+mcp__fidgetflo__token_usage {
   operation: "feature-development",
   timeframe: "24h"
 }
@@ -1059,7 +1059,7 @@ mcp__claude-flow__token_usage {
 
 - **Documentation**: https://github.com/ruvnet/claude-flow
 - **Issues**: https://github.com/ruvnet/claude-flow/issues
-- **NPM Package**: https://www.npmjs.com/package/claude-flow
+- **NPM Package**: https://www.npmjs.com/package/fidgetflo
 - **Community**: Discord server (link in repository)
 
 ---
@@ -1070,35 +1070,35 @@ mcp__claude-flow__token_usage {
 
 ```bash
 # List modes
-npx claude-flow sparc modes
+npx fidgetflo sparc modes
 
 # Run specific mode
-npx claude-flow sparc run <mode> "task"
+npx fidgetflo sparc run <mode> "task"
 
 # TDD workflow
-npx claude-flow sparc tdd "feature"
+npx fidgetflo sparc tdd "feature"
 
 # Full pipeline
-npx claude-flow sparc pipeline "task"
+npx fidgetflo sparc pipeline "task"
 
 # Batch execution
-npx claude-flow sparc batch <modes> "task"
+npx fidgetflo sparc batch <modes> "task"
 ```
 
 ### Most Common MCP Calls
 
 ```javascript
 // Initialize swarm
-mcp__claude-flow__swarm_init { topology: "hierarchical" }
+mcp__fidgetflo__swarm_init { topology: "hierarchical" }
 
 // Execute mode
-mcp__claude-flow__sparc_mode { mode: "coder", task_description: "..." }
+mcp__fidgetflo__sparc_mode { mode: "coder", task_description: "..." }
 
 // Monitor progress
-mcp__claude-flow__swarm_monitor { interval: 5000 }
+mcp__fidgetflo__swarm_monitor { interval: 5000 }
 
 // Store in memory
-mcp__claude-flow__memory_usage { action: "store", key: "...", value: "..." }
+mcp__fidgetflo__memory_usage { action: "store", key: "...", value: "..." }
 ```
 
 ---

@@ -1,8 +1,8 @@
 # @claude-flow/teammate-plugin
 
-Native **TeammateTool** integration plugin for Claude Flow. Bridges Claude Code v2.1.19+ multi-agent orchestration capabilities with Claude Flow's swarm system.
+Native **TeammateTool** integration plugin for FidgetFlo. Bridges Claude Code v2.1.19+ multi-agent orchestration capabilities with FidgetFlo's swarm system.
 
-[![npm version](https://badge.fury.io/js/%40claude-flow%2Fteammate-plugin.svg)](https://badge.fury.io/js/%40claude-flow%2Fteammate-plugin)
+[![npm version](https://badge.fury.io/js/%40fidgetflo%2Fteammate-plugin.svg)](https://badge.fury.io/js/%40fidgetflo%2Fteammate-plugin)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Requirements
@@ -40,8 +40,8 @@ Install directly using Claude Code's plugin system:
 # Install from npm registry
 claude plugins install @claude-flow/teammate-plugin
 
-# Or install from Claude Flow plugin registry (IPFS-backed)
-claude plugins install teammate-plugin --registry claude-flow
+# Or install from FidgetFlo plugin registry (IPFS-backed)
+claude plugins install teammate-plugin --registry fidgetflo
 ```
 
 ### Via npm
@@ -56,13 +56,13 @@ Or with pnpm:
 pnpm add @claude-flow/teammate-plugin
 ```
 
-### Via Claude Flow CLI
+### Via FidgetFlo CLI
 
 ```bash
-# Install via claude-flow plugin manager
+# Install via fidgetflo plugin manager
 npx @claude-flow/cli@latest plugins install --name @claude-flow/teammate-plugin
 
-# Or add to your claude-flow.config.json
+# Or add to your fidgetflo.config.json
 npx @claude-flow/cli@latest config set plugins.teammate-plugin.enabled true
 ```
 
@@ -72,7 +72,7 @@ npx @claude-flow/cli@latest config set plugins.teammate-plugin.enabled true
 # Check plugin is loaded
 claude plugins list
 
-# Or via claude-flow
+# Or via fidgetflo
 npx @claude-flow/cli@latest plugins list
 ```
 
@@ -476,7 +476,7 @@ const bridge = await createTeammateBridge({
 });
 ```
 
-## Integration with Claude Flow
+## Integration with FidgetFlo
 
 ```typescript
 import { createTeammateBridge } from '@claude-flow/teammate-plugin';
@@ -485,10 +485,10 @@ import { UnifiedSwarmCoordinator } from '@claude-flow/swarm';
 // Create bridge
 const bridge = await createTeammateBridge();
 
-// Map Claude Flow topology to team config
+// Map FidgetFlo topology to team config
 const teamConfig = {
   name: 'cf-team',
-  topology: 'hierarchical',  // Maps to Claude Flow's hierarchical
+  topology: 'hierarchical',  // Maps to FidgetFlo's hierarchical
   maxTeammates: 8,
   planModeRequired: true,
 };
@@ -496,7 +496,7 @@ const teamConfig = {
 // Create team
 const team = await bridge.spawnTeam(teamConfig);
 
-// Map Claude Flow agent types to teammate configs
+// Map FidgetFlo agent types to teammate configs
 const agentMapping = {
   'coder': { role: 'coder', tools: ['Edit', 'Write', 'Read', 'Bash'] },
   'tester': { role: 'tester', tools: ['Read', 'Bash', 'Glob'] },
@@ -504,7 +504,7 @@ const agentMapping = {
   'architect': { role: 'architect', tools: ['Read', 'Glob', 'Grep'] },
 };
 
-// Spawn teammates with Claude Flow agent types
+// Spawn teammates with FidgetFlo agent types
 for (const [type, config] of Object.entries(agentMapping)) {
   await bridge.spawnTeammate({
     name: `${type}-1`,
@@ -651,7 +651,7 @@ npx @claude-flow/cli@latest mcp tools | grep teammate
 
 ## Plugin Registry (IPFS)
 
-This plugin is published to the Claude Flow Plugin Registry on IPFS for decentralized distribution.
+This plugin is published to the FidgetFlo Plugin Registry on IPFS for decentralized distribution.
 
 ### Registry Entry
 
@@ -661,7 +661,7 @@ This plugin is published to the Claude Flow Plugin Registry on IPFS for decentra
   "package": "@claude-flow/teammate-plugin",
   "version": "1.0.0-alpha.1",
   "description": "Native TeammateTool integration for Claude Code v2.1.19+",
-  "author": "Claude Flow Team",
+  "author": "FidgetFlo Team",
   "license": "MIT",
   "repository": "https://github.com/ruvnet/claude-flow",
   "keywords": ["claude-code", "teammate", "multi-agent", "swarm"],
@@ -708,6 +708,6 @@ MIT
 
 ## Related
 
-- [Claude Flow](https://github.com/ruvnet/claude-flow) - Multi-agent orchestration framework
+- [FidgetFlo](https://github.com/ruvnet/claude-flow) - Multi-agent orchestration framework
 - [Claude Code](https://github.com/anthropics/claude-code) - Anthropic's CLI for Claude
 - [ADR-027](../implementation/adrs/ADR-027-teammate-tool-integration.md) - Architecture decision record

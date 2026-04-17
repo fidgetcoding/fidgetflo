@@ -69,7 +69,7 @@ app.use((err, req, res, next) => {
 // Start server
 app.listen(port, () => {
   console.log(`REST API server running on port ${port}`);
-  console.log('Created by Claude Flow Swarm');
+  console.log('Created by FidgetFlo Swarm');
 });
 
 module.exports = app;

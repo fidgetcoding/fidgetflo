@@ -1,7 +1,7 @@
 {
   "name": "@claude-flow/guidance",
   "version": "3.0.0-alpha.1",
-  "description": "Guidance Control Plane - Compiles, retrieves, enforces, and evolves guidance rules for Claude Code sessions",
+  "description": "FidgetFlo Guidance Control Plane - Compiles, retrieves, enforces, and evolves guidance rules for Claude Code sessions (based on Ruflo by @ruvnet)",
   "type": "module",
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
@@ -184,11 +184,22 @@
     "mcp",
     "model-context-protocol"
   ],
-  "author": "Claude Flow Team",
+  "author": "Nathan Davidovich <nate@lorecraft.io> (https://github.com/lorecraft-io)",
+  "contributors": [
+    {
+      "name": "ruvnet",
+      "url": "https://github.com/ruvnet",
+      "role": "original work (Ruflo — https://github.com/ruvnet/ruflo)"
+    }
+  ],
   "license": "MIT",
+  "homepage": "https://github.com/lorecraft-io/fidgetflo#readme",
+  "bugs": {
+    "url": "https://github.com/lorecraft-io/fidgetflo/issues"
+  },
   "repository": {
     "type": "git",
-    "url": "https://github.com/ruvnet/claude-flow.git",
+    "url": "git+https://github.com/lorecraft-io/fidgetflo.git",
     "directory": "v3/@claude-flow/guidance"
   },
   "publishConfig": {

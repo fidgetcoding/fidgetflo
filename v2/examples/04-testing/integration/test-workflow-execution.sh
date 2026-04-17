@@ -1,7 +1,7 @@
 #!/bin/bash
 # Integration Test - Complete Workflow Execution
 
-echo "🔄 Claude Flow Workflow Integration Test"
+echo "🔄 FidgetFlo Workflow Integration Test"
 echo "======================================="
 echo ""
 
@@ -47,7 +47,7 @@ test_step "Workflow file exists" "[[ -f '$WORKFLOW_FILE' ]]"
 # Test 2: Execute workflow
 echo ""
 echo "🚀 Executing workflow..."
-if ../claude-flow orchestrate "$WORKFLOW_FILE" --output "$OUTPUT_DIR" --quiet; then
+if ../fidgetflo orchestrate "$WORKFLOW_FILE" --output "$OUTPUT_DIR" --quiet; then
     test_step "Workflow execution" "true"
 else
     test_step "Workflow execution" "false"
@@ -71,8 +71,8 @@ test_step "Agent logs created" "[[ -d '$OUTPUT_DIR/logs' ]] || [[ -f '$OUTPUT_DI
 echo ""
 echo "🧠 Testing memory persistence..."
 MEMORY_KEY="workflow_test_$TEST_ID"
-../claude-flow memory store "$MEMORY_KEY" "Workflow test data" >/dev/null 2>&1
-test_step "Memory storage during workflow" "../claude-flow memory query '$MEMORY_KEY' >/dev/null 2>&1"
+../fidgetflo memory store "$MEMORY_KEY" "Workflow test data" >/dev/null 2>&1
+test_step "Memory storage during workflow" "../fidgetflo memory query '$MEMORY_KEY' >/dev/null 2>&1"
 
 # Test 8: Parallel workflow test
 echo ""
@@ -80,7 +80,7 @@ echo "⚡ Testing parallel execution..."
 PARALLEL_WORKFLOW="./02-workflows/parallel/data-processing-workflow.json"
 if [[ -f "$PARALLEL_WORKFLOW" ]]; then
     PARALLEL_OUTPUT="$OUTPUT_DIR/parallel"
-    ../claude-flow orchestrate "$PARALLEL_WORKFLOW" --output "$PARALLEL_OUTPUT" --monitor --quiet &
+    ../fidgetflo orchestrate "$PARALLEL_WORKFLOW" --output "$PARALLEL_OUTPUT" --monitor --quiet &
     PID=$!
     
     # Give it time to start
@@ -103,7 +103,7 @@ echo ""
 echo "🛡️ Testing error handling..."
 INVALID_WORKFLOW="/tmp/invalid_workflow_$TEST_ID.json"
 echo '{"invalid": "workflow"}' > "$INVALID_WORKFLOW"
-if ! ../claude-flow orchestrate "$INVALID_WORKFLOW" --output "$OUTPUT_DIR/error" 2>/dev/null; then
+if ! ../fidgetflo orchestrate "$INVALID_WORKFLOW" --output "$OUTPUT_DIR/error" 2>/dev/null; then
     test_step "Invalid workflow rejection" "true"
 else
     test_step "Invalid workflow rejection" "false"
@@ -115,7 +115,7 @@ echo ""
 echo "🧹 Testing resource cleanup..."
 # Check if temporary files are cleaned up
 sleep 2
-TEMP_FILES=$(find /tmp -name "*claude-flow*$TEST_ID*" 2>/dev/null | wc -l)
+TEMP_FILES=$(find /tmp -name "*fidgetflo*$TEST_ID*" 2>/dev/null | wc -l)
 test_step "Temporary files cleaned" "[[ $TEMP_FILES -eq 0 ]]"
 
 # Summary
@@ -143,7 +143,7 @@ echo "📈 Success Rate: $(( PASSED * 100 / (PASSED + FAILED) ))%"
 echo ""
 echo "🧹 Cleaning up test artifacts..."
 rm -rf "$OUTPUT_DIR"
-../claude-flow memory delete "$MEMORY_KEY" >/dev/null 2>&1
+../fidgetflo memory delete "$MEMORY_KEY" >/dev/null 2>&1
 
 # Exit code
 [[ $FAILED -eq 0 ]] && exit 0 || exit 1

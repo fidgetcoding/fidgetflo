@@ -379,28 +379,28 @@ registry.register({
 ### V2 Hooks CLI
 ```bash
 # V2 Commands
-npx claude-flow hooks pre-task --description "Task" --task-id ID
-npx claude-flow hooks post-task --task-id ID
-npx claude-flow hooks pre-edit --file path
-npx claude-flow hooks post-edit --file path --success true
-npx claude-flow hooks pre-command --command "npm test"
-npx claude-flow hooks post-command --command "npm test" --success true
-npx claude-flow hooks session-end
-npx claude-flow hooks session-restore --session-id latest
-npx claude-flow hooks notify --message "Done" --level success
+npx fidgetflo hooks pre-task --description "Task" --task-id ID
+npx fidgetflo hooks post-task --task-id ID
+npx fidgetflo hooks pre-edit --file path
+npx fidgetflo hooks post-edit --file path --success true
+npx fidgetflo hooks pre-command --command "npm test"
+npx fidgetflo hooks post-command --command "npm test" --success true
+npx fidgetflo hooks session-end
+npx fidgetflo hooks session-restore --session-id latest
+npx fidgetflo hooks notify --message "Done" --level success
 ```
 
 ### V3 Hooks CLI
 ```bash
 # V3 Commands (implemented)
-npx claude-flow hooks pre-edit <filePath>
-npx claude-flow hooks post-edit <filePath> --success true
-npx claude-flow hooks pre-command "<command>"
-npx claude-flow hooks post-command "<command>" --success true
-npx claude-flow hooks route "<task description>"
-npx claude-flow hooks explain "<task description>"
-npx claude-flow hooks pretrain
-npx claude-flow hooks metrics
+npx fidgetflo hooks pre-edit <filePath>
+npx fidgetflo hooks post-edit <filePath> --success true
+npx fidgetflo hooks pre-command "<command>"
+npx fidgetflo hooks post-command "<command>" --success true
+npx fidgetflo hooks route "<task description>"
+npx fidgetflo hooks explain "<task description>"
+npx fidgetflo hooks pretrain
+npx fidgetflo hooks metrics
 
 # Missing V3 commands:
 # - hooks pre-task

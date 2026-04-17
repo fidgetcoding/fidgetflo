@@ -21,7 +21,7 @@
 
 ### Problem Statement
 
-Claude Flow V3 requires comprehensive quality engineering (QE) capabilities for:
+FidgetFlo V3 requires comprehensive quality engineering (QE) capabilities for:
 1. **Automated test generation** across multiple paradigms (unit, integration, E2E, BDD)
 2. **Intelligent coverage analysis** with gap detection and prioritization
 3. **Defect prediction** using ML-based quality intelligence
@@ -67,7 +67,7 @@ agentic-qe/
 
 ### Shared Dependencies
 
-| Dependency | agentic-qe | claude-flow V3 | Strategy |
+| Dependency | agentic-qe | fidgetflo V3 | Strategy |
 |------------|------------|----------------|----------|
 | `@ruvector/attention` | Core attention | ADR-028 integration | **Reuse** V3 instance |
 | `@ruvector/gnn` | Code graphs | ADR-029 integration | **Reuse** V3 instance |
@@ -80,13 +80,13 @@ agentic-qe/
 
 ## Decision
 
-Integrate `agentic-qe` as a **first-class plugin** for Claude Flow V3 using the `@claude-flow/plugins` SDK with clear bounded context mapping, shared infrastructure coordination, and security isolation.
+Integrate `agentic-qe` as a **first-class plugin** for FidgetFlo V3 using the `@claude-flow/plugins` SDK with clear bounded context mapping, shared infrastructure coordination, and security isolation.
 
 ### Architecture Overview
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────────────┐
-│                              Claude Flow V3                                      │
+│                              FidgetFlo V3                                      │
 ├─────────────────────────────────────────────────────────────────────────────────┤
 │                                                                                  │
 │   ┌────────────────────────────────────────────────────────────────────────┐    │
@@ -1165,7 +1165,7 @@ interface ModelRouteResult extends EnhancedRouteResult {
 import type { HiveMindService } from '@claude-flow/coordination';
 
 /**
- * Bridge between agentic-qe Queen Coordinator and claude-flow Hive Mind
+ * Bridge between agentic-qe Queen Coordinator and fidgetflo Hive Mind
  */
 export class QueenHiveBridge {
   private hiveMind: HiveMindService;

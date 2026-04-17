@@ -1,5 +1,5 @@
 # Memory Command Fix - better-sqlite3 / onnxruntime-node Errors
-**Issue:** `npx claude-flow@alpha memory` commands fail with dependency errors
+**Issue:** `npx fidgetflo@alpha memory` commands fail with dependency errors
 **Status:** ✅ FIXED (Automatic Fallback in v2.7.15)
 **Date:** 2025-10-25
 
@@ -9,14 +9,14 @@
 
 ### Error 1: better-sqlite3 (ReasoningBank)
 ```bash
-$ npx claude-flow@alpha memory store "api" "REST"
+$ npx fidgetflo@alpha memory store "api" "REST"
 ❌ Error: BetterSqlite3 is not a constructor
    Migration error: TypeError: BetterSqlite3 is not a constructor
 ```
 
 ### Error 2: onnxruntime-node (ONNX inference)
 ```bash
-$ npx claude-flow@alpha memory status
+$ npx fidgetflo@alpha memory status
 ❌ Error: Cannot find package 'onnxruntime-node'
 ```
 
@@ -33,19 +33,19 @@ $ npx claude-flow@alpha memory status
 **Memory commands now automatically fall back to JSON when SQLite isn't available:**
 
 ```bash
-$ npx claude-flow@alpha memory store "api" "REST"
+$ npx fidgetflo@alpha memory store "api" "REST"
 ⚠️  NPX LIMITATION DETECTED
 ReasoningBank requires better-sqlite3, not available in npx temp directories.
 
 📚 Solutions:
   1. LOCAL INSTALL (Recommended):
-     npm install && node_modules/.bin/claude-flow memory store "key" "value"
+     npm install && node_modules/.bin/fidgetflo memory store "key" "value"
 
   2. USE MCP TOOLS instead:
-     mcp__claude-flow__memory_usage({ action: "store", key: "test", value: "data" })
+     mcp__fidgetflo__memory_usage({ action: "store", key: "test", value: "data" })
 
   3. USE JSON FALLBACK:
-     npx claude-flow@alpha memory store "key" "value" --basic
+     npx fidgetflo@alpha memory store "key" "value" --basic
 
 ✅ Automatically using JSON fallback for this command
 ✅ Stored: api = REST (namespace: default)
@@ -69,7 +69,7 @@ ReasoningBank requires better-sqlite3, not available in npx temp directories.
 npm install
 
 # Use local binary (NOT npx)
-node_modules/.bin/claude-flow memory stats
+node_modules/.bin/fidgetflo memory stats
 
 # Or add to package.json scripts
 npm run memory:stats  # if you add the script
@@ -92,7 +92,7 @@ npm run memory:stats  # if you add the script
 npm install onnxruntime-node --save-optional --legacy-peer-deps
 
 # Then npx should work
-npx claude-flow@alpha memory status
+npx fidgetflo@alpha memory status
 ```
 
 **Status:** ⚠️ Installed but npx still has issues due to temp directory
@@ -105,10 +105,10 @@ npx claude-flow@alpha memory status
 // package.json
 {
   "scripts": {
-    "memory:stats": "claude-flow memory stats",
-    "memory:list": "claude-flow memory list",
-    "memory:store": "claude-flow memory store",
-    "memory:query": "claude-flow memory query"
+    "memory:stats": "fidgetflo memory stats",
+    "memory:list": "fidgetflo memory list",
+    "memory:store": "fidgetflo memory store",
+    "memory:query": "fidgetflo memory query"
   }
 }
 ```
@@ -128,25 +128,25 @@ npm run memory:query -- "search term"
 
 ```bash
 # Statistics
-node_modules/.bin/claude-flow memory stats
+node_modules/.bin/fidgetflo memory stats
 
 # Store key-value
-node_modules/.bin/claude-flow memory store "key" "value"
-node_modules/.bin/claude-flow memory store "key" "value" --namespace "project"
+node_modules/.bin/fidgetflo memory store "key" "value"
+node_modules/.bin/fidgetflo memory store "key" "value" --namespace "project"
 
 # Query/Search
-node_modules/.bin/claude-flow memory query "search term"
-node_modules/.bin/claude-flow memory query "search" --namespace "sparc"
+node_modules/.bin/fidgetflo memory query "search term"
+node_modules/.bin/fidgetflo memory query "search" --namespace "sparc"
 
 # List namespaces
-node_modules/.bin/claude-flow memory list
+node_modules/.bin/fidgetflo memory list
 
 # Export/Import
-node_modules/.bin/claude-flow memory export backup.json
-node_modules/.bin/claude-flow memory import backup.json
+node_modules/.bin/fidgetflo memory export backup.json
+node_modules/.bin/fidgetflo memory import backup.json
 
 # Clear namespace
-node_modules/.bin/claude-flow memory clear --namespace "temp"
+node_modules/.bin/fidgetflo memory clear --namespace "temp"
 ```
 
 ---
@@ -156,25 +156,25 @@ node_modules/.bin/claude-flow memory clear --namespace "temp"
 ### ✅ Test Results
 
 ```bash
-$ node_modules/.bin/claude-flow memory stats
+$ node_modules/.bin/fidgetflo memory stats
 ✅ Memory Bank Statistics:
    Total Entries: 0
    Namespaces: 0
    Size: 0.00 KB
 
-$ node_modules/.bin/claude-flow memory list
+$ node_modules/.bin/fidgetflo memory list
 ⚠️  No namespaces found
 
-$ node_modules/.bin/claude-flow memory store "test" "value"
+$ node_modules/.bin/fidgetflo memory store "test" "value"
 ✅ Stored: test = value (namespace: default)
 
-$ node_modules/.bin/claude-flow memory stats
+$ node_modules/.bin/fidgetflo memory stats
 ✅ Memory Bank Statistics:
    Total Entries: 1
    Namespaces: 1
    Size: 0.05 KB
 
-$ node_modules/.bin/claude-flow memory query "test"
+$ node_modules/.bin/fidgetflo memory query "test"
 ✅ Found 1 result(s):
    test = value (namespace: default)
 ```
@@ -206,7 +206,7 @@ $ node_modules/.bin/claude-flow memory query "test"
 npm install
 
 # Create aliases (add to .bashrc or .zshrc)
-alias cfmem="node_modules/.bin/claude-flow memory"
+alias cfmem="node_modules/.bin/fidgetflo memory"
 
 # Usage
 cfmem stats
@@ -220,9 +220,9 @@ cfmem query "authentication"
 // package.json
 {
   "scripts": {
-    "memory:export": "claude-flow memory export .memory-backup.json",
-    "memory:import": "claude-flow memory import .memory-backup.json",
-    "memory:clear": "claude-flow memory clear --namespace temp"
+    "memory:export": "fidgetflo memory export .memory-backup.json",
+    "memory:import": "fidgetflo memory import .memory-backup.json",
+    "memory:clear": "fidgetflo memory clear --namespace temp"
   }
 }
 ```
@@ -235,20 +235,20 @@ cfmem query "authentication"
 
 ```javascript
 // Via Claude Code (MCP tools)
-mcp__claude-flow__memory_usage({
+mcp__fidgetflo__memory_usage({
   action: "store",
   key: "test-key",
   value: "test-value",
   namespace: "default"
 })
 
-mcp__claude-flow__memory_usage({
+mcp__fidgetflo__memory_usage({
   action: "retrieve",
   key: "test-key",
   namespace: "default"
 })
 
-mcp__claude-flow__memory_search({
+mcp__fidgetflo__memory_search({
   pattern: "test",
   namespace: "default",
   limit: 10
@@ -272,13 +272,13 @@ mcp__claude-flow__memory_search({
 **Quick Fix:**
 ```bash
 # Instead of:
-npx claude-flow@alpha memory status  ❌
+npx fidgetflo@alpha memory status  ❌
 
 # Use:
-node_modules/.bin/claude-flow memory stats  ✅
+node_modules/.bin/fidgetflo memory stats  ✅
 
 # Or (best):
-mcp__claude-flow__memory_usage({ action: "retrieve" })  ✅
+mcp__fidgetflo__memory_usage({ action: "retrieve" })  ✅
 ```
 
 ---

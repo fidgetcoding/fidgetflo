@@ -1,6 +1,6 @@
-# Claude Flow Benchmark System v2.0
+# FidgetFlo Benchmark System v2.0
 
-A production-ready benchmarking system for Claude Flow that executes **real commands** and measures **actual performance metrics**.
+A production-ready benchmarking system for FidgetFlo that executes **real commands** and measures **actual performance metrics**.
 
 ## 🚀 Quick Start
 
@@ -18,7 +18,7 @@ python run_real_benchmarks.py --mode comprehensive
 
 ## ✨ Key Features
 
-- **Real Command Execution**: Executes actual `./claude-flow` commands via subprocess
+- **Real Command Execution**: Executes actual `./fidgetflo` commands via subprocess
 - **Stream JSON Parsing**: Real-time parsing of `--non-interactive --output-format stream-json`
 - **Authentic Metrics**: Token usage, execution time, and resource consumption from real runs
 - **No Simulations**: 100% real execution, no mocks or placeholders
@@ -29,17 +29,17 @@ python run_real_benchmarks.py --mode comprehensive
 
 ### Swarm Benchmarking
 ```bash
-./claude-flow swarm "objective" --non-interactive --output-format stream-json
+./fidgetflo swarm "objective" --non-interactive --output-format stream-json
 ```
 
 ### Hive-Mind Benchmarking
 ```bash
-./claude-flow hive-mind spawn "task" --non-interactive
+./fidgetflo hive-mind spawn "task" --non-interactive
 ```
 
 ### SPARC Mode Benchmarking
 ```bash
-./claude-flow sparc run code "task" --non-interactive
+./fidgetflo sparc run code "task" --non-interactive
 ```
 
 ## 🏗️ Architecture
@@ -115,7 +115,7 @@ print(f"Agents spawned: {result.metrics['agents_spawned']}")
 
 ## 🔧 Configuration
 
-The system uses real Claude Flow commands with these flags:
+The system uses real FidgetFlo commands with these flags:
 - `--non-interactive`: Automation mode
 - `--output-format stream-json`: Structured output
 - `--dangerously-skip-permissions`: Skip prompts
@@ -123,7 +123,7 @@ The system uses real Claude Flow commands with these flags:
 
 ## 📊 Performance
 
-Validated with Claude Flow v2.0.0-alpha.87:
+Validated with FidgetFlo v2.0.0-alpha.87:
 - Real token usage tracking
 - Actual execution timing
 - Live resource monitoring
@@ -132,7 +132,7 @@ Validated with Claude Flow v2.0.0-alpha.87:
 ## 🤝 Contributing
 
 This is a production system designed for real benchmarking. All contributions must:
-1. Use real Claude Flow commands
+1. Use real FidgetFlo commands
 2. Parse actual responses
 3. Measure genuine metrics
 4. Include comprehensive tests

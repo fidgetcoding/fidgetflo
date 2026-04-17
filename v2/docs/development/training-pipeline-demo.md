@@ -1,13 +1,13 @@
 # Training Pipeline Demo - Alpha 89
 
 ## Overview
-The Training Pipeline is now fully integrated into Claude Flow, providing real machine learning capabilities that improve agent performance over time.
+The Training Pipeline is now fully integrated into FidgetFlo, providing real machine learning capabilities that improve agent performance over time.
 
 ## What Was Demonstrated
 
 ### 1. Full Pipeline Execution
 ```bash
-./claude-flow train-pipeline run --complexity medium --iterations 3
+./fidgetflo train-pipeline run --complexity medium --iterations 3
 ```
 
 **Results:**
@@ -33,7 +33,7 @@ The pipeline automatically:
 3. **Stored learning data** for future sessions
 4. **Generated recommendations** for each strategy
 
-### 4. Integration with Claude Flow
+### 4. Integration with FidgetFlo
 
 The training system now:
 - **Feeds into swarm coordination** - Agents use learned profiles
@@ -46,37 +46,37 @@ The training system now:
 ### 1. Run Training Before Complex Tasks
 ```bash
 # Train the system first
-./claude-flow train-pipeline run --complexity hard --iterations 5
+./fidgetflo train-pipeline run --complexity hard --iterations 5
 
 # Then use swarm with optimized settings
-./claude-flow swarm "Build complex application" --use-training
+./fidgetflo swarm "Build complex application" --use-training
 ```
 
 ### 2. Check Agent Performance
 ```bash
 # View current agent profiles
-./claude-flow train-pipeline status
+./fidgetflo train-pipeline status
 
 # See specific agent metrics
-./claude-flow agent-metrics --agent coder
+./fidgetflo agent-metrics --agent coder
 ```
 
 ### 3. Generate Tasks for Your Domain
 ```bash
 # Generate custom training tasks
-./claude-flow train-pipeline generate --complexity hard
+./fidgetflo train-pipeline generate --complexity hard
 
 # Train on specific task types
-./claude-flow train-pipeline run --focus "api,database,security"
+./fidgetflo train-pipeline run --focus "api,database,security"
 ```
 
 ### 4. Validate Improvements
 ```bash
 # Check if training improved performance
-./claude-flow train-pipeline validate
+./fidgetflo train-pipeline validate
 
 # Compare before/after metrics
-./claude-flow verify-train status
+./fidgetflo verify-train status
 ```
 
 ## Real-World Benefits
@@ -106,41 +106,41 @@ The training system now:
 - Real-time strategy adjustments
 
 ### 3. Memory System
-- Training data persisted in `.claude-flow/agents/profiles.json`
-- Swarm config updated in `.claude-flow/swarm-config.json`
+- Training data persisted in `.fidgetflo/agents/profiles.json`
+- Swarm config updated in `.fidgetflo/swarm-config.json`
 - Cross-session learning enabled
 
 ## Command Reference
 
 ```bash
 # Full pipeline
-./claude-flow train-pipeline run [options]
+./fidgetflo train-pipeline run [options]
   --complexity <level>  # easy/medium/hard
   --iterations <n>      # Number of training cycles
   --validate           # Enable validation
 
 # Generate training tasks
-./claude-flow train-pipeline generate [options]
+./fidgetflo train-pipeline generate [options]
   --complexity <level>  # Task difficulty
 
 # Check status
-./claude-flow train-pipeline status
+./fidgetflo train-pipeline status
 
 # Validate performance
-./claude-flow train-pipeline validate
+./fidgetflo train-pipeline validate
 ```
 
 ## Files Created/Updated
 
 ### Configuration Files
-- `.claude-flow/pipeline-config.json` - Pipeline settings
-- `.claude-flow/agents/profiles.json` - Agent performance profiles
-- `.claude-flow/swarm-config.json` - Optimized swarm configuration
+- `.fidgetflo/pipeline-config.json` - Pipeline settings
+- `.fidgetflo/agents/profiles.json` - Agent performance profiles
+- `.fidgetflo/swarm-config.json` - Optimized swarm configuration
 
 ### Training Data
-- `.claude-flow/training/tasks-*.json` - Generated training tasks
-- `.claude-flow/training/results-*.json` - Execution results
-- `.claude-flow/validation/validation-*.json` - Improvement validations
+- `.fidgetflo/training/tasks-*.json` - Generated training tasks
+- `.fidgetflo/training/results-*.json` - Execution results
+- `.fidgetflo/validation/validation-*.json` - Improvement validations
 
 ### Improved Commands
 - `.claude/commands/improved-workflows.js` - Optimized workflow implementations
@@ -154,7 +154,7 @@ The training system now:
 
 ## Summary
 
-The Training Pipeline transforms Claude Flow from a static system to a learning, adaptive platform that improves with every use. The "balanced" strategy emerged as optimal through real testing, achieving:
+The Training Pipeline transforms FidgetFlo from a static system to a learning, adaptive platform that improves with every use. The "balanced" strategy emerged as optimal through real testing, achieving:
 
 - **89.5% average score** (highest among all strategies)
 - **85.5% success rate** (reliable performance)

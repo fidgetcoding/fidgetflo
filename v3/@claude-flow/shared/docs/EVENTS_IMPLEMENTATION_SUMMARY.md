@@ -6,7 +6,7 @@
 
 ## Overview
 
-Complete implementation of Event Store Persistence for V3 Claude Flow, providing event sourcing capabilities with SQLite backend and cross-platform compatibility.
+Complete implementation of Event Store Persistence for V3 FidgetFlo, providing event sourcing capabilities with SQLite backend and cross-platform compatibility.
 
 ## Deliverables
 
@@ -384,5 +384,5 @@ The Event Store Persistence implementation for ADR-007 is **complete and product
 ---
 
 **Implementation completed**: 2026-01-04
-**Module location**: `/workspaces/claude-flow/v3/@claude-flow/shared/src/events/`
+**Module location**: `/workspaces/fidgetflo/v3/@claude-flow/shared/src/events/`
 **Status**: ✅ Production Ready

@@ -1,8 +1,8 @@
-# SWE-Bench Integration for Claude Flow
+# SWE-Bench Integration for FidgetFlo
 
 ## Overview
 
-SWE-bench is a comprehensive benchmark suite designed to evaluate software engineering capabilities of AI systems. This implementation integrates SWE-bench with Claude Flow's swarm benchmark system.
+SWE-bench is a comprehensive benchmark suite designed to evaluate software engineering capabilities of AI systems. This implementation integrates SWE-bench with FidgetFlo's swarm benchmark system.
 
 ## Features
 
@@ -10,7 +10,7 @@ SWE-bench is a comprehensive benchmark suite designed to evaluate software engin
 - **Real-World Scenarios**: Based on actual GitHub issues and PRs
 - **Performance Metrics**: Detailed tracking of execution time, accuracy, and resource usage
 - **Optimization Pipeline**: Iterative improvement based on benchmark results
-- **Multi-Agent Support**: Leverages Claude Flow's swarm capabilities
+- **Multi-Agent Support**: Leverages FidgetFlo's swarm capabilities
 
 ## Quick Start
 
@@ -61,9 +61,9 @@ swe-bench/
 └── tests/           # Test suites
 ```
 
-## Integration with Claude Flow
+## Integration with FidgetFlo
 
-The SWE-bench suite leverages Claude Flow's advanced features:
+The SWE-bench suite leverages FidgetFlo's advanced features:
 
 - **Swarm Coordination**: Multi-agent task execution
 - **SPARC Methodology**: Systematic problem-solving approach

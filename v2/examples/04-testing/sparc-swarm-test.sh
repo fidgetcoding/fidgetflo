@@ -1,8 +1,8 @@
 #!/bin/bash
-# SPARC TDD Test Suite for Claude Flow Swarm CLI
+# SPARC TDD Test Suite for FidgetFlo Swarm CLI
 # Tests all strategies and features systematically
 
-echo "🔬 SPARC TDD Test Suite for Claude Flow Swarm"
+echo "🔬 SPARC TDD Test Suite for FidgetFlo Swarm"
 echo "============================================="
 echo ""
 echo "Following SPARC methodology:"
@@ -99,64 +99,64 @@ sleep 2
 echo -e "\n${YELLOW}🎯 STRATEGY TESTS${NC}"
 
 run_test "Development Strategy" \
-    "npx claude-flow@latest swarm 'build a calculator app' --strategy development --dry-run --max-agents 4 2>&1 | grep -q 'Strategy: development'"
+    "npx fidgetflo@latest swarm 'build a calculator app' --strategy development --dry-run --max-agents 4 2>&1 | grep -q 'Strategy: development'"
 
 run_test "Research Strategy" \
-    "npx claude-flow@latest swarm 'research AI trends' --strategy research --dry-run 2>&1 | grep -q 'Strategy: research'"
+    "npx fidgetflo@latest swarm 'research AI trends' --strategy research --dry-run 2>&1 | grep -q 'Strategy: research'"
 
 run_test "Analysis Strategy" \
-    "npx claude-flow@latest swarm 'analyze codebase' --strategy analysis --dry-run 2>&1 | grep -q 'Strategy: analysis'"
+    "npx fidgetflo@latest swarm 'analyze codebase' --strategy analysis --dry-run 2>&1 | grep -q 'Strategy: analysis'"
 
 run_test "Testing Strategy" \
-    "npx claude-flow@latest swarm 'create test suite' --strategy testing --dry-run 2>&1 | grep -q 'Strategy: testing'"
+    "npx fidgetflo@latest swarm 'create test suite' --strategy testing --dry-run 2>&1 | grep -q 'Strategy: testing'"
 
 run_test "Optimization Strategy" \
-    "npx claude-flow@latest swarm 'optimize performance' --strategy optimization --dry-run 2>&1 | grep -q 'Strategy: optimization'"
+    "npx fidgetflo@latest swarm 'optimize performance' --strategy optimization --dry-run 2>&1 | grep -q 'Strategy: optimization'"
 
 # Mode Tests
 echo -e "\n${YELLOW}🏗️  MODE TESTS${NC}"
 
 run_test "Centralized Mode" \
-    "npx claude-flow@latest swarm 'test task' --mode centralized --dry-run 2>&1 | grep -q 'Mode: centralized'"
+    "npx fidgetflo@latest swarm 'test task' --mode centralized --dry-run 2>&1 | grep -q 'Mode: centralized'"
 
 run_test "Distributed Mode" \
-    "npx claude-flow@latest swarm 'test task' --mode distributed --distributed --dry-run 2>&1 | grep -q 'Mode: distributed'"
+    "npx fidgetflo@latest swarm 'test task' --mode distributed --distributed --dry-run 2>&1 | grep -q 'Mode: distributed'"
 
 run_test "Hierarchical Mode" \
-    "npx claude-flow@latest swarm 'test task' --mode hierarchical --dry-run 2>&1 | grep -q 'Mode: hierarchical'"
+    "npx fidgetflo@latest swarm 'test task' --mode hierarchical --dry-run 2>&1 | grep -q 'Mode: hierarchical'"
 
 # Feature Tests
 echo -e "\n${YELLOW}⚡ FEATURE TESTS${NC}"
 
 run_test "Parallel Execution" \
-    "npx claude-flow@latest swarm 'parallel task' --parallel --dry-run 2>&1 | grep -q 'Parallel: true'"
+    "npx fidgetflo@latest swarm 'parallel task' --parallel --dry-run 2>&1 | grep -q 'Parallel: true'"
 
 run_test "Monitoring Feature" \
-    "npx claude-flow@latest swarm 'monitored task' --monitor --dry-run 2>&1 | grep -q 'Monitoring: true'"
+    "npx fidgetflo@latest swarm 'monitored task' --monitor --dry-run 2>&1 | grep -q 'Monitoring: true'"
 
 run_test "Quality Threshold" \
-    "npx claude-flow@latest swarm 'quality task' --quality-threshold 0.95 --dry-run 2>&1 | grep -q 'Quality Threshold: 0.95'"
+    "npx fidgetflo@latest swarm 'quality task' --quality-threshold 0.95 --dry-run 2>&1 | grep -q 'Quality Threshold: 0.95'"
 
 run_test "Memory Namespace" \
-    "npx claude-flow@latest swarm 'memory task' --memory-namespace custom-space --dry-run 2>&1 | grep -q 'Memory Namespace: custom-space'"
+    "npx fidgetflo@latest swarm 'memory task' --memory-namespace custom-space --dry-run 2>&1 | grep -q 'Memory Namespace: custom-space'"
 
 run_test "Max Agents Configuration" \
-    "npx claude-flow@latest swarm 'agent task' --max-agents 10 --dry-run 2>&1 | grep -q 'Max Agents: 10'"
+    "npx fidgetflo@latest swarm 'agent task' --max-agents 10 --dry-run 2>&1 | grep -q 'Max Agents: 10'"
 
 # Advanced Configuration Tests
 echo -e "\n${YELLOW}🎛️  ADVANCED CONFIGURATION TESTS${NC}"
 
 run_test "Task Scheduling Options" \
-    "npx claude-flow@latest swarm 'scheduled task' --task-scheduling round-robin --dry-run 2>&1 | grep -q 'Task Scheduling: round-robin'"
+    "npx fidgetflo@latest swarm 'scheduled task' --task-scheduling round-robin --dry-run 2>&1 | grep -q 'Task Scheduling: round-robin'"
 
 run_test "Load Balancing Options" \
-    "npx claude-flow@latest swarm 'balanced task' --load-balancing random --dry-run 2>&1 | grep -q 'Load Balancing: random'"
+    "npx fidgetflo@latest swarm 'balanced task' --load-balancing random --dry-run 2>&1 | grep -q 'Load Balancing: random'"
 
 # Help Test
 echo -e "\n${YELLOW}📚 HELP TEST${NC}"
 
 run_test "Help Command" \
-    "npx claude-flow@latest swarm --help 2>&1 | grep -q 'Claude Flow Advanced Swarm System'"
+    "npx fidgetflo@latest swarm --help 2>&1 | grep -q 'FidgetFlo Advanced Swarm System'"
 
 # COMPLETION: Final integration test
 echo -e "\n${YELLOW}🔧 COMPLETION - INTEGRATION TEST${NC}"
@@ -164,7 +164,7 @@ echo -e "\n${YELLOW}🔧 COMPLETION - INTEGRATION TEST${NC}"
 # Create a complete swarm configuration test
 cat > "$TEST_ROOT/integration-test.sh" << 'EOF'
 #!/bin/bash
-npx claude-flow@latest swarm "build a todo app with database" \
+npx fidgetflo@latest swarm "build a todo app with database" \
   --strategy development \
   --mode distributed \
   --max-agents 8 \
@@ -207,7 +207,7 @@ echo ""
 if [ $FAILED -eq 0 ]; then
     echo -e "${GREEN}🎉 All tests passed! The swarm CLI is fully functional.${NC}"
     echo ""
-    echo "The Claude Flow Swarm system successfully:"
+    echo "The FidgetFlo Swarm system successfully:"
     echo "  ✅ Supports all 5 strategies (development, research, analysis, testing, optimization)"
     echo "  ✅ Handles 3 coordination modes (centralized, distributed, hierarchical)"
     echo "  ✅ Provides advanced features (parallel, monitoring, quality control)"
@@ -228,7 +228,7 @@ echo -e "${YELLOW}━━━━━━━━━━━━━━━━━━━━�
 echo ""
 echo "To execute a real swarm task (not dry-run), remove the --dry-run flag:"
 echo ""
-echo "  npx claude-flow@latest swarm \"create a REST API\" --strategy development"
+echo "  npx fidgetflo@latest swarm \"create a REST API\" --strategy development"
 echo ""
 echo "This will launch Claude to coordinate the swarm agents and create"
 echo "actual application files through the implemented task execution system."

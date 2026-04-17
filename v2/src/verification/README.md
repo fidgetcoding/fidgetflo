@@ -282,14 +282,14 @@ await security.emergencyShutdown(reason);
 ## 📞 Support
 
 For security issues or questions:
-- **Security Team**: security@claude-flow.ai
-- **Emergency**: security-emergency@claude-flow.ai
-- **Documentation**: https://docs.claude-flow.ai/security
+- **Security Team**: security@fidgetflo.ai
+- **Emergency**: security-emergency@fidgetflo.ai
+- **Documentation**: https://docs.fidgetflo.ai/security
 - **GitHub Issues**: https://github.com/ruvnet/claude-flow/issues
 
 ## 📄 License
 
-This security system is part of Claude Flow and is licensed under the MIT License.
+This security system is part of FidgetFlo and is licensed under the MIT License.
 See the main LICENSE file for details.
 
 ⚠️ **Security Notice**: This system is designed for protection against various attacks but should be regularly updated and audited. No security system is 100% foolproof. Always follow security best practices and conduct regular security assessments.

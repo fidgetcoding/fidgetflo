@@ -1,8 +1,8 @@
-# Claude Flow Plugin Integration
+# FidgetFlo Plugin Integration
 
 ## Overview
 
-This document describes how claude-flow integrates with the official Claude Code plugin system.
+This document describes how fidgetflo integrates with the official Claude Code plugin system.
 
 ## Plugin Structure
 
@@ -24,7 +24,7 @@ plugin/
 
 ```json
 {
-  "name": "claude-flow",
+  "name": "fidgetflo",
   "version": "3.0.0",
   "capabilities": {
     "skills": true,
@@ -56,7 +56,7 @@ plugin/
 
 The plugin bundles three MCP servers:
 
-1. **claude-flow** (required): Core swarm coordination
+1. **fidgetflo** (required): Core swarm coordination
 2. **ruv-swarm** (optional): Enhanced topology patterns
 3. **flow-nexus** (optional): Cloud orchestration
 
@@ -108,10 +108,10 @@ outputOfficialHookResult(output);
 
 ```bash
 # Add plugin marketplace
-/plugin marketplace add claude-flow https://github.com/ruvnet/claude-flow
+/plugin marketplace add fidgetflo https://github.com/ruvnet/claude-flow
 
 # Install plugin
-/plugin install claude-flow
+/plugin install fidgetflo
 ```
 
 ### Manual Installation
@@ -119,13 +119,13 @@ outputOfficialHookResult(output);
 ```bash
 # Clone and link
 git clone https://github.com/ruvnet/claude-flow
-claude --plugin-dir ./claude-flow/plugin
+claude --plugin-dir ./fidgetflo/plugin
 ```
 
 ### Via npx Init
 
 ```bash
-npx claude-flow@alpha init --hooks
+npx fidgetflo@alpha init --hooks
 ```
 
 ## Configuration
@@ -156,7 +156,7 @@ Enable only specific hooks by choosing matchers:
     "PreToolUse": [
       {
         "matcher": "^(Write|Edit)$",
-        "hooks": [{ "type": "command", "command": "npx claude-flow@alpha hooks pre-edit" }]
+        "hooks": [{ "type": "command", "command": "npx fidgetflo@alpha hooks pre-edit" }]
       }
     ]
   }
@@ -167,12 +167,12 @@ Enable only specific hooks by choosing matchers:
 
 After installation, MCP tools are available:
 
-- `mcp__claude-flow__swarm_init`
-- `mcp__claude-flow__agent_spawn`
-- `mcp__claude-flow__task_orchestrate`
-- `mcp__claude-flow__memory_usage`
-- `mcp__claude-flow__hooks_route`
-- `mcp__claude-flow__hooks_metrics`
+- `mcp__fidgetflo__swarm_init`
+- `mcp__fidgetflo__agent_spawn`
+- `mcp__fidgetflo__task_orchestrate`
+- `mcp__fidgetflo__memory_usage`
+- `mcp__fidgetflo__hooks_route`
+- `mcp__fidgetflo__hooks_metrics`
 
 ## Marketplace Publishing
 
@@ -180,10 +180,10 @@ After installation, MCP tools are available:
 
 ```json
 {
-  "name": "claude-flow-marketplace",
+  "name": "fidgetflo-marketplace",
   "plugins": [
     {
-      "name": "claude-flow",
+      "name": "fidgetflo",
       "description": "Multi-agent swarm coordination",
       "version": "3.0.0",
       "path": "plugin"
@@ -196,7 +196,7 @@ After installation, MCP tools are available:
 
 1. Push to repository
 2. Add marketplace: `/plugin marketplace add name https://github.com/user/repo`
-3. Users install: `/plugin install claude-flow@name`
+3. Users install: `/plugin install fidgetflo@name`
 
 ## Architecture
 

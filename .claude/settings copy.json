@@ -1,6 +1,6 @@
 {
   "model": "claude-opus-4-5-20251101",
-  "customInstructions": "Follow the project's CLAUDE.md guidelines. Use concurrent execution for all operations. Prioritize v3 implementation with security-first development, 15-agent swarm coordination, phased performance optimization, and cross-platform helper automation. Leverage Opus 4.5's advanced reasoning for complex architectural decisions and system optimization. CRITICAL: When spawning swarms, ALWAYS use MCP tools AND Task tool in the SAME message. V3 CLI hooks enabled at /workspaces/claude-flow/v3/@claude-flow/cli/bin/cli.js with SONA, MoE, and HNSW intelligence features.",
+  "customInstructions": "Follow the project's CLAUDE.md guidelines. Use concurrent execution for all operations. Prioritize v3 implementation with security-first development, 15-agent swarm coordination, phased performance optimization, and cross-platform helper automation. Leverage Opus 4.5's advanced reasoning for complex architectural decisions and system optimization. CRITICAL: When spawning swarms, ALWAYS use MCP tools AND Task tool in the SAME message. V3 CLI hooks enabled at /workspaces/fidgetflo/v3/@claude-flow/cli/bin/cli.js with SONA, MoE, and HNSW intelligence features.",
   "env": {
     "AGENTIC_FLOW_INTELLIGENCE": "true",
     "AGENTIC_FLOW_LEARNING_RATE": "0.05",
@@ -23,15 +23,15 @@
     "AGENTIC_FLOW_PATTERN_BROADCAST_THRESHOLD": "0.7",
     "AGENTIC_FLOW_CONSENSUS_TIMEOUT": "30000",
     "AGENTIC_FLOW_AUTO_BROADCAST_PATTERNS": "true",
-    "CLAUDE_FLOW_AUTO_COMMIT": "true",
-    "CLAUDE_FLOW_AUTO_PUSH": "true",
-    "CLAUDE_FLOW_HOOKS_ENABLED": "true",
-    "CLAUDE_FLOW_TELEMETRY_ENABLED": "true",
-    "CLAUDE_FLOW_REMOTE_EXECUTION": "true",
-    "CLAUDE_FLOW_CHECKPOINTS_ENABLED": "true",
-    "CLAUDE_FLOW_V3_CLI_ENABLED": "true",
-    "CLAUDE_FLOW_V3_CLI_PATH": "/workspaces/claude-flow/v3/@claude-flow/cli/bin/cli.js",
-    "CLAUDE_FLOW_V3_INTELLIGENCE": "true"
+    "FIDGETFLO_AUTO_COMMIT": "true",
+    "FIDGETFLO_AUTO_PUSH": "true",
+    "FIDGETFLO_HOOKS_ENABLED": "true",
+    "FIDGETFLO_TELEMETRY_ENABLED": "true",
+    "FIDGETFLO_REMOTE_EXECUTION": "true",
+    "FIDGETFLO_CHECKPOINTS_ENABLED": "true",
+    "FIDGETFLO_V3_CLI_ENABLED": "true",
+    "FIDGETFLO_V3_CLI_PATH": "/workspaces/fidgetflo/v3/@claude-flow/cli/bin/cli.js",
+    "FIDGETFLO_V3_INTELLIGENCE": "true"
   },
   "permissions": {
     "allowedTools": [
@@ -51,7 +51,7 @@
     "deniedTools": [],
     "allow": [
       "Bash(npx:*)",
-      "Bash(npx claude-flow:*)",
+      "Bash(npx fidgetflo:*)",
       "Bash(agentic-flow:*)",
       "Bash(npm run:*)",
       "Bash(npm run lint)",
@@ -74,8 +74,8 @@
       "Bash(pwd)",
       "Bash(ls:*)",
       "mcp__agentic-flow",
-      "mcp__claude-flow",
-      "mcp__claude-flow__*",
+      "mcp__fidgetflo",
+      "mcp__fidgetflo__*",
       "mcp__ruv-swarm",
       "mcp__ruv-swarm__*",
       "mcp__flow-nexus__*"
@@ -108,12 +108,12 @@
           {
             "type": "command",
             "timeout": 5000,
-            "command": "/workspaces/claude-flow/.claude/helpers/guidance-hooks.sh pre-edit \"$TOOL_INPUT_file_path\" 2>/dev/null || true"
+            "command": "/workspaces/fidgetflo/.claude/helpers/guidance-hooks.sh pre-edit \"$TOOL_INPUT_file_path\" 2>/dev/null || true"
           },
           {
             "type": "command",
             "timeout": 4000,
-            "command": "node /workspaces/claude-flow/v3/@claude-flow/cli/bin/cli.js hooks pre-edit --file \"$TOOL_INPUT_file_path\" --intelligence true 2>/dev/null || true"
+            "command": "node /workspaces/fidgetflo/v3/@claude-flow/cli/bin/cli.js hooks pre-edit --file \"$TOOL_INPUT_file_path\" --intelligence true 2>/dev/null || true"
           }
         ]
       },
@@ -123,12 +123,12 @@
           {
             "type": "command",
             "timeout": 3000,
-            "command": "/workspaces/claude-flow/.claude/helpers/guidance-hooks.sh pre-command \"$TOOL_INPUT_command\" 2>/dev/null || true"
+            "command": "/workspaces/fidgetflo/.claude/helpers/guidance-hooks.sh pre-command \"$TOOL_INPUT_command\" 2>/dev/null || true"
           },
           {
             "type": "command",
             "timeout": 3000,
-            "command": "node /workspaces/claude-flow/v3/@claude-flow/cli/bin/cli.js hooks pre-command --command \"$TOOL_INPUT_command\" 2>/dev/null || true"
+            "command": "node /workspaces/fidgetflo/v3/@claude-flow/cli/bin/cli.js hooks pre-command --command \"$TOOL_INPUT_command\" 2>/dev/null || true"
           }
         ]
       },
@@ -138,22 +138,22 @@
           {
             "type": "command",
             "timeout": 2000,
-            "command": "/workspaces/claude-flow/.claude/helpers/guidance-hooks.sh route \"$TOOL_INPUT_prompt\" 2>/dev/null || true"
+            "command": "/workspaces/fidgetflo/.claude/helpers/guidance-hooks.sh route \"$TOOL_INPUT_prompt\" 2>/dev/null || true"
           },
           {
             "type": "command",
             "timeout": 3000,
-            "command": "/workspaces/claude-flow/.claude/helpers/swarm-hooks.sh pre-task \"$TOOL_INPUT_prompt\" 2>/dev/null || true"
+            "command": "/workspaces/fidgetflo/.claude/helpers/swarm-hooks.sh pre-task \"$TOOL_INPUT_prompt\" 2>/dev/null || true"
           },
           {
             "type": "command",
             "timeout": 3000,
-            "command": "cat | jq -r '.tool_input.prompt // empty' | tr '\\n' '\\0' | xargs -0 -I {} npx claude-flow@alpha hooks pre-task --description '{}' --coordinate-swarm true 2>/dev/null || true"
+            "command": "cat | jq -r '.tool_input.prompt // empty' | tr '\\n' '\\0' | xargs -0 -I {} npx fidgetflo@alpha hooks pre-task --description '{}' --coordinate-swarm true 2>/dev/null || true"
           },
           {
             "type": "command",
             "timeout": 4000,
-            "command": "node /workspaces/claude-flow/v3/@claude-flow/cli/bin/cli.js hooks pre-task --task-id \"task-$(date +%s)\" --description \"$TOOL_INPUT_prompt\" --intelligence true --swarm-coordinate true 2>/dev/null || true"
+            "command": "node /workspaces/fidgetflo/v3/@claude-flow/cli/bin/cli.js hooks pre-task --task-id \"task-$(date +%s)\" --description \"$TOOL_INPUT_prompt\" --intelligence true --swarm-coordinate true 2>/dev/null || true"
           }
         ]
       }
@@ -165,22 +165,22 @@
           {
             "type": "command",
             "timeout": 5000,
-            "command": "/workspaces/claude-flow/.claude/helpers/guidance-hooks.sh post-edit \"$TOOL_INPUT_file_path\" 2>/dev/null || true"
+            "command": "/workspaces/fidgetflo/.claude/helpers/guidance-hooks.sh post-edit \"$TOOL_INPUT_file_path\" 2>/dev/null || true"
           },
           {
             "type": "command",
             "timeout": 4000,
-            "command": "/workspaces/claude-flow/.claude/helpers/learning-hooks.sh store \"Edit: $TOOL_INPUT_file_path\" code 0.7 2>/dev/null || true"
+            "command": "/workspaces/fidgetflo/.claude/helpers/learning-hooks.sh store \"Edit: $TOOL_INPUT_file_path\" code 0.7 2>/dev/null || true"
           },
                     {
             "type": "command",
             "timeout": 4000,
-            "command": "node /workspaces/claude-flow/v3/@claude-flow/cli/bin/cli.js hooks post-edit --file \"$TOOL_INPUT_file_path\" --success true --train-patterns true --memory-key \"edit/$TOOL_INPUT_file_path\" 2>/dev/null || true"
+            "command": "node /workspaces/fidgetflo/v3/@claude-flow/cli/bin/cli.js hooks post-edit --file \"$TOOL_INPUT_file_path\" --success true --train-patterns true --memory-key \"edit/$TOOL_INPUT_file_path\" 2>/dev/null || true"
           },
                     {
             "type": "command",
             "timeout": 10000,
-            "command": "/workspaces/claude-flow/.claude/helpers/auto-commit.sh batch 'Checkpoint: File edits' 2>/dev/null || true"
+            "command": "/workspaces/fidgetflo/.claude/helpers/auto-commit.sh batch 'Checkpoint: File edits' 2>/dev/null || true"
           }
         ]
       },
@@ -195,12 +195,12 @@
           {
             "type": "command",
             "timeout": 2000,
-            "command": "/workspaces/claude-flow/.claude/helpers/swarm-monitor.sh check 2>/dev/null || true"
+            "command": "/workspaces/fidgetflo/.claude/helpers/swarm-monitor.sh check 2>/dev/null || true"
           },
           {
             "type": "command",
             "timeout": 3000,
-            "command": "node /workspaces/claude-flow/v3/@claude-flow/cli/bin/cli.js hooks post-command --command \"$TOOL_INPUT_command\" --exit-code 0 --success true 2>/dev/null || true"
+            "command": "node /workspaces/fidgetflo/v3/@claude-flow/cli/bin/cli.js hooks post-command --command \"$TOOL_INPUT_command\" --exit-code 0 --success true 2>/dev/null || true"
           }
         ]
       },
@@ -215,27 +215,27 @@
           {
             "type": "command",
             "timeout": 3000,
-            "command": "/workspaces/claude-flow/.claude/helpers/swarm-monitor.sh check 2>/dev/null || true"
+            "command": "/workspaces/fidgetflo/.claude/helpers/swarm-monitor.sh check 2>/dev/null || true"
           },
           {
             "type": "command",
             "timeout": 3000,
-            "command": "/workspaces/claude-flow/.claude/helpers/swarm-hooks.sh post-task \"$TOOL_INPUT_prompt\" true 2>/dev/null || true"
+            "command": "/workspaces/fidgetflo/.claude/helpers/swarm-hooks.sh post-task \"$TOOL_INPUT_prompt\" true 2>/dev/null || true"
           },
           {
             "type": "command",
             "timeout": 4000,
-            "command": "/workspaces/claude-flow/.claude/helpers/checkpoint-manager.sh agent-checkpoint \"Task completed: $TOOL_INPUT_prompt\" 2>/dev/null || true"
+            "command": "/workspaces/fidgetflo/.claude/helpers/checkpoint-manager.sh agent-checkpoint \"Task completed: $TOOL_INPUT_prompt\" 2>/dev/null || true"
           },
           {
             "type": "command",
             "timeout": 3000,
-            "command": "cat | jq -r '{agent: .tool_input.subagent_type, description: .tool_input.description} | @json' | xargs -I {} npx claude-flow@alpha hooks post-task --agent-data '{}' --update-swarm-status true --train-patterns true 2>/dev/null || true"
+            "command": "cat | jq -r '{agent: .tool_input.subagent_type, description: .tool_input.description} | @json' | xargs -I {} npx fidgetflo@alpha hooks post-task --agent-data '{}' --update-swarm-status true --train-patterns true 2>/dev/null || true"
           },
           {
             "type": "command",
             "timeout": 4000,
-            "command": "node /workspaces/claude-flow/v3/@claude-flow/cli/bin/cli.js hooks post-task --task-id \"task-$(date +%s)\" --description \"$TOOL_INPUT_prompt\" --success true --train-patterns true --update-metrics true 2>/dev/null || true"
+            "command": "node /workspaces/fidgetflo/v3/@claude-flow/cli/bin/cli.js hooks post-task --task-id \"task-$(date +%s)\" --description \"$TOOL_INPUT_prompt\" --success true --train-patterns true --update-metrics true 2>/dev/null || true"
           }
         ]
       }
@@ -252,7 +252,7 @@
           {
             "type": "command",
             "timeout": 4000,
-            "command": "node /workspaces/claude-flow/v3/@claude-flow/cli/bin/cli.js hooks post-edit --file \"$TOOL_INPUT_file_path\" --success false --learn-from-failure true 2>/dev/null || true"
+            "command": "node /workspaces/fidgetflo/v3/@claude-flow/cli/bin/cli.js hooks post-edit --file \"$TOOL_INPUT_file_path\" --success false --learn-from-failure true 2>/dev/null || true"
           }
         ]
       },
@@ -267,7 +267,7 @@
           {
             "type": "command",
             "timeout": 3000,
-            "command": "node /workspaces/claude-flow/v3/@claude-flow/cli/bin/cli.js hooks post-command --command \"$TOOL_INPUT_command\" --exit-code 1 --success false --learn-from-failure true 2>/dev/null || true"
+            "command": "node /workspaces/fidgetflo/v3/@claude-flow/cli/bin/cli.js hooks post-command --command \"$TOOL_INPUT_command\" --exit-code 1 --success false --learn-from-failure true 2>/dev/null || true"
           }
         ]
       },
@@ -277,7 +277,7 @@
           {
             "type": "command",
             "timeout": 4000,
-            "command": "node /workspaces/claude-flow/v3/@claude-flow/cli/bin/cli.js hooks post-task --task-id \"task-$(date +%s)\" --description \"$TOOL_INPUT_prompt\" --success false --learn-from-failure true --retry-analysis true 2>/dev/null || true"
+            "command": "node /workspaces/fidgetflo/v3/@claude-flow/cli/bin/cli.js hooks post-task --task-id \"task-$(date +%s)\" --description \"$TOOL_INPUT_prompt\" --success false --learn-from-failure true --retry-analysis true 2>/dev/null || true"
           }
         ]
       }
@@ -288,37 +288,37 @@
           {
             "type": "command",
             "timeout": 3000,
-            "command": "/workspaces/claude-flow/.claude/helpers/daemon-manager.sh start 3 5 2>/dev/null || true"
+            "command": "/workspaces/fidgetflo/.claude/helpers/daemon-manager.sh start 3 5 2>/dev/null || true"
           },
           {
             "type": "command",
             "timeout": 8000,
-            "command": "/workspaces/claude-flow/.claude/helpers/learning-hooks.sh session-start 2>/dev/null || true"
+            "command": "/workspaces/fidgetflo/.claude/helpers/learning-hooks.sh session-start 2>/dev/null || true"
           },
           {
             "type": "command",
             "timeout": 3000,
-            "command": "/workspaces/claude-flow/.claude/helpers/swarm-hooks.sh agents 2>/dev/null || true"
+            "command": "/workspaces/fidgetflo/.claude/helpers/swarm-hooks.sh agents 2>/dev/null || true"
           },
           {
             "type": "command",
             "timeout": 5000,
-            "command": "/workspaces/claude-flow/.claude/helpers/guidance-hooks.sh session-context 2>/dev/null || true"
+            "command": "/workspaces/fidgetflo/.claude/helpers/guidance-hooks.sh session-context 2>/dev/null || true"
           },
           {
             "type": "command",
             "timeout": 5000,
-            "command": "npx claude-flow@alpha hooks session-start --auto-configure true --restore-context true 2>/dev/null || true"
+            "command": "npx fidgetflo@alpha hooks session-start --auto-configure true --restore-context true 2>/dev/null || true"
           },
           {
             "type": "command",
             "timeout": 6000,
-            "command": "node /workspaces/claude-flow/v3/@claude-flow/cli/bin/cli.js hooks session-restore --restore-memory true --load-patterns true --intelligence true 2>/dev/null || true"
+            "command": "node /workspaces/fidgetflo/v3/@claude-flow/cli/bin/cli.js hooks session-restore --restore-memory true --load-patterns true --intelligence true 2>/dev/null || true"
           },
           {
             "type": "command",
             "timeout": 4000,
-            "command": "node /workspaces/claude-flow/v3/@claude-flow/cli/bin/cli.js hooks build-agents --topology hierarchical-mesh --max-agents 15 2>/dev/null || true"
+            "command": "node /workspaces/fidgetflo/v3/@claude-flow/cli/bin/cli.js hooks build-agents --topology hierarchical-mesh --max-agents 15 2>/dev/null || true"
           }
         ]
       }
@@ -329,7 +329,7 @@
           {
             "type": "command",
             "timeout": 10000,
-            "command": "/workspaces/claude-flow/.claude/helpers/learning-hooks.sh session-end 2>/dev/null || true"
+            "command": "/workspaces/fidgetflo/.claude/helpers/learning-hooks.sh session-end 2>/dev/null || true"
           },
           {
             "type": "command",
@@ -339,27 +339,27 @@
           {
             "type": "command",
             "timeout": 6000,
-            "command": "/workspaces/claude-flow/.claude/helpers/checkpoint-manager.sh session-end \"V3 development session completed\" 2>/dev/null || true"
+            "command": "/workspaces/fidgetflo/.claude/helpers/checkpoint-manager.sh session-end \"V3 development session completed\" 2>/dev/null || true"
           },
           {
             "type": "command",
             "timeout": 4000,
-            "command": "/workspaces/claude-flow/.claude/helpers/update-v3-progress.sh status > /workspaces/claude-flow/.claude-flow/last-session-status.txt 2>/dev/null || true"
+            "command": "/workspaces/fidgetflo/.claude/helpers/update-v3-progress.sh status > /workspaces/fidgetflo/.fidgetflo/last-session-status.txt 2>/dev/null || true"
           },
           {
             "type": "command",
             "timeout": 2000,
-            "command": "/workspaces/claude-flow/.claude/helpers/daemon-manager.sh stop 2>/dev/null || true"
+            "command": "/workspaces/fidgetflo/.claude/helpers/daemon-manager.sh stop 2>/dev/null || true"
           },
           {
             "type": "command",
             "timeout": 8000,
-            "command": "node /workspaces/claude-flow/v3/@claude-flow/cli/bin/cli.js hooks session-end --persist-memory true --export-patterns true --generate-summary true 2>/dev/null || true"
+            "command": "node /workspaces/fidgetflo/v3/@claude-flow/cli/bin/cli.js hooks session-end --persist-memory true --export-patterns true --generate-summary true 2>/dev/null || true"
           },
           {
             "type": "command",
             "timeout": 5000,
-            "command": "node /workspaces/claude-flow/v3/@claude-flow/cli/bin/cli.js hooks metrics --format json --output /workspaces/claude-flow/.claude-flow/v3-session-metrics.json 2>/dev/null || true"
+            "command": "node /workspaces/fidgetflo/v3/@claude-flow/cli/bin/cli.js hooks metrics --format json --output /workspaces/fidgetflo/.fidgetflo/v3-session-metrics.json 2>/dev/null || true"
           }
         ]
       }
@@ -370,22 +370,22 @@
           {
             "type": "command",
             "timeout": 4000,
-            "command": "/workspaces/claude-flow/.claude/helpers/guidance-hooks.sh user-prompt \"$USER_PROMPT\" 2>/dev/null || true"
+            "command": "/workspaces/fidgetflo/.claude/helpers/guidance-hooks.sh user-prompt \"$USER_PROMPT\" 2>/dev/null || true"
           },
           {
             "type": "command",
             "timeout": 5000,
-            "command": "npx claude-flow@alpha hooks route-task --auto-swarm true --detect-complexity true 2>/dev/null || true"
+            "command": "npx fidgetflo@alpha hooks route-task --auto-swarm true --detect-complexity true 2>/dev/null || true"
           },
           {
             "type": "command",
             "timeout": 5000,
-            "command": "node /workspaces/claude-flow/v3/@claude-flow/cli/bin/cli.js hooks route --task \"$USER_PROMPT\" --intelligence true --auto-swarm true --complexity-threshold 3 2>/dev/null || true"
+            "command": "node /workspaces/fidgetflo/v3/@claude-flow/cli/bin/cli.js hooks route --task \"$USER_PROMPT\" --intelligence true --auto-swarm true --complexity-threshold 3 2>/dev/null || true"
           },
           {
             "type": "command",
             "timeout": 6000,
-            "command": "node /workspaces/claude-flow/v3/@claude-flow/cli/bin/cli.js hooks worker detect --prompt \"$USER_PROMPT\" --auto-dispatch --min-confidence 0.6 2>/dev/null || true"
+            "command": "node /workspaces/fidgetflo/v3/@claude-flow/cli/bin/cli.js hooks worker detect --prompt \"$USER_PROMPT\" --auto-dispatch --min-confidence 0.6 2>/dev/null || true"
           }
         ]
       }
@@ -397,7 +397,7 @@
           {
             "type": "command",
             "timeout": 8000,
-            "command": "/workspaces/claude-flow/.claude/helpers/learning-hooks.sh session-end 2>/dev/null || true"
+            "command": "/workspaces/fidgetflo/.claude/helpers/learning-hooks.sh session-end 2>/dev/null || true"
           },
           {
             "type": "command",
@@ -407,17 +407,17 @@
           {
             "type": "command",
             "timeout": 5000,
-            "command": "npx claude-flow@alpha hooks session-end --generate-summary true --persist-state true --export-metrics true 2>/dev/null || true"
+            "command": "npx fidgetflo@alpha hooks session-end --generate-summary true --persist-state true --export-metrics true 2>/dev/null || true"
           },
           {
             "type": "command",
             "timeout": 6000,
-            "command": "node /workspaces/claude-flow/v3/@claude-flow/cli/bin/cli.js hooks session-end --persist-memory true --train-final-patterns true --export-learnings true 2>/dev/null || true"
+            "command": "node /workspaces/fidgetflo/v3/@claude-flow/cli/bin/cli.js hooks session-end --persist-memory true --train-final-patterns true --export-learnings true 2>/dev/null || true"
           },
           {
             "type": "command",
             "timeout": 4000,
-            "command": "node /workspaces/claude-flow/v3/@claude-flow/cli/bin/cli.js hooks transfer --export-patterns /workspaces/claude-flow/.claude-flow/v3-patterns.json 2>/dev/null || true"
+            "command": "node /workspaces/fidgetflo/v3/@claude-flow/cli/bin/cli.js hooks transfer --export-patterns /workspaces/fidgetflo/.fidgetflo/v3-patterns.json 2>/dev/null || true"
           }
         ]
       }
@@ -433,7 +433,7 @@
           {
             "type": "command",
             "timeout": 5000,
-            "command": "node /workspaces/claude-flow/v3/@claude-flow/cli/bin/cli.js hooks transfer --export-patterns /workspaces/claude-flow/.claude-flow/compact-patterns.json --preserve-critical true 2>/dev/null || true"
+            "command": "node /workspaces/fidgetflo/v3/@claude-flow/cli/bin/cli.js hooks transfer --export-patterns /workspaces/fidgetflo/.fidgetflo/compact-patterns.json --preserve-critical true 2>/dev/null || true"
           }
         ]
       },
@@ -447,7 +447,7 @@
           {
             "type": "command",
             "timeout": 6000,
-            "command": "node /workspaces/claude-flow/v3/@claude-flow/cli/bin/cli.js hooks intelligence --export-state /workspaces/claude-flow/.claude-flow/intelligence-state.json --preserve-patterns true 2>/dev/null || true"
+            "command": "node /workspaces/fidgetflo/v3/@claude-flow/cli/bin/cli.js hooks intelligence --export-state /workspaces/fidgetflo/.fidgetflo/intelligence-state.json --preserve-patterns true 2>/dev/null || true"
           }
         ]
       }
@@ -509,10 +509,10 @@
   },
   "statusLine": {
     "type": "command",
-    "command": "/workspaces/claude-flow/.claude/statusline.sh"
+    "command": "/workspaces/fidgetflo/.claude/statusline.sh"
   },
   "mcpServers": {
-    "claude-flow": {
+    "fidgetflo": {
       "command": "npx",
       "args": [
         "agentic-flow@alpha",
@@ -522,5 +522,5 @@
     }
   },
   "includeCoAuthoredBy": true,
-  "enabledMcpjsonServers": ["claude-flow", "ruv-swarm"]
+  "enabledMcpjsonServers": ["fidgetflo", "ruv-swarm"]
 }

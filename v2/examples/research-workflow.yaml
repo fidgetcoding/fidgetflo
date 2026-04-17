@@ -4,7 +4,7 @@ version: "2.0.0"
 description: "Multi-stage research workflow with conditional execution, loops, and error recovery"
 
 metadata:
-  author: "Claude-Flow Team"
+  author: "FidgetFlo Team"
   category: "Research"
   tags: ["research", "analysis", "automation"]
 

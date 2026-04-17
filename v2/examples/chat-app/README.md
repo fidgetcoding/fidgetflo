@@ -1,6 +1,6 @@
 # Swarm Application
 
-This application was created by the Claude Flow Swarm system.
+This application was created by the FidgetFlo Swarm system.
 
 ## Objective
 build a real-time chat application with websockets and message history in ./examples/chat-app

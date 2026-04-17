@@ -6,7 +6,7 @@
 
 ## Context
 
-Ruflo v3 already integrates four `@ruvector/*` WASM packages for intelligence
+FidgetFlo v3 already integrates four `@ruvector/*` WASM packages for intelligence
 (learning-wasm, attention, router, sona). A new package —
 `@ruvector/rvagent-wasm@0.1.0` — provides a complete sandboxed AI agent runtime
 compiled to WebAssembly. It includes:

@@ -1,15 +1,15 @@
 ---
-name: claude-flow-swarm
+name: fidgetflo-swarm
 description: Coordinate multi-agent swarms for complex tasks
 ---
 
-# 🐝 Claude-Flow Swarm Coordination
+# 🐝 FidgetFlo Swarm Coordination
 
 Advanced multi-agent coordination system with timeout-free execution, distributed memory sharing, and intelligent load balancing.
 
 ## Basic Usage
 ```bash
-./claude-flow swarm "your complex task" --strategy <type> [options]
+./fidgetflo swarm "your complex task" --strategy <type> [options]
 ```
 
 ## 🎯 Swarm Strategies
@@ -59,7 +59,7 @@ Advanced multi-agent coordination system with timeout-free execution, distribute
 
 ### Development Swarm with Review
 ```bash
-./claude-flow swarm "Build e-commerce REST API" \
+./fidgetflo swarm "Build e-commerce REST API" \
   --strategy development \
   --monitor \
   --review \
@@ -68,7 +68,7 @@ Advanced multi-agent coordination system with timeout-free execution, distribute
 
 ### Long-Running Research Swarm
 ```bash
-./claude-flow swarm "Analyze AI market trends 2024-2025" \
+./fidgetflo swarm "Analyze AI market trends 2024-2025" \
   --strategy research \
   --background \
   --distributed \
@@ -77,7 +77,7 @@ Advanced multi-agent coordination system with timeout-free execution, distribute
 
 ### Performance Optimization Swarm
 ```bash
-./claude-flow swarm "Optimize database queries and API performance" \
+./fidgetflo swarm "Optimize database queries and API performance" \
   --strategy optimization \
   --testing \
   --parallel \
@@ -86,7 +86,7 @@ Advanced multi-agent coordination system with timeout-free execution, distribute
 
 ### Enterprise Development Swarm
 ```bash
-./claude-flow swarm "Implement secure payment processing system" \
+./fidgetflo swarm "Implement secure payment processing system" \
   --strategy development \
   --mode distributed \
   --max-agents 10 \
@@ -100,7 +100,7 @@ Advanced multi-agent coordination system with timeout-free execution, distribute
 
 ### Testing and QA Swarm
 ```bash
-./claude-flow swarm "Comprehensive security audit and testing" \
+./fidgetflo swarm "Comprehensive security audit and testing" \
   --strategy testing \
   --review \
   --verbose \
@@ -112,28 +112,28 @@ Advanced multi-agent coordination system with timeout-free execution, distribute
 ### Real-time monitoring:
 ```bash
 # Monitor swarm activity
-./claude-flow monitor
+./fidgetflo monitor
 
 # Monitor specific component
-./claude-flow monitor --focus swarm
+./fidgetflo monitor --focus swarm
 ```
 
 ### Check swarm status:
 ```bash
 # Overall system status
-./claude-flow status
+./fidgetflo status
 
 # Detailed swarm status
-./claude-flow status --verbose
+./fidgetflo status --verbose
 ```
 
 ### View agent activity:
 ```bash
 # List all agents
-./claude-flow agent list
+./fidgetflo agent list
 
 # Agent details
-./claude-flow agent info <agent-id>
+./fidgetflo agent info <agent-id>
 ```
 
 ## 💾 Memory Integration
@@ -142,13 +142,13 @@ Swarms automatically use distributed memory for collaboration:
 
 ```bash
 # Store swarm objectives
-./claude-flow memory store "swarm_objective" "Build scalable API" --namespace swarm
+./fidgetflo memory store "swarm_objective" "Build scalable API" --namespace swarm
 
 # Query swarm progress
-./claude-flow memory query "swarm_progress" --namespace swarm
+./fidgetflo memory query "swarm_progress" --namespace swarm
 
 # Export swarm memory
-./claude-flow memory export swarm-results.json --namespace swarm
+./fidgetflo memory export swarm-results.json --namespace swarm
 ```
 
 ## 🎯 Key Features
@@ -183,12 +183,12 @@ Swarms automatically use distributed memory for collaboration:
 
 ### Dry run to preview:
 ```bash
-./claude-flow swarm "Test task" --dry-run --strategy development
+./fidgetflo swarm "Test task" --dry-run --strategy development
 ```
 
 ### Custom quality thresholds:
 ```bash
-./claude-flow swarm "High quality API" \
+./fidgetflo swarm "High quality API" \
   --strategy development \
   --quality-threshold 0.95
 ```
@@ -202,4 +202,4 @@ Swarms automatically use distributed memory for collaboration:
 - Resource-aware
 - Adaptive
 
-For detailed documentation, see: https://github.com/ruvnet/claude-code-flow/docs/swarm-system.md
+For detailed documentation, see: https://github.com/lorecraft-io/fidgetflo/docs/swarm-system.md

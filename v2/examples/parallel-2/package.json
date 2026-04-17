@@ -1,7 +1,7 @@
 {
-  "name": "claude-flow-parallel-test",
+  "name": "fidgetflo-parallel-test",
   "version": "1.0.0",
-  "description": "Parallel agent testing for Claude-Flow SPARC methodology",
+  "description": "Parallel agent testing for FidgetFlo SPARC methodology",
   "main": "parallel-test.ts",
   "scripts": {
     "test": "tsx parallel-test.ts",
@@ -10,7 +10,7 @@
     "test:full": "npm run clean && npm run test && npm run analyze"
   },
   "dependencies": {
-    "claude-flow": "latest",
+    "fidgetflo": "latest",
     "tsx": "^4.0.0"
   },
   "devDependencies": {

@@ -2,7 +2,7 @@
 
 **Status**: Accepted
 **Date**: 2026-02-09
-**Authors**: Claude Flow Team
+**Authors**: FidgetFlo Team
 
 ## Context
 
@@ -30,7 +30,7 @@ Add a CJS intelligence layer (`intelligence.js`) to the hook system with file-ba
 
 ### Data Files
 
-All under `.claude-flow/data/`:
+All under `.fidgetflo/data/`:
 
 - `auto-memory-store.json` (existing) — written by auto-memory-hook.mjs
 - `graph-state.json` (new) — serialized graph: nodes + edges + pageRanks

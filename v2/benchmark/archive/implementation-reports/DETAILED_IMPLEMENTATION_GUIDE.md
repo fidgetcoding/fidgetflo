@@ -3,7 +3,7 @@
 ## Complete Agent Instructions & Technical Specifications
 
 ### 🎯 Mission Statement
-Transform the benchmark system into a state-of-the-art performance testing suite that leverages Claude Flow's full capabilities, including MLE-STAR ensemble learning, non-interactive automation, CLAUDE.md optimization, and advanced swarm orchestration.
+Transform the benchmark system into a state-of-the-art performance testing suite that leverages FidgetFlo's full capabilities, including MLE-STAR ensemble learning, non-interactive automation, CLAUDE.md optimization, and advanced swarm orchestration.
 
 ## 📋 Table of Contents
 1. [CLAUDE.md Optimizer Implementation](#claudemd-optimizer)
@@ -297,7 +297,7 @@ class OptimizationRulesEngine:
 ### Ensemble Coordination
 ```python
 # Initialize MLE-STAR ensemble
-mcp__claude-flow__swarm_init({ 
+mcp__fidgetflo__swarm_init({ 
   topology: "mesh", 
   maxAgents: 8,
   mle_star: {
@@ -410,9 +410,9 @@ class MLEStarEnsembleExecutor:
                                  agent_id: str, 
                                  model_config: Dict) -> ModelAgent:
         """Spawn a specialized ML agent for a model."""
-        # Use claude-flow MCP to spawn ML agent
+        # Use fidgetflo MCP to spawn ML agent
         result = await self._execute_mcp_command(
-            "mcp__claude-flow__agent_spawn",
+            "mcp__fidgetflo__agent_spawn",
             {
                 "type": "ml-developer",
                 "name": agent_id,
@@ -1366,7 +1366,7 @@ def benchmark_function(param1: str, param2: int) -> BenchmarkResult:
 
 ### Step 1: Initialize Swarm
 ```bash
-npx claude-flow@alpha swarm init \
+npx fidgetflo@alpha swarm init \
   --topology hierarchical \
   --agents 6 \
   --config ./benchmark/ENHANCEMENT_PLAN.md
@@ -1374,7 +1374,7 @@ npx claude-flow@alpha swarm init \
 
 ### Step 2: Execute Enhancement
 ```bash
-npx claude-flow@alpha swarm execute \
+npx fidgetflo@alpha swarm execute \
   --task "Implement benchmark system enhancements" \
   --parallel true \
   --monitor true
@@ -1389,7 +1389,7 @@ python -m swarm_benchmark validate --comprehensive
 
 ### Step 4: Generate Report
 ```bash
-npx claude-flow@alpha swarm report \
+npx fidgetflo@alpha swarm report \
   --format comprehensive \
   --output ./benchmark/reports/enhancement_report.md
 ```

@@ -1,4 +1,4 @@
-# Claude Flow V3 - Agent Guide
+# FidgetFlo V3 - Agent Guide
 
 > **For OpenAI Codex CLI** - Agentic AI Foundation standard
 > Skills: `$skill-name` | Config: `.agents/config.toml`
@@ -9,10 +9,10 @@
 
 ```
 ╔═══════════════════════════════════════════════════════════════════════════╗
-║  1. claude-flow = LEDGER (tracks state, stores memory, coordinates)       ║
+║  1. fidgetflo = LEDGER (tracks state, stores memory, coordinates)       ║
 ║  2. Codex = EXECUTOR (writes code, runs commands, creates files)          ║
-║  3. NEVER stop after calling claude-flow - IMMEDIATELY continue working   ║
-║  4. If you need something BUILT/EXECUTED, YOU do it, not claude-flow      ║
+║  3. NEVER stop after calling fidgetflo - IMMEDIATELY continue working   ║
+║  4. If you need something BUILT/EXECUTED, YOU do it, not fidgetflo      ║
 ║  5. ALWAYS search memory BEFORE starting: memory search --query "task"    ║
 ║  6. ALWAYS store patterns AFTER success: memory store --namespace patterns║
 ╚═══════════════════════════════════════════════════════════════════════════╝
@@ -26,27 +26,27 @@
 
 ---
 
-## 🚨 CRITICAL: CODEX DOES THE WORK, CLAUDE-FLOW ORCHESTRATES
+## 🚨 CRITICAL: CODEX DOES THE WORK, FIDGETFLO ORCHESTRATES
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│  CLAUDE-FLOW = ORCHESTRATOR (tracks state, coordinates)     │
+│  FIDGETFLO = ORCHESTRATOR (tracks state, coordinates)     │
 │  CODEX = WORKER (writes code, runs commands, implements)    │
 └─────────────────────────────────────────────────────────────┘
 ```
 
-### ❌ WRONG: Expecting claude-flow to execute tasks
+### ❌ WRONG: Expecting fidgetflo to execute tasks
 ```bash
-npx claude-flow swarm start --objective "Build API"
-# WRONG: Waiting for claude-flow to build the API
+npx fidgetflo swarm start --objective "Build API"
+# WRONG: Waiting for fidgetflo to build the API
 # Claude-flow does NOT execute code!
 ```
 
-### ✅ CORRECT: Codex executes, claude-flow tracks
+### ✅ CORRECT: Codex executes, fidgetflo tracks
 ```bash
-# 1. Tell claude-flow what you're doing (optional coordination)
-npx claude-flow swarm init --topology hierarchical --max-agents 1
-npx claude-flow agent spawn --type coder --name codex-worker
+# 1. Tell fidgetflo what you're doing (optional coordination)
+npx fidgetflo swarm init --topology hierarchical --max-agents 1
+npx fidgetflo agent spawn --type coder --name codex-worker
 
 # 2. YOU (CODEX) DO THE ACTUAL WORK:
 mkdir -p src
@@ -54,8 +54,8 @@ cat > src/api.ts << 'EOF'
 export function hello() { return "Hello World"; }
 EOF
 
-# 3. Report to claude-flow what you did (optional)
-npx claude-flow memory store --key "api-created" --value "src/api.ts" --namespace results
+# 3. Report to fidgetflo what you did (optional)
+npx fidgetflo memory store --key "api-created" --value "src/api.ts" --namespace results
 ```
 
 ### The Division of Labor
@@ -63,24 +63,24 @@ npx claude-flow memory store --key "api-created" --value "src/api.ts" --namespac
 | Component | Role | Examples |
 |-----------|------|----------|
 | **CODEX** | EXECUTES | Write files, run tests, create code, shell commands |
-| **claude-flow** | ORCHESTRATES | Track agents, store memory, coordinate tasks |
+| **fidgetflo** | ORCHESTRATES | Track agents, store memory, coordinate tasks |
 
 ---
 
-## ⛔ DON'T STOP AFTER CALLING CLAUDE-FLOW
+## ⛔ DON'T STOP AFTER CALLING FIDGETFLO
 
 ```
 ┌─────────────────────────────────────────────────────────────────────────┐
-│  ❌ WRONG: Call claude-flow → STOP → Wait for results                   │
-│  ✅ RIGHT: Call claude-flow → IMMEDIATELY continue → YOU do the work    │
+│  ❌ WRONG: Call fidgetflo → STOP → Wait for results                   │
+│  ✅ RIGHT: Call fidgetflo → IMMEDIATELY continue → YOU do the work    │
 └─────────────────────────────────────────────────────────────────────────┘
 ```
 
 ### ❌ WRONG Pattern (Stopping)
 ```bash
-npx claude-flow swarm init --topology hierarchical
-npx claude-flow agent spawn --type coder --name worker-1
-npx claude-flow swarm start --objective "Build hello world"
+npx fidgetflo swarm init --topology hierarchical
+npx fidgetflo agent spawn --type coder --name worker-1
+npx fidgetflo swarm start --objective "Build hello world"
 # WRONG: Codex stops here and waits for something to happen
 # Nothing will happen! Claude-flow doesn't execute code!
 ```
@@ -88,19 +88,19 @@ npx claude-flow swarm start --objective "Build hello world"
 ### ✅ CORRECT Pattern (Continue Immediately)
 ```bash
 # Step 1: Coordination (optional)
-npx claude-flow swarm init --topology hierarchical
-npx claude-flow agent spawn --type coder --name worker-1
+npx fidgetflo swarm init --topology hierarchical
+npx fidgetflo agent spawn --type coder --name worker-1
 
 # Step 2: IMMEDIATELY DO THE WORK YOURSELF - DON'T WAIT!
 echo 'console.log("Hello World!");' > hello.js
 node hello.js
 
 # Step 3: Report what you did
-npx claude-flow memory store --key "result" --value "Hello World printed" --namespace results
+npx fidgetflo memory store --key "result" --value "Hello World printed" --namespace results
 ```
 
 ### The Rule
-**After ANY claude-flow command, IMMEDIATELY continue with your own work.**
+**After ANY fidgetflo command, IMMEDIATELY continue with your own work.**
 
 Claude-flow commands return instantly. They create coordination RECORDS only.
 You must ALWAYS follow up with YOUR OWN execution.
@@ -114,9 +114,9 @@ You must ALWAYS follow up with YOUR OWN execution.
 
 ---
 
-### When to Use Claude-Flow Commands
+### When to Use FidgetFlo Commands
 
-| Use Case | Claude-Flow Command | Then Codex Does |
+| Use Case | FidgetFlo Command | Then Codex Does |
 |----------|---------------------|-----------------|
 | Track progress | `memory store --key "step1" --value "done"` | Continue to next step |
 | Multi-step tasks | `task create --description "step 2"` | Execute step 2 |
@@ -127,14 +127,14 @@ You must ALWAYS follow up with YOUR OWN execution.
 
 ```bash
 # STEP 1: Optional - register with orchestrator
-npx claude-flow swarm init --topology mesh --max-agents 1
+npx fidgetflo swarm init --topology mesh --max-agents 1
 
 # STEP 2: CODEX DOES THE WORK
 echo 'console.log("Hello World!");' > hello.js
 node hello.js
 
 # STEP 3: Optional - report completion
-npx claude-flow memory store --key "hello-result" --value "printed Hello World" --namespace results
+npx fidgetflo memory store --key "hello-result" --value "printed Hello World" --namespace results
 ```
 
 **REMEMBER: If you need something DONE, YOU do it. Claude-flow just tracks.**
@@ -147,32 +147,32 @@ npx claude-flow memory store --key "hello-result" --value "printed Hello World" 
 
 ```bash
 # 5-AGENT SWARM - Run these commands in sequence:
-npx claude-flow swarm init --topology hierarchical --max-agents 8
-npx claude-flow agent spawn --type coordinator --name coord-1
-npx claude-flow agent spawn --type coder --name coder-1
-npx claude-flow agent spawn --type coder --name coder-2
-npx claude-flow agent spawn --type tester --name tester-1
-npx claude-flow agent spawn --type reviewer --name reviewer-1
-npx claude-flow swarm start --objective "Your task here" --strategy development
+npx fidgetflo swarm init --topology hierarchical --max-agents 8
+npx fidgetflo agent spawn --type coordinator --name coord-1
+npx fidgetflo agent spawn --type coder --name coder-1
+npx fidgetflo agent spawn --type coder --name coder-2
+npx fidgetflo agent spawn --type tester --name tester-1
+npx fidgetflo agent spawn --type reviewer --name reviewer-1
+npx fidgetflo swarm start --objective "Your task here" --strategy development
 ```
 
 ### Common Swarm Patterns
 
 | Task | Exact Command |
 |------|---------------|
-| Init hierarchical swarm | `npx claude-flow swarm init --topology hierarchical --max-agents 8` |
-| Init mesh swarm | `npx claude-flow swarm init --topology mesh --max-agents 5` |
-| Init V3 mode (15 agents) | `npx claude-flow swarm init --v3-mode` |
-| Spawn coder | `npx claude-flow agent spawn --type coder --name coder-1` |
-| Spawn tester | `npx claude-flow agent spawn --type tester --name tester-1` |
-| Spawn coordinator | `npx claude-flow agent spawn --type coordinator --name coord-1` |
-| Spawn architect | `npx claude-flow agent spawn --type architect --name arch-1` |
-| Spawn reviewer | `npx claude-flow agent spawn --type reviewer --name rev-1` |
-| Spawn researcher | `npx claude-flow agent spawn --type researcher --name res-1` |
-| Start swarm | `npx claude-flow swarm start --objective "task" --strategy development` |
-| Check swarm status | `npx claude-flow swarm status` |
-| List agents | `npx claude-flow agent list` |
-| Stop swarm | `npx claude-flow swarm stop` |
+| Init hierarchical swarm | `npx fidgetflo swarm init --topology hierarchical --max-agents 8` |
+| Init mesh swarm | `npx fidgetflo swarm init --topology mesh --max-agents 5` |
+| Init V3 mode (15 agents) | `npx fidgetflo swarm init --v3-mode` |
+| Spawn coder | `npx fidgetflo agent spawn --type coder --name coder-1` |
+| Spawn tester | `npx fidgetflo agent spawn --type tester --name tester-1` |
+| Spawn coordinator | `npx fidgetflo agent spawn --type coordinator --name coord-1` |
+| Spawn architect | `npx fidgetflo agent spawn --type architect --name arch-1` |
+| Spawn reviewer | `npx fidgetflo agent spawn --type reviewer --name rev-1` |
+| Spawn researcher | `npx fidgetflo agent spawn --type researcher --name res-1` |
+| Start swarm | `npx fidgetflo swarm start --objective "task" --strategy development` |
+| Check swarm status | `npx fidgetflo swarm status` |
+| List agents | `npx fidgetflo agent list` |
+| Stop swarm | `npx fidgetflo swarm stop` |
 
 ### Agent Types (Use with `--type`)
 
@@ -191,20 +191,20 @@ npx claude-flow swarm start --objective "Your task here" --strategy development
 
 | Action | Command |
 |--------|---------|
-| Create task | `npx claude-flow task create --type implementation --description "desc"` |
-| List tasks | `npx claude-flow task list` |
-| Assign task | `npx claude-flow task assign TASK_ID --agent AGENT_NAME` |
-| Task status | `npx claude-flow task status TASK_ID` |
-| Cancel task | `npx claude-flow task cancel TASK_ID` |
+| Create task | `npx fidgetflo task create --type implementation --description "desc"` |
+| List tasks | `npx fidgetflo task list` |
+| Assign task | `npx fidgetflo task assign TASK_ID --agent AGENT_NAME` |
+| Task status | `npx fidgetflo task status TASK_ID` |
+| Cancel task | `npx fidgetflo task cancel TASK_ID` |
 
 ### Memory Commands
 
 | Action | Command |
 |--------|---------|
-| Store | `npx claude-flow memory store --key "key" --value "value" --namespace patterns` |
-| Search | `npx claude-flow memory search --query "search terms"` |
-| List | `npx claude-flow memory list --namespace patterns` |
-| Retrieve | `npx claude-flow memory retrieve --key "key"` |
+| Store | `npx fidgetflo memory store --key "key" --value "value" --namespace patterns` |
+| Search | `npx fidgetflo memory search --query "search terms"` |
+| List | `npx fidgetflo memory list --namespace patterns` |
+| Retrieve | `npx fidgetflo memory retrieve --key "key"` |
 
 ---
 
@@ -214,8 +214,8 @@ npx claude-flow swarm start --objective "Your task here" --strategy development
 
 **Step 1: Setup coordination** (returns instantly - don't stop!)
 ```bash
-npx claude-flow swarm init --topology mesh --max-agents 5
-npx claude-flow agent spawn --type coder --name hello-main
+npx fidgetflo swarm init --topology mesh --max-agents 5
+npx fidgetflo agent spawn --type coder --name hello-main
 # ⚠️ DON'T STOP HERE - CONTINUE IMMEDIATELY TO STEP 2
 ```
 
@@ -231,15 +231,15 @@ node /tmp/hello-swarm.js
 
 **Step 3: Report completion** (optional - store results)
 ```bash
-npx claude-flow memory store --key "hello-world-result" --value "Executed: Hello World from Swarm!" --namespace results
+npx fidgetflo memory store --key "hello-world-result" --value "Executed: Hello World from Swarm!" --namespace results
 ```
 
 ### Recipe 1b: 5-Agent Concurrent Hello World (COMPLETE)
 ```bash
 # COORDINATION (instant - creates records only)
-npx claude-flow swarm init --topology hierarchical --max-agents 5
+npx fidgetflo swarm init --topology hierarchical --max-agents 5
 for i in 1 2 3 4 5; do
-  npx claude-flow agent spawn --type coder --name "worker-$i"
+  npx fidgetflo agent spawn --type coder --name "worker-$i"
 done
 
 # ⚠️ NOW YOU DO THE ACTUAL CONCURRENT WORK:
@@ -250,70 +250,70 @@ wait
 echo "All 5 workers completed!"
 
 # REPORT (optional)
-npx claude-flow memory store --key "concurrent-result" --value "5 workers completed" --namespace results
+npx fidgetflo memory store --key "concurrent-result" --value "5 workers completed" --namespace results
 ```
 
 ### Recipe 1b: Hello World (Single Command Block)
 ```bash
 # All-in-one execution
-npx claude-flow swarm init --topology mesh --max-agents 5 && \
-npx claude-flow agent spawn --type coder --name hello-main && \
-npx claude-flow swarm start --objective "Print hello world" --strategy development && \
+npx fidgetflo swarm init --topology mesh --max-agents 5 && \
+npx fidgetflo agent spawn --type coder --name hello-main && \
+npx fidgetflo swarm start --objective "Print hello world" --strategy development && \
 echo 'console.log("Hello World from Swarm!");' > /tmp/hello-swarm.js && \
 node /tmp/hello-swarm.js && \
-npx claude-flow memory store --key "hello-world-result" --value "Success" --namespace results
+npx fidgetflo memory store --key "hello-world-result" --value "Success" --namespace results
 ```
 
 ### Recipe 2: Feature Implementation (6 Agents)
 ```bash
-npx claude-flow swarm init --topology hierarchical --max-agents 8
-npx claude-flow agent spawn --type coordinator --name lead
-npx claude-flow agent spawn --type architect --name arch
-npx claude-flow agent spawn --type coder --name impl-1
-npx claude-flow agent spawn --type coder --name impl-2
-npx claude-flow agent spawn --type tester --name test
-npx claude-flow agent spawn --type reviewer --name review
-npx claude-flow swarm start --objective "Implement [feature]" --strategy development
+npx fidgetflo swarm init --topology hierarchical --max-agents 8
+npx fidgetflo agent spawn --type coordinator --name lead
+npx fidgetflo agent spawn --type architect --name arch
+npx fidgetflo agent spawn --type coder --name impl-1
+npx fidgetflo agent spawn --type coder --name impl-2
+npx fidgetflo agent spawn --type tester --name test
+npx fidgetflo agent spawn --type reviewer --name review
+npx fidgetflo swarm start --objective "Implement [feature]" --strategy development
 ```
 
 ### Recipe 3: Bug Fix (4 Agents)
 ```bash
-npx claude-flow swarm init --topology hierarchical --max-agents 4
-npx claude-flow agent spawn --type coordinator --name lead
-npx claude-flow agent spawn --type researcher --name debug
-npx claude-flow agent spawn --type coder --name fix
-npx claude-flow agent spawn --type tester --name verify
-npx claude-flow swarm start --objective "Fix [bug]" --strategy development
+npx fidgetflo swarm init --topology hierarchical --max-agents 4
+npx fidgetflo agent spawn --type coordinator --name lead
+npx fidgetflo agent spawn --type researcher --name debug
+npx fidgetflo agent spawn --type coder --name fix
+npx fidgetflo agent spawn --type tester --name verify
+npx fidgetflo swarm start --objective "Fix [bug]" --strategy development
 ```
 
 ### Recipe 4: Security Audit (3 Agents)
 ```bash
-npx claude-flow swarm init --topology hierarchical --max-agents 4
-npx claude-flow agent spawn --type coordinator --name lead
-npx claude-flow agent spawn --type security-architect --name audit
-npx claude-flow agent spawn --type reviewer --name review
-npx claude-flow swarm start --objective "Security audit" --strategy development
+npx fidgetflo swarm init --topology hierarchical --max-agents 4
+npx fidgetflo agent spawn --type coordinator --name lead
+npx fidgetflo agent spawn --type security-architect --name audit
+npx fidgetflo agent spawn --type reviewer --name review
+npx fidgetflo swarm start --objective "Security audit" --strategy development
 ```
 
 ### Recipe 5: V3 Full Coordination (15 Agents)
 ```bash
-npx claude-flow swarm init --v3-mode
-npx claude-flow swarm coordinate --agents 15
+npx fidgetflo swarm init --v3-mode
+npx fidgetflo swarm coordinate --agents 15
 ```
 
 ---
 
 ## 📋 BEHAVIORAL RULES
 
-- **YOU (CODEX) execute tasks** - claude-flow only orchestrates
+- **YOU (CODEX) execute tasks** - fidgetflo only orchestrates
 - Do what is asked; nothing more, nothing less
 - NEVER create files unless absolutely necessary
 - ALWAYS prefer editing existing files
 - NEVER save to root folder
 - NEVER commit secrets or .env files
 - ALWAYS read a file before editing it
-- NEVER wait for claude-flow to "do work" - it doesn't execute, YOU do
-- Use claude-flow commands to TRACK progress, not to EXECUTE tasks
+- NEVER wait for fidgetflo to "do work" - it doesn't execute, YOU do
+- Use fidgetflo commands to TRACK progress, not to EXECUTE tasks
 
 ## 📁 FILE ORGANIZATION
 
@@ -347,64 +347,64 @@ npx claude-flow swarm coordinate --agents 15
 
 ### Swarm Commands
 ```bash
-npx claude-flow swarm init [--topology TYPE] [--max-agents N] [--v3-mode]
-npx claude-flow swarm start --objective "task" --strategy [development|research]
-npx claude-flow swarm status [SWARM_ID]
-npx claude-flow swarm stop [SWARM_ID]
-npx claude-flow swarm scale --count N
-npx claude-flow swarm coordinate --agents N
+npx fidgetflo swarm init [--topology TYPE] [--max-agents N] [--v3-mode]
+npx fidgetflo swarm start --objective "task" --strategy [development|research]
+npx fidgetflo swarm status [SWARM_ID]
+npx fidgetflo swarm stop [SWARM_ID]
+npx fidgetflo swarm scale --count N
+npx fidgetflo swarm coordinate --agents N
 ```
 
 ### Agent Commands
 ```bash
-npx claude-flow agent spawn --type TYPE --name NAME
-npx claude-flow agent list [--filter active|idle|busy]
-npx claude-flow agent status AGENT_ID
-npx claude-flow agent stop AGENT_ID
-npx claude-flow agent metrics [AGENT_ID]
-npx claude-flow agent health
-npx claude-flow agent logs AGENT_ID
+npx fidgetflo agent spawn --type TYPE --name NAME
+npx fidgetflo agent list [--filter active|idle|busy]
+npx fidgetflo agent status AGENT_ID
+npx fidgetflo agent stop AGENT_ID
+npx fidgetflo agent metrics [AGENT_ID]
+npx fidgetflo agent health
+npx fidgetflo agent logs AGENT_ID
 ```
 
 ### Task Commands
 ```bash
-npx claude-flow task create --type TYPE --description "desc"
-npx claude-flow task list [--all]
-npx claude-flow task status TASK_ID
-npx claude-flow task assign TASK_ID --agent AGENT_NAME
-npx claude-flow task cancel TASK_ID
-npx claude-flow task retry TASK_ID
+npx fidgetflo task create --type TYPE --description "desc"
+npx fidgetflo task list [--all]
+npx fidgetflo task status TASK_ID
+npx fidgetflo task assign TASK_ID --agent AGENT_NAME
+npx fidgetflo task cancel TASK_ID
+npx fidgetflo task retry TASK_ID
 ```
 
 ### Memory Commands
 ```bash
-npx claude-flow memory store --key KEY --value VALUE [--namespace NS]
-npx claude-flow memory search --query "terms" [--namespace NS]
-npx claude-flow memory list [--namespace NS]
-npx claude-flow memory retrieve --key KEY [--namespace NS]
-npx claude-flow memory init [--force]
+npx fidgetflo memory store --key KEY --value VALUE [--namespace NS]
+npx fidgetflo memory search --query "terms" [--namespace NS]
+npx fidgetflo memory list [--namespace NS]
+npx fidgetflo memory retrieve --key KEY [--namespace NS]
+npx fidgetflo memory init [--force]
 ```
 
 ### Hooks Commands
 ```bash
-npx claude-flow hooks pre-task --description "task"
-npx claude-flow hooks post-task --task-id ID --success true
-npx claude-flow hooks route --task "task"
-npx claude-flow hooks session-start --session-id ID
-npx claude-flow hooks session-end --export-metrics true
-npx claude-flow hooks worker list
-npx claude-flow hooks worker dispatch --trigger audit
+npx fidgetflo hooks pre-task --description "task"
+npx fidgetflo hooks post-task --task-id ID --success true
+npx fidgetflo hooks route --task "task"
+npx fidgetflo hooks session-start --session-id ID
+npx fidgetflo hooks session-end --export-metrics true
+npx fidgetflo hooks worker list
+npx fidgetflo hooks worker dispatch --trigger audit
 ```
 
 ### System Commands
 ```bash
-npx claude-flow init [--wizard] [--codex] [--full]
-npx claude-flow daemon start
-npx claude-flow daemon stop
-npx claude-flow daemon status
-npx claude-flow doctor [--fix]
-npx claude-flow status
-npx claude-flow mcp start
+npx fidgetflo init [--wizard] [--codex] [--full]
+npx fidgetflo daemon start
+npx fidgetflo daemon stop
+npx fidgetflo daemon status
+npx fidgetflo doctor [--fix]
+npx fidgetflo status
+npx fidgetflo mcp start
 ```
 
 ---
@@ -447,9 +447,9 @@ npx claude-flow mcp start
 
 ### Environment Variables
 ```bash
-CLAUDE_FLOW_CONFIG=./claude-flow.config.json
-CLAUDE_FLOW_LOG_LEVEL=info
-CLAUDE_FLOW_MEMORY_BACKEND=hybrid
+FIDGETFLO_CONFIG=./fidgetflo.config.json
+FIDGETFLO_LOG_LEVEL=info
+FIDGETFLO_MEMORY_BACKEND=hybrid
 ```
 
 ---
@@ -479,7 +479,7 @@ Codex doesn't have native hooks like Claude Code, but uses **MCP (Model Context 
 
 ### MCP Auto-Registration
 
-When you run `npx claude-flow init --codex`, the MCP server is **automatically registered** with Codex.
+When you run `npx fidgetflo init --codex`, the MCP server is **automatically registered** with Codex.
 
 ```bash
 # Verify MCP is registered:
@@ -487,16 +487,16 @@ codex mcp list
 
 # Expected output:
 # Name         Command  Args                   Status
-# claude-flow  npx      claude-flow mcp start  enabled
+# fidgetflo  npx      fidgetflo mcp start  enabled
 
 # If not present, add manually:
-codex mcp add claude-flow -- npx claude-flow mcp start
+codex mcp add fidgetflo -- npx fidgetflo mcp start
 ```
 
 ### Test MCP Connection
 ```bash
 # Test MCP server starts correctly:
-npx claude-flow mcp start --test
+npx fidgetflo mcp start --test
 ```
 
 ### MCP Tools Available
@@ -603,13 +603,13 @@ Use tool: memory_store
 
 ### CLI Fallback (if MCP unavailable)
 ```bash
-npx claude-flow memory search --query "keywords" --namespace patterns
-npx claude-flow memory store --key "pattern-x" --value "what worked" --namespace patterns
+npx fidgetflo memory search --query "keywords" --namespace patterns
+npx fidgetflo memory store --key "pattern-x" --value "what worked" --namespace patterns
 ```
 
 ### Coordination via MCP
 
-When claude-flow is added as MCP server, Codex can call tools directly:
+When fidgetflo is added as MCP server, Codex can call tools directly:
 ```
 Use tool: swarm_init with topology="hierarchical"
 Use tool: memory_store with key="result" value="success"
@@ -618,9 +618,9 @@ Use tool: memory_store with key="result" value="success"
 ### config.toml MCP Setup
 ```toml
 # ~/.codex/config.toml
-[mcp_servers.claude-flow]
+[mcp_servers.fidgetflo]
 command = "npx"
-args = ["claude-flow", "mcp", "start"]
+args = ["fidgetflo", "mcp", "start"]
 enabled = true
 ```
 
@@ -631,4 +631,4 @@ enabled = true
 - Docs: https://github.com/ruvnet/claude-flow
 - Issues: https://github.com/ruvnet/claude-flow/issues
 
-**Remember: Codex executes, claude-flow orchestrates!**
+**Remember: Codex executes, fidgetflo orchestrates!**

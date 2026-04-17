@@ -85,19 +85,19 @@
 
 ### Swarm Memory
 
-All agents used claude-flow hooks for coordination:
+All agents used fidgetflo hooks for coordination:
 
 ```bash
 # Pre-task
-npx claude-flow@alpha hooks pre-task --description "[task]"
+npx fidgetflo@alpha hooks pre-task --description "[task]"
 
 # During work
-npx claude-flow@alpha hooks post-edit --file "[file]" --memory-key "swarm/[agent]/[step]"
-npx claude-flow@alpha hooks notify --message "[status]"
+npx fidgetflo@alpha hooks post-edit --file "[file]" --memory-key "swarm/[agent]/[step]"
+npx fidgetflo@alpha hooks notify --message "[status]"
 
 # Post-task
-npx claude-flow@alpha hooks post-task --task-id "[task-id]"
-npx claude-flow@alpha hooks session-end --export-metrics true
+npx fidgetflo@alpha hooks post-task --task-id "[task-id]"
+npx fidgetflo@alpha hooks session-end --export-metrics true
 ```
 
 ### Memory Store
@@ -381,7 +381,7 @@ The integration is technically complete. Next steps:
 
 ---
 
-**Swarm Coordinator**: Claude-Flow Hooks System
+**Swarm Coordinator**: FidgetFlo Hooks System
 **Branch**: `feature/agentdb-integration`
 **Ready for**: Test execution and performance validation
 **Contact**: GitHub issue #829

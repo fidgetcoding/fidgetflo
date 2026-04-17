@@ -6,7 +6,7 @@
 
 ## Context
 
-The MCP bridge grew to 331+ tools from multiple backends (ruvector, ruflo, agentic-flow, Claude Code, Gemini, Codex). Exposing all tools simultaneously caused:
+The MCP bridge grew to 331+ tools from multiple backends (ruvector, fidgetflo, agentic-flow, Claude Code, Gemini, Codex). Exposing all tools simultaneously caused:
 
 1. **Context flooding** — AI models struggle to select the right tool from 300+ options
 2. **Startup overhead** — loading all backends when only a subset is needed
@@ -22,12 +22,12 @@ Reorganize all tools into **12 logical groups** that can be independently enable
 |-------|--------|-------|---------|---------|
 | **core** | built-in | search, web_research, guidance | always on | — |
 | **intelligence** | ruvector | ~10 | enabled | `MCP_GROUP_INTELLIGENCE` |
-| **agents** | ruflo | ~50 | enabled | `MCP_GROUP_AGENTS` |
-| **memory** | ruflo | ~25 | enabled | `MCP_GROUP_MEMORY` |
-| **devtools** | ruflo | ~60 | enabled | `MCP_GROUP_DEVTOOLS` |
-| **security** | ruflo | ~25 | disabled | `MCP_GROUP_SECURITY` |
-| **browser** | ruflo | ~23 | disabled | `MCP_GROUP_BROWSER` |
-| **neural** | ruflo | ~20 | disabled | `MCP_GROUP_NEURAL` |
+| **agents** | fidgetflo | ~50 | enabled | `MCP_GROUP_AGENTS` |
+| **memory** | fidgetflo | ~25 | enabled | `MCP_GROUP_MEMORY` |
+| **devtools** | fidgetflo | ~60 | enabled | `MCP_GROUP_DEVTOOLS` |
+| **security** | fidgetflo | ~25 | disabled | `MCP_GROUP_SECURITY` |
+| **browser** | fidgetflo | ~23 | disabled | `MCP_GROUP_BROWSER` |
+| **neural** | fidgetflo | ~20 | disabled | `MCP_GROUP_NEURAL` |
 | **agentic-flow** | agentic-flow@alpha | 15 | disabled | `MCP_GROUP_AGENTIC_FLOW` |
 | **claude-code** | claude mcp serve | varies | disabled | `MCP_GROUP_CLAUDE_CODE` |
 | **gemini** | gemini-mcp-server | varies | disabled | `MCP_GROUP_GEMINI` |
@@ -52,7 +52,7 @@ Reorganize all tools into **12 logical groups** that can be independently enable
 │  └─────────────────────────────────────────────────┘   │
 │         ▼                    ▼                ▼         │
 │  ┌──────────┐  ┌──────────────┐  ┌─────────────────┐  │
-│  │ ruvector │  │    ruflo     │  │ agentic-flow    │  │
+│  │ ruvector │  │    fidgetflo     │  │ agentic-flow    │  │
 │  │ (stdio)  │  │   (stdio)   │  │    (stdio)      │  │
 │  └──────────┘  └──────────────┘  └─────────────────┘  │
 │                                                         │
@@ -70,15 +70,15 @@ Tools from external backends are filtered by matching their original tool name a
 ```javascript
 // Group definition
 agents: {
-  source: "ruflo",
+  source: "fidgetflo",
   prefixes: ["agent_", "swarm_", "task_", "session_", "hive-mind_", "workflow_", "coordination_"],
 }
 
-// ruflo tool "agent_spawn" → matches "agent_" prefix → included if agents group enabled
-// ruflo tool "browser_open" → matches "browser_" prefix → only if browser group enabled
+// fidgetflo tool "agent_spawn" → matches "agent_" prefix → included if agents group enabled
+// fidgetflo tool "browser_open" → matches "browser_" prefix → only if browser group enabled
 ```
 
-A backend is only started if at least one of its groups is enabled. This means disabling all ruflo groups prevents the ruflo process from spawning entirely.
+A backend is only started if at least one of its groups is enabled. This means disabling all fidgetflo groups prevents the fidgetflo process from spawning entirely.
 
 ### Guidance Tool
 
@@ -173,8 +173,8 @@ ANTHROPIC_API_KEY=sk-ant-...
 - New backends/groups can be added without touching existing code
 
 ### Negative
-- Some tools appear in multiple potential groups (e.g., ruflo `hooks_*` in both intelligence and devtools) — resolved by prefix matching
-- Group boundaries are somewhat arbitrary for the ruflo "Uncategorized" tools
+- Some tools appear in multiple potential groups (e.g., fidgetflo `hooks_*` in both intelligence and devtools) — resolved by prefix matching
+- Group boundaries are somewhat arbitrary for the fidgetflo "Uncategorized" tools
 
 ### Mitigations
 - `guidance` tool helps AI navigate regardless of how tools are grouped

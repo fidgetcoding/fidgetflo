@@ -3,7 +3,16 @@
   "version": "3.0.0-alpha.1",
   "private": true,
   "type": "module",
-  "description": "Claude Flow V3 - Modular AI Agent Coordination System",
+  "description": "FidgetFlo V3 monorepo - Modular AI Agent Coordination System (based on Ruflo by @ruvnet)",
+  "homepage": "https://github.com/lorecraft-io/fidgetflo#readme",
+  "bugs": {
+    "url": "https://github.com/lorecraft-io/fidgetflo/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lorecraft-io/fidgetflo.git",
+    "directory": "v3"
+  },
   "workspaces": [
     "@claude-flow/*",
     "claude-flow"

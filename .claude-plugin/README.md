@@ -1,4 +1,4 @@
-# 🚀 Claude Flow Plugin - Complete Enterprise AI Agent Orchestration
+# 🚀 FidgetFlo Plugin - Complete Enterprise AI Agent Orchestration
 
 [![Version](https://img.shields.io/badge/version-2.5.0-blue.svg)](https://github.com/ruvnet/claude-flow)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
@@ -25,7 +25,7 @@
 
 ## 🌟 Overview
 
-Claude Flow is the most comprehensive Claude Code plugin for enterprise AI agent orchestration. It provides a complete ecosystem for:
+FidgetFlo is the most comprehensive Claude Code plugin for enterprise AI agent orchestration. It provides a complete ecosystem for:
 
 - **Multi-Agent Coordination**: 74+ specialized agents with swarm intelligence
 - **SPARC Methodology**: Systematic development with 18 specialized modes
@@ -289,7 +289,7 @@ Or from local directory:
 
 ```bash
 git clone https://github.com/ruvnet/claude-flow.git
-cd claude-flow
+cd fidgetflo
 ```
 
 Then in Claude Code:
@@ -307,7 +307,7 @@ Then in Claude Code:
 
 ```bash
 # Add MCP servers to Claude Code
-claude mcp add claude-flow npx claude-flow@alpha mcp start
+claude mcp add fidgetflo npx fidgetflo@alpha mcp start
 claude mcp add ruv-swarm npx ruv-swarm mcp start  # Optional
 claude mcp add flow-nexus npx flow-nexus@latest mcp start  # Optional
 ```
@@ -347,7 +347,7 @@ In Claude Code:
 ```bash
 # Clone the repository
 git clone https://github.com/ruvnet/claude-flow.git
-cd claude-flow/claude-plugin
+cd fidgetflo/claude-plugin
 
 # Run installation script
 bash scripts/install.sh
@@ -361,7 +361,7 @@ cp -r agents ~/.claude/agents/
 
 ```bash
 # Run setup via npx
-npx claude-flow@alpha init --plugin
+npx fidgetflo@alpha init --plugin
 
 # This will:
 # 1. Create .claude directory
@@ -377,7 +377,7 @@ npx claude-flow@alpha init --plugin
 ### Directory Structure
 
 ```
-claude-flow/
+fidgetflo/
 ├── .claude-plugin/
 │   ├── plugin.json          # Plugin metadata
 │   ├── README.md            # This file
@@ -502,16 +502,16 @@ claude-flow/
 
 ## 🔌 MCP Integration
 
-Claude Flow integrates with 3 MCP servers providing 110+ tools:
+FidgetFlo integrates with 3 MCP servers providing 110+ tools:
 
-### Claude Flow MCP (Required)
+### FidgetFlo MCP (Required)
 
 ```json
 {
   "mcpServers": {
-    "claude-flow": {
+    "fidgetflo": {
       "command": "npx",
-      "args": ["claude-flow@alpha", "mcp", "start"]
+      "args": ["fidgetflo@alpha", "mcp", "start"]
     }
   }
 }

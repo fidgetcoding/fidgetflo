@@ -4,7 +4,7 @@ Initialize a new swarm with specified topology.
 
 ## Usage
 ```bash
-npx claude-flow swarm init [options]
+npx fidgetflo swarm init [options]
 ```
 
 ## Options
@@ -14,6 +14,6 @@ npx claude-flow swarm init [options]
 
 ## Examples
 ```bash
-npx claude-flow swarm init --topology mesh
-npx claude-flow swarm init --topology hierarchical --max-agents 8
+npx fidgetflo swarm init --topology mesh
+npx fidgetflo swarm init --topology hierarchical --max-agents 8
 ```

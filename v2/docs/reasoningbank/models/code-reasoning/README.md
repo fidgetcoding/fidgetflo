@@ -431,7 +431,7 @@ To add new patterns to this model:
 
 ## 📄 License
 
-This model is part of the claude-flow project and follows the same license.
+This model is part of the fidgetflo project and follows the same license.
 
 ## 🔗 Integration Examples
 

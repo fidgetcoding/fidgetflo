@@ -235,4 +235,4 @@ result = await executor.execute_autonomous_workflow(
 
 ---
 
-*Generated as part of the benchmark system enhancement project for Claude Flow integration.*
+*Generated as part of the benchmark system enhancement project for FidgetFlo integration.*

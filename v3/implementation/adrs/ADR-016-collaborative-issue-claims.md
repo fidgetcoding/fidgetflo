@@ -538,36 +538,36 @@ const config: AutoAssignConfig = {
 
 ```bash
 # View available issues
-claude-flow issues list --available
+fidgetflo issues list --available
 
 # Claim an issue (as current user/agent)
-claude-flow issues claim 123
+fidgetflo issues claim 123
 
 # Release a claim
-claude-flow issues release 123
+fidgetflo issues release 123
 
 # Request handoff to specific agent/human
-claude-flow issues handoff 123 --to agent:coder-1
-claude-flow issues handoff 123 --to human:alice
+fidgetflo issues handoff 123 --to agent:coder-1
+fidgetflo issues handoff 123 --to human:alice
 
 # Update status
-claude-flow issues status 123 --blocked "Waiting for API spec"
-claude-flow issues status 123 --review-requested
+fidgetflo issues status 123 --blocked "Waiting for API spec"
+fidgetflo issues status 123 --review-requested
 
 # View who's working on what
-claude-flow issues board
+fidgetflo issues board
 
 # Work stealing commands
-claude-flow issues stealable              # List stealable issues
-claude-flow issues steal 123              # Steal an issue
-claude-flow issues mark-stealable 123     # Mark your claim as stealable
-claude-flow issues contest 123            # Contest a steal
+fidgetflo issues stealable              # List stealable issues
+fidgetflo issues steal 123              # Steal an issue
+fidgetflo issues mark-stealable 123     # Mark your claim as stealable
+fidgetflo issues contest 123            # Contest a steal
 
 # Load balancing
-claude-flow issues load                   # View agent load distribution
-claude-flow issues load --agent coder-1   # View specific agent load
-claude-flow issues rebalance              # Trigger swarm rebalancing
-claude-flow issues rebalance --dry-run    # Preview rebalancing without applying
+fidgetflo issues load                   # View agent load distribution
+fidgetflo issues load --agent coder-1   # View specific agent load
+fidgetflo issues rebalance              # Trigger swarm rebalancing
+fidgetflo issues rebalance --dry-run    # Preview rebalancing without applying
 ```
 
 ## MCP Tools
@@ -661,16 +661,16 @@ const claimTools = [
 
 ```bash
 # Issue claim commands (10 subcommands)
-claude-flow issues list          # List all claims
-claude-flow issues claim <id>    # Claim an issue
-claude-flow issues release <id>  # Release a claim
-claude-flow issues handoff       # Request handoff
-claude-flow issues status <id>   # Get claim status
-claude-flow issues stealable     # List stealable issues
-claude-flow issues steal <id>    # Steal an issue
-claude-flow issues load          # View agent load
-claude-flow issues rebalance     # Rebalance swarm
-claude-flow issues board         # Visual claim board
+fidgetflo issues list          # List all claims
+fidgetflo issues claim <id>    # Claim an issue
+fidgetflo issues release <id>  # Release a claim
+fidgetflo issues handoff       # Request handoff
+fidgetflo issues status <id>   # Get claim status
+fidgetflo issues stealable     # List stealable issues
+fidgetflo issues steal <id>    # Steal an issue
+fidgetflo issues load          # View agent load
+fidgetflo issues rebalance     # Rebalance swarm
+fidgetflo issues board         # Visual claim board
 ```
 
 ### Key Features
@@ -680,7 +680,7 @@ claude-flow issues board         # Visual claim board
 3. **Work Stealing**: Supports overloaded, stale, blocked-timeout, voluntary reasons
 4. **Load Balancing**: Automatic rebalancing across swarm agents
 5. **Event-Driven**: ClaimEvent types for all state changes
-6. **Persistence**: File-based storage in `.claude-flow/claims/claims.json`
+6. **Persistence**: File-based storage in `.fidgetflo/claims/claims.json`
 
 ## Dependencies
 

@@ -39,11 +39,11 @@ import * as wasm from "./reasoningbank_wasm_bg.wasm";
 export * from "./reasoningbank_wasm_bg.js";
 ```
 
-**claude-flow Integration:**
+**fidgetflo Integration:**
 ```javascript
 // Direct ESM import now working!
 import { createReasoningBank } from 'agentic-flow/dist/reasoningbank/wasm-adapter.js';
-const rb = await createReasoningBank('claude-flow-memory');
+const rb = await createReasoningBank('fidgetflo-memory');
 // ✅ No workarounds needed!
 ```
 
@@ -60,20 +60,20 @@ const rb = await createReasoningBank('claude-flow-memory');
 ### ReasoningBank with WASM (Recommended)
 ```bash
 # Initialize with ReasoningBank WASM
-npx claude-flow@alpha memory init --reasoningbank
+npx fidgetflo@alpha memory init --reasoningbank
 
 # Store memories (0.04ms each)
-npx claude-flow@alpha memory store "key" "value" --reasoningbank
+npx fidgetflo@alpha memory store "key" "value" --reasoningbank
 
 # Query with semantic search (<1ms)
-npx claude-flow@alpha memory query "search term" --reasoningbank
+npx fidgetflo@alpha memory query "search term" --reasoningbank
 ```
 
 ### Basic Mode (Alternative)
 ```bash
 # Fast, reliable, SQL-based
-npx claude-flow@alpha memory store "key" "value"
-npx claude-flow@alpha memory query "key"
+npx fidgetflo@alpha memory store "key" "value"
+npx fidgetflo@alpha memory query "key"
 ```
 
 ---
@@ -84,7 +84,7 @@ npx claude-flow@alpha memory query "key"
 - **Singleton Instance**: Efficient resource usage
 - **LRU Cache**: 60-second query result caching
 - **Fallback Support**: Category search when semantic fails
-- **Model Mapping**: claude-flow memory → ReasoningBank pattern
+- **Model Mapping**: fidgetflo memory → ReasoningBank pattern
 
 ### Model Mapping
 ```javascript
@@ -127,7 +127,7 @@ npx claude-flow@alpha memory query "key"
 ### What Was Fixed
 1. **Root Cause**: agentic-flow@1.5.11 had CommonJS WASM in ESM package
 2. **Upstream Fix**: agentic-flow@1.5.12 regenerated WASM with ESM format
-3. **Integration**: claude-flow now imports directly (no workarounds)
+3. **Integration**: fidgetflo now imports directly (no workarounds)
 4. **Performance**: Verified 3ms storage, confirmed working
 
 ### Changes from v2.7.0-alpha.5
@@ -161,12 +161,12 @@ import { createReasoningBank } from 'agentic-flow/dist/reasoningbank/wasm-adapte
 - Memory: Stable (<1MB delta for 100 ops) ✅
 - Tests: 13/13 passing ✅
 
-**claude-flow@2.7.0-alpha.6 Adapter:**
+**fidgetflo@2.7.0-alpha.6 Adapter:**
 - Imports from WASM API ✅
 - Singleton instance management ✅
 - LRU query caching ✅
 - Fallback to category search ✅
-- Model mapping claude-flow ↔ ReasoningBank ✅
+- Model mapping fidgetflo ↔ ReasoningBank ✅
 
 ---
 
@@ -191,18 +191,18 @@ import { createReasoningBank } from 'agentic-flow/dist/reasoningbank/wasm-adapte
 ### For All Users
 ```bash
 # ✅ Use ReasoningBank with WASM (fast and semantic)
-npx claude-flow@alpha memory init --reasoningbank
-npx claude-flow@alpha memory store "key" "value" --reasoningbank
-npx claude-flow@alpha memory query "search" --reasoningbank
+npx fidgetflo@alpha memory init --reasoningbank
+npx fidgetflo@alpha memory store "key" "value" --reasoningbank
+npx fidgetflo@alpha memory query "search" --reasoningbank
 ```
 
 ### Performance Comparison
 ```bash
 # Basic Mode: 100+ ops/sec (no semantic search)
-npx claude-flow@alpha memory store "key" "value"
+npx fidgetflo@alpha memory store "key" "value"
 
 # ReasoningBank: 10,000-25,000 ops/sec (with semantic search)
-npx claude-flow@alpha memory store "key" "value" --reasoningbank
+npx fidgetflo@alpha memory store "key" "value" --reasoningbank
 ```
 
 ---

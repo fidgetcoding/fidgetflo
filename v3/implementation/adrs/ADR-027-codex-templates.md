@@ -21,7 +21,7 @@ This document provides the complete template specifications for all Codex-genera
 ### Default Template (Full)
 
 ```markdown
-# Claude Flow V3
+# FidgetFlo V3
 
 > Multi-agent orchestration framework for agentic coding
 
@@ -128,7 +128,7 @@ Use `$skill-name` syntax to invoke:
 
 [optional body]
 
-Co-Authored-By: claude-flow <ruv@ruv.net>
+Co-Authored-By: fidgetflo <ruv@ruv.net>
 ```
 
 Types: `feat`, `fix`, `docs`, `style`, `refactor`, `perf`, `test`, `chore`
@@ -186,7 +186,7 @@ npm run test:coverage
 
 ### Storing Patterns
 ```bash
-npx claude-flow@v3alpha memory store \
+npx fidgetflo@v3alpha memory store \
   --key "pattern-name" \
   --value "pattern description" \
   --namespace patterns
@@ -194,7 +194,7 @@ npx claude-flow@v3alpha memory store \
 
 ### Searching Memory
 ```bash
-npx claude-flow@v3alpha memory search \
+npx fidgetflo@v3alpha memory search \
   --query "search terms" \
   --namespace patterns
 ```
@@ -206,11 +206,11 @@ npx claude-flow@v3alpha memory search \
 
 ## MCP Integration
 
-Claude Flow exposes tools via MCP:
+FidgetFlo exposes tools via MCP:
 
 ```bash
 # Start MCP server
-npx claude-flow@v3alpha mcp start
+npx fidgetflo@v3alpha mcp start
 ```
 
 ### Available Tools
@@ -222,7 +222,7 @@ npx claude-flow@v3alpha mcp start
 
 ## Hooks System
 
-Claude Flow uses hooks for automation:
+FidgetFlo uses hooks for automation:
 
 | Hook | Purpose |
 |------|---------|
@@ -233,7 +233,7 @@ Claude Flow uses hooks for automation:
 
 ### Example
 ```bash
-npx claude-flow@v3alpha hooks pre-task \
+npx fidgetflo@v3alpha hooks pre-task \
   --description "implementing authentication"
 ```
 
@@ -332,7 +332,7 @@ Coordinate multiple specialized agents to work on complex tasks in parallel.
 
 ### 1. Initialize Swarm
 ```bash
-npx claude-flow@v3alpha swarm init \
+npx fidgetflo@v3alpha swarm init \
   --topology hierarchical \
   --max-agents 8 \
   --strategy specialized
@@ -340,24 +340,24 @@ npx claude-flow@v3alpha swarm init \
 
 ### 2. Route Task
 ```bash
-npx claude-flow@v3alpha hooks route --task "[task description]"
+npx fidgetflo@v3alpha hooks route --task "[task description]"
 ```
 
 ### 3. Monitor Status
 ```bash
-npx claude-flow@v3alpha swarm status
+npx fidgetflo@v3alpha swarm status
 ```
 
 ## Memory Integration
 
 ### Before Starting
 ```bash
-npx claude-flow@v3alpha memory search --query "[task keywords]"
+npx fidgetflo@v3alpha memory search --query "[task keywords]"
 ```
 
 ### After Completion
 ```bash
-npx claude-flow@v3alpha memory store \
+npx fidgetflo@v3alpha memory store \
   --key "[pattern-name]" \
   --value "[what worked]" \
   --namespace patterns
@@ -409,7 +409,7 @@ Interact with the AgentDB memory system for pattern storage, retrieval, and sema
 
 ### Store Data
 ```bash
-npx claude-flow@v3alpha memory store \
+npx fidgetflo@v3alpha memory store \
   --key "unique-key" \
   --value "data to store" \
   --namespace patterns \
@@ -418,7 +418,7 @@ npx claude-flow@v3alpha memory store \
 
 ### Search Data
 ```bash
-npx claude-flow@v3alpha memory search \
+npx fidgetflo@v3alpha memory search \
   --query "semantic search terms" \
   --namespace patterns \
   --limit 10
@@ -426,14 +426,14 @@ npx claude-flow@v3alpha memory search \
 
 ### Retrieve Specific Entry
 ```bash
-npx claude-flow@v3alpha memory retrieve \
+npx fidgetflo@v3alpha memory retrieve \
   --key "unique-key" \
   --namespace patterns
 ```
 
 ### List All Entries
 ```bash
-npx claude-flow@v3alpha memory list \
+npx fidgetflo@v3alpha memory list \
   --namespace patterns \
   --limit 50
 ```
@@ -497,35 +497,35 @@ Structured development workflow ensuring thorough planning before implementation
 Define requirements and acceptance criteria.
 
 ```bash
-npx claude-flow@v3alpha hooks route --task "specification: [requirements]"
+npx fidgetflo@v3alpha hooks route --task "specification: [requirements]"
 ```
 
 ### 2. Pseudocode
 Design algorithm in plain language.
 
 ```bash
-npx claude-flow@v3alpha hooks route --task "pseudocode: [algorithm design]"
+npx fidgetflo@v3alpha hooks route --task "pseudocode: [algorithm design]"
 ```
 
 ### 3. Architecture
 Plan system structure and components.
 
 ```bash
-npx claude-flow@v3alpha hooks route --task "architecture: [system design]"
+npx fidgetflo@v3alpha hooks route --task "architecture: [system design]"
 ```
 
 ### 4. Refinement
 Iterate and improve implementation.
 
 ```bash
-npx claude-flow@v3alpha hooks route --task "refinement: [improvements]"
+npx fidgetflo@v3alpha hooks route --task "refinement: [improvements]"
 ```
 
 ### 5. Completion
 Final validation and documentation.
 
 ```bash
-npx claude-flow@v3alpha hooks route --task "completion: [validation]"
+npx fidgetflo@v3alpha hooks route --task "completion: [validation]"
 ```
 
 ## Agent Mapping
@@ -602,22 +602,22 @@ Always invoke for:
 
 ### 1. Input Validation
 ```bash
-npx claude-flow@v3alpha security scan --check input-validation
+npx fidgetflo@v3alpha security scan --check input-validation
 ```
 
 ### 2. Path Security
 ```bash
-npx claude-flow@v3alpha security scan --check path-traversal
+npx fidgetflo@v3alpha security scan --check path-traversal
 ```
 
 ### 3. Command Injection
 ```bash
-npx claude-flow@v3alpha security scan --check command-injection
+npx fidgetflo@v3alpha security scan --check command-injection
 ```
 
 ### 4. Full Audit
 ```bash
-npx claude-flow@v3alpha security scan --depth full
+npx fidgetflo@v3alpha security scan --depth full
 ```
 
 ## CVE Monitoring
@@ -664,8 +664,8 @@ await safeExec.run(command, { sanitize: true });
 ### Default Configuration
 
 ```toml
-# Claude Flow V3 - Codex Configuration
-# Generated by: claude-flow init --codex
+# FidgetFlo V3 - Codex Configuration
+# Generated by: fidgetflo init --codex
 # Documentation: https://github.com/ruvnet/claude-flow
 
 # =============================================================================
@@ -719,7 +719,7 @@ remote_compaction = true
 # MCP Servers
 # =============================================================================
 
-[mcp_servers.claude-flow]
+[mcp_servers.fidgetflo]
 command = "npx"
 args = ["-y", "@claude-flow/cli@latest"]
 enabled = true
@@ -821,13 +821,13 @@ exclude_slash_tmp = false
 ### Minimal Configuration
 
 ```toml
-# Claude Flow V3 - Minimal Codex Configuration
+# FidgetFlo V3 - Minimal Codex Configuration
 
 model = "gpt-5.3-codex"
 approval_policy = "on-request"
 sandbox_mode = "workspace-write"
 
-[mcp_servers.claude-flow]
+[mcp_servers.fidgetflo]
 command = "npx"
 args = ["-y", "@claude-flow/cli@latest"]
 enabled = true
@@ -836,7 +836,7 @@ enabled = true
 ### CI/CD Configuration
 
 ```toml
-# Claude Flow V3 - CI/CD Pipeline Configuration
+# FidgetFlo V3 - CI/CD Pipeline Configuration
 
 model = "gpt-5.3-codex"
 approval_policy = "never"
@@ -847,7 +847,7 @@ web_search = "disabled"
 shell_snapshot = false
 remote_compaction = false
 
-[mcp_servers.claude-flow]
+[mcp_servers.fidgetflo]
 command = "npx"
 args = ["-y", "@claude-flow/cli@latest"]
 enabled = true
@@ -894,7 +894,7 @@ project/
 ├── .codex/                            # User-local overrides (gitignored)
 │   ├── config.toml                    # Personal config overrides
 │   └── AGENTS.override.md             # Local instruction overrides
-└── .claude-flow/                      # Runtime data (shared)
+└── .fidgetflo/                      # Runtime data (shared)
     ├── config.yaml
     ├── data/
     └── logs/
@@ -916,8 +916,8 @@ interface:
 dependencies:
   tools:
     - type: "mcp"
-      value: "claude-flow"
-      description: "Claude Flow MCP server for swarm coordination"
+      value: "fidgetflo"
+      description: "FidgetFlo MCP server for swarm coordination"
       transport: "stdio"
       command: "npx"
       args: ["-y", "@claude-flow/cli@latest"]
@@ -926,7 +926,7 @@ dependencies:
 ## Generation API
 
 ```typescript
-// Usage in claude-flow CLI or standalone
+// Usage in fidgetflo CLI or standalone
 // Package: @claude-flow/codex (first step toward coflow rebranding)
 
 import {
@@ -963,7 +963,7 @@ const config = await generateConfigToml({
   approvalPolicy: 'on-request',
   sandboxMode: 'workspace-write',
   mcpServers: [
-    { name: 'claude-flow', command: 'npx', args: ['-y', '@claude-flow/cli@latest'] }
+    { name: 'fidgetflo', command: 'npx', args: ['-y', '@claude-flow/cli@latest'] }
   ],
   skills: [
     { path: '.agents/skills/swarm-orchestration', enabled: true }
@@ -1012,10 +1012,10 @@ When using the main CLI, Codex support is available via:
 
 ```bash
 # Initialize with Codex support
-npx claude-flow@v3alpha init --codex
+npx fidgetflo@v3alpha init --codex
 
 # Initialize with dual-platform support
-npx claude-flow@v3alpha init --dual
+npx fidgetflo@v3alpha init --dual
 
 # Future (after coflow rebrand)
 npx coflow init --codex

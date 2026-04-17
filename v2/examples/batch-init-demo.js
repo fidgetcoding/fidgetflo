@@ -6,31 +6,31 @@
 
 import { batchInitCommand, PROJECT_TEMPLATES, ENVIRONMENT_CONFIGS } from '../src/cli/simple-commands/init/batch-init.js';
 
-console.log('🚀 Claude-Flow Batch Initialization Demo');
+console.log('🚀 FidgetFlo Batch Initialization Demo');
 console.log('========================================\n');
 
 // Demo 1: Simple batch initialization
 console.log('📋 Demo 1: Simple Batch Initialization');
 console.log('--------------------------------------');
-console.log('Command: claude-flow init --batch-init demo-api,demo-web,demo-cli');
+console.log('Command: fidgetflo init --batch-init demo-api,demo-web,demo-cli');
 console.log('This would create 3 basic projects with default settings.\n');
 
 // Demo 2: Template-based batch initialization
 console.log('📋 Demo 2: Template-Based Batch Initialization');
 console.log('----------------------------------------------');
-console.log('Command: claude-flow init --batch-init api-v1,api-v2 --template web-api --sparc');
+console.log('Command: fidgetflo init --batch-init api-v1,api-v2 --template web-api --sparc');
 console.log('Creates 2 web API projects with SPARC development environment.\n');
 
 // Demo 3: Multi-environment batch initialization
 console.log('📋 Demo 3: Multi-Environment Batch Initialization');
 console.log('-----------------------------------------------');
-console.log('Command: claude-flow init --batch-init myapp --environments dev,staging,prod');
+console.log('Command: fidgetflo init --batch-init myapp --environments dev,staging,prod');
 console.log('Creates myapp-dev, myapp-staging, and myapp-prod projects.\n');
 
 // Demo 4: Configuration file batch initialization
 console.log('📋 Demo 4: Configuration File Batch Initialization');
 console.log('------------------------------------------------');
-console.log('Command: claude-flow init --config batch-config-enterprise.json');
+console.log('Command: fidgetflo init --config batch-config-enterprise.json');
 console.log('Uses complex configuration file for multiple projects.\n');
 
 // Demo 5: Available templates
@@ -52,11 +52,11 @@ console.log();
 // Demo 7: Batch manager utilities
 console.log('📋 Demo 7: Batch Manager Utilities');
 console.log('---------------------------------');
-console.log('claude-flow batch create-config --interactive  # Create interactive config');
-console.log('claude-flow batch validate-config my-batch.json # Validate configuration');
-console.log('claude-flow batch estimate my-batch.json        # Estimate time/resources');
-console.log('claude-flow batch list-templates                # List all templates');
-console.log('claude-flow batch list-environments             # List all environments');
+console.log('fidgetflo batch create-config --interactive  # Create interactive config');
+console.log('fidgetflo batch validate-config my-batch.json # Validate configuration');
+console.log('fidgetflo batch estimate my-batch.json        # Estimate time/resources');
+console.log('fidgetflo batch list-templates                # List all templates');
+console.log('fidgetflo batch list-environments             # List all environments');
 console.log();
 
 // Performance demonstration

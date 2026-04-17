@@ -1,6 +1,6 @@
-# Claude Flow Benchmark System v2.0
+# FidgetFlo Benchmark System v2.0
 
-Production-ready benchmarking for Claude Flow with **real command execution** and **authentic metrics**.
+Production-ready benchmarking for FidgetFlo with **real command execution** and **authentic metrics**.
 
 ## Quick Start
 
@@ -14,7 +14,7 @@ python examples/real_swarm_benchmark.py "Build REST API"
 
 ## Features
 
-- ✅ **Real Execution**: Actual `./claude-flow` commands via subprocess
+- ✅ **Real Execution**: Actual `./fidgetflo` commands via subprocess
 - ✅ **Stream JSON**: Parses `--non-interactive --output-format stream-json`
 - ✅ **Authentic Metrics**: Real tokens, timing, and resource usage
 - ✅ **No Mocks**: 100% genuine execution
@@ -22,9 +22,9 @@ python examples/real_swarm_benchmark.py "Build REST API"
 ## Supported Commands
 
 ```bash
-./claude-flow swarm "task" --non-interactive --output-format stream-json
-./claude-flow hive-mind spawn "task" --non-interactive
-./claude-flow sparc run code "task" --non-interactive
+./fidgetflo swarm "task" --non-interactive --output-format stream-json
+./fidgetflo hive-mind spawn "task" --non-interactive
+./fidgetflo sparc run code "task" --non-interactive
 ```
 
 ## Usage

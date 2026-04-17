@@ -6,7 +6,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue.svg)](https://www.typescriptlang.org/)
 [![Providers](https://img.shields.io/badge/Providers-6+-orange.svg)](https://github.com/ruvnet/claude-flow)
 
-> Multi-LLM Provider System for Claude Flow V3 - unified interface for Anthropic, OpenAI, Google, Cohere, Ollama, and RuVector with intelligent load balancing, automatic failover, and cost optimization.
+> Multi-LLM Provider System for FidgetFlo V3 - unified interface for Anthropic, OpenAI, Google, Cohere, Ollama, and RuVector with intelligent load balancing, automatic failover, and cost optimization.
 
 ## Features
 
@@ -538,7 +538,7 @@ OPENAI_BASE_URL=https://api.openai.com/v1
 | Cache lookup | <1ms |
 | Health check | <2s |
 
-## Integration with Claude Flow
+## Integration with FidgetFlo
 
 ```typescript
 import { createProviderManager } from '@claude-flow/providers';

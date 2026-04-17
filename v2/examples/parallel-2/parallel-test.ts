@@ -55,7 +55,7 @@ async function runParallelTest() {
     }
   ];
 
-  console.log("🎯 Claude-Flow Parallel Agent Test");
+  console.log("🎯 FidgetFlo Parallel Agent Test");
   console.log("==================================");
   console.log(`Testing ${agentTasks.length} agents in parallel mode\n`);
 

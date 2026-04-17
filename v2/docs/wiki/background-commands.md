@@ -212,7 +212,7 @@ The Ctrl+B functionality can be triggered programmatically by:
 }
 ```
 
-#### 2. Claude-Flow Automation
+#### 2. FidgetFlo Automation
 ```javascript
 // Automated background detection
 function handleCommand(command) {
@@ -229,7 +229,7 @@ function handleCommand(command) {
 #### 3. Hook System Integration
 ```bash
 # Pre-command hook that simulates Ctrl+B for certain commands
-npx claude-flow hooks pre-command \
+npx fidgetflo hooks pre-command \
   --auto-background "npm run dev" \
   --auto-background "docker-compose up"
 ```
@@ -595,11 +595,11 @@ npm run build:production  # run_in_background: true
 docker build -t myapp .  # run_in_background: true
 ```
 
-## Integration with Claude-Flow
+## Integration with FidgetFlo
 
 ### Automatic Background Detection
 
-Claude-Flow can be enhanced to automatically detect and run certain commands in the background:
+FidgetFlo can be enhanced to automatically detect and run certain commands in the background:
 
 #### Pattern-Based Detection
 Commands matching these patterns could automatically use background execution:
@@ -758,11 +758,11 @@ Debug the application issue:
 
 ### Swarm Coordination
 
-When using Claude-Flow's hive-mind system:
+When using FidgetFlo's hive-mind system:
 
 ```bash
 # Spawn specialized background monitor agent
-npx claude-flow hive-mind spawn "background-monitor" \
+npx fidgetflo hive-mind spawn "background-monitor" \
   --role "Monitor and manage all background processes" \
   --instructions "
     1. Track all background tasks
@@ -773,7 +773,7 @@ npx claude-flow hive-mind spawn "background-monitor" \
   "
 
 # Main development agent with background awareness
-npx claude-flow hive-mind spawn "full-stack-dev" \
+npx fidgetflo hive-mind spawn "full-stack-dev" \
   --role "Develop features while services run in background" \
   --instructions "
     Start all development servers in background:
@@ -850,7 +850,7 @@ function shouldRunInBackground(command) {
   return BACKGROUND_PATTERNS.some(pattern => pattern.test(command));
 }
 
-// Export for Claude-Flow integration
+// Export for FidgetFlo integration
 module.exports = { shouldRunInBackground };
 ```
 
@@ -901,21 +901,21 @@ Default → Foreground
 
 #### Pre-Command Hook
 ```bash
-npx claude-flow hooks pre-command \
+npx fidgetflo hooks pre-command \
   --analyze-for-background \
   --auto-background-threshold 30
 ```
 
 #### Background Monitor Hook
 ```bash
-npx claude-flow hooks background-monitor \
+npx fidgetflo hooks background-monitor \
   --check-interval 10 \
   --alert-on-failure
 ```
 
 ### MCP Tool Extensions
 
-Potential new MCP tools for Claude-Flow:
+Potential new MCP tools for FidgetFlo:
 
 1. **background_spawn**
    - Intelligently spawns commands in background
@@ -1089,7 +1089,7 @@ For complete details, see [Session Persistence Guide](./session-persistence.md).
 Coordinate multiple background tasks:
 ```bash
 # Start development environment
-npx claude-flow orchestrate dev-env \
+npx fidgetflo orchestrate dev-env \
   --background "npm run dev" \
   --background "npm run api" \
   --background "docker-compose up db" \
@@ -1099,7 +1099,7 @@ npx claude-flow orchestrate dev-env \
 ### Intelligent Monitoring
 ```bash
 # Smart monitoring with alerts
-npx claude-flow monitor \
+npx fidgetflo monitor \
   --background-tasks \
   --alert-on "error|failed|exception" \
   --restart-on-failure
@@ -1199,15 +1199,15 @@ For programmatic control, use Claude Code's tool system:
 ## Related Documentation
 
 - [Claude Code Bash Tool Documentation](./bash-tool.md)
-- [Claude-Flow Hooks System](./hooks-system.md)
+- [FidgetFlo Hooks System](./hooks-system.md)
 - [MCP Tools Reference](./mcp-tools.md)
 - [Session Management](./session-management.md)
 
 ## Examples Repository
 
-Find more examples at: [claude-flow-examples/background-tasks](https://github.com/ruvnet/claude-flow-examples/tree/main/background-tasks)
+Find more examples at: [fidgetflo-examples/background-tasks](https://github.com/ruvnet/claude-flow-examples/tree/main/background-tasks)
 
 ---
 
 *Last updated: August 2025*
-*Claude-Flow Version: 2.0.0-alpha*
+*FidgetFlo Version: 2.0.0-alpha*

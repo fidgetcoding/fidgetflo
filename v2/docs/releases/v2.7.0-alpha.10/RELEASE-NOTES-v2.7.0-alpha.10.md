@@ -12,7 +12,7 @@
 Semantic search queries would always return 0 results despite data being stored correctly:
 
 ```bash
-$ npx claude-flow@alpha memory query "configuration" --namespace semantic --reasoningbank
+$ npx fidgetflo@alpha memory query "configuration" --namespace semantic --reasoningbank
 [INFO] No memory candidates found
 ⚠️ No results found
 ```
@@ -95,24 +95,24 @@ const namespace = options.namespace || options.domain || 'default';
 ### Verified Commands
 ```bash
 # Store memory
-$ ./claude-flow memory store test "validation data" --namespace semantic --reasoningbank
+$ ./fidgetflo memory store test "validation data" --namespace semantic --reasoningbank
 ✅ Stored successfully in ReasoningBank
 🔍 Semantic search: enabled
 
 # Query memory (NOW WORKS!)
-$ ./claude-flow memory query "validation" --namespace semantic --reasoningbank
+$ ./fidgetflo memory query "validation" --namespace semantic --reasoningbank
 ✅ Found 3 results (semantic search):
 📌 test
    Value: validation data
    Match Score: 31.1%
 
 # List memories
-$ ./claude-flow memory list --namespace semantic --reasoningbank
+$ ./fidgetflo memory list --namespace semantic --reasoningbank
 ✅ ReasoningBank memories (3 shown):
 ...
 
 # Check status
-$ ./claude-flow memory status --reasoningbank
+$ ./fidgetflo memory status --reasoningbank
 ✅ Total memories: 29
    Embeddings: 29
 ```
@@ -126,7 +126,7 @@ $ ./claude-flow memory status --reasoningbank
 1. **package.json**
    - Version: `2.7.0-alpha.9` → `2.7.0-alpha.10`
 
-2. **bin/claude-flow**
+2. **bin/fidgetflo**
    - Version: `2.7.0-alpha.9` → `2.7.0-alpha.10`
 
 3. **src/reasoningbank/reasoningbank-adapter.js**
@@ -147,14 +147,14 @@ $ ./claude-flow memory status --reasoningbank
 
 ### Before (alpha.9)
 ```bash
-$ npx claude-flow@alpha memory query "config" --namespace semantic --reasoningbank
+$ npx fidgetflo@alpha memory query "config" --namespace semantic --reasoningbank
 [INFO] No memory candidates found
 ⚠️ No results found
 ```
 
 ### After (alpha.10)
 ```bash
-$ npx claude-flow@alpha memory query "config" --namespace semantic --reasoningbank
+$ npx fidgetflo@alpha memory query "config" --namespace semantic --reasoningbank
 [INFO] Found 3 candidates
 [INFO] Retrieval complete: 3 memories in 2ms
 ✅ Found 3 results (semantic search):
@@ -169,11 +169,11 @@ $ npx claude-flow@alpha memory query "config" --namespace semantic --reasoningba
 ### Full Cycle Test
 ```bash
 # Store
-$ ./claude-flow memory store api_test "REST API configuration" --namespace semantic --reasoningbank
+$ ./fidgetflo memory store api_test "REST API configuration" --namespace semantic --reasoningbank
 ✅ Stored successfully
 
 # Query immediately
-$ ./claude-flow memory query "REST API" --namespace semantic --reasoningbank
+$ ./fidgetflo memory query "REST API" --namespace semantic --reasoningbank
 ✅ Found 4 results (semantic search)
 
 # Verify persistence
@@ -188,20 +188,20 @@ $ sqlite3 .swarm/memory.db "SELECT COUNT(*) FROM patterns WHERE json_extract(pat
 ### Update to Latest Alpha
 ```bash
 # NPM
-npm install -g claude-flow@alpha
+npm install -g fidgetflo@alpha
 
 # Or use npx (always latest)
-npx claude-flow@alpha --version
+npx fidgetflo@alpha --version
 # Output: v2.7.0-alpha.10
 ```
 
 ### Verify Semantic Search Works
 ```bash
 # Store a test memory
-npx claude-flow@alpha memory store test "semantic search validation" --namespace semantic --reasoningbank
+npx fidgetflo@alpha memory store test "semantic search validation" --namespace semantic --reasoningbank
 
 # Query it back
-npx claude-flow@alpha memory query "semantic search" --namespace semantic --reasoningbank
+npx fidgetflo@alpha memory query "semantic search" --namespace semantic --reasoningbank
 # Should return the stored memory ✅
 ```
 
@@ -230,7 +230,7 @@ All existing commands continue to work as before, but now return correct results
 
 ### From alpha.9
 ```bash
-npm install -g claude-flow@alpha
+npm install -g fidgetflo@alpha
 # Automatic update, no migration needed
 ```
 
@@ -270,7 +270,7 @@ All core functionality now working:
 ## 📝 Next Steps
 
 Users should:
-1. ✅ Update to alpha.10: `npm install -g claude-flow@alpha`
+1. ✅ Update to alpha.10: `npm install -g fidgetflo@alpha`
 2. ✅ Test semantic search: Store and query memories
 3. ✅ Verify data persistence: Check `.swarm/memory.db` exists
 4. ✅ Confirm commands exit properly (no hanging)
@@ -304,6 +304,6 @@ Users should:
 ---
 
 **Status**: ✅ **PRODUCTION READY**
-**Recommendation**: Safe to deploy `claude-flow@2.7.0-alpha.10` for production use.
+**Recommendation**: Safe to deploy `fidgetflo@2.7.0-alpha.10` for production use.
 
 **Semantic search is now fully operational! 🎉**

@@ -4,7 +4,7 @@ Comprehensive performance testing and optimization tools for AgentDB v1.3.9 inte
 
 ## Overview
 
-This suite validates the claimed performance improvements of AgentDB over the current claude-flow memory system:
+This suite validates the claimed performance improvements of AgentDB over the current fidgetflo memory system:
 - **150x faster** search with HNSW indexing
 - **500x faster** batch inserts
 - **12,500x faster** large-scale queries
@@ -250,5 +250,5 @@ When adding new benchmarks:
 - AgentDB Documentation: https://github.com/rUv-Swarm/agentdb
 - HNSW Algorithm: https://arxiv.org/abs/1603.09320
 - Vector Quantization: https://en.wikipedia.org/wiki/Vector_quantization
-- Claude-Flow Integration Plan: `/docs/AGENTDB_INTEGRATION_PLAN.md`
+- FidgetFlo Integration Plan: `/docs/AGENTDB_INTEGRATION_PLAN.md`
 - Production Readiness: `/docs/agentdb/PRODUCTION_READINESS.md`

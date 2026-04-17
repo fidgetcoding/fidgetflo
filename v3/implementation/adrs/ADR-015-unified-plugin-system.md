@@ -8,7 +8,7 @@
 
 ## Context
 
-Claude Flow v3 has multiple extension mechanisms scattered across different packages:
+FidgetFlo v3 has multiple extension mechanisms scattered across different packages:
 - Plugin interfaces in `@claude-flow/shared`
 - Worker system in `@claude-flow/integration`
 - Hooks system in `@claude-flow/hooks`

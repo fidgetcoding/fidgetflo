@@ -36,17 +36,17 @@ This guide shows how to integrate ReasoningBank's self-learning memory system in
 ```json
 {
   "env": {
-    "CLAUDE_FLOW_AUTO_COMMIT": "false",
-    "CLAUDE_FLOW_AUTO_PUSH": "false",
-    "CLAUDE_FLOW_HOOKS_ENABLED": "true",
-    "CLAUDE_FLOW_TELEMETRY_ENABLED": "true",
-    "CLAUDE_FLOW_REMOTE_EXECUTION": "true",
-    "CLAUDE_FLOW_CHECKPOINTS_ENABLED": "true",
+    "FIDGETFLO_AUTO_COMMIT": "false",
+    "FIDGETFLO_AUTO_PUSH": "false",
+    "FIDGETFLO_HOOKS_ENABLED": "true",
+    "FIDGETFLO_TELEMETRY_ENABLED": "true",
+    "FIDGETFLO_REMOTE_EXECUTION": "true",
+    "FIDGETFLO_CHECKPOINTS_ENABLED": "true",
     "REASONINGBANK_ENABLED": "true"
   },
   "permissions": {
     "allow": [
-      "Bash(npx claude-flow:*)",
+      "Bash(npx fidgetflo:*)",
       "Bash(npm run lint)",
       "Bash(npm run test:*)",
       "Bash(npm test:*)",
@@ -79,7 +79,7 @@ This guide shows how to integrate ReasoningBank's self-learning memory system in
           {
             "type": "command",
             "comment": "Retrieve relevant patterns before bash commands",
-            "command": "cat | jq -r '.tool_input.command // empty' | tr '\\n' '\\0' | xargs -0 -I {} bash -c 'CMD=\"{}\"; CONTEXT=$(npx claude-flow@alpha memory query \"$CMD\" --reasoningbank --limit 3 --format json 2>/dev/null || echo \"{}\"); echo \"📚 ReasoningBank Context: $CONTEXT\" >&2; npx claude-flow@alpha hooks pre-command --command \"$CMD\" --validate-safety true --prepare-resources true --context \"$CONTEXT\"'"
+            "command": "cat | jq -r '.tool_input.command // empty' | tr '\\n' '\\0' | xargs -0 -I {} bash -c 'CMD=\"{}\"; CONTEXT=$(npx fidgetflo@alpha memory query \"$CMD\" --reasoningbank --limit 3 --format json 2>/dev/null || echo \"{}\"); echo \"📚 ReasoningBank Context: $CONTEXT\" >&2; npx fidgetflo@alpha hooks pre-command --command \"$CMD\" --validate-safety true --prepare-resources true --context \"$CONTEXT\"'"
           }
         ]
       },
@@ -89,7 +89,7 @@ This guide shows how to integrate ReasoningBank's self-learning memory system in
           {
             "type": "command",
             "comment": "Load file patterns before editing",
-            "command": "cat | jq -r '.tool_input.file_path // .tool_input.path // empty' | tr '\\n' '\\0' | xargs -0 -I {} bash -c 'FILE=\"{}\"; EXT=\"${FILE##*.}\"; CONTEXT=$(npx claude-flow@alpha memory query \"$EXT file patterns\" --namespace code --reasoningbank --limit 2 --format json 2>/dev/null || echo \"{}\"); echo \"📚 Code Patterns: $CONTEXT\" >&2; npx claude-flow@alpha hooks pre-edit --file \"$FILE\" --auto-assign-agents true --load-context true --reasoning-context \"$CONTEXT\"'"
+            "command": "cat | jq -r '.tool_input.file_path // .tool_input.path // empty' | tr '\\n' '\\0' | xargs -0 -I {} bash -c 'FILE=\"{}\"; EXT=\"${FILE##*.}\"; CONTEXT=$(npx fidgetflo@alpha memory query \"$EXT file patterns\" --namespace code --reasoningbank --limit 2 --format json 2>/dev/null || echo \"{}\"); echo \"📚 Code Patterns: $CONTEXT\" >&2; npx fidgetflo@alpha hooks pre-edit --file \"$FILE\" --auto-assign-agents true --load-context true --reasoning-context \"$CONTEXT\"'"
           }
         ]
       }
@@ -101,7 +101,7 @@ This guide shows how to integrate ReasoningBank's self-learning memory system in
           {
             "type": "command",
             "comment": "Store successful bash patterns",
-            "command": "cat | jq -r '.tool_input.command // empty, .result.exit_code // \"unknown\"' | tr '\\n' '\\0' | xargs -0 bash -c 'set -- $0 $1; CMD=\"$1\"; EXIT=\"$2\"; if [ \"$EXIT\" = \"0\" ]; then DESC=\"Successful command: $CMD\"; npx claude-flow@alpha memory store \"cmd_$(echo -n \"$CMD\" | md5sum | cut -d\\\" \\\" -f1)\" \"$DESC\" --namespace commands --reasoningbank --confidence 0.6 2>/dev/null; fi; npx claude-flow@alpha hooks post-command --command \"$CMD\" --track-metrics true --store-results true --exit-code \"$EXIT\"'"
+            "command": "cat | jq -r '.tool_input.command // empty, .result.exit_code // \"unknown\"' | tr '\\n' '\\0' | xargs -0 bash -c 'set -- $0 $1; CMD=\"$1\"; EXIT=\"$2\"; if [ \"$EXIT\" = \"0\" ]; then DESC=\"Successful command: $CMD\"; npx fidgetflo@alpha memory store \"cmd_$(echo -n \"$CMD\" | md5sum | cut -d\\\" \\\" -f1)\" \"$DESC\" --namespace commands --reasoningbank --confidence 0.6 2>/dev/null; fi; npx fidgetflo@alpha hooks post-command --command \"$CMD\" --track-metrics true --store-results true --exit-code \"$EXIT\"'"
           }
         ]
       },
@@ -111,7 +111,7 @@ This guide shows how to integrate ReasoningBank's self-learning memory system in
           {
             "type": "command",
             "comment": "Store code patterns after editing",
-            "command": "cat | jq -r '.tool_input.file_path // .tool_input.path // empty, (.tool_input.new_string // .tool_input.content // empty | split(\"\\n\") | length | tostring)' | tr '\\n' '\\0' | xargs -0 bash -c 'set -- $0 $1; FILE=\"$1\"; LINES=\"$2\"; if [ -f \"$FILE\" ]; then EXT=\"${FILE##*.}\"; PATTERN=\"Edited $EXT file with $LINES lines\"; npx claude-flow@alpha memory store \"edit_${EXT}_$(date +%s)\" \"$PATTERN\" --namespace code --reasoningbank --confidence 0.5 2>/dev/null; fi; npx claude-flow@alpha hooks post-edit --file \"$FILE\" --format true --update-memory true'"
+            "command": "cat | jq -r '.tool_input.file_path // .tool_input.path // empty, (.tool_input.new_string // .tool_input.content // empty | split(\"\\n\") | length | tostring)' | tr '\\n' '\\0' | xargs -0 bash -c 'set -- $0 $1; FILE=\"$1\"; LINES=\"$2\"; if [ -f \"$FILE\" ]; then EXT=\"${FILE##*.}\"; PATTERN=\"Edited $EXT file with $LINES lines\"; npx fidgetflo@alpha memory store \"edit_${EXT}_$(date +%s)\" \"$PATTERN\" --namespace code --reasoningbank --confidence 0.5 2>/dev/null; fi; npx fidgetflo@alpha hooks post-edit --file \"$FILE\" --format true --update-memory true'"
           }
         ]
       }
@@ -123,7 +123,7 @@ This guide shows how to integrate ReasoningBank's self-learning memory system in
           {
             "type": "command",
             "comment": "Query session patterns before compact",
-            "command": "/bin/bash -c 'INPUT=$(cat); CUSTOM=$(echo \"$INPUT\" | jq -r \".custom_instructions // \\\"\\\"\"); SESSION_PATTERNS=$(npx claude-flow@alpha memory list --namespace session --reasoningbank --limit 5 2>/dev/null || echo \"No patterns\"); echo \"🔄 PreCompact Guidance:\"; echo \"📋 IMPORTANT: Review CLAUDE.md and session patterns:\"; echo \"$SESSION_PATTERNS\"; if [ -n \"$CUSTOM\" ]; then echo \"🎯 Custom: $CUSTOM\"; fi; echo \"✅ Ready for compact\"'"
+            "command": "/bin/bash -c 'INPUT=$(cat); CUSTOM=$(echo \"$INPUT\" | jq -r \".custom_instructions // \\\"\\\"\"); SESSION_PATTERNS=$(npx fidgetflo@alpha memory list --namespace session --reasoningbank --limit 5 2>/dev/null || echo \"No patterns\"); echo \"🔄 PreCompact Guidance:\"; echo \"📋 IMPORTANT: Review CLAUDE.md and session patterns:\"; echo \"$SESSION_PATTERNS\"; if [ -n \"$CUSTOM\" ]; then echo \"🎯 Custom: $CUSTOM\"; fi; echo \"✅ Ready for compact\"'"
           }
         ]
       },
@@ -133,7 +133,7 @@ This guide shows how to integrate ReasoningBank's self-learning memory system in
           {
             "type": "command",
             "comment": "Auto-compact with reasoning context",
-            "command": "/bin/bash -c 'TOP_PATTERNS=$(npx claude-flow@alpha memory query \"important patterns\" --reasoningbank --limit 3 2>/dev/null || echo \"None\"); echo \"🔄 Auto-Compact with ReasoningBank:\"; echo \"📚 Top Patterns: $TOP_PATTERNS\"; echo \"✅ Auto-compact proceeding\"'"
+            "command": "/bin/bash -c 'TOP_PATTERNS=$(npx fidgetflo@alpha memory query \"important patterns\" --reasoningbank --limit 3 2>/dev/null || echo \"None\"); echo \"🔄 Auto-Compact with ReasoningBank:\"; echo \"📚 Top Patterns: $TOP_PATTERNS\"; echo \"✅ Auto-compact proceeding\"'"
           }
         ]
       }
@@ -144,14 +144,14 @@ This guide shows how to integrate ReasoningBank's self-learning memory system in
           {
             "type": "command",
             "comment": "Consolidate ReasoningBank at session end",
-            "command": "bash -c 'echo \"🧠 Consolidating ReasoningBank memory...\"; npx claude-flow@alpha memory consolidate --reasoningbank --threshold 0.9 --prune-low-confidence 0.2 2>/dev/null || echo \"Consolidation skipped\"; npx claude-flow@alpha hooks session-end --generate-summary true --persist-state true --export-metrics true; echo \"✅ Session ended with ReasoningBank update\"'"
+            "command": "bash -c 'echo \"🧠 Consolidating ReasoningBank memory...\"; npx fidgetflo@alpha memory consolidate --reasoningbank --threshold 0.9 --prune-low-confidence 0.2 2>/dev/null || echo \"Consolidation skipped\"; npx fidgetflo@alpha hooks session-end --generate-summary true --persist-state true --export-metrics true; echo \"✅ Session ended with ReasoningBank update\"'"
           }
         ]
       }
     ]
   },
   "includeCoAuthoredBy": true,
-  "enabledMcpjsonServers": ["claude-flow", "ruv-swarm"],
+  "enabledMcpjsonServers": ["fidgetflo", "ruv-swarm"],
   "statusLine": {
     "type": "command",
     "command": ".claude/statusline-command.sh"
@@ -173,7 +173,7 @@ If you want a lighter integration:
           {
             "type": "command",
             "comment": "Query patterns before editing",
-            "command": "cat | jq -r '.tool_input.file_path // .tool_input.path // empty' | xargs -I {} bash -c 'npx claude-flow@alpha memory query \"{}\" --reasoningbank --limit 2 2>&1 | grep -q \"Found\" && echo \"📚 Found relevant patterns\" || echo \"📝 No patterns yet\"'"
+            "command": "cat | jq -r '.tool_input.file_path // .tool_input.path // empty' | xargs -I {} bash -c 'npx fidgetflo@alpha memory query \"{}\" --reasoningbank --limit 2 2>&1 | grep -q \"Found\" && echo \"📚 Found relevant patterns\" || echo \"📝 No patterns yet\"'"
           }
         ]
       }
@@ -185,7 +185,7 @@ If you want a lighter integration:
           {
             "type": "command",
             "comment": "Store successful edits",
-            "command": "cat | jq -r '.tool_input.file_path // .tool_input.path // empty' | xargs -I {} bash -c 'FILE=\"{}\"; [ -f \"$FILE\" ] && npx claude-flow@alpha memory store \"edit_$(basename $FILE)_$(date +%s)\" \"Edited: $FILE\" --namespace code --reasoningbank 2>/dev/null || true'"
+            "command": "cat | jq -r '.tool_input.file_path // .tool_input.path // empty' | xargs -I {} bash -c 'FILE=\"{}\"; [ -f \"$FILE\" ] && npx fidgetflo@alpha memory store \"edit_$(basename $FILE)_$(date +%s)\" \"Edited: $FILE\" --namespace code --reasoningbank 2>/dev/null || true'"
           }
         ]
       }
@@ -196,7 +196,7 @@ If you want a lighter integration:
           {
             "type": "command",
             "comment": "Consolidate at session end",
-            "command": "npx claude-flow@alpha memory consolidate --reasoningbank 2>/dev/null || true"
+            "command": "npx fidgetflo@alpha memory consolidate --reasoningbank 2>/dev/null || true"
           }
         ]
       }
@@ -211,13 +211,13 @@ If you want a lighter integration:
 
 ```bash
 # Store a pattern
-npx claude-flow@alpha memory store <key> <value> \
+npx fidgetflo@alpha memory store <key> <value> \
   --namespace <namespace> \
   --reasoningbank \
   --confidence 0.5
 
 # Store with metadata
-npx claude-flow@alpha memory store bug_fix_123 \
+npx fidgetflo@alpha memory store bug_fix_123 \
   "Fixed CORS by adding middleware" \
   --namespace debugging \
   --reasoningbank \
@@ -229,13 +229,13 @@ npx claude-flow@alpha memory store bug_fix_123 \
 
 ```bash
 # Query semantically
-npx claude-flow@alpha memory query "authentication patterns" \
+npx fidgetflo@alpha memory query "authentication patterns" \
   --reasoningbank \
   --limit 3 \
   --format json
 
 # Query with filters
-npx claude-flow@alpha memory query "bug fixes" \
+npx fidgetflo@alpha memory query "bug fixes" \
   --namespace debugging \
   --reasoningbank \
   --min-confidence 0.7
@@ -245,10 +245,10 @@ npx claude-flow@alpha memory query "bug fixes" \
 
 ```bash
 # List all patterns
-npx claude-flow@alpha memory list --reasoningbank
+npx fidgetflo@alpha memory list --reasoningbank
 
 # List by namespace
-npx claude-flow@alpha memory list \
+npx fidgetflo@alpha memory list \
   --namespace commands \
   --reasoningbank \
   --limit 10
@@ -258,13 +258,13 @@ npx claude-flow@alpha memory list \
 
 ```bash
 # Consolidate memories (remove duplicates, prune low-confidence)
-npx claude-flow@alpha memory consolidate \
+npx fidgetflo@alpha memory consolidate \
   --reasoningbank \
   --threshold 0.9 \
   --prune-low-confidence 0.2
 
 # Consolidate specific namespace
-npx claude-flow@alpha memory consolidate \
+npx fidgetflo@alpha memory consolidate \
   --namespace debugging \
   --reasoningbank
 ```
@@ -273,7 +273,7 @@ npx claude-flow@alpha memory consolidate \
 
 ```bash
 # Get ReasoningBank statistics
-npx claude-flow@alpha memory stats --reasoningbank
+npx fidgetflo@alpha memory stats --reasoningbank
 ```
 
 ## Hook Execution Flow
@@ -283,7 +283,7 @@ npx claude-flow@alpha memory stats --reasoningbank
 ```
 1. PreToolUse Hook (Write tool)
    ├─ Extract: file_path = "src/api/server.js"
-   ├─ Query: npx claude-flow memory query "server.js api patterns"
+   ├─ Query: npx fidgetflo memory query "server.js api patterns"
    ├─ Result: Found 2 patterns with 85% confidence
    └─ Inject: Context added to operation
 
@@ -293,7 +293,7 @@ npx claude-flow@alpha memory stats --reasoningbank
 
 3. PostToolUse Hook (Write tool)
    ├─ Extract: file_path, exit_code = 0
-   ├─ Store: npx claude-flow memory store "edit_server_1729123456"
+   ├─ Store: npx fidgetflo memory store "edit_server_1729123456"
    ├─ Pattern: "Successfully edited server.js API endpoint"
    └─ Initial confidence: 0.5
 
@@ -326,21 +326,21 @@ session/       # Current session patterns
 
 ```bash
 if [ "$EXIT_CODE" = "0" ]; then
-  npx claude-flow@alpha memory store "pattern" "description" --reasoningbank
+  npx fidgetflo@alpha memory store "pattern" "description" --reasoningbank
 fi
 ```
 
 ### 2. **Error Handling** (Don't break hooks on failure)
 
 ```bash
-npx claude-flow@alpha memory query "pattern" --reasoningbank 2>/dev/null || echo "{}"
+npx fidgetflo@alpha memory query "pattern" --reasoningbank 2>/dev/null || echo "{}"
 ```
 
 ### 3. **Format Detection** (Store file-type specific patterns)
 
 ```bash
 EXT="${FILE##*.}"
-npx claude-flow@alpha memory store "edit_${EXT}" "Pattern for $EXT files"
+npx fidgetflo@alpha memory store "edit_${EXT}" "Pattern for $EXT files"
 ```
 
 ### 4. **Confidence Management**
@@ -380,7 +380,7 @@ ReasoningBank operations are fast:
 # Trigger a Write operation and check for pattern retrieval
 echo '{"tool_input": {"file_path": "test.js"}}' | \
   jq -r '.tool_input.file_path' | \
-  xargs -I {} npx claude-flow@alpha memory query "{}"
+  xargs -I {} npx fidgetflo@alpha memory query "{}"
 ```
 
 ### 2. Test PostToolUse Hook
@@ -389,7 +389,7 @@ echo '{"tool_input": {"file_path": "test.js"}}' | \
 # Simulate successful edit and storage
 echo '{"tool_input": {"file_path": "test.js"}, "result": {"exit_code": 0}}' | \
   jq -r '.tool_input.file_path' | \
-  xargs -I {} npx claude-flow@alpha memory store "edit_test_$(date +%s)" \
+  xargs -I {} npx fidgetflo@alpha memory store "edit_test_$(date +%s)" \
     "Edited: {}" --namespace code --reasoningbank
 ```
 
@@ -397,14 +397,14 @@ echo '{"tool_input": {"file_path": "test.js"}, "result": {"exit_code": 0}}' | \
 
 ```bash
 # Check stored patterns
-npx claude-flow@alpha memory list --namespace code --reasoningbank
+npx fidgetflo@alpha memory list --namespace code --reasoningbank
 ```
 
 ### 4. Test Consolidation
 
 ```bash
 # Run manual consolidation
-npx claude-flow@alpha memory consolidate --reasoningbank --threshold 0.9
+npx fidgetflo@alpha memory consolidate --reasoningbank --threshold 0.9
 ```
 
 ## Troubleshooting
@@ -413,28 +413,28 @@ npx claude-flow@alpha memory consolidate --reasoningbank --threshold 0.9
 
 **Check**: Hooks enabled in environment
 ```json
-"CLAUDE_FLOW_HOOKS_ENABLED": "true"
+"FIDGETFLO_HOOKS_ENABLED": "true"
 ```
 
 ### No Patterns Found
 
 **Solution**: Verify ReasoningBank is initialized
 ```bash
-npx claude-flow@alpha memory stats --reasoningbank
+npx fidgetflo@alpha memory stats --reasoningbank
 ```
 
 ### Slow Hook Execution
 
 **Solution**: Add timeouts and limits
 ```bash
-timeout 5s npx claude-flow@alpha memory query "pattern" --limit 3
+timeout 5s npx fidgetflo@alpha memory query "pattern" --limit 3
 ```
 
 ### Pattern Duplication
 
 **Solution**: Run consolidation more frequently
 ```bash
-npx claude-flow@alpha memory consolidate --reasoningbank --threshold 0.95
+npx fidgetflo@alpha memory consolidate --reasoningbank --threshold 0.95
 ```
 
 ## Advanced: Custom Hook Scripts
@@ -453,7 +453,7 @@ EXT="${FILE##*.}"
 FILENAME=$(basename "$FILE")
 
 # Query relevant patterns
-PATTERNS=$(npx claude-flow@alpha memory query \
+PATTERNS=$(npx fidgetflo@alpha memory query \
   "$EXT $FILENAME" \
   --namespace "$NAMESPACE" \
   --reasoningbank \
@@ -551,7 +551,7 @@ ReasoningBank integration transforms Claude Code from a stateless tool into an i
 1. Copy the configuration to `.claude/settings.json`
 2. Restart Claude Code to load hooks
 3. Perform some operations (edits, commands)
-4. Check stored patterns: `npx claude-flow@alpha memory list --reasoningbank`
+4. Check stored patterns: `npx fidgetflo@alpha memory list --reasoningbank`
 5. Watch intelligence compound over time! 🚀
 
 ---

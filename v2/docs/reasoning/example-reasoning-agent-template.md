@@ -63,7 +63,7 @@ I store this pattern for future reference as:
 ### Example 1: [Example Name]
 ```bash
 # Command
-claude-flow agent run [agent-name] "[task description]" \
+fidgetflo agent run [agent-name] "[task description]" \
   --enable-memory \
   --memory-domain [domain] \
   --memory-k 5
@@ -94,9 +94,9 @@ npx agentic-flow --agent [agent-name] --task "[task]" \
   --memory-domain [domain]
 ```
 
-### With claude-flow CLI:
+### With fidgetflo CLI:
 ```bash
-claude-flow agent run [agent-name] "[task]" \
+fidgetflo agent run [agent-name] "[task]" \
   --enable-memory \
   --memory-domain [domain]
 ```
@@ -165,7 +165,7 @@ Patterns learned in one domain can transfer to related domains:
 ### Progressive Improvement
 ```bash
 # First attempt (cold start)
-claude-flow agent run [agent-name] "Task 1" --enable-memory
+fidgetflo agent run [agent-name] "Task 1" --enable-memory
 # Success rate: ~60%
 
 # After 5 similar tasks
@@ -178,13 +178,13 @@ claude-flow agent run [agent-name] "Task 1" --enable-memory
 ### Monitoring Performance
 ```bash
 # Check learning progress
-claude-flow agent memory list --domain [your-domain]
+fidgetflo agent memory list --domain [your-domain]
 
 # View statistics
-claude-flow agent memory status
+fidgetflo agent memory status
 
 # Benchmark performance
-claude-flow agent memory benchmark
+fidgetflo agent memory benchmark
 ```
 
 ## Troubleshooting
@@ -206,7 +206,7 @@ claude-flow agent memory benchmark
 - **ReasoningBank Paper**: https://arxiv.org/html/2509.25140v1
 - **Integration Guide**: `docs/AGENTIC-FLOW-INTEGRATION-GUIDE.md`
 - **Creation Guide**: `docs/REASONINGBANK-AGENT-CREATION-GUIDE.md`
-- **Available Agents**: `claude-flow agent agents`
+- **Available Agents**: `fidgetflo agent agents`
 
 ---
 
@@ -277,7 +277,7 @@ I store findings as:
 
 ### Example 1: API Security Audit
 ```bash
-claude-flow agent run adaptive-security-auditor \
+fidgetflo agent run adaptive-security-auditor \
   "Audit Express.js API for security vulnerabilities" \
   --enable-memory \
   --memory-domain security/api \
@@ -292,7 +292,7 @@ What I will do:
 
 ### Example 2: Authentication Review
 ```bash
-claude-flow agent run adaptive-security-auditor \
+fidgetflo agent run adaptive-security-auditor \
   "Review JWT authentication implementation" \
   --enable-memory \
   --memory-domain security/authentication \
@@ -343,7 +343,7 @@ After 10 audits:
 
 ```bash
 # First audit (cold start)
-claude-flow agent run adaptive-security-auditor "Audit codebase" --enable-memory
+fidgetflo agent run adaptive-security-auditor "Audit codebase" --enable-memory
 # Finds: 5 vulnerabilities, 3 false positives
 
 # After 5 audits
@@ -351,7 +351,7 @@ claude-flow agent run adaptive-security-auditor "Audit codebase" --enable-memory
 # Time: 50% faster
 
 # Check accumulated security knowledge
-claude-flow agent memory list --domain security
+fidgetflo agent memory list --domain security
 ```
 ```
 

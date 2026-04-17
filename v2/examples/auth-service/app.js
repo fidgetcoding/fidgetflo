@@ -1,4 +1,4 @@
-// Application created by Claude Flow Swarm
+// Application created by FidgetFlo Swarm
 // Objective: create an authentication service with JWT tokens and user registration in ./examples/auth-service
 // Swarm ID: swarm_eawl2v4mn_dvg0ho8cc
 

@@ -528,15 +528,15 @@ All MCP 2025-11 files successfully compiled:
 
 ### CLI Integration
 ```bash
-✅ npx claude-flow mcp start
+✅ npx fidgetflo mcp start
    - Server starts successfully
    - Legacy mode by default
 
-✅ npx claude-flow mcp start --mcp2025
+✅ npx fidgetflo mcp start --mcp2025
    - MCP 2025-11 mode enabled
    - Feature flag activation confirmed
 
-✅ npx claude-flow --version
+✅ npx fidgetflo --version
    - v2.7.32 confirmed
 ```
 
@@ -549,18 +549,18 @@ All MCP 2025-11 files successfully compiled:
 #### Via CLI Flag (Recommended for Testing)
 ```bash
 # Start with MCP 2025-11 features
-npx claude-flow mcp start --mcp2025
+npx fidgetflo mcp start --mcp2025
 
 # With specific transport
-npx claude-flow mcp start --mcp2025 --transport http --port 3000
+npx fidgetflo mcp start --mcp2025 --transport http --port 3000
 
 # Disable legacy support (2025-11 only)
-npx claude-flow mcp start --mcp2025 --no-legacy
+npx fidgetflo mcp start --mcp2025 --no-legacy
 ```
 
 #### Via Configuration (Production)
 ```typescript
-import { MCPServerFactory } from 'claude-flow';
+import { MCPServerFactory } from 'fidgetflo';
 
 const config = {
   transport: 'stdio',
@@ -573,7 +573,7 @@ const config = {
     enableSchemaValidation: true,     // Input/output validation
   },
   mcp2025: {
-    serverId: 'claude-flow-prod',
+    serverId: 'fidgetflo-prod',
     async: {
       enabled: true,
       maxJobs: 100,

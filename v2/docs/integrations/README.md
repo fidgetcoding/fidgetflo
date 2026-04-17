@@ -1,6 +1,6 @@
 # 🔌 Platform Integrations
 
-This directory contains documentation for all major platform integrations with Claude Flow.
+This directory contains documentation for all major platform integrations with FidgetFlo.
 
 ## 📂 Integration Categories
 

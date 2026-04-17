@@ -1,6 +1,6 @@
 # RuVector Upstream WASM Packages
 
-This directory contains references and integration bridges for upstream RuVector WASM packages used by Claude Flow plugins.
+This directory contains references and integration bridges for upstream RuVector WASM packages used by FidgetFlo plugins.
 
 ## Available WASM Packages
 
@@ -60,7 +60,7 @@ import { FlashAttention } from '@ruvector/attention-wasm';
 const hnsw = await initMicroHnsw();
 const attention = await FlashAttention.init();
 
-// Use in Claude Flow plugin
+// Use in FidgetFlo plugin
 export const plugin: ClaudeFlowPlugin = {
   name: '@claude-flow/plugin-example',
   bridges: {

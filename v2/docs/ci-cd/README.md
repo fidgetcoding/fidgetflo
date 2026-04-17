@@ -1,6 +1,6 @@
 # 🚀 CI/CD Pipeline Documentation
 
-This document provides comprehensive information about the GitHub Actions CI/CD pipeline for Claude Flow.
+This document provides comprehensive information about the GitHub Actions CI/CD pipeline for FidgetFlo.
 
 ## 📊 Pipeline Overview
 
@@ -359,7 +359,7 @@ When updating workflows:
 ## 📚 Additional Resources
 
 - [GitHub Actions Documentation](https://docs.github.com/en/actions)
-- [Claude Flow Wiki](https://github.com/ruvnet/claude-code-flow/wiki)
+- [FidgetFlo Wiki](https://github.com/ruvnet/claude-code-flow/wiki)
 - [Agent System Documentation](../agent-system-documentation.md)
 - [Performance Benchmarking](../reports/PERFORMANCE_METRICS_VALIDATION_REPORT.md)
 

@@ -1,6 +1,6 @@
 # Migration Guide: v2 → v3
 
-Complete guide for upgrading from Claude Flow v2 to v3.0.0-alpha.1
+Complete guide for upgrading from FidgetFlo v2 to v3.0.0-alpha.1
 
 ---
 
@@ -21,10 +21,10 @@ Complete guide for upgrading from Claude Flow v2 to v3.0.0-alpha.1
 ## Overview
 
 ### What's Changed
-Claude Flow v3 is a complete architectural overhaul based on 10 Architecture Decision Records (ADRs). The migration involves:
+FidgetFlo v3 is a complete architectural overhaul based on 10 Architecture Decision Records (ADRs). The migration involves:
 
 - **Code reduction**: 15,000+ lines → <5,000 lines
-- **Module architecture**: Monolith → 10 @claude-flow modules
+- **Module architecture**: Monolith → 10 @fidgetflo modules
 - **Foundation**: Custom implementation → agentic-flow@alpha core
 - **Memory**: 6+ fragmented systems → Unified AgentDB
 - **Testing**: Jest → Vitest (10x faster)
@@ -45,7 +45,7 @@ Claude Flow v3 is a complete architectural overhaul based on 10 Architecture Dec
 ### 1. Backup Current Setup
 ```bash
 # Backup your v2 installation
-cp -r ~/.claude-flow ~/.claude-flow.v2.backup
+cp -r ~/.fidgetflo ~/.fidgetflo.v2.backup
 cp -r ./node_modules ./node_modules.v2.backup
 cp package.json package.json.v2.backup
 cp package-lock.json package-lock.json.v2.backup
@@ -57,13 +57,13 @@ npx agentic-flow memory export --output ./v2-memory-backup.json
 ### 2. Document Current Configuration
 ```bash
 # Save current configuration
-cat ~/.claude-flow/config.json > v2-config-backup.json
+cat ~/.fidgetflo/config.json > v2-config-backup.json
 
 # List installed agents
 npx agentic-flow --list > v2-agents-list.txt
 
 # Export environment variables
-env | grep CLAUDE_FLOW > v2-env-backup.txt
+env | grep FIDGETFLO > v2-env-backup.txt
 ```
 
 ### 3. System Requirements Check
@@ -90,7 +90,7 @@ npm list @ruvector/attention
 npm list @ruvector/sona
 
 # Check for custom plugins or extensions
-ls ~/.claude-flow/plugins/
+ls ~/.fidgetflo/plugins/
 ```
 
 ---
@@ -247,7 +247,7 @@ rm package-lock.json
 # 2. Install v3 alpha
 npm install agentic-flow@3.0.0-alpha.1
 
-# 3. Install required @claude-flow modules
+# 3. Install required @fidgetflo modules
 npm install @claude-flow/security@latest
 npm install @claude-flow/memory@latest
 npm install @claude-flow/integration@latest
@@ -272,35 +272,35 @@ npm install --save-dev @vitest/ui@^2.1.8
 npx agentic-flow@3.0.0-alpha.1 init --v3
 
 # 2. Migrate v2 configuration (manual merge)
-# Edit ~/.claude-flow/config.json with your v2 settings
+# Edit ~/.fidgetflo/config.json with your v2 settings
 # Follow new schema from v3/config/schema.json
 
 # 3. Set environment variables
-export CLAUDE_FLOW_VERSION=3
-export CLAUDE_FLOW_MODE=production
-export CLAUDE_FLOW_MEMORY_BACKEND=agentdb
+export FIDGETFLO_VERSION=3
+export FIDGETFLO_MODE=production
+export FIDGETFLO_MEMORY_BACKEND=agentdb
 ```
 
 #### Windows Configuration
 ```powershell
 # PowerShell
-setx CLAUDE_FLOW_VERSION "3"
-setx CLAUDE_FLOW_MODE "production"
-setx CLAUDE_FLOW_MEMORY_BACKEND "agentdb"
+setx FIDGETFLO_VERSION "3"
+setx FIDGETFLO_MODE "production"
+setx FIDGETFLO_MEMORY_BACKEND "agentdb"
 
 # Update config path
-$env:CLAUDE_FLOW_CONFIG = "$env:APPDATA\claude-flow\config.json"
+$env:FIDGETFLO_CONFIG = "$env:APPDATA\fidgetflo\config.json"
 ```
 
 #### macOS/Linux Configuration
 ```bash
 # Bash/Zsh
-export CLAUDE_FLOW_VERSION=3
-export CLAUDE_FLOW_MODE=production
-export CLAUDE_FLOW_MEMORY_BACKEND=agentdb
+export FIDGETFLO_VERSION=3
+export FIDGETFLO_MODE=production
+export FIDGETFLO_MEMORY_BACKEND=agentdb
 
 # Update config path
-export CLAUDE_FLOW_CONFIG="$HOME/.claude-flow/config.json"
+export FIDGETFLO_CONFIG="$HOME/.fidgetflo/config.json"
 
 # Add to ~/.bashrc or ~/.zshrc for persistence
 ```
@@ -482,7 +482,7 @@ npx @claude-flow/security validate-credentials
 npx @claude-flow/security check-paths
 
 # 5. Review security report
-cat ~/.claude-flow/security-report.json
+cat ~/.fidgetflo/security-report.json
 ```
 
 ### Step 7: Performance Validation
@@ -778,38 +778,38 @@ console.log(`Peak usage: ${profile.peakMB}MB`);
 
 #### v2 Environment Variables
 ```bash
-CLAUDE_FLOW_VERSION=2
-CLAUDE_FLOW_MEMORY_PATH=./memory
-CLAUDE_FLOW_COORDINATOR=hierarchical
+FIDGETFLO_VERSION=2
+FIDGETFLO_MEMORY_PATH=./memory
+FIDGETFLO_COORDINATOR=hierarchical
 ```
 
 #### v3 Environment Variables
 ```bash
 # Core
-CLAUDE_FLOW_VERSION=3
-CLAUDE_FLOW_MODE=production
-CLAUDE_FLOW_CONFIG=~/.claude-flow/config.json
+FIDGETFLO_VERSION=3
+FIDGETFLO_MODE=production
+FIDGETFLO_CONFIG=~/.fidgetflo/config.json
 
 # Memory
-CLAUDE_FLOW_MEMORY_BACKEND=agentdb
-CLAUDE_FLOW_MEMORY_PATH=./data
-CLAUDE_FLOW_AGENTDB_HNSW=true
+FIDGETFLO_MEMORY_BACKEND=agentdb
+FIDGETFLO_MEMORY_PATH=./data
+FIDGETFLO_AGENTDB_HNSW=true
 
 # Security
-CLAUDE_FLOW_SECURITY_STRICT=true
-CLAUDE_FLOW_SECURITY_MODE=strict
+FIDGETFLO_SECURITY_STRICT=true
+FIDGETFLO_SECURITY_MODE=strict
 
 # Performance
-CLAUDE_FLOW_FLASH_ATTENTION=true
-CLAUDE_FLOW_SONA_LEARNING=true
+FIDGETFLO_FLASH_ATTENTION=true
+FIDGETFLO_SONA_LEARNING=true
 
 # Platform-specific (Windows)
 APPDATA=C:\Users\YourName\AppData\Roaming
-CLAUDE_FLOW_CONFIG=%APPDATA%\claude-flow\config.json
+FIDGETFLO_CONFIG=%APPDATA%\fidgetflo\config.json
 
 # Platform-specific (macOS/Linux)
 HOME=/home/yourname
-CLAUDE_FLOW_CONFIG=$HOME/.claude-flow/config.json
+FIDGETFLO_CONFIG=$HOME/.fidgetflo/config.json
 ```
 
 ---
@@ -1104,7 +1104,7 @@ rm -rf node_modules
 cp -r node_modules.v2.backup node_modules
 
 # 3. Restore configuration
-cp v2-config-backup.json ~/.claude-flow/config.json
+cp v2-config-backup.json ~/.fidgetflo/config.json
 
 # 4. Restore memory
 npx agentic-flow@2.x memory import ./v2-memory-backup.json
@@ -1128,7 +1128,7 @@ npm uninstall @ruvector/attention
 npm uninstall @ruvector/sona
 
 # 2. Restore entire v2 environment
-cp -r ~/.claude-flow.v2.backup ~/.claude-flow
+cp -r ~/.fidgetflo.v2.backup ~/.fidgetflo
 rm -rf node_modules
 cp package.json.v2.backup package.json
 cp package-lock.json.v2.backup package-lock.json
@@ -1149,7 +1149,7 @@ npx agentic-flow --list
 
 **Symptoms**:
 ```
-Error: Claude Flow v3 requires Node.js 20.x or higher
+Error: FidgetFlo v3 requires Node.js 20.x or higher
 Current version: v18.x.x
 ```
 
@@ -1205,7 +1205,7 @@ Path traversal detected: ../../../etc/passwd
 **Solution**:
 ```bash
 # 1. Review security configuration
-cat ~/.claude-flow/config.json | grep -A 10 security
+cat ~/.fidgetflo/config.json | grep -A 10 security
 
 # 2. Update allowedDirectories
 npx @claude-flow/security configure \
@@ -1216,7 +1216,7 @@ npx @claude-flow/security configure \
 npx @claude-flow/security check-paths --fix
 
 # 4. Re-run with strict mode disabled (temporary)
-export CLAUDE_FLOW_SECURITY_STRICT=false
+export FIDGETFLO_SECURITY_STRICT=false
 ```
 
 ### Issue 4: Vitest Test Failures
@@ -1296,7 +1296,7 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 
 # Solution
 xattr -d com.apple.quarantine /path/to/npx
-spctl --add --label "Claude Flow" /path/to/npx
+spctl --add --label "FidgetFlo" /path/to/npx
 ```
 
 #### Linux: Permission Denied
@@ -1314,7 +1314,7 @@ sudo chown -R $USER:$USER ~/.npm
 ## Post-Migration Checklist
 
 - [ ] v3 installed and running (`npx agentic-flow --version` shows 3.0.0-alpha.1)
-- [ ] All 10 @claude-flow modules installed
+- [ ] All 10 @fidgetflo modules installed
 - [ ] Configuration migrated to v3 format
 - [ ] Memory data imported into AgentDB
 - [ ] Security audit passed
@@ -1333,8 +1333,8 @@ sudo chown -R $USER:$USER ~/.npm
 ### Resources
 - **Documentation**: https://github.com/ruvnet/agentic-flow/tree/v3/docs
 - **GitHub Issues**: https://github.com/ruvnet/agentic-flow/issues
-- **ADR Reference**: /workspaces/claude-flow/v3/docs/adr/
-- **Examples**: /workspaces/claude-flow/v3/examples/
+- **ADR Reference**: /workspaces/fidgetflo/v3/docs/adr/
+- **Examples**: /workspaces/fidgetflo/v3/examples/
 
 ### Support Channels
 - **Bug Reports**: Open issue with `migration` label
@@ -1359,7 +1359,7 @@ If you encounter issues not covered in this guide:
 
 3. **Try safe mode**:
    ```bash
-   export CLAUDE_FLOW_SAFE_MODE=true
+   export FIDGETFLO_SAFE_MODE=true
    npx agentic-flow --agent coder --task "Test safe mode"
    ```
 
@@ -1398,4 +1398,4 @@ If you encounter issues not covered in this guide:
 
 ---
 
-**Happy Migrating! Welcome to Claude Flow v3!** 🚀
+**Happy Migrating! Welcome to FidgetFlo v3!** 🚀

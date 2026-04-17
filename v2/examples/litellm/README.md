@@ -16,7 +16,7 @@ A production-ready, multi-tenant LiteLLM proxy that enables Claude Code to seaml
 ```bash
 # Clone the repository
 git clone https://github.com/ruvnet/claude-flow.git
-cd claude-flow/examples/litellm
+cd fidgetflo/examples/litellm
 
 # Copy environment template
 cp .env.example .env
@@ -344,4 +344,4 @@ MIT License - see [LICENSE](../../LICENSE) for details.
 
 ---
 
-Built with ❤️ by the Claude Flow team
+Built with ❤️ by the FidgetFlo team

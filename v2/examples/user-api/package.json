@@ -1,7 +1,7 @@
 {
   "name": "rest-api",
   "version": "1.0.0",
-  "description": "REST API created by Claude Flow Swarm",
+  "description": "REST API created by FidgetFlo Swarm",
   "main": "server.js",
   "scripts": {
     "start": "node server.js",
@@ -12,9 +12,9 @@
     "rest",
     "api",
     "swarm",
-    "claude-flow"
+    "fidgetflo"
   ],
-  "author": "Claude Flow Swarm",
+  "author": "FidgetFlo Swarm",
   "license": "MIT",
   "dependencies": {
     "express": "^4.18.2"

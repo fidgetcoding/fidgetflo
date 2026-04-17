@@ -1,4 +1,4 @@
-# Changelog - Claude Flow v3
+# Changelog - FidgetFlo v3
 
 All notable changes to this project will be documented in this file.
 
@@ -24,7 +24,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **ADR-010**: Removed Deno support, focused on Node.js 20+ LTS
 
 #### Module Constellation
-Complete restructure into 10 independent @claude-flow modules:
+Complete restructure into 10 independent @fidgetflo modules:
 - Code reduced from 15,000+ lines to <5,000 lines
 - Each module independently versioned and publishable
 - Cross-platform Windows/macOS/Linux support
@@ -56,7 +56,7 @@ Complete restructure into 10 independent @claude-flow modules:
 - **Memory reduction**: 83.1% achieved
 - **Task orchestration**: 2.8-4.4x parallel speedup
 
-### 🔧 New @claude-flow Modules
+### 🔧 New @fidgetflo Modules
 
 #### 1. `@claude-flow/security` - Security Module
 - CVE-1, CVE-2, CVE-3 remediation

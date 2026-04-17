@@ -5,7 +5,7 @@ Start a new pair programming session with AI assistance.
 ## Usage
 
 ```bash
-claude-flow pair --start [options]
+fidgetflo pair --start [options]
 ```
 
 ## Options
@@ -24,12 +24,12 @@ claude-flow pair --start [options]
 
 ### Basic Start
 ```bash
-claude-flow pair --start
+fidgetflo pair --start
 ```
 
 ### Expert Refactoring Session
 ```bash
-claude-flow pair --start \
+fidgetflo pair --start \
   --agent senior-dev \
   --focus refactor \
   --verify \
@@ -38,7 +38,7 @@ claude-flow pair --start \
 
 ### TDD Session
 ```bash
-claude-flow pair --start \
+fidgetflo pair --start \
   --mode driver \
   --focus test \
   --test \
@@ -47,7 +47,7 @@ claude-flow pair --start \
 
 ### Debugging Session
 ```bash
-claude-flow pair --start \
+fidgetflo pair --start \
   --agent debugger-expert \
   --focus debug \
   --review
@@ -164,33 +164,33 @@ Start sessions in background for long-running collaboration:
 
 ```bash
 # Start in background
-claude-flow pair --start --background
+fidgetflo pair --start --background
 
 # Monitor session
-claude-flow pair status
+fidgetflo pair status
 
 # View session output
-claude-flow pair output session_id
+fidgetflo pair output session_id
 
 # End background session
-claude-flow pair --end session_id
+fidgetflo pair --end session_id
 ```
 
 ## Integration
 
 ### With Git
 ```bash
-claude-flow pair --start --git --auto-commit
+fidgetflo pair --start --git --auto-commit
 ```
 
 ### With CI/CD
 ```bash
-claude-flow pair --start --ci --non-interactive
+fidgetflo pair --start --ci --non-interactive
 ```
 
 ### With IDE
 ```bash
-claude-flow pair --start --ide vscode
+fidgetflo pair --start --ide vscode
 ```
 
 ## Best Practices

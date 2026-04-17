@@ -45,7 +45,7 @@
 | Command | Version | MCP Server |
 |---------|---------|------------|
 | `npx @claude-flow/cli@alpha` | v3.0.0-alpha.87 | **171 tools**, 19 categories |
-| `npx claude-flow@v3alpha` | v3.0.0-alpha.34 | **171 tools**, 19 categories |
+| `npx fidgetflo@v3alpha` | v3.0.0-alpha.34 | **171 tools**, 19 categories |
 
 **Fix Applied:** Pinned exact CLI version in wrapper package to avoid semver resolution to buggy 3.0.x versions. Deprecated versions 3.0.0, 3.0.1, 3.0.2.
 
@@ -251,7 +251,7 @@ Stats handler (`hooks/intelligence/stats`) pulls from actual implementations:
 | Package | Version | Published |
 |---------|---------|-----------|
 | @claude-flow/cli | **3.0.0-alpha.117** | 2026-01-14 |
-| claude-flow | **3.0.0-alpha.76** | 2026-01-14 |
+| fidgetflo | **3.0.0-alpha.76** | 2026-01-14 |
 | @claude-flow/memory | 3.0.0-alpha.2 | 2026-01-07 |
 | @claude-flow/mcp | 3.0.0-alpha.8 | 2026-01-07 |
 | @claude-flow/neural | 3.0.0-alpha.2 | 2026-01-06 |
@@ -399,7 +399,7 @@ Stats handler (`hooks/intelligence/stats`) pulls from actual implementations:
 | Package | Version | Published | Status |
 |---------|---------|-----------|--------|
 | @claude-flow/cli | **3.0.0-alpha.87** | 2026-01-13 | ✅ Beta Ready |
-| claude-flow | **3.0.0-alpha.34** | 2026-01-13 | ✅ Beta Ready |
+| fidgetflo | **3.0.0-alpha.34** | 2026-01-13 | ✅ Beta Ready |
 | @claude-flow/memory | 3.0.0-alpha.2 | 2026-01-07 | ✅ |
 | @claude-flow/mcp | 3.0.0-alpha.8 | 2026-01-07 | ✅ |
 | @claude-flow/neural | 3.0.0-alpha.2 | 2026-01-06 | ✅ |
@@ -464,7 +464,7 @@ const heapUsedMB = (endMem.heapUsed / 1024 / 1024);
 
 ```typescript
 output.writeln(output.warning('⚠ No real CVE database configured. Showing example data.'));
-output.writeln(output.dim('Run "npm audit" or "claude-flow security scan" for real vulnerability detection.'));
+output.writeln(output.dim('Run "npm audit" or "fidgetflo security scan" for real vulnerability detection.'));
 ```
 
 ### Transfer Fallback Warnings
@@ -480,14 +480,14 @@ console.warn(`⚠ [Discovery] OFFLINE MODE - Could not resolve IPNS: ${ipnsName}
 
 ### MCP Server Fix
 
-**Problem:** `npx claude-flow@alpha mcp start` failed with "Cannot read properties of undefined (reading 'split')"
+**Problem:** `npx fidgetflo@alpha mcp start` failed with "Cannot read properties of undefined (reading 'split')"
 
 **Root Cause:** npm resolved `^3.0.0-alpha.84` to buggy version `3.0.2` (semver: `3.0.2 > 3.0.0-alpha.84`)
 
 **Solution:**
 1. Pinned exact version in wrapper: `"@claude-flow/cli": "3.0.0-alpha.86"` (no caret)
 2. Deprecated buggy versions: 3.0.0, 3.0.1, 3.0.2
-3. Published claude-flow@3.0.0-alpha.33 with fix
+3. Published fidgetflo@3.0.0-alpha.33 with fix
 
 ### Doctor Version Freshness Check (alpha.86)
 
@@ -522,11 +522,11 @@ npx @claude-flow/cli@alpha doctor -c version
 ### Update CLI Commands
 
 ```bash
-npx claude-flow update check      # Check for updates
-npx claude-flow update all        # Update all packages
-npx claude-flow update history    # View update history
-npx claude-flow update rollback   # Rollback last update
-npx claude-flow update clear-cache # Clear check cache
+npx fidgetflo update check      # Check for updates
+npx fidgetflo update all        # Update all packages
+npx fidgetflo update history    # View update history
+npx fidgetflo update rollback   # Rollback last update
+npx fidgetflo update clear-cache # Clear check cache
 ```
 
 ---
@@ -642,7 +642,7 @@ V3 now implements **171 MCP tools** with full V2 backward compatibility:
 ### Recommendation
 
 ✅ V2 API compatibility is complete. The 52 new tools provide:
-- File-based persistence in `.claude-flow/` directory
+- File-based persistence in `.fidgetflo/` directory
 - V2 API shape for backward compatibility
 - Local state management for workflow coordination
 

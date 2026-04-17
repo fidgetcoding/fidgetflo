@@ -4,7 +4,7 @@ Manage persistent memory storage.
 
 ## Usage
 ```bash
-npx claude-flow memory usage [options]
+npx fidgetflo memory usage [options]
 ```
 
 ## Options
@@ -15,11 +15,11 @@ npx claude-flow memory usage [options]
 ## Examples
 ```bash
 # Store memory
-npx claude-flow memory usage --action store --key "project-config" --value '{"api": "v2"}'
+npx fidgetflo memory usage --action store --key "project-config" --value '{"api": "v2"}'
 
 # Retrieve memory
-npx claude-flow memory usage --action retrieve --key "project-config"
+npx fidgetflo memory usage --action retrieve --key "project-config"
 
 # List all keys
-npx claude-flow memory usage --action list
+npx fidgetflo memory usage --action list
 ```

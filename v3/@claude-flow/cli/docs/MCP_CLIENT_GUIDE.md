@@ -606,8 +606,8 @@ When adding new CLI commands:
 ## Related Documentation
 
 - [REFACTORING_SUMMARY.md](./REFACTORING_SUMMARY.md) - Overview of refactoring
-- [ADR-005: MCP-First API Design](/workspaces/claude-flow/docs/adr/ADR-005-mcp-first-api.md) - Architecture decision
-- [MCP Tool Implementations](/workspaces/claude-flow/v3/mcp/tools/) - Tool source code
+- [ADR-005: MCP-First API Design](/workspaces/fidgetflo/docs/adr/ADR-005-mcp-first-api.md) - Architecture decision
+- [MCP Tool Implementations](/workspaces/fidgetflo/v3/mcp/tools/) - Tool source code
 
 ## Summary
 
@@ -617,4 +617,4 @@ The MCP Client provides a clean, type-safe way for CLI commands to call MCP tool
 - **MCP Client**: Tool routing & error handling
 - **MCP Tools**: Business logic & data management
 
-This architecture ensures maintainability, testability, and consistency across all interfaces to the claude-flow system.
+This architecture ensures maintainability, testability, and consistency across all interfaces to the fidgetflo system.

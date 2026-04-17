@@ -1,8 +1,8 @@
-# ADR-045: Guidance System Integration — Claude Flow v3.1
+# ADR-045: Guidance System Integration — FidgetFlo v3.1
 
 **Status:** Accepted
 **Date:** 2026-02-02
-**Author:** Claude Flow Architecture
+**Author:** FidgetFlo Architecture
 **Version:** 3.1.0-alpha.1
 
 ## Context
@@ -20,19 +20,19 @@ The `@claude-flow/guidance` package (published as `3.0.0-alpha.1`) provides a go
 Currently, `@claude-flow/guidance` is:
 1. A standalone package at `v3/@claude-flow/guidance/`
 2. Used by `@claude-flow/cli` via dynamic `import()` — but NOT declared as a dependency
-3. Not included in the umbrella `claude-flow` package's `files` array
-4. Not available to end users running `npx claude-flow@alpha`
+3. Not included in the umbrella `fidgetflo` package's `files` array
+4. Not available to end users running `npx fidgetflo@alpha`
 
 This means the `guidance` CLI commands silently fail at runtime when installed from npm.
 
 ## Decision
 
-Integrate `@claude-flow/guidance` as a **first-class dependency** in both `@claude-flow/cli` and the `claude-flow` umbrella package, making it a core component of Claude Flow v3.1.
+Integrate `@claude-flow/guidance` as a **first-class dependency** in both `@claude-flow/cli` and the `fidgetflo` umbrella package, making it a core component of FidgetFlo v3.1.
 
 ### 1. Dependency Graph
 
 ```
-claude-flow (umbrella v3.1.0-alpha.1)
+fidgetflo (umbrella v3.1.0-alpha.1)
   └── @claude-flow/cli (v3.1.0-alpha.1)
         ├── @claude-flow/guidance (v3.0.0-alpha.1)  ← NEW
         ├── @claude-flow/shared
@@ -51,7 +51,7 @@ claude-flow (umbrella v3.1.0-alpha.1)
 }
 ```
 
-**`claude-flow/package.json` (umbrella)**:
+**`fidgetflo/package.json` (umbrella)**:
 ```json
 {
   "files": [
@@ -87,7 +87,7 @@ The CLAUDE.md generator (`claudemd-generator.ts`) now:
 
 | Package | Current | v3.1 |
 |---------|---------|------|
-| `claude-flow` (umbrella) | 3.0.0-alpha.185 | 3.1.0-alpha.1 |
+| `fidgetflo` (umbrella) | 3.0.0-alpha.185 | 3.1.0-alpha.1 |
 | `@claude-flow/cli` | 3.0.0-alpha.185 | 3.1.0-alpha.1 |
 | `@claude-flow/guidance` | 3.0.0-alpha.1 | 3.0.0-alpha.1 (unchanged) |
 

@@ -2,7 +2,7 @@
 name: github-project-management
 description: |
   Comprehensive GitHub project management with swarm-coordinated issue tracking, project board automation, and sprint planning
-allowed-tools: "mcp__github__*, mcp__claude-flow__*, Bash, Read, Write, TodoWrite"
+allowed-tools: "mcp__github__*, mcp__fidgetflo__*, Bash, Read, Write, TodoWrite"
 ---
 
 # GitHub Project Management
@@ -23,7 +23,7 @@ gh issue create \
   --label "enhancement,swarm-ready"
 
 # Initialize swarm for issue
-npx claude-flow@alpha hooks pre-task --description "Feature implementation"
+npx fidgetflo@alpha hooks pre-task --description "Feature implementation"
 ```
 
 ### Project Board Quick Setup
@@ -52,10 +52,10 @@ npx ruv-swarm github board-init \
 
 ```javascript
 // Initialize issue management swarm
-mcp__claude-flow__swarm_init { topology: "star", maxAgents: 3 }
-mcp__claude-flow__agent_spawn { type: "coordinator", name: "Issue Coordinator" }
-mcp__claude-flow__agent_spawn { type: "researcher", name: "Requirements Analyst" }
-mcp__claude-flow__agent_spawn { type: "coder", name: "Implementation Planner" }
+mcp__fidgetflo__swarm_init { topology: "star", maxAgents: 3 }
+mcp__fidgetflo__agent_spawn { type: "coordinator", name: "Issue Coordinator" }
+mcp__fidgetflo__agent_spawn { type: "researcher", name: "Requirements Analyst" }
+mcp__fidgetflo__agent_spawn { type: "coder", name: "Implementation Planner" }
 
 // Create comprehensive issue
 mcp__github__create_issue {
@@ -80,7 +80,7 @@ mcp__github__create_issue {
 }
 
 // Set up automated tracking
-mcp__claude-flow__task_orchestrate {
+mcp__fidgetflo__task_orchestrate {
   task: "Monitor and coordinate issue progress with automated updates",
   strategy: "adaptive",
   priority: "medium"
@@ -1241,7 +1241,7 @@ npx ruv-swarm github board-kpis
 - [GitHub CLI Documentation](https://cli.github.com/manual/)
 - [GitHub Projects Documentation](https://docs.github.com/en/issues/planning-and-tracking-with-projects)
 - [Swarm Coordination Guide](https://github.com/ruvnet/ruv-swarm)
-- [Claude Flow Documentation](https://github.com/ruvnet/claude-flow)
+- [FidgetFlo Documentation](https://github.com/ruvnet/claude-flow)
 
 ---
 

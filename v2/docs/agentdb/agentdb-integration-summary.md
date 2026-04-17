@@ -7,7 +7,7 @@
 
 ## Executive Summary
 
-Successfully integrated AgentDB v1.3.9 into claude-flow with **100% backward compatibility**. All existing memory operations continue to work unchanged while adding powerful vector search capabilities.
+Successfully integrated AgentDB v1.3.9 into fidgetflo with **100% backward compatibility**. All existing memory operations continue to work unchanged while adding powerful vector search capabilities.
 
 ## Implementation Overview
 
@@ -251,19 +251,19 @@ const results = await memory.vectorSearch(queryVector, { k: 10 });
 
 ### Pre-Task Hook
 ```bash
-npx claude-flow@alpha hooks pre-task \
+npx fidgetflo@alpha hooks pre-task \
   --description "Agent 1: Implementing AgentDB v1.3.9 core integration"
 ```
 
 ### Post-Task Hook
 ```bash
-npx claude-flow@alpha hooks post-task \
+npx fidgetflo@alpha hooks post-task \
   --task-id "task-1761196356300-ic918qh9k"
 ```
 
 ### Notification
 ```bash
-npx claude-flow@alpha hooks notify \
+npx fidgetflo@alpha hooks notify \
   --message "Agent 1: AgentDB v1.3.9 integration complete - 100% backward compatible"
 ```
 

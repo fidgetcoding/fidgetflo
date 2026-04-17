@@ -1,8 +1,8 @@
-# 🎓 Claude Flow Skills: Complete Introduction Tutorial
+# 🎓 FidgetFlo Skills: Complete Introduction Tutorial
 
 ## Overview
 
-We’re shifting how Claude Flow evolves from here forward. This release marks the move from slash commands to a true skills-based system, our new foundation for intelligence, automation, and collaboration. Instead of memorizing /commands, you now just describe what you want. Claude reads the situation, identifies the right skills, and activates them automatically.
+We’re shifting how FidgetFlo evolves from here forward. This release marks the move from slash commands to a true skills-based system, our new foundation for intelligence, automation, and collaboration. Instead of memorizing /commands, you now just describe what you want. Claude reads the situation, identifies the right skills, and activates them automatically.
 
 The new Skill Builder is at the heart of this system. It lets you create modular instruction sets, small, well-defined units of capability that can be shared, versioned, and composed. Each skill is a self-contained block of context with metadata, description, and progressive disclosure. Claude scans these on startup, loads what’s relevant, and builds the workflow around your intent.
 
@@ -12,15 +12,15 @@ There are GitHub skills that manage reviews, automate releases, and synchronize 
 
 In practice, this means no memorization. Skills scan your request, match intent to capability, and load only what's needed. Say "Build a login feature with tests" and SPARC activates. Say "Find similar code" and vector search loads. Each skill brings specialized context on-demand, keeping your workflow clean and focused.
 
-This is the direction forward: modular, intelligent, and adaptive. Skills turn Claude Flow from a set of commands into a living system that learns how you work and grows with you.
+This is the direction forward: modular, intelligent, and adaptive. Skills turn FidgetFlo from a set of commands into a living system that learns how you work and grows with you.
 
 ## 🔄 What Changed: From Slash Commands to Skills
 
-I'm transitioning claude-flow from slash commands to Claude Code's native skills system. Here's why this matters and what I've learned.
+I'm transitioning fidgetflo from slash commands to Claude Code's native skills system. Here's why this matters and what I've learned.
 
 ### The Old Way: Slash Commands
 
-Previously, claude-flow used slash commands stored in `.claude/commands/`:
+Previously, fidgetflo used slash commands stored in `.claude/commands/`:
 ```bash
 # Old approach
 /.claude/commands/sparc-tdd.md
@@ -68,7 +68,7 @@ category: development
 
 4. **Organization**: Skills live in categorized directories (development/, github/, memory/). Much easier to maintain than a flat commands folder.
 
-5. **Standards-Based**: Anthropic designed this. It works across Claude.ai, Claude Code CLI, and any other Claude implementation. Commands were claude-flow specific.
+5. **Standards-Based**: Anthropic designed this. It works across Claude.ai, Claude Code CLI, and any other Claude implementation. Commands were fidgetflo specific.
 
 ### Migration Strategy
 
@@ -84,7 +84,7 @@ If you're using commands like `/sparc tdd`, they still work. But I recommend swi
 /sparc tdd "feature name"
 
 # Do this:
-npx claude-flow@alpha init --force  # Install skills
+npx fidgetflo@alpha init --force  # Install skills
 # Then just ask: "Build a user authentication feature with TDD"
 # The SPARC skill activates automatically
 ```
@@ -109,13 +109,13 @@ That said, the context savings and automatic discovery outweigh the loss of expl
 
 ### Bottom Line
 
-Skills are the future of claude-flow. They align with Anthropic's vision, work better with Claude Code, and solve real problems I had with commands. The migration takes effort, but it's worth it.
+Skills are the future of fidgetflo. They align with Anthropic's vision, work better with Claude Code, and solve real problems I had with commands. The migration takes effort, but it's worth it.
 
 If you're starting fresh, use skills. If you're on commands, plan to migrate. I'll support both for now, but my development focus is on skills.
 
 ## 🚀 What's New: AgentDB Integration
 
-This release adds 4 new AgentDB skills that bring production-grade vector database capabilities to claude-flow:
+This release adds 4 new AgentDB skills that bring production-grade vector database capabilities to fidgetflo:
 
 **Performance Improvements:**
 - **150x faster** pattern retrieval (<100µs vs 15ms)
@@ -163,7 +163,7 @@ These skills work alongside the existing `agentdb-memory-patterns` and `agentdb-
 
 ## 📚 Complete Skills Catalog (25 Skills)
 
-Claude Flow includes 25 specialized skills that activate automatically based on your task description. Just describe what you want in natural language - no commands needed.
+FidgetFlo includes 25 specialized skills that activate automatically based on your task description. Just describe what you want in natural language - no commands needed.
 
 ### Development & Methodology (3 skills)
 
@@ -215,20 +215,20 @@ Claude Flow includes 25 specialized skills that activate automatically based on 
 
 ## 📦 Getting Started: Installation & Setup
 
-### What Does `npx claude-flow@alpha init --force` Do?
+### What Does `npx fidgetflo@alpha init --force` Do?
 
-This command initializes your project with Claude Flow's complete skills system:
+This command initializes your project with FidgetFlo's complete skills system:
 
 **What It Does:**
 1. **Creates `.claude/skills/` directory** - Where all 25 skills are installed
 2. **Copies skill modules** - Installs pre-built skills for development, GitHub, memory, and more
-3. **Sets up configuration** - Creates `claude-flow.json` with default settings
+3. **Sets up configuration** - Creates `fidgetflo.json` with default settings
 4. **Initializes hooks** - Installs automation hooks for pre/post task coordination
 5. **Creates statusline** - Adds terminal statusline showing active swarms and tasks
 6. **Force overwrites** - The `--force` flag replaces existing files (useful for updates)
 
 **When to Use It:**
-- Starting a new project with Claude Flow
+- Starting a new project with FidgetFlo
 - Adding skills to an existing project
 - Updating to the latest skills (with `--force`)
 - Resetting corrupted skill configurations
@@ -236,7 +236,7 @@ This command initializes your project with Claude Flow's complete skills system:
 **Usage:**
 ```bash
 # Initialize in current project
-npx claude-flow@alpha init --force
+npx fidgetflo@alpha init --force
 
 # What you'll see:
 # ✓ Created .claude/skills/ directory
@@ -306,14 +306,14 @@ SPARC breaks development into five steps: (1) Define what you need, (2) Write al
 **Usage:**
 ```bash
 # Full SPARC workflow
-npx claude-flow sparc tdd "user authentication system"
+npx fidgetflo sparc tdd "user authentication system"
 
 # Individual phases
-npx claude-flow sparc run spec-pseudocode "shopping cart feature"
-npx claude-flow sparc run architect "payment processing"
+npx fidgetflo sparc run spec-pseudocode "shopping cart feature"
+npx fidgetflo sparc run architect "payment processing"
 
 # Check available modes
-npx claude-flow sparc modes
+npx fidgetflo sparc modes
 ```
 
 **What You Get:**
@@ -1014,7 +1014,7 @@ Every change gets a "truth score" (0-1 accuracy rating). If it scores below 0.95
 ### 17. `performance-analysis` - Bottleneck Detection
 
 **What It Does:**
-Comprehensive performance analysis, bottleneck detection, and optimization recommendations for Claude Flow swarms.
+Comprehensive performance analysis, bottleneck detection, and optimization recommendations for FidgetFlo swarms.
 
 **When to Use:**
 - Slow swarm execution
@@ -1232,7 +1232,7 @@ Skills activate automatically when:
 
 ## 📚 Next Steps
 
-1. **Install**: Run `npx claude-flow@alpha init --force`
+1. **Install**: Run `npx fidgetflo@alpha init --force`
 2. **Explore**: Say "create a custom skill for our API patterns"
 3. **Practice**: Say "let's pair program on this feature"
 4. **Scale**: Say "create a swarm to build this microservice"

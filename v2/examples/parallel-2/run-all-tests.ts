@@ -150,7 +150,7 @@ class AgentTestRunner {
   }
 
   async runComparison() {
-    console.log('🎯 CLAUDE-FLOW AGENT EXECUTION COMPARISON');
+    console.log('🎯 FIDGETFLO AGENT EXECUTION COMPARISON');
     console.log('═'.repeat(60));
     console.log('Comparing sequential vs parallel agent execution\n');
     

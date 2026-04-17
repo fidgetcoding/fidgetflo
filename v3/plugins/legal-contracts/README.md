@@ -25,7 +25,7 @@ npm install @claude-flow/plugin-legal-contracts
 ### CLI
 
 ```bash
-npx claude-flow plugins install --name @claude-flow/plugin-legal-contracts
+npx fidgetflo plugins install --name @claude-flow/plugin-legal-contracts
 ```
 
 ## Quick Start
@@ -370,7 +370,7 @@ const rateLimits = {
 
 MIT License
 
-Copyright (c) 2026 Claude Flow
+Copyright (c) 2026 FidgetFlo
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

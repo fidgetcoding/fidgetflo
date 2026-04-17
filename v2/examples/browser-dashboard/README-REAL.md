@@ -1,6 +1,6 @@
-# Real Claude Flow MCP Integration
+# Real FidgetFlo MCP Integration
 
-This demonstrates the dashboard with **actual Claude Flow MCP tools** instead of simulation.
+This demonstrates the dashboard with **actual FidgetFlo MCP tools** instead of simulation.
 
 ## Architecture
 
@@ -9,19 +9,19 @@ Browser Dashboard (dashboard.js)
         ↓ WebSocket (JSON-RPC 2.0)
 Node.js Bridge (server-real.js)
         ↓ stdio (JSON-RPC 2.0)
-Claude Flow MCP Server (npx claude-flow@alpha mcp start)
+FidgetFlo MCP Server (npx fidgetflo@alpha mcp start)
         ↓ Direct function calls
 Real MCP Tools (90 tools)
         ↓ Actual operations
-Claude Flow Core (swarm orchestration, agents, tasks)
+FidgetFlo Core (swarm orchestration, agents, tasks)
 ```
 
 ## How It Works
 
-1. **server-real.js** spawns `npx claude-flow@alpha mcp start` as a child process
+1. **server-real.js** spawns `npx fidgetflo@alpha mcp start` as a child process
 2. Browser sends WebSocket messages (JSON-RPC 2.0)
 3. Bridge translates and forwards to MCP server via stdio
-4. MCP server executes real claude-flow operations
+4. MCP server executes real fidgetflo operations
 5. Results broadcast back to all connected browsers
 
 ## Usage
@@ -41,10 +41,10 @@ node server-real.js
 ### What You'll See
 
 ```
-🚀 Starting Claude Flow MCP server...
-✅ Claude Flow MCP ready
+🚀 Starting FidgetFlo MCP server...
+✅ FidgetFlo MCP ready
 
-🌐 Claude Flow Dashboard Server (REAL MCP)
+🌐 FidgetFlo Dashboard Server (REAL MCP)
 ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 📊 Dashboard: http://localhost:8080
 🔌 WebSocket: ws://localhost:8080
@@ -57,17 +57,17 @@ node server-real.js
 Open http://localhost:8080 and try:
 
 1. **Spawn Real Agents**: Click "Spawn 5 Agents"
-   - Uses `mcp__claude-flow__agents_spawn_parallel`
+   - Uses `mcp__fidgetflo__agents_spawn_parallel`
    - Actually creates agent processes
    - Real 50-75ms spawn time per agent
 
 2. **Real Swarm Status**: Automatically queries
-   - Uses `mcp__claude-flow__swarm_status`
+   - Uses `mcp__fidgetflo__swarm_status`
    - Shows actual active swarms
    - Real agent count, topology, metrics
 
 3. **Query Control**: Click "Pause Query"
-   - Uses `mcp__claude-flow__query_control`
+   - Uses `mcp__fidgetflo__query_control`
    - Actually pauses running queries
    - Real state management
 
@@ -90,17 +90,17 @@ Open http://localhost:8080 and try:
 - ✅ Actual agent spawning
 - ✅ Real consensus verification
 - ✅ Live swarm orchestration
-- ❌ Requires claude-flow@alpha
+- ❌ Requires fidgetflo@alpha
 
 ## Console Output (Real Mode)
 
 ```
-📨 Client Request: mcp__claude-flow__agents_spawn_parallel
+📨 Client Request: mcp__fidgetflo__agents_spawn_parallel
 → MCP: agents_spawn_parallel
 ← MCP Response: agent_spawn_1727654321
 ✅ Spawned 5 agents in 287ms
 
-📨 Client Request: mcp__claude-flow__swarm_status
+📨 Client Request: mcp__fidgetflo__swarm_status
 → MCP: swarm_status
 ← MCP Response: swarm_status_1727654322
 📊 Active swarms: 1, Agents: 5, Topology: mesh
@@ -126,11 +126,11 @@ Open http://localhost:8080 and try:
 
 **MCP Server Won't Start**:
 ```bash
-# Check if claude-flow is installed
-npx claude-flow@alpha --version
+# Check if fidgetflo is installed
+npx fidgetflo@alpha --version
 
 # Test MCP server manually
-npx claude-flow@alpha mcp start
+npx fidgetflo@alpha mcp start
 ```
 
 **Port Already in Use**:
@@ -146,7 +146,7 @@ PORT=8081 node server-real.js
 **No Response from MCP**:
 - Check console for errors
 - MCP server takes 2-3 seconds to initialize
-- Refresh browser after "✅ Claude Flow MCP ready"
+- Refresh browser after "✅ FidgetFlo MCP ready"
 
 ## Performance
 
@@ -169,4 +169,4 @@ PORT=8081 node server-real.js
 4. ⏳ Interactive query debugging
 5. ⏳ Multi-swarm visualization
 
-This is **actual** Claude Flow running in the browser via WebSocket → stdio bridge!
+This is **actual** FidgetFlo running in the browser via WebSocket → stdio bridge!

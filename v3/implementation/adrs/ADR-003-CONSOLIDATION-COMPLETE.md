@@ -58,7 +58,7 @@ Benefits:
 
 ### 1. UnifiedSwarmCoordinator (Canonical Engine)
 
-**File**: `/workspaces/claude-flow/v3/@claude-flow/swarm/src/unified-coordinator.ts`
+**File**: `/workspaces/fidgetflo/v3/@claude-flow/swarm/src/unified-coordinator.ts`
 
 **Status**: ✅ Remains unchanged - this is the source of truth
 
@@ -73,7 +73,7 @@ Benefits:
 
 ### 2. SwarmHub (Compatibility Layer)
 
-**File**: `/workspaces/claude-flow/v3/@claude-flow/swarm/src/coordination/swarm-hub.ts`
+**File**: `/workspaces/fidgetflo/v3/@claude-flow/swarm/src/coordination/swarm-hub.ts`
 
 **Status**: ✅ Refactored to thin facade
 
@@ -166,7 +166,7 @@ export { SwarmHub, createSwarmHub, type ISwarmHub } from './coordination/swarm-h
 
 ### 4. Duplicate File Handling
 
-**File**: `/workspaces/claude-flow/v3/coordination/swarm-hub.ts`
+**File**: `/workspaces/fidgetflo/v3/coordination/swarm-hub.ts`
 
 **Status**: ✅ Marked as duplicate with clear warnings
 
@@ -177,7 +177,7 @@ export { SwarmHub, createSwarmHub, type ISwarmHub } from './coordination/swarm-h
  * ⚠️ DEPRECATION WARNING:
  * This file is a DUPLICATE and should NOT be used.
  * Use the canonical implementation at:
- * /workspaces/claude-flow/v3/@claude-flow/swarm/src/coordination/swarm-hub.ts
+ * /workspaces/fidgetflo/v3/@claude-flow/swarm/src/coordination/swarm-hub.ts
  */
 ```
 

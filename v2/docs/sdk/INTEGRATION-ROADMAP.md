@@ -5,16 +5,16 @@
 
 ### NPX Commands (NOT using SDK yet)
 ```bash
-npx claude-flow@alpha sparc run dev "task"    # Uses old implementation
-npx claude-flow@alpha hooks pre-task "desc"   # Doesn't use checkpoints
-npx claude-flow@alpha swarm init mesh         # Doesn't use session forking
+npx fidgetflo@alpha sparc run dev "task"    # Uses old implementation
+npx fidgetflo@alpha hooks pre-task "desc"   # Doesn't use checkpoints
+npx fidgetflo@alpha swarm init mesh         # Doesn't use session forking
 ```
 
 ### MCP Tools (NOT using SDK yet)
 ```javascript
-mcp__claude-flow__swarm_init           // Doesn't create real forks
-mcp__claude-flow__task_orchestrate     // Doesn't use pause/resume
-mcp__claude-flow__agent_spawn          // Doesn't checkpoint
+mcp__fidgetflo__swarm_init           // Doesn't create real forks
+mcp__fidgetflo__task_orchestrate     // Doesn't use pause/resume
+mcp__fidgetflo__agent_spawn          // Doesn't checkpoint
 ```
 
 ---
@@ -89,9 +89,9 @@ export async function checkpointRollback(checkpointId: string, prompt?: string) 
 
 **Usage:**
 ```bash
-npx claude-flow@alpha checkpoint create <session-id> "Before deployment"
-npx claude-flow@alpha checkpoint list <session-id>
-npx claude-flow@alpha checkpoint rollback <checkpoint-id>
+npx fidgetflo@alpha checkpoint create <session-id> "Before deployment"
+npx fidgetflo@alpha checkpoint list <session-id>
+npx fidgetflo@alpha checkpoint rollback <checkpoint-id>
 ```
 
 ---
@@ -157,8 +157,8 @@ export function createClaudeFlowMcpServer() {
 
 **User configuration:**
 ```bash
-# Install Claude Flow MCP
-claude mcp add claude-flow npx claude-flow@alpha mcp start
+# Install FidgetFlo MCP
+claude mcp add fidgetflo npx fidgetflo@alpha mcp start
 
 # Now has access to BOTH:
 # - stdio tools (swarm_init, agent_spawn, etc.)
@@ -211,7 +211,7 @@ export async function runSparcMode(mode: string, task: string) {
 
 **Usage:**
 ```bash
-npx claude-flow@alpha sparc run dev "Build API"
+npx fidgetflo@alpha sparc run dev "Build API"
 # Now automatically creates checkpoints at each phase
 # Can rollback if any phase fails
 ```
@@ -223,38 +223,38 @@ npx claude-flow@alpha sparc run dev "Build API"
 ### 1. Swarm with Forking
 ```bash
 # Initialize swarm with real session forking
-npx claude-flow@alpha swarm init mesh --enable-forking
+npx fidgetflo@alpha swarm init mesh --enable-forking
 
 # Fork swarm to try different approach
-npx claude-flow@alpha swarm fork <swarm-id> "Try hierarchical"
+npx fidgetflo@alpha swarm fork <swarm-id> "Try hierarchical"
 
 # Commit or rollback fork
-npx claude-flow@alpha swarm commit <fork-id>
-npx claude-flow@alpha swarm rollback <fork-id>
+npx fidgetflo@alpha swarm commit <fork-id>
+npx fidgetflo@alpha swarm rollback <fork-id>
 ```
 
 ### 2. SPARC with Checkpoints
 ```bash
 # Run SPARC with auto-checkpointing
-npx claude-flow@alpha sparc run dev "Build feature" --enable-checkpoints
+npx fidgetflo@alpha sparc run dev "Build feature" --enable-checkpoints
 
 # List checkpoints
-npx claude-flow@alpha checkpoint list <session-id>
+npx fidgetflo@alpha checkpoint list <session-id>
 
 # Rollback to any phase
-npx claude-flow@alpha checkpoint rollback <checkpoint-id>
+npx fidgetflo@alpha checkpoint rollback <checkpoint-id>
 ```
 
 ### 3. Long-Running Tasks with Pause/Resume
 ```bash
 # Start long task
-npx claude-flow@alpha task run "Build entire app" --session-id my-task
+npx fidgetflo@alpha task run "Build entire app" --session-id my-task
 
 # Pause if needed (saves state to disk)
-npx claude-flow@alpha task pause my-task
+npx fidgetflo@alpha task pause my-task
 
 # Resume hours/days later
-npx claude-flow@alpha task resume my-task
+npx fidgetflo@alpha task resume my-task
 ```
 
 ### 4. MCP Tools with SDK Features
@@ -262,7 +262,7 @@ npx claude-flow@alpha task resume my-task
 // In Claude Code query
 const result = query({
   prompt: `
-    Use mcp__claude-flow__swarm_init to create mesh swarm.
+    Use mcp__fidgetflo__swarm_init to create mesh swarm.
     Enable session forking for parallel exploration.
     Create checkpoint before risky operations.
 
@@ -307,29 +307,29 @@ const result = query({
 ### Step 1: Opt-In (v2.5.0-alpha.140)
 ```bash
 # Features disabled by default, opt-in with flags
-npx claude-flow@alpha swarm init mesh --enable-forking
-npx claude-flow@alpha sparc run dev "task" --enable-checkpoints
+npx fidgetflo@alpha swarm init mesh --enable-forking
+npx fidgetflo@alpha sparc run dev "task" --enable-checkpoints
 ```
 
 ### Step 2: Opt-Out (v2.5.0-alpha.150)
 ```bash
 # Features enabled by default, opt-out with flags
-npx claude-flow@alpha swarm init mesh --disable-forking
-npx claude-flow@alpha sparc run dev "task" --disable-checkpoints
+npx fidgetflo@alpha swarm init mesh --disable-forking
+npx fidgetflo@alpha sparc run dev "task" --disable-checkpoints
 ```
 
 ### Step 3: Always On (v2.5.0)
 ```bash
 # Features always enabled, no flags needed
-npx claude-flow@alpha swarm init mesh    # Forking enabled
-npx claude-flow@alpha sparc run dev "task"  # Checkpoints enabled
+npx fidgetflo@alpha swarm init mesh    # Forking enabled
+npx fidgetflo@alpha sparc run dev "task"  # Checkpoints enabled
 ```
 
 ---
 
 ## Configuration
 
-### User Config: `.claude-flow.json`
+### User Config: `.fidgetflo.json`
 ```json
 {
   "sdk": {
@@ -341,12 +341,12 @@ npx claude-flow@alpha sparc run dev "task"  # Checkpoints enabled
       "enabled": true,
       "autoInterval": 10,
       "maxPerSession": 50,
-      "persistPath": ".claude-flow/checkpoints"
+      "persistPath": ".fidgetflo/checkpoints"
     },
     "queryControl": {
       "enabled": true,
       "autoPauseOnError": true,
-      "persistPath": ".claude-flow/paused-queries"
+      "persistPath": ".fidgetflo/paused-queries"
     },
     "inProcessMcp": {
       "enabled": true,
@@ -358,10 +358,10 @@ npx claude-flow@alpha sparc run dev "task"  # Checkpoints enabled
 
 ### Environment Variables
 ```bash
-CLAUDE_FLOW_ENABLE_FORKING=true
-CLAUDE_FLOW_ENABLE_CHECKPOINTS=true
-CLAUDE_FLOW_CHECKPOINT_INTERVAL=10
-CLAUDE_FLOW_ENABLE_PAUSE_RESUME=true
+FIDGETFLO_ENABLE_FORKING=true
+FIDGETFLO_ENABLE_CHECKPOINTS=true
+FIDGETFLO_CHECKPOINT_INTERVAL=10
+FIDGETFLO_ENABLE_PAUSE_RESUME=true
 ```
 
 ---

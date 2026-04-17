@@ -137,7 +137,7 @@ From tests/unit/core/enhanced-orchestrator.test.ts
 **Error**:
 ```
 Error: Debug Failure. No error for 3 or fewer overload signatures
-    at resolveCall (/home/runner/work/claude-flow/claude-flow/node_modules/typescript/lib/_tsc.js:76549:21)
+    at resolveCall (/home/runner/work/fidgetflo/fidgetflo/node_modules/typescript/lib/_tsc.js:76549:21)
 ```
 
 **Workaround Applied**: Made typecheck non-blocking (Commit 9)

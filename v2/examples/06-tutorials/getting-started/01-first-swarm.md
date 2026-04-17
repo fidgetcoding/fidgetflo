@@ -1,10 +1,10 @@
-# Your First Claude Flow Swarm
+# Your First FidgetFlo Swarm
 
-This tutorial will guide you through creating your first swarm and understanding how Claude Flow works.
+This tutorial will guide you through creating your first swarm and understanding how FidgetFlo works.
 
 ## Prerequisites
 
-- Claude Flow installed (`npm install -g claude-flow`)
+- FidgetFlo installed (`npm install -g fidgetflo`)
 - Basic command line knowledge
 - Node.js 18+ installed
 
@@ -18,13 +18,13 @@ Let's create a basic "Hello World" application:
 
 ```bash
 cd examples
-../claude-flow swarm create "Build a hello world CLI application" \
+../fidgetflo swarm create "Build a hello world CLI application" \
   --name my-first-swarm \
   --output ./output/hello-world
 ```
 
 ### What happens:
-1. Claude Flow creates a swarm coordinator
+1. FidgetFlo creates a swarm coordinator
 2. Assigns agents based on the task
 3. Agents work together to build the application
 4. Output is saved to the specified directory
@@ -68,7 +68,7 @@ You'll see agents like:
 Try with more specific requirements:
 
 ```bash
-../claude-flow swarm create \
+../fidgetflo swarm create \
   "Build a CLI calculator that supports add, subtract, multiply, divide" \
   --agents 3 \
   --strategy development \
@@ -90,13 +90,13 @@ Try with more specific requirements:
 
 2. Use configuration files:
    ```bash
-   ../claude-flow swarm create "Your task" \
+   ../fidgetflo swarm create "Your task" \
      --config ../01-configurations/basic/simple-config.json
    ```
 
 3. Monitor swarm progress:
    ```bash
-   ../claude-flow swarm create "Your task" --monitor
+   ../fidgetflo swarm create "Your task" --monitor
    ```
 
 ## Common Issues

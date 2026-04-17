@@ -1,13 +1,13 @@
 #!/bin/bash
-# RuFlo V3 - Pattern Consolidator Worker
+# FidgetFlo V3 - Pattern Consolidator Worker
 # Deduplicates patterns, prunes old ones, improves quality scores
 
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
-PATTERNS_DB="$PROJECT_ROOT/.claude-flow/learning/patterns.db"
-METRICS_DIR="$PROJECT_ROOT/.claude-flow/metrics"
+PATTERNS_DB="$PROJECT_ROOT/.fidgetflo/learning/patterns.db"
+METRICS_DIR="$PROJECT_ROOT/.fidgetflo/metrics"
 LAST_RUN_FILE="$METRICS_DIR/.consolidator-last-run"
 
 mkdir -p "$METRICS_DIR"

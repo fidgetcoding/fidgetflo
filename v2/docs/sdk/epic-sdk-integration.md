@@ -1,4 +1,4 @@
-# Epic: Claude Agent SDK Integration for Claude-Flow v3.0.0-alpha.130
+# Epic: Claude Agent SDK Integration for FidgetFlo v3.0.0-alpha.130
 
 ## 🎯 Epic Overview
 
@@ -6,10 +6,10 @@
 Integrate Claude Agent SDK as Foundation Layer - Migrate from Custom Implementations to SDK Primitives
 
 ### Description
-Refactor Claude-Flow to leverage Claude Agent SDK (@anthropic-ai/claude-code) as the foundation layer, eliminating redundant custom implementations of retry logic, artifact management, and checkpoint systems. Position Claude-Flow as the premier multi-agent orchestration layer built on top of the SDK.
+Refactor FidgetFlo to leverage Claude Agent SDK (@anthropic-ai/claude-code) as the foundation layer, eliminating redundant custom implementations of retry logic, artifact management, and checkpoint systems. Position FidgetFlo as the premier multi-agent orchestration layer built on top of the SDK.
 
 ### Value Proposition
-**"Claude Agent SDK handles single agents brilliantly. Claude-Flow makes them work as a swarm."**
+**"Claude Agent SDK handles single agents brilliantly. FidgetFlo makes them work as a swarm."**
 
 ### Success Metrics
 - ✅ 50% reduction in custom retry/checkpoint code
@@ -554,7 +554,7 @@ export class CheckpointManagerSDK {
       metadata: {
         scope,
         ...swarmData,
-        createdBy: 'claude-flow',
+        createdBy: 'fidgetflo',
         version: '3.0.0'
       }
     });
@@ -911,10 +911,10 @@ describe('SDK Migration Performance Benchmarks', () => {
 
 **File**: `BREAKING_CHANGES.md`
 ```markdown
-# Breaking Changes in Claude-Flow v3.0.0
+# Breaking Changes in FidgetFlo v3.0.0
 
 ## Overview
-Claude-Flow v3.0.0 introduces the Claude Agent SDK as the foundation layer, resulting in several breaking changes that improve performance and reduce code complexity.
+FidgetFlo v3.0.0 introduces the Claude Agent SDK as the foundation layer, resulting in several breaking changes that improve performance and reduce code complexity.
 
 ## Breaking Changes
 
@@ -965,7 +965,7 @@ await memory.store('key', value); // Persistence is automatic
 
 #### Before (v2.x)
 ```typescript
-const checkpoints = new CheckpointManager('.claude-flow/checkpoints');
+const checkpoints = new CheckpointManager('.fidgetflo/checkpoints');
 const id = await checkpoints.createCheckpoint(description, scope);
 await checkpoints.executeValidations(id);
 ```
@@ -982,7 +982,7 @@ const id = await checkpoints.createCheckpoint(description, scope);
 ### Step 1: Update Dependencies
 ```bash
 npm install @anthropic-ai/claude-code@latest
-npm update claude-flow@3.0.0-alpha.130
+npm update fidgetflo@3.0.0-alpha.130
 ```
 
 ### Step 2: Update Configuration
@@ -1037,8 +1037,8 @@ The following features are deprecated and will be removed in v4.0.0:
 
 For migration assistance:
 - GitHub Issues: https://github.com/ruvnet/claude-flow/issues
-- Migration Guide: https://docs.claude-flow.dev/migration/v3
-- Discord: https://discord.gg/claude-flow
+- Migration Guide: https://docs.fidgetflo.dev/migration/v3
+- Discord: https://discord.gg/fidgetflo
 ```
 
 #### Task 7.2: Create Automated Migration Script
@@ -1055,7 +1055,7 @@ const path = require('path');
 const { exec } = require('child_process').promises;
 
 async function migrateToV3() {
-  console.log('🚀 Starting Claude-Flow v3.0.0 Migration');
+  console.log('🚀 Starting FidgetFlo v3.0.0 Migration');
 
   const steps = [
     {
@@ -1120,7 +1120,7 @@ async function updateImports() {
 }
 
 async function migrateConfig() {
-  const configPath = path.join(process.cwd(), 'claude-flow.config.js');
+  const configPath = path.join(process.cwd(), 'fidgetflo.config.js');
 
   if (await fileExists(configPath)) {
     let config = await fs.readFile(configPath, 'utf8');
@@ -1251,19 +1251,19 @@ export class MigrationMetrics {
 ### Rollback Plan
 ```bash
 # If issues arise, rollback to v2.x
-npm install claude-flow@2.0.0-alpha.129
+npm install fidgetflo@2.0.0-alpha.129
 npm run rollback:v2
 ```
 
 ## 📝 Summary
 
-This epic transforms Claude-Flow from a standalone implementation to a powerful orchestration layer built on Claude Agent SDK. The integration:
+This epic transforms FidgetFlo from a standalone implementation to a powerful orchestration layer built on Claude Agent SDK. The integration:
 
 1. **Reduces code complexity** by 50%
 2. **Improves performance** by 30%
 3. **Maintains 100% backward compatibility** with migration path
-4. **Positions Claude-Flow** as the premier swarm orchestration solution
+4. **Positions FidgetFlo** as the premier swarm orchestration solution
 5. **Leverages SDK** for foundational capabilities
 6. **Focuses innovation** on multi-agent coordination
 
-**Key Message**: "Claude Agent SDK handles single agents brilliantly. Claude-Flow makes them work as a swarm."
+**Key Message**: "Claude Agent SDK handles single agents brilliantly. FidgetFlo makes them work as a swarm."

@@ -1,7 +1,7 @@
 #!/bin/bash
-# Setup MCP server for Claude Flow
+# Setup MCP server for FidgetFlo
 
-echo "🚀 Setting up Claude Flow MCP server..."
+echo "🚀 Setting up FidgetFlo MCP server..."
 
 # Check if claude command exists
 if ! command -v claude &> /dev/null; then
@@ -11,8 +11,8 @@ if ! command -v claude &> /dev/null; then
 fi
 
 # Add MCP server
-echo "📦 Adding Claude Flow MCP server..."
-claude mcp add claude-flow npx claude-flow mcp start
+echo "📦 Adding FidgetFlo MCP server..."
+claude mcp add fidgetflo npx fidgetflo mcp start
 
 echo "✅ MCP server setup complete!"
-echo "🎯 You can now use mcp__claude-flow__ tools in Claude Code"
+echo "🎯 You can now use mcp__fidgetflo__ tools in Claude Code"

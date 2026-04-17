@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * RuFlo V3 Statusline Generator (Optimized)
+ * FidgetFlo V3 Statusline Generator (Optimized)
  * Displays real-time V3 implementation progress and system status
  *
  * Usage: node statusline.cjs [--json] [--compact]
@@ -30,8 +30,8 @@ const CWD = process.cwd();
 let pkgVersion = '3.5';
 try {
   const pkgPaths = [
-    path.join(CWD, 'node_modules', '@claude-flow', 'cli', 'package.json'),
-    path.join(CWD, 'v3', '@claude-flow', 'cli', 'package.json'),
+    path.join(CWD, 'node_modules', '@fidgetflo', 'cli', 'package.json'),
+    path.join(CWD, 'v3', '@fidgetflo', 'cli', 'package.json'),
   ];
   for (const p of pkgPaths) {
     if (fs.existsSync(p)) {
@@ -196,7 +196,7 @@ function getLearningStats() {
   let sessions = 0;
 
   // 1. Count real patterns from pattern store
-  const patternStorePath = path.join(CWD, '.claude-flow', 'data', 'patterns.json');
+  const patternStorePath = path.join(CWD, '.fidgetflo', 'data', 'patterns.json');
   try {
     if (fs.existsSync(patternStorePath)) {
       const data = JSON.parse(fs.readFileSync(patternStorePath, 'utf-8'));
@@ -207,7 +207,7 @@ function getLearningStats() {
 
   // 2. Count from auto-memory-store (real entries)
   if (patterns === 0) {
-    const autoStorePath = path.join(CWD, '.claude-flow', 'data', 'auto-memory-store.json');
+    const autoStorePath = path.join(CWD, '.fidgetflo', 'data', 'auto-memory-store.json');
     try {
       if (fs.existsSync(autoStorePath)) {
         const data = JSON.parse(fs.readFileSync(autoStorePath, 'utf-8'));
@@ -219,7 +219,7 @@ function getLearningStats() {
 
   // 3. Count from hooks memory store
   if (patterns === 0) {
-    const hooksStorePath = path.join(CWD, '.claude-flow', 'memory', 'store.json');
+    const hooksStorePath = path.join(CWD, '.fidgetflo', 'memory', 'store.json');
     try {
       if (fs.existsSync(hooksStorePath)) {
         const data = JSON.parse(fs.readFileSync(hooksStorePath, 'utf-8'));
@@ -238,7 +238,7 @@ function getLearningStats() {
 
   if (sessions === 0) {
     try {
-      const cfSessDir = path.join(CWD, '.claude-flow', 'sessions');
+      const cfSessDir = path.join(CWD, '.fidgetflo', 'sessions');
       if (fs.existsSync(cfSessDir)) {
         sessions = fs.readdirSync(cfSessDir).filter(f => f.endsWith('.json')).length;
       }
@@ -253,7 +253,7 @@ function getV3Progress() {
   const learning = getLearningStats();
   const totalDomains = 5;
 
-  const dddData = readJSON(path.join(CWD, '.claude-flow', 'metrics', 'ddd-progress.json'));
+  const dddData = readJSON(path.join(CWD, '.fidgetflo', 'metrics', 'ddd-progress.json'));
   let dddProgress = dddData?.progress || 0;
   let domainsCompleted = Math.min(5, Math.floor(dddProgress / 20));
 
@@ -271,7 +271,7 @@ function getV3Progress() {
 
 // Security status (pure file reads)
 function getSecurityStatus() {
-  const auditData = readJSON(path.join(CWD, '.claude-flow', 'security', 'audit-status.json'));
+  const auditData = readJSON(path.join(CWD, '.fidgetflo', 'security', 'audit-status.json'));
   if (auditData) {
     const auditDate = auditData.lastAudit || auditData.lastScan;
     if (!auditDate) {
@@ -308,7 +308,7 @@ function getSwarmStatus() {
   const staleThresholdMs = 5 * 60 * 1000;
   const now = Date.now();
 
-  const swarmStatePath = path.join(CWD, '.claude-flow', 'swarm', 'swarm-state.json');
+  const swarmStatePath = path.join(CWD, '.fidgetflo', 'swarm', 'swarm-state.json');
   const swarmState = readJSON(swarmStatePath);
   if (swarmState) {
     const updatedAt = swarmState.updatedAt || swarmState.startedAt;
@@ -322,7 +322,7 @@ function getSwarmStatus() {
     }
   }
 
-  const activityData = readJSON(path.join(CWD, '.claude-flow', 'metrics', 'swarm-activity.json'));
+  const activityData = readJSON(path.join(CWD, '.fidgetflo', 'metrics', 'swarm-activity.json'));
   if (activityData?.swarm) {
     const updatedAt = activityData.timestamp || activityData.swarm.timestamp;
     const age = updatedAt ? now - new Date(updatedAt).getTime() : Infinity;
@@ -345,7 +345,7 @@ function getSystemMetrics() {
   const agentdb = getAgentDBStats();
 
   // Intelligence from learning.json
-  const learningData = readJSON(path.join(CWD, '.claude-flow', 'metrics', 'learning.json'));
+  const learningData = readJSON(path.join(CWD, '.fidgetflo', 'metrics', 'learning.json'));
   let intelligencePct = 0;
   let contextPct = 0;
 
@@ -368,7 +368,7 @@ function getSystemMetrics() {
 
   // Sub-agents from file metrics (no ps aux)
   let subAgents = 0;
-  const activityData = readJSON(path.join(CWD, '.claude-flow', 'metrics', 'swarm-activity.json'));
+  const activityData = readJSON(path.join(CWD, '.fidgetflo', 'metrics', 'swarm-activity.json'));
   if (activityData?.processes?.estimated_agents) {
     subAgents = activityData.processes.estimated_agents;
   }
@@ -382,7 +382,7 @@ function getADRStatus() {
   const adrPaths = [
     path.join(CWD, 'v3', 'implementation', 'adrs'),
     path.join(CWD, 'docs', 'adrs'),
-    path.join(CWD, '.claude-flow', 'adrs'),
+    path.join(CWD, '.fidgetflo', 'adrs'),
   ];
 
   for (const adrPath of adrPaths) {
@@ -440,7 +440,7 @@ function getAgentDBStats() {
   let hasHnsw = false;
 
   // 1. Count real entries from auto-memory-store.json
-  const storePath = path.join(CWD, '.claude-flow', 'data', 'auto-memory-store.json');
+  const storePath = path.join(CWD, '.fidgetflo', 'data', 'auto-memory-store.json');
   const storeStat = safeStat(storePath);
   if (storeStat) {
     dbSizeKB += storeStat.size / 1024;
@@ -452,7 +452,7 @@ function getAgentDBStats() {
   }
 
   // 1b. Count entries from hooks memory store
-  const hooksStorePath = path.join(CWD, '.claude-flow', 'memory', 'store.json');
+  const hooksStorePath = path.join(CWD, '.fidgetflo', 'memory', 'store.json');
   const hooksStoreStat = safeStat(hooksStorePath);
   if (hooksStoreStat) {
     dbSizeKB += hooksStoreStat.size / 1024;
@@ -467,7 +467,7 @@ function getAgentDBStats() {
   }
 
   // 2. Count entries from ranked-context.json
-  const rankedPath = path.join(CWD, '.claude-flow', 'data', 'ranked-context.json');
+  const rankedPath = path.join(CWD, '.fidgetflo', 'data', 'ranked-context.json');
   try {
     const ranked = readJSON(rankedPath);
     if (ranked?.entries?.length > vectorCount) vectorCount = ranked.entries.length;
@@ -476,7 +476,7 @@ function getAgentDBStats() {
   // 3. Add DB file sizes
   const dbFiles = [
     path.join(CWD, 'data', 'memory.db'),
-    path.join(CWD, '.claude-flow', 'memory.db'),
+    path.join(CWD, '.fidgetflo', 'memory.db'),
     path.join(CWD, '.swarm', 'memory.db'),
   ];
   for (const f of dbFiles) {
@@ -495,7 +495,7 @@ function getAgentDBStats() {
   // 5. HNSW index
   const hnswPaths = [
     path.join(CWD, '.swarm', 'hnsw.index'),
-    path.join(CWD, '.claude-flow', 'hnsw.index'),
+    path.join(CWD, '.fidgetflo', 'hnsw.index'),
   ];
   for (const p of hnswPaths) {
     const stat = safeStat(p);
@@ -508,8 +508,8 @@ function getAgentDBStats() {
   // HNSW is available if memory package is present
   if (!hasHnsw) {
     const memPkgPaths = [
-      path.join(CWD, 'v3', '@claude-flow', 'memory', 'dist'),
-      path.join(CWD, 'node_modules', '@claude-flow', 'memory'),
+      path.join(CWD, 'v3', '@fidgetflo', 'memory', 'dist'),
+      path.join(CWD, 'node_modules', '@fidgetflo', 'memory'),
     ];
     for (const p of memPkgPaths) {
       if (fs.existsSync(p)) { hasHnsw = true; break; }
@@ -574,7 +574,7 @@ function getIntegrationStatus() {
     }
   }
 
-  const hasDatabase = ['.swarm/memory.db', '.claude-flow/memory.db', 'data/memory.db']
+  const hasDatabase = ['.swarm/memory.db', '.fidgetflo/memory.db', 'data/memory.db']
     .some(p => fs.existsSync(path.join(CWD, p)));
   const hasApi = !!(process.env.ANTHROPIC_API_KEY || process.env.OPENAI_API_KEY);
 
@@ -583,7 +583,7 @@ function getIntegrationStatus() {
 
 // Session stats (pure file reads)
 function getSessionStats() {
-  for (const p of ['.claude-flow/session.json', '.claude/session.json']) {
+  for (const p of ['.fidgetflo/session.json', '.claude/session.json']) {
     const data = readJSON(path.join(CWD, p));
     if (data?.startTime) {
       const diffMs = Date.now() - new Date(data.startTime).getTime();
@@ -616,7 +616,7 @@ function generateStatusline() {
   const parts = [];
 
   // Branding
-  parts.push(`${c.bold}${c.brightPurple}\u258A RuFlo v${pkgVersion || '3.5'}${c.reset}`);
+  parts.push(`${c.bold}${c.brightPurple}\u258A FidgetFlo v${pkgVersion || '3.5'}${c.reset}`);
 
   // User + swarm indicator
   const dot = swarm.coordinationActive ? `${c.brightGreen}\u25CF${c.reset}` : `${c.brightCyan}\u25CF${c.reset}`;
@@ -683,7 +683,7 @@ function generateDashboard() {
   const lines = [];
 
   // Header
-  let header = `${c.bold}${c.brightPurple}\u258A RuFlo v${pkgVersion} ${c.reset}`;
+  let header = `${c.bold}${c.brightPurple}\u258A FidgetFlo v${pkgVersion} ${c.reset}`;
   header += `${swarm.coordinationActive ? c.brightCyan : c.dim}\u25CF ${c.brightCyan}${git.name}${c.reset}`;
   if (git.gitBranch) {
     header += `  ${c.dim}\u2502${c.reset}  ${c.brightBlue}\u23C7 ${git.gitBranch}${c.reset}`;

@@ -1,5 +1,5 @@
 #!/bin/bash
-# Claude Flow Plugin Installation Script
+# FidgetFlo Plugin Installation Script
 # Version: 2.5.0
 
 set -e
@@ -33,7 +33,7 @@ echo -e "${BLUE}"
 cat << "EOF"
 ╔═══════════════════════════════════════════════════════════╗
 ║                                                           ║
-║          Claude Flow Plugin Installer v2.5.0             ║
+║           FidgetFlo Plugin Installer v2.5.0              ║
 ║       Enterprise AI Agent Orchestration Plugin           ║
 ║                                                           ║
 ╚═══════════════════════════════════════════════════════════╝
@@ -135,15 +135,15 @@ if [ "$INSTALL_TYPE" = "1" ] || [ "$INSTALL_TYPE" = "4" ]; then
         cat > "$SETTINGS_FILE" << 'SETTINGS_EOF'
 {
   "mcpServers": {
-    "claude-flow": {
+    "fidgetflo": {
       "command": "npx",
-      "args": ["claude-flow@alpha", "mcp", "start"],
-      "description": "Core Claude Flow MCP server with 40+ orchestration tools"
+      "args": ["fidgetflo@alpha", "mcp", "start"],
+      "description": "Core FidgetFlo MCP server with 40+ orchestration tools"
     }
   }
 }
 SETTINGS_EOF
-        success "Created settings.json with Claude Flow MCP server"
+        success "Created settings.json with FidgetFlo MCP server"
     else
         info "Settings file exists. Please manually add MCP servers:"
         echo ""
@@ -152,9 +152,9 @@ Add to ~/.claude/settings.json:
 
 {
   "mcpServers": {
-    "claude-flow": {
+    "fidgetflo": {
       "command": "npx",
-      "args": ["claude-flow@alpha", "mcp", "start"]
+      "args": ["fidgetflo@alpha", "mcp", "start"]
     },
     "ruv-swarm": {
       "command": "npx",
@@ -175,9 +175,9 @@ MCP_INSTRUCTIONS
     INSTALL_MCP=${INSTALL_MCP:-y}
 
     if [ "$INSTALL_MCP" = "y" ]; then
-        info "Installing claude-flow MCP server..."
-        npx claude-flow@alpha --version 2>/dev/null || npm install -g claude-flow@alpha
-        success "Claude Flow MCP server installed"
+        info "Installing fidgetflo MCP server..."
+        npx fidgetflo@alpha --version 2>/dev/null || npm install -g fidgetflo@alpha
+        success "FidgetFlo MCP server installed"
 
         read -p "Install optional ruv-swarm MCP? (y/n) [n]: " INSTALL_RUV
         if [ "$INSTALL_RUV" = "y" ]; then
@@ -230,5 +230,5 @@ echo "  • User Guide: $PLUGIN_DIR/docs/USER_GUIDE.md"
 echo "  • Examples: $PLUGIN_DIR/docs/EXAMPLES.md"
 echo ""
 
-success "Claude Flow plugin is ready to use!"
+success "FidgetFlo plugin is ready to use!"
 echo ""

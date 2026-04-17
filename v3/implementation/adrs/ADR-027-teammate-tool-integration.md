@@ -1,9 +1,9 @@
-# ADR-027: Native TeammateTool Integration for Claude Flow
+# ADR-027: Native TeammateTool Integration for FidgetFlo
 
 **Status:** Implemented ✅
 **Date:** 2026-01-25
 **Updated:** 2026-01-25
-**Author:** Claude Flow Architecture Team
+**Author:** FidgetFlo Architecture Team
 **Version:** 1.0.0
 **Requires:** Claude Code >= 2.1.19
 
@@ -59,7 +59,7 @@ v3/@claude-flow/teammate-plugin/
 
 ## Executive Summary
 
-This ADR defines the architecture for deep integration between Claude Flow and Claude Code's native **TeammateTool** multi-agent orchestration system. By leveraging TeammateTool's built-in capabilities for team management, inter-agent communication, and plan approval workflows, Claude Flow can eliminate redundant coordination code and provide seamless native multi-agent experiences.
+This ADR defines the architecture for deep integration between FidgetFlo and Claude Code's native **TeammateTool** multi-agent orchestration system. By leveraging TeammateTool's built-in capabilities for team management, inter-agent communication, and plan approval workflows, FidgetFlo can eliminate redundant coordination code and provide seamless native multi-agent experiences.
 
 ---
 
@@ -124,7 +124,7 @@ CLAUDE_CODE_TEAMMATE_COMMAND   # Spawn command override
 
 ### 1.3 Problem Statement
 
-Claude Flow currently implements its own multi-agent orchestration via:
+FidgetFlo currently implements its own multi-agent orchestration via:
 - MCP-based swarm coordination
 - Custom message bus implementation
 - Hierarchical/mesh topology management
@@ -140,12 +140,12 @@ This creates **redundancy** with Claude Code's native TeammateTool, which provid
 
 ## 2. Decision
 
-**Implement a Claude Flow plugin that acts as a bridge to TeammateTool**, providing:
+**Implement a FidgetFlo plugin that acts as a bridge to TeammateTool**, providing:
 
 1. **Native Team Management** - Use TeammateTool for spawning instead of MCP
-2. **Mailbox Integration** - Bridge teammate_mailbox to Claude Flow's memory system
+2. **Mailbox Integration** - Bridge teammate_mailbox to FidgetFlo's memory system
 3. **Plan Mode Orchestration** - Leverage launchSwarm for coordinated execution
-4. **Hybrid Topology** - Combine Claude Flow's advanced topologies with native spawning
+4. **Hybrid Topology** - Combine FidgetFlo's advanced topologies with native spawning
 
 ### 2.1 Architecture Principles
 
@@ -153,7 +153,7 @@ This creates **redundancy** with Claude Code's native TeammateTool, which provid
 |-----------|----------------|
 | **Native First** | Use TeammateTool when available, fallback to MCP |
 | **Zero Duplication** | Delegate spawning to Claude Code entirely |
-| **Transparent Bridge** | Claude Flow APIs unchanged, backend swapped |
+| **Transparent Bridge** | FidgetFlo APIs unchanged, backend swapped |
 | **Version Adaptive** | Detect Claude Code version, enable features accordingly |
 
 ---
@@ -312,7 +312,7 @@ import type {
 } from './types.js';
 
 /**
- * Bridge between Claude Flow and Claude Code's TeammateTool
+ * Bridge between FidgetFlo and Claude Code's TeammateTool
  *
  * Provides unified API for multi-agent orchestration using
  * native TeammateTool capabilities when available.
@@ -983,16 +983,16 @@ export async function createTeammateBridge(
 }
 ```
 
-### 3.4 Claude Flow Integration Layer
+### 3.4 FidgetFlo Integration Layer
 
 ```typescript
-// claude-flow-integration.ts
+// fidgetflo-integration.ts
 
 import { TeammateBridge, createTeammateBridge } from './teammate-bridge.js';
 import type { TeamConfig, TeammateSpawnConfig, TeamState } from './types.js';
 
 /**
- * Integration layer between Claude Flow's swarm system
+ * Integration layer between FidgetFlo's swarm system
  * and Claude Code's native TeammateTool
  */
 export class ClaudeFlowTeammateIntegration {
@@ -1018,7 +1018,7 @@ export class ClaudeFlowTeammateIntegration {
   }
 
   /**
-   * Map Claude Flow topology to team configuration
+   * Map FidgetFlo topology to team configuration
    */
   mapTopologyToTeamConfig(
     topology: 'hierarchical' | 'mesh' | 'adaptive',
@@ -1039,7 +1039,7 @@ export class ClaudeFlowTeammateIntegration {
   }
 
   /**
-   * Map Claude Flow agent type to teammate spawn config
+   * Map FidgetFlo agent type to teammate spawn config
    */
   mapAgentToTeammateConfig(
     agentType: string,
@@ -1049,7 +1049,7 @@ export class ClaudeFlowTeammateIntegration {
       allowedTools?: string[];
     }
   ): TeammateSpawnConfig {
-    // Map common Claude Flow agent types to roles
+    // Map common FidgetFlo agent types to roles
     const roleMap: Record<string, { role: string; defaultTools: string[] }> = {
       'coder': { role: 'coder', defaultTools: ['Edit', 'Write', 'Read', 'Bash'] },
       'tester': { role: 'tester', defaultTools: ['Read', 'Bash', 'Glob'] },
@@ -1173,7 +1173,7 @@ const result = await handleMCPTool(bridge, 'teammate_spawn_team', {
 // In Claude Code conversation:
 
 // 1. Initialize team via MCP
-mcp__claude-flow__teammate_spawn_team({
+mcp__fidgetflo__teammate_spawn_team({
   name: "feature-dev-team",
   topology: "hierarchical",
   maxTeammates: 6,
@@ -1268,7 +1268,7 @@ const teammateConfig: TeammateSpawnConfig = {
 - [x] Team spawn/cleanup
 - [x] Mailbox read/write
 
-### Phase 2: Claude Flow Integration ✅ COMPLETE
+### Phase 2: FidgetFlo Integration ✅ COMPLETE
 - [x] Topology mapping (`flat`, `hierarchical`, `mesh`)
 - [x] Agent type mapping (8 role presets)
 - [x] MCP tool registration (16 tools)
@@ -1300,11 +1300,11 @@ const teammateConfig: TeammateSpawnConfig = {
 
 ## 7. Migration Path
 
-### From Claude Flow MCP-only to Hybrid
+### From FidgetFlo MCP-only to Hybrid
 
 ```typescript
 // Before: Pure MCP coordination
-mcp__claude-flow__swarm_init({ topology: 'hierarchical' })
+mcp__fidgetflo__swarm_init({ topology: 'hierarchical' })
 
 // After: Native when available, MCP fallback
 const integration = new ClaudeFlowTeammateIntegration();
@@ -1316,7 +1316,7 @@ if (mode === 'native') {
   // Pass agentInputs to Task tool
 } else {
   // Fallback to MCP
-  mcp__claude-flow__swarm_init({ topology: 'hierarchical' })
+  mcp__fidgetflo__swarm_init({ topology: 'hierarchical' })
 }
 ```
 
@@ -1362,5 +1362,5 @@ if (mode === 'native') {
 1. **Publish to npm** - Run `npm publish --tag alpha` from package directory
 2. **Test with Claude Code 2.1.19+** - Verify native TeammateTool integration
 3. **Monitor feedback** - Track issues and feature requests
-4. **Phase 6: Memory Bridge** - Integrate with Claude Flow's HNSW memory system
-5. **Phase 7: Consensus Integration** - Bridge TeammateTool approval with Claude Flow consensus protocols
+4. **Phase 6: Memory Bridge** - Integrate with FidgetFlo's HNSW memory system
+5. **Phase 7: Consensus Integration** - Bridge TeammateTool approval with FidgetFlo consensus protocols

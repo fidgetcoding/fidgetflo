@@ -10,7 +10,7 @@ The optimized template provides:
 - **Improved performance** with batch operations
 - **Complete SPARC methodology** support
 - **Comprehensive test suite** for validation
-- **Claude Flow integration** for orchestration
+- **FidgetFlo integration** for orchestration
 
 ## Structure
 
@@ -23,7 +23,7 @@ claude-optimized/
 └── .claude/              # Template files (created during init)
     ├── commands/         # Slash commands
     │   ├── sparc/       # SPARC mode commands
-    │   └── ...          # Claude Flow commands
+    │   └── ...          # FidgetFlo commands
     ├── tests/           # Test suite
     │   ├── unit/        # Unit tests
     │   ├── integration/ # Integration tests
@@ -36,7 +36,7 @@ claude-optimized/
 
 ## Installation
 
-The template is automatically installed when initializing a new Claude Flow project. To manually install:
+The template is automatically installed when initializing a new FidgetFlo project. To manually install:
 
 1. Copy all files listed in `manifest.json` to your project's `.claude` directory
 2. Create the directory structure as specified
@@ -54,7 +54,7 @@ The template is automatically installed when initializing a new Claude Flow proj
 
 ### Commands
 
-- Main commands for Claude Flow integration
+- Main commands for FidgetFlo integration
 - 15 SPARC methodology mode commands
 - Each command is optimized for minimal token usage
 
@@ -88,7 +88,7 @@ After installation, the commands are available in Claude Code:
 
 - Type `/` to see all available commands
 - Use `/sparc` for SPARC methodology
-- Use `/claude-flow-*` for Claude Flow features
+- Use `/fidgetflo-*` for FidgetFlo features
 
 ## Performance Improvements
 
@@ -122,4 +122,4 @@ For issues or questions:
 
 - Check the documentation files
 - Run the test suite for validation
-- Refer to Claude Flow documentation
+- Refer to FidgetFlo documentation

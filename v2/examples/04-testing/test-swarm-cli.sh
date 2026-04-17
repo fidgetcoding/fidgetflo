@@ -1,7 +1,7 @@
 #!/bin/bash
-# Test Claude Flow Swarm CLI functionality
+# Test FidgetFlo Swarm CLI functionality
 
-echo "🔬 Testing Claude Flow Swarm CLI System"
+echo "🔬 Testing FidgetFlo Swarm CLI System"
 echo "========================================"
 echo ""
 echo "This test will demonstrate the swarm system creating real applications"
@@ -21,10 +21,10 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
 echo "📋 Test 1: Development Strategy - TODO App"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo ""
-echo "🚀 Running: npx claude-flow@latest swarm \"create a TODO list application with add, remove, and list functions\" --strategy development --max-agents 4 --dry-run"
+echo "🚀 Running: npx fidgetflo@latest swarm \"create a TODO list application with add, remove, and list functions\" --strategy development --max-agents 4 --dry-run"
 echo ""
 
-npx claude-flow@latest swarm "create a TODO list application with add, remove, and list functions" \
+npx fidgetflo@latest swarm "create a TODO list application with add, remove, and list functions" \
   --strategy development \
   --max-agents 4 \
   --dry-run
@@ -38,10 +38,10 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
 echo "📋 Test 2: Research Strategy"  
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo ""
-echo "🚀 Running: npx claude-flow@latest swarm \"research best practices for Node.js microservices\" --strategy research --monitor"
+echo "🚀 Running: npx fidgetflo@latest swarm \"research best practices for Node.js microservices\" --strategy research --monitor"
 echo ""
 
-timeout 30s npx claude-flow@latest swarm "research best practices for Node.js microservices" \
+timeout 30s npx fidgetflo@latest swarm "research best practices for Node.js microservices" \
   --strategy research \
   --monitor \
   --dry-run
@@ -53,10 +53,10 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
 echo "📋 Test 3: Analysis Strategy with Advanced Options"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo ""
-echo "🚀 Running: npx claude-flow@latest swarm \"analyze code quality in the src directory\" --strategy analysis --parallel --quality-threshold 0.9"
+echo "🚀 Running: npx fidgetflo@latest swarm \"analyze code quality in the src directory\" --strategy analysis --parallel --quality-threshold 0.9"
 echo ""
 
-npx claude-flow@latest swarm "analyze code quality in the src directory" \
+npx fidgetflo@latest swarm "analyze code quality in the src directory" \
   --strategy analysis \
   --parallel \
   --quality-threshold 0.9 \
@@ -70,10 +70,10 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
 echo "📋 Test 4: Testing Strategy"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo ""
-echo "🚀 Running: npx claude-flow@latest swarm \"create comprehensive test suite for authentication module\" --strategy testing --testing --review"
+echo "🚀 Running: npx fidgetflo@latest swarm \"create comprehensive test suite for authentication module\" --strategy testing --testing --review"
 echo ""
 
-npx claude-flow@latest swarm "create comprehensive test suite for authentication module" \
+npx fidgetflo@latest swarm "create comprehensive test suite for authentication module" \
   --strategy testing \
   --testing \
   --review \
@@ -86,10 +86,10 @@ echo "━━━━━━━━━━━━━━━━━━━━━━━━�
 echo "📋 Test 5: Distributed Mode Configuration"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo ""
-echo "🚀 Running: npx claude-flow@latest swarm \"build a REST API with CRUD operations\" --mode distributed --distributed --background"
+echo "🚀 Running: npx fidgetflo@latest swarm \"build a REST API with CRUD operations\" --mode distributed --distributed --background"
 echo ""
 
-npx claude-flow@latest swarm "build a REST API with CRUD operations" \
+npx fidgetflo@latest swarm "build a REST API with CRUD operations" \
   --mode distributed \
   --distributed \
   --background \
@@ -105,7 +105,7 @@ echo "📋 Test 6: Help and Available Options"
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 echo ""
 
-npx claude-flow@latest swarm --help
+npx fidgetflo@latest swarm --help
 
 echo ""
 echo "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"

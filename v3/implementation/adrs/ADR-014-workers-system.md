@@ -285,22 +285,22 @@ In addition to the original system workers, the CLI exposes 12 trigger-based wor
 
 ```bash
 # List all available workers
-claude-flow hooks worker list
+fidgetflo hooks worker list
 
 # Detect triggers from prompt text (<5ms target)
-claude-flow hooks worker detect --prompt "optimize performance"
+fidgetflo hooks worker detect --prompt "optimize performance"
 
 # Auto-dispatch when triggers match (confidence ≥0.6)
-claude-flow hooks worker detect --prompt "deep dive" --auto-dispatch --min-confidence 0.6
+fidgetflo hooks worker detect --prompt "deep dive" --auto-dispatch --min-confidence 0.6
 
 # Manually dispatch a worker
-claude-flow hooks worker dispatch --trigger refactor --context "auth module"
+fidgetflo hooks worker dispatch --trigger refactor --context "auth module"
 
 # Check worker status
-claude-flow hooks worker status
+fidgetflo hooks worker status
 
 # Cancel a running worker
-claude-flow hooks worker cancel --id worker_refactor_1_abc123
+fidgetflo hooks worker cancel --id worker_refactor_1_abc123
 ```
 
 #### MCP Tools Added
@@ -324,7 +324,7 @@ Workers are automatically triggered via the `UserPromptSubmit` hook in `.claude/
       "hooks": [{
         "type": "command",
         "timeout": 6000,
-        "command": "claude-flow hooks worker detect --prompt \"$USER_PROMPT\" --auto-dispatch --min-confidence 0.6"
+        "command": "fidgetflo hooks worker detect --prompt \"$USER_PROMPT\" --auto-dispatch --min-confidence 0.6"
       }]
     }]
   }
@@ -367,22 +367,22 @@ Extended the worker system with a full Node.js daemon service in `@claude-flow/c
 
 ```bash
 # Start the daemon (runs workers on intervals)
-npx claude-flow@v3alpha daemon start
-npx claude-flow@v3alpha daemon start --quiet  # Run once and exit
+npx fidgetflo@v3alpha daemon start
+npx fidgetflo@v3alpha daemon start --quiet  # Run once and exit
 
 # Stop the daemon
-npx claude-flow@v3alpha daemon stop
+npx fidgetflo@v3alpha daemon stop
 
 # Check status and worker history
-npx claude-flow@v3alpha daemon status
+npx fidgetflo@v3alpha daemon status
 
 # Manually trigger a worker
-npx claude-flow@v3alpha daemon trigger <worker>
-npx claude-flow@v3alpha daemon trigger map --force
+npx fidgetflo@v3alpha daemon trigger <worker>
+npx fidgetflo@v3alpha daemon trigger map --force
 
 # Enable/disable workers
-npx claude-flow@v3alpha daemon enable map audit optimize
-npx claude-flow@v3alpha daemon enable --all
+npx fidgetflo@v3alpha daemon enable map audit optimize
+npx fidgetflo@v3alpha daemon enable --all
 ```
 
 #### Worker Intervals (5 Enabled by Default)
@@ -399,10 +399,10 @@ npx claude-flow@v3alpha daemon enable --all
 
 #### Metrics Output
 
-Workers write JSON metrics to `.claude-flow/metrics/`:
+Workers write JSON metrics to `.fidgetflo/metrics/`:
 
 ```
-.claude-flow/metrics/
+.fidgetflo/metrics/
 ├── codebase-map.json      # map worker output
 ├── security-audit.json    # audit worker output
 ├── performance.json       # optimize worker output
@@ -414,7 +414,7 @@ Workers write JSON metrics to `.claude-flow/metrics/`:
 
 #### State Persistence
 
-Daemon state is persisted to `.claude-flow/daemon-state.json`:
+Daemon state is persisted to `.fidgetflo/daemon-state.json`:
 
 ```typescript
 interface DaemonState {
@@ -440,7 +440,7 @@ interface DaemonState {
 hooks.SessionStart = [{
   hooks: [{
     type: 'command',
-    command: 'npx claude-flow@v3alpha daemon start --quiet 2>/dev/null || true',
+    command: 'npx fidgetflo@v3alpha daemon start --quiet 2>/dev/null || true',
     timeout: 5000,
     continueOnError: true,
   }]
@@ -458,13 +458,13 @@ hooks.SessionStart = [{
 
 #### Package Integration
 
-The root `package.json` now links `claude-flow@v3alpha` to the V3 CLI:
+The root `package.json` now links `fidgetflo@v3alpha` to the V3 CLI:
 
 ```json
 {
-  "name": "claude-flow",
+  "name": "fidgetflo",
   "bin": {
-    "claude-flow": "./v3/@claude-flow/cli/bin/cli.js"
+    "fidgetflo": "./v3/@claude-flow/cli/bin/cli.js"
   },
   "publishConfig": {
     "access": "public",
@@ -474,9 +474,9 @@ The root `package.json` now links `claude-flow@v3alpha` to the V3 CLI:
 ```
 
 This means all V3 CLI commands (including `daemon`) are available via:
-- `npx claude-flow@v3alpha daemon start`
-- `npx claude-flow@v3alpha daemon status`
-- `npx claude-flow@v3alpha hooks ...`
+- `npx fidgetflo@v3alpha daemon start`
+- `npx fidgetflo@v3alpha daemon status`
+- `npx fidgetflo@v3alpha hooks ...`
 - etc.
 
 ---

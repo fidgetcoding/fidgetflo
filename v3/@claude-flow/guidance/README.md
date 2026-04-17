@@ -7,7 +7,7 @@
 [![node](https://img.shields.io/badge/node-%3E%3D20-blue?style=flat-square)](https://nodejs.org)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.3+-3178C6?style=flat-square&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![GitHub stars](https://img.shields.io/github/stars/ruvnet/claude-flow?style=flat-square&logo=github)](https://github.com/ruvnet/claude-flow)
-[![claude-flow](https://img.shields.io/npm/v/claude-flow.svg?style=flat-square&label=claude-flow&color=blueviolet)](https://www.npmjs.com/package/claude-flow)
+[![fidgetflo](https://img.shields.io/npm/v/fidgetflo.svg?style=flat-square&label=fidgetflo&color=blueviolet)](https://www.npmjs.com/package/fidgetflo)
 [![ruvbot](https://img.shields.io/npm/v/ruvbot.svg?style=flat-square&label=ruvbot&color=orange)](https://www.npmjs.com/package/ruvbot)
 
 **Long-horizon governance for Claude Code agents.**
@@ -62,7 +62,7 @@ The gains are not "better answers." They are less rework, fewer runaway loops, a
 | Reliability (tool + memory) | Frequent silent failures | Failures surface early, writes blocked before corruption | **2x–5x higher** |
 | Rule compliance over time | Degrades after ~30 min | Enforced mechanically at every step | **Constant** |
 
-The most important gain: **Claude Flow can now say "no" to itself and survive.** Self-limiting behavior, self-correction, and self-preservation compound over time.
+The most important gain: **FidgetFlo can now say "no" to itself and survive.** Self-limiting behavior, self-correction, and self-preservation compound over time.
 
 ## How It Works
 
@@ -972,7 +972,7 @@ class MyExecutor implements IContentAwareExecutor {
 
 ### A/B Benchmark Harness
 
-The final proof: does the control plane actually help? The `abBenchmark()` function implements the Measurement Plan: run 20 real tasks drawn from Claude Flow repo history under two configs — **A** (no control plane) vs **B** (with Phase 1 guidance) — and compute KPIs, composite scores, and category shift detection.
+The final proof: does the control plane actually help? The `abBenchmark()` function implements the Measurement Plan: run 20 real tasks drawn from FidgetFlo repo history under two configs — **A** (no control plane) vs **B** (with Phase 1 guidance) — and compute KPIs, composite scores, and category shift detection.
 
 ```typescript
 import { abBenchmark, getDefaultABTasks } from '@claude-flow/guidance/analyzer';
@@ -1144,7 +1144,7 @@ The control plane's value must be measurable. This section defines the A/B testi
 
 Run identical tasks through two configurations:
 
-- **A**: Current Claude Flow without the wired control plane
+- **A**: Current FidgetFlo without the wired control plane
 - **B**: With hook wiring, retriever injection, persisted ledger, and deterministic tool gateway
 
 ### KPIs Per Task Class
@@ -1175,7 +1175,7 @@ If B beats A by 0.2 on that score across three task classes, you have a category
 
 ### Benchmark
 
-Take 20 real Claude Flow tasks from repo history. Run A without control plane, run B with Phase 1 only. Success is B improves success rate and reduces tool calls per successful task, while producing replayable ledgers for every failure.
+Take 20 real FidgetFlo tasks from repo history. Run A without control plane, run B with Phase 1 only. Success is B improves success rate and reduces tool calls per successful task, while producing replayable ledgers for every failure.
 
 ## Links
 
@@ -1183,7 +1183,7 @@ Take 20 real Claude Flow tasks from repo history. Run A without control plane, r
 |----------|-----|
 | **GitHub** | [github.com/ruvnet/claude-flow](https://github.com/ruvnet/claude-flow) |
 | **npm: @claude-flow/guidance** | [npmjs.com/package/@claude-flow/guidance](https://www.npmjs.com/package/@claude-flow/guidance) |
-| **npm: claude-flow** | [npmjs.com/package/claude-flow](https://www.npmjs.com/package/claude-flow) |
+| **npm: fidgetflo** | [npmjs.com/package/fidgetflo](https://www.npmjs.com/package/fidgetflo) |
 | **npm: ruvbot** | [npmjs.com/package/ruvbot](https://www.npmjs.com/package/ruvbot) |
 | **ruv.io** | [ruv.io](https://ruv.io) |
 | **Issues** | [github.com/ruvnet/claude-flow/issues](https://github.com/ruvnet/claude-flow/issues) |

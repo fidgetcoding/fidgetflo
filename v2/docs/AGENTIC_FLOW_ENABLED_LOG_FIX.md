@@ -2,7 +2,7 @@
 
 ## Problem
 
-When using `npx claude-flow@alpha memory store`, the log shows:
+When using `npx fidgetflo@alpha memory store`, the log shows:
 ```
 [ReasoningBank] Enabled: false
 ```
@@ -51,7 +51,7 @@ export async function initialize() {
     const config = loadConfig();
     console.log('[ReasoningBank] Initializing...');
     console.log(`[ReasoningBank] Enabled: ${!!process.env.REASONINGBANK_ENABLED}`);  // ← FIX THIS LINE
-    console.log(`[ReasoningBank] Database: ${process.env.CLAUDE_FLOW_DB_PATH || '.swarm/memory.db'}`);
+    console.log(`[ReasoningBank] Database: ${process.env.FIDGETFLO_DB_PATH || '.swarm/memory.db'}`);
     // ... rest of function
 }
 ```
@@ -62,7 +62,7 @@ export async function initialize() {
     const config = loadConfig();
     console.log('[ReasoningBank] Initializing...');
     console.log('[ReasoningBank] Enabled: true (initializing...)');  // ← FIXED!
-    console.log(`[ReasoningBank] Database: ${process.env.CLAUDE_FLOW_DB_PATH || '.swarm/memory.db'}`);
+    console.log(`[ReasoningBank] Database: ${process.env.FIDGETFLO_DB_PATH || '.swarm/memory.db'}`);
     // ... rest of function
 }
 ```
@@ -125,9 +125,9 @@ npm publish
 [ReasoningBank] Database: .swarm/memory.db
 ```
 
-## Update claude-flow After Publishing
+## Update fidgetflo After Publishing
 
-Once agentic-flow@1.8.5 is published, update claude-flow:
+Once agentic-flow@1.8.5 is published, update fidgetflo:
 
 ### 1. Update Dependency
 
@@ -165,7 +165,7 @@ The postinstall patch is no longer needed. Edit `package.json`:
 }
 ```
 
-### 4. Publish claude-flow@2.7.23
+### 4. Publish fidgetflo@2.7.23
 
 ```bash
 # Update version
@@ -186,7 +186,7 @@ npm publish --tag alpha
 
 ### Test with npx (no local installation):
 ```bash
-npx claude-flow@alpha memory store "test" "value"
+npx fidgetflo@alpha memory store "test" "value"
 ```
 
 **Expected output:**

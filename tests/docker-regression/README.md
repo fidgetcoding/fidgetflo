@@ -1,6 +1,6 @@
-# Claude-Flow Deep Regression Test Suite
+# FidgetFlo Deep Regression Test Suite
 
-Comprehensive Docker-based test suite for verifying all Claude-Flow capabilities.
+Comprehensive Docker-based test suite for verifying all FidgetFlo capabilities.
 
 ## Quick Start
 
@@ -109,10 +109,10 @@ bash scripts/run-all-tests.sh
 | Variable | Default | Description |
 |----------|---------|-------------|
 | `TEST_REPORT_PATH` | `/app/reports` | Report output directory |
-| `CLAUDE_FLOW_MODE` | `test` | Operating mode |
-| `CLAUDE_FLOW_MEMORY_PATH` | `/app/data` | Memory storage path |
-| `CLAUDE_FLOW_LOG_LEVEL` | `debug` | Log verbosity |
-| `CLAUDE_FLOW_MAX_AGENTS` | `15` | Max concurrent agents |
+| `FIDGETFLO_MODE` | `test` | Operating mode |
+| `FIDGETFLO_MEMORY_PATH` | `/app/data` | Memory storage path |
+| `FIDGETFLO_LOG_LEVEL` | `debug` | Log verbosity |
+| `FIDGETFLO_MAX_AGENTS` | `15` | Max concurrent agents |
 | `MCP_SERVER_HOST` | `mcp-server` | MCP server hostname |
 | `MCP_SERVER_PORT` | `3000` | MCP server port |
 
@@ -230,4 +230,4 @@ docker-compose up unit-tests
 
 ## License
 
-MIT - Part of Claude-Flow
+MIT - Part of FidgetFlo

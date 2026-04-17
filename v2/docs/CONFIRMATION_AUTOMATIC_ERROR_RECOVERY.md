@@ -48,13 +48,13 @@ docker run --rm ubuntu:22.04 bash -c "
   apt-get update && apt-get install -y curl build-essential python3 git &&
   curl -fsSL https://deb.nodesource.com/setup_20.x | bash - &&
   apt-get install -y nodejs &&
-  npx claude-flow@alpha init --force
+  npx fidgetflo@alpha init --force
 "
 ```
 
 **Result**:
 ```
-🎉 Claude Flow v2.0.0 initialization complete!
+🎉 FidgetFlo v2.0.0 initialization complete!
 ✅ Test completed successfully!
 ```
 
@@ -69,7 +69,7 @@ docker run --rm debian:12 bash -c "
   apt-get update && apt-get install -y curl build-essential python3 git ca-certificates &&
   curl -fsSL https://deb.nodesource.com/setup_20.x | bash - &&
   apt-get install -y nodejs &&
-  npx claude-flow@alpha init --force
+  npx fidgetflo@alpha init --force
 "
 ```
 
@@ -100,7 +100,7 @@ drwxr-xr-x 3 root root 4096 Nov 13 16:14 test-corrupt  <-- Corrupted
 
 **Execution**:
 ```bash
-npx claude-flow@alpha init --force
+npx fidgetflo@alpha init --force
 ```
 
 **Cache After**:
@@ -160,20 +160,20 @@ drwxr-xr-x 3 root root 4096 Nov 13 16:14 7cfa166e65244432  <-- New clean cache
 
 ### Before (Manual Fix Required)
 ```bash
-$ npx claude-flow@alpha init --force
+$ npx fidgetflo@alpha init --force
 [Error: ENOTEMPTY: directory not empty, rmdir '/home/user/.npm/_npx/xxx/node_modules/better-sqlite3']
 ❌ Failed
 
 # User manually:
 $ npm cache clean --force
 $ rm -rf ~/.npm/_npx
-$ npx claude-flow@alpha init --force  # Try again
+$ npx fidgetflo@alpha init --force  # Try again
 ✅ Success (after manual intervention)
 ```
 
 ### After (Automatic Recovery)
 ```bash
-$ npx claude-flow@alpha init --force
+$ npx fidgetflo@alpha init --force
 
 🔍 WSL environment detected
 ✅ WSL environment optimized
@@ -277,19 +277,19 @@ Location: `docs/github-issues/wsl-enotempty-automatic-recovery.md`
 
 **Ubuntu 22.04 Output**:
 ```
-✅ ✓ Created CLAUDE.md (Claude Flow v2.0.0 - Optimized)
+✅ ✓ Created CLAUDE.md (FidgetFlo v2.0.0 - Optimized)
 ✅ ✓ Created .claude directory structure
 ✅ ✓ Initialized memory database (.swarm/memory.db)
 ✅ 🧠 Hive Mind System initialized successfully
 ✅ ✓ Agent system setup complete with 64 specialized agents
 ✅ ✓ Command system setup complete
 ✅ ✓ Skill system setup complete
-🎉 Claude Flow v2.0.0 initialization complete!
+🎉 FidgetFlo v2.0.0 initialization complete!
 ```
 
 **Debian 12 Output**:
 ```
-✅ ✓ Created CLAUDE.md (Claude Flow v2.0.0 - Optimized)
+✅ ✓ Created CLAUDE.md (FidgetFlo v2.0.0 - Optimized)
 ✅ ✓ Initialized memory database (.swarm/memory.db)
 ✅ 🧠 Hive Mind System initialized successfully
 🎉 Initialization complete!

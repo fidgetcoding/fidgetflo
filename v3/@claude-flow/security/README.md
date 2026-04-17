@@ -6,7 +6,7 @@
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.0+-blue.svg)](https://www.typescriptlang.org/)
 [![Security Audit](https://img.shields.io/badge/Security-Audited-green.svg)](https://github.com/ruvnet/claude-flow)
 
-> Comprehensive security module for Claude Flow V3 - CVE fixes, input validation, path security, and secure credential management.
+> Comprehensive security module for FidgetFlo V3 - CVE fixes, input validation, path security, and secure credential management.
 
 ## Features
 

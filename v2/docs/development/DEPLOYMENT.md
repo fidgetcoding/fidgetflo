@@ -1,4 +1,4 @@
-# 🚀 Claude-Flow Production Deployment Guide
+# 🚀 FidgetFlo Production Deployment Guide
 
 ## Table of Contents
 
@@ -23,16 +23,16 @@
 
 ```bash
 # Install from npm registry
-npm install -g claude-flow@alpha
+npm install -g fidgetflo@alpha
 
 # Verify installation
-npx claude-flow@alpha --version
+npx fidgetflo@alpha --version
 
 # Initialize configuration
-npx claude-flow@alpha init --force
+npx fidgetflo@alpha init --force
 
 # Test installation
-npx claude-flow@alpha swarm "test deployment" --agents 3
+npx fidgetflo@alpha swarm "test deployment" --agents 3
 ```
 
 ### Prerequisites Check
@@ -111,19 +111,19 @@ CLAUDE_API_KEY=sk-ant-api03-...
 OPENAI_API_KEY=sk-...
 GITHUB_TOKEN=ghp_...
 
-# === Claude Flow Configuration ===
-CLAUDE_FLOW_DEBUG=false
-CLAUDE_FLOW_LOG_LEVEL=info
-CLAUDE_FLOW_DATA_DIR=/app/data
-CLAUDE_FLOW_MEMORY_DIR=/app/memory
-CLAUDE_FLOW_CONFIG_DIR=/app/config
+# === FidgetFlo Configuration ===
+FIDGETFLO_DEBUG=false
+FIDGETFLO_LOG_LEVEL=info
+FIDGETFLO_DATA_DIR=/app/data
+FIDGETFLO_MEMORY_DIR=/app/memory
+FIDGETFLO_CONFIG_DIR=/app/config
 
 # === Performance Settings ===
-CLAUDE_FLOW_MAX_AGENTS=100
-CLAUDE_FLOW_MAX_CONCURRENT_TASKS=50
-CLAUDE_FLOW_MEMORY_LIMIT=2048
-CLAUDE_FLOW_CACHE_SIZE=512
-CLAUDE_FLOW_WORKER_THREADS=8
+FIDGETFLO_MAX_AGENTS=100
+FIDGETFLO_MAX_CONCURRENT_TASKS=50
+FIDGETFLO_MEMORY_LIMIT=2048
+FIDGETFLO_CACHE_SIZE=512
+FIDGETFLO_WORKER_THREADS=8
 
 # === Database Configuration ===
 DATABASE_URL=postgresql://claude_flow:secure_password@postgres:5432/claude_flow
@@ -139,11 +139,11 @@ RATE_LIMIT_WINDOW=900000
 RATE_LIMIT_MAX=100
 
 # === Features ===
-CLAUDE_FLOW_ENABLE_HOOKS=true
-CLAUDE_FLOW_ENABLE_MCP=true
-CLAUDE_FLOW_ENABLE_SWARM=true
-CLAUDE_FLOW_ENABLE_METRICS=true
-CLAUDE_FLOW_ENABLE_TRACING=true
+FIDGETFLO_ENABLE_HOOKS=true
+FIDGETFLO_ENABLE_MCP=true
+FIDGETFLO_ENABLE_SWARM=true
+FIDGETFLO_ENABLE_METRICS=true
+FIDGETFLO_ENABLE_TRACING=true
 
 # === Monitoring ===
 PROMETHEUS_PORT=9090
@@ -155,7 +155,7 @@ METRICS_RETENTION_DAYS=90
 AWS_REGION=us-west-2
 AWS_ACCESS_KEY_ID=AKIA...
 AWS_SECRET_ACCESS_KEY=...
-S3_BUCKET=claude-flow-backups
+S3_BUCKET=fidgetflo-backups
 
 # === Notifications ===
 SLACK_WEBHOOK_URL=https://hooks.slack.com/...
@@ -170,13 +170,13 @@ EOF
 
 ```bash
 # Validate environment configuration
-npx claude-flow@alpha config validate --env production
+npx fidgetflo@alpha config validate --env production
 
 # Test API connectivity
-npx claude-flow@alpha diagnostics --api-check
+npx fidgetflo@alpha diagnostics --api-check
 
 # Verify database connection
-npx claude-flow@alpha diagnostics --db-check
+npx fidgetflo@alpha diagnostics --db-check
 ```
 
 ---
@@ -205,7 +205,7 @@ WORKDIR /app
 
 # Create non-root user
 RUN addgroup -g 1001 -S nodejs && \
-    adduser -S claude-flow -u 1001 -G nodejs
+    adduser -S fidgetflo -u 1001 -G nodejs
 
 # === Build Stage ===
 FROM base AS builder
@@ -229,19 +229,19 @@ FROM base AS production
 
 # Set environment
 ENV NODE_ENV=production \
-    CLAUDE_FLOW_DATA_DIR=/app/data \
-    CLAUDE_FLOW_MEMORY_DIR=/app/memory \
-    CLAUDE_FLOW_CONFIG_DIR=/app/config \
-    CLAUDE_FLOW_LOG_LEVEL=info
+    FIDGETFLO_DATA_DIR=/app/data \
+    FIDGETFLO_MEMORY_DIR=/app/memory \
+    FIDGETFLO_CONFIG_DIR=/app/config \
+    FIDGETFLO_LOG_LEVEL=info
 
 # Copy built application
-COPY --from=builder --chown=claude-flow:nodejs /app/dist ./dist
-COPY --from=builder --chown=claude-flow:nodejs /app/node_modules ./node_modules
-COPY --from=builder --chown=claude-flow:nodejs /app/package*.json ./
+COPY --from=builder --chown=fidgetflo:nodejs /app/dist ./dist
+COPY --from=builder --chown=fidgetflo:nodejs /app/node_modules ./node_modules
+COPY --from=builder --chown=fidgetflo:nodejs /app/package*.json ./
 
 # Create data directories
 RUN mkdir -p /app/data /app/memory /app/config /app/logs && \
-    chown -R claude-flow:nodejs /app
+    chown -R fidgetflo:nodejs /app
 
 # Copy entrypoint script
 COPY docker-entrypoint.sh /usr/local/bin/
@@ -255,7 +255,7 @@ HEALTHCHECK --interval=30s --timeout=10s --start-period=60s --retries=3 \
     CMD curl -f http://localhost:3000/health || exit 1
 
 # Switch to non-root user
-USER claude-flow:nodejs
+USER fidgetflo:nodejs
 
 # Start application
 ENTRYPOINT ["/usr/local/bin/docker-entrypoint.sh"]
@@ -272,8 +272,8 @@ set -e
 
 # Initialize configuration if not exists
 if [ ! -f "/app/config/config.json" ]; then
-    echo "Initializing Claude Flow configuration..."
-    npx claude-flow@alpha init --force --config-dir /app/config
+    echo "Initializing FidgetFlo configuration..."
+    npx fidgetflo@alpha init --force --config-dir /app/config
 fi
 
 # Wait for database if DATABASE_URL is set
@@ -299,11 +299,11 @@ fi
 # Run database migrations
 if [ "$NODE_ENV" = "production" ]; then
     echo "Running database migrations..."
-    npx claude-flow@alpha db migrate
+    npx fidgetflo@alpha db migrate
 fi
 
 # Start the application
-echo "Starting Claude Flow..."
+echo "Starting FidgetFlo..."
 exec "$@"
 ```
 
@@ -315,9 +315,9 @@ version: '3.8'
 
 services:
   # === Core Services ===
-  claude-flow:
-    image: claude-flow:2.0.0-production
-    container_name: claude-flow-app
+  fidgetflo:
+    image: fidgetflo:2.0.0-production
+    container_name: fidgetflo-app
     restart: unless-stopped
     ports:
       - "3000:3000"
@@ -327,15 +327,15 @@ services:
       CLAUDE_API_KEY: ${CLAUDE_API_KEY}
       DATABASE_URL: postgresql://claude_flow:${DB_PASSWORD}@postgres:5432/claude_flow
       REDIS_URL: redis://redis:6379/0
-      CLAUDE_FLOW_MAX_AGENTS: 100
-      CLAUDE_FLOW_MEMORY_LIMIT: 2048
+      FIDGETFLO_MAX_AGENTS: 100
+      FIDGETFLO_MEMORY_LIMIT: 2048
     volumes:
-      - claude-flow-data:/app/data
-      - claude-flow-memory:/app/memory
-      - claude-flow-config:/app/config
-      - claude-flow-logs:/app/logs
+      - fidgetflo-data:/app/data
+      - fidgetflo-memory:/app/memory
+      - fidgetflo-config:/app/config
+      - fidgetflo-logs:/app/logs
     networks:
-      - claude-flow-net
+      - fidgetflo-net
     depends_on:
       postgres:
         condition: service_healthy
@@ -351,7 +351,7 @@ services:
   # === Database Services ===
   postgres:
     image: postgres:15-alpine
-    container_name: claude-flow-postgres
+    container_name: fidgetflo-postgres
     restart: unless-stopped
     environment:
       POSTGRES_DB: claude_flow
@@ -364,7 +364,7 @@ services:
       - postgres-data:/var/lib/postgresql/data
       - ./init-scripts:/docker-entrypoint-initdb.d
     networks:
-      - claude-flow-net
+      - fidgetflo-net
     healthcheck:
       test: ["CMD-SHELL", "pg_isready -U claude_flow -d claude_flow"]
       interval: 30s
@@ -373,7 +373,7 @@ services:
 
   redis:
     image: redis:7-alpine
-    container_name: claude-flow-redis
+    container_name: fidgetflo-redis
     restart: unless-stopped
     command: redis-server --appendonly yes --maxmemory 512mb --maxmemory-policy allkeys-lru
     ports:
@@ -381,7 +381,7 @@ services:
     volumes:
       - redis-data:/data
     networks:
-      - claude-flow-net
+      - fidgetflo-net
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 30s
@@ -391,7 +391,7 @@ services:
   # === Load Balancer ===
   nginx:
     image: nginx:alpine
-    container_name: claude-flow-nginx
+    container_name: fidgetflo-nginx
     restart: unless-stopped
     ports:
       - "80:80"
@@ -402,9 +402,9 @@ services:
       - ./ssl:/etc/nginx/ssl:ro
       - nginx-cache:/var/cache/nginx
     networks:
-      - claude-flow-net
+      - fidgetflo-net
     depends_on:
-      - claude-flow
+      - fidgetflo
     healthcheck:
       test: ["CMD", "wget", "--quiet", "--tries=1", "--spider", "http://localhost/health"]
       interval: 30s
@@ -414,7 +414,7 @@ services:
   # === Monitoring Stack ===
   prometheus:
     image: prom/prometheus:latest
-    container_name: claude-flow-prometheus
+    container_name: fidgetflo-prometheus
     restart: unless-stopped
     ports:
       - "9090:9090"
@@ -422,7 +422,7 @@ services:
       - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
       - prometheus-data:/prometheus
     networks:
-      - claude-flow-net
+      - fidgetflo-net
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--storage.tsdb.path=/prometheus'
@@ -433,7 +433,7 @@ services:
 
   grafana:
     image: grafana/grafana:latest
-    container_name: claude-flow-grafana
+    container_name: fidgetflo-grafana
     restart: unless-stopped
     ports:
       - "3001:3000"
@@ -445,18 +445,18 @@ services:
       - ./monitoring/grafana/dashboards:/etc/grafana/provisioning/dashboards
       - ./monitoring/grafana/datasources:/etc/grafana/provisioning/datasources
     networks:
-      - claude-flow-net
+      - fidgetflo-net
 
   # === Backup Service ===
   backup:
     image: postgres:15-alpine
-    container_name: claude-flow-backup
+    container_name: fidgetflo-backup
     restart: "no"
     volumes:
       - ./backups:/backups
       - ./scripts/backup.sh:/backup.sh:ro
     networks:
-      - claude-flow-net
+      - fidgetflo-net
     environment:
       DATABASE_URL: postgresql://claude_flow:${DB_PASSWORD}@postgres:5432/claude_flow
     depends_on:
@@ -469,14 +469,14 @@ volumes:
   redis-data:
   prometheus-data:
   grafana-data:
-  claude-flow-data:
-  claude-flow-memory:
-  claude-flow-config:
-  claude-flow-logs:
+  fidgetflo-data:
+  fidgetflo-memory:
+  fidgetflo-config:
+  fidgetflo-logs:
   nginx-cache:
 
 networks:
-  claude-flow-net:
+  fidgetflo-net:
     driver: bridge
     ipam:
       config:
@@ -487,23 +487,23 @@ networks:
 
 ```bash
 # Build production image
-docker build -f Dockerfile.production -t claude-flow:2.0.0-production .
+docker build -f Dockerfile.production -t fidgetflo:2.0.0-production .
 
 # Tag for registry
-docker tag claude-flow:2.0.0-production your-registry.com/claude-flow:2.0.0
+docker tag fidgetflo:2.0.0-production your-registry.com/fidgetflo:2.0.0
 
 # Push to registry
-docker push your-registry.com/claude-flow:2.0.0
+docker push your-registry.com/fidgetflo:2.0.0
 
 # Deploy with Docker Compose
 cp .env.production .env
 docker-compose -f docker-compose.production.yml up -d
 
 # View logs
-docker-compose -f docker-compose.production.yml logs -f claude-flow
+docker-compose -f docker-compose.production.yml logs -f fidgetflo
 
 # Scale services
-docker-compose -f docker-compose.production.yml up -d --scale claude-flow=3
+docker-compose -f docker-compose.production.yml up -d --scale fidgetflo=3
 
 # Health check
 curl -f http://localhost/health
@@ -521,11 +521,11 @@ docker run -d -p 5000:5000 --name registry \
   registry:2
 
 # Build and push to private registry
-docker build -t localhost:5000/claude-flow:2.0.0 .
-docker push localhost:5000/claude-flow:2.0.0
+docker build -t localhost:5000/fidgetflo:2.0.0 .
+docker push localhost:5000/fidgetflo:2.0.0
 
 # Pull from registry
-docker pull localhost:5000/claude-flow:2.0.0
+docker pull localhost:5000/fidgetflo:2.0.0
 ```
 
 ---
@@ -569,12 +569,12 @@ COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package*.json ./
 
 # Create data directories
-RUN mkdir -p /data/.claude-flow /data/.swarm /data/memory
+RUN mkdir -p /data/.fidgetflo /data/.swarm /data/memory
 
 # Set environment variables
 ENV NODE_ENV=production \
-    CLAUDE_FLOW_DATA_DIR=/data/.claude-flow \
-    CLAUDE_FLOW_MEMORY_DIR=/data/.swarm \
+    FIDGETFLO_DATA_DIR=/data/.fidgetflo \
+    FIDGETFLO_MEMORY_DIR=/data/.swarm \
     PORT=3000
 
 # Expose ports
@@ -597,10 +597,10 @@ CMD ["node", "dist/cli/main.js", "server"]
 version: '3.8'
 
 services:
-  claude-flow:
+  fidgetflo:
     build: .
-    image: claude-flow:latest
-    container_name: claude-flow
+    image: fidgetflo:latest
+    container_name: fidgetflo
     restart: unless-stopped
     ports:
       - "3000:3000"
@@ -609,31 +609,31 @@ services:
       - NODE_ENV=production
       - CLAUDE_API_KEY=${CLAUDE_API_KEY}
       - OPENAI_API_KEY=${OPENAI_API_KEY}
-      - CLAUDE_FLOW_LOG_LEVEL=info
+      - FIDGETFLO_LOG_LEVEL=info
     volumes:
       - ./data:/data
       - ./config:/app/config
       - ./logs:/app/logs
     networks:
-      - claude-flow-network
+      - fidgetflo-network
     depends_on:
       - redis
       - postgres
 
   redis:
     image: redis:7-alpine
-    container_name: claude-flow-redis
+    container_name: fidgetflo-redis
     restart: unless-stopped
     ports:
       - "6379:6379"
     volumes:
       - redis-data:/data
     networks:
-      - claude-flow-network
+      - fidgetflo-network
 
   postgres:
     image: postgres:15-alpine
-    container_name: claude-flow-postgres
+    container_name: fidgetflo-postgres
     restart: unless-stopped
     environment:
       - POSTGRES_DB=claude_flow
@@ -644,11 +644,11 @@ services:
     volumes:
       - postgres-data:/var/lib/postgresql/data
     networks:
-      - claude-flow-network
+      - fidgetflo-network
 
   nginx:
     image: nginx:alpine
-    container_name: claude-flow-nginx
+    container_name: fidgetflo-nginx
     restart: unless-stopped
     ports:
       - "80:80"
@@ -657,16 +657,16 @@ services:
       - ./nginx.conf:/etc/nginx/nginx.conf
       - ./ssl:/etc/nginx/ssl
     depends_on:
-      - claude-flow
+      - fidgetflo
     networks:
-      - claude-flow-network
+      - fidgetflo-network
 
 volumes:
   redis-data:
   postgres-data:
 
 networks:
-  claude-flow-network:
+  fidgetflo-network:
     driver: bridge
 ```
 
@@ -674,27 +674,27 @@ networks:
 
 ```bash
 # Build Docker image
-docker build -t claude-flow:latest .
+docker build -t fidgetflo:latest .
 
 # Run with Docker
 docker run -d \
-  --name claude-flow \
+  --name fidgetflo \
   -p 3000:3000 \
   -e CLAUDE_API_KEY=$CLAUDE_API_KEY \
   -v $(pwd)/data:/data \
-  claude-flow:latest
+  fidgetflo:latest
 
 # Run with Docker Compose
 docker-compose up -d
 
 # View logs
-docker logs -f claude-flow
+docker logs -f fidgetflo
 
 # Stop container
-docker stop claude-flow
+docker stop fidgetflo
 
 # Remove container
-docker rm claude-flow
+docker rm fidgetflo
 ```
 
 #### Services and Ingress
@@ -704,14 +704,14 @@ docker rm claude-flow
 apiVersion: v1
 kind: Service
 metadata:
-  name: claude-flow-service
-  namespace: claude-flow
+  name: fidgetflo-service
+  namespace: fidgetflo
   labels:
-    app: claude-flow
+    app: fidgetflo
 spec:
   type: ClusterIP
   selector:
-    app: claude-flow
+    app: fidgetflo
   ports:
   - name: http
     port: 80
@@ -730,8 +730,8 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: claude-flow-lb
-  namespace: claude-flow
+  name: fidgetflo-lb
+  namespace: fidgetflo
   annotations:
     service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
     service.beta.kubernetes.io/aws-load-balancer-ssl-cert: "arn:aws:acm:us-west-2:123456789:certificate/..."
@@ -739,7 +739,7 @@ metadata:
 spec:
   type: LoadBalancer
   selector:
-    app: claude-flow
+    app: fidgetflo
   ports:
   - name: https
     port: 443
@@ -754,8 +754,8 @@ spec:
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: claude-flow-ingress
-  namespace: claude-flow
+  name: fidgetflo-ingress
+  namespace: fidgetflo
   annotations:
     kubernetes.io/ingress.class: "nginx"
     cert-manager.io/cluster-issuer: "letsencrypt-prod"
@@ -769,28 +769,28 @@ metadata:
 spec:
   tls:
   - hosts:
-    - api.claude-flow.com
-    - mcp.claude-flow.com
-    secretName: claude-flow-tls
+    - api.fidgetflo.com
+    - mcp.fidgetflo.com
+    secretName: fidgetflo-tls
   rules:
-  - host: api.claude-flow.com
+  - host: api.fidgetflo.com
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: claude-flow-service
+            name: fidgetflo-service
             port:
               number: 80
-  - host: mcp.claude-flow.com
+  - host: mcp.fidgetflo.com
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: claude-flow-service
+            name: fidgetflo-service
             port:
               number: 8080
 ```
@@ -802,8 +802,8 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: claude-flow-data-pvc
-  namespace: claude-flow
+  name: fidgetflo-data-pvc
+  namespace: fidgetflo
 spec:
   accessModes:
     - ReadWriteOnce
@@ -815,8 +815,8 @@ spec:
 apiVersion: v1
 kind: PersistentVolumeClaim
 metadata:
-  name: claude-flow-memory-pvc
-  namespace: claude-flow
+  name: fidgetflo-memory-pvc
+  namespace: fidgetflo
 spec:
   accessModes:
     - ReadWriteOnce
@@ -829,13 +829,13 @@ spec:
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: claude-flow-hpa
-  namespace: claude-flow
+  name: fidgetflo-hpa
+  namespace: fidgetflo
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: claude-flow
+    name: fidgetflo
   minReplicas: 3
   maxReplicas: 20
   metrics:
@@ -877,18 +877,18 @@ spec:
 
 ```bash
 # Create namespace
-kubectl create namespace claude-flow
+kubectl create namespace fidgetflo
 
 # Apply RBAC
 kubectl apply -f k8s/namespace.yaml
 
 # Create secrets (encode values with base64)
 echo -n "your-claude-api-key" | base64
-kubectl create secret generic claude-flow-secrets \
+kubectl create secret generic fidgetflo-secrets \
   --from-literal=claude-api-key="$(echo -n 'your-api-key' | base64)" \
   --from-literal=database-url="$(echo -n 'postgresql://...' | base64)" \
   --from-literal=jwt-secret="$(echo -n 'your-jwt-secret' | base64)" \
-  -n claude-flow
+  -n fidgetflo
 
 # Apply configurations
 kubectl apply -f k8s/configmap.yaml
@@ -899,28 +899,28 @@ kubectl apply -f k8s/ingress.yaml
 kubectl apply -f k8s/hpa.yaml
 
 # Check deployment status
-kubectl get pods -n claude-flow -w
-kubectl get svc -n claude-flow
-kubectl get ingress -n claude-flow
+kubectl get pods -n fidgetflo -w
+kubectl get svc -n fidgetflo
+kubectl get ingress -n fidgetflo
 
 # View logs
-kubectl logs -f deployment/claude-flow -n claude-flow
+kubectl logs -f deployment/fidgetflo -n fidgetflo
 
 # Scale deployment manually
-kubectl scale deployment/claude-flow --replicas=5 -n claude-flow
+kubectl scale deployment/fidgetflo --replicas=5 -n fidgetflo
 
 # Rolling update
-kubectl set image deployment/claude-flow claude-flow=your-registry.com/claude-flow:2.0.1 -n claude-flow
-kubectl rollout status deployment/claude-flow -n claude-flow
+kubectl set image deployment/fidgetflo fidgetflo=your-registry.com/fidgetflo:2.0.1 -n fidgetflo
+kubectl rollout status deployment/fidgetflo -n fidgetflo
 
 # Rollback if needed
-kubectl rollout undo deployment/claude-flow -n claude-flow
+kubectl rollout undo deployment/fidgetflo -n fidgetflo
 
 # Port forward for testing
-kubectl port-forward svc/claude-flow-service 3000:80 -n claude-flow
+kubectl port-forward svc/fidgetflo-service 3000:80 -n fidgetflo
 
 # Delete deployment
-kubectl delete namespace claude-flow
+kubectl delete namespace fidgetflo
 ```
 
 ---
@@ -931,7 +931,7 @@ kubectl delete namespace claude-flow
 
 ```yaml
 # .github/workflows/deploy.yml
-name: Deploy Claude Flow
+name: Deploy FidgetFlo
 
 on:
   push:
@@ -1065,19 +1065,19 @@ jobs:
         version: 'v1.28.0'
     
     - name: Update kubeconfig
-      run: aws eks update-kubeconfig --region us-west-2 --name claude-flow-staging
+      run: aws eks update-kubeconfig --region us-west-2 --name fidgetflo-staging
     
     - name: Deploy to staging
       run: |
-        kubectl set image deployment/claude-flow claude-flow=${{ needs.build.outputs.image }} -n claude-flow-staging
-        kubectl rollout status deployment/claude-flow -n claude-flow-staging --timeout=300s
+        kubectl set image deployment/fidgetflo fidgetflo=${{ needs.build.outputs.image }} -n fidgetflo-staging
+        kubectl rollout status deployment/fidgetflo -n fidgetflo-staging --timeout=300s
     
     - name: Run smoke tests
       run: |
-        kubectl port-forward svc/claude-flow-service 3000:80 -n claude-flow-staging &
+        kubectl port-forward svc/fidgetflo-service 3000:80 -n fidgetflo-staging &
         sleep 10
         curl -f http://localhost:3000/health || exit 1
-        npx claude-flow@alpha swarm "test deployment" --agents 1 || exit 1
+        npx fidgetflo@alpha swarm "test deployment" --agents 1 || exit 1
 
   deploy-production:
     needs: build
@@ -1098,28 +1098,28 @@ jobs:
       uses: azure/setup-kubectl@v3
     
     - name: Update kubeconfig
-      run: aws eks update-kubeconfig --region us-west-2 --name claude-flow-production
+      run: aws eks update-kubeconfig --region us-west-2 --name fidgetflo-production
     
     - name: Deploy to production
       run: |
         # Blue-green deployment
-        kubectl patch deployment claude-flow -p '{"spec":{"template":{"spec":{"containers":[{"name":"claude-flow","image":"${{ needs.build.outputs.image }}"}]}}}}' -n claude-flow
-        kubectl rollout status deployment/claude-flow -n claude-flow --timeout=600s
+        kubectl patch deployment fidgetflo -p '{"spec":{"template":{"spec":{"containers":[{"name":"fidgetflo","image":"${{ needs.build.outputs.image }}"}]}}}}' -n fidgetflo
+        kubectl rollout status deployment/fidgetflo -n fidgetflo --timeout=600s
     
     - name: Run production tests
       run: |
         # Wait for deployment to be ready
-        kubectl wait --for=condition=available --timeout=300s deployment/claude-flow -n claude-flow
+        kubectl wait --for=condition=available --timeout=300s deployment/fidgetflo -n fidgetflo
         
         # Run health checks
-        EXTERNAL_IP=$(kubectl get svc claude-flow-lb -n claude-flow -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
+        EXTERNAL_IP=$(kubectl get svc fidgetflo-lb -n fidgetflo -o jsonpath='{.status.loadBalancer.ingress[0].hostname}')
         curl -f "https://$EXTERNAL_IP/health" || exit 1
     
     - name: Notify deployment
       uses: 8398a7/action-slack@v3
       with:
         status: ${{ job.status }}
-        text: "Claude Flow ${{ github.ref_name }} deployed to production"
+        text: "FidgetFlo ${{ github.ref_name }} deployed to production"
       env:
         SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
 ```
@@ -1142,7 +1142,7 @@ terraform {
   }
   
   backend "s3" {
-    bucket = "claude-flow-terraform-state"
+    bucket = "fidgetflo-terraform-state"
     key    = "production/terraform.tfstate"
     region = "us-west-2"
   }
@@ -1150,7 +1150,7 @@ terraform {
 
 # EKS Cluster
 resource "aws_eks_cluster" "claude_flow" {
-  name     = "claude-flow-production"
+  name     = "fidgetflo-production"
   role_arn = aws_iam_role.cluster.arn
   version  = "1.28"
 
@@ -1171,7 +1171,7 @@ resource "aws_eks_cluster" "claude_flow" {
 # Node Group
 resource "aws_eks_node_group" "claude_flow" {
   cluster_name    = aws_eks_cluster.claude_flow.name
-  node_group_name = "claude-flow-nodes"
+  node_group_name = "fidgetflo-nodes"
   node_role_arn   = aws_iam_role.node_group.arn
   subnet_ids      = aws_subnet.private[*].id
   instance_types  = ["m5.large", "m5.xlarge"]
@@ -1195,7 +1195,7 @@ resource "aws_eks_node_group" "claude_flow" {
 
 # RDS Instance
 resource "aws_db_instance" "claude_flow" {
-  identifier             = "claude-flow-production"
+  identifier             = "fidgetflo-production"
   engine                 = "postgres"
   engine_version         = "15"
   instance_class         = "db.r5.large"
@@ -1219,18 +1219,18 @@ resource "aws_db_instance" "claude_flow" {
   
   deletion_protection = true
   skip_final_snapshot = false
-  final_snapshot_identifier = "claude-flow-final-snapshot"
+  final_snapshot_identifier = "fidgetflo-final-snapshot"
   
   tags = {
     Environment = "production"
-    Application = "claude-flow"
+    Application = "fidgetflo"
   }
 }
 
 # ElastiCache Redis
 resource "aws_elasticache_replication_group" "claude_flow" {
-  replication_group_id         = "claude-flow-redis"
-  description                  = "Redis cluster for Claude Flow"
+  replication_group_id         = "fidgetflo-redis"
+  description                  = "Redis cluster for FidgetFlo"
   
   node_type                    = "cache.r6g.large"
   port                         = 6379
@@ -1252,13 +1252,13 @@ resource "aws_elasticache_replication_group" "claude_flow" {
   
   tags = {
     Environment = "production"
-    Application = "claude-flow"
+    Application = "fidgetflo"
   }
 }
 
 # Application Load Balancer
 resource "aws_lb" "claude_flow" {
-  name               = "claude-flow-alb"
+  name               = "fidgetflo-alb"
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.alb.id]
@@ -1287,7 +1287,7 @@ global:
   scrape_interval: 15s
   evaluation_interval: 15s
   external_labels:
-    cluster: 'claude-flow-production'
+    cluster: 'fidgetflo-production'
     environment: 'production'
 
 rule_files:
@@ -1299,12 +1299,12 @@ alerting:
         - targets: ['alertmanager:9093']
 
 scrape_configs:
-  # Claude Flow application
-  - job_name: 'claude-flow'
+  # FidgetFlo application
+  - job_name: 'fidgetflo'
     kubernetes_sd_configs:
       - role: pod
         namespaces:
-          names: ['claude-flow']
+          names: ['fidgetflo']
     relabel_configs:
       - source_labels: [__meta_kubernetes_pod_annotation_prometheus_io_scrape]
         action: keep
@@ -1351,7 +1351,7 @@ set -euo pipefail
 BACKUP_DIR="/backups/$(date +%Y/%m/%d)"
 DATE=$(date +%Y%m%d_%H%M%S)
 RETENTION_DAYS=30
-S3_BUCKET="claude-flow-backups"
+S3_BUCKET="fidgetflo-backups"
 
 # Create backup directory
 mkdir -p "$BACKUP_DIR"
@@ -1367,8 +1367,8 @@ gzip "$BACKUP_DIR/redis_$DATE.rdb"
 
 # Configuration backup
 echo "Backing up configurations..."
-kubectl get secret claude-flow-secrets -n claude-flow -o yaml > "$BACKUP_DIR/secrets_$DATE.yaml"
-kubectl get configmap claude-flow-config -n claude-flow -o yaml > "$BACKUP_DIR/config_$DATE.yaml"
+kubectl get secret fidgetflo-secrets -n fidgetflo -o yaml > "$BACKUP_DIR/secrets_$DATE.yaml"
+kubectl get configmap fidgetflo-config -n fidgetflo -o yaml > "$BACKUP_DIR/config_$DATE.yaml"
 
 # Application data backup
 echo "Backing up application data..."
@@ -1395,7 +1395,7 @@ echo "Backup completed successfully!"
 
 # Send notification
 curl -X POST -H 'Content-type: application/json' \
-    --data "{\"text\":\"✅ Claude Flow backup completed: $DATE\"}" \
+    --data "{\"text\":\"✅ FidgetFlo backup completed: $DATE\"}" \
     "$SLACK_WEBHOOK_URL"
 ```
 
@@ -1408,8 +1408,8 @@ curl -X POST -H 'Content-type: application/json' \
 ```bash
 # Create secrets in AWS Secrets Manager
 aws secretsmanager create-secret \
-    --name "claude-flow/api-keys" \
-    --description "Claude Flow API keys" \
+    --name "fidgetflo/api-keys" \
+    --description "FidgetFlo API keys" \
     --secret-string '{
         "claude-api-key": "sk-ant-api03-...",
         "openai-api-key": "sk-...",
@@ -1417,7 +1417,7 @@ aws secretsmanager create-secret \
     }'
 
 aws secretsmanager create-secret \
-    --name "claude-flow/database" \
+    --name "fidgetflo/database" \
     --description "Database connection details" \
     --secret-string '{
         "url": "postgresql://claude_flow:password@hostname:5432/claude_flow",
@@ -1425,7 +1425,7 @@ aws secretsmanager create-secret \
     }'
 
 aws secretsmanager create-secret \
-    --name "claude-flow/jwt" \
+    --name "fidgetflo/jwt" \
     --description "JWT and encryption secrets" \
     --secret-string '{
         "jwt-secret": "your-jwt-secret-256-bits",
@@ -1437,7 +1437,7 @@ aws secretsmanager create-secret \
 
 ```json
 {
-  "Name": "claude-flow-waf",
+  "Name": "fidgetflo-waf",
   "Scope": "CLOUDFRONT",
   "DefaultAction": {
     "Allow": {}
@@ -1492,7 +1492,7 @@ aws secretsmanager create-secret \
 ```bash
 # Create ALB
 aws elbv2 create-load-balancer \
-    --name claude-flow-alb \
+    --name fidgetflo-alb \
     --subnets subnet-12345 subnet-67890 \
     --security-groups sg-12345 \
     --scheme internet-facing \
@@ -1501,7 +1501,7 @@ aws elbv2 create-load-balancer \
 
 # Create target group
 aws elbv2 create-target-group \
-    --name claude-flow-targets \
+    --name fidgetflo-targets \
     --protocol HTTP \
     --port 3000 \
     --vpc-id vpc-12345 \
@@ -1516,11 +1516,11 @@ aws elbv2 create-target-group \
 
 # Create listener
 aws elbv2 create-listener \
-    --load-balancer-arn arn:aws:elasticloadbalancing:us-west-2:123456789:loadbalancer/app/claude-flow-alb/1234567890abcdef \
+    --load-balancer-arn arn:aws:elasticloadbalancing:us-west-2:123456789:loadbalancer/app/fidgetflo-alb/1234567890abcdef \
     --protocol HTTPS \
     --port 443 \
     --certificates CertificateArn=arn:aws:acm:us-west-2:123456789:certificate/12345678-1234-1234-1234-123456789012 \
-    --default-actions Type=forward,TargetGroupArn=arn:aws:elasticloadbalancing:us-west-2:123456789:targetgroup/claude-flow-targets/1234567890abcdef
+    --default-actions Type=forward,TargetGroupArn=arn:aws:elasticloadbalancing:us-west-2:123456789:targetgroup/fidgetflo-targets/1234567890abcdef
 ```
 
 ---
@@ -1533,10 +1533,10 @@ aws elbv2 create-listener \
 
 ```bash
 #!/bin/bash
-# Deploy Claude Flow to AWS EKS
+# Deploy FidgetFlo to AWS EKS
 
 # Variables
-CLUSTER_NAME="claude-flow-production"
+CLUSTER_NAME="fidgetflo-production"
 REGION="us-west-2"
 ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
 
@@ -1545,7 +1545,7 @@ eksctl create cluster \
   --name $CLUSTER_NAME \
   --version 1.28 \
   --region $REGION \
-  --nodegroup-name claude-flow-workers \
+  --nodegroup-name fidgetflo-workers \
   --node-type m5.large \
   --nodes 3 \
   --nodes-min 3 \
@@ -1585,7 +1585,7 @@ echo "EKS cluster $CLUSTER_NAME created successfully!"
 
 ```json
 {
-  "family": "claude-flow",
+  "family": "fidgetflo",
   "networkMode": "awsvpc",
   "requiresCompatibilities": ["FARGATE"],
   "cpu": "2048",
@@ -1594,26 +1594,26 @@ echo "EKS cluster $CLUSTER_NAME created successfully!"
   "taskRoleArn": "arn:aws:iam::ACCOUNT:role/claudeFlowTaskRole",
   "containerDefinitions": [
     {
-      "name": "claude-flow",
-      "image": "ACCOUNT.dkr.ecr.us-west-2.amazonaws.com/claude-flow:2.0.0",
+      "name": "fidgetflo",
+      "image": "ACCOUNT.dkr.ecr.us-west-2.amazonaws.com/fidgetflo:2.0.0",
       "portMappings": [
         {"containerPort": 3000, "protocol": "tcp"},
         {"containerPort": 8080, "protocol": "tcp"}
       ],
       "environment": [
         {"name": "NODE_ENV", "value": "production"},
-        {"name": "CLAUDE_FLOW_MAX_AGENTS", "value": "100"}
+        {"name": "FIDGETFLO_MAX_AGENTS", "value": "100"}
       ],
       "secrets": [
         {
           "name": "CLAUDE_API_KEY",
-          "valueFrom": "arn:aws:secretsmanager:us-west-2:ACCOUNT:secret:claude-flow/api-keys:claude-api-key::"
+          "valueFrom": "arn:aws:secretsmanager:us-west-2:ACCOUNT:secret:fidgetflo/api-keys:claude-api-key::"
         }
       ],
       "logConfiguration": {
         "logDriver": "awslogs",
         "options": {
-          "awslogs-group": "/ecs/claude-flow",
+          "awslogs-group": "/ecs/fidgetflo",
           "awslogs-region": "us-west-2",
           "awslogs-stream-prefix": "ecs"
         }
@@ -1632,18 +1632,18 @@ echo "EKS cluster $CLUSTER_NAME created successfully!"
 
 ```bash
 # Deploy ECS service
-aws ecs create-cluster --cluster-name claude-flow-production
+aws ecs create-cluster --cluster-name fidgetflo-production
 
 aws ecs register-task-definition --cli-input-json file://task-definition.json
 
 aws ecs create-service \
-  --cluster claude-flow-production \
-  --service-name claude-flow \
-  --task-definition claude-flow:1 \
+  --cluster fidgetflo-production \
+  --service-name fidgetflo \
+  --task-definition fidgetflo:1 \
   --desired-count 3 \
   --launch-type FARGATE \
   --network-configuration "awsvpcConfiguration={subnets=[subnet-12345,subnet-67890],securityGroups=[sg-12345],assignPublicIp=DISABLED}" \
-  --load-balancers "targetGroupArn=arn:aws:elasticloadbalancing:us-west-2:ACCOUNT:targetgroup/claude-flow/12345,containerName=claude-flow,containerPort=3000" \
+  --load-balancers "targetGroupArn=arn:aws:elasticloadbalancing:us-west-2:ACCOUNT:targetgroup/fidgetflo/12345,containerName=fidgetflo,containerPort=3000" \
   --enable-logging
 ```
 
@@ -1656,7 +1656,7 @@ aws ecs create-service \
 # Deploy to Google Kubernetes Engine
 
 PROJECT_ID="your-project-id"
-CLUSTER_NAME="claude-flow-production"
+CLUSTER_NAME="fidgetflo-production"
 REGION="us-central1"
 
 # Create GKE cluster
@@ -1683,8 +1683,8 @@ gcloud container clusters get-credentials $CLUSTER_NAME --region=$REGION --proje
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.8.2/deploy/static/provider/cloud/deploy.yaml
 
 # Deploy application
-kubectl create namespace claude-flow
-kubectl apply -f k8s/ -n claude-flow
+kubectl create namespace fidgetflo
+kubectl apply -f k8s/ -n fidgetflo
 
 echo "GKE deployment completed!"
 ```
@@ -1696,7 +1696,7 @@ echo "GKE deployment completed!"
 apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
-  name: claude-flow
+  name: fidgetflo
   annotations:
     run.googleapis.com/ingress: all
     run.googleapis.com/execution-environment: gen2
@@ -1712,7 +1712,7 @@ spec:
     spec:
       containerConcurrency: 100
       containers:
-      - image: gcr.io/PROJECT_ID/claude-flow:2.0.0
+      - image: gcr.io/PROJECT_ID/fidgetflo:2.0.0
         ports:
         - containerPort: 3000
         env:
@@ -1721,7 +1721,7 @@ spec:
         - name: CLAUDE_API_KEY
           valueFrom:
             secretKeyRef:
-              name: claude-flow-secrets
+              name: fidgetflo-secrets
               key: claude-api-key
         resources:
           limits:
@@ -1754,26 +1754,26 @@ gcloud run services replace cloud-run.yaml \
 ```bash
 # Deploy to Azure Container Instances
 az container create \
-  --resource-group claude-flow-rg \
-  --name claude-flow \
-  --image claudeflow/claude-flow:latest \
-  --dns-name-label claude-flow \
+  --resource-group fidgetflo-rg \
+  --name fidgetflo \
+  --image claudeflow/fidgetflo:latest \
+  --dns-name-label fidgetflo \
   --ports 3000 \
   --environment-variables CLAUDE_API_KEY=$CLAUDE_API_KEY
 
 # Deploy to Azure App Service
 az webapp create \
-  --resource-group claude-flow-rg \
-  --plan claude-flow-plan \
-  --name claude-flow \
-  --deployment-container-image-name claudeflow/claude-flow:latest
+  --resource-group fidgetflo-rg \
+  --plan fidgetflo-plan \
+  --name fidgetflo \
+  --deployment-container-image-name claudeflow/fidgetflo:latest
 ```
 
 ### Heroku Deployment
 
 ```bash
 # Create Heroku app
-heroku create claude-flow
+heroku create fidgetflo
 
 # Set environment variables
 heroku config:set CLAUDE_API_KEY=$CLAUDE_API_KEY
@@ -1799,13 +1799,13 @@ heroku logs --tail
 # nginx.conf
 server {
     listen 80;
-    server_name claude-flow.example.com;
+    server_name fidgetflo.example.com;
     return 301 https://$server_name$request_uri;
 }
 
 server {
     listen 443 ssl http2;
-    server_name claude-flow.example.com;
+    server_name fidgetflo.example.com;
     
     ssl_certificate /etc/nginx/ssl/cert.pem;
     ssl_certificate_key /etc/nginx/ssl/key.pem;
@@ -1813,7 +1813,7 @@ server {
     ssl_ciphers HIGH:!aNULL:!MD5;
     
     location / {
-        proxy_pass http://claude-flow:3000;
+        proxy_pass http://fidgetflo:3000;
         proxy_http_version 1.1;
         proxy_set_header Upgrade $http_upgrade;
         proxy_set_header Connection 'upgrade';
@@ -1890,13 +1890,13 @@ sqlite3 .swarm/memory.db ".backup '$BACKUP_DIR/memory_$DATE.db'"
 pg_dump $DB_NAME > $BACKUP_DIR/postgres_$DATE.sql
 
 # Backup configuration files
-tar -czf $BACKUP_DIR/config_$DATE.tar.gz .claude-flow/
+tar -czf $BACKUP_DIR/config_$DATE.tar.gz .fidgetflo/
 
 # Backup logs
 tar -czf $BACKUP_DIR/logs_$DATE.tar.gz logs/
 
 # Upload to S3
-aws s3 cp $BACKUP_DIR/ s3://claude-flow-backups/ --recursive
+aws s3 cp $BACKUP_DIR/ s3://fidgetflo-backups/ --recursive
 
 # Clean old backups (keep last 30 days)
 find $BACKUP_DIR -type f -mtime +30 -delete
@@ -1918,7 +1918,7 @@ health_check() {
   else
     echo "❌ Service is unhealthy (HTTP $response)"
     # Send alert
-    send_alert "Claude Flow service is down"
+    send_alert "FidgetFlo service is down"
   fi
 }
 
@@ -1954,7 +1954,7 @@ send_alert() {
 # Run checks
 while true; do
   clear
-  echo "Claude Flow Monitoring - $(date)"
+  echo "FidgetFlo Monitoring - $(date)"
   echo "================================"
   health_check
   check_memory
@@ -2018,8 +2018,8 @@ setInterval(async () => {
 ### Log Rotation
 
 ```bash
-# /etc/logrotate.d/claude-flow
-/var/log/claude-flow/*.log {
+# /etc/logrotate.d/fidgetflo
+/var/log/fidgetflo/*.log {
     daily
     rotate 14
     compress
@@ -2061,29 +2061,29 @@ net.ipv4.tcp_fin_timeout = 30
 
 ```bash
 # Check memory usage
-kubectl top pods -n claude-flow
+kubectl top pods -n fidgetflo
 
 # Increase memory limits
-kubectl patch deployment claude-flow -n claude-flow -p='{"spec":{"template":{"spec":{"containers":[{"name":"claude-flow","resources":{"limits":{"memory":"8Gi"}}}]}}}}'
+kubectl patch deployment fidgetflo -n fidgetflo -p='{"spec":{"template":{"spec":{"containers":[{"name":"fidgetflo","resources":{"limits":{"memory":"8Gi"}}}]}}}}'
 
 # Enable memory profiling
-kubectl set env deployment/claude-flow NODE_OPTIONS="--max-old-space-size=6144" -n claude-flow
+kubectl set env deployment/fidgetflo NODE_OPTIONS="--max-old-space-size=6144" -n fidgetflo
 ```
 
 #### Issue: High Response Times
 
 ```bash
 # Check pod resource usage
-kubectl describe pod -l app=claude-flow -n claude-flow
+kubectl describe pod -l app=fidgetflo -n fidgetflo
 
 # Scale up replicas
-kubectl scale deployment claude-flow --replicas=5 -n claude-flow
+kubectl scale deployment fidgetflo --replicas=5 -n fidgetflo
 
 # Check database connections
-kubectl exec deployment/claude-flow -n claude-flow -- psql $DATABASE_URL -c "SELECT count(*) FROM pg_stat_activity;"
+kubectl exec deployment/fidgetflo -n fidgetflo -- psql $DATABASE_URL -c "SELECT count(*) FROM pg_stat_activity;"
 
 # Optimize database queries
-kubectl exec deployment/claude-flow -n claude-flow -- npx claude-flow@alpha db optimize
+kubectl exec deployment/fidgetflo -n fidgetflo -- npx fidgetflo@alpha db optimize
 ```
 
 #### Issue: Database Connection Pool Exhaustion
@@ -2098,42 +2098,42 @@ FROM pg_stat_activity
 GROUP BY state;"
 
 # Increase connection limits
-kubectl patch configmap claude-flow-config -n claude-flow -p='{"data":{"config.json":"{\"database\":{\"pool\":{\"max\":50,\"min\":10}}}"}}'
+kubectl patch configmap fidgetflo-config -n fidgetflo -p='{"data":{"config.json":"{\"database\":{\"pool\":{\"max\":50,\"min\":10}}}"}}'
 
 # Restart deployment
-kubectl rollout restart deployment/claude-flow -n claude-flow
+kubectl rollout restart deployment/fidgetflo -n fidgetflo
 ```
 
 #### Issue: Load Balancer Health Check Failures
 
 ```bash
 # Check health endpoint
-kubectl exec deployment/claude-flow -n claude-flow -- curl -f http://localhost:3000/health
+kubectl exec deployment/fidgetflo -n fidgetflo -- curl -f http://localhost:3000/health
 
 # View detailed health status
-kubectl exec deployment/claude-flow -n claude-flow -- npx claude-flow@alpha diagnostics --health
+kubectl exec deployment/fidgetflo -n fidgetflo -- npx fidgetflo@alpha diagnostics --health
 
 # Check ingress configuration
-kubectl describe ingress claude-flow-ingress -n claude-flow
+kubectl describe ingress fidgetflo-ingress -n fidgetflo
 
 # Test from outside cluster
-curl -H "Host: api.claude-flow.com" http://$(kubectl get svc ingress-nginx-controller -n ingress-nginx -o jsonpath='{.status.loadBalancer.ingress[0].ip}')/health
+curl -H "Host: api.fidgetflo.com" http://$(kubectl get svc ingress-nginx-controller -n ingress-nginx -o jsonpath='{.status.loadBalancer.ingress[0].ip}')/health
 ```
 
 #### Issue: SSL Certificate Errors
 
 ```bash
 # Check certificate status
-kubectl get certificate claude-flow-tls -n claude-flow
+kubectl get certificate fidgetflo-tls -n fidgetflo
 
 # Describe certificate for details
-kubectl describe certificate claude-flow-tls -n claude-flow
+kubectl describe certificate fidgetflo-tls -n fidgetflo
 
 # Check cert-manager logs
 kubectl logs deployment/cert-manager -n cert-manager
 
 # Force certificate renewal
-kubectl delete certificate claude-flow-tls -n claude-flow
+kubectl delete certificate fidgetflo-tls -n fidgetflo
 kubectl apply -f k8s/cert-issuer.yaml
 ```
 
@@ -2141,39 +2141,39 @@ kubectl apply -f k8s/cert-issuer.yaml
 
 ```bash
 # Check CPU metrics
-kubectl top pods -n claude-flow
+kubectl top pods -n fidgetflo
 
 # Profile application
-kubectl exec deployment/claude-flow -n claude-flow -- node --prof /app/dist/index.js &
+kubectl exec deployment/fidgetflo -n fidgetflo -- node --prof /app/dist/index.js &
 # Let it run for a few minutes, then:
-kubectl exec deployment/claude-flow -n claude-flow -- node --prof-process isolate-*.log > profile.txt
+kubectl exec deployment/fidgetflo -n fidgetflo -- node --prof-process isolate-*.log > profile.txt
 
 # Scale horizontally
-kubectl patch hpa claude-flow-hpa -n claude-flow -p='{"spec":{"minReplicas":5,"maxReplicas":30}}'
+kubectl patch hpa fidgetflo-hpa -n fidgetflo -p='{"spec":{"minReplicas":5,"maxReplicas":30}}'
 ```
 
 ### Debug Mode & Diagnostics
 
 ```bash
 # Enable production debugging (use cautiously)
-kubectl set env deployment/claude-flow -n claude-flow \
-  CLAUDE_FLOW_DEBUG=true \
-  CLAUDE_FLOW_LOG_LEVEL=debug
+kubectl set env deployment/fidgetflo -n fidgetflo \
+  FIDGETFLO_DEBUG=true \
+  FIDGETFLO_LOG_LEVEL=debug
 
 # Get comprehensive diagnostics
-kubectl exec deployment/claude-flow -n claude-flow -- npx claude-flow@alpha diagnostics --full > diagnostic-report.txt
+kubectl exec deployment/fidgetflo -n fidgetflo -- npx fidgetflo@alpha diagnostics --full > diagnostic-report.txt
 
 # Monitor real-time logs
-kubectl logs -f deployment/claude-flow -n claude-flow --tail=100
+kubectl logs -f deployment/fidgetflo -n fidgetflo --tail=100
 
 # Export cluster information
 kubectl cluster-info dump > cluster-dump.txt
 
 # Check resource quotas
-kubectl describe quota -n claude-flow
+kubectl describe quota -n fidgetflo
 
 # View events
-kubectl get events -n claude-flow --sort-by='.metadata.creationTimestamp'
+kubectl get events -n fidgetflo --sort-by='.metadata.creationTimestamp'
 ```
 
 ### Emergency Procedures
@@ -2184,20 +2184,20 @@ kubectl get events -n claude-flow --sort-by='.metadata.creationTimestamp'
 #!/bin/bash
 # emergency-shutdown.sh
 
-echo "🚨 EMERGENCY: Shutting down Claude Flow..."
+echo "🚨 EMERGENCY: Shutting down FidgetFlo..."
 
 # Scale down to zero
-kubectl scale deployment claude-flow --replicas=0 -n claude-flow
+kubectl scale deployment fidgetflo --replicas=0 -n fidgetflo
 
 # Stop autoscaling
-kubectl patch hpa claude-flow-hpa -n claude-flow -p='{"spec":{"minReplicas":0,"maxReplicas":0}}'
+kubectl patch hpa fidgetflo-hpa -n fidgetflo -p='{"spec":{"minReplicas":0,"maxReplicas":0}}'
 
 # Cordon nodes (if necessary)
 # kubectl cordon <node-name>
 
 # Send alert
 curl -X POST -H 'Content-type: application/json' \
-  --data '{"text":"🚨 EMERGENCY: Claude Flow has been shut down!"}' \
+  --data '{"text":"🚨 EMERGENCY: FidgetFlo has been shut down!"}' \
   "$SLACK_WEBHOOK_URL"
 
 echo "✅ Emergency shutdown complete"
@@ -2207,31 +2207,31 @@ echo "✅ Emergency shutdown complete"
 
 ```bash
 # Implement circuit breaker for external APIs
-kubectl patch configmap claude-flow-config -n claude-flow -p='{
+kubectl patch configmap fidgetflo-config -n fidgetflo -p='{
   "data": {
     "config.json": "{\"circuitBreaker\":{\"enabled\":true,\"threshold\":10,\"timeout\":60000}}"
   }
 }'
 
 # Restart to apply changes
-kubectl rollout restart deployment/claude-flow -n claude-flow
+kubectl rollout restart deployment/fidgetflo -n fidgetflo
 ```
 
 ### Performance Debugging
 
 ```bash
 # Memory leak detection
-kubectl exec deployment/claude-flow -n claude-flow -- node --trace-gc --expose-gc /app/dist/index.js
+kubectl exec deployment/fidgetflo -n fidgetflo -- node --trace-gc --expose-gc /app/dist/index.js
 
 # CPU profiling in production
-kubectl exec deployment/claude-flow -n claude-flow -- node --prof-process /tmp/isolate-*.log > cpu-profile.txt
+kubectl exec deployment/fidgetflo -n fidgetflo -- node --prof-process /tmp/isolate-*.log > cpu-profile.txt
 
 # Network debugging
-kubectl exec deployment/claude-flow -n claude-flow -- netstat -tupln
-kubectl exec deployment/claude-flow -n claude-flow -- ss -tulpn
+kubectl exec deployment/fidgetflo -n fidgetflo -- netstat -tupln
+kubectl exec deployment/fidgetflo -n fidgetflo -- ss -tulpn
 
 # Database query analysis
-kubectl exec deployment/claude-flow -n claude-flow -- psql $DATABASE_URL -c "
+kubectl exec deployment/fidgetflo -n fidgetflo -- psql $DATABASE_URL -c "
 SELECT query, calls, total_time, mean_time 
 FROM pg_stat_statements 
 ORDER BY total_time DESC 
@@ -2248,16 +2248,16 @@ LIMIT 10;"
 #!/bin/bash
 # support-runbook.sh - Quick diagnostic commands
 
-echo "🔍 Claude Flow Production Diagnostics"
+echo "🔍 FidgetFlo Production Diagnostics"
 echo "======================================"
 
 echo "📊 Cluster Status:"
 kubectl get nodes -o wide
-kubectl get pods -n claude-flow
-kubectl top pods -n claude-flow
+kubectl get pods -n fidgetflo
+kubectl top pods -n fidgetflo
 
 echo "📈 Application Health:"
-curl -s https://api.claude-flow.com/health | jq '.'
+curl -s https://api.fidgetflo.com/health | jq '.'
 
 echo "🐘 Database Status:"
 psql $DATABASE_URL -c "SELECT version();" -t
@@ -2268,7 +2268,7 @@ redis-cli -u $REDIS_URL info memory | grep used_memory_human
 redis-cli -u $REDIS_URL ping
 
 echo "🔧 Recent Logs:"
-kubectl logs deployment/claude-flow -n claude-flow --tail=50 --timestamps
+kubectl logs deployment/fidgetflo -n fidgetflo --tail=50 --timestamps
 
 echo "⚠️  Recent Alerts:"
 curl -s http://alertmanager:9093/api/v1/alerts | jq '.data[] | select(.state=="firing") | .labels.alertname'
@@ -2279,11 +2279,11 @@ kubectl describe nodes | grep -A 5 "Allocated resources"
 
 ### Monitoring Dashboards
 
-- **Production Dashboard**: https://grafana.claude-flow.com/d/claude-flow-prod
-- **Infrastructure Dashboard**: https://grafana.claude-flow.com/d/infrastructure
-- **Application Metrics**: https://grafana.claude-flow.com/d/app-metrics
-- **Database Performance**: https://grafana.claude-flow.com/d/database
-- **Alert Manager**: https://alertmanager.claude-flow.com
+- **Production Dashboard**: https://grafana.fidgetflo.com/d/fidgetflo-prod
+- **Infrastructure Dashboard**: https://grafana.fidgetflo.com/d/infrastructure
+- **Application Metrics**: https://grafana.fidgetflo.com/d/app-metrics
+- **Database Performance**: https://grafana.fidgetflo.com/d/database
+- **Alert Manager**: https://alertmanager.fidgetflo.com
 
 ### Emergency Contacts
 
@@ -2291,11 +2291,11 @@ kubectl describe nodes | grep -A 5 "Allocated resources"
 # On-Call Escalation
 Level 1: DevOps Team
   - Slack: #devops-alerts
-  - PagerDuty: claude-flow-devops
+  - PagerDuty: fidgetflo-devops
   
 Level 2: Engineering Team
   - Slack: #engineering-oncall
-  - Email: engineering-oncall@claude-flow.com
+  - Email: engineering-oncall@fidgetflo.com
   
 Level 3: Leadership
   - Slack: #leadership-alerts
@@ -2315,34 +2315,34 @@ Level 3: Leadership
 
 ```bash
 # Essential production commands
-npx claude-flow@alpha --version                    # Check version
-npx claude-flow@alpha diagnostics --full           # Full system check
-npx claude-flow@alpha swarm "test" --agents 3      # Quick functionality test
-npx claude-flow@alpha config validate              # Validate configuration
+npx fidgetflo@alpha --version                    # Check version
+npx fidgetflo@alpha diagnostics --full           # Full system check
+npx fidgetflo@alpha swarm "test" --agents 3      # Quick functionality test
+npx fidgetflo@alpha config validate              # Validate configuration
 
 # Kubernetes shortcuts
-alias kgp="kubectl get pods -n claude-flow"
-alias kgs="kubectl get svc -n claude-flow"  
-alias kgi="kubectl get ingress -n claude-flow"
-alias kl="kubectl logs -f deployment/claude-flow -n claude-flow"
-alias kdp="kubectl describe pod -l app=claude-flow -n claude-flow"
+alias kgp="kubectl get pods -n fidgetflo"
+alias kgs="kubectl get svc -n fidgetflo"  
+alias kgi="kubectl get ingress -n fidgetflo"
+alias kl="kubectl logs -f deployment/fidgetflo -n fidgetflo"
+alias kdp="kubectl describe pod -l app=fidgetflo -n fidgetflo"
 
 # Emergency commands
-kubectl scale deployment claude-flow --replicas=0 -n claude-flow  # Emergency stop
-kubectl rollout undo deployment/claude-flow -n claude-flow        # Rollback
-kubectl get events --sort-by='.metadata.creationTimestamp' -n claude-flow  # Recent events
+kubectl scale deployment fidgetflo --replicas=0 -n fidgetflo  # Emergency stop
+kubectl rollout undo deployment/fidgetflo -n fidgetflo        # Rollback
+kubectl get events --sort-by='.metadata.creationTimestamp' -n fidgetflo  # Recent events
 ```
 
 ---
 
 <div align="center">
 
-## 🚀 **Claude-Flow Production Deployment Guide v2.0.0**
+## 🚀 **FidgetFlo Production Deployment Guide v2.0.0**
 
 **Ready for Enterprise Scale • Production Tested • Fully Documented**
 
 [📚 Documentation Home](./INDEX.md) | [🏗️ Architecture](./ARCHITECTURE.md) | [📖 API Reference](./API_DOCUMENTATION.md) | [⚡ Development](./DEVELOPMENT_WORKFLOW.md)
 
-[🐙 GitHub Repository](https://github.com/ruvnet/claude-flow) | [🐛 Report Issues](https://github.com/ruvnet/claude-flow/issues) | [💬 Community Support](https://discord.gg/claude-flow)
+[🐙 GitHub Repository](https://github.com/ruvnet/claude-flow) | [🐛 Report Issues](https://github.com/ruvnet/claude-flow/issues) | [💬 Community Support](https://discord.gg/fidgetflo)
 
 </div>

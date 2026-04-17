@@ -18,7 +18,7 @@ Claude Code loads `CLAUDE.md` into its context window as a system prompt at sess
 
 These limitations compound in autonomous agent scenarios (swarms, long-running daemon tasks) where human oversight is intermittent and context windows are shared across sub-agents.
 
-The existing Claude Flow V3 infrastructure provides hooks (`pre-edit`, `pre-command`, `post-task`), a memory subsystem (AgentDB + HNSW), and a headless execution mode (`claude -p --output-format json`). A control plane can leverage all three without modifying Claude Code itself.
+The existing FidgetFlo V3 infrastructure provides hooks (`pre-edit`, `pre-command`, `post-task`), a memory subsystem (AgentDB + HNSW), and a headless execution mode (`claude -p --output-format json`). A control plane can leverage all three without modifying Claude Code itself.
 
 ## Decision
 

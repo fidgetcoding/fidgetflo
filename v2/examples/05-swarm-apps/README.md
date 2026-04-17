@@ -1,6 +1,6 @@
 # Swarm-Created Applications
 
-This directory contains complete applications created by the Claude Flow swarm system, demonstrating the quality and completeness of swarm-generated code.
+This directory contains complete applications created by the FidgetFlo swarm system, demonstrating the quality and completeness of swarm-generated code.
 
 ## Applications
 

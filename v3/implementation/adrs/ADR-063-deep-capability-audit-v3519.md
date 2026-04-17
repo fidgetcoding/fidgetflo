@@ -2,7 +2,7 @@
 
 **Date:** 2026-03-17
 **Status:** Accepted — Remediation In Progress
-**Context:** Comprehensive 4-agent parallel audit of all 98 CLI capabilities in Docker environment (ruflo@latest). Covers CLI commands, memory/neural, hooks/sessions, MCP/hive-mind, and known platform limitations.
+**Context:** Comprehensive 4-agent parallel audit of all 98 CLI capabilities in Docker environment (fidgetflo@latest). Covers CLI commands, memory/neural, hooks/sessions, MCP/hive-mind, and known platform limitations.
 
 ## Decision
 
@@ -10,7 +10,7 @@ Document all findings from the deep capability audit of v3.5.19. Categorize by s
 
 ## Audit Methodology
 
-- **Environment:** Docker (multi-stage build from ruflo@latest on npm)
+- **Environment:** Docker (multi-stage build from fidgetflo@latest on npm)
 - **Agents:** 4 concurrent audit agents, each testing a different capability domain
 - **Scope:** 98 capabilities tested across CLI, memory, neural, hooks, sessions, MCP, hive-mind
 - **Branch:** `review/deep-capability-audit`

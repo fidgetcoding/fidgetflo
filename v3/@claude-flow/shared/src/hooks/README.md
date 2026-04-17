@@ -500,7 +500,7 @@ registry.register(
 Run the test suite:
 
 ```bash
-cd /workspaces/claude-flow/v3/@claude-flow/shared
+cd /workspaces/fidgetflo/v3/@claude-flow/shared
 npm test -- hooks.test.ts
 ```
 
@@ -529,4 +529,4 @@ v3/@claude-flow/shared/src/hooks/
 
 ## License
 
-Part of Claude-Flow V3 - See main LICENSE file
+Part of FidgetFlo V3 - See main LICENSE file

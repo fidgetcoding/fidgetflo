@@ -1,38 +1,38 @@
-# Ruflo
+# FidgetFlo
 
 Enterprise AI agent orchestration platform. Deploy 60+ specialized agents in coordinated swarms with self-learning, fault-tolerant consensus, vector memory, and MCP integration.
 
-**Ruflo** is the new name for [claude-flow](https://www.npmjs.com/package/claude-flow). Both packages are fully supported.
+**FidgetFlo** is the new name for [fidgetflo](https://www.npmjs.com/package/fidgetflo). Both packages are fully supported.
 
 ## Install
 
 ```bash
 # Quick start
-npx ruflo@latest init --wizard
+npx fidgetflo@latest init --wizard
 
 # Global install
-npm install -g ruflo
+npm install -g fidgetflo
 
 # Add as MCP server
-claude mcp add ruflo -- npx -y ruflo@latest mcp start
+claude mcp add fidgetflo -- npx -y fidgetflo@latest mcp start
 ```
 
 ## Usage
 
 ```bash
-ruflo init --wizard          # Initialize project
-ruflo agent spawn -t coder   # Spawn an agent
-ruflo swarm init             # Start a swarm
-ruflo memory search -q "..."  # Search vector memory
-ruflo doctor                 # System diagnostics
+fidgetflo init --wizard          # Initialize project
+fidgetflo agent spawn -t coder   # Spawn an agent
+fidgetflo swarm init             # Start a swarm
+fidgetflo memory search -q "..."  # Search vector memory
+fidgetflo doctor                 # System diagnostics
 ```
 
-## Relationship to claude-flow
+## Relationship to fidgetflo
 
 | Package | npm | CLI Command |
 |---------|-----|-------------|
-| `ruflo` | [npmjs.com/package/ruflo](https://www.npmjs.com/package/ruflo) | `ruflo` |
-| `claude-flow` | [npmjs.com/package/claude-flow](https://www.npmjs.com/package/claude-flow) | `claude-flow` |
+| `fidgetflo` | [npmjs.com/package/fidgetflo](https://www.npmjs.com/package/fidgetflo) | `fidgetflo` |
+| `fidgetflo` | [npmjs.com/package/fidgetflo](https://www.npmjs.com/package/fidgetflo) | `fidgetflo` |
 
 Both packages use `@claude-flow/cli` under the hood. Choose whichever you prefer.
 

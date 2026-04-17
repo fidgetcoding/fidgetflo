@@ -4,7 +4,7 @@ Complete configuration guide for pair programming sessions.
 
 ## Configuration File
 
-Main configuration file: `.claude-flow/pair-config.json`
+Main configuration file: `.fidgetflo/pair-config.json`
 
 ## Basic Configuration
 
@@ -356,41 +356,41 @@ export CLAUDE_PAIR_AUTO_TEST=true
 ### Set Configuration
 ```bash
 # Set single value
-claude-flow pair config set defaultMode switch
+fidgetflo pair config set defaultMode switch
 
 # Set nested value
-claude-flow pair config set verification.threshold 0.98
+fidgetflo pair config set verification.threshold 0.98
 
 # Set from file
-claude-flow pair config import config.json
+fidgetflo pair config import config.json
 ```
 
 ### Get Configuration
 ```bash
 # Get all configuration
-claude-flow pair config get
+fidgetflo pair config get
 
 # Get specific value
-claude-flow pair config get defaultMode
+fidgetflo pair config get defaultMode
 
 # Export configuration
-claude-flow pair config export > config.json
+fidgetflo pair config export > config.json
 ```
 
 ### Reset Configuration
 ```bash
 # Reset to defaults
-claude-flow pair config reset
+fidgetflo pair config reset
 
 # Reset specific section
-claude-flow pair config reset verification
+fidgetflo pair config reset verification
 ```
 
 ## Profile Management
 
 ### Create Profile
 ```bash
-claude-flow pair profile create refactoring \
+fidgetflo pair profile create refactoring \
   --mode driver \
   --verify true \
   --threshold 0.98 \
@@ -399,12 +399,12 @@ claude-flow pair profile create refactoring \
 
 ### Use Profile
 ```bash
-claude-flow pair --start --profile refactoring
+fidgetflo pair --start --profile refactoring
 ```
 
 ### List Profiles
 ```bash
-claude-flow pair profile list
+fidgetflo pair profile list
 ```
 
 ### Profiles Configuration
@@ -438,13 +438,13 @@ claude-flow pair profile list
 ## Workspace Configuration
 
 ### Project-Specific
-`.claude-flow/pair-config.json` in project root
+`.fidgetflo/pair-config.json` in project root
 
 ### User-Specific
-`~/.claude-flow/pair-config.json`
+`~/.fidgetflo/pair-config.json`
 
 ### Global
-`/etc/claude-flow/pair-config.json`
+`/etc/fidgetflo/pair-config.json`
 
 ### Priority Order
 1. Command-line arguments
@@ -458,26 +458,26 @@ claude-flow pair profile list
 
 ```bash
 # Validate configuration
-claude-flow pair config validate
+fidgetflo pair config validate
 
 # Test configuration
-claude-flow pair config test
+fidgetflo pair config test
 ```
 
 ## Migration
 
 ### From Version 1.x
 ```bash
-claude-flow pair config migrate --from 1.x
+fidgetflo pair config migrate --from 1.x
 ```
 
 ### Export/Import
 ```bash
 # Export current config
-claude-flow pair config export > my-config.json
+fidgetflo pair config export > my-config.json
 
 # Import config
-claude-flow pair config import my-config.json
+fidgetflo pair config import my-config.json
 ```
 
 ## Best Practices

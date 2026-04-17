@@ -12,45 +12,45 @@ cp /workspaces/claude-code-flow/docs/reasoningbank/models/safla/memory.db ~/.swa
 
 ### Basic Search
 ```bash
-npx claude-flow@alpha memory search "YOUR_QUERY" --namespace safla
+npx fidgetflo@alpha memory search "YOUR_QUERY" --namespace safla
 ```
 
 ### By Domain (5 categories)
 ```bash
 # Self-learning patterns (confidence evolution)
-npx claude-flow@alpha memory search "API optimization" --domain self-learning
+npx fidgetflo@alpha memory search "API optimization" --domain self-learning
 
 # Feedback loops (user/system feedback)
-npx claude-flow@alpha memory search "feedback" --domain feedback-optimization
+npx fidgetflo@alpha memory search "feedback" --domain feedback-optimization
 
 # Bayesian confidence (probability updates)
-npx claude-flow@alpha memory search "uncertainty" --domain confidence-adjustment
+npx fidgetflo@alpha memory search "uncertainty" --domain confidence-adjustment
 
 # Success/failure learning (distillation)
-npx claude-flow@alpha memory search "deployment success" --domain distillation
+npx fidgetflo@alpha memory search "deployment success" --domain distillation
 
 # Meta-learning (recursive improvement)
-npx claude-flow@alpha memory search "meta-learning" --domain recursive-cycles
+npx fidgetflo@alpha memory search "meta-learning" --domain recursive-cycles
 ```
 
 ### By Confidence Level
 ```bash
 # Expert patterns (0.9-0.95)
-npx claude-flow@alpha memory retrieve "confidence:>0.90" --namespace safla
+npx fidgetflo@alpha memory retrieve "confidence:>0.90" --namespace safla
 
 # High confidence (0.8-0.9)
-npx claude-flow@alpha memory retrieve "confidence:>0.80" --namespace safla
+npx fidgetflo@alpha memory retrieve "confidence:>0.80" --namespace safla
 
 # Learning patterns (0.5-0.7)
-npx claude-flow@alpha memory retrieve "confidence:<0.70" --namespace safla
+npx fidgetflo@alpha memory retrieve "confidence:<0.70" --namespace safla
 ```
 
 ### By Technology
 ```bash
-npx claude-flow@alpha memory search "Node.js optimization" --namespace safla
-npx claude-flow@alpha memory search "PostgreSQL patterns" --namespace safla
-npx claude-flow@alpha memory search "Kubernetes deployment" --namespace safla
-npx claude-flow@alpha memory search "React performance" --namespace safla
+npx fidgetflo@alpha memory search "Node.js optimization" --namespace safla
+npx fidgetflo@alpha memory search "PostgreSQL patterns" --namespace safla
+npx fidgetflo@alpha memory search "Kubernetes deployment" --namespace safla
+npx fidgetflo@alpha memory search "React performance" --namespace safla
 ```
 
 ---
@@ -77,15 +77,15 @@ sqlite3 ~/.swarm/memory.db "SELECT relationship, COUNT(*) FROM pattern_links GRO
 
 | Task | Command |
 |------|---------|
-| **API Development** | `npx claude-flow@alpha memory search "API endpoint optimization" --namespace safla` |
-| **Code Review** | `npx claude-flow@alpha memory search "code review feedback" --namespace safla` |
-| **Debugging** | `npx claude-flow@alpha memory search "error recovery" --namespace safla` |
-| **Performance** | `npx claude-flow@alpha memory search "performance optimization" --namespace safla` |
-| **Architecture** | `npx claude-flow@alpha memory search "architecture refinement" --namespace safla` |
-| **Testing** | `npx claude-flow@alpha memory search "test suite evolution" --namespace safla` |
-| **Deployment** | `npx claude-flow@alpha memory search "deployment success" --namespace safla` |
-| **CI/CD** | `npx claude-flow@alpha memory search "CI/CD pipeline optimization" --namespace safla` |
-| **Monitoring** | `npx claude-flow@alpha memory search "monitoring feedback loop" --namespace safla` |
+| **API Development** | `npx fidgetflo@alpha memory search "API endpoint optimization" --namespace safla` |
+| **Code Review** | `npx fidgetflo@alpha memory search "code review feedback" --namespace safla` |
+| **Debugging** | `npx fidgetflo@alpha memory search "error recovery" --namespace safla` |
+| **Performance** | `npx fidgetflo@alpha memory search "performance optimization" --namespace safla` |
+| **Architecture** | `npx fidgetflo@alpha memory search "architecture refinement" --namespace safla` |
+| **Testing** | `npx fidgetflo@alpha memory search "test suite evolution" --namespace safla` |
+| **Deployment** | `npx fidgetflo@alpha memory search "deployment success" --namespace safla` |
+| **CI/CD** | `npx fidgetflo@alpha memory search "CI/CD pipeline optimization" --namespace safla` |
+| **Monitoring** | `npx fidgetflo@alpha memory search "monitoring feedback loop" --namespace safla` |
 
 ---
 
@@ -101,18 +101,18 @@ sqlite3 ~/.swarm/memory.db "SELECT relationship, COUNT(*) FROM pattern_links GRO
 
 ---
 
-## 🔗 Integration with Claude Flow Hooks
+## 🔗 Integration with FidgetFlo Hooks
 
 ```bash
 # Before task (get relevant patterns)
-npx claude-flow@alpha hooks pre-task --description "API optimization"
-npx claude-flow@alpha memory search "API optimization" --namespace safla
+npx fidgetflo@alpha hooks pre-task --description "API optimization"
+npx fidgetflo@alpha memory search "API optimization" --namespace safla
 
 # After editing (store pattern usage)
-npx claude-flow@alpha hooks post-edit --file "src/api.ts" --memory-key "swarm/safla/api"
+npx fidgetflo@alpha hooks post-edit --file "src/api.ts" --memory-key "swarm/safla/api"
 
 # After task (record success)
-npx claude-flow@alpha hooks post-task --task-id "api-opt-123"
+npx fidgetflo@alpha hooks post-task --task-id "api-opt-123"
 ```
 
 ---
@@ -183,7 +183,7 @@ ls -lh ~/.swarm/memory.db
 sqlite3 ~/.swarm/memory.db "SELECT COUNT(*) FROM patterns;"
 
 # Test query performance
-time npx claude-flow@alpha memory search "test" --namespace safla
+time npx fidgetflo@alpha memory search "test" --namespace safla
 
 # Optimize database
 sqlite3 ~/.swarm/memory.db "PRAGMA optimize; VACUUM;"
@@ -261,7 +261,7 @@ LIMIT 10;
 
 ```bash
 # ReasoningBank CLI help
-npx claude-flow@alpha memory --help
+npx fidgetflo@alpha memory --help
 
 # GitHub Issues
 https://github.com/ruvnet/claude-flow/issues

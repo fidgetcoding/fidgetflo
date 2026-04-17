@@ -9,7 +9,7 @@
 
 ## 📋 Feature Overview
 
-Added optional API key redaction to claude-flow memory commands with two-level security:
+Added optional API key redaction to fidgetflo memory commands with two-level security:
 
 ### 1️⃣ **Always Validate** (Auto-Protection)
 - Automatically detects API keys in stored values
@@ -28,7 +28,7 @@ Added optional API key redaction to claude-flow memory commands with two-level s
 ### Test 1: Store WITHOUT --redact (Warning Mode)
 **Command:**
 ```bash
-./bin/claude-flow memory store test_warning "ANTHROPIC_API_KEY=TEST_API_KEY_PLACEHOLDER" --namespace test
+./bin/fidgetflo memory store test_warning "ANTHROPIC_API_KEY=TEST_API_KEY_PLACEHOLDER" --namespace test
 ```
 
 **Expected Behavior:**
@@ -55,7 +55,7 @@ Added optional API key redaction to claude-flow memory commands with two-level s
 ### Test 2: Store WITH --redact (Active Protection)
 **Command:**
 ```bash
-./bin/claude-flow memory store test_redacted "ANTHROPIC_API_KEY=TEST_API_KEY_PLACEHOLDER" --namespace test --redact
+./bin/fidgetflo memory store test_redacted "ANTHROPIC_API_KEY=TEST_API_KEY_PLACEHOLDER" --namespace test --redact
 ```
 
 **Expected Behavior:**
@@ -83,7 +83,7 @@ Added optional API key redaction to claude-flow memory commands with two-level s
 ### Test 3: Query WITH --redact (Display Protection)
 **Command:**
 ```bash
-./bin/claude-flow memory query test --namespace test --redact
+./bin/fidgetflo memory query test --namespace test --redact
 ```
 
 **Expected Behavior:**
@@ -135,7 +135,7 @@ cat ./memory/memory-store.json | grep -E "API_KEY_PATTERNS"
 ### Test 5: Help Text Documentation
 **Command:**
 ```bash
-./bin/claude-flow memory --help
+./bin/fidgetflo memory --help
 ```
 
 **Expected Behavior:**
@@ -166,7 +166,7 @@ Examples:
 ### Test 6: Namespace Cleanup
 **Command:**
 ```bash
-./bin/claude-flow memory clear --namespace test
+./bin/fidgetflo memory clear --namespace test
 ```
 
 **Result:** ✅ **PASS** - Successfully cleared test data

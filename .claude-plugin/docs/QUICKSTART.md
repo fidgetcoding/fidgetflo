@@ -1,6 +1,6 @@
-# 🚀 Claude Flow Plugin - Quickstart Guide
+# 🚀 FidgetFlo Plugin - Quickstart Guide
 
-Get started with Claude Flow in 5 minutes!
+Get started with FidgetFlo in 5 minutes!
 
 ---
 
@@ -20,7 +20,7 @@ In Claude Code:
 ```bash
 # Clone the repository
 git clone https://github.com/ruvnet/claude-flow.git
-cd claude-flow
+cd fidgetflo
 ```
 
 Then in Claude Code:
@@ -39,7 +39,7 @@ In Claude Code:
 /plugin list
 ```
 
-Look for `claude-flow` in the active plugins.
+Look for `fidgetflo` in the active plugins.
 
 Try a command:
 ```
@@ -202,7 +202,7 @@ The swarm automatically:
 
 ```bash
 # Core MCP (required)
-claude mcp add claude-flow npx claude-flow@alpha mcp start
+claude mcp add fidgetflo npx fidgetflo@alpha mcp start
 
 # Enhanced coordination (optional)
 claude mcp add ruv-swarm npx ruv-swarm mcp start
@@ -216,7 +216,7 @@ claude mcp add flow-nexus npx flow-nexus@latest mcp start
 In Claude Code:
 
 ```
-List available MCP tools for claude-flow
+List available MCP tools for fidgetflo
 ```
 
 Expected: 40+ tools including:
@@ -297,10 +297,10 @@ ls ~/.claude/commands/
 cat ~/.claude/settings.json
 
 # Verify MCP package
-npx claude-flow@alpha --version
+npx fidgetflo@alpha --version
 
 # Reinstall if needed
-npm install -g claude-flow@alpha
+npm install -g fidgetflo@alpha
 ```
 
 ### Agents Not Spawning
@@ -356,6 +356,6 @@ chmod -R 755 ~/.claude/agents/
 
 ## 🚀 You're Ready!
 
-Start building with Claude Flow's enterprise AI agent orchestration.
+Start building with FidgetFlo's enterprise AI agent orchestration.
 
 **Happy coding!** 🎉

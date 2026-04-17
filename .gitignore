@@ -1,17 +1,17 @@
 
 !/memory/agents/README.md
 !/memory/sessions/README.md
-!bin/claude-flow
+!bin/fidgetflo
 !v3/@claude-flow/
 # Binaries
 # Build outputs
 
-# Claude-Flow specific
+# FidgetFlo specific
 # Dependencies
 # Development
 # Dot folders to ignore (except .claude, .claude-plugin, .git, .github, .githooks)
 # Environment
-# Exclude @claude-flow module directories from ignore patterns
+# Exclude @fidgetflo module directories from ignore patterns
 # IDE
 # Logs
 # MCP/Swarm
@@ -55,7 +55,7 @@
 .Python
 .agentic-flow/
 .cache/
-.claude-flow/
+.fidgetflo/
 .claude/settings.local.json
 .deno/
 .env
@@ -79,18 +79,18 @@
 /coordination/
 /memory/
 /memory/agents/*
-/memory/claude-flow-data.json
+/memory/fidgetflo-data.json
 /memory/sessions/*
 Thumbs.db
 __pycache__/
 analyzing
 api-project/
-bin/claude-flow-*
+bin/fidgetflo-*
 build/
-claude-flow
-claude-flow-mcp-wrapper
-claude-flow.config.json
-claude-flow.db
+fidgetflo
+fidgetflo-mcp-wrapper
+fidgetflo.config.json
+fidgetflo.db
 coordination/memory_bank/*
 coordination/orchestration/*
 coordination/subtasks/*
@@ -123,16 +123,16 @@ ui_*.log
 yarn-debug.log*
 yarn-error.log*
 
-# Claude Flow generated files
+# FidgetFlo generated files
 .claude/settings.local.json
 .mcp.json
-claude-flow.config.json
+fidgetflo.config.json
 .swarm/
 .hive-mind/
-.claude-flow/
+.fidgetflo/
 /memory/
 /coordination/
-/memory/claude-flow-data.json
+/memory/fidgetflo-data.json
 /memory/sessions/*
 !/memory/sessions/README.md
 /memory/agents/*
@@ -146,16 +146,16 @@ claude-flow.config.json
 *.sqlite
 *.sqlite-journal
 *.sqlite-wal
-claude-flow
+fidgetflo
 # Removed Windows wrapper files per user request
 hive-mind-prompt-*.txt
 
 # Codex local configuration
 .codex/
 
-# Claude Flow runtime data
-.claude-flow/data/
-.claude-flow/logs/
+# FidgetFlo runtime data
+.fidgetflo/data/
+.fidgetflo/logs/
 
 # Environment variables
 .env

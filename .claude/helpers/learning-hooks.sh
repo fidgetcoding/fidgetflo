@@ -1,12 +1,12 @@
 #!/bin/bash
-# RuFlo V3 - Learning Hooks
+# FidgetFlo V3 - Learning Hooks
 # Integrates learning-service.mjs with session lifecycle
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
 LEARNING_SERVICE="$SCRIPT_DIR/learning-service.mjs"
-LEARNING_DIR="$PROJECT_ROOT/.claude-flow/learning"
-METRICS_DIR="$PROJECT_ROOT/.claude-flow/metrics"
+LEARNING_DIR="$PROJECT_ROOT/.fidgetflo/learning"
+METRICS_DIR="$PROJECT_ROOT/.fidgetflo/metrics"
 
 # Ensure directories exist
 mkdir -p "$LEARNING_DIR" "$METRICS_DIR"
@@ -300,7 +300,7 @@ case "${1:-help}" in
     ;;
   "help"|"-h"|"--help")
     cat << 'EOF'
-RuFlo V3 Learning Hooks
+FidgetFlo V3 Learning Hooks
 
 Usage: learning-hooks.sh <command> [args]
 

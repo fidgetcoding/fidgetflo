@@ -321,7 +321,7 @@ export const HEADLESS_WORKERS: HeadlessWorkerConfig[] = [
       sandbox: 'strict',
       model: 'haiku',
       outputFormat: 'json',
-      contextPatterns: ['.claude-flow/metrics/*.json'],
+      contextPatterns: ['.fidgetflo/metrics/*.json'],
     },
   },
 ];
@@ -611,16 +611,16 @@ export class WorkerDaemon extends EventEmitter {
 
 ```bash
 # Start daemon with headless workers
-npx claude-flow@v3alpha daemon start --headless
+npx fidgetflo@v3alpha daemon start --headless
 
 # Start with specific sandbox mode for all workers
-npx claude-flow@v3alpha daemon start --sandbox strict
+npx fidgetflo@v3alpha daemon start --sandbox strict
 
 # Trigger headless worker manually
-npx claude-flow@v3alpha daemon trigger -w audit --headless
+npx fidgetflo@v3alpha daemon trigger -w audit --headless
 
 # Show worker modes
-npx claude-flow@v3alpha daemon status --show-modes
+npx fidgetflo@v3alpha daemon status --show-modes
 ```
 
 ### Output Example
@@ -676,7 +676,7 @@ export class ContainerWorkerPool {
     try {
       // Mount workspace and execute
       const result = await container.exec([
-        'npx', 'claude-flow@v3alpha', 'daemon', 'trigger',
+        'npx', 'fidgetflo@v3alpha', 'daemon', 'trigger',
         '-w', worker.type,
         '--headless',
         '--sandbox', worker.headless?.sandbox || 'strict',
@@ -719,7 +719,7 @@ services:
       - CLAUDE_CODE_SANDBOX_MODE=strict
     volumes:
       - workspace:/workspace:ro
-      - claude-flow-state:/root/.claude-flow
+      - fidgetflo-state:/root/.fidgetflo
     command: daemon start --foreground --workers audit,optimize,testgaps
 
   queue-manager:
@@ -737,7 +737,7 @@ services:
 
 volumes:
   workspace:
-  claude-flow-state:
+  fidgetflo-state:
   redis-data:
 ```
 
