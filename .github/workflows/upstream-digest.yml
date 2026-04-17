@@ -2,14 +2,14 @@ name: Upstream Digest (ruvnet/ruflo)
 
 on:
   schedule:
-    # 1st and 15th of every month at 13:00 UTC = 9am ET (EDT). Bi-weekly cadence.
-    - cron: '0 13 1,15 * *'
+    # Sundays at 13:00 UTC = 9am ET (EDT). Weekly digest of upstream activity.
+    - cron: '0 13 * * 0'
   workflow_dispatch:
     inputs:
       window_days:
         description: 'How many days of history to summarize'
         required: false
-        default: '14'
+        default: '7'
 
 permissions:
   contents: read
@@ -34,7 +34,7 @@ jobs:
         id: digest
         run: |
           set -euo pipefail
-          WINDOW="${{ github.event.inputs.window_days || '14' }}"
+          WINDOW="${{ github.event.inputs.window_days || '7' }}"
           SINCE="$(date -u -d "${WINDOW} days ago" +%Y-%m-%d)"
           TIP="$(git rev-parse --short upstream/main)"
 
@@ -73,8 +73,10 @@ jobs:
             echo "**Port a commit:**   \`git cherry-pick <sha>\` (expect conflicts — no shared history)"
           } > digest.md
 
+          COUNT="$(echo "$ALL" | wc -l | tr -d ' ')"
           echo "empty=false" >> "$GITHUB_OUTPUT"
           echo "tip=${TIP}" >> "$GITHUB_OUTPUT"
+          echo "count=${COUNT}" >> "$GITHUB_OUTPUT"
 
       - name: Ensure label exists
         if: steps.digest.outputs.empty == 'false'
@@ -91,7 +93,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          TITLE="upstream-digest: ruflo @ $(date -u +%Y-%m-%d) (tip ${{ steps.digest.outputs.tip }})"
+          TITLE="ruflo updates — week of $(date -u +%Y-%m-%d) (${{ steps.digest.outputs.count }} new commits, tip ${{ steps.digest.outputs.tip }})"
           gh issue create \
             --repo "${{ github.repository }}" \
             --title "$TITLE" \
