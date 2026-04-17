@@ -1,8 +1,34 @@
+<div align="center">
+
 # FidgetFlo
+
+![FidgetFlo](./fidgetflo.png)
+
+[![GitHub Stars](https://img.shields.io/github/stars/lorecraft-io/fidgetflo?style=flat-square&label=STARS&color=22c55e&labelColor=111111&logo=github&logoColor=white)](https://github.com/lorecraft-io/fidgetflo/stargazers)
+[![npm monthly](https://img.shields.io/npm/dm/fidgetflo?style=flat-square&label=MONTHLY+DOWNLOADS&color=22c55e&labelColor=111111)](https://www.npmjs.com/package/fidgetflo)
+[![npm total](https://img.shields.io/npm/dt/fidgetflo?style=flat-square&label=TOTAL+DOWNLOADS&color=22c55e&labelColor=111111)](https://www.npmjs.com/package/fidgetflo)
+
+[![FIDGETCODING](https://img.shields.io/badge/FIDGETCODING-111111?style=flat-square)](https://github.com/lorecraft-io)
+[![AI Platform](https://img.shields.io/badge/AI-PLATFORM-22c55e?style=flat-square&labelColor=111111)](https://github.com/lorecraft-io/fidgetflo)
+[![Claude Code](https://img.shields.io/badge/CLAUDE_CODE-INTEGRATED-22c55e?style=flat-square&labelColor=111111)](https://github.com/lorecraft-io/fidgetflo)
+[![npm version](https://img.shields.io/npm/v/fidgetflo?style=flat-square&label=VERSION&color=22c55e&labelColor=111111)](https://www.npmjs.com/package/fidgetflo)
+[![License](https://img.shields.io/badge/LICENSE-MIT-22c55e?style=flat-square&labelColor=111111)](./LICENSE)
+
+[![GitHub](https://img.shields.io/badge/GITHUB-lorecraft--io-111111?style=flat-square&logo=github&logoColor=white)](https://github.com/lorecraft-io)
+[![npm](https://img.shields.io/badge/NPM-fidgetflo-cb3837?style=flat-square&logo=npm&logoColor=white)](https://www.npmjs.com/package/fidgetflo)
+[![lorecraft.io](https://img.shields.io/badge/LORECRAFT.IO-111111?style=flat-square)](https://lorecraft.io)
+
+### Multi-agent AI orchestration for Claude Code
+
+*11 slash commands across 2 swarm sizes and 5 thinking tiers — effort-calibrated, extended-thinking-aware, zero config.*
+
+</div>
+
+---
 
 **FidgetFlo** is a FIDGETCODING-branded personal fork of **[Ruflo by @ruvnet](https://github.com/ruvnet/ruflo)**, with a custom slash-command skill layer and an opinionated effort-tier thinking system layered on top.
 
-> Everything under the hood — the MCP servers, the 15-agent swarm engine, the raft-consensus hive-mind, AgentDB memory with HNSW search, the 60+ agent types — is **ruv's work**, preserved intact under its original MIT license. FidgetFlo adds a rebranded wrapper, a 10-command `/f*` skill family, and some defaults I prefer. That's it.
+> Everything under the hood — the MCP servers, the 15-agent swarm engine, the raft-consensus hive-mind, AgentDB memory with HNSW search, the 60+ agent types — is **ruv's work**, preserved intact under its original MIT license. FidgetFlo adds a rebranded wrapper, an 11-command `/f*` skill family, and some defaults I prefer. That's it.
 
 If you want the real thing, use Ruflo: **https://github.com/ruvnet/ruflo**. If you like my opinionated defaults, use this.
 
@@ -44,9 +70,7 @@ Nathan's layer on top of ruv's engine:
 
 ## Install
 
-> **Status:** private repo during smoke test. Install paths below are the intended public paths — they will work once the repo goes public and `fidgetflo` is published to npm.
-
-### Claude Code users (published path)
+### Claude Code users
 
 ```bash
 claude mcp add fidgetflo -- npx -y fidgetflo@latest
