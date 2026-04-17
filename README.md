@@ -14,7 +14,7 @@
 [![npm](https://img.shields.io/badge/NPM-fidgetflo-cb3837?style=flat-square&logo=npm&logoColor=white)](https://www.npmjs.com/package/fidgetflo)
 [![lorecraft.io](https://img.shields.io/badge/LORECRAFT.IO-111111?style=flat-square)](https://lorecraft.io)
 
-*11 slash commands across 2 swarm sizes and 5 thinking tiers — effort-calibrated, extended-thinking-aware, zero config.*
+*11 commands — 2 swarm sizes, 5 thinking tiers, zero config.*
 
 </div>
 
