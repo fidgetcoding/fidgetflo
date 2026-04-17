@@ -1,0 +1,99 @@
+name: Upstream Digest (ruvnet/ruflo)
+
+on:
+  schedule:
+    # Sundays at 13:00 UTC = 9am ET (EDT). Weekly digest of upstream activity.
+    - cron: '0 13 * * 0'
+  workflow_dispatch:
+    inputs:
+      window_days:
+        description: 'How many days of history to summarize'
+        required: false
+        default: '7'
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  digest:
+    name: Build upstream digest + open issue
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout fidgetflo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Wire upstream remote
+        run: |
+          git remote add upstream https://github.com/ruvnet/ruflo.git 2>/dev/null || true
+          git fetch upstream main --quiet
+
+      - name: Build digest
+        id: digest
+        run: |
+          set -euo pipefail
+          WINDOW="${{ github.event.inputs.window_days || '7' }}"
+          SINCE="$(date -u -d "${WINDOW} days ago" +%Y-%m-%d)"
+          TIP="$(git rev-parse --short upstream/main)"
+
+          ALL="$(git log upstream/main --since="$SINCE" --pretty=format:'- %h %s (%an)' || true)"
+
+          if [ -z "$ALL" ]; then
+            echo "empty=true" >> "$GITHUB_OUTPUT"
+            echo "No upstream commits in the last ${WINDOW} days — skipping issue."
+            exit 0
+          fi
+
+          {
+            echo "## ruvnet/ruflo — last ${WINDOW} days"
+            echo ""
+            echo "**Window:** since \`${SINCE}\`  ·  **Upstream tip:** \`${TIP}\`"
+            echo ""
+
+            for prefix in feat fix perf refactor docs chore test build ci other; do
+              if [ "$prefix" = "other" ]; then
+                matches="$(echo "$ALL" | grep -vE '^- [a-f0-9]+ (feat|fix|perf|refactor|docs|chore|test|build|ci)' || true)"
+              else
+                matches="$(echo "$ALL" | grep -E "^- [a-f0-9]+ ${prefix}" || true)"
+              fi
+              if [ -n "$matches" ]; then
+                count="$(echo "$matches" | wc -l | tr -d ' ')"
+                echo "### ${prefix} (${count})"
+                echo "$matches"
+                echo ""
+              fi
+            done
+
+            echo "---"
+            echo ""
+            echo "**Inspect a commit:** \`git fetch upstream && git show <sha>\`"
+            echo "**Diff a path:**     \`git diff upstream/main -- path/to/file\`"
+            echo "**Port a commit:**   \`git cherry-pick <sha>\` (expect conflicts — no shared history)"
+          } > digest.md
+
+          echo "empty=false" >> "$GITHUB_OUTPUT"
+          echo "tip=${TIP}" >> "$GITHUB_OUTPUT"
+
+      - name: Ensure label exists
+        if: steps.digest.outputs.empty == 'false'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          gh label create upstream-digest \
+            --color B5E853 \
+            --description "Weekly digest of ruvnet/ruflo activity" \
+            --repo "${{ github.repository }}" 2>/dev/null || true
+
+      - name: Open digest issue
+        if: steps.digest.outputs.empty == 'false'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TITLE="upstream-digest: ruflo @ $(date -u +%Y-%m-%d) (tip ${{ steps.digest.outputs.tip }})"
+          gh issue create \
+            --repo "${{ github.repository }}" \
+            --title "$TITLE" \
+            --body-file digest.md \
+            --label upstream-digest
