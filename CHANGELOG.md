@@ -95,7 +95,7 @@ This release marks the upstream rebranding from **Claude-Flow** to **Ruflo** and
 
 ### FidgetFlo Branding Fix
 
-- Fixed CLI branding: show 'fidgetflo' instead of 'fidgetflo' when run via `npx fidgetflo`
+- Fixed CLI branding: show 'fidgetflo' instead of 'ruflo' when run via `npx fidgetflo`
 - Fixed Windows ESM import crash with `pathToFileURL`
 - Fixed init hook prompt overflow and description field
 

@@ -9,7 +9,6 @@ vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 SECRET_CONFIG
 .idea
-!.env.ci
 gcp-*.json
 db
 models/*

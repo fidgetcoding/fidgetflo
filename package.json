@@ -14,6 +14,7 @@
   },
   "files": [
     "bin/**",
+    "skills/**",
     "v3/@claude-flow/cli/bin/**",
     "v3/@claude-flow/cli/dist/**/*.js",
     "v3/@claude-flow/cli/dist/**/*.d.ts",
