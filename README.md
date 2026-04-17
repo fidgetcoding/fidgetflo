@@ -82,7 +82,7 @@ npx fidgetflo@latest swarm init --topology hierarchical --max-agents 8
 npx fidgetflo@latest memory search --query "authentication patterns"
 ```
 
-Everything under `npx fidgetflo …` is the same CLI surface as `npx ruflo …`. If you already know Ruflo, you already know FidgetFlo.
+Everything under `npx fidgetflo …` is the same CLI surface as the upstream `ruflo` tool. If you already know Ruflo, you already know FidgetFlo.
 
 ---
 
