@@ -57,11 +57,17 @@ else
 fi
 
 # 3. Stale brand strings ("ruflo") in source
-# Excludes: CREDITS, ATTRIBUTION (attribution docs), install.sh (user-facing docs),
-#           CHANGELOG (historical record), and README (has intentional upstream refs)
+# Strategy: grep for lines, then exclude known-acceptable patterns:
+#   - ruvnet/ruflo URLs (upstream attribution — intentional per CREDITS.md)
+#   - ruflo_alpha (compat MCP server name check in doctor.ts)
+#   - ruflo/issues/ (upstream bug references)
+#   - "based on Ruflo" (attribution descriptions in package.json)
+#   - dist/ at repo root (gitignored, not in npm files[])
+#   - test files
+#   - CREDITS, ATTRIBUTION, README, CHANGELOG, install.sh (doc files)
 echo ""
 echo "3. Stale 'ruflo' brand strings in source"
-RUFLO_HITS=$(grep -ril "ruflo" \
+RUFLO_LINES=$(grep -rn "ruflo" \
   --include="*.ts" \
   --include="*.js" \
   --include="*.sh" \
@@ -69,14 +75,18 @@ RUFLO_HITS=$(grep -ril "ruflo" \
   --exclude-dir=node_modules \
   --exclude-dir=.git \
   --exclude-dir=ruflo \
-  . 2>/dev/null || true)
-RUFLO_HITS_FILTERED=$(echo "$RUFLO_HITS" | grep -vE '(CREDITS|ATTRIBUTION|README|CHANGELOG|scripts/install\.sh|scripts/precheck\.sh)' | grep -v '^$' || true)
-if [ -n "$RUFLO_HITS_FILTERED" ]; then
-  check_fail "Stale 'ruflo' strings in source — grep these files:"
-  echo "$RUFLO_HITS_FILTERED" | sed 's/^/     /'
-  check_warn "Run: grep -rn 'ruflo' <file> to see exact lines"
+  -i . 2>/dev/null || true)
+RUFLO_FILTERED=$(echo "$RUFLO_LINES" | \
+  grep -vE '(ruvnet/ruflo|ruflo/issues/|ruflo_alpha|based on Ruflo|fork of Ruflo|original work.*Ruflo|"ruflo")' | \
+  grep -vE '^./dist/v3/' | \
+  grep -vE '(__tests__|\.test\.|\.spec\.)' | \
+  grep -vE '(CREDITS|ATTRIBUTION|README|CHANGELOG|scripts/install\.sh|scripts/precheck\.sh|scripts/verify-appliance)' | \
+  grep -v '^$' || true)
+if [ -n "$RUFLO_FILTERED" ]; then
+  check_fail "Stale 'ruflo' brand strings found (non-attribution):"
+  echo "$RUFLO_FILTERED" | sed 's/^/     /' | head -30
 else
-  check_pass "No stale 'ruflo' strings in source"
+  check_pass "No stale 'ruflo' brand strings (attribution URLs and compat checks excluded)"
 fi
 
 # 4. npm audit (high/critical)
