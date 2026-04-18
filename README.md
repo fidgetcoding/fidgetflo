@@ -20,7 +20,7 @@
 
 ---
 
-**FidgetFlo** is a FIDGETCODING-branded personal fork of **[Ruflo by @ruvnet](https://github.com/ruvnet/ruflo)**, with a custom slash-command skill layer and an opinionated effort-tier thinking system layered on top.
+**FidgetFlo** is my personal fork of **[Ruflo by @ruvnet](https://github.com/ruvnet/ruflo)**, with a custom slash-command skill layer and an opinionated effort-tier thinking system layered on top.
 
 > Everything under the hood — the MCP servers, the 15-agent swarm engine, the raft-consensus hive-mind, AgentDB memory with HNSW search, the 60+ agent types — is **ruv's work**, preserved intact under its original MIT license. FidgetFlo adds a rebranded wrapper, an 11-command `/f*` skill family, and some defaults I prefer. That's it.
 
