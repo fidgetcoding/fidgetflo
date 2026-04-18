@@ -566,22 +566,22 @@ Real-time **swarm visualization** and performance profiling.
 
 ## 📋 Implementation Roadmap
 
-### Phase 4: Session Management (Week 1)
+### Phase 4: Session Management (Step 1)
 - ✅ Session forking for parallel agents
 - ✅ Compact boundaries as checkpoints
 - ✅ Real-time query control
 
-### Phase 5: Permission & Hooks (Week 2)
+### Phase 5: Permission & Hooks (Step 2)
 - ✅ Hook matchers with patterns
 - ✅ 4-level permission hierarchy
 - ✅ SDK native hooks migration
 
-### Phase 6: MCP & Performance (Week 3)
+### Phase 6: MCP & Performance (Step 3)
 - ✅ In-process MCP server (**CRITICAL**)
 - ✅ MCP health monitoring
 - ✅ Performance benchmarking
 
-### Phase 7: Advanced Features (Week 4)
+### Phase 7: Advanced Features (Step 4)
 - ✅ Network sandboxing
 - ✅ React DevTools integration
 - ✅ Comprehensive testing

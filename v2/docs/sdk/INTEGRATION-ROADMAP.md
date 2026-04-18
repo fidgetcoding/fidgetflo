@@ -368,27 +368,27 @@ FIDGETFLO_ENABLE_PAUSE_RESUME=true
 
 ## Timeline
 
-**Week 1-2: Core Integration**
+**Step 1-2: Core Integration**
 - Integrate SDK features into MCP tools
 - Update swarm, task, agent tools
 - Add in-process servers to MCP server
 
-**Week 3-4: CLI Commands**
+**Step 3-4: CLI Commands**
 - Add checkpoint CLI commands
 - Update swarm commands with fork/commit
 - Add pause/resume to task commands
 
-**Week 5-6: SPARC & Hooks**
+**Step 5-6: SPARC & Hooks**
 - Add auto-checkpointing to SPARC
 - Update hooks to use checkpoints
 - Add forking to SPARC experiments
 
-**Week 7-8: Testing & Documentation**
+**Step 7-8: Testing & Documentation**
 - Comprehensive testing
 - Update all documentation
 - Create migration guides
 
-**Week 9: Release v2.5.0**
+**Step 9: Release v2.5.0**
 - Release with SDK features enabled by default
 - Announce 10-20x performance gains (now real!)
 

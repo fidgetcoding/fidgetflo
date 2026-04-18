@@ -580,7 +580,7 @@ rm .github/workflows/test.yml
 
 ## Implementation Roadmap
 
-### Phase 1: Critical Fixes (Week 1)
+### Phase 1: Critical Fixes (Step 1)
 
 **Priority: URGENT**
 
@@ -604,7 +604,7 @@ rm .github/workflows/test.yml
 - Elimination of 3 consistently failing workflows
 - Significantly improved reliability
 
-### Phase 2: Consolidation (Week 2)
+### Phase 2: Consolidation (Step 2)
 
 **Priority: HIGH**
 
@@ -629,7 +629,7 @@ rm .github/workflows/test.yml
 - Clear quality gates
 - Reduced complexity by ~50%
 
-### Phase 3: Polish (Week 3)
+### Phase 3: Polish (Step 3)
 
 **Priority: MEDIUM**
 
@@ -788,23 +788,23 @@ rm .github/workflows/test.yml
 
 ### Stakeholder Notification
 
-**Week 0 (Before Implementation):**
+**Step 0 (Before Implementation):**
 - Share this document with team
 - Hold 30-minute review meeting
 - Address concerns and questions
 - Get approval to proceed
 
-**Week 1 (Phase 1):**
+**Step 1 (Phase 1):**
 - Daily Slack updates on progress
 - Notify team before each workflow change
 - Monitor for issues, quick response
 
-**Week 2 (Phase 2):**
+**Step 2 (Phase 2):**
 - Mid-phase checkpoint meeting
 - Share metrics on improvements
 - Adjust based on feedback
 
-**Week 3 (Phase 3):**
+**Step 3 (Phase 3):**
 - Final review and documentation
 - Knowledge sharing session
 - Celebrate improvements

@@ -517,11 +517,11 @@ npx fidgetflo mcp start
 ```
 
 ### Feature Rollout Strategy
-1. **Week 1-2**: Test MCP 2025-11 in development
-2. **Week 3-4**: Enable for 10% of production traffic
-3. **Week 5-6**: Increase to 50% if stable
-4. **Week 7-8**: Enable for 100% of traffic
-5. **Week 9+**: Make MCP 2025-11 default in next major release
+1. **Step 1-2**: Test MCP 2025-11 in development
+2. **Step 3-4**: Enable for 10% of production traffic
+3. **Step 5-6**: Increase to 50% if stable
+4. **Step 7-8**: Enable for 100% of traffic
+5. **Step 9+**: Make MCP 2025-11 default in next major release
 
 ---
 

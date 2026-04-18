@@ -392,25 +392,25 @@ ReasoningBank implements a **5-step recursive cycle** based on Google Research's
 ### Example: Self-Learning in Action
 
 ```bash
-# Week 1: Store initial approach
+# Step 1: Store initial approach
 npx fidgetflo@alpha memory store bug_fix_001 \
   "Restart server to fix memory leak" \
   --namespace debugging --reasoningbank
 # Confidence: 50%
 
-# Week 2: Use pattern → Works temporarily but leak returns
+# Step 2: Use pattern → Works temporarily but leak returns
 # System learns: confidence → 35% (-15% penalty)
 
-# Week 3: Store improved approach
+# Step 3: Store improved approach
 npx fidgetflo@alpha memory store bug_fix_002 \
   "Fix memory leak by cleaning up event listeners" \
   --namespace debugging --reasoningbank
 # Confidence: 50%
 
-# Week 5: Use new pattern → Problem solved permanently!
+# Step 5: Use new pattern → Problem solved permanently!
 # System learns: confidence → 65% (+20% boost)
 
-# Week 10: Query for similar issue
+# Step 10: Query for similar issue
 npx fidgetflo@alpha memory query "memory leak" \
   --namespace debugging --reasoningbank
 ```

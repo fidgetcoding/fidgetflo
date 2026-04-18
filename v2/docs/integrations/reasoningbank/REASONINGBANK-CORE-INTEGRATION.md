@@ -153,7 +153,7 @@ fidgetflo memory query api --reasoningbank
 
 ## 📝 Implementation Plan
 
-### Phase 1: Core Integration (Week 1)
+### Phase 1: Core Integration (Step 1)
 
 **File**: `src/cli/simple-commands/memory.js`
 
@@ -175,7 +175,7 @@ export async function memoryCommand(subArgs, flags) {
 }
 ```
 
-### Phase 2: Auto-Detection (Week 1)
+### Phase 2: Auto-Detection (Step 1)
 
 Add intelligent detection:
 ```javascript
@@ -196,7 +196,7 @@ async function detectMemoryMode(flags) {
 }
 ```
 
-### Phase 3: Enhanced Commands (Week 2)
+### Phase 3: Enhanced Commands (Step 2)
 
 Add ReasoningBank-specific features:
 ```javascript
@@ -216,7 +216,7 @@ case 'status':
   break;
 ```
 
-### Phase 4: Migration Tools (Week 2)
+### Phase 4: Migration Tools (Step 2)
 
 Add migration utilities:
 ```javascript

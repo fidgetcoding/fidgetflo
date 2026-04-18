@@ -261,19 +261,19 @@ npx fidgetflo@alpha memory query "SELECT tags FROM patterns LIMIT 100" --namespa
 
 ## 🎓 Learning Path
 
-### Beginner (Week 1)
+### Beginner (Step 1)
 1. Install model
 2. Try basic search queries
 3. Explore one domain in depth (start with self-learning)
 4. Use patterns in one small project
 
-### Intermediate (Week 2-3)
+### Intermediate (Step 2-3)
 1. Use programmatic access with Node.js
 2. Explore knowledge graph relationships
 3. Filter by confidence and success rates
 4. Integrate with FidgetFlo hooks
 
-### Advanced (Week 4+)
+### Advanced (Step 4+)
 1. Build custom query functions
 2. Combine patterns from multiple domains
 3. Track pattern effectiveness in your projects

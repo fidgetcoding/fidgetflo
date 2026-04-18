@@ -653,22 +653,22 @@ async function benchmarkInProcess() {
 
 ## Implementation Priority with SDK
 
-**Week 1: SDK-Powered Checkpoints**
+**Step 1: SDK-Powered Checkpoints**
 - Use `resumeSessionAt` for rollback
 - Track message UUIDs
 - Hook-based auto-checkpointing
 
-**Week 2: Real Query Control**
+**Step 2: Real Query Control**
 - Pause with state capture
 - Resume using `resumeSessionAt`
 - Persistent pause state
 
-**Week 3: Session Forking**
+**Step 3: Session Forking**
 - Use SDK's `forkSession` + `resume`
 - Add commit/rollback logic
 - Parent-child tracking
 
-**Week 4: In-Process MCP Optimization**
+**Step 4: In-Process MCP Optimization**
 - Build tool library with `createSdkMcpServer`
 - Benchmark vs stdio
 - Production hardening

@@ -445,19 +445,19 @@ npx fidgetflo@alpha analytics --export-metrics --format prometheus
 
 ### 🎓 **Training Path for New Users**
 
-#### **Week 1: Fundamentals**
+#### **Step 1: Fundamentals**
 1. **[Installation & Setup](DEPLOYMENT.md#installation-methods)** - Get FidgetFlo running
 2. **[First Swarm Creation](../README.md#-quick-start)** - Build your first AI team  
 3. **[SPARC Methodology](../README.md#-sparc-development-environment)** - Learn structured development
 4. **[Basic Commands](../README.md#-essential-commands)** - Master core CLI operations
 
-#### **Week 2: Advanced Features**
+#### **Step 2: Advanced Features**
 1. **[Agent Coordination](ARCHITECTURE.md#agent-architecture)** - Understanding swarm intelligence
 2. **[Memory Management](ARCHITECTURE.md#memory-architecture)** - Persistent state across sessions
 3. **[GitHub Integration](API_DOCUMENTATION.md#github-operations)** - Complete DevOps workflow
 4. **[Performance Optimization](ARCHITECTURE.md#performance-architecture)** - Speed and efficiency
 
-#### **Week 3: Production Deployment**
+#### **Step 3: Production Deployment**
 1. **[Architecture Design](ARCHITECTURE.md#system-overview)** - Scalable system patterns
 2. **[Security Implementation](ARCHITECTURE.md#security-architecture)** - Enterprise security
 3. **[Monitoring Setup](DEPLOYMENT.md#monitoring--maintenance)** - Production observability

@@ -92,17 +92,17 @@ class SwarmOrchestrator {
 
 ### 3. Migration Strategy
 
-**Phase 1: Foundation (Week 1-2)**
+**Phase 1: Foundation (Step 1-2)**
 - Replace custom retry with SDK retry policies
 - Migrate artifact storage to SDK artifacts
 - Adopt SDK checkpoints for base functionality
 
-**Phase 2: Integration (Week 3-4)**
+**Phase 2: Integration (Step 3-4)**
 - Extend SDK checkpoints with swarm metadata
 - Build distributed memory on SDK persistence
 - Wrap SDK tools with swarm coordination hooks
 
-**Phase 3: Enhancement (Week 5-6)**
+**Phase 3: Enhancement (Step 5-6)**
 - Add multi-agent orchestration on top
 - Implement consensus protocols using SDK primitives
 - Neural learning leveraging SDK's context

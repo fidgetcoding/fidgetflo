@@ -152,7 +152,7 @@ This directory contains the complete architectural strategy for optimizing the G
 
 ## 📋 Implementation Phases
 
-### Phase 1: Critical Fixes (Week 1) - **START HERE**
+### Phase 1: Critical Fixes (Step 1) - **START HERE**
 
 **Priority:** URGENT
 **Risk:** LOW
@@ -176,7 +176,7 @@ cd /workspaces/claude-code-flow
 # Follow Phase 1 section in workflow-optimization-implementation-guide.md
 ```
 
-### Phase 2: Consolidation (Week 2)
+### Phase 2: Consolidation (Step 2)
 
 **Priority:** HIGH
 **Risk:** MEDIUM
@@ -192,7 +192,7 @@ cd /workspaces/claude-code-flow
 - Single source of truth
 - Reduced complexity
 
-### Phase 3: Polish (Week 3)
+### Phase 3: Polish (Step 3)
 
 **Priority:** MEDIUM
 **Risk:** LOW
@@ -454,7 +454,7 @@ gh issue create --title "Workflow Optimization: [Issue]" \
    - Monitor cost reductions
    - Collect developer feedback
 
-4. **Begin Phase 1** (Week 1)
+4. **Begin Phase 1** (Step 1)
    - Follow implementation guide
    - Make changes incrementally
    - Test each change
@@ -463,11 +463,11 @@ gh issue create --title "Workflow Optimization: [Issue]" \
 ### Timeline
 
 ```
-Week 0:  Team review and approval
-Week 1:  Implement Phase 1 (critical fixes)
-Week 2:  Implement Phase 2 (consolidation)
-Week 3:  Implement Phase 3 (polish)
-Week 4:  Measure results, celebrate success! 🎉
+Step 0:  Team review and approval
+Step 1:  Implement Phase 1 (critical fixes)
+Step 2:  Implement Phase 2 (consolidation)
+Step 3:  Implement Phase 3 (polish)
+Step 4:  Measure results, celebrate success! 🎉
 ```
 
 ---

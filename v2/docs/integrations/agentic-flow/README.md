@@ -171,9 +171,9 @@ npm run bench:search -- --vectors 100000
 
 ### Upcoming Features (agentic-flow)
 
-- **Phase 2** (Week 2): Code cleanup and tree-shaking
-- **Phase 3** (Week 3): Hybrid backend with fallback
-- **Phase 4** (Week 4): Final optimization and documentation
+- **Phase 2** (Step 2): Code cleanup and tree-shaking
+- **Phase 3** (Step 3): Hybrid backend with fallback
+- **Phase 4** (Step 4): Final optimization and documentation
 
 See [agentic-flow#34](https://github.com/ruvnet/agentic-flow/issues/34) for details.
 

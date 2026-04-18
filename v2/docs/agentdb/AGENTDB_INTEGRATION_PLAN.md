@@ -876,7 +876,7 @@ fidgetflo hooks post-edit \
 
 ## Migration Strategy
 
-### Phase 1: Preparation (Week 1-2)
+### Phase 1: Preparation (Step 1-2)
 
 #### Goals
 - Implement AgentDB adapter layer
@@ -906,7 +906,7 @@ fidgetflo hooks post-edit \
 - Configuration schema
 - Unit tests
 
-### Phase 2: Hybrid Mode (Week 3-4)
+### Phase 2: Hybrid Mode (Step 3-4)
 
 #### Goals
 - Deploy hybrid backend support
@@ -941,7 +941,7 @@ fidgetflo hooks post-edit \
 - Updated CLI commands
 - Integration tests
 
-### Phase 3: Migration & Optimization (Week 5-6)
+### Phase 3: Migration & Optimization (Step 5-6)
 
 #### Goals
 - Provide migration utilities
@@ -977,7 +977,7 @@ fidgetflo hooks post-edit \
 - Performance monitoring
 - Migration documentation
 
-### Phase 4: Production Rollout (Week 7-8)
+### Phase 4: Production Rollout (Step 7-8)
 
 #### Goals
 - Stable production deployment

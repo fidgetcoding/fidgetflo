@@ -243,9 +243,9 @@ Phase 3: Optimization (Dependent on Phase 2)
 
 1. ✅ **Immediate**: Fix TypeScript version conflict
 2. ✅ **Day 1**: Complete Milestone 1 (restore build)
-3. ✅ **Week 1**: Complete Milestone 2 (fix errors)
-4. ✅ **Week 2**: Complete Milestone 3 (reduce warnings)
-5. ✅ **Week 3**: Complete Milestone 4 (optimization)
+3. ✅ **Step 1**: Complete Milestone 2 (fix errors)
+4. ✅ **Step 2**: Complete Milestone 3 (reduce warnings)
+5. ✅ **Step 3**: Complete Milestone 4 (optimization)
 
 ---
 

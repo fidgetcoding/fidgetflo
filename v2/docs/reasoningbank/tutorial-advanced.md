@@ -716,24 +716,24 @@ await agent.learnFromExperience();
 ```bash
 # Agent learns from code reviews over time
 
-# Week 1: Store initial patterns
+# Step 1: Store initial patterns
 npx fidgetflo@alpha memory store code_review_001 \
   "Check for SQL injection vulnerabilities in raw queries" \
   --namespace code_review --reasoningbank
 
-# Week 2: Agent finds SQL injection → Confidence increases
+# Step 2: Agent finds SQL injection → Confidence increases
 # Confidence: 50% → 65%
 
-# Week 5: Agent misses XSS vulnerability → Need new pattern
+# Step 5: Agent misses XSS vulnerability → Need new pattern
 npx fidgetflo@alpha memory store code_review_002 \
   "Validate and escape user input to prevent XSS attacks" \
   --namespace code_review --reasoningbank
 
-# Week 10: Agent now catches both SQL injection AND XSS
+# Step 10: Agent now catches both SQL injection AND XSS
 # Pattern 1 confidence: 65% → 82%
 # Pattern 2 confidence: 50% → 74%
 
-# Week 20: Query for code review patterns
+# Step 20: Query for code review patterns
 npx fidgetflo@alpha memory query "security vulnerabilities" \
   --namespace code_review --reasoningbank
 # Returns both patterns, ranked by reliability!
