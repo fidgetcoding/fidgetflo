@@ -1,3 +1,5 @@
+<a id="top"></a>
+
 <div align="center">
 
 # FidgetFlo — Multi-agent AI orchestration for Claude Code
@@ -28,6 +30,21 @@ If you want the real thing, use Ruflo: **https://github.com/ruvnet/ruflo**. If y
 
 ---
 
+## Quick Navigation
+
+| Link | Section | What it does | Time |
+|---|---|---|---|
+| [Built on Ruflo](#built-on-ruflo) | Attribution | What this fork inherits from ruvnet/ruflo | ~1 min |
+| [What's different from Ruflo](#whats-different-from-ruflo) | Overview | The thin layer on top: skills, defaults, branding | ~1 min |
+| [Install](#install) | Setup | Claude Code + source install paths | ~2 min |
+| [The `/f*` skill family](#the-f-skill-family-effort-tier-system) | Reference | 10 slash commands × 5 thinking tiers | ~3 min |
+| [Cues & commands quick reference](#cues--commands-quick-reference) | Reference | Terse cheatsheet | ~1 min |
+| [Usage examples](#usage-examples) | Reference | Real prompts for `/f*` + `/fhive` + `/fswarmmax` showcase | ~2 min |
+| [License](#license) | Meta | MIT, dual copyright | — |
+| [Links](#links) | Meta | Upstream + related repos | — |
+
+---
+
 ## Built on Ruflo
 
 All of the actual engineering that makes this useful is Ruflo. Specifically:
@@ -52,13 +69,15 @@ See [`CREDITS.md`](./CREDITS.md) and [`ATTRIBUTION.md`](./ATTRIBUTION.md) for th
 
 ## What's different from Ruflo
 
-Nathan's layer on top of ruv's engine:
+Nate's layer on top of ruv's engine:
 
 1. **The `/f*` skill family** — 10 slash commands that bind Ruflo's swarm/mini modes to Claude Code's extended-thinking tiers. See [The `/f*` skill family](#the-f-skill-family-effort-tier-system) below. These are 1:1 reimplementations of the existing `r*` skills (`/rswarm`, `/rmini`, etc.) with the `f` prefix and the FIDGETCODING status-line emojis.
 2. **Opinionated defaults** — topology is hierarchical-mesh at 15 agents, raft consensus for hive-mind, hybrid memory. Nothing ruv doesn't already offer — just the combo I run daily.
 3. **Branding only** — command names, status-line indicators, and docs. No changes to the MCP server, no forked tool semantics, no upstream divergence in logic. If Ruflo ships a fix tomorrow, FidgetFlo can rebase cleanly.
 
 **Assumption flag:** this README assumes FidgetFlo stays a thin rebrand + skill layer. If the fork ever diverges in engine behavior, this section needs a "Divergences" sub-section with the honest list.
+
+<p align="right"><sub><a href="#top">↑ back to top</a></sub></p>
 
 ---
 
@@ -101,6 +120,8 @@ npx fidgetflo@latest memory search --query "authentication patterns"
 ```
 
 Everything under `npx fidgetflo …` is the same CLI surface as the upstream `ruflo` tool. If you already know Ruflo, you already know FidgetFlo.
+
+<p align="right"><sub><a href="#top">↑ back to top</a></sub></p>
 
 ---
 
@@ -150,6 +171,19 @@ While a swarm is active, the Claude Code status line shows a little signal:
 - **🍯** — `/fmini*` is running (5-agent compact swarm)
 - **👑** — `/fhive` is running (queen-led hive-mind)
 
+> [!NOTE]
+> **Prerequisites for the indicators.** The status-line signals shown
+> above render out-of-the-box only if you have
+> [cli-maxxing](https://github.com/lorecraft-io/cli-maxxing) installed and
+> up to date (it ships the shell integration) AND you're using
+> [Ghostty](https://ghostty.org) as your terminal. If you use a different
+> terminal (iTerm2, kitty, Alacritty, Warp, etc.), you can wire up an
+> equivalent — the indicators are just file probes
+> (`/tmp/fidgetflo-mini-active`, `/tmp/fidgetflo-swarm-active`,
+> `/tmp/fidgetflo-hive-active`) that any status-line plugin or prompt
+> hook can watch. Reference implementation: see cli-maxxing's statusline
+> scripts.
+
 ### Concrete use cases
 
 - **`/fminimax`** — architecture reasoning, hard debugging, cross-cutting refactors. Five agents, every one of them ultrathinking. Expensive but decisive.
@@ -157,6 +191,8 @@ While a swarm is active, the Claude Code status line shows a little signal:
 - **`/fswarm3`** — 15 agents all thinking hard. Overkill for normal tickets, right-sized for a gnarly system-design question with parallelizable subproblems.
 - **`/fmini`** — one-shot transforms, scaffolding, rename-this-variable-across-the-repo. Tier 0, no thinking, fast and cheap.
 - **`/fhive`** — "take this multi-day objective and go." Queen decomposes, workers execute, raft keeps state consistent. Check back later.
+
+<p align="right"><sub><a href="#top">↑ back to top</a></sub></p>
 
 ---
 
@@ -191,6 +227,8 @@ While a swarm is active, the Claude Code status line shows a little signal:
 👑  /fhive   active
 ```
 
+<p align="right"><sub><a href="#top">↑ back to top</a></sub></p>
+
 ---
 
 ## Usage examples
@@ -216,6 +254,46 @@ run fmini hard on this TypeScript error
 spin up a swarm ultra on the auth refactor
 let a hive take the README
 ```
+
+### The `/fswarmmax` showcase
+
+When you want maximum overkill — 15 agents, each ultrathinking — paired with a real MCP, here's a calendar scheduling example. Assuming you have [morgen-mcp](https://github.com/lorecraft-io/morgen-mcp) installed:
+
+*Natural language:*
+> "Plan next week against the lunar cycle: anchor deep-work to the 4 days around the new moon (peak focus), creative/ideation blocks on the waxing crescent, execution on the first quarter through gibbous, admin-dumps on the full moon, review/edit on the waning gibbous, and rest on the last quarter. Cross-reference NOAA civil-twilight windows at 40.67°N and carve out 3 'stargazing' blocks at peak darkness. Preserve any event whose title contains `[fixed]`. Dry-run the reflow, report the phase-alignment score vs my current week, and apply only on my go-ahead."
+
+*Command-style (same task, explicit invocation):*
+
+```text
+/fswarmmax Schedule next week against the lunar cycle:
+
+  phase map (synodic month):
+    new moon ±2d         → deep-work clusters (≥120min contiguous)
+    waxing crescent      → creative / ideation
+    first quarter→gibbous → execution + meetings
+    full moon            → admin + inbox-zero
+    waning gibbous       → review + edit
+    last quarter→dark    → rest (light load only)
+
+  pipeline:
+    - list_events next 7 days; lock any whose title contains "[fixed]"
+    - resolve moon phase per day (target latitude 40.67°N)
+    - reflow_day eligible solo blocks into contiguous ≥90min runs
+      aligned to the phase map (dry_run=true first; dry_run=false
+      after approval)
+    - create_event 3x "stargazing" (privacy=private, free_busy=busy,
+      location="Brooklyn rooftop") at peak-darkness windows per NOAA
+      civil-twilight tables
+    - bonus: if a meteor shower peaks this week per the IMO calendar,
+      place one block at peak hour
+
+  Report phase-alignment score (current → proposed). Apply only on
+  approval.
+```
+
+The 15 agents decompose the task across architect (objective formulation), researcher (NOAA/IMO lookups), coder (morgen tool chaining), reviewer (constraint validation), and tester (dry-run verification). You see the full plan before a single event moves.
+
+<p align="right"><sub><a href="#top">↑ back to top</a></sub></p>
 
 ---
 
