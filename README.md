@@ -65,6 +65,8 @@ All of that is **ruvnet/ruflo**. Thank you to ruv for keeping it MIT so forks li
 
 See [`CREDITS.md`](./CREDITS.md) and [`ATTRIBUTION.md`](./ATTRIBUTION.md) for the full attribution story.
 
+<p align="right"><sub><a href="#top">↑ back to top</a></sub></p>
+
 ---
 
 ## What's different from Ruflo

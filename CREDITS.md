@@ -44,7 +44,7 @@ Copyright (c) 2024-2026 ruvnet (original Ruflo work — https://github.com/ruvne
 Copyright (c) 2026 Nate Davidovich / Lorecraft LLC (FidgetFlo rebrand + skill additions)
 ```
 
-ruv's copyright is preserved exactly as it appears in the upstream Ruflo `LICENSE` file. Nathan's copyright only covers the rebrand and the skill-layer additions listed below.
+ruv's copyright is preserved exactly as it appears in the upstream Ruflo `LICENSE` file. Nate's copyright only covers the rebrand and the skill-layer additions listed below.
 
 ---
 
@@ -52,7 +52,7 @@ ruv's copyright is preserved exactly as it appears in the upstream Ruflo `LICENS
 
 FidgetFlo was created by cloning `ruvnet/ruflo` and pushing to a new remote at `github.com/lorecraft-io/fidgetflo`. The git history is re-initialized from the `v3.5.80` tag; ruv's authorship is preserved via the LICENSE file and this CREDITS document, not via `git log`.
 
-On top of that cloned snapshot, the following additions have been made under Nate Davidovich's authorship:
+On top of that cloned snapshot, the following additions have been made under Nate's authorship:
 
 - **The f\* skill family** — a 10-command skill pack that wraps the underlying Ruflo engine with opinionated workflows.
 - **Extended-thinking tier system** — `rswarm` / `rmini` tier variants adapted into the f\* prefix, exposing light / deep / ultrathink thinking budgets.
@@ -84,7 +84,7 @@ If any of that changes in later releases, it will be called out in `CHANGELOG.md
 This matters for bug triage, for credit, and for not embarrassing anyone.
 
 - **If you find a bug in the MCP server, swarm engine, hive-mind, memory, hooks, neural components, or CLI core** → that is almost certainly ruv's code. Please check the upstream [`ruvnet/ruflo` issue tracker](https://github.com/ruvnet/ruflo/issues) first. If it reproduces on vanilla Ruflo, file it upstream — that is where the fix belongs. I will happily relay or co-file.
-- **If you find a bug in the f\* skill family, the tier system wrappers, or anything under the rebrand's `skills/` directory** → that is Nathan's addition. File it on the [FidgetFlo issue tracker](https://github.com/lorecraft-io/fidgetflo/issues).
+- **If you find a bug in the f\* skill family, the tier system wrappers, or anything under the rebrand's `skills/` directory** → that is Nate's addition. File it on the [FidgetFlo issue tracker](https://github.com/lorecraft-io/fidgetflo/issues).
 - **If you are not sure** → file it on FidgetFlo. I will triage and route upstream when appropriate.
 
 Rule of thumb: the engine is ruv's. The skin and the skill shortcuts are mine.

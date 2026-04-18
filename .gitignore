@@ -161,3 +161,7 @@ hive-mind-prompt-*.txt
 .env
 .env.local
 .env.*.local
+
+# Per-repo local Claude Code config (runbooks, tokens refs, etc.)
+CLAUDE.local.md
+**/CLAUDE.local.md

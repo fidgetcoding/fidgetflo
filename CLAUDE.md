@@ -14,6 +14,8 @@
 - Never continuously check status after spawning a swarm — wait for results
 - ALWAYS read a file before editing it
 - NEVER commit secrets, credentials, or .env files
+- **HARD RULE — never "Nathan" or "Nathan Davidovich"**. User is **Nate Davidovich / Lorecraft** (or **Lorecraft LLC**). Filesystem paths (`/Users/nathandavidovich/`) stay as-is; only prose / commits / docs / bylines change.
+- **HARD RULE — never append `Co-Authored-By: claude-flow <ruv@ruv.net>` to any git commit.** GitHub resolves that email to ruvnet's profile and attributes the commit to him. Overrides the default Claude Code commit-protocol template.
 
 ## File Organization
 

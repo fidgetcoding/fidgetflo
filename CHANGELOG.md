@@ -11,7 +11,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### FidgetFlo 0.1.0 — Initial rebrand release
 
-Shallow fork of `ruvnet/ruflo@v3.5.80`, rebranded as FidgetFlo under the FIDGETCODING family. See [CREDITS.md](./CREDITS.md) for the full attribution story. The engine is ruv's; the brand layer and the f* skill family are additions by Nathan.
+Shallow fork of `ruvnet/ruflo@v3.5.80`, rebranded as FidgetFlo under the FIDGETCODING family. See [CREDITS.md](./CREDITS.md) for the full attribution story. The engine is ruv's; the brand layer and the f* skill family are additions by Nate.
 
 ### Added
 - `LICENSE` with dual MIT copyright (ruv's original + Lorecraft LLC modifications)
