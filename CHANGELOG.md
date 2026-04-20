@@ -7,6 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 > **About this changelog:** Entries before `[0.1.0]` are inherited from upstream [ruvnet/ruflo](https://github.com/ruvnet/ruflo) (preserved for lineage continuity — see [CREDITS.md](./CREDITS.md)). FidgetFlo-specific work by Nate Davidovich / Lorecraft LLC begins at `[0.1.0]`.
 
+## [0.1.4] - 2026-04-20
+
+### Changed
+- Install-size surgery: dropped `agentic-flow@1.9.0` from `optionalDependencies`. Its shipped tarball ships a Vite/React/Tailwind dev stack (lucide-react, react, react-dom, react-router-dom, @vitejs/plugin-react-swc, @swc/core, esbuild, autoprefixer, postcss, tailwindcss) as production `dependencies`, and its declared `main` entry (`dist/index.js`) is missing from the published package — so `fidgetflo`'s dynamic `existsSync(.../dist/embeddings/optimized-embedder.js)` probe in `.claude/helpers/learning-service.mjs` was already silently falling back to the hash-embedding path. No static imports of `agentic-flow` exist anywhere in fidgetflo's source. Net effect: zero behavior change at runtime, 134MB recovered from fresh installs (190MB → 56MB).
+
+### Removed
+- `agentic-flow` from `optionalDependencies` (dead weight; runtime already used the fallback code path).
+
 ## [0.1.0] - 2026-04-16
 
 ### FidgetFlo 0.1.0 — Initial rebrand release
