@@ -342,3 +342,5 @@ The dual copyright reflects reality: ruv wrote the engine, I wrote the wrapper. 
 ---
 
 > Credit to ruv is not a footer. It's load-bearing. Every release and every public surface should preserve the attribution block in the intro, the Built on Ruflo section, the License dual-copyright, and the Links list. If any of those go missing in a future edit, this fork stops being honest.
+
+[⤴ back to top](#top)
