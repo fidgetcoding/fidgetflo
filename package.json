@@ -1,6 +1,6 @@
 {
   "name": "fidgetflo",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Enterprise AI agent orchestration for Claude Code: 60+ specialized agents, swarm coordination, self-learning hooks, fault-tolerant consensus, vector memory, and MCP integration. Fork of Ruflo by @ruvnet (https://github.com/ruvnet/ruflo).",
   "main": "dist/index.js",
   "type": "module",
