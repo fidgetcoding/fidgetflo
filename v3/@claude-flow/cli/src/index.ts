@@ -15,15 +15,38 @@ import { commands, commandsByCategory, getCommandsByCategory, commandRegistry, g
 import { suggestCommand } from './suggest.js';
 import { runStartupUpdateCheck } from './update/index.js';
 
-// Read version from package.json at runtime
+// Read version from package.json at runtime.
+// Walk UP the directory tree from this file until we find the `fidgetflo` root
+// package.json. This guarantees the banner tracks the published root version
+// instead of the nested `@claude-flow/cli` package.json, which drifted and
+// produced the stale v0.1.2 / v3.5.80 banners. Falls back to the nearest
+// package.json if no `fidgetflo` root is found (e.g. dev checkouts).
 function getPackageVersion(): string {
   try {
     const __filename = fileURLToPath(import.meta.url);
-    const __dirname = dirname(__filename);
-    // Navigate from dist/src to package root
-    const pkgPath = join(__dirname, '..', '..', 'package.json');
-    const pkg = JSON.parse(readFileSync(pkgPath, 'utf-8'));
-    return pkg.version || '3.0.0';
+    let dir = dirname(__filename);
+    let nearestVersion: string | null = null;
+    // Walk up to the filesystem root, preferring a package.json whose
+    // "name" === "fidgetflo"; otherwise remember the first one we hit.
+    // Guard: at most 10 levels up to avoid runaway loops.
+    for (let i = 0; i < 10; i++) {
+      const pkgPath = join(dir, 'package.json');
+      try {
+        const pkg = JSON.parse(readFileSync(pkgPath, 'utf-8'));
+        if (pkg?.name === 'fidgetflo' && pkg?.version) {
+          return pkg.version as string;
+        }
+        if (nearestVersion === null && typeof pkg?.version === 'string') {
+          nearestVersion = pkg.version;
+        }
+      } catch {
+        // no package.json at this level; keep walking
+      }
+      const parent = dirname(dir);
+      if (parent === dir) break;
+      dir = parent;
+    }
+    return nearestVersion ?? '3.0.0';
   } catch {
     return '3.0.0';
   }
