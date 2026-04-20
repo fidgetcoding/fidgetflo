@@ -1,6 +1,6 @@
 {
   "name": "@claude-flow/cli",
-  "version": "3.5.80",
+  "version": "0.1.2",
   "type": "module",
   "description": "FidgetFlo CLI - Enterprise AI agent orchestration with 60+ specialized agents, swarm coordination, MCP server, self-learning hooks, and vector memory for Claude Code (based on Ruflo by @ruvnet)",
   "main": "dist/src/index.js",
