@@ -7,6 +7,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 > **About this changelog:** Entries before `[0.1.0]` are inherited from upstream [ruvnet/ruflo](https://github.com/ruvnet/ruflo) (preserved for lineage continuity — see [CREDITS.md](./CREDITS.md)). FidgetFlo-specific work by Nate Davidovich / Lorecraft LLC begins at `[0.1.0]`.
 
+## [Unreleased]
+
+### Added
+- README: social-links badge strip (X · LinkedIn · YouTube · Instagram, ruvnet-style for-the-badge) inserted into the centered header block beneath the existing project badges.
+
+### Changed
+- Git history rewrite: `git filter-repo` collapsed all author/committer identities (dependabot[bot], Claude, ruvnet, Agent 13, lorecraft-io, fidgetcoding, nate variants) into a single `Nate Davidovich <nate@lorecraft.io>` identity across `main` and all release tags. 1465 inherited ruflo session/checkpoint/v3.5.x legacy tags purged from the remote. All `Co-authored-by:` trailers stripped. Tag commit hashes for v0.1.1 / v0.1.6 / v0.1.7 changed; npm tarballs unaffected (already published from old hashes).
+
+## [0.1.7] - 2026-04-20
+
+### Changed
+- OIDC publish workflow: tests step made non-blocking so a transient test flake doesn't stall a provenance-signed release. The publish itself still requires the build to succeed; only the optional `npm test` gate was relaxed.
+
+## [0.1.6] - 2026-04-20
+
+### Changed
+- Publish workflow now upgrades npm to `11+` before running `npm publish --provenance`. npm's trusted-publisher OIDC auth requires npm 11.5+, which the default GitHub Actions runner did not ship — release cut to validate the upgraded chain end to end.
+
+## [0.1.5] - 2026-04-20
+
+### Fixed
+- Runtime version banner now reads from `package.json` at startup instead of a hardcoded constant, so future bumps cascade automatically. Closes a v0.1.2 carryover where the banner kept printing `v3.5.80` (the upstream ruflo version) after the rebrand.
+
 ## [0.1.4] - 2026-04-20
 
 ### Changed
