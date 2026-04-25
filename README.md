@@ -16,6 +16,8 @@
 [![npm](https://img.shields.io/badge/NPM-fidgetflo-cb3837?style=flat-square&logo=npm&logoColor=white)](https://www.npmjs.com/package/fidgetflo)
 [![lorecraft.io](https://img.shields.io/badge/LORECRAFT.IO-111111?style=flat-square)](https://lorecraft.io)
 
+[![Follow on X](https://img.shields.io/badge/FOLLOW%20%40fidgetcoding-000000?style=for-the-badge&logo=x&logoColor=white)](https://x.com/fidgetcoding) [![LinkedIn](https://img.shields.io/badge/LINKEDIN-CONNECT-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white&labelColor=555555)](https://www.linkedin.com/in/nate-davidovich/) [![YouTube](https://img.shields.io/badge/YOUTUBE-SUBSCRIBE-FF0000?style=for-the-badge&logo=youtube&logoColor=white&labelColor=555555)](https://youtube.com/@fidgetcoding) [![Instagram](https://img.shields.io/badge/INSTAGRAM-FOLLOW-E4405F?style=for-the-badge&logo=instagram&logoColor=white&labelColor=555555)](https://instagram.com/fidgetcoding)
+
 *11 commands — 2 swarm sizes, 5 thinking tiers, zero config.*
 
 </div>
