@@ -346,3 +346,21 @@ The dual copyright reflects reality: ruv wrote the engine, I wrote the wrapper. 
 > Credit to ruv is not a footer. It's load-bearing. Every release and every public surface should preserve the attribution block in the intro, the Built on Ruflo section, the License dual-copyright, and the Links list. If any of those go missing in a future edit, this fork stops being honest.
 
 [⤴ back to top](#top)
+
+## Security: gitleaks pre-commit hook
+
+This repo ships with a `.gitleaks.toml` config and a one-liner installer for a local
+pre-commit hook that scans staged content for secrets (GitHub tokens, API keys, JWTs,
+etc.) before every commit.
+
+```bash
+bash scripts/install-pre-commit-hook.sh
+```
+
+The hook runs `gitleaks protect --staged` and blocks commits that contain secrets.
+For emergencies you can bypass with `git commit --no-verify` — but DO NOT bypass for
+real secrets. Use env vars or a secret manager instead.
+
+If gitleaks isn't installed yet:
+- macOS: `brew install gitleaks`
+- Linux: https://github.com/gitleaks/gitleaks/releases
