@@ -98,6 +98,6 @@ npx -y fidgetflo@latest init --sparc
 - Use background mode for tasks > 30 minutes
 
 ## 📚 Resources
-- Documentation: https://github.com/lorecraft-io/fidgetflo/docs
-- Examples: https://github.com/lorecraft-io/fidgetflo/examples
-- Issues: https://github.com/lorecraft-io/fidgetflo/issues
+- Documentation: https://github.com/fidgetcoding/fidgetflo/tree/main/v3/docs
+- Examples: https://github.com/fidgetcoding/fidgetflo/tree/main/v2/examples
+- Issues: https://github.com/fidgetcoding/fidgetflo/issues

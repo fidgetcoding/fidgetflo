@@ -10,6 +10,6 @@ Releases ship via `.github/workflows/publish.yml` using npm's OIDC trusted publi
 
 ## One-time npm-side setup (required before first OIDC publish)
 
-Go to `https://www.npmjs.com/package/fidgetflo/access` → Publishing access → add **GitHub Actions** as a trusted publisher for repo `lorecraft-io/fidgetflo` and workflow `publish.yml`.
+Go to `https://www.npmjs.com/package/fidgetflo/access` → Publishing access → add **GitHub Actions** as a trusted publisher for repo `fidgetcoding/fidgetflo` and workflow `publish.yml`.
 
 Without this, `npm publish --provenance` fails with: `unauthorized: The package requires ...`.

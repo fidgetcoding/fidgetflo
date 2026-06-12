@@ -12,13 +12,13 @@
     "claude-flow": "./bin/cli.js",
     "claude-flow-mcp": "./bin/mcp-server.js"
   },
-  "homepage": "https://github.com/lorecraft-io/fidgetflo#readme",
+  "homepage": "https://github.com/fidgetcoding/fidgetflo#readme",
   "bugs": {
-    "url": "https://github.com/lorecraft-io/fidgetflo/issues"
+    "url": "https://github.com/fidgetcoding/fidgetflo/issues"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lorecraft-io/fidgetflo.git",
+    "url": "git+https://github.com/fidgetcoding/fidgetflo.git",
     "directory": "v3/@claude-flow/cli"
   },
   "keywords": [

@@ -6,13 +6,13 @@
     "name": "Nate Davidovich",
     "email": "nate@lorecraft.io"
   },
-  "homepage": "https://github.com/lorecraft-io/fidgetflo",
+  "homepage": "https://github.com/fidgetcoding/fidgetflo",
   "repository": {
     "type": "git",
-    "url": "https://github.com/lorecraft-io/fidgetflo.git"
+    "url": "https://github.com/fidgetcoding/fidgetflo.git"
   },
   "bugs": {
-    "url": "https://github.com/lorecraft-io/fidgetflo/issues"
+    "url": "https://github.com/fidgetcoding/fidgetflo/issues"
   },
   "license": "MIT",
   "keywords": [

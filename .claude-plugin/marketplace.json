@@ -7,8 +7,8 @@
   "metadata": {
     "description": "Enterprise AI agent orchestration marketplace for Claude Code",
     "version": "2.5.0",
-    "homepage": "https://github.com/lorecraft-io/fidgetflo",
-    "repository": "https://github.com/lorecraft-io/fidgetflo"
+    "homepage": "https://github.com/fidgetcoding/fidgetflo",
+    "repository": "https://github.com/fidgetcoding/fidgetflo"
   },
   "plugins": [
     {
@@ -20,10 +20,10 @@
         "name": "Nate Davidovich",
         "email": "nate@lorecraft.io"
       },
-      "homepage": "https://github.com/lorecraft-io/fidgetflo",
-      "repository": "https://github.com/lorecraft-io/fidgetflo",
+      "homepage": "https://github.com/fidgetcoding/fidgetflo",
+      "repository": "https://github.com/fidgetcoding/fidgetflo",
       "bugs": {
-        "url": "https://github.com/lorecraft-io/fidgetflo/issues"
+        "url": "https://github.com/fidgetcoding/fidgetflo/issues"
       },
       "license": "MIT",
       "keywords": [

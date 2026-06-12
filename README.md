@@ -6,13 +6,13 @@
 
 ![FidgetFlo](./fidgetflo.png)
 
-[![FIDGETCODING](https://img.shields.io/badge/FIDGETCODING-111111?style=flat-square)](https://github.com/lorecraft-io)
-[![AI Platform](https://img.shields.io/badge/AI-PLATFORM-22c55e?style=flat-square&labelColor=111111)](https://github.com/lorecraft-io/fidgetflo)
-[![Claude Code](https://img.shields.io/badge/CLAUDE_CODE-INTEGRATED-22c55e?style=flat-square&labelColor=111111)](https://github.com/lorecraft-io/fidgetflo)
+[![FIDGETCODING](https://img.shields.io/badge/FIDGETCODING-111111?style=flat-square)](https://github.com/fidgetcoding)
+[![AI Platform](https://img.shields.io/badge/AI-PLATFORM-22c55e?style=flat-square&labelColor=111111)](https://github.com/fidgetcoding/fidgetflo)
+[![Claude Code](https://img.shields.io/badge/CLAUDE_CODE-INTEGRATED-22c55e?style=flat-square&labelColor=111111)](https://github.com/fidgetcoding/fidgetflo)
 [![npm version](https://img.shields.io/npm/v/fidgetflo?style=flat-square&label=VERSION&color=22c55e&labelColor=111111)](https://www.npmjs.com/package/fidgetflo)
 [![License](https://img.shields.io/badge/LICENSE-MIT-22c55e?style=flat-square&labelColor=111111)](./LICENSE)
 
-[![GitHub](https://img.shields.io/badge/GITHUB-lorecraft--io-111111?style=flat-square&logo=github&logoColor=white)](https://github.com/lorecraft-io)
+[![GitHub](https://img.shields.io/badge/GITHUB-lorecraft--io-111111?style=flat-square&logo=github&logoColor=white)](https://github.com/fidgetcoding)
 [![npm](https://img.shields.io/badge/NPM-fidgetflo-cb3837?style=flat-square&logo=npm&logoColor=white)](https://www.npmjs.com/package/fidgetflo)
 [![lorecraft.io](https://img.shields.io/badge/LORECRAFT.IO-111111?style=flat-square)](https://lorecraft.io)
 
@@ -98,7 +98,7 @@ npx fidgetflo@latest doctor --fix
 ### From source (git clone path)
 
 ```bash
-git clone https://github.com/lorecraft-io/fidgetflo.git
+git clone https://github.com/fidgetcoding/fidgetflo.git
 cd fidgetflo
 npm install
 npm link                               # exposes `fidgetflo` bin globally
@@ -178,7 +178,7 @@ While a swarm is active, the Claude Code status line shows a little signal:
 > [!NOTE]
 > **Prerequisites for the indicators.** The status-line signals shown
 > above render out-of-the-box only if you have
-> [cli-maxxing](https://github.com/lorecraft-io/cli-maxxing) installed and
+> [cli-maxxing](https://github.com/fidgetcoding/cli-maxxing) installed and
 > up to date (it ships the shell integration) AND you're using
 > [Ghostty](https://ghostty.org) as your terminal. If you use a different
 > terminal (iTerm2, kitty, Alacritty, Warp, etc.), you can wire up an
@@ -261,7 +261,7 @@ let a hive take the README
 
 ### The `/fswarmmax` showcase
 
-When you want maximum overkill — 15 agents, each ultrathinking — paired with a real MCP, here's a calendar scheduling example. Assuming you have [morgen-mcp](https://github.com/lorecraft-io/morgen-mcp) installed:
+When you want maximum overkill — 15 agents, each ultrathinking — paired with a real MCP, here's a calendar scheduling example. Assuming you have [morgen-mcp](https://github.com/fidgetcoding/morgen-mcp) installed:
 
 *Natural language:*
 > "Plan next week against the lunar cycle: anchor deep-work to the 4 days around the new moon (peak focus), creative/ideation blocks on the waxing crescent, execution on the first quarter through gibbous, admin-dumps on the full moon, review/edit on the waning gibbous, and rest on the last quarter. Cross-reference NOAA civil-twilight windows at 40.67°N and carve out 3 'stargazing' blocks at peak darkness. Preserve any event whose title contains `[fixed]`. Dry-run the reflow, report the phase-alignment score vs my current week, and apply only on my go-ahead."
@@ -336,10 +336,10 @@ The dual copyright reflects reality: ruv wrote the engine, I wrote the wrapper. 
 
 - **Original Ruflo:** https://github.com/ruvnet/ruflo
 - **ruv's website:** https://ruv.io
-- **This repo:** https://github.com/lorecraft-io/fidgetflo
+- **This repo:** https://github.com/fidgetcoding/fidgetflo
 - **Upstream Ruflo docs:** https://github.com/ruvnet/ruflo#readme
 - **Upstream Ruflo issues:** https://github.com/ruvnet/ruflo/issues (for engine bugs — file there, not here)
-- **FidgetFlo issues:** https://github.com/lorecraft-io/fidgetflo/issues (for skill-layer bugs only)
+- **FidgetFlo issues:** https://github.com/fidgetcoding/fidgetflo/issues (for skill-layer bugs only)
 
 ---
 

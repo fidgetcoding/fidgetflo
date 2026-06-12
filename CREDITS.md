@@ -50,7 +50,7 @@ ruv's copyright is preserved exactly as it appears in the upstream Ruflo `LICENS
 
 ## FidgetFlo Modifications — by Nate Davidovich / Lorecraft LLC
 
-FidgetFlo was created by cloning `ruvnet/ruflo` and pushing to a new remote at `github.com/lorecraft-io/fidgetflo`. The git history is re-initialized from the `v3.5.80` tag; ruv's authorship is preserved via the LICENSE file and this CREDITS document, not via `git log`.
+FidgetFlo was created by cloning `ruvnet/ruflo` and pushing to a new remote at `github.com/fidgetcoding/fidgetflo`. The git history is re-initialized from the `v3.5.80` tag; ruv's authorship is preserved via the LICENSE file and this CREDITS document, not via `git log`.
 
 On top of that cloned snapshot, the following additions have been made under Nate's authorship:
 
@@ -84,7 +84,7 @@ If any of that changes in later releases, it will be called out in `CHANGELOG.md
 This matters for bug triage, for credit, and for not embarrassing anyone.
 
 - **If you find a bug in the MCP server, swarm engine, hive-mind, memory, hooks, neural components, or CLI core** → that is almost certainly ruv's code. Please check the upstream [`ruvnet/ruflo` issue tracker](https://github.com/ruvnet/ruflo/issues) first. If it reproduces on vanilla Ruflo, file it upstream — that is where the fix belongs. I will happily relay or co-file.
-- **If you find a bug in the f\* skill family, the tier system wrappers, or anything under the rebrand's `skills/` directory** → that is Nate's addition. File it on the [FidgetFlo issue tracker](https://github.com/lorecraft-io/fidgetflo/issues).
+- **If you find a bug in the f\* skill family, the tier system wrappers, or anything under the rebrand's `skills/` directory** → that is Nate's addition. File it on the [FidgetFlo issue tracker](https://github.com/fidgetcoding/fidgetflo/issues).
 - **If you are not sure** → file it on FidgetFlo. I will triage and route upstream when appropriate.
 
 Rule of thumb: the engine is ruv's. The skin and the skill shortcuts are mine.
@@ -101,7 +101,7 @@ If you ever want any of this renamed, removed, or reframed, say the word.
 
 ## Contact
 
-- **FidgetFlo issues (rebrand + f\* skills):** https://github.com/lorecraft-io/fidgetflo/issues
+- **FidgetFlo issues (rebrand + f\* skills):** https://github.com/fidgetcoding/fidgetflo/issues
 - **FidgetFlo maintainer:** Nate Davidovich — nate@lorecraft.io — Lorecraft LLC
 - **Ruflo issues (upstream engine):** https://github.com/ruvnet/ruflo/issues
 - **Ruflo author:** ruvnet — https://github.com/ruvnet — https://ruv.io

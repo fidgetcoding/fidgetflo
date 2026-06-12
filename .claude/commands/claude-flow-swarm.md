@@ -202,4 +202,4 @@ Swarms automatically use distributed memory for collaboration:
 - Resource-aware
 - Adaptive
 
-For detailed documentation, see: https://github.com/lorecraft-io/fidgetflo/docs/swarm-system.md
+For detailed documentation, see: https://github.com/fidgetcoding/fidgetflo/tree/main/v3/docs
