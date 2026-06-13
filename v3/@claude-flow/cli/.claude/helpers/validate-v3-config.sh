@@ -4,7 +4,7 @@
 
 set -e
 
-echo "🔍 Claude Flow V3 Configuration Validation"
+echo "🔍 FidgetFlo V3 Configuration Validation"
 echo "==========================================="
 echo ""
 
@@ -21,12 +21,14 @@ RESET='\033[0m'
 # Helper functions
 log_error() {
   echo -e "${RED}❌ ERROR: $1${RESET}"
-  ((ERRORS++))
+  # NOT ((ERRORS++)): post-increment from 0 returns status 1 and set -e
+  # would kill the script on the very first logged error
+  ERRORS=$((ERRORS + 1))
 }
 
 log_warning() {
   echo -e "${YELLOW}⚠️  WARNING: $1${RESET}"
-  ((WARNINGS++))
+  WARNINGS=$((WARNINGS + 1))
 }
 
 log_success() {
@@ -42,8 +44,8 @@ echo "📁 Checking Directory Structure..."
 required_dirs=(
   ".claude"
   ".claude/helpers"
-  ".claude-flow/metrics"
-  ".claude-flow/security"
+  ".fidgetflo/metrics"
+  ".fidgetflo/security"
   "src"
   "src/domains"
 )
@@ -63,9 +65,9 @@ required_files=(
   ".claude/settings.json"
   ".claude/statusline.sh"
   ".claude/helpers/update-v3-progress.sh"
-  ".claude-flow/metrics/v3-progress.json"
-  ".claude-flow/metrics/performance.json"
-  ".claude-flow/security/audit-status.json"
+  ".fidgetflo/metrics/v3-progress.json"
+  ".fidgetflo/metrics/performance.json"
+  ".fidgetflo/security/audit-status.json"
   "package.json"
 )
 
@@ -89,7 +91,7 @@ for file in "${required_files[@]}"; do
           log_error "Helper script is not executable: $file"
         fi
         ;;
-      ".claude-flow/metrics/v3-progress.json")
+      ".fidgetflo/metrics/v3-progress.json")
         if jq empty "$file" 2>/dev/null; then
           log_success "V3 progress JSON is valid"
           domains=$(jq -r '.domains.total // "unknown"' "$file" 2>/dev/null)

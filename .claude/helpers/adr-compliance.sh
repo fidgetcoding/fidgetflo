@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # FidgetFlo V3 - ADR Compliance Checker Worker
 # Checks compliance with Architecture Decision Records
 
@@ -12,19 +12,18 @@ LAST_RUN_FILE="$METRICS_DIR/.adr-last-run"
 
 mkdir -p "$METRICS_DIR"
 
-# V3 ADRs to check
-declare -A ADRS=(
-  ["ADR-001"]="agentic-flow as core foundation"
-  ["ADR-002"]="Domain-Driven Design structure"
-  ["ADR-003"]="Single coordination engine"
-  ["ADR-004"]="Plugin-based architecture"
-  ["ADR-005"]="MCP-first API design"
-  ["ADR-006"]="Unified memory service"
-  ["ADR-007"]="Event sourcing for state"
-  ["ADR-008"]="Vitest over Jest"
-  ["ADR-009"]="Hybrid memory backend"
-  ["ADR-010"]="Remove Deno support"
-)
+# V3 ADRs checked below (descriptions kept as reference; an associative
+# array here crashed stock macOS bash 3.2, and it was never read anyway):
+#   ADR-001  agentic-flow as core foundation
+#   ADR-002  Domain-Driven Design structure
+#   ADR-003  Single coordination engine
+#   ADR-004  Plugin-based architecture
+#   ADR-005  MCP-first API design
+#   ADR-006  Unified memory service
+#   ADR-007  Event sourcing for state
+#   ADR-008  Vitest over Jest
+#   ADR-009  Hybrid memory backend
+#   ADR-010  Remove Deno support
 
 should_run() {
   if [ ! -f "$LAST_RUN_FILE" ]; then return 0; fi

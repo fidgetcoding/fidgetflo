@@ -25,10 +25,10 @@ if [ "$CONFIRM" != "y" ]; then
 fi
 
 info "Removing commands..."
-find ~/.claude/commands -name "*coordination*" -o -name "*sparc*" -o -name "*github*" -o -name "*hive-mind*" 2>/dev/null | xargs rm -f
+find ~/.claude/commands \( -name "*coordination*" -o -name "*sparc*" -o -name "*github*" -o -name "*hive-mind*" \) -exec rm -f {} + 2>/dev/null || true
 
 info "Removing agents..."
-find ~/.claude/agents -name "*coordinator*" -o -name "*swarm*" 2>/dev/null | xargs rm -f
+find ~/.claude/agents \( -name "*coordinator*" -o -name "*swarm*" \) -exec rm -f {} + 2>/dev/null || true
 
 warning "MCP servers NOT removed from settings.json"
 echo "Please manually remove from ~/.claude/settings.json if desired"

@@ -1,10 +1,10 @@
 #!/bin/bash
-# Claude Flow V3 - Real-time Swarm Activity Monitor
+# FidgetFlo V3 - Real-time Swarm Activity Monitor
 # Continuously monitors and updates metrics based on running processes
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
-METRICS_DIR="$PROJECT_ROOT/.claude-flow/metrics"
+METRICS_DIR="$PROJECT_ROOT/.fidgetflo/metrics"
 UPDATE_SCRIPT="$SCRIPT_DIR/update-v3-progress.sh"
 
 # Ensure metrics directory exists
@@ -188,7 +188,7 @@ case "${1:-check}" in
         fi
         ;;
     "help"|"-h"|"--help")
-        echo "Claude Flow V3 Swarm Monitor"
+        echo "FidgetFlo V3 Swarm Monitor"
         echo ""
         echo "Usage: $0 [command] [options]"
         echo ""

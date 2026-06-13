@@ -1,5 +1,5 @@
 #!/bin/bash
-# Claude Flow Post-Commit Hook
+# FidgetFlo Post-Commit Hook
 # Records commit metrics and trains patterns
 
 COMMIT_HASH=$(git rev-parse HEAD)
@@ -7,8 +7,8 @@ COMMIT_MSG=$(git log -1 --pretty=%B)
 
 echo "📊 Recording commit metrics..."
 
-# Notify claude-flow of commit
-npx @claude-flow/cli hooks notify \
+# Notify FidgetFlo of commit
+npx fidgetflo hooks notify \
   --message "Commit: $COMMIT_MSG" \
   --level info \
   --metadata '{"hash": "'$COMMIT_HASH'"}' 2>/dev/null || true

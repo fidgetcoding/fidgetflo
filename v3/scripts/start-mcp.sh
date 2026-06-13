@@ -217,7 +217,6 @@ LOG_LEVEL="${MCP_LOG_LEVEL:-$LOG_LEVEL}"
 
 # Check if already running
 if is_running; then
-    local pid
     pid=$(get_pid)
     print_warning "MCP Server already running (PID: $pid)"
     print_info "Use --stop to stop the server first"
@@ -269,7 +268,6 @@ if [ "$DAEMON" = true ]; then
     sleep 2
 
     if is_running; then
-        local pid
         pid=$(get_pid)
         print_success "MCP Server started (PID: $pid)"
         print_info "Logs: $LOG_FILE"

@@ -21,12 +21,14 @@ RESET='\033[0m'
 # Helper functions
 log_error() {
   echo -e "${RED}❌ ERROR: $1${RESET}"
-  ((ERRORS++))
+  # NOT ((ERRORS++)): post-increment from 0 returns status 1 and set -e
+  # would kill the script on the very first logged error
+  ERRORS=$((ERRORS + 1))
 }
 
 log_warning() {
   echo -e "${YELLOW}⚠️  WARNING: $1${RESET}"
-  ((WARNINGS++))
+  WARNINGS=$((WARNINGS + 1))
 }
 
 log_success() {

@@ -1,5 +1,5 @@
 #!/bin/bash
-# Claude Flow V3 - Swarm Communication Hooks
+# FidgetFlo V3 - Swarm Communication Hooks
 # Enables agent-to-agent messaging, pattern sharing, consensus, and task handoffs
 #
 # Integration with:
@@ -16,7 +16,7 @@ set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
-SWARM_DIR="$PROJECT_ROOT/.claude-flow/swarm"
+SWARM_DIR="$PROJECT_ROOT/.fidgetflo/swarm"
 MESSAGES_DIR="$SWARM_DIR/messages"
 PATTERNS_DIR="$SWARM_DIR/patterns"
 CONSENSUS_DIR="$SWARM_DIR/consensus"
@@ -715,7 +715,7 @@ case "${1:-help}" in
 
   "help"|"-h"|"--help")
     cat << 'EOF'
-Claude Flow V3 - Swarm Communication Hooks
+FidgetFlo V3 - Swarm Communication Hooks
 
 Usage: swarm-hooks.sh <command> [args]
 

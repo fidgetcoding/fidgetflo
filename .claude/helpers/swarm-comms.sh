@@ -34,7 +34,9 @@ enqueue() {
   local priority="${3:-$PRIORITY_NORMAL}"
   local msg_type="${4:-context}"
 
-  local msg_id="msg_$(date +%s%N)"
+  # %N is GNU-only; on BSD/macOS date it emits a literal "N" so same-second
+  # IDs collide. PID+RANDOM keeps IDs unique portably.
+  local msg_id="msg_$(date +%s)_$$_${RANDOM}"
   local timestamp=$(date +%s)
 
   # Write to priority queue (non-blocking)
@@ -157,7 +159,7 @@ pool_acquire() {
     echo "$available"
   else
     # Create new connection ID
-    local conn_id="conn_$(date +%s%N | tail -c 8)"
+    local conn_id="conn_${$}_${RANDOM}"
     jq ".inUse += [\"$conn_id\"] | .activeConnections += 1" "$POOL_FILE" > "$POOL_FILE.tmp" && mv "$POOL_FILE.tmp" "$POOL_FILE"
     echo "$conn_id"
   fi
@@ -184,7 +186,7 @@ broadcast_pattern_async() {
 
   # Fire and forget
   (
-    local broadcast_id="pattern_$(date +%s%N)"
+    local broadcast_id="pattern_$(date +%s)_$$_${RANDOM}"
 
     # Write pattern broadcast
     mkdir -p "$SWARM_DIR/patterns"
@@ -211,7 +213,7 @@ start_consensus_async() {
   local timeout="${3:-30}"
 
   (
-    local consensus_id="consensus_$(date +%s%N)"
+    local consensus_id="consensus_$(date +%s)_$$_${RANDOM}"
     mkdir -p "$SWARM_DIR/consensus"
 
     cat > "$SWARM_DIR/consensus/$consensus_id.json" << EOF

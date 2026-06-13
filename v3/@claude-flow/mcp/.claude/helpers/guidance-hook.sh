@@ -1,7 +1,7 @@
 #!/bin/bash
 # Capture hook guidance for Claude visibility
-GUIDANCE_FILE=".claude-flow/last-guidance.txt"
-mkdir -p .claude-flow
+GUIDANCE_FILE=".fidgetflo/last-guidance.txt"
+mkdir -p .fidgetflo
 
 case "$1" in
   "route")

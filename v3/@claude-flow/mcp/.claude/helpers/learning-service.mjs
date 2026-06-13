@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Claude Flow V3 - Persistent Learning Service
+ * FidgetFlo V3 - Persistent Learning Service
  *
  * Connects ReasoningBank to AgentDB with HNSW indexing and ONNX embeddings.
  *
@@ -27,7 +27,7 @@ import Database from 'better-sqlite3';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
 const PROJECT_ROOT = join(__dirname, '../..');
-const DATA_DIR = join(PROJECT_ROOT, '.claude-flow/learning');
+const DATA_DIR = join(PROJECT_ROOT, '.fidgetflo/learning');
 const DB_PATH = join(DATA_DIR, 'patterns.db');
 const METRICS_PATH = join(DATA_DIR, 'learning-metrics.json');
 
@@ -1112,7 +1112,7 @@ async function main() {
       case 'help':
       default:
         console.log(`
-Claude Flow V3 Learning Service
+FidgetFlo V3 Learning Service
 
 Usage: learning-service.mjs <command> [args]
 

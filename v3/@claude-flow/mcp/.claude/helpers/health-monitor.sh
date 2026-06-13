@@ -1,12 +1,12 @@
 #!/bin/bash
-# Claude Flow V3 - Health Monitor Worker
+# FidgetFlo V3 - Health Monitor Worker
 # Checks disk space, memory pressure, process health
 
 set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
-METRICS_DIR="$PROJECT_ROOT/.claude-flow/metrics"
+METRICS_DIR="$PROJECT_ROOT/.fidgetflo/metrics"
 HEALTH_FILE="$METRICS_DIR/health.json"
 LAST_RUN_FILE="$METRICS_DIR/.health-last-run"
 

@@ -2,6 +2,10 @@
 # FidgetFlo V3 Development Status Line
 # Shows DDD architecture progress, security status, and performance targets
 
+# jq is required for every metric below — without it, integer comparisons
+# spew "integer expression expected" on every render. Degrade silently.
+command -v jq >/dev/null 2>&1 || exit 0
+
 # Read Claude Code JSON input from stdin (if available)
 CLAUDE_INPUT=$(cat 2>/dev/null || echo "{}")
 
@@ -101,7 +105,7 @@ if [ -n "$NODE_MEM" ] && [ "$NODE_MEM" -gt 0 ]; then
   MEMORY_DISPLAY="${NODE_MEM}MB"
 else
   # Fallback: show v3 codebase line count as progress indicator
-  V3_LINES=$(find "${PROJECT_DIR}/v3" -name "*.ts" -type f 2>/dev/null | xargs wc -l 2>/dev/null | tail -1 | awk '{print $1}')
+  V3_LINES=$(find "${PROJECT_DIR}/v3" -name "*.ts" -type f -print0 2>/dev/null | xargs -0 wc -l 2>/dev/null | tail -1 | awk '{print $1}')
   if [ -n "$V3_LINES" ] && [ "$V3_LINES" -gt 0 ]; then
     MEMORY_DISPLAY="${V3_LINES}L"
   else
@@ -348,7 +352,9 @@ if [ "$DOMAINS_COMPLETED" -eq 0 ]; then
 fi
 
 PERF_COLOR="${BRIGHT_YELLOW}"
-if [[ "$PERF_CURRENT" =~ ^[0-9]+\.[0-9]+x$ ]] && [[ "${PERF_CURRENT%x}" > "2.0" ]]; then
+# Numeric compare via awk — [[ "10.5" > "2.0" ]] is a lexicographic string
+# compare and renders any >=10x speedup in the wrong color
+if [[ "$PERF_CURRENT" =~ ^[0-9]+\.[0-9]+x$ ]] && awk -v v="${PERF_CURRENT%x}" 'BEGIN{exit !(v > 2.0)}'; then
   PERF_COLOR="${BRIGHT_GREEN}"
 fi
 

@@ -12,7 +12,7 @@ PURPLE='\033[0;35m'
 CYAN='\033[0;36m'
 RESET='\033[0m'
 
-echo -e "${PURPLE}⚡ Claude Flow V3 Quick Status${RESET}"
+echo -e "${PURPLE}⚡ FidgetFlo V3 Quick Status${RESET}"
 
 # Get metrics
 DOMAINS=0
@@ -22,19 +22,19 @@ CVES_FIXED=0
 SPEEDUP="1.0x"
 MEMORY="0%"
 
-if [ -f ".claude-flow/metrics/v3-progress.json" ]; then
-  DOMAINS=$(jq -r '.domains.completed // 0' ".claude-flow/metrics/v3-progress.json" 2>/dev/null || echo "0")
-  AGENTS=$(jq -r '.swarm.activeAgents // 0' ".claude-flow/metrics/v3-progress.json" 2>/dev/null || echo "0")
-  DDD_PROGRESS=$(jq -r '.ddd.progress // 0' ".claude-flow/metrics/v3-progress.json" 2>/dev/null || echo "0")
+if [ -f ".fidgetflo/metrics/v3-progress.json" ]; then
+  DOMAINS=$(jq -r '.domains.completed // 0' ".fidgetflo/metrics/v3-progress.json" 2>/dev/null || echo "0")
+  AGENTS=$(jq -r '.swarm.activeAgents // 0' ".fidgetflo/metrics/v3-progress.json" 2>/dev/null || echo "0")
+  DDD_PROGRESS=$(jq -r '.ddd.progress // 0' ".fidgetflo/metrics/v3-progress.json" 2>/dev/null || echo "0")
 fi
 
-if [ -f ".claude-flow/security/audit-status.json" ]; then
-  CVES_FIXED=$(jq -r '.cvesFixed // 0' ".claude-flow/security/audit-status.json" 2>/dev/null || echo "0")
+if [ -f ".fidgetflo/security/audit-status.json" ]; then
+  CVES_FIXED=$(jq -r '.cvesFixed // 0' ".fidgetflo/security/audit-status.json" 2>/dev/null || echo "0")
 fi
 
-if [ -f ".claude-flow/metrics/performance.json" ]; then
-  SPEEDUP=$(jq -r '.flashAttention.speedup // "1.0x"' ".claude-flow/metrics/performance.json" 2>/dev/null || echo "1.0x")
-  MEMORY=$(jq -r '.memory.reduction // "0%"' ".claude-flow/metrics/performance.json" 2>/dev/null || echo "0%")
+if [ -f ".fidgetflo/metrics/performance.json" ]; then
+  SPEEDUP=$(jq -r '.flashAttention.speedup // "1.0x"' ".fidgetflo/metrics/performance.json" 2>/dev/null || echo "1.0x")
+  MEMORY=$(jq -r '.memory.reduction // "0%"' ".fidgetflo/metrics/performance.json" 2>/dev/null || echo "0%")
 fi
 
 # Calculate progress percentages

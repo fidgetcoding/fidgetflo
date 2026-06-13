@@ -1,8 +1,15 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # FidgetFlo V3 - Performance Benchmark Worker
 # Runs periodic benchmarks and updates metrics using agentic-flow agents
 
 set -euo pipefail
+
+# Millisecond timestamp, portable across BSD/macOS and GNU (BSD date has no %N;
+# `date +%s%3N` emits a literal "3N" on macOS and breaks the arithmetic below)
+now_ms() {
+  node -e 'process.stdout.write(String(Date.now()))' 2>/dev/null \
+    || echo $(( $(date +%s) * 1000 ))
+}
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJECT_ROOT="$(cd "$SCRIPT_DIR/../.." && pwd)"
@@ -28,14 +35,14 @@ should_run() {
 
 # Simple search benchmark (measures grep/search speed)
 benchmark_search() {
-  local start=$(date +%s%3N)
+  local start=$(now_ms)
 
-  # Search through v3 codebase
-  find "$PROJECT_ROOT/v3" -name "*.ts" -type f 2>/dev/null | \
-    xargs grep -l "function\|class\|interface" 2>/dev/null | \
+  # Search through v3 codebase (null-delimited: safe for paths with spaces)
+  find "$PROJECT_ROOT/v3" -name "*.ts" -type f -print0 2>/dev/null | \
+    xargs -0 grep -l "function\|class\|interface" 2>/dev/null | \
     wc -l > /dev/null
 
-  local end=$(date +%s%3N)
+  local end=$(now_ms)
   local duration=$((end - start))
 
   # Baseline is ~100ms, calculate improvement
@@ -64,12 +71,17 @@ benchmark_memory() {
 
 # Startup time check
 benchmark_startup() {
-  local start=$(date +%s%3N)
+  local start=$(now_ms)
 
   # Quick check of agentic-flow responsiveness
-  timeout 5 npx agentic-flow@alpha --version >/dev/null 2>&1 || true
+  # (`timeout` is not stock on macOS — only use it when present)
+  if command -v timeout >/dev/null 2>&1; then
+    timeout 5 npx agentic-flow@alpha --version >/dev/null 2>&1 || true
+  else
+    npx agentic-flow@alpha --version >/dev/null 2>&1 || true
+  fi
 
-  local end=$(date +%s%3N)
+  local end=$(now_ms)
   local duration=$((end - start))
 
   echo "${duration}ms"
