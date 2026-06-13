@@ -1,8 +1,8 @@
 # Claude Code Configuration - FidgetFlo v3.5
 
-> **FidgetFlo v3.5** (2026-04-07) — Stable release with verified capabilities.
-> 6,000+ commits, 314 MCP tools, 16 agent roles + custom types, 19 AgentDB controllers.
-> Packages: `@claude-flow/cli@3.5.65`, `fidgetflo@3.5.65`, `fidgetflo@3.5.65`
+> **FidgetFlo** — fidgetcoding's spinoff of ruvnet's Ruflo (MIT).
+> 314 MCP tools, 16 agent roles + custom types, 19 AgentDB controllers.
+> Package: `fidgetflo` on npm (bundles `@claude-flow/cli`); only the `latest` dist-tag is published.
 
 ## Behavioral Rules (Always Enforced)
 
@@ -136,11 +136,11 @@ Task("Reviewer", "Review code quality and security. Store findings in 'collabora
 
 // 🟢 Codex workers (implementation, optimization)
 // Spawn via CLI for Codex platform
-Bash("npx fidgetflo-codex dual run --worker 'codex:coder:Implement the solution based on architect design' --namespace collaboration")
-Bash("npx fidgetflo-codex dual run --worker 'codex:optimizer:Optimize performance based on implementation' --namespace collaboration")
+Bash("npx claude-flow-codex dual run --worker 'codex:coder:Implement the solution based on architect design' --namespace collaboration")
+Bash("npx claude-flow-codex dual run --worker 'codex:optimizer:Optimize performance based on implementation' --namespace collaboration")
 
 // STEP 3: Coordinate via shared memory
-Bash("npx fidgetflo@v3alpha memory store --namespace collaboration --key 'task-context' --value '[task description]'")
+Bash("npx fidgetflo@latest memory store --namespace collaboration --key 'task-context' --value '[task description]'")
 ```
 
 ### Collaboration Templates (Pre-Built Pipelines)
@@ -156,12 +156,12 @@ Bash("npx fidgetflo@v3alpha memory store --namespace collaboration --key 'task-c
 
 ```bash
 # Run a collaboration template
-npx fidgetflo-codex dual run feature --task "Add user authentication with OAuth"
-npx fidgetflo-codex dual run security --target "./src"
-npx fidgetflo-codex dual run refactor --target "./src/legacy"
+npx claude-flow-codex dual run feature --task "Add user authentication with OAuth"
+npx claude-flow-codex dual run security --target "./src"
+npx claude-flow-codex dual run refactor --target "./src/legacy"
 
 # Custom multi-platform swarm
-npx fidgetflo-codex dual run \
+npx claude-flow-codex dual run \
   --worker "claude:architect:Design the API structure" \
   --worker "codex:coder:Implement REST endpoints" \
   --worker "claude:tester:Write integration tests" \
@@ -169,10 +169,10 @@ npx fidgetflo-codex dual run \
   --namespace "api-feature"
 
 # Check collaboration status
-npx fidgetflo-codex dual status
+npx claude-flow-codex dual status
 
 # List available templates
-npx fidgetflo-codex dual templates
+npx claude-flow-codex dual templates
 ```
 
 ### Shared Memory Coordination
@@ -181,13 +181,13 @@ All workers share state via the `collaboration` namespace:
 
 ```bash
 # Store context for cross-platform sharing
-npx fidgetflo@v3alpha memory store --namespace collaboration --key "design-decisions" --value "..."
+npx fidgetflo@latest memory store --namespace collaboration --key "design-decisions" --value "..."
 
 # Search for patterns across all workers
-npx fidgetflo@v3alpha memory search --namespace collaboration --query "authentication patterns"
+npx fidgetflo@latest memory search --namespace collaboration --query "authentication patterns"
 
 # Retrieve specific findings
-npx fidgetflo@v3alpha memory retrieve --namespace collaboration --key "security-findings"
+npx fidgetflo@latest memory retrieve --namespace collaboration --key "security-findings"
 ```
 
 ### Cross-Platform Learning
@@ -196,13 +196,13 @@ Both platforms learn from each other's outputs:
 
 ```bash
 # After successful collaboration, train patterns
-npx fidgetflo@v3alpha hooks post-task --task-id "dual-[id]" --success true --train-neural true
+npx fidgetflo@latest hooks post-task --task-id "dual-[id]" --success true --train-neural true
 
 # Store successful collaboration patterns
-npx fidgetflo@v3alpha memory store --namespace patterns --key "dual-mode-[pattern]" --value "[what worked]"
+npx fidgetflo@latest memory store --namespace patterns --key "dual-mode-[pattern]" --value "[what worked]"
 
 # Transfer learnings to both platforms
-npx fidgetflo@v3alpha hooks transfer store --pattern "dual-collab-success"
+npx fidgetflo@latest hooks transfer store --pattern "dual-collab-success"
 ```
 
 ### Worker Dependency Levels
@@ -265,7 +265,7 @@ mcp__ruv-swarm__swarm_init({
 
 // STEP 2: Spawn agents concurrently using Claude Code's Task tool
 // ALL Task calls MUST be in the SAME message for parallel execution
-Task("Coordinator", "You are the swarm coordinator. Initialize session, coordinate other agents via memory. Run: npx fidgetflo@v3alpha hooks session-start", "hierarchical-coordinator")
+Task("Coordinator", "You are the swarm coordinator. Initialize session, coordinate other agents via memory. Run: npx fidgetflo@latest hooks session-start", "hierarchical-coordinator")
 Task("Researcher", "Analyze requirements and existing code patterns. Store findings in memory via hooks.", "researcher")
 Task("Architect", "Design implementation approach based on research. Document decisions in memory.", "system-architect")
 Task("Coder", "Implement the solution following architect's design. Coordinate via hooks.", "coder")
@@ -375,29 +375,29 @@ This project is configured with FidgetFlo V3 (Anti-Drift Defaults):
 ### Quick CLI Examples
 
 ```bash
-# Initialize project
-npx fidgetflo@v3alpha init --wizard
+# Initialize project (interactive wizard)
+npx fidgetflo@latest init wizard
 
 # Start daemon with background workers
-npx fidgetflo@v3alpha daemon start
+npx fidgetflo@latest daemon start
 
 # Spawn an agent
-npx fidgetflo@v3alpha agent spawn -t coder --name my-coder
+npx fidgetflo@latest agent spawn -t coder --name my-coder
 
 # Initialize swarm
-npx fidgetflo@v3alpha swarm init --v3-mode
+npx fidgetflo@latest swarm init --v3-mode
 
 # Search memory (HNSW-indexed)
-npx fidgetflo@v3alpha memory search -q "authentication patterns"
+npx fidgetflo@latest memory search -q "authentication patterns"
 
 # System diagnostics
-npx fidgetflo@v3alpha doctor --fix
+npx fidgetflo@latest doctor --fix
 
 # Security scan
-npx fidgetflo@v3alpha security scan --depth full
+npx fidgetflo@latest security scan --depth deep
 
 # Performance benchmark
-npx fidgetflo@v3alpha performance benchmark --suite all
+npx fidgetflo@latest performance benchmark --suite all
 ```
 
 ## Headless Background Instances (claude -p)
@@ -538,7 +538,7 @@ Claude Code's experimental Agent Teams feature is fully integrated with FidgetFl
 
 ### Enabling Agent Teams
 
-Agent Teams is automatically enabled when you run `npx fidgetflo@v3alpha init`. The following is added to `.claude/settings.json`:
+Agent Teams is automatically enabled when you run `npx fidgetflo@latest init`. The following is added to `.claude/settings.json`:
 
 ```json
 {
@@ -608,10 +608,10 @@ Task({
 
 ```bash
 # Handle idle teammate (auto-assigns available tasks)
-npx fidgetflo@v3alpha hooks teammate-idle --auto-assign true
+npx fidgetflo@latest hooks teammate-idle --auto-assign true
 
 # Handle task completion (trains patterns, notifies lead)
-npx fidgetflo@v3alpha hooks task-completed -i task-123 --train-patterns true
+npx fidgetflo@latest hooks task-completed -i task-123 --train-patterns true
 
 # Check on team progress
 TaskList
@@ -682,27 +682,27 @@ SendMessage({
 
 ```bash
 # Core hooks
-npx fidgetflo@v3alpha hooks pre-task --description "[task]"
-npx fidgetflo@v3alpha hooks post-task --task-id "[id]" --success true
-npx fidgetflo@v3alpha hooks post-edit --file "[file]" --train-patterns
+npx fidgetflo@latest hooks pre-task --description "[task]"
+npx fidgetflo@latest hooks post-task --task-id "[id]" --success true
+npx fidgetflo@latest hooks post-edit --file "[file]"
 
 # Session management
-npx fidgetflo@v3alpha hooks session-start --session-id "[id]"
-npx fidgetflo@v3alpha hooks session-end --export-metrics true
-npx fidgetflo@v3alpha hooks session-restore --session-id "[id]"
+npx fidgetflo@latest hooks session-start --session-id "[id]"
+npx fidgetflo@latest hooks session-end --export-metrics true
+npx fidgetflo@latest hooks session-restore --session-id "[id]"
 
 # Intelligence routing
-npx fidgetflo@v3alpha hooks route --task "[task]"
-npx fidgetflo@v3alpha hooks explain --topic "[topic]"
+npx fidgetflo@latest hooks route --task "[task]"
+npx fidgetflo@latest hooks explain --topic "[topic]"
 
 # Neural learning
-npx fidgetflo@v3alpha hooks pretrain --model-type moe --epochs 10
-npx fidgetflo@v3alpha hooks build-agents --agent-types coder,tester
+npx fidgetflo@latest hooks pretrain --model-type moe --epochs 10
+npx fidgetflo@latest hooks build-agents --agent-types coder,tester
 
 # Background workers
-npx fidgetflo@v3alpha hooks worker list
-npx fidgetflo@v3alpha hooks worker dispatch --trigger audit
-npx fidgetflo@v3alpha hooks worker status
+npx fidgetflo@latest hooks worker list
+npx fidgetflo@latest hooks worker dispatch --trigger audit
+npx fidgetflo@latest hooks worker status
 ```
 
 ## Intelligence System (RuVector)
@@ -781,7 +781,7 @@ FIDGETFLO_MEMORY_PATH=./data/memory
 
 ## Doctor Health Checks
 
-Run `npx fidgetflo@v3alpha doctor` to check:
+Run `npx fidgetflo@latest doctor` to check:
 - Node.js version (20+)
 - npm version (9+)
 - Git installation
@@ -797,15 +797,15 @@ Run `npx fidgetflo@v3alpha doctor` to check:
 
 ```bash
 # Add MCP servers
-claude mcp add fidgetflo npx fidgetflo@v3alpha mcp start
+claude mcp add fidgetflo npx fidgetflo@latest mcp start
 claude mcp add ruv-swarm npx ruv-swarm mcp start  # Optional
 claude mcp add flow-nexus npx flow-nexus@latest mcp start  # Optional
 
 # Start daemon
-npx fidgetflo@v3alpha daemon start
+npx fidgetflo@latest daemon start
 
 # Run doctor
-npx fidgetflo@v3alpha doctor --fix
+npx fidgetflo@latest doctor --fix
 ```
 
 ## Claude Code vs MCP Tools
@@ -876,58 +876,27 @@ memory_search_unified({ query: "authentication security", limit: 5 })
 
 ### Publishing Rules
 
-- MUST publish ALL THREE packages when publishing CLI changes: `@claude-flow/cli`, `fidgetflo`, AND `fidgetflo`
-- MUST update ALL dist-tags for ALL THREE packages after publishing
-- Publish order: `@claude-flow/cli` first, then `fidgetflo` (umbrella), then `fidgetflo` (alias umbrella)
-- MUST run verification for ALL THREE before telling user publishing is complete
+- ONE npm package ships from this repo: `fidgetflo` (it bundles `@claude-flow/cli`, `@claude-flow/shared`, and `@claude-flow/guidance` dist files via the `files` field — the workspace packages are NOT published separately by us)
+- ONLY the `latest` dist-tag exists for `fidgetflo`. Never document or run `@alpha` / `@v3alpha` — npm fails with "No matching version found"
+- Releases ship via the OIDC trusted-publisher flow (see `OIDC-PUBLISH-SETUP.md`) — no long-lived npm token
 
 ```bash
-# STEP 1: Build and publish CLI
-cd v3/@claude-flow/cli
-npm version 3.0.0-alpha.XXX --no-git-tag-version
-npm run build
-npm publish --tag alpha
-npm dist-tag add @claude-flow/cli@3.0.0-alpha.XXX latest
+# STEP 1: Build everything that ships
+npm run build   # shared → guidance → cli
 
-# STEP 2: Publish fidgetflo umbrella
-cd /workspaces/fidgetflo
-npm version 3.0.0-alpha.XXX --no-git-tag-version
-npm publish --tag v3alpha
+# STEP 2: Bump version and tag
+npm version patch          # or minor/major
+git push && git push --tags
 
-# STEP 3: Update ALL fidgetflo umbrella tags (CRITICAL - DON'T SKIP!)
-npm dist-tag add fidgetflo@3.0.0-alpha.XXX latest
-npm dist-tag add fidgetflo@3.0.0-alpha.XXX alpha
-
-# STEP 4: Publish fidgetflo umbrella (CRITICAL - DON'T FORGET!)
-cd /workspaces/fidgetflo/fidgetflo
-npm version 3.0.0-alpha.XXX --no-git-tag-version
-npm publish --tag alpha
-npm dist-tag add fidgetflo@3.0.0-alpha.XXX latest
+# STEP 3: GitHub Actions (.github/workflows/publish.yml) auto-publishes
+# with --provenance on the tag push. Nothing manual to run.
 ```
 
 **Verification (run before telling user):**
 ```bash
-npm view @claude-flow/cli dist-tags --json
 npm view fidgetflo dist-tags --json
-npm view fidgetflo dist-tags --json
-# ALL THREE packages need: alpha AND latest pointing to newest version
+# expect: { "latest": "<the new version>" }
 ```
-
-### All Tags That Must Be Updated
-| Package | Tag | Command Users Run |
-|---------|-----|-------------------|
-| `@claude-flow/cli` | `alpha` | `npx @claude-flow/cli@alpha` |
-| `@claude-flow/cli` | `latest` | `npx @claude-flow/cli@latest` |
-| `@claude-flow/cli` | `v3alpha` | `npx @claude-flow/cli@v3alpha` |
-| `fidgetflo` | `alpha` | `npx fidgetflo@alpha` — EASY TO FORGET |
-| `fidgetflo` | `latest` | `npx fidgetflo@latest` |
-| `fidgetflo` | `v3alpha` | `npx fidgetflo@v3alpha` |
-| `fidgetflo` | `alpha` | `npx fidgetflo@alpha` — EASY TO FORGET |
-| `fidgetflo` | `latest` | `npx fidgetflo@latest` |
-
-- Never forget the `fidgetflo` package — it's a thin wrapper users run via `npx fidgetflo@alpha`
-- Never forget the umbrella `alpha` tag — users run `npx fidgetflo@alpha`
-- `fidgetflo` source is in `/fidgetflo/` — it depends on `@claude-flow/cli`
 
 ## Plugin Registry Maintenance (IPFS/Pinata)
 
@@ -1026,14 +995,14 @@ Plugins are distributed via IPFS and can be installed with the CLI. Browse and i
 
 ```bash
 # List all available plugins
-npx fidgetflo@v3alpha plugins list
+npx fidgetflo@latest plugins list
 
-# Install a plugin
-npx fidgetflo@v3alpha plugins install @claude-flow/plugin-name
+# Install a plugin (name goes through -n / --name)
+npx fidgetflo@latest plugins install -n @claude-flow/plugin-name
 
-# Enable/disable
-npx fidgetflo@v3alpha plugins enable @claude-flow/plugin-name
-npx fidgetflo@v3alpha plugins disable @claude-flow/plugin-name
+# Enable/disable (subcommand is `toggle`)
+npx fidgetflo@latest plugins toggle -n @claude-flow/plugin-name --enable
+npx fidgetflo@latest plugins toggle -n @claude-flow/plugin-name --disable
 ```
 
 ### Core Plugins
@@ -1075,13 +1044,13 @@ npx fidgetflo@v3alpha plugins disable @claude-flow/plugin-name
 
 ```bash
 # Create a new plugin from template
-npx fidgetflo@v3alpha plugins create my-plugin
+npx fidgetflo@latest plugins create -n my-plugin
 
 # Test locally
-npx fidgetflo@v3alpha plugins install ./path/to/my-plugin
+npx fidgetflo@latest plugins install -n ./path/to/my-plugin
 
 # Publish to registry (requires Pinata credentials)
-npx fidgetflo@v3alpha plugins publish
+npx fidgetflo@latest plugins publish
 ```
 
 Registry source: IPFS via Pinata (`QmXbfEAaR7D2Ujm4GAkbwcGZQMHqAMpwDoje4583uNP834`)

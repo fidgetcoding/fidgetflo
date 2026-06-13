@@ -110,8 +110,8 @@ fidgetflo doctor --fix
 ### Quickstart
 
 ```bash
-# Init a project
-npx fidgetflo@latest init --wizard
+# Init a project (interactive wizard)
+npx fidgetflo@latest init wizard
 
 # Spawn an agent
 npx fidgetflo@latest agent spawn -t coder --name my-coder

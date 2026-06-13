@@ -54,7 +54,7 @@ FidgetFlo was created by cloning `ruvnet/ruflo` and pushing to a new remote at `
 
 On top of that cloned snapshot, the following additions have been made under Nate's authorship:
 
-- **The f\* skill family** — a 10-command skill pack that wraps the underlying Ruflo engine with opinionated workflows.
+- **The f\* skill family** — an 11-command skill pack that wraps the underlying Ruflo engine with opinionated workflows.
 - **Extended-thinking tier system** — `rswarm` / `rmini` tier variants adapted into the f\* prefix, exposing light / deep / ultrathink thinking budgets.
 - **Rebrand only** — naming, packaging, and documentation updates that re-present Ruflo as FidgetFlo.
 - **Ongoing modifications** — any future changes committed after the initial clone.

@@ -7,7 +7,7 @@ That sentence is the whole story. The details are below for anyone who wants the
 ## What is what
 
 - **Upstream engine:** [ruvnet/ruflo](https://github.com/ruvnet/ruflo) — MCP server, swarm orchestration, hive-mind consensus, memory, hooks, neural, CLI. All of it by ruvnet.
-- **FidgetFlo additions:** the f\* skill family (10 commands) and the extended-thinking tier system (`rswarm` / `rmini` variants), by Nate Davidovich / Lorecraft LLC.
+- **FidgetFlo additions:** the f\* skill family (11 commands) and the extended-thinking tier system (`rswarm` / `rmini` variants), by Nate Davidovich / Lorecraft LLC.
 - **How FidgetFlo was created:** shallow `git clone` of `ruvnet/ruflo@v3.5.80`, re-initialized git, then pushed to `github.com/fidgetcoding/fidgetflo`. Ruv's authorship is preserved via `LICENSE` and [`CREDITS.md`](./CREDITS.md), not via git history.
 
 ## License
