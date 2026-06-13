@@ -218,7 +218,7 @@ async function checkMcpServers(): Promise<HealthCheck> {
     }
   }
 
-  return { name: 'MCP Servers', status: 'warn', message: 'No MCP config found', fix: 'claude mcp add fidgetflo npx @claude-flow/cli@v3alpha mcp start' };
+  return { name: 'MCP Servers', status: 'warn', message: 'No MCP config found', fix: 'claude mcp add fidgetflo -- npx -y fidgetflo@latest' };
 }
 
 // Check disk space (async with proper env inheritance)

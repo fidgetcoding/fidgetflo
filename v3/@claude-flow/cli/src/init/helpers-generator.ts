@@ -10,7 +10,7 @@ import { generateStatuslineScript, generateStatuslineHook } from './statusline-g
  * Generate pre-commit hook script
  */
 export function generatePreCommitHook(): string {
-  return `#!/bin/bash
+  return `#!/usr/bin/env bash
 # FidgetFlo Pre-Commit Hook
 # Validates code quality before commit
 
@@ -18,16 +18,13 @@ set -e
 
 echo "🔍 Running FidgetFlo pre-commit checks..."
 
-# Get staged files
-STAGED_FILES=$(git diff --cached --name-only --diff-filter=ACM)
-
-# Run validation for each staged file
-for FILE in $STAGED_FILES; do
+# Run validation for each staged file (null-delimited: safe for paths with spaces)
+while IFS= read -r -d '' FILE; do
   if [[ "$FILE" =~ \\.(ts|js|tsx|jsx)$ ]]; then
     echo "  Validating: $FILE"
-    npx @claude-flow/cli hooks pre-edit --file "$FILE" --validate-syntax 2>/dev/null || true
+    npx fidgetflo hooks pre-edit --file "$FILE" --validate-syntax 2>/dev/null || true
   fi
-done
+done < <(git diff --cached --name-only --diff-filter=ACM -z)
 
 # Run tests if available
 if [ -f "package.json" ] && grep -q '"test"' package.json; then

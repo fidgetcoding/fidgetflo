@@ -547,16 +547,18 @@ describe('Command Registry (commands/index.ts)', () => {
     expect(indexModule.sessionCommand).toBeDefined();
     expect(indexModule.mcpCommand).toBeDefined();
     expect(indexModule.hooksCommand).toBeDefined();
-    expect(indexModule.daemonCommand).toBeDefined();
-    expect(indexModule.doctorCommand).toBeDefined();
-    expect(indexModule.embeddingsCommand).toBeDefined();
-    expect(indexModule.neuralCommand).toBeDefined();
-    expect(indexModule.performanceCommand).toBeDefined();
-    expect(indexModule.securityCommand).toBeDefined();
-    expect(indexModule.hiveMindCommand).toBeDefined();
-    expect(indexModule.guidanceCommand).toBeDefined();
-    expect(indexModule.applianceCommand).toBeDefined();
-    expect(indexModule.ruvectorCommand).toBeDefined();
+    // PERF-03: advanced commands are lazy-loaded — only async getters are
+    // exported synchronously. Resolve a few to prove the loaders work.
+    expect(typeof indexModule.getEmbeddingsCommand).toBe('function');
+    expect(typeof indexModule.getNeuralCommand).toBe('function');
+    expect(typeof indexModule.getPerformanceCommand).toBe('function');
+    expect(typeof indexModule.getSecurityCommand).toBe('function');
+    expect(typeof indexModule.getHiveMindCommand).toBe('function');
+    expect(typeof indexModule.getGuidanceCommand).toBe('function');
+    expect(typeof indexModule.getApplianceCommand).toBe('function');
+    expect(typeof indexModule.getRuvectorCommand).toBe('function');
+    expect(await indexModule.getCommandAsync('daemon')).toBeDefined();
+    expect(await indexModule.getCommandAsync('doctor')).toBeDefined();
   });
 
   it('should export commandsByCategory with all categories', async () => {
@@ -566,10 +568,11 @@ describe('Command Registry (commands/index.ts)', () => {
     expect(categories.length).toBeGreaterThanOrEqual(3);
   });
 
-  it('should export commands array with many entries', async () => {
+  it('should export commands array with the synchronous core set', async () => {
     const indexModule = await import('../src/commands/index.js');
     expect(Array.isArray(indexModule.commands)).toBe(true);
-    expect(indexModule.commands.length).toBeGreaterThanOrEqual(15);
+    // PERF-03: only the 10 core commands load synchronously; the rest are lazy
+    expect(indexModule.commands.length).toBeGreaterThanOrEqual(10);
   });
 
   it('should export loadAllCommands as async function', async () => {
@@ -1537,9 +1540,9 @@ describe('Init System', () => {
       expect(md.length).toBeGreaterThan(100);
     });
 
-    it('should contain header with RuFlo V3', () => {
+    it('should contain header with FidgetFlo', () => {
       const md = generateClaudeMd(DEFAULT_INIT_OPTIONS);
-      expect(md).toContain('RuFlo V3');
+      expect(md).toContain('FidgetFlo');
     });
 
     it('should contain behavioral rules', () => {

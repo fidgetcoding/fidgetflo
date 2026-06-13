@@ -2193,7 +2193,8 @@ export async function searchEntries(options: {
 
   try {
     if (!fs.existsSync(dbPath)) {
-      return { success: false, results: [], searchTime: 0, error: 'Database not found' };
+      // No database yet means no entries — an empty result, not an error
+      return { success: true, results: [], searchTime: 0 };
     }
 
     // Ensure schema has all required columns (migration for older DBs)
@@ -2364,7 +2365,8 @@ export async function listEntries(options: {
 
   try {
     if (!fs.existsSync(dbPath)) {
-      return { success: false, entries: [], total: 0, error: 'Database not found' };
+      // No database yet means no entries — an empty list, not an error
+      return { success: true, entries: [], total: 0 };
     }
 
     // Ensure schema has all required columns (migration for older DBs)

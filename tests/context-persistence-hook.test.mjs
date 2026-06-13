@@ -292,10 +292,17 @@ describe('resolveBackend', () => {
 // ============================================================================
 
 describe('createHashEmbedding', () => {
-  it('should produce 768-dimensional embedding', () => {
+  it('should produce 384-dimensional embedding by default', () => {
+    // Default dim is 384 to match the ONNX all-MiniLM-L6-v2 pipeline;
+    // 768 is the legacy hash dimension and must be requested explicitly.
     const emb = createHashEmbedding('hello world');
-    assert.equal(emb.length, 768);
+    assert.equal(emb.length, 384);
     assert.ok(emb instanceof Float32Array);
+  });
+
+  it('should honor an explicit legacy 768 dimension', () => {
+    const emb = createHashEmbedding('hello world', 768);
+    assert.equal(emb.length, 768);
   });
 
   it('should be L2-normalized', () => {
