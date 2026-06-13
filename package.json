@@ -2,7 +2,7 @@
   "name": "fidgetflo",
   "version": "0.1.7",
   "description": "Enterprise AI agent orchestration for Claude Code: 60+ specialized agents, swarm coordination, self-learning hooks, fault-tolerant consensus, vector memory, and MCP integration. Fork of Ruflo by @ruvnet (https://github.com/ruvnet/ruflo).",
-  "main": "dist/index.js",
+  "main": "bin/cli.js",
   "type": "module",
   "bin": {
     "fidgetflo": "./bin/cli.js",
@@ -36,18 +36,22 @@
     "LICENSE"
   ],
   "scripts": {
-    "dev": "tsx watch src/index.ts",
-    "build": "tsc",
-    "build:ts": "cd v3/@claude-flow/cli && npm run build || true",
-    "test": "vitest",
-    "test:ui": "vitest --ui",
-    "test:security": "vitest run v3/__tests__/security/",
-    "lint": "cd v3/@claude-flow/cli && npm run lint || true",
+    "dev": "tsx watch v3/@claude-flow/cli/src/index.ts",
+    "build": "npm run build:shared && npm run build:guidance && npm run build:cli",
+    "build:shared": "cd v3/@claude-flow/shared && npm run build",
+    "build:guidance": "cd v3/@claude-flow/guidance && npm run build",
+    "build:cli": "cd v3/@claude-flow/cli && npm run build",
+    "build:ts": "npm run build:cli",
+    "build:workspace": "cd v3 && npm run build --workspace=@claude-flow/mcp --workspace=@claude-flow/embeddings --workspace=@claude-flow/aidefence",
+    "test": "npm run test:root && npm run test:cli",
+    "test:root": "node --test --import tsx tests/*.test.ts tests/*.test.mjs",
+    "test:cli": "cd v3/@claude-flow/cli && npx vitest run",
+    "test:ui": "cd v3/@claude-flow/cli && npx vitest --ui",
+    "test:security": "cd v3/@claude-flow/security && npx vitest run",
+    "lint": "cd v3/@claude-flow/cli && npx tsc --noEmit",
     "security:audit": "npm audit --audit-level high",
     "security:fix": "npm audit fix",
     "security:test": "npm run test:security",
-    "v3:domains": "npm run build:domains",
-    "v3:swarm": "npm run start:swarm",
     "v3:security": "npm run security:audit && npm run security:test"
   },
   "dependencies": {
@@ -66,7 +70,8 @@
   },
   "overrides": {
     "hono": ">=4.11.4",
-    "protobufjs": "^7.5.5"
+    "protobufjs": "^7.5.5",
+    "better-sqlite3": "^12.10.0"
   },
   "devDependencies": {
     "@openai/codex": "^0.98.0",
