@@ -148,7 +148,7 @@ jobs:
       - name: Build project
         run: |
           echo "Building project for ${{ matrix.platform }}..."
-          npm run build:ts
+          npm run build
 
       - name: Test CLI binary (Unix)
         if: runner.os != 'Windows'
